@@ -1,0 +1,27 @@
+#' @title Bind column by reference
+#'
+#' Performs [base::cbind()] by reference on [data.tables][data.table::data.table()].
+#'
+#' @param x \[`data.table`\]:\cr
+#'  `data.table` to add columns to.
+#' @param y \[`data.table`\]:\cr
+#'  `data.table` to add columns from.
+#' @return Updated `x` \[`data.table`\].
+#' @export
+ref_cbind = function(x, y) {
+  if (ncol(x) == 0L)
+    return(y)
+
+  if (ncol(y) == 0L)
+    return(x)
+
+  if (nrow(x) != nrow(y))
+    stopf("Tables have different number of rows (x: %i, y: %i)",
+      nrow(x), nrow(y))
+
+  ii = which(names(x) %in% names(y))
+  if (length(ii))
+    stopf("Duplicated names: %s", paste0(names(x[ii]), collapse = ","))
+
+  x[, names(y) := y][]
+}
