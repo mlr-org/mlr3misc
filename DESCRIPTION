@@ -1,0 +1,28 @@
+Package: mlr3misc
+Title: Helper functions for mlr3
+Version: 0.1.0-9000
+Authors@R:
+    c(person(given = "Michel",
+             family = "Lang",
+             role = c("cre", "aut"),
+             email = "michellang@gmail.com",
+             comment = c(ORCID = "0000-0001-9754-0393")))
+Description: Frequently used helper functions and assertions which is used in
+    `mlr3` and its companion packages.
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.1.0)
+Imports:
+    backports,
+    data.table
+Suggests:
+    checkmate,
+    testthat
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no
+Roxygen: list(markdown = TRUE)
+URL: https://github.com/mlr-org/mlr3misc
+BugReports: https://github.com/mlr-org/mlr3misc/issues
+RoxygenNote: 6.1.1

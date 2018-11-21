@@ -1,2 +1,5 @@
 # mlr3misc
-Miscellaneous helper functions for ml3
+
+[![Travis build status](https://travis-ci.org/mlr-org/mlr3misc.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3misc)
+
+Miscellaneous helper functions for mlr3.
