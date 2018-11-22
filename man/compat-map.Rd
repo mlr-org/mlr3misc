@@ -9,6 +9,8 @@
 \alias{map_chr}
 \alias{map_dtr}
 \alias{map_dtc}
+\alias{imap}
+\alias{pmap}
 \title{Purrr-like map}
 \usage{
 map(.x, .f, ...)
@@ -24,6 +26,10 @@ map_chr(.x, .f, ...)
 map_dtr(.x, .f, ..., .fill = FALSE)
 
 map_dtc(.x, .f, ...)
+
+imap(.x, .f, ...)
+
+pmap(.x, .f, ...)
 }
 \arguments{
 \item{.x}{[\code{list()} or atomic \code{vector}].}
@@ -52,4 +58,11 @@ The other \code{map} variants ensure type safety:
 \item \code{map_dtr} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
 \item \code{map_dtc} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
+
+\code{imap} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
+If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
+
+\code{pmap} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector
+of \code{.x}, then the second element of \code{.x}, and so on.
+\code{pmap} is identical to \code{\link[base:.mapply]{base::.mapply()}}.
 }

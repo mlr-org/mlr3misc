@@ -39,3 +39,25 @@ test_that("map (extract)", {
   expect_identical(map_int(x, 1L), 1:2)
   expect_error(map_int(x, "b"))
 })
+
+test_that("imap", {
+  x = list(a = 1, b = 2)
+  res = imap(x, function(x, y) sprintf("%s:%i", y, x))
+  expect_list(res, len = 2, names = "unique")
+  expect_equal(res$a, "a:1")
+  expect_equal(res$b, "b:2")
+
+  x = list(1, 2)
+  res = imap(x, function(x, y) sprintf("%s:%i", y, x))
+  expect_list(res, len = 2, names = "unnamed")
+  expect_equal(res[[1]], "1:1")
+  expect_equal(res[[2]], "2:2")
+})
+
+test_that("pmap", {
+  x = list(a = 1:2, b = 2:1)
+  res = pmap(x, function(a, b) c(a, b))
+  expect_list(res, len = 2, names = "unnamed")
+  expect_equal(res[[1]], 1:2)
+  expect_equal(res[[2]], 2:1)
+})

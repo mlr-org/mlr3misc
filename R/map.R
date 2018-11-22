@@ -16,6 +16,13 @@
 #' * `map_dtr` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
 #' * `map_dtc` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
 #'
+#' `imap` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
+#' If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
+#'
+#' `pmap` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector
+#' of `.x`, then the second element of `.x`, and so on.
+#' `pmap` is identical to [base::.mapply()].
+#'
 #' @param .x \[`list()` or atomic `vector`\].
 #' @param .f \[`function`\ | `character` | `integer`].
 #' @param ... \[any\]:\cr
@@ -79,4 +86,19 @@ map_dtr = function(.x, .f, ..., .fill = FALSE) {
 #' @rdname compat-map
 map_dtc = function(.x, .f, ...) {
   setDT(map(.x, .f, ...))
+}
+
+#' @export
+#' @rdname compat-map
+imap = function(.x, .f, ...) {
+  nn = names(.x)
+  if (is.null(nn))
+    nn = seq_along(.x)
+  setNames(.mapply(.f, c(list(.x, nn), list(...)), list()), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+pmap = function(.x, .f, ...) {
+  .mapply(.f, .x, list())
 }
