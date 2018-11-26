@@ -26,12 +26,13 @@
 #' @export
 #' @examples
 #' as_short_string(list(a = 1, b = NULL, "foo", c = 1:10))
-as_short_string = function(x, num_format = "%.4g", trunc_width = 15L) {
+as_short_string = function(x, num_format = "%.4g", trunc_width = 30L) {
   # convert non-list object to string
   convert = function(x) {
     if (is.atomic(x) && !is.null(x) && length(x) == 0L) {
       string = sprintf("%s(0)", cl)
     } else {
+      cl = class(x)[1L]
       string = switch(cl,
         "numeric" = paste(sprintf(num_format, x), collapse=","),
         "integer" = paste(as.character(x), collapse = ","),
@@ -44,11 +45,10 @@ as_short_string = function(x, num_format = "%.4g", trunc_width = 15L) {
     stri_trunc(string, trunc_width)
   }
 
-  cl = class(x)[1L]
   trunc_width = assert_int(trunc_width, coerce = TRUE)
 
   # handle only lists and not any derived data types
-  if (cl == "list") {
+  if (class(x)[1L] == "list") {
     if (length(x) == 0L)
       return("list()")
     ns = names2(x, missing_val = "<unnamed>")

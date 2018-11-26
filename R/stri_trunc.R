@@ -23,7 +23,7 @@ stri_trunc = function(str, width, ellipsis = "[...]") {
   str = as.character(str)
   ellipsis = assert_string(ellipsis)
   n_ellipsis = nchar(ellipsis)
-  width = assert_int(width, lower = n_ellipsis, coerce = TRUE)
+  width = assert_int(width, lower = n_ellipsis)
 
   ind = (!is.na(str) & nchar(str) > width)
   replace(str, ind, paste0(substr(str[ind], 1L, width - n_ellipsis), ellipsis))
