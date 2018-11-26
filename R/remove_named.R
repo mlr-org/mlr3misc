@@ -6,10 +6,9 @@ remove_named = function(x, nn) {
 }
 
 #' @export
-#' @rdname insert_named
-remove_named.list = function(x, nn) {
-  x[intersect(names(x), nn)] = NULL
-  x
+remove_named.default = function(x, nn) {
+  assert_vector(x, names = "unique")
+  x[setdiff(names(x), nn)]
 }
 
 #' @export

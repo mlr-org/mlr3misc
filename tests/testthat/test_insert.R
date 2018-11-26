@@ -15,6 +15,15 @@ test_that("insert_named.list", {
   x = insert_named(list(), list(a = 1))
   expect_list(x, len = 1L)
   expect_equal(x$a, 1)
+
+  x = insert_named(c(a = 1), c(b = 2))
+  expect_numeric(x, len = 2L)
+  expect_equal(x[["a"]], 1)
+  expect_equal(x[["b"]], 2)
+
+  x = remove_named(x, "a")
+  expect_numeric(x, len = 1L)
+  expect_equal(x[["b"]], 2)
 })
 
 test_that("insert_named.environment", {

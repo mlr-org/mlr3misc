@@ -2,12 +2,10 @@
 % Please edit documentation in R/insert_named.R, R/remove_named.R
 \name{insert_named}
 \alias{insert_named}
-\alias{insert_named.list}
-\alias{insert_named.environment}
+\alias{insert_named.default}
 \alias{insert_named.data.frame}
 \alias{insert_named.data.table}
 \alias{remove_named}
-\alias{remove_named.list}
 \alias{remove_named.environment}
 \alias{remove_named.data.frame}
 \alias{remove_named.data.table}
@@ -15,17 +13,13 @@
 \usage{
 insert_named(x, y)
 
-\method{insert_named}{list}(x, y)
-
-\method{insert_named}{environment}(x, y)
+\method{insert_named}{default}(x, y)
 
 \method{insert_named}{data.frame}(x, y)
 
 \method{insert_named}{data.table}(x, y)
 
 remove_named(x, nn)
-
-\method{remove_named}{list}(x, nn)
 
 \method{remove_named}{environment}(x, nn)
 

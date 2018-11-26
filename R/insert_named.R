@@ -22,7 +22,8 @@ insert_named = function(x, y) {
 
 #' @export
 #' @rdname insert_named
-insert_named.list = function(x, y) {
+insert_named.default = function(x, y) {
+  assert_vector(x, names = "unique")
   x[names(y)] = y
   x
 }

@@ -4,19 +4,19 @@
 \alias{as_short_string}
 \title{Converts any R object to a descriptive string}
 \usage{
-as_short_string(x, num_format = "\%.4g", trunc_width = 30L)
+as_short_string(x, trunc_width = 30L, num_format = "\%.4g")
 }
 \arguments{
 \item{x}{[any]\cr
 The object.}
 
-\item{num_format}{[`character(1)]\cr
-Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
-Default is "\%.4g".}
-
 \item{trunc_width}{[\code{integer(1)}]\cr
 Truncate strings to width \code{trunc_width}.
 Default is 15.}
+
+\item{num_format}{[`character(1)]\cr
+Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
+Default is "\%.4g".}
 }
 \value{
 [`character(1)].
