@@ -18,6 +18,8 @@ Imports:
     data.table
 Suggests:
     testthat
+Remotes:
+    mllg/checkmate
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true

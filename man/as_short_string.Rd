@@ -4,7 +4,7 @@
 \alias{as_short_string}
 \title{Converts any R object to a descriptive string}
 \usage{
-as_short_string(x, num_format = "\%.4g", trunc_width = 15L)
+as_short_string(x, num_format = "\%.4g", trunc_width = 30L)
 }
 \arguments{
 \item{x}{[any]\cr
