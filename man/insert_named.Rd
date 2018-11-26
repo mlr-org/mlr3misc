@@ -3,6 +3,7 @@
 \name{insert_named}
 \alias{insert_named}
 \alias{insert_named.default}
+\alias{insert_named.environment}
 \alias{insert_named.data.frame}
 \alias{insert_named.data.table}
 \alias{remove_named}
@@ -14,6 +15,8 @@
 insert_named(x, y)
 
 \method{insert_named}{default}(x, y)
+
+\method{insert_named}{environment}(x, y)
 
 \method{insert_named}{data.frame}(x, y)
 

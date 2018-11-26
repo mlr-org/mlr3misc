@@ -3,6 +3,7 @@
 S3method(insert_named,data.frame)
 S3method(insert_named,data.table)
 S3method(insert_named,default)
+S3method(insert_named,environment)
 S3method(remove_named,data.frame)
 S3method(remove_named,data.table)
 S3method(remove_named,default)
