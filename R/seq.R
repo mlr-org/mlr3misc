@@ -28,11 +28,8 @@ seq_col = function(x) {
 #' @export
 #' @rdname sequence_helpers
 seq_len0 = function(n) {
-  n = as.integer(n)
-  if (n >= 1L)
-    seq(from = 0L, to = n - 1L)
-  else
-    integer(0L)
+  n = assert_int(n, coerce = TRUE)
+  if (n >= 1L) seq(from = 0L, to = n - 1L) else integer(0L)
 }
 
 #' @export

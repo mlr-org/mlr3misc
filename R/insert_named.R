@@ -16,9 +16,7 @@
 #' @return Updated object.
 #' @export
 insert_named = function(x, y) {
-  nn = names(y)
-  if (is.null(nn) || anyNA(names(nn)))
-    stop("Argument 'y' must be named")
+  assert_names(names(y), type = "unique")
   UseMethod("insert_named")
 }
 

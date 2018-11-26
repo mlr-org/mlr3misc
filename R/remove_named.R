@@ -1,20 +1,21 @@
 #' @export
 #' @rdname insert_named
 remove_named = function(x, nn) {
+  assert_character(nn, any.missing = FALSE)
   UseMethod("remove_named")
 }
 
 #' @export
 #' @rdname insert_named
 remove_named.list = function(x, nn) {
-  x[intersect(nn, names(x))] = NULL
+  x[intersect(names(x), nn)] = NULL
   x
 }
 
 #' @export
 #' @rdname insert_named
 remove_named.environment = function(x, nn) {
-  rm(list = intersect(nn, names(x)), envir = x)
+  rm(list = intersect(ls(envir = x, all.names = TRUE), nn), envir = x)
   x
 }
 

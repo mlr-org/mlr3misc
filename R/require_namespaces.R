@@ -12,6 +12,7 @@
 #' @examples
 #' require_namespaces("mlr3misc")
 require_namespaces = function(pkgs, msg = "The following packages could not be loaded: %s") {
+  pkgs = unique(assert_character(pkgs, any.missing = FALSE))
   ii = which(!map_lgl(pkgs, requireNamespace, quietly = TRUE))
   if (length(ii))
     stopf(msg, paste0(pkgs[ii], collapse = ","))

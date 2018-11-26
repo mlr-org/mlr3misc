@@ -9,6 +9,9 @@
 #' @return Updated `x` \[`data.table`\].
 #' @export
 ref_cbind = function(x, y) {
+  assert_data_table(x)
+  assert_data_table(y)
+
   if (ncol(x) == 0L)
     return(y)
 

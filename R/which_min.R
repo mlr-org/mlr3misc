@@ -18,12 +18,14 @@
 #'
 #' which_max(x)
 which_min = function(x, ties.method = "random") {
+  assert_numeric(x)
   which_equal(x, x[which.min(x)], ties.method)
 }
 
 #' @rdname which_min
 #' @export
 which_max = function(x, ties.method = "random") {
+  assert_numeric(x)
   i = which.max(x)
   which_equal(x, x[which.max(x)], ties.method)
 }
@@ -39,4 +41,3 @@ which_equal = function(x, y, ties.method = "random") {
     stop("Invalid ties method")
   )
 }
-

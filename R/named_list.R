@@ -10,6 +10,7 @@
 #' named_list(c("a", "b"))
 #' named_list(c("a", "b"), init = 1)
 named_list = function(nn, init = NULL) {
+  assert_character(nn, any.missing = FALSE)
   x = vector("list", length(nn))
   if (!is.null(init))
     x[] = list(init)

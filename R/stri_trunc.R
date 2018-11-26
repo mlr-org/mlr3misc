@@ -1,4 +1,4 @@
-#' Truncate a string to a given length.
+#' @title Truncate a string to a given length.
 #'
 #' @param str \[`character()`\]:\cr
 #'   Vector of strings.
