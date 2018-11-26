@@ -17,7 +17,6 @@ Imports:
     checkmate,
     data.table
 Suggests:
-    checkmate,
     testthat
 ByteCompile: true
 Encoding: UTF-8

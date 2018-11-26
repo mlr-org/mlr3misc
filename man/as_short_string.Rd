@@ -7,19 +7,19 @@
 as_short_string(x, num_format = "\%.4g", trunc_width = 15L)
 }
 \arguments{
-\item{x}{\link{any}\cr
+\item{x}{[any]\cr
 The object.}
 
-\item{trunc_width}{\link{\code{integer(1)}}\cr
+\item{num_format}{[`character(1)]\cr
+Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
+Default is "\%.4g".}
+
+\item{trunc_width}{[\code{integer(1)}]\cr
 Truncate strings to width \code{trunc_width}.
 Default is 15.}
-
-\item{num.format}{\link{\code{character(1)}}\cr
-Used to format numerical scalars via \code{\link{sprintf}}.
-Default is \dQuote{\%.4g}.}
 }
 \value{
-\link{\code{character(1)}}.
+[`character(1)].
 }
 \description{
 This function is intended to be convert any R object to a short descriptive string,

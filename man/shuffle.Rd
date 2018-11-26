@@ -17,5 +17,14 @@ Number of elements to sample.}
 Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{
-A version of \code{sample()} which does not treat scalar integer \code{x} specially.
+A version of \code{sample()} which does not treat scalar integer \code{x} differently
+}
+\examples{
+x = 2:3
+sample(x)
+shuffle(x)
+
+x = 3
+sample(x)
+shuffle(x)
 }

@@ -14,15 +14,15 @@
 #'
 #' If `x` is a list, the above rules are applied (non-recursively) to its elements.
 #'
-#' @param x [any]\cr
+#' @param x \[any\]\cr
 #'   The object.
-#' @param num.format [\code{character(1)}]\cr
-#'   Used to format numerical scalars via \code{\link{sprintf}}.
-#'   Default is \dQuote{\%.4g}.
-#' @param trunc_width [\code{integer(1)}]\cr
+#' @param num_format \[`character(1)\]\cr
+#'   Used to format numerical scalars via [base::sprintf()].
+#'   Default is "\%.4g".
+#' @param trunc_width \[`integer(1)`\]\cr
 #'   Truncate strings to width `trunc_width`.
 #'   Default is 15.
-#' @return [\code{character(1)}].
+#' @return \[`character(1)\].
 #' @export
 #' @examples
 #' as_short_string(list(a = 1, b = NULL, "foo", c = 1:10))

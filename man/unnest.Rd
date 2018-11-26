@@ -10,7 +10,7 @@ by reference.}
 unnest(x, cols)
 }
 \arguments{
-\item{x}{[\code{data.table}]:\cr
+\item{x}{[\code{\link[data.table:data.table]{data.table::data.table()}}]:\cr
 \code{data.table} with columns to unnest.}
 
 \item{cols}{[\code{character()}]:\cr
