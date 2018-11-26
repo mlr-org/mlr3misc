@@ -16,17 +16,17 @@
 #'
 #' @param x \[any\]\cr
 #'   The object.
-#' @param num_format \[`character(1)\]\cr
-#'   Used to format numerical scalars via [base::sprintf()].
-#'   Default is "\%.4g".
 #' @param trunc_width \[`integer(1)`\]\cr
 #'   Truncate strings to width `trunc_width`.
 #'   Default is 15.
+#' @param num_format \[`character(1)\]\cr
+#'   Used to format numerical scalars via [base::sprintf()].
+#'   Default is "\%.4g".
 #' @return \[`character(1)\].
 #' @export
 #' @examples
 #' as_short_string(list(a = 1, b = NULL, "foo", c = 1:10))
-as_short_string = function(x, num_format = "%.4g", trunc_width = 30L) {
+as_short_string = function(x, trunc_width = 30L, num_format = "%.4g") {
   # convert non-list object to string
   convert = function(x) {
     if (is.atomic(x) && !is.null(x) && length(x) == 0L) {
