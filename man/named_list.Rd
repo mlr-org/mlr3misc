@@ -7,14 +7,14 @@
 named_list(nn, init = NULL)
 }
 \arguments{
-\item{nn}{[\code{character()}]:\cr
+\item{nn}{(\code{character()}):\cr
 Names of elements.}
 
-\item{init}{[valid R expression]:\cr
+\item{init}{(valid R expression):\cr
 All list elements are initialized to this value.}
 }
 \value{
-[\code{list()}].
+(\code{list()}].
 }
 \description{
 Create a named list, possibly initialized with a certain element.

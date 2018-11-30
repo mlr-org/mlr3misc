@@ -3,11 +3,11 @@
 #' @description
 #' A version of `sample()` which does not treat scalar integer `x` differently
 #'
-#' @param x \[`vector`\]:\cr
+#' @param x (`vector`):\cr
 #'  Vector to sample elements from.
-#' @param n \[`integer`\]:\cr
+#' @param n (`integer`):\cr
 #'  Number of elements to sample.
-#' @param ... \[any\]:\cr
+#' @param ... :\cr
 #'  Arguments passed down to [base::sample.int()].
 #'
 #' @export

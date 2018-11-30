@@ -23,11 +23,11 @@
 #' of `.x`, then the second element of `.x`, and so on.
 #' `pmap` is identical to [base::.mapply()].
 #'
-#' @param .x \[`list()` or atomic `vector`\].
-#' @param .f \[`function`\ | `character` | `integer`].
-#' @param ... \[any\]:\cr
+#' @param .x (`list()` or atomic `vector`).
+#' @param .f (`function`\ | `character` | `integer`].
+#' @param ...:\cr
 #'  Additional arguments passed to `.f`.
-#' @param .fill \[`logical(1)`\]:\cr
+#' @param .fill (`logical(1)`):\cr
 #'  Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map

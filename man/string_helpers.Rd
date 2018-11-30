@@ -12,27 +12,27 @@ stri_head(str, n = 6L, collapse = ", ", quote = "'",
 stri_trunc(str, width, ellipsis = "[...]")
 }
 \arguments{
-\item{str}{[\code{character()}]:\cr
+\item{str}{(\code{character()}):\cr
 Vector of strings.}
 
-\item{n}{[\code{integer(1)}]:\cr
+\item{n}{(\code{integer(1)}):\cr
 Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
 
-\item{collapse}{[\code{character(1)}]:\cr
+\item{collapse}{(\code{character(1)}):\cr
 String used to collapse the elements of \code{x}.}
 
-\item{quote}{[\code{character(1)}]:\cr
+\item{quote}{(\code{character(1)}):\cr
 Quotes to use around each element of \code{x}.}
 
-\item{ellipsis}{[\code{character(1)}]:\cr
+\item{ellipsis}{(\code{character(1)}):\cr
 If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
 
-\item{width}{[\code{integer(1)}]:\cr
+\item{width}{(\code{integer(1)}):\cr
 Absolute length the string should be truncated to, including \code{ellipsis}.
 Note that you cannot truncate to a shorter length than \code{ellipsis}.}
 }
 \value{
-[\code{character(1)}].
+(\code{character(1)}).
 }
 \description{
 \itemize{

@@ -10,14 +10,14 @@ by reference.}
 unnest(x, cols)
 }
 \arguments{
-\item{x}{[\code{\link[data.table:data.table]{data.table::data.table()}}]:\cr
+\item{x}{(\code{\link[data.table:data.table]{data.table::data.table()}}):\cr
 \code{data.table} with columns to unnest.}
 
-\item{cols}{[\code{character()}]:\cr
+\item{cols}{(\code{character()}):\cr
 Column names of list columns to unnest.}
 }
 \value{
-Updated \code{x} [\code{data.table}].
+Updated \code{x} (\code{data.table}).
 }
 \description{
 Unnest list data table columns

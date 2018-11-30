@@ -7,11 +7,11 @@
 is_scalar_na(x)
 }
 \arguments{
-\item{x}{[any]:\cr
+\item{x}{:\cr
 Argument to check.}
 }
 \value{
-[logical(1)].
+(logical(1)).
 }
 \description{
 Check if an argument is a single scalar value

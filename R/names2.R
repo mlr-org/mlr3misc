@@ -6,11 +6,11 @@
 #' Values `NA` and `""` are treated as missing and
 #' replaced with the value provided in `missing_val`.
 #'
-#' @param x \[any\]\cr
+#' @param x \cr
 #'   Object.
-#' @param missing_val \[`atomic(1)`\]\cr
+#' @param missing_val (`atomic(1)`)\cr
 #'   Value to set for missing names. Default is `NA_character_`.
-#' @return \[`character(length(x))`\].
+#' @return (`character(length(x))`).
 #' @export
 #' @examples
 #' x = 1:3

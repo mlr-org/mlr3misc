@@ -32,15 +32,14 @@ imap(.x, .f, ...)
 pmap(.x, .f, ...)
 }
 \arguments{
-\item{.x}{[\code{list()} or atomic \code{vector}].}
+\item{.x}{(\code{list()} or atomic \code{vector}).}
 
-\item{.f}{[\code{function}\ | \code{character} | \code{integer}].}
+\item{.f}{(\code{function}\ | \code{character} | \code{integer}].}
 
-\item{...}{[any]:\cr
-Additional arguments passed to \code{.f}.}
-
-\item{.fill}{[\code{logical(1)}]:\cr
+\item{.fill}{(\code{logical(1)}):\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
+
+\item{...:\cr}{Additional arguments passed to \code{.f}.}
 }
 \description{
 A \code{map}-operation, similar to the one implemented in \pkg{purrr}.

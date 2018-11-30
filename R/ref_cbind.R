@@ -2,11 +2,11 @@
 #'
 #' Performs [base::cbind()] by reference on [data.tables][data.table::data.table()].
 #'
-#' @param x \[`data.table`\]:\cr
+#' @param x (`data.table`):\cr
 #'  `data.table` to add columns to.
-#' @param y \[`data.table`\]:\cr
+#' @param y (`data.table`):\cr
 #'  `data.table` to add columns from.
-#' @return Updated `x` \[`data.table`\].
+#' @return Updated `x` (`data.table`).
 #' @export
 ref_cbind = function(x, y) {
   assert_data_table(x)

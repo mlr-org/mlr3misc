@@ -9,14 +9,14 @@ Performs \code{\link[base:cbind]{base::cbind()}} by reference on \link[data.tabl
 ref_cbind(x, y)
 }
 \arguments{
-\item{x}{[\code{data.table}]:\cr
+\item{x}{(\code{data.table}):\cr
 \code{data.table} to add columns to.}
 
-\item{y}{[\code{data.table}]:\cr
+\item{y}{(\code{data.table}):\cr
 \code{data.table} to add columns from.}
 }
 \value{
-Updated \code{x} [\code{data.table}].
+Updated \code{x} (\code{data.table}).
 }
 \description{
 Bind column by reference

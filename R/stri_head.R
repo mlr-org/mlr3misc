@@ -1,8 +1,8 @@
-#' @param n \[`integer(1)`\]:\cr
+#' @param n (`integer(1)`):\cr
 #'   Number of elements to keep from `x`. See [utils::head()].
-#' @param collapse \[`character(1)`\]:\cr
+#' @param collapse (`character(1)`):\cr
 #'   String used to collapse the elements of `x`.
-#' @param quote \[`character(1)`\]:\cr
+#' @param quote (`character(1)`):\cr
 #'   Quotes to use around each element of `x`.
 #' @rdname string_helpers
 #' @export

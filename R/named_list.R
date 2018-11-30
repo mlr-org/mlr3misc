@@ -1,10 +1,10 @@
 #' @title Create a named list, possibly initialized with a certain element.
 #'
-#' @param nn \[`character()`\]:\cr
+#' @param nn (`character()`):\cr
 #'   Names of elements.
-#' @param init \[valid R expression\]:\cr
+#' @param init (valid R expression):\cr
 #'   All list elements are initialized to this value.
-#' @return \[`list()`].
+#' @return (`list()`].
 #' @export
 #' @examples
 #' named_list(c("a", "b"))
