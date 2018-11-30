@@ -25,7 +25,7 @@
 #'
 #' @param .x (`list()` or atomic `vector`).
 #' @param .f (`function`\ | `character` | `integer`].
-#' @param ...:\cr
+#' @param ... :\cr
 #'  Additional arguments passed to `.f`.
 #' @param .fill (`logical(1)`):\cr
 #'  Passed down to [data.table::rbindlist()].
