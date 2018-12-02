@@ -1,6 +1,8 @@
 #' @export
 #' @rdname insert_named
 remove_named = function(x, nn) {
+  if (length(nn) == 0L)
+    return(x)
   assert_character(nn, any.missing = FALSE)
   UseMethod("remove_named")
 }
