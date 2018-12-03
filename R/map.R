@@ -85,7 +85,7 @@ map_dtr = function(.x, .f, ..., .fill = FALSE) {
 #' @export
 #' @rdname compat-map
 map_dtc = function(.x, .f, ...) {
-  setDT(map(.x, .f, ...))
+  do.call(data.table, map(.x, .f, ...))
 }
 
 #' @export

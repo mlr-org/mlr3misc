@@ -20,12 +20,6 @@ test_that("map (lapply)", {
   x = letters[1:2]
   names(x) = letters[1:2]
   expect_identical(map_chr(x, identity), x)
-
-  x = list(list(a = 1L), list(a = 2L))
-  expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
-
-  x = list(a = 1L, b = 2L)
-  expect_data_table(map_dtc(x, identity), nrow = 1, ncol = 2)
 })
 
 test_that("map (extract)", {
@@ -60,4 +54,24 @@ test_that("pmap", {
   expect_list(res, len = 2, names = "unnamed")
   expect_equal(res[[1]], 1:2)
   expect_equal(res[[2]], 2:1)
+})
+
+test_that("map_dtr", {
+  x = list(list(a = 1L), list(a = 2L))
+  expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
+
+  x = list(data.table(a = 1L), data.table(a = 2L))
+  expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
+})
+
+test_that("map_dtc", {
+  x = list(a = 1L, b = 2L)
+  res = map_dtc(x, identity)
+  expect_data_table(res, nrow = 1, ncol = 2)
+  expect_names(names(res), identical.to = names(x))
+
+  x = list(data.table(a = 1L), data.table(b = 2L))
+  res = map_dtc(x, identity)
+  expect_data_table(res, nrow = 1, ncol = 2)
+  expect_names(names(res), identical.to = names(x))
 })
