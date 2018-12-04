@@ -75,3 +75,35 @@ test_that("map_dtc", {
   expect_data_table(res, nrow = 1, ncol = 2)
   expect_names(names(res), identical.to = names(x))
 })
+
+test_that("map_if", {
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  out = map_if(x, is.numeric, length)
+  expect_equal(out, setNames(list(3L, c("a", "b"), 3L), names(x)))
+})
+
+test_that("keep", {
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  out = keep(x, is.numeric)
+  expect_list(out, len = 2L)
+  expect_equal(names(out), c("a", "c"))
+})
+
+test_that("discard", {
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  out = discard(x, is.numeric)
+  expect_list(out, len = 1L)
+  expect_equal(names(out), c("b"))
+})
+
+test_that("some/every", {
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  expect_true(some(x, is.numeric))
+  expect_false(every(x, is.numeric))
+  expect_false(some(x, is.complex))
+  expect_false(every(x, is.complex))
+
+  x = list(list(p = TRUE, x = 1), list(p = FALSE, x = 2))
+  expect_true(some(x, "p"))
+  expect_false(every(x, "p"))
+})

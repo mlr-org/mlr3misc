@@ -11,7 +11,12 @@
 \alias{map_dtc}
 \alias{imap}
 \alias{pmap}
-\title{Purrr-like map}
+\alias{keep}
+\alias{discard}
+\alias{map_if}
+\alias{every}
+\alias{some}
+\title{Purrr-like apply functions}
 \usage{
 map(.x, .f, ...)
 
@@ -30,39 +35,59 @@ map_dtc(.x, .f, ...)
 imap(.x, .f, ...)
 
 pmap(.x, .f, ...)
+
+keep(.x, .f, ...)
+
+discard(.x, .p, ...)
+
+map_if(.x, .p, .f, ...)
+
+every(.x, .p, ...)
+
+some(.x, .p, ...)
 }
 \arguments{
 \item{.x}{(\code{list()} or atomic \code{vector}).}
 
-\item{.f}{(\code{function}\ | \code{character} | \code{integer}].}
+\item{.f}{(\code{function}\ | \code{character} | \code{integer}].
+Function to apply.}
 
 \item{...}{:\cr
-Additional arguments passed to \code{.f}.}
+Additional arguments passed down to \code{.f} or \code{.p}.}
 
 \item{.fill}{(\code{logical(1)}):\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
+
+\item{.p}{(\code{function}\ | \code{logical}].
+Predicate function.}
 }
 \description{
-A \code{map}-operation, similar to the one implemented in \pkg{purrr}.
+\code{map}-like functions, similar to the ones implemented in \pkg{purrr}.
 
-\code{map} returns the results of \code{.f} applied to \code{.x} as list.
+\code{map()} returns the results of \code{.f} applied to \code{.x} as list.
 If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using
 the value of \code{.f} as index.
 
 The other \code{map} variants ensure type safety:
 \itemize{
-\item \code{map_lgl} returns a \code{logical(length(.x))}.
-\item \code{map_int} returns a \code{integer(length(.x))}.
-\item \code{map_dbl} returns a \code{double(length(.x))}.
-\item \code{map_chr} returns a \code{character(length(.x))}.
-\item \code{map_dtr} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
-\item \code{map_dtc} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
+\item \code{map_lgl()} returns a \code{logical(length(.x))}.
+\item \code{map_int()} returns a \code{integer(length(.x))}.
+\item \code{map_dbl()} returns a \code{double(length(.x))}.
+\item \code{map_chr()} returns a \code{character(length(.x))}.
+\item \code{map_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
+\item \code{map_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
 
-\code{imap} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
+\code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
 
-\code{pmap} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector
+\code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector
 of \code{.x}, then the second element of \code{.x}, and so on.
-\code{pmap} is identical to \code{\link[base:.mapply]{base::.mapply()}}.
+
+\code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
+
+\code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}, while \code{discard()} discards them.
+
+\code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
+\code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
 }
