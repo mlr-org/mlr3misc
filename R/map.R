@@ -114,7 +114,9 @@ imap = function(.x, .f, ...) {
   nn = names(.x)
   if (is.null(nn))
     nn = seq_along(.x)
-  setNames(.mapply(.f, c(list(.x, nn), list(...)), list()), names(.x))
+  out = .mapply(.f, c(list(.x, nn), list(...)), list())
+  names(out) = names(.x)
+  out
 }
 
 #' @export

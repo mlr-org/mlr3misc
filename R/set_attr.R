@@ -11,6 +11,16 @@
 #' @return `x` with names set.
 #'
 #' @export
+#' @examples
+#' x = letters[1:3]
+#'
+#' # name x with itself:
+#' x = set_names(x)
+#' print(x)
+#'
+#' # convert names to uppercase
+#' x = set_names(x, toupper)
+#' print(x)
 set_names = function(x, nm = x, ...) {
   if (is.function(nm))
     nm = map_chr(names2(x), nm)

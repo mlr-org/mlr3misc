@@ -79,7 +79,7 @@ test_that("map_dtc", {
 test_that("map_if", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = map_if(x, is.numeric, length)
-  expect_equal(out, setNames(list(3L, c("a", "b"), 3L), names(x)))
+  expect_equal(out, set_names(list(3L, c("a", "b"), 3L), names(x)))
 })
 
 test_that("keep", {
