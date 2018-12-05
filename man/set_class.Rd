@@ -7,11 +7,9 @@
 set_class(x, classes)
 }
 \arguments{
-\item{x}{\link{any}\cr
-Your object.}
+\item{x}{: Your object.}
 
-\item{classes}{\link{\code{character}}\cr
-New classes.}
+\item{classes}{(\code{character(1)}): New classes.}
 }
 \value{
 Changed object \code{x}.
