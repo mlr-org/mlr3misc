@@ -1,4 +1,4 @@
-#' @import data.table
+#' @rawNamespace import(data.table, except = transpose)
 #' @import checkmate
 #' @importFrom utils head
 NULL
