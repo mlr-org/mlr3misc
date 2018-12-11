@@ -7,20 +7,21 @@
 #' If `.f` is not a function, `map` will call `[[` on all elements of `.x` using
 #' the value of `.f` as index.
 #'
-#' The other `map` variants ensure type safety:
-#'
-#' * `map_lgl()` returns a `logical(length(.x))`.
-#' * `map_int()` returns a `integer(length(.x))`.
-#' * `map_dbl()` returns a `double(length(.x))`.
-#' * `map_chr()` returns a `character(length(.x))`.
-#' * `map_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
-#' * `map_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
-#'
 #' `imap()` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
 #' If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
 #'
 #' `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector
 #' of `.x`, then the second element of `.x`, and so on.
+#'
+#' The type-safe variants of map functions will convert the return value of `.f`, depending on the
+#' suffix:
+#'
+#' * `*_lgl()` returns a `logical(length(.x))`.
+#' * `*_int()` returns a `integer(length(.x))`.
+#' * `*_dbl()` returns a `double(length(.x))`.
+#' * `*_chr()` returns a `character(length(.x))`.
+#' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
+#' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
 #'
 #' `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
 #'
@@ -58,8 +59,7 @@ map_mold = function(.x, .f, .value, ...) {
     vapply(.x, .f, FUN.VALUE = .value, USE.NAMES = FALSE, ...)
   else
     vapply(.x, `[[`, .f, FUN.VALUE = .value, USE.NAMES = FALSE, ...)
-  names(out) = names(.x)
-  out
+  setNames(out, names(.x))
 }
 
 probe = function(.x, .p, ...) {
@@ -110,19 +110,98 @@ map_dtc = function(.x, .f, ...) {
 
 #' @export
 #' @rdname compat-map
-imap = function(.x, .f, ...) {
-  nn = names(.x)
-  if (is.null(nn))
-    nn = seq_along(.x)
-  out = .mapply(.f, c(list(.x, nn), list(...)), list())
-  names(out) = names(.x)
-  out
+pmap = function(.x, .f, ...) {
+  .mapply(.f, .x, list(...))
 }
 
 #' @export
 #' @rdname compat-map
-pmap = function(.x, .f, ...) {
-  .mapply(.f, .x, list(...))
+pmap_lgl = function(.x, .f, ...) {
+  out = .mapply(.f, .x, list(...))
+  tryCatch(as.vector(out, "logical"), warning = function(w) stop("Cannot convert to logical"))
+}
+
+#' @export
+#' @rdname compat-map
+pmap_int = function(.x, .f, ...) {
+  out = .mapply(.f, .x, list(...))
+  tryCatch(as.vector(out, "integer"), warning = function(w) stop("Cannot convert to integer"))
+}
+
+#' @export
+#' @rdname compat-map
+pmap_dbl = function(.x, .f, ...) {
+  out = .mapply(.f, .x, list(...))
+  tryCatch(as.vector(out, "double"), warning = function(w) stop("Cannot convert to double"))
+}
+
+#' @export
+#' @rdname compat-map
+pmap_chr = function(.x, .f, ...) {
+  out = .mapply(.f, .x, list(...))
+  tryCatch(as.vector(out, "character"), warning = function(w) stop("Cannot convert to character"))
+}
+
+#' @export
+#' @rdname compat-map
+pmap_dtr = function(.x, .f, ..., .fill = FALSE) {
+  out = .mapply(.f, .x, list(...))
+  rbindlist(out, fill = .fill)
+}
+
+#' @export
+#' @rdname compat-map
+pmap_dtc = function(.x, .f, ...) {
+  out = .mapply(.f, .x, list(...))
+  do.call(data.table, out)
+}
+
+
+#' @export
+#' @rdname compat-map
+imap = function(.x, .f, ...) {
+  nn = names(.x) %??% seq_along(.x)
+  setNames(.mapply(.f, list(.x, nn), list(...)), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+imap_lgl = function(.x, .f, ...) {
+  nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_lgl(c(list(.x, nn)), .f), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+imap_int = function(.x, .f, ...) {
+  nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_int(c(list(.x, nn)), .f), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+imap_dbl = function(.x, .f, ...) {
+  nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_dbl(c(list(.x, nn)), .f), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+imap_chr = function(.x, .f, ...) {
+  nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_chr(c(list(.x, nn)), .f), names(.x))
+}
+
+#' @export
+#' @rdname compat-map
+imap_dtr = function(.x, .f, ..., .fill = FALSE) {
+  rbindlist(imap(.x, .f, ...), fill = .fill)
+}
+
+#' @export
+#' @rdname compat-map
+imap_dtc = function(.x, .f, ...) {
+  do.call(data.table, imap(.x, .f, ...))
 }
 
 #' @export

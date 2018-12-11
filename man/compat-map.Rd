@@ -9,8 +9,20 @@
 \alias{map_chr}
 \alias{map_dtr}
 \alias{map_dtc}
-\alias{imap}
 \alias{pmap}
+\alias{pmap_lgl}
+\alias{pmap_int}
+\alias{pmap_dbl}
+\alias{pmap_chr}
+\alias{pmap_dtr}
+\alias{pmap_dtc}
+\alias{imap}
+\alias{imap_lgl}
+\alias{imap_int}
+\alias{imap_dbl}
+\alias{imap_chr}
+\alias{imap_dtr}
+\alias{imap_dtc}
 \alias{keep}
 \alias{discard}
 \alias{map_if}
@@ -32,9 +44,33 @@ map_dtr(.x, .f, ..., .fill = FALSE)
 
 map_dtc(.x, .f, ...)
 
+pmap(.x, .f, ...)
+
+pmap_lgl(.x, .f, ...)
+
+pmap_int(.x, .f, ...)
+
+pmap_dbl(.x, .f, ...)
+
+pmap_chr(.x, .f, ...)
+
+pmap_dtr(.x, .f, ..., .fill = FALSE)
+
+pmap_dtc(.x, .f, ...)
+
 imap(.x, .f, ...)
 
-pmap(.x, .f, ...)
+imap_lgl(.x, .f, ...)
+
+imap_int(.x, .f, ...)
+
+imap_dbl(.x, .f, ...)
+
+imap_chr(.x, .f, ...)
+
+imap_dtr(.x, .f, ..., .fill = FALSE)
+
+imap_dtc(.x, .f, ...)
 
 keep(.x, .f, ...)
 
@@ -68,21 +104,22 @@ Predicate function.}
 If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using
 the value of \code{.f} as index.
 
-The other \code{map} variants ensure type safety:
-\itemize{
-\item \code{map_lgl()} returns a \code{logical(length(.x))}.
-\item \code{map_int()} returns a \code{integer(length(.x))}.
-\item \code{map_dbl()} returns a \code{double(length(.x))}.
-\item \code{map_chr()} returns a \code{character(length(.x))}.
-\item \code{map_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
-\item \code{map_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
-}
-
 \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
 
 \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector
 of \code{.x}, then the second element of \code{.x}, and so on.
+
+The type-safe variants of map functions will convert the return value of \code{.f}, depending on the
+suffix:
+\itemize{
+\item \code{*_lgl()} returns a \code{logical(length(.x))}.
+\item \code{*_int()} returns a \code{integer(length(.x))}.
+\item \code{*_dbl()} returns a \code{double(length(.x))}.
+\item \code{*_chr()} returns a \code{character(length(.x))}.
+\item \code{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
+\item \code{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
+}
 
 \code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
 

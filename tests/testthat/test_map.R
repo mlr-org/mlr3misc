@@ -36,24 +36,42 @@ test_that("map (extract)", {
 
 test_that("imap", {
   x = list(a = 1, b = 2)
-  res = imap(x, function(x, y) sprintf("%s:%i", y, x))
+  fun = function(x, y) sprintf("%s:%i", y, x)
+  res = imap(x, fun)
   expect_list(res, len = 2, names = "unique")
   expect_equal(res$a, "a:1")
   expect_equal(res$b, "b:2")
 
-  x = list(1, 2)
-  res = imap(x, function(x, y) sprintf("%s:%i", y, x))
+  res = imap_chr(x, fun)
+  expect_character(res, len = 2)
+  expect_equal(names(res), c("a", "b"))
+  expect_equal(unname(res), c("a:1", "b:2"))
+
+  x = list(1L, 2L)
+  fun = function(x, y) x + y
+  res = imap(x, fun)
   expect_list(res, len = 2, names = "unnamed")
-  expect_equal(res[[1]], "1:1")
-  expect_equal(res[[2]], "2:2")
+  expect_identical(res[[1]], 2L)
+  expect_identical(res[[2]], 4L)
+
+  res = imap_int(x, fun)
+  expect_identical(res, c(2L, 4L))
 })
 
 test_that("pmap", {
   x = list(a = 1:2, b = 2:1)
-  res = pmap(x, function(a, b) c(a, b))
+  fun = function(a, b) c(a, b)
+  res = pmap(x, fun)
   expect_list(res, len = 2, names = "unnamed")
   expect_equal(res[[1]], 1:2)
   expect_equal(res[[2]], 2:1)
+
+  fun = function(a, b) a + b
+  res = pmap(x, fun)
+  expect_identical(res, list(3L, 3L))
+
+  res = pmap_int(x, fun)
+  expect_identical(res, c(3L, 3L))
 })
 
 test_that("map_dtr", {
