@@ -4,21 +4,22 @@
 \alias{invoke}
 \title{Invoke a function call}
 \usage{
-invoke(.f, .x = list(), ...)
+invoke(.f, ..., .args = list())
 }
 \arguments{
 \item{.f}{(\code{\link[=function]{function()}}): Function to call.}
 
-\item{.x}{(\code{\link[=list]{list()}}): List of function arguments passed to \code{.f}.}
+\item{...}{: Additional function arguments passed to \code{.f}.}
 
-\item{...}{: Additional function arguments passed to \code{.f}.
-These arguments will be concatenated to the arguments provied via \code{.x}.}
+\item{.args}{(\code{\link[=list]{list()}}): List of function arguments passed to \code{.f}.
+These arguments will be concatenated to the arguments provided via \code{...}.}
 }
 \description{
-An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the function in \pkg{purrr}.
-It is best practice to pass all arguments named.
+An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the deprecated function in \pkg{purrr}.
+This function tries hard to not evaluate the passed arguments too eagerly which is
+important when working with large R objects.
 }
 \examples{
-invoke(mean, .x = list(x = 1:10))
-invoke(mean, .x = list(1:10), na.rm = TRUE)
+invoke(mean, .args = list(x = 1:10))
+invoke(mean, na.rm = TRUE, .args = list(1:10))
 }
