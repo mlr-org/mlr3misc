@@ -5,6 +5,8 @@
 #' This function tries hard to not evaluate the passed arguments too eagerly which is
 #' important when working with large R objects.
 #'
+#' It is recommended to pass all arguments named to not rely on on positional argument matching.
+#'
 #'
 #' @param .f ([function()]): Function to call.
 #' @param ... : Additional function arguments passed to `.f`.
@@ -15,8 +17,8 @@
 #' invoke(mean, .args = list(x = 1:10))
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
 invoke = function(.f, ..., .args = list()) {
-  .f = substitute(.f)
+  .f = sys.call()[[2L]]
   ddd = match.call(expand.dots = FALSE)$...
-  expr = as.call(c(list(as.name(.f)), ddd, lapply(substitute(.args)[-1L], identity)))
+  expr = as.call(c(list(.f), ddd, .args))
   eval.parent(expr, n = 1L)
 }

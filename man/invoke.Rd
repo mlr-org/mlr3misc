@@ -18,6 +18,8 @@ These arguments will be concatenated to the arguments provided via \code{...}.}
 An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the deprecated function in \pkg{purrr}.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
+
+It is recommended to pass all arguments named to not rely on on positional argument matching.
 }
 \examples{
 invoke(mean, .args = list(x = 1:10))
