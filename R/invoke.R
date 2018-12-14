@@ -17,8 +17,7 @@
 #' invoke(mean, .args = list(x = 1:10))
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
 invoke = function(.f, ..., .args = list()) {
-  .f = sys.call()[[2L]]
-  ddd = match.call(expand.dots = FALSE)$...
-  expr = as.call(c(list(.f), ddd, .args))
+  call = match.call(expand.dots = FALSE)
+  expr = as.call(c(list(call[[2L]]), call$..., .args))
   eval.parent(expr, n = 1L)
 }
