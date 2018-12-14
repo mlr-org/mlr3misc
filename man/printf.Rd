@@ -17,14 +17,11 @@ warningf(msg, ...)
 stopf(msg, ...)
 }
 \arguments{
-\item{msg}{(`character(1)):\cr
-Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
+\item{msg}{(`character(1)): Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{...}{:\cr
-Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
+\item{...}{Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{file}{(`character(1)):\cr
-Passed to \code{\link[base:cat]{base::cat()}}.}
+\item{file}{(`character(1)): Passed to \code{\link[base:cat]{base::cat()}}.}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},

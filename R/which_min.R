@@ -2,12 +2,11 @@
 #'
 #' Works similar to [base::which.min()]/[base::which.max()], but corrects for ties.
 #'
-#' @param x (`numeric()`):\cr
-#'  Numeric vector.
-#' @param ties.method (`character(1)`):\cr
+#' @param x (`numeric()`): Numeric vector.
+#' @param ties.method (`character(1)`):
 #'  Handling of ties. One of "first", "last" or "random" to return the first index,
 #'  the last index, or a random index of the minimum/maximum values.
-#' @return (`integer(1)`) index of the minimum/maximum value.
+#' @return (`integer(1)`): index of the minimum/maximum value.
 #'  Returns (`integer(0)`) for empty vectors and vectors with no non-missing values.
 #' @export
 #' @examples

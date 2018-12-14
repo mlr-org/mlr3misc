@@ -3,10 +3,8 @@
 #' @description
 #' Packages are loaded (not attached) via [base::requireNamespace()].
 #' If at least on package can not be loaded, an exception is raised.
-#' @param pkgs (`character()`)\cr
-#'  Packages to load.
-#' @param msg (`character(1)`)\cr
-#'  Message to print on error. `"%s"` is placehold for the list of packages.
+#' @param pkgs (`character()`): Packages to load.
+#' @param msg (`character(1)`): Message to print on error. `"%s"` is placeholder for the list of packages.
 #'
 #' @export
 #' @examples

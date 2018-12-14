@@ -12,22 +12,17 @@ stri_head(str, n = 6L, collapse = ", ", quote = "'",
 stri_trunc(str, width, ellipsis = "[...]")
 }
 \arguments{
-\item{str}{(\code{character()}):\cr
-Vector of strings.}
+\item{str}{(\code{character()}): Vector of strings.}
 
-\item{n}{(\code{integer(1)}):\cr
-Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
+\item{n}{(\code{integer(1)}): Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
 
-\item{collapse}{(\code{character(1)}):\cr
-String used to collapse the elements of \code{x}.}
+\item{collapse}{(\code{character(1)}): String used to collapse the elements of \code{x}.}
 
-\item{quote}{(\code{character(1)}):\cr
-Quotes to use around each element of \code{x}.}
+\item{quote}{(\code{character(1)}): Quotes to use around each element of \code{x}.}
 
-\item{ellipsis}{(\code{character(1)}):\cr
-If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
+\item{ellipsis}{(\code{character(1)}): If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
 
-\item{width}{(\code{integer(1)}):\cr
+\item{width}{(\code{integer(1)}):
 Absolute length the string should be truncated to, including \code{ellipsis}.
 Note that you cannot truncate to a shorter length than \code{ellipsis}.}
 }

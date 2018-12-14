@@ -4,17 +4,15 @@
 #' * `stri_trunc()` truncates a string to a given width.
 #' * `stri_head()` returns the first elements of a character vector.
 #'
-#' @param str (`character()`):\cr
-#'   Vector of strings.
-#' @param ellipsis (`character(1)`):\cr
-#'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
+#' @param str (`character()`): Vector of strings.
+#' @param ellipsis (`character(1)`): If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
 #' @return (`character(1)`).
 #' @name string_helpers
 #' @examples
 #' stri_trunc("This is a quite long string", 20)
 NULL
 
-#' @param width (`integer(1)`):\cr
+#' @param width (`integer(1)`):
 #'   Absolute length the string should be truncated to, including `ellipsis`.
 #'   Note that you cannot truncate to a shorter length than `ellipsis`.
 #' @rdname string_helpers

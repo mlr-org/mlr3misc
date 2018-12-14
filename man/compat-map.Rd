@@ -85,17 +85,13 @@ some(.x, .p, ...)
 \arguments{
 \item{.x}{(\code{list()} or atomic \code{vector}).}
 
-\item{.f}{(\code{function}\ | \code{character} | \code{integer}].
-Function to apply.}
+\item{.f}{(\code{function} | \code{character()} | \code{integer()}): Function to apply.}
 
-\item{...}{:\cr
-Additional arguments passed down to \code{.f} or \code{.p}.}
+\item{...}{Additional arguments passed down to \code{.f} or \code{.p}.}
 
-\item{.fill}{(\code{logical(1)}):\cr
-Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
+\item{.fill}{(\code{logical(1)}): Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.p}{(\code{function}\ | \code{logical}].
-Predicate function.}
+\item{.p}{(\code{function} | \code{logical()}): Predicate function.}
 }
 \description{
 \code{map}-like functions, similar to the ones implemented in \pkg{purrr}.

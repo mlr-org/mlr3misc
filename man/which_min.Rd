@@ -12,15 +12,14 @@ which_min(x, ties.method = "random")
 which_max(x, ties.method = "random")
 }
 \arguments{
-\item{x}{(\code{numeric()}):\cr
-Numeric vector.}
+\item{x}{(\code{numeric()}): Numeric vector.}
 
-\item{ties.method}{(\code{character(1)}):\cr
+\item{ties.method}{(\code{character(1)}):
 Handling of ties. One of "first", "last" or "random" to return the first index,
 the last index, or a random index of the minimum/maximum values.}
 }
 \value{
-(\code{integer(1)}) index of the minimum/maximum value.
+(\code{integer(1)}): index of the minimum/maximum value.
 Returns (\code{integer(0)}) for empty vectors and vectors with no non-missing values.
 }
 \description{

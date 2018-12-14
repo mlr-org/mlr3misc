@@ -1,9 +1,7 @@
 #' @title Simply a negated \code{in} operator.
 #'
-#' @param x (`vector()`):\cr
-#'   Values that should not be in `y`.
-#' @param y (`vector()`):\cr
-#'   Values to match against.
+#' @param x (`vector()`): Values that should not be in `y`.
+#' @param y (`vector()`): Values to match against.
 #' @usage x \%nin\% y
 #' @rdname nin
 #' @export

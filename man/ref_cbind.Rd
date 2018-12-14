@@ -9,11 +9,9 @@ Performs \code{\link[base:cbind]{base::cbind()}} by reference on \link[data.tabl
 ref_cbind(x, y)
 }
 \arguments{
-\item{x}{(\code{data.table}):\cr
-\code{data.table} to add columns to.}
+\item{x}{(\code{data.table}): \code{data.table} to add columns to.}
 
-\item{y}{(\code{data.table}):\cr
-\code{data.table} to add columns from.}
+\item{y}{(\code{data.table}): \code{data.table} to add columns from.}
 }
 \value{
 Updated \code{x} (\code{data.table}).
