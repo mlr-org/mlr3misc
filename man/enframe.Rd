@@ -7,7 +7,7 @@
 enframe(x, name = "name", value = "value")
 }
 \arguments{
-\item{x}{(\code{vector()}).}
+\item{x}{(\code{vector()}): Vector to convert to a data.table.}
 
 \item{name}{(\code{character(1)}): Name for the first column with names.}
 
