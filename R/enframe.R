@@ -4,9 +4,9 @@
 #' Returns a [data.table::data.table()] with two columns:
 #' The names of `x` (or seq along `x` if unnamed) and the values of `x`.
 #'
-#' @param x [vector()].
-#' @param name [character(1)]: Name for the first column with names.
-#' @param value [character(1)]: Name for the second column with values.
+#' @param x (`vector()`).
+#' @param name (`character(1)`): Name for the first column with names.
+#' @param value (`character(1)`): Name for the second column with values.
 #'
 #' @return [data.table::data.table()].
 #' @export

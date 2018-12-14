@@ -7,11 +7,11 @@
 enframe(x, name = "name", value = "value")
 }
 \arguments{
-\item{x}{\code{\link[=vector]{vector()}}.}
+\item{x}{(\code{vector()}).}
 
-\item{name}{\link{character(1)}: Name for the first column with names.}
+\item{name}{(\code{character(1)}): Name for the first column with names.}
 
-\item{value}{\link{character(1)}: Name for the second column with values.}
+\item{value}{(\code{character(1)}): Name for the second column with values.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.
