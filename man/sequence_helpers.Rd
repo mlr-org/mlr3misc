@@ -17,11 +17,9 @@ seq_len0(n)
 seq_along0(x)
 }
 \arguments{
-\item{x}{:\cr
-Arbitrary object. Used to query its rows, cols or length.}
+\item{x}{Arbitrary object. Used to query its rows, cols or length.}
 
-\item{n}{(integer(1)):\cr
-Length of the sequence.}
+\item{n}{(integer(1)): Length of the sequence.}
 }
 \description{
 \code{seq_row()} creates a sequence along the number of rows of \code{x},

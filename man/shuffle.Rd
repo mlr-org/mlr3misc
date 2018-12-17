@@ -7,14 +7,11 @@
 shuffle(x, n = length(x), ...)
 }
 \arguments{
-\item{x}{(\code{vector}):\cr
-Vector to sample elements from.}
+\item{x}{(\code{vector}): Vector to sample elements from.}
 
-\item{n}{(\code{integer}):\cr
-Number of elements to sample.}
+\item{n}{(\code{integer}): Number of elements to sample.}
 
-\item{...}{:\cr
-Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
+\item{...}{Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{
 A version of \code{sample()} which does not treat scalar integer \code{x} differently

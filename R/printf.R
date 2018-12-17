@@ -4,12 +4,9 @@
 #' `catf()`, `messagef()`, `warningf()` and `stopf()` are wrappers around [base::cat()],
 #' [base::message()], [base::warning()] and [base::stop()], respectively.
 #'
-#' @param msg (`character(1)):\cr
-#'  Format string passed to [base::sprintf()].
-#' @param file (`character(1)):\cr
-#'  Passed to [base::cat()].
-#' @param ... :\cr
-#'  Arguments passed down to [base::sprintf()].
+#' @param msg (`character(1)): Format string passed to [base::sprintf()].
+#' @param file (`character(1)): Passed to [base::cat()].
+#' @param ... Arguments passed down to [base::sprintf()].
 #' @name printf
 NULL
 

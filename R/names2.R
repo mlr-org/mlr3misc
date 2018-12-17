@@ -6,10 +6,8 @@
 #' Values `NA` and `""` are treated as missing and
 #' replaced with the value provided in `missing_val`.
 #'
-#' @param x \cr
-#'   Object.
-#' @param missing_val (`atomic(1)`)\cr
-#'   Value to set for missing names. Default is `NA_character_`.
+#' @param x Object.
+#' @param missing_val (`atomic(1)`): Value to set for missing names. Default is `NA_character_`.
 #' @return (`character(length(x))`).
 #' @export
 #' @examples

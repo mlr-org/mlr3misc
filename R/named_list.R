@@ -1,8 +1,8 @@
 #' @title Create a named list, possibly initialized with a certain element.
 #'
-#' @param nn (`character()`):\cr
+#' @param nn (`character()`):
 #'   Names of elements.
-#' @param init (valid R expression):\cr
+#' @param init (valid R expression):
 #'   All list elements are initialized to this value.
 #' @return (`list()`].
 #' @export

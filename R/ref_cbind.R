@@ -2,10 +2,8 @@
 #'
 #' Performs [base::cbind()] by reference on [data.tables][data.table::data.table()].
 #'
-#' @param x (`data.table`):\cr
-#'  `data.table` to add columns to.
-#' @param y (`data.table`):\cr
-#'  `data.table` to add columns from.
+#' @param x (`data.table`): `data.table` to add columns to.
+#' @param y (`data.table`): `data.table` to add columns from.
 #' @return Updated `x` (`data.table`).
 #' @export
 ref_cbind = function(x, y) {

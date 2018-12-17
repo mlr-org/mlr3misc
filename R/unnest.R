@@ -3,10 +3,8 @@
 #' Transforms each element of a list columns into its own column
 #' by reference.
 #'
-#' @param x ([data.table::data.table()]):\cr
-#'  `data.table` with columns to unnest.
-#' @param cols (`character()`):\cr
-#'  Column names of list columns to unnest.
+#' @param x ([data.table::data.table()]): `data.table` with columns to unnest.
+#' @param cols (`character()`): Column names of list columns to unnest.
 #' @return Updated `x` (`data.table`).
 #' @export
 unnest = function(x, cols) {

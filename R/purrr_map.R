@@ -32,14 +32,10 @@
 #'
 #'
 #' @param .x (`list()` or atomic `vector`).
-#' @param .f (`function`\ | `character` | `integer`].
-#'  Function to apply.
-#' @param .p (`function`\ | `logical`].
-#'  Predicate function.
-#' @param ... :\cr
-#'  Additional arguments passed down to `.f` or `.p`.
-#' @param .fill (`logical(1)`):\cr
-#'  Passed down to [data.table::rbindlist()].
+#' @param .f (`function` | `character()` | `integer()`): Function to apply.
+#' @param .p (`function` | `logical()`): Predicate function.
+#' @param ... Additional arguments passed down to `.f` or `.p`.
+#' @param .fill (`logical(1)`): Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map
 NULL
