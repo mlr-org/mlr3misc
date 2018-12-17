@@ -15,12 +15,9 @@
 #' message(str_indent("Some letters:", str_collapse(letters), width = 25))
 NULL
 
-#' @param width (`integer(1)`):
-#'   Absolute length the string should be truncated to, including `ellipsis`.
-#'   Note that you cannot truncate to a shorter length than `ellipsis`.
 #' @rdname string_helpers
 #' @export
-str_trunc = function(str, width, ellipsis = "[...]") {
+str_trunc = function(str, width = 0.9 * getOption("width"), ellipsis = "[...]") {
   str = as.character(str)
   ellipsis = assert_string(ellipsis)
   nc_ellipsis = nchar(ellipsis)

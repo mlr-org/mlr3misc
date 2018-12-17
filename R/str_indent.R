@@ -1,7 +1,7 @@
 #' @param initial (`character(1)`):
 #'   Initial string, passed to [strwrap()].
 #' @param width (`integer(1)`):
-#'   Width, passed to [strwrap()].
+#'   Width of the output.
 #' @param ... (any): Additional parameters passed to [str_collapse()] to
 #'   collapse `str`.
 #' @rdname string_helpers

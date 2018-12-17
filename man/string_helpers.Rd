@@ -12,7 +12,7 @@ str_collapse(str, sep = ", ", quote = "", n = Inf,
 
 str_indent(initial, str, width = 0.9 * getOption("width"), ...)
 
-str_trunc(str, width, ellipsis = "[...]")
+str_trunc(str, width = 0.9 * getOption("width"), ellipsis = "[...]")
 }
 \arguments{
 \item{str}{(\code{character()}): Vector of strings.}
@@ -32,14 +32,10 @@ Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::hea
 Initial string, passed to \code{\link[=strwrap]{strwrap()}}.}
 
 \item{width}{(\code{integer(1)}):
-Width, passed to \code{\link[=strwrap]{strwrap()}}.}
+Width of the output.}
 
 \item{...}{(any): Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}} to
 collapse \code{str}.}
-
-\item{width}{(\code{integer(1)}):
-Absolute length the string should be truncated to, including \code{ellipsis}.
-Note that you cannot truncate to a shorter length than \code{ellipsis}.}
 }
 \value{
 (\code{character(1)}).
