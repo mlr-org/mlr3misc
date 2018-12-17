@@ -4,13 +4,13 @@
 \alias{as_short_string}
 \title{Converts any R object to a descriptive string}
 \usage{
-as_short_string(x, trunc_width = 30L, num_format = "\%.4g")
+as_short_string(x, width = 30L, num_format = "\%.4g")
 }
 \arguments{
 \item{x}{The object.}
 
-\item{trunc_width}{(\code{integer(1)}): Truncate strings to width \code{trunc_width}.
-Default is 15.}
+\item{width}{(\code{integer(1)}): Truncate strings to width \code{width}.
+Default is 30}
 
 \item{num_format}{(\code{character(1)}):
 Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
