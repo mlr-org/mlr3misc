@@ -42,7 +42,7 @@ as_short_string = function(x, trunc_width = 30L, num_format = "%.4g") {
         sprintf("<%s>", cl)
       )
     }
-    stri_trunc(string, trunc_width)
+    str_trunc(string, trunc_width)
   }
 
   trunc_width = assert_int(trunc_width, coerce = TRUE)
