@@ -10,7 +10,7 @@
 str_collapse(str, sep = ", ", quote = "", n = Inf,
   ellipsis = "[...]")
 
-str_indent(initial, str, width = 0.9 * getOption("width"))
+str_indent(initial, str, width = 0.9 * getOption("width"), ...)
 
 str_trunc(str, width, ellipsis = "[...]")
 }
@@ -33,6 +33,9 @@ Initial string, passed to \code{\link[=strwrap]{strwrap()}}.}
 
 \item{width}{(\code{integer(1)}):
 Width, passed to \code{\link[=strwrap]{strwrap()}}.}
+
+\item{...}{(any): Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}} to
+collapse \code{str}.}
 
 \item{width}{(\code{integer(1)}):
 Absolute length the string should be truncated to, including \code{ellipsis}.
