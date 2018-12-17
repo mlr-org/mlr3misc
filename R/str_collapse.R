@@ -12,5 +12,5 @@ str_collapse = function(str, sep = ", ", quote = "", n = Inf, ellipsis = "[...]"
     formatted = paste0(quote, formatted, quote)
   if (length(str) > n)
     formatted = c(formatted, ellipsis)
-  paste0(formatted, collapse = collapse)
+  paste0(formatted, collapse = sep)
 }
