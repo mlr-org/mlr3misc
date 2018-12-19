@@ -58,15 +58,6 @@ map_mold = function(.x, .f, .value, ...) {
   setNames(out, names(.x))
 }
 
-probe = function(.x, .p, ...) {
-  if (is.logical(.p)) {
-    stopifnot(length(.p) == length(.x))
-    .p
-  } else {
-    map_lgl(.x, .p, ...)
-  }
-}
-
 #' @export
 #' @rdname compat-map
 map_lgl = function(.x, .f, ...) {
