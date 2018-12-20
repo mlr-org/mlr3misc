@@ -23,15 +23,35 @@
 #' x = modify_at(iris, "Sepal.Length", sqrt)
 #' str(x)
 modify_if = function(.x, .p, .f, ...) {
+  UseMethod("modify_if")
+}
+
+#' @export
+modify_if.default = function(.x, .p, .f, ...) {
   sel = probe(.x, .p)
   .x[sel] = map(.x[sel], .f, ...)
   .x
 }
 
 #' @export
+modify_if.data.table = function(.x, .p, .f, ...) {
+  sel = names(which(probe(.x, .p)))
+  .x[, (sel) := lapply(.SD, .f, ...), .SDcols = sel][]
+}
+
+#' @export
 #' @rdname modify_if
 modify_at = function(.x, .at, .f, ...) {
+  UseMethod("modify_at")
+}
+
+#' @export
+modify_at.default = function(.x, .at, .f, ...) {
   .x[.at] = map(.x[.at], .f, ...)
   .x
 }
 
+#' @export
+modify_at.data.table = function(.x, .at, .f, ...) {
+  .x[, (.at) := lapply(.SD, .f, ...), .SDcols = .at][]
+}
