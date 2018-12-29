@@ -85,13 +85,14 @@ map_chr = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 map_dtr = function(.x, .f, ..., .fill = FALSE) {
-  rbindlist(map(.x, .f, ...), fill = .fill)
+  rbindlist(unname(map(.x, .f, ...)), use.names = TRUE, fill = .fill)
 }
 
 #' @export
 #' @rdname compat-map
 map_dtc = function(.x, .f, ...) {
-  do.call(data.table, map(.x, .f, ...))
+  cols = map(.x, .f, ...)
+  do.call(data.table, c(cols, list(check.names = TRUE)))
 }
 
 

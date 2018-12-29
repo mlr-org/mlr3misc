@@ -80,6 +80,11 @@ test_that("map_dtr", {
 
   x = list(data.table(a = 1L), data.table(a = 2L))
   expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
+
+  x = list(x = data.table(a = 1L), y = data.table(b = 2L))
+  res = map_dtr(x, identity, .fill = TRUE)
+  expect_data_table(res, nrow = 2L, ncol = 2L)
+  expect_names(names(res), identical.to = c("a", "b"))
 })
 
 test_that("map_dtc", {
@@ -88,10 +93,13 @@ test_that("map_dtc", {
   expect_data_table(res, nrow = 1, ncol = 2)
   expect_names(names(res), identical.to = names(x))
 
-  x = list(data.table(a = 1L), data.table(b = 2L))
+  x = list(data.table(a = 1L, b = 1L), data.table(b = 2L))
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 2)
-  expect_names(names(res), identical.to = names(x))
+  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_names(names(res), identical.to = c("a", "b", "b.1"))
+
+  x = list(a = list(1, 2), b = list(3, 4))
+  expect_data_table(map_dtc(x, identity), nrow = 2, ncol = 2)
 })
 
 test_that("map_if", {
