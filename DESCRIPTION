@@ -17,7 +17,8 @@ Imports:
     checkmate,
     data.table
 Suggests:
-    testthat
+    testthat,
+    R6
 Remotes:
     mllg/checkmate
 ByteCompile: true
