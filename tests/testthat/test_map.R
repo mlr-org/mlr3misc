@@ -107,8 +107,13 @@ test_that("map_dtc", {
   x = list(a = list(1, 2), b = list(3, 4))
   expect_data_table(map_dtc(x, identity), nrow = 2, ncol = 2)
 
-  # check that map_dtc doesnt prefix colnames in result
+  # check that map_dtc doesn't prefix colnames in result
   x = list(foo = data.table(a = 1L, b = 1L), bar = data.table(c = 2L))
+  res = map_dtc(x, identity)
+  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_names(names(res), identical.to = c("a", "b", "c"))
+
+  x = list(foo = data.frame(a = 1L, b = 1L), c = 2)
   res = map_dtc(x, identity)
   expect_data_table(res, nrow = 1, ncol = 3)
   expect_names(names(res), identical.to = c("a", "b", "c"))
