@@ -92,6 +92,8 @@ map_dtr = function(.x, .f, ..., .fill = FALSE) {
 #' @rdname compat-map
 map_dtc = function(.x, .f, ...) {
   cols = map(.x, .f, ...)
+  j = map_lgl(cols, is.data.table)
+  names(cols)[j] = ""
   do.call(data.table, c(cols, list(check.names = TRUE)))
 }
 
