@@ -1,13 +1,12 @@
 #' @title Loads and Returns a Single Data Set
 #'
 #' @description
-#' Loads a [data.frame()] with name `id` from package `package` and returns it.
+#' Loads a data set with name `id` from package `package` and returns it.
 #'
 #' @param id (`character(1)`): Name of the data set.
 #' @param package (`character(1)`): Package to load the data set from.
 #' @param keep_rownames (`logical(1)`): Keep possible row names (default: `FALSE`).
 #'
-#' @return ([data.frame()]).
 #' @export
 #' @examples
 #' load_dataset("iris", "datasets")
@@ -22,9 +21,7 @@ load_dataset = function(id, package, keep_rownames = FALSE) {
   ee = new.env(parent = emptyenv())
   data(list = id, package = package, envir = ee)
   data = ee[[id]]
-  if (!is.data.frame(data))
-    stopf("Dataset '%s' from package '%s' is not a data.frame", id, package)
-  if (!keep_rownames)
+  if ((is.data.frame(data) || is.matrix(data)) && !keep_rownames)
     rownames(data) = NULL
   data
 }

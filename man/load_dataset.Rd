@@ -13,11 +13,8 @@ load_dataset(id, package, keep_rownames = FALSE)
 
 \item{keep_rownames}{(\code{logical(1)}): Keep possible row names (default: \code{FALSE}).}
 }
-\value{
-(\code{\link[=data.frame]{data.frame()}}).
-}
 \description{
-Loads a \code{\link[=data.frame]{data.frame()}} with name \code{id} from package \code{package} and returns it.
+Loads a data set with name \code{id} from package \code{package} and returns it.
 }
 \examples{
 load_dataset("iris", "datasets")
