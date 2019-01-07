@@ -40,7 +40,7 @@ topo_sort = function(nodes) {
       layer = nodes[nodes$depth == depth_count]$id
       if (length(layer) == 0L)
         stop("Cycle detected, this is not a DAG!")
-      nodes$parents = map(nodes$parent, function(x) setdiff(x, layer))
+      nodes$parents = list(map(nodes$parent, function(x) setdiff(x, layer)))
       depth_count = depth_count + 1L
     }
   }

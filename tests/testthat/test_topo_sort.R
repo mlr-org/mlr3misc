@@ -2,6 +2,15 @@ context("topo_sort")
 
 test_that("topo_sort", {
   # graph:
+  # a
+  nodes = rbindlist(list(
+    list(id = "a", parents = list(character(0L)))
+  ))
+  r = topo_sort(nodes)
+  rr = data.table(id = "a", depth = 0)
+  expect_equal(r, rr)
+
+  # graph:
   # a      b
   nodes = rbindlist(list(
     list(id = "a", parents = list(character(0L))),
