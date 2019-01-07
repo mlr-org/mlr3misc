@@ -4,7 +4,7 @@
 \alias{unnest}
 \title{Unnest list data table columns
 
-Transforms each element of a list columns into its own column
+Transforms each element of a list columns into its own column, possibly
 by reference.}
 \usage{
 unnest(x, cols)
@@ -20,6 +20,6 @@ Updated \code{x} (\code{data.table}).
 \description{
 Unnest list data table columns
 
-Transforms each element of a list columns into its own column
+Transforms each element of a list columns into its own column, possibly
 by reference.
 }

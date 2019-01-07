@@ -44,5 +44,5 @@ Updated object.
 \description{
 Insert elements from \code{y} into \code{x} by name, or remove elements from \code{x} by name.
 Works for lists, environments and data frames and data tables.
-Objects with reference semantic (\code{environment} and \code{data.table}) are changed in-place.
+Objects with reference semantic (\code{environment} and \code{data.table}) might be modified in-place.
 }

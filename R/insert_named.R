@@ -3,7 +3,7 @@
 #' @description
 #' Insert elements from `y` into `x` by name, or remove elements from `x` by name.
 #' Works for lists, environments and data frames and data tables.
-#' Objects with reference semantic (`environment` and `data.table`) are changed in-place.
+#' Objects with reference semantic (`environment` and `data.table`) might be modified in-place.
 #'
 #' @param x (`list()` | `environment` | `data.table`]: Object to insert elements into.
 #'  Changes are by-reference for environments and data tables.
@@ -53,6 +53,6 @@ insert_named.data.table = function(x, y) {
     ..y = y
     x[, names(..y) := ..y][]
   } else { # null data.table, we cannot assign with `:=`
-    as.data.table(y)
+    setDT(y)
   }
 }

@@ -1,6 +1,7 @@
 #' @title Bind column by reference
 #'
-#' Performs [base::cbind()] by reference on [data.tables][data.table::data.table()].
+#' Performs [base::cbind()] on [data.tables][data.table::data.table()],
+#' possibly by reference.
 #'
 #' @param x (`data.table`): `data.table` to add columns to.
 #' @param y (`data.table`): `data.table` to add columns from.
