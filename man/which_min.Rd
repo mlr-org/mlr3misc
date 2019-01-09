@@ -7,14 +7,14 @@
 
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.}
 \usage{
-which_min(x, ties.method = "random")
+which_min(x, ties_method = "random")
 
-which_max(x, ties.method = "random")
+which_max(x, ties_method = "random")
 }
 \arguments{
 \item{x}{(\code{numeric()}): Numeric vector.}
 
-\item{ties.method}{(\code{character(1)}):
+\item{ties_method}{(\code{character(1)}):
 Handling of ties. One of "first", "last" or "random" to return the first index,
 the last index, or a random index of the minimum/maximum values.}
 }
@@ -29,9 +29,9 @@ Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[bas
 }
 \examples{
 x = c(2, 3, 1, 3, 5, 1, 1)
-which_min(x, ties.method = "first")
-which_min(x, ties.method = "last")
-which_min(x, ties.method = "random")
+which_min(x, ties_method = "first")
+which_min(x, ties_method = "last")
+which_min(x, ties_method = "random")
 
 which_max(x)
 }
