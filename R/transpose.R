@@ -16,6 +16,11 @@
 #' # list of data frame rows:
 #' transpose(iris[1:2, ])
 transpose = function(.l) {
+  UseMethod("transpose")
+}
+
+#' @export
+transpose.list = function(.l) {
   if (length(.l) == 0L)
     return(list())
   res = .mapply(list, .l, list())
@@ -23,3 +28,12 @@ transpose = function(.l) {
     names(res) = names(.l[[1L]])
   res
 }
+
+#' @export
+transpose.data.frame = function(.l) {
+  transpose.list(.l)
+}
+
+
+
+
