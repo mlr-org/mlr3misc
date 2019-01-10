@@ -15,6 +15,6 @@
 compute_mode = function (x, ties_method = "random", na_rm = TRUE) {
   assert_atomic_vector(x)
   if (na_rm)
-    x = na.omit(x)
+    x = x[!is.na(x)]
   as.data.table(x)[, .N, by = list(x)][which_max(get("N"), ties_method = ties_method)]$x
 }

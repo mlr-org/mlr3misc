@@ -10,6 +10,7 @@
 #' @param n_chunks (`integer(1)`).
 #'   Requested number of chunks.
 #'   Mutually exclusive with `chunk_size` and `props`.
+#' @param shuffle (`logical(1)`). If `TRUE`, permutes the order of `x`.
 #' @return (integer()`) of chunk indices. Can be used with [base::split()]
 #'   to create a list of chunks.
 #' @export
@@ -17,6 +18,10 @@
 #' x = 1:11
 #'
 #' ch = chunk(x, n_chunks = 2)
+#' table(ch)
+#' split(x, ch)
+#'
+#' ch = chunk(x, n_chunks = 2, shuffle = FALSE)
 #' table(ch)
 #' split(x, ch)
 #'

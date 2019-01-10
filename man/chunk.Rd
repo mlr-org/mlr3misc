@@ -16,6 +16,8 @@ Mutually exclusive with \code{chunk_size} and \code{props}.}
 \item{chunk_size}{(\code{integer(1)}).
 Requested number of elements in each chunk.
 Mutually exclusive with \code{n_chunks} and \code{props}.}
+
+\item{shuffle}{(\code{logical(1)}). If \code{TRUE}, permutes the order of \code{x}.}
 }
 \value{
 (integer()`) of chunk indices. Can be used with \code{\link[base:split]{base::split()}}
@@ -29,6 +31,10 @@ it is chosen randomly which levels / chunks will receive less elements.
 x = 1:11
 
 ch = chunk(x, n_chunks = 2)
+table(ch)
+split(x, ch)
+
+ch = chunk(x, n_chunks = 2, shuffle = FALSE)
 table(ch)
 split(x, ch)
 
