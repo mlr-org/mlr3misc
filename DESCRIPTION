@@ -14,13 +14,11 @@ Depends:
     R (>= 3.1.0)
 Imports:
     backports,
-    checkmate,
+    checkmate (>= 1.9.0),
     data.table
 Suggests:
     testthat,
     R6
-Remotes:
-    mllg/checkmate
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
