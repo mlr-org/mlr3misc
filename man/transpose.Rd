@@ -4,12 +4,10 @@
 \alias{transpose}
 \title{Transpose lists of lists}
 \usage{
-transpose(.l, ...)
+transpose(.l)
 }
 \arguments{
 \item{.l}{(\code{list()} of \code{list()}).}
-
-\item{\ldots}{Currently unused.}
 }
 \value{
 \code{list()}.

@@ -5,7 +5,7 @@
 #' function `transpose()` in package \pkg{purrr}.
 #'
 #' @param .l (`list()` of `list()`).
-#' @param \ldots Currently unused.
+#'
 #' @return `list()`.
 #' @export
 #' @examples
@@ -15,12 +15,7 @@
 #'
 #' # list of data frame rows:
 #' transpose(iris[1:2, ])
-transpose = function(.l, ...) {
-  UseMethod("transpose")
-}
-
-#' @export
-transpose.list = function(.l, ...) {
+transpose = function(.l) {
   if (length(.l) == 0L)
     return(list())
   res = .mapply(list, .l, list())
@@ -28,12 +23,3 @@ transpose.list = function(.l, ...) {
     names(res) = names(.l[[1L]])
   res
 }
-
-#' @export
-transpose.data.frame = function(.l, ...) {
-  transpose.list(.l)
-}
-
-
-
-
