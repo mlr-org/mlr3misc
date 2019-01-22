@@ -16,7 +16,8 @@ which_max(x, ties_method = "random")
 
 \item{ties_method}{(\code{character(1)}):
 Handling of ties. One of "first", "last" or "random" to return the first index,
-the last index, or a random index of the minimum/maximum values.}
+the last index, or a random index of the minimum/maximum values.
+Passed down to \code{\link[base:max.col]{base::max.col()}}.}
 }
 \value{
 (\code{integer(1)}): index of the minimum/maximum value.
@@ -34,4 +35,6 @@ which_min(x, ties_method = "last")
 which_min(x, ties_method = "random")
 
 which_max(x)
+which_max(integer(0))
+which_max(NA)
 }

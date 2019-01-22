@@ -6,6 +6,7 @@
 #' @param ties_method (`character(1)`):
 #'  Handling of ties. One of "first", "last" or "random" to return the first index,
 #'  the last index, or a random index of the minimum/maximum values.
+#'  Passed down to [base::max.col()].
 #' @return (`integer(1)`): index of the minimum/maximum value.
 #'  Returns (`integer(0)`) for empty vectors and vectors with no non-missing values.
 #' @export
@@ -16,27 +17,20 @@
 #' which_min(x, ties_method = "random")
 #'
 #' which_max(x)
+#' which_max(integer(0))
+#' which_max(NA)
 which_min = function(x, ties_method = "random") {
-  assert_numeric(x)
-  which_equal(x, x[which.min(x)], ties_method)
+  assert_vector(x, strict = TRUE)
+  if (length(x) == 0L)
+    return(integer())
+  max.col(t(-x), ties.method = ties_method)
 }
 
 #' @rdname which_min
 #' @export
 which_max = function(x, ties_method = "random") {
-  assert_numeric(x)
-  i = which.max(x)
-  which_equal(x, x[which.max(x)], ties_method)
-}
-
-which_equal = function(x, y, ties_method = "random") {
-  if (length(y) == 0L)
-    return(integer(0L))
-  i = which(x == y)
-  switch(ties_method,
-    random = shuffle(i, 1L),
-    first = i[1L],
-    last = i[length(i)],
-    stop("Invalid ties_method method")
-  )
+  assert_vector(x, strict = TRUE)
+  if (length(x) == 0L)
+    return(integer())
+  max.col(t(x), ties.method = ties_method)
 }
