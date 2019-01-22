@@ -17,8 +17,8 @@ Imports:
     checkmate (>= 1.9.0),
     data.table
 Suggests:
-    testthat,
-    R6
+    R6,
+    testthat
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
