@@ -7,6 +7,8 @@
 #'  Handling of ties. One of "first", "last" or "random" to return the first index,
 #'  the last index, or a random index of the minimum/maximum values.
 #'  Passed down to [base::max.col()].
+#' @param na_rm (`logical(1)`):
+#'  If `TRUE`, ignore missing values.
 #' @return (`integer(1)`): index of the minimum/maximum value.
 #'  Returns (`integer(0)`) for empty vectors and vectors with no non-missing values.
 #' @export
@@ -19,9 +21,9 @@
 #' which_max(x)
 #' which_max(integer(0))
 #' which_max(NA)
-which_min = function(x, ties_method = "random", na.rm = TRUE) {
+which_min = function(x, ties_method = "random", na_rm = TRUE) {
   assert_vector(x, strict = TRUE)
-  if (isTRUE(na.rm))
+  if (isTRUE(na_rm))
     x = x[!is.na(x)]
   if (length(x) == 0L)
     return(integer())
@@ -30,9 +32,9 @@ which_min = function(x, ties_method = "random", na.rm = TRUE) {
 
 #' @rdname which_min
 #' @export
-which_max = function(x, ties_method = "random", na.rm = TRUE) {
+which_max = function(x, ties_method = "random", na_rm = TRUE) {
   assert_vector(x, strict = TRUE)
-  if (isTRUE(na.rm))
+  if (isTRUE(na_rm))
     x = x[!is.na(x)]
   if (length(x) == 0L)
     return(integer())

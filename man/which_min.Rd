@@ -7,9 +7,9 @@
 
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.}
 \usage{
-which_min(x, ties_method = "random")
+which_min(x, ties_method = "random", na_rm = TRUE)
 
-which_max(x, ties_method = "random")
+which_max(x, ties_method = "random", na_rm = TRUE)
 }
 \arguments{
 \item{x}{(\code{numeric()}): Numeric vector.}
@@ -18,6 +18,9 @@ which_max(x, ties_method = "random")
 Handling of ties. One of "first", "last" or "random" to return the first index,
 the last index, or a random index of the minimum/maximum values.
 Passed down to \code{\link[base:max.col]{base::max.col()}}.}
+
+\item{na_rm}{(\code{logical(1)}):
+If \code{TRUE}, ignore missing values.}
 }
 \value{
 (\code{integer(1)}): index of the minimum/maximum value.
