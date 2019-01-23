@@ -16,6 +16,7 @@
 #' # list of data frame rows:
 #' transpose(iris[1:2, ])
 transpose = function(.l) {
+  assert_list(.l)
   if (length(.l) == 0L)
     return(list())
   res = .mapply(list, .l, list())
