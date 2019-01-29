@@ -10,12 +10,9 @@
 #'
 #' If `obj$hash` is called, the value of `private$.hash` (`character(1)`) is returned.
 #' If the hash is `NA_character_`, the private method `private$.calculate_hash()` is called first
-#' to (re-) calculate the hash. The calculated value is stored in `private$.hash`.
+#' to (re-) calculate the hash. This function has to implemented manually.
+#' The calculated value is stored in `private$.hash`.
 #' It is possible to manually set the hash via assignment.
-#'
-#' The private method `private$.calculate_hash()` is only created if not already
-#' defined for the class generator. The default method creates random hashes
-#' via [base::tempfile()].
 #'
 #' @param generator (`R6ClassGenerator`).
 #'   \pkg{R6} Class Generator.
@@ -50,11 +47,11 @@ add_id_hash = function(generator) {
     }
   )
 
-  if (".calculate_hash" %nin% names(generator$private_methods)) {
-    generator$set("private", ".calculate_hash",
-      function() basename(tempfile(""))
-    )
-  }
+  # if (".calculate_hash" %nin% names(generator$private_methods)) {
+  #   generator$set("private", ".calculate_hash",
+  #     function() basename(tempfile(""))
+  #   )
+  # }
 
   generator
 }
