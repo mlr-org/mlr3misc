@@ -23,10 +23,7 @@ If the id is set via assignment, \code{private$.hash} is invalidated by setting 
 
 If \code{obj$hash} is called, the value of \code{private$.hash} (\code{character(1)}) is returned.
 If the hash is \code{NA_character_}, the private method \code{private$.calculate_hash()} is called first
-to (re-) calculate the hash. The calculated value is stored in \code{private$.hash}.
+to (re-) calculate the hash. This function has to implemented manually.
+The calculated value is stored in \code{private$.hash}.
 It is possible to manually set the hash via assignment.
-
-The private method \code{private$.calculate_hash()} is only created if not already
-defined for the class generator. The default method creates random hashes
-via \code{\link[base:tempfile]{base::tempfile()}}.
 }
