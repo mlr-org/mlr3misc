@@ -10,9 +10,9 @@
 unnest = function(x, cols) {
   assert_data_table(x)
   for (col in intersect(cols, names(x))) {
+    x[lengths(get(col)) == 0L, (col) := list(list(list("__dummy__" = NA)))]
     tmp = rbindlist(x[[col]], fill = TRUE)
-    x[, (col) := NULL]
-    x = ref_cbind(x, tmp)
+    x = ref_cbind(remove_named(x, col), remove_named(tmp, "__dummy__"))
   }
   x[]
 }

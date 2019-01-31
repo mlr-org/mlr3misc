@@ -9,3 +9,11 @@ test_that("unnest", {
   expect_equal(x$a, 1:2)
   expect_equal(x$b, c(NA, 2L))
 })
+
+test_that("unnest with empty rows", {
+  x = data.table(id = 1:2, x = list(list(a = 1), list()))
+  col = "x"
+  expect_data_table(x, ncol = 2, nrow = 2)
+  x = unnest(x, "x")
+  expect_data_table(x, ncol = 2, nrow = 2)
+})
