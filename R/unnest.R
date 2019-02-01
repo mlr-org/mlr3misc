@@ -5,14 +5,20 @@
 #'
 #' @param x ([data.table::data.table()]): `data.table` with columns to unnest.
 #' @param cols (`character()`): Column names of list columns to unnest.
+#' @param prefix (`character(1)`): String to prefix the new column names with.
 #' @return Updated `x` (`data.table`).
 #' @export
-unnest = function(x, cols) {
+unnest = function(x, cols, prefix = NULL) {
   assert_data_table(x)
+  assert_character(cols, any.missing = FALSE)
+  assert_string(prefix, null.ok = TRUE)
+
   for (col in intersect(cols, names(x))) {
     x[lengths(get(col)) == 0L, (col) := list(list(list("__dummy__" = NA)))]
-    tmp = rbindlist(x[[col]], fill = TRUE)
-    x = ref_cbind(remove_named(x, col), remove_named(tmp, "__dummy__"))
+    tmp = remove_named(rbindlist(x[[col]], fill = TRUE), "__dummy__")
+    if (!is.null(prefix))
+      setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
+    x = ref_cbind(remove_named(x, col), tmp)
   }
   x[]
 }

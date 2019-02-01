@@ -8,6 +8,13 @@ test_that("unnest", {
   expect_null(x$x)
   expect_equal(x$a, 1:2)
   expect_equal(x$b, c(NA, 2L))
+
+  x = data.table(id = 1:2, x = list(list(a = 1L), list(a = 2L, b = 2L)))
+  unnest(x, "x", prefix = "par.")
+  expect_data_table(x, ncol = 3, nrow = 2)
+  expect_null(x$x)
+  expect_equal(x$par.a, 1:2)
+  expect_equal(x$par.b, c(NA, 2L))
 })
 
 test_that("unnest with empty rows", {
