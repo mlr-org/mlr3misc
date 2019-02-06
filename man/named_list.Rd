@@ -4,7 +4,7 @@
 \alias{named_list}
 \title{Create a named list, possibly initialized with a certain element.}
 \usage{
-named_list(nn, init = NULL)
+named_list(nn = character(0L), init = NULL)
 }
 \arguments{
 \item{nn}{(\code{character()}):
