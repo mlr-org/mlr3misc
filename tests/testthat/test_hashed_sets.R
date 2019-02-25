@@ -1,5 +1,15 @@
 context("set helper")
 
+test_that("set_unique_flag", {
+  x = 1:10
+  set_unique_flag(x)
+  expect_true(!is.null(attr(x, ".unique")))
+
+  x = as.data.table(iris)
+  set_unique_flag(colnames(x))
+  expect_true(!is.null(attr(colnames(x), ".unique")))
+})
+
 
 test_that("wunique", {
   res = wunique(sample(1:3, 10, replace = TRUE))

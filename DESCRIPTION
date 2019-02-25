@@ -23,7 +23,7 @@ Suggests:
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
-NeedsCompilation: no
+NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/mlr-org/mlr3misc
 BugReports: https://github.com/mlr-org/mlr3misc/issues

@@ -9,7 +9,7 @@
 #'
 #' The following functions take advantage of the cached attributes:
 #'
-#' * `set_unique_flag()` sets the `.unique` attribute.
+#' * `set_unique_flag()` sets the `.unique` attribute by reference.
 #' * `wunique()` is a wrapper around [base::unique()] which either skips computation of unique values
 #'   if the `.unique` flag is found, or calculates unique values and sets the flag.
 #' * `set_union()`, `set_equal()`, `set_intersect()` and `set_diff()` are the hashed replacement
@@ -25,15 +25,16 @@ wunique = function(x, is_unique = FALSE) {
   if (is.null(attr(x, ".unique"))) {
     if (!isTRUE(is_unique))
       x = unique(x)
-    x = set_unique_flag(x)
+    set_unique_flag(x)
   }
   x
 }
 
 #' @rdname hashed_sets
+#' @useDynLib mlr3misc C_set_unique_flag
 #' @export
 set_unique_flag = function(x) {
-  attr(x, ".unique") = TRUE
+  .Call(C_set_unique_flag, x)
   x
 }
 

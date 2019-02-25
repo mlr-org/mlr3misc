@@ -39,7 +39,7 @@ The following attributes are attached to atomic input vectors to speed up set op
 
 The following functions take advantage of the cached attributes:
 \itemize{
-\item \code{set_unique_flag()} sets the \code{.unique} attribute.
+\item \code{set_unique_flag()} sets the \code{.unique} attribute by reference.
 \item \code{wunique()} is a wrapper around \code{\link[base:unique]{base::unique()}} which either skips computation of unique values
 if the \code{.unique} flag is found, or calculates unique values and sets the flag.
 \item \code{set_union()}, \code{set_equal()}, \code{set_intersect()} and \code{set_diff()} are the hashed replacement
