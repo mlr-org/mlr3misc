@@ -15,6 +15,7 @@ Depends:
 Imports:
     backports,
     checkmate (>= 1.9.0),
+    fastmatch,
     data.table
 Suggests:
     R6,
