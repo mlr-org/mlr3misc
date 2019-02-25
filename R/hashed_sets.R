@@ -35,7 +35,6 @@ wunique = function(x, is_unique = FALSE) {
 #' @export
 set_unique_flag = function(x) {
   .Call(C_set_unique_flag, x)
-  x
 }
 
 #' @rdname hashed_sets
