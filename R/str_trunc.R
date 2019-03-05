@@ -1,22 +1,17 @@
-#' @title Miscellaneous string helper functions
+#' @title Truncate Strings
 #'
 #' @description
-#' * `str_trunc()` truncates a string to a given width.
-#' * `str_collapse()` returns the first elements of a character vector.
-#' * `str_paragraph()` formats the text in `str` with [strwrap()].
+#' `str_trunc()` truncates a string to a given width.
 #'
 #' @param str (`character()`): Vector of strings.
+#' @param width (`integer(1)`):
+#'   Width of the output.
 #' @param ellipsis (`character(1)`): If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
-#' @return (`character(1)`).
-#' @name string_helpers
+#'
+#' @return (`character()`).
+#' @export
 #' @examples
 #' str_trunc("This is a quite long string", 20)
-#' str_collapse(letters, quote = "'", n = 5)
-#' message(str_indent("Some letters:", str_collapse(letters), width = 25))
-NULL
-
-#' @rdname string_helpers
-#' @export
 str_trunc = function(str, width = 0.9 * getOption("width"), ellipsis = "[...]") {
   str = as.character(str)
   ellipsis = assert_string(ellipsis)

@@ -1,13 +1,20 @@
+#' @title Indent Strings
+#'
 #' @param initial (`character(1)`):
 #'   Initial string, passed to [strwrap()].
+#' @param str (`character()`): Vector of strings.
 #' @param width (`integer(1)`):
 #'   Width of the output.
-#' @param ... (any): Additional parameters passed to [str_collapse()] to
-#'   collapse `str`.
-#' @rdname string_helpers
+#' @param exdent (`integer(1)`):
+#'   Indentation of subsequent lines in paragraph.
+#' @param ... (any): Additional parameters passed to [str_collapse()].
+#'
+#' @return (`character()`).
 #' @export
-str_indent = function(initial, str, width = 0.9 * getOption("width"), ...) {
+#' @examples
+#' cat(str_indent("Letters:", str_collapse(letters), width = 25), sep = "\n")
+str_indent = function(initial, str, width = 0.9 * getOption("width"), exdent = 4L, ...) {
   if (length(str) == 0L)
     str = "-"
-  strwrap(str_collapse(str, ...), initial = paste0(initial, " "), exdent = 2L, width = width)
+  strwrap(str_collapse(str, ...), initial = paste0(initial, " "), exdent = exdent, width = width)
 }
