@@ -16,7 +16,11 @@
 #' @examples
 #' formulate("Species", c("Sepal.Length", "Sepal.Width"))
 formulate = function(lhs = NULL, rhs = NULL, env = NULL) {
-  f = as.formula(sprintf("%s ~ %s", lhs %??% "", paste0(rhs %??% "1", collapse = " + ")))
+  if (length(lhs) == 0L)
+    lhs = ""
+  if (length(rhs) == 0L)
+    rhs = "1"
+  f = as.formula(sprintf("%s ~ %s", lhs, paste0(rhs, collapse = " + ")))
   environment(f) = env
   f
 }
