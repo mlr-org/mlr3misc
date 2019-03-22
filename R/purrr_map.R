@@ -25,6 +25,8 @@
 #'
 #' `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
 #'
+#' `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
+#'
 #' `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`, while `discard()` discards them.
 #'
 #' `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
@@ -212,6 +214,13 @@ discard = function(.x, .p, ...) {
 map_if = function(.x, .p, .f, ...) {
   matches <- probe(.x, .p)
   .x[matches] <- map(.x[matches], .f, ...)
+  .x
+}
+
+#' @export
+#' @rdname compat-map
+map_at = function(.x, .at, .f, ...) {
+  .x[.at] = map(.x[.at], .f, ...)
   .x
 }
 

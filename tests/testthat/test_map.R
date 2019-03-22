@@ -125,6 +125,12 @@ test_that("map_if", {
   expect_equal(out, set_names(list(3L, c("a", "b"), 3L), names(x)))
 })
 
+test_that("map_at", {
+  x = iris
+  x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
+  expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
+})
+
 test_that("keep", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = keep(x, is.numeric)

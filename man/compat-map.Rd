@@ -26,6 +26,7 @@
 \alias{keep}
 \alias{discard}
 \alias{map_if}
+\alias{map_at}
 \alias{every}
 \alias{some}
 \title{Purrr-like apply functions}
@@ -78,6 +79,8 @@ discard(.x, .p, ...)
 
 map_if(.x, .p, .f, ...)
 
+map_at(.x, .at, .f, ...)
+
 every(.x, .p, ...)
 
 some(.x, .p, ...)
@@ -118,6 +121,8 @@ suffix:
 }
 
 \code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
+
+\code{map_at()} applies \code{.f} to each element of \code{.x} referenced by \code{.at}. All other elements remain unchanged.
 
 \code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}, while \code{discard()} discards them.
 
