@@ -1,7 +1,7 @@
 #' @rawNamespace import(data.table, except = transpose)
 #' @import checkmate
 #' @importFrom utils head adist
-#' @importFrom stats setNames
+#' @importFrom stats setNames as.formula
 NULL
 
 .onLoad = function(libname, pkgname) { #nocov start
