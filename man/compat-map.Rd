@@ -95,6 +95,8 @@ some(.x, .p, ...)
 \item{.fill}{(\code{logical(1)}): Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
 \item{.p}{(\code{function} | \code{logical()}): Predicate function.}
+
+\item{.at}{(\code{character()} | \code{integer()} | \code{logical()}): Index vector.}
 }
 \description{
 \code{map}-like functions, similar to the ones implemented in \pkg{purrr}.

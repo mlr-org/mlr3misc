@@ -36,6 +36,7 @@
 #' @param .x (`list()` or atomic `vector`).
 #' @param .f (`function` | `character()` | `integer()`): Function to apply.
 #' @param .p (`function` | `logical()`): Predicate function.
+#' @param .at (`character()` | `integer()` | `logical()`): Index vector.
 #' @param ... Additional arguments passed down to `.f` or `.p`.
 #' @param .fill (`logical(1)`): Passed down to [data.table::rbindlist()].
 #'
