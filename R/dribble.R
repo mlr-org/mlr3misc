@@ -8,7 +8,8 @@
 #'
 #' @param ... Arguments: Column names first as formula, then the tabular data.
 #'
-#' @return [`data.table::data.table()].
+#' @return [`data.table::data.table()`].
+#' @export
 #' @examples
 #' dribble(
 #'   ~a,  ~b,

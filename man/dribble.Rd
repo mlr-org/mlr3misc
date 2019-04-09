@@ -16,7 +16,7 @@ dribble(...)
 \item{...}{Arguments: Column names first as formula, then the tabular data.}
 }
 \value{
-\code{\link[`data.table:data.table]{`data.table::data.table()}}.
+\code{\link[data.table:data.table]{data.table::data.table()}}.
 }
 \description{
 Construct a data.table in a row-wise fashion
