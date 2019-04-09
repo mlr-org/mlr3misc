@@ -13,5 +13,3 @@ has_element <- function(.x, .y) {
   # but i guess that we would need to do in C code...
   any(map_lgl(.x, identical, y = .y))
 }
-
-

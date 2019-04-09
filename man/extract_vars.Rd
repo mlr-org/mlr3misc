@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_vars.R
 \name{extract_vars}
 \alias{extract_vars}
-\title{Extract Variables out of a Formula}
+\title{Extract Variables out of a formula}
 \usage{
 extract_vars(f)
 }

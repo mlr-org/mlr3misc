@@ -1,4 +1,4 @@
-#' @title Extract Variables out of a Formula
+#' @title Extract Variables out of a formula
 #'
 #' @description
 #' Given a [formula()] `f`, returns all variables used on the left-hand side and
