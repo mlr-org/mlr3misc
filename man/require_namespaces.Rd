@@ -14,8 +14,13 @@ require_namespaces(pkgs,
 }
 \description{
 Packages are loaded (not attached) via \code{\link[base:requireNamespace]{base::requireNamespace()}}.
-If at least on package can not be loaded, an exception is raised.
+If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
+The character vector of missing packages is stored in the condition as \code{packages}.
 }
 \examples{
 require_namespaces("mlr3misc")
+
+# catch condition, return missing packages
+tryCatch(require_namespaces(c("mlr3misc", "foobaaar")),
+  packageNotFoundError = function(e) e$packages)
 }

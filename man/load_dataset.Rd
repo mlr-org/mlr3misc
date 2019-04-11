@@ -15,6 +15,8 @@ load_dataset(id, package, keep_rownames = FALSE)
 }
 \description{
 Loads a data set with name \code{id} from package \code{package} and returns it.
+If the package is not installed, an error with condition "packageNotFoundError" is raised.
+The name of the missing packages is stored in the condition as \code{packages}.
 }
 \examples{
 load_dataset("iris", "datasets")
