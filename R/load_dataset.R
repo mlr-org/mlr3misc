@@ -2,6 +2,8 @@
 #'
 #' @description
 #' Loads a data set with name `id` from package `package` and returns it.
+#' If the package is not installed, an error with condition "packageNotFoundError" is raised.
+#' The name of the missing packages is stored in the condition as `packages`.
 #'
 #' @param id (`character(1)`): Name of the data set.
 #' @param package (`character(1)`): Package to load the data set from.
@@ -15,8 +17,10 @@ load_dataset = function(id, package, keep_rownames = FALSE) {
   assert_string(package)
   assert_flag(keep_rownames)
 
-  if (!length(find.package(package, quiet = TRUE)))
-    stopf("Please install package '%s' for data set '%s'", package, id)
+  if (!length(find.package(package, quiet = TRUE))) {
+    msg = sprintf("Please install package '%s' for data set '%s'", package, id)
+    stop(errorCondition(msg, packages = package, class = "packageNotFoundError"))
+  }
 
   ee = new.env(parent = emptyenv())
   data(list = id, package = package, envir = ee)
