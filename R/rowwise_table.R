@@ -1,6 +1,6 @@
 #' @title Construct a data.table in a row-wise fashion
 #'
-#' Similar to \CRANpkg{tibble} function `tribble`, this function
+#' Similar to the \CRANpkg{tibble} function `tribble()`, this function
 #' allows to construct tabular data in a row-wise fashion.
 #'
 #' The first arguments passed as formula will be interpreted as column names.
@@ -11,12 +11,12 @@
 #' @return [`data.table::data.table()`].
 #' @export
 #' @examples
-#' dribble(
+#' rowwise_table(
 #'   ~a,  ~b,
 #'   1,   "a",
 #'   2,   "b"
 #' )
-dribble = function(...) {
+rowwise_table = function(...) {
   dots = list(...)
 
   for (i in seq_along(dots)) {
