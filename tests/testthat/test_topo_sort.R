@@ -5,7 +5,7 @@ test_that("topo_sort", {
   # a
   nodes = rbindlist(list(
     list(id = "a", parents = list(character(0L)))
-  ))
+  ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(id = "a", depth = 0)
   expect_equal(r, rr)
@@ -15,7 +15,7 @@ test_that("topo_sort", {
   nodes = rbindlist(list(
     list(id = "a", parents = list(character(0L))),
     list(id = "b", parents = list(character(0L)))
-  ))
+  ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
     id    = c("a", "b"),
@@ -28,7 +28,7 @@ test_that("topo_sort", {
     list(id = "a", parents = list(c("b"))),
     list(id = "b", parents = list(c("c"))),
     list(id = "c", parents = list(character(0L)))
-  ))
+  ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
     id    = c("c", "b", "a"),
@@ -45,7 +45,7 @@ test_that("topo_sort", {
     list(id = "c", parents = list(character(0L))),
     list(id = "d", parents = list(character(0L))),
     list(id = "e", parents = list(c("a", "b")))
-  ))
+  ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
     id    = c("c", "d", "b", "a", "e"),
@@ -58,7 +58,7 @@ test_that("topo_sort", {
     list(id = "a", parents = list(c("c"))),
     list(id = "b", parents = list(c("a"))),
     list(id = "c", parents = list(c("a")))
-  ))
+  ), use.names = TRUE)
   expect_error(topo_sort(nodes), "Cycle")
 })
 

@@ -15,7 +15,7 @@ unnest = function(x, cols, prefix = NULL) {
 
   for (col in intersect(cols, names(x))) {
     x[lengths(get(col)) == 0L, (col) := list(list(list("__dummy__" = NA)))]
-    tmp = remove_named(rbindlist(x[[col]], fill = TRUE), "__dummy__")
+    tmp = remove_named(rbindlist(x[[col]], fill = TRUE, use.names = TRUE), "__dummy__")
     if (!is.null(prefix))
       setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
     x = ref_cbind(remove_named(x, col), tmp)

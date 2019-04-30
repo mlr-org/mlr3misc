@@ -139,7 +139,7 @@ pmap_chr = function(.x, .f, ...) {
 #' @rdname compat-map
 pmap_dtr = function(.x, .f, ..., .fill = FALSE) {
   out = .mapply(.f, .x, list(...))
-  rbindlist(out, fill = .fill)
+  rbindlist(out, fill = .fill, use.names = TRUE)
 }
 
 #' @export
@@ -188,7 +188,7 @@ imap_chr = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 imap_dtr = function(.x, .f, ..., .fill = FALSE) {
-  rbindlist(imap(.x, .f, ...), fill = .fill)
+  rbindlist(imap(.x, .f, ...), fill = .fill, use.names = TRUE)
 }
 
 #' @export
