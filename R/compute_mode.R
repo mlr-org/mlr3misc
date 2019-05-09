@@ -15,9 +15,10 @@
 #' compute_mode(c(1, 1, 1, 2, 2, 2, 3))
 #' compute_mode(c(1, 1, 1, 2, 2, 2, 3), ties_method = "last")
 #' compute_mode(c(1, 1, 1, 2, 2, 2, 3), ties_method = "random")
-compute_mode = function (x, ties_method = "random", na_rm = TRUE) {
+compute_mode = function(x, ties_method = "random", na_rm = TRUE) {
   assert_atomic_vector(x)
-  if (na_rm)
+  if (na_rm) {
     x = x[!is.na(x)]
+  }
   as.data.table(x)[, .N, by = list(x)][which_max(get("N"), ties_method = ties_method)]$x
 }

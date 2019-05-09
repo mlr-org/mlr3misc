@@ -21,9 +21,11 @@
 #' str_collapse(letters, quote = "'", n = 5)
 str_collapse = function(str, sep = ", ", quote = "", n = Inf, ellipsis = "[...]") {
   formatted = head(str, n)
-  if (nzchar(quote))
+  if (nzchar(quote)) {
     formatted = paste0(quote, formatted, quote)
-  if (length(str) > n)
+  }
+  if (length(str) > n) {
     formatted = c(formatted, ellipsis)
+  }
   paste0(formatted, collapse = sep)
 }

@@ -25,10 +25,12 @@
 #' which_max(NA)
 which_min = function(x, ties_method = "random", na_rm = TRUE) {
   assert_vector(x, strict = TRUE)
-  if (isTRUE(na_rm))
+  if (isTRUE(na_rm)) {
     x = x[!is.na(x)]
-  if (length(x) == 0L)
+  }
+  if (length(x) == 0L) {
     return(integer())
+  }
   max.col(t(-x), ties.method = ties_method)
 }
 
@@ -36,9 +38,11 @@ which_min = function(x, ties_method = "random", na_rm = TRUE) {
 #' @export
 which_max = function(x, ties_method = "random", na_rm = TRUE) {
   assert_vector(x, strict = TRUE)
-  if (isTRUE(na_rm))
+  if (isTRUE(na_rm)) {
     x = x[!is.na(x)]
-  if (length(x) == 0L)
+  }
+  if (length(x) == 0L) {
     return(integer())
+  }
   max.col(t(x), ties.method = ties_method)
 }

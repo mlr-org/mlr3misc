@@ -12,8 +12,9 @@
 named_list = function(nn = character(0L), init = NULL) {
   assert_character(nn, any.missing = FALSE)
   x = vector("list", length(nn))
-  if (!is.null(init))
+  if (!is.null(init)) {
     x[] = list(init)
+  }
   names(x) = nn
   return(x)
 }

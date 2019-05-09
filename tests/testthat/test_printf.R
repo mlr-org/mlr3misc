@@ -10,7 +10,7 @@ test_that("catf", {
 
 test_that("catf into file", {
   fn = tempfile()
-  catf("xxx%ixxx", 123, file=fn)
+  catf("xxx%ixxx", 123, file = fn)
   s = readLines(fn)
   expect_equal(s, "xxx123xxx")
   file.remove(fn)

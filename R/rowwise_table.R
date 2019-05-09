@@ -12,11 +12,12 @@
 #' @export
 #' @examples
 #' rowwise_table(
-#'   ~a,  ~b,
-#'   1,   "a",
-#'   2,   "b"
+#'   ~a, ~b,
+#'   1, "a",
+#'   2, "b"
 #' )
 rowwise_table = function(...) {
+
   dots = list(...)
 
   for (i in seq_along(dots)) {
@@ -26,13 +27,14 @@ rowwise_table = function(...) {
     }
   }
 
-  if (ncol == 0L)
+  if (ncol == 0L) {
     stop("No column names provided")
+  }
   n = length(dots) - ncol
-  if (n %% ncol != 0L)
+  if (n %% ncol != 0L) {
     stop("Data is not rectangular")
+  }
 
   tab = lapply(seq_len(ncol), function(i) simplify2array(dots[seq(from = ncol + i, to = length(dots), by = ncol)]))
   setnames(setDT(tab), map_chr(head(dots, ncol), function(x) attr(terms(x), "term.labels")))[]
 }
-

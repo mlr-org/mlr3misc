@@ -1,8 +1,9 @@
 #' @export
 #' @rdname insert_named
 remove_named = function(x, nn) {
-  if (length(nn) == 0L)
+  if (length(nn) == 0L) {
     return(x)
+  }
   assert_character(nn, any.missing = FALSE)
   UseMethod("remove_named")
 }
@@ -31,7 +32,8 @@ remove_named.data.frame = function(x, nn) {
 #' @rdname insert_named
 remove_named.data.table = function(x, nn) {
   nn = intersect(nn, names(x))
-  if (length(nn))
+  if (length(nn)) {
     x[, (nn) := NULL]
+  }
   x
 }

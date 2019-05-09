@@ -17,10 +17,12 @@
 #' transpose(iris[1:2, ])
 transpose = function(.l) {
   assert(check_list(.l), check_data_frame(.l))
-  if (length(.l) == 0L)
+  if (length(.l) == 0L) {
     return(list())
+  }
   res = .mapply(list, .l, list())
-  if (length(res) == length(.l[[1L]]))
+  if (length(res) == length(.l[[1L]])) {
     names(res) = names(.l[[1L]])
+  }
   res
 }

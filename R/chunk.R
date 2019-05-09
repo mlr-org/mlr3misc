@@ -30,18 +30,22 @@
 #' ch = chunk(x, chunk_size = 4)
 #' table(ch)
 #' split(x, ch)
-chunk = function (x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
+chunk = function(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
+
   assert_atomic_vector(x)
-  if (!xor(is.null(n_chunks), is.null(chunk_size)))
+  if (!xor(is.null(n_chunks), is.null(chunk_size))) {
     stop("You must provide either 'n_chunks' (x)or 'chunk_size'")
+  }
   assert_count(n_chunks, positive = TRUE, null.ok = TRUE)
   assert_count(chunk_size, positive = TRUE, null.ok = TRUE)
   assert_flag(shuffle)
   n = length(x)
-  if (n == 0L)
+  if (n == 0L) {
     return(integer(0L))
-  if (is.null(n_chunks))
-    n_chunks = (n%/%chunk_size + (n%%chunk_size > 0L))
-  chunks = as.integer((seq.int(0L, n - 1L)%%min(n_chunks, n))) + 1L
+  }
+  if (is.null(n_chunks)) {
+    n_chunks = (n %/% chunk_size + (n %% chunk_size > 0L))
+  }
+  chunks = as.integer((seq.int(0L, n - 1L) %% min(n_chunks, n))) + 1L
   if (shuffle) shuffle(chunks) else sort(chunks)
 }

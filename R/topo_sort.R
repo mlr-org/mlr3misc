@@ -18,6 +18,7 @@
 #' @return `data.table`, with columns `id`, `depth`, sorted topologically for IDs.
 #' @export
 topo_sort = function(nodes) {
+
   assert_data_table(nodes, ncols = 2L, types = c("character", "list"))
   assert_names(names(nodes), identical.to = c("id", "parents"))
   assert_list(nodes$parents, types = "character")
@@ -29,18 +30,22 @@ topo_sort = function(nodes) {
   nodes = nodes[o]
 
   nodes$topo = nodes$depth = NA_integer_ # cols for topo-index and depth layer in sort
-  j = 1L; topo_count = 1L; depth_count = 0L
+  j = 1L
+  topo_count = 1L
+  depth_count = 0L
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
-      nodes$topo[j] = topo_count; topo_count = topo_count + 1L
+      nodes$topo[j] = topo_count
+      topo_count = topo_count + 1L
       nodes$depth[j] = depth_count
     }
     j = (j %% n) + 1L # inc j, but wrap around end
     if (j == 1) { # we wrapped, lets remove nodes of current layer from deps
       layer = nodes[nodes$depth == depth_count]$id
-      if (length(layer) == 0L)
+      if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")
+      }
       nodes$parents = list(map(nodes$parent, function(x) setdiff(x, layer)))
       depth_count = depth_count + 1L
     }

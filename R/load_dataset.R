@@ -16,6 +16,7 @@
 #' @examples
 #' load_dataset("iris", "datasets")
 load_dataset = function(id, package, keep_rownames = FALSE) {
+
   assert_string(id)
   assert_string(package)
   assert_flag(keep_rownames)
@@ -28,7 +29,8 @@ load_dataset = function(id, package, keep_rownames = FALSE) {
   ee = new.env(parent = emptyenv(), hash = FALSE)
   data(list = id, package = package, envir = ee)
   data = ee[[id]]
-  if (!keep_rownames && (is.data.frame(data) || is.matrix(data)))
+  if (!keep_rownames && (is.data.frame(data) || is.matrix(data))) {
     rownames(data) = NULL
+  }
   data
 }

@@ -13,7 +13,7 @@ test_that("map (lapply)", {
   names(x) = letters[1:2]
   expect_identical(map_int(x, identity), x)
 
-  x = 1:2+0.5
+  x = 1:2 + 0.5
   names(x) = letters[1:2]
   expect_identical(map_dbl(x, identity), x)
 
