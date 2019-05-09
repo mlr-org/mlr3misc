@@ -8,22 +8,27 @@
 #' @return Updated `x` (`data.table`).
 #' @export
 ref_cbind = function(x, y) {
+
   assert_data_table(x)
   assert_data_table(y)
 
-  if (ncol(x) == 0L)
+  if (ncol(x) == 0L) {
     return(y)
+  }
 
-  if (ncol(y) == 0L)
+  if (ncol(y) == 0L) {
     return(x)
+  }
 
-  if (nrow(x) != nrow(y))
+  if (nrow(x) != nrow(y)) {
     stopf("Tables have different number of rows (x: %i, y: %i)",
       nrow(x), nrow(y))
+  }
 
   ii = which(names(x) %in% names(y))
-  if (length(ii))
+  if (length(ii)) {
     stopf("Duplicated names: %s", paste0(names(x[ii]), collapse = ","))
+  }
 
   x[, names(y) := y][]
 }

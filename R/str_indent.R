@@ -14,7 +14,8 @@
 #' @examples
 #' cat(str_indent("Letters:", str_collapse(letters), width = 25), sep = "\n")
 str_indent = function(initial, str, width = 0.9 * getOption("width"), exdent = 2L, ...) {
-  if (length(str) == 0L)
+  if (length(str) == 0L) {
     str = "-"
+  }
   strwrap(str_collapse(str, ...), initial = paste0(initial, " "), exdent = exdent, width = width)
 }

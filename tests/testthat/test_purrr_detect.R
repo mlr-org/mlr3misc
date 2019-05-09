@@ -12,7 +12,7 @@ test_that("has_element", {
   expect_true(has_element(xs, iris))
   x = iris
   expect_true(has_element(xs, x))
-  x[1,1]  = 123
+  x[1, 1] = 123
   expect_false(has_element(xs, x))
 })
 
@@ -22,8 +22,7 @@ test_that("has_element with R6", {
       bar = 123,
       initialize = function(b) {
         self$bar = b
-      }
-    )
+      })
   )
   f1 = Foo$new(1)
   f2 = Foo$new(2)
@@ -34,5 +33,3 @@ test_that("has_element with R6", {
   expect_false(has_element(xs, f1$clone()))
   expect_false(has_element(xs, f3))
 })
-
-

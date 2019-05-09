@@ -19,7 +19,8 @@
 #' names2(x, missing_val = "")
 names2 = function(x, missing_val = NA_character_) {
   n = names(x)
-  if (is.null(n))
+  if (is.null(n)) {
     return(rep.int(missing_val, length(x)))
+  }
   replace(n, is.na(n) | !nzchar(n), missing_val)
 }

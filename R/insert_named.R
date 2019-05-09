@@ -13,8 +13,9 @@
 #' @return Updated object.
 #' @export
 insert_named = function(x, y) {
-  if (length(y) == 0L)
+  if (length(y) == 0L) {
     return(x)
+  }
   assert_names(names(y), type = "unique")
   UseMethod("insert_named")
 }

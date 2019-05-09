@@ -18,8 +18,8 @@ test_that("topo_sort", {
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
-    id    = c("a", "b"),
-    depth = c( 0,   0))
+    id = c("a", "b"),
+    depth = c(0, 0))
   expect_equal(r, rr)
 
   # graph:
@@ -31,8 +31,8 @@ test_that("topo_sort", {
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
-    id    = c("c", "b", "a"),
-    depth = c( 0,   1,   2))
+    id = c("c", "b", "a"),
+    depth = c(0, 1, 2))
   expect_equal(r, rr)
 
   # graph:
@@ -48,8 +48,8 @@ test_that("topo_sort", {
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
-    id    = c("c", "d", "b", "a", "e"),
-    depth = c( 0,   0,   1,   2,   3 ))
+    id = c("c", "d", "b", "a", "e"),
+    depth = c(0, 0, 1, 2, 3))
   expect_equal(r, rr)
 
   # graph:
@@ -61,7 +61,3 @@ test_that("topo_sort", {
   ), use.names = TRUE)
   expect_error(topo_sort(nodes), "Cycle")
 })
-
-
-
-

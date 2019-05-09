@@ -12,24 +12,24 @@ NULL
 
 #' @export
 #' @rdname printf
-catf = function (msg, ..., file = "") {
+catf = function(msg, ..., file = "") {
   cat(paste0(sprintf(msg, ...), collapse = "\n"), "\n", sep = "", file = file)
 }
 
 #' @export
 #' @rdname printf
-messagef = function (msg, ...) {
+messagef = function(msg, ...) {
   message(sprintf(msg, ...))
 }
 
 #' @export
 #' @rdname printf
-warningf = function (msg, ...) {
+warningf = function(msg, ...) {
   warning(simpleWarning(sprintf(msg, ...), call = NULL))
 }
 
 #' @export
 #' @rdname printf
-stopf = function (msg, ...) {
+stopf = function(msg, ...) {
   stop(simpleError(sprintf(msg, ...), call = NULL))
 }

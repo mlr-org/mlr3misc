@@ -54,10 +54,11 @@ map = function(.x, .f, ...) {
 }
 
 map_mold = function(.x, .f, .value, ...) {
-  out = if (is.function(.f))
+  out = if (is.function(.f)) {
     vapply(.x, .f, FUN.VALUE = .value, USE.NAMES = FALSE, ...)
-  else
+  } else {
     vapply(.x, `[[`, .f, FUN.VALUE = .value, USE.NAMES = FALSE, ...)
+  }
   setNames(out, names(.x))
 }
 
@@ -206,15 +207,15 @@ keep = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 discard = function(.x, .p, ...) {
-  sel <- probe(.x, .p, ...)
+  sel = probe(.x, .p, ...)
   .x[is.na(sel) | !sel]
 }
 
 #' @export
 #' @rdname compat-map
 map_if = function(.x, .p, .f, ...) {
-  matches <- probe(.x, .p)
-  .x[matches] <- map(.x[matches], .f, ...)
+  matches = probe(.x, .p)
+  .x[matches] = map(.x[matches], .f, ...)
   .x
 }
 

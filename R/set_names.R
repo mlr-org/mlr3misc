@@ -22,8 +22,9 @@
 #' x = set_names(x, toupper)
 #' print(x)
 set_names = function(x, nm = x, ...) {
-  if (is.function(nm))
+  if (is.function(nm)) {
     nm = map_chr(names2(x), nm)
+  }
   names(x) = nm
   x
 }

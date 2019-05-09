@@ -32,7 +32,7 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
     } else {
       cl = class(x)[1L]
       string = switch(cl,
-        "numeric" = paste0(sprintf(num_format, x), collapse=","),
+        "numeric" = paste0(sprintf(num_format, x), collapse = ","),
         "integer" = paste0(as.character(x), collapse = ","),
         "logical" = paste0(as.character(x), collapse = ","),
         "character" = paste0(x, collapse = ","),
@@ -47,8 +47,9 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
 
   # handle only lists and not any derived data types
   if (class(x)[1L] == "list") {
-    if (length(x) == 0L)
+    if (length(x) == 0L) {
       return("list()")
+    }
     ns = names2(x, missing_val = "<unnamed>")
     ss = lapply(x, convert)
     paste0(paste0(ns, "=", ss), collapse = ", ")

@@ -10,8 +10,9 @@
 #' str(get_seed())
 get_seed = function() {
   seed = get0(".Random.seed", globalenv(), mode = "integer", inherits = FALSE)
-  if (!is.null(seed))
+  if (!is.null(seed)) {
     return(seed)
+  }
 
   runif(1L)
   Recall()
