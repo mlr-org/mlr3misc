@@ -10,3 +10,4 @@
 ^attic$
 ^src/.+\.o$
 ^src/.+\.so$
+^pkgdown$
