@@ -4,15 +4,16 @@
 \alias{ref_cbind}
 \title{Bind column by reference
 
-Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables},
-possibly by reference.}
+Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.}
 \usage{
 ref_cbind(x, y)
 }
 \arguments{
-\item{x}{(\code{data.table}): \code{data.table} to add columns to.}
+\item{x}{(\code{data.table}):
+\code{data.table} to add columns to.}
 
-\item{y}{(\code{data.table}): \code{data.table} to add columns from.}
+\item{y}{(\code{data.table}):
+\code{data.table} to take columns from.}
 }
 \value{
 Updated \code{x} (\code{data.table}).
@@ -20,6 +21,5 @@ Updated \code{x} (\code{data.table}).
 \description{
 Bind column by reference
 
-Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables},
-possibly by reference.
+Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.
 }

@@ -29,7 +29,7 @@
 \alias{map_at}
 \alias{every}
 \alias{some}
-\title{Purrr-like apply functions}
+\title{Purrr-like Apply Functions}
 \usage{
 map(.x, .f, ...)
 
@@ -88,18 +88,23 @@ some(.x, .p, ...)
 \arguments{
 \item{.x}{(\code{list()} or atomic \code{vector}).}
 
-\item{.f}{(\code{function} | \code{character()} | \code{integer()}): Function to apply.}
+\item{.f}{(\code{function} | \code{character()} | \code{integer()}):
+Function to apply.}
 
-\item{...}{Additional arguments passed down to \code{.f} or \code{.p}.}
+\item{...}{(any):
+Additional arguments passed down to \code{.f} or \code{.p}.}
 
-\item{.fill}{(\code{logical(1)}): Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
+\item{.fill}{(\code{logical(1)}):
+Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.p}{(\code{function} | \code{logical()}): Predicate function.}
+\item{.p}{(\code{function} | \code{logical()}):
+Predicate function.}
 
-\item{.at}{(\code{character()} | \code{integer()} | \code{logical()}): Index vector.}
+\item{.at}{(\code{character()} | \code{integer()} | \code{logical()}):
+Index vector.}
 }
 \description{
-\code{map}-like functions, similar to the ones implemented in \pkg{purrr}.
+\code{map}-like functions, similar to the ones implemented in \CRANpkg{purrr}.
 
 \code{map()} returns the results of \code{.f} applied to \code{.x} as list.
 If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using

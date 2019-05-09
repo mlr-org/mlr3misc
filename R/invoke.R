@@ -5,13 +5,17 @@
 #' This function tries hard to not evaluate the passed arguments too eagerly which is
 #' important when working with large R objects.
 #'
-#' It is recommended to pass all arguments named to not rely on on positional argument matching.
+#' It is recommended to pass all arguments named in order to to not rely on on positional
+#' argument matching.
 #'
 #'
-#' @param .f ([function()]): Function to call.
-#' @param ... : Additional function arguments passed to `.f`.
-#' @param .args ([list()]): List of function arguments passed to `.f`.
-#'  These arguments will be concatenated to the arguments provided via `...`.
+#' @param .f ([function()]):
+#'   Function to call.
+#' @param ... :
+#'   Additional function arguments passed to `.f`.
+#' @param .args ([list()]):
+#'   Additional function arguments passed to `.f`, as (named) list.
+#'   These arguments will be concatenated to the arguments provided via `...`.
 #' @export
 #' @examples
 #' invoke(mean, .args = list(x = 1:10))

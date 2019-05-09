@@ -12,17 +12,20 @@ modify_at(.x, .at, .f, ...)
 \arguments{
 \item{.x}{(\code{vector()}).}
 
-\item{.p}{(\code{function()}): Predicate function.}
+\item{.p}{(\code{function()}):
+Predicate function.}
 
-\item{.f}{(\code{function()}): Function to apply on \code{.x}.}
+\item{.f}{(\code{function()}):
+Function to apply on \code{.x}.}
 
-\item{...}{Additional arguments passed to \code{.f}.}
+\item{...}{(any):
+Additional arguments passed to \code{.f}.}
 
-\item{.at}{(\code{integer()} | \code{character()}): index vector to select elements from \code{.x}.}
+\item{.at}{(\code{integer()} | \code{character()}):
+Index vector to select elements from \code{.x}.}
 }
 \description{
-Modifies elements of a vector selectively, similar to the functions in
-\pkg{purrr}.
+Modifies elements of a vector selectively, similar to the functions in \CRANpkg{purrr}.
 
 \code{modify_if()} applies a predicate function \code{.p} to all elements of \code{.x}
 and applies \code{.f} to those elements of \code{.x} where \code{.p} evaluates to \code{TRUE}.

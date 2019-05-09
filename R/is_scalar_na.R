@@ -1,6 +1,7 @@
 #' @title Check if an argument is a single scalar value
 #'
-#' @param x Argument to check.
+#' @param x (any):
+#'   Argument to check.
 #' @return (`logical(1)`).
 #' @export
 is_scalar_na = function(x) {

@@ -5,8 +5,10 @@
 #' If `nm` is a function, it is used to transform the already existing names of `x`.
 #'
 #' @param x (`vector`).
-#' @param nm (`character()` | `function()`).
-#' @param ... (any). Passed down to `nm` if it is a function.
+#' @param nm (`character()` | `function()`):
+#'   New names, or function which transforms already existing names.
+#' @param ... (any):
+#'   Passed down to `nm` if `nm` is a function.
 #'
 #' @return `x` with names set.
 #'

@@ -2,18 +2,21 @@
 #'
 #' @description
 #' A simple wrapper around [base::names()].
-#' Returns a vector even if no names attribute is set.
-#' Values `NA` and `""` are treated as missing and
-#' replaced with the value provided in `missing_val`.
+#' Returns a character vector even if no names attribute is set.
+#' Values `NA` and `""` are treated as missing and replaced with the value provided in `missing_val`.
 #'
-#' @param x Object.
-#' @param missing_val (`atomic(1)`): Value to set for missing names. Default is `NA_character_`.
+#' @param x (any):
+#'   Object.
+#' @param missing_val (`atomic(1)`):
+#'   Value to set for missing names. Default is `NA_character_`.
+#'
 #' @return (`character(length(x))`).
 #' @export
 #' @examples
 #' x = 1:3
 #' names(x)
 #' names2(x)
+#'
 #' names(x)[1:2] = letters[1:2]
 #' names(x)
 #' names2(x, missing_val = "")

@@ -11,7 +11,8 @@ str_indent(initial, str, width = 0.9 * getOption("width"), exdent = 2L,
 \item{initial}{(\code{character(1)}):
 Initial string, passed to \code{\link[=strwrap]{strwrap()}}.}
 
-\item{str}{(\code{character()}): Vector of strings.}
+\item{str}{(\code{character()}):
+Vector of strings.}
 
 \item{width}{(\code{integer(1)}):
 Width of the output.}
@@ -19,7 +20,8 @@ Width of the output.}
 \item{exdent}{(\code{integer(1)}):
 Indentation of subsequent lines in paragraph.}
 
-\item{...}{(any): Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}}.}
+\item{...}{(any):
+Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}}.}
 }
 \value{
 (\code{character()}).

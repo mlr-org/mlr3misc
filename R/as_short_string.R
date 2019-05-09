@@ -4,7 +4,7 @@
 #' This function is intended to be convert any R object to a short descriptive string,
 #' e.g. in [base::print()] functions.
 #'
-#' The following ruleset applies:
+#' The following rules apply:
 #'
 #' * `x` is `atomic` with length 0 or 1: printed as-is.
 #' * `x` is of length greater than 1, they are first collapsed with ",", and the resulting string.
@@ -14,9 +14,10 @@
 #'
 #' If `x` is a list, the above rules are applied (non-recursively) to its elements.
 #'
-#' @param x The object.
-#' @param width (`integer(1)`): Truncate strings to width `width`.
-#'   Default is 30
+#' @param x (any):
+#'   Arbitrary object.
+#' @param width (`integer(1)`):
+#'   Truncate strings to width `width`. Default is 30.
 #' @param num_format (`character(1)`):
 #'   Used to format numerical scalars via [base::sprintf()].
 #'   Default is "\%.4g".

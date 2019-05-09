@@ -7,13 +7,19 @@
 did_you_mean(str, candidates)
 }
 \arguments{
-\item{str}{Given string}
+\item{str}{(\code{character(1)}):
+String.}
 
-\item{candidates}{(\code{character})}
+\item{candidates}{(\code{character}):
+Candidate strings.}
 }
 \value{
-(\code{character(1)}). Either an element from \code{candidates} or the empty string if no close match is found.
+(\code{character(1)}). Either a phrase suggesting one or more candidates from \code{candidates},
+or the empty string if no close match is found.
 }
 \description{
-Helps to suggest something from a list of names, if the user mistyped in an argcheck.
+Helps to suggest something from a list of names, if the user mistyped in an argument check.
+}
+\examples{
+did_you_mean("yep", c("yes", "no"))
 }

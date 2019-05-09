@@ -3,10 +3,12 @@
 #' @description
 #' `str_trunc()` truncates a string to a given width.
 #'
-#' @param str (`character()`): Vector of strings.
+#' @param str (`character()`):
+#'   Vector of strings.
 #' @param width (`integer(1)`):
 #'   Width of the output.
-#' @param ellipsis (`character(1)`): If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
+#' @param ellipsis (`character(1)`):
+#'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
 #'
 #' @return (`character()`).
 #' @export

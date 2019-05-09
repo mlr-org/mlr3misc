@@ -7,7 +7,7 @@
 topo_sort(nodes)
 }
 \arguments{
-\item{nodes}{(\code{data.table})
+\item{nodes}{(\code{data.table}):
 Has 2 columns:
 * \code{id} of type \code{character}, contains all node labels.
 * \code{parents} of type \code{list} of \code{character}, contains all direct parents label of \code{id}.}

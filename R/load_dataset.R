@@ -5,9 +5,12 @@
 #' If the package is not installed, an error with condition "packageNotFoundError" is raised.
 #' The name of the missing packages is stored in the condition as `packages`.
 #'
-#' @param id (`character(1)`): Name of the data set.
-#' @param package (`character(1)`): Package to load the data set from.
-#' @param keep_rownames (`logical(1)`): Keep possible row names (default: `FALSE`).
+#' @param id (`character(1)`):
+#'   Name of the data set.
+#' @param package (`character(1)`):
+#'   Package to load the data set from.
+#' @param keep_rownames (`logical(1)`):
+#'   Keep possible row names (default: `FALSE`).
 #'
 #' @export
 #' @examples
@@ -22,10 +25,10 @@ load_dataset = function(id, package, keep_rownames = FALSE) {
     stop(errorCondition(msg, packages = package, class = "packageNotFoundError"))
   }
 
-  ee = new.env(parent = emptyenv())
+  ee = new.env(parent = emptyenv(), hash = FALSE)
   data(list = id, package = package, envir = ee)
   data = ee[[id]]
-  if ((is.data.frame(data) || is.matrix(data)) && !keep_rownames)
+  if (!keep_rownames && (is.data.frame(data) || is.matrix(data)))
     rownames(data) = NULL
   data
 }

@@ -7,7 +7,8 @@
 is_scalar_na(x)
 }
 \arguments{
-\item{x}{Argument to check.}
+\item{x}{(any):
+Argument to check.}
 }
 \value{
 (\code{logical(1)}).

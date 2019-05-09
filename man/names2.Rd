@@ -7,23 +7,25 @@
 names2(x, missing_val = NA_character_)
 }
 \arguments{
-\item{x}{Object.}
+\item{x}{(any):
+Object.}
 
-\item{missing_val}{(\code{atomic(1)}): Value to set for missing names. Default is \code{NA_character_}.}
+\item{missing_val}{(\code{atomic(1)}):
+Value to set for missing names. Default is \code{NA_character_}.}
 }
 \value{
 (\code{character(length(x))}).
 }
 \description{
 A simple wrapper around \code{\link[base:names]{base::names()}}.
-Returns a vector even if no names attribute is set.
-Values \code{NA} and \code{""} are treated as missing and
-replaced with the value provided in \code{missing_val}.
+Returns a character vector even if no names attribute is set.
+Values \code{NA} and \code{""} are treated as missing and replaced with the value provided in \code{missing_val}.
 }
 \examples{
 x = 1:3
 names(x)
 names2(x)
+
 names(x)[1:2] = letters[1:2]
 names(x)
 names2(x, missing_val = "")

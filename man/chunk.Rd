@@ -7,21 +7,23 @@
 chunk(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 }
 \arguments{
-\item{x}{(\code{vector()}). Vector to be split into chunks.}
+\item{x}{(\code{vector()}):
+Vector to be split into chunks.}
 
-\item{n_chunks}{(\code{integer(1)}).
+\item{n_chunks}{(\code{integer(1)}):
 Requested number of chunks.
 Mutually exclusive with \code{chunk_size} and \code{props}.}
 
-\item{chunk_size}{(\code{integer(1)}).
+\item{chunk_size}{(\code{integer(1)}):
 Requested number of elements in each chunk.
 Mutually exclusive with \code{n_chunks} and \code{props}.}
 
-\item{shuffle}{(\code{logical(1)}). If \code{TRUE}, permutes the order of \code{x}.}
+\item{shuffle}{(\code{logical(1)}):
+If \code{TRUE}, permutes the order of \code{x} before chunking.}
 }
 \value{
-(integer()`) of chunk indices. Can be used with \code{\link[base:split]{base::split()}}
-to create a list of chunks.
+(integer()`) of chunk indices.
+Pass to \code{\link[base:split]{base::split()}} to create a list of chunks.
 }
 \description{
 In case of shuffling and vectors that cannot be chunked evenly,

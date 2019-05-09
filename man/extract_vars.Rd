@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_vars.R
 \name{extract_vars}
 \alias{extract_vars}
-\title{Extract Variables out of a formula}
+\title{Extract Variables from a Formula}
 \usage{
 extract_vars(f)
 }
@@ -17,6 +17,6 @@ Given a \code{\link[=formula]{formula()}} \code{f}, returns all variables used o
 right-hand side of the formula.
 }
 \examples{
-f = Species ~ Sepal.Width > 1
+f = Species ~ Sepal.Width + Sepal.Length
 extract_vars(f)
 }

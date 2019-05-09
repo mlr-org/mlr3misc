@@ -7,12 +7,14 @@
 str_trunc(str, width = 0.9 * getOption("width"), ellipsis = "[...]")
 }
 \arguments{
-\item{str}{(\code{character()}): Vector of strings.}
+\item{str}{(\code{character()}):
+Vector of strings.}
 
 \item{width}{(\code{integer(1)}):
 Width of the output.}
 
-\item{ellipsis}{(\code{character(1)}): If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
+\item{ellipsis}{(\code{character(1)}):
+If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
 }
 \value{
 (\code{character()}).

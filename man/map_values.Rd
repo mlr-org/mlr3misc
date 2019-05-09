@@ -2,23 +2,25 @@
 % Please edit documentation in R/map_values.R
 \name{map_values}
 \alias{map_values}
-\title{Replace values with new values}
+\title{Replace Elements of Vectors with New Values}
 \usage{
 map_values(x, old, new)
 }
 \arguments{
 \item{x}{(\code{vector()}).}
 
-\item{old}{(\code{vector()}). Values to replace.}
+\item{old}{(\code{vector()}):
+Vector with values to replace.}
 
-\item{new}{(\code{vector()}). Values to replace with.
+\item{new}{(\code{vector()}):
+Values to replace with.
 Will be forced to the same length as \code{old} with \code{\link[base:rep_len]{base::rep_len()}}.}
 }
 \value{
 (\code{vector()}) of the same length as \code{x}.
 }
 \description{
-Replaces all values in \code{x} which match \code{old} with values in \code{new}, matched by position.
+Replaces all values in \code{x} which match \code{old} with values in \code{new}.
 Values are matched with \code{\link[base:match]{base::match()}}.
 }
 \examples{

@@ -10,10 +10,11 @@
 #' So nodes with `depth == 0` are the ones with no dependencies,
 #' and the one with maximal `depth` are the ones on which nothing else depends on.
 #'
-#' @param nodes (`data.table`)
+#' @param nodes (`data.table`):
 #'   Has 2 columns:
 #'     * `id` of type `character`, contains all node labels.
 #'     * `parents` of type `list` of `character`, contains all direct parents label of `id`.
+#'
 #' @return `data.table`, with columns `id`, `depth`, sorted topologically for IDs.
 #' @export
 topo_sort = function(nodes) {
@@ -46,5 +47,3 @@ topo_sort = function(nodes) {
   }
   nodes[order(nodes$topo), c("id", "depth")] # sort by topo, and then remove topo-col
 }
-
-

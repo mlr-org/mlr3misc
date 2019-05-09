@@ -17,13 +17,18 @@ seq_len0(n)
 seq_along0(x)
 }
 \arguments{
-\item{x}{Arbitrary object. Used to query its rows, cols or length.}
+\item{x}{(any):
+Arbitrary object. Used to query its rows, cols or length.}
 
-\item{n}{(integer(1)): Length of the sequence.}
+\item{n}{(\code{integer(1)}):
+Length of the sequence.}
 }
 \description{
 \code{seq_row()} creates a sequence along the number of rows of \code{x},
 \code{seq_col()} a sequence along the number of columns of \code{x}.
 \code{seq_len0()} and \code{seq_along0()} are the 0-based counterparts to \code{\link[base:seq_len]{base::seq_len()}} and
 \code{\link[base:seq_along]{base::seq_along()}}.
+}
+\examples{
+seq_len0(3)
 }

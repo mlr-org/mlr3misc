@@ -2,12 +2,14 @@
 #'
 #' @param initial (`character(1)`):
 #'   Initial string, passed to [strwrap()].
-#' @param str (`character()`): Vector of strings.
+#' @param str (`character()`):
+#'   Vector of strings.
 #' @param width (`integer(1)`):
 #'   Width of the output.
 #' @param exdent (`integer(1)`):
 #'   Indentation of subsequent lines in paragraph.
-#' @param ... (any): Additional parameters passed to [str_collapse()].
+#' @param ... (any):
+#'   Additional parameters passed to [str_collapse()].
 #'
 #' @return (`character()`).
 #' @export

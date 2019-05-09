@@ -9,9 +9,11 @@ has_element(.x, .y)
 \arguments{
 \item{.x}{(\code{list()} or atomic \code{vector}).}
 
-\item{.y}{Object to test for}
+\item{.y}{(any):
+Object to test for}
 }
 \description{
+Simply checks if a list contains a given object.
 \itemize{
 \item NB1: Objects are compared with identity.
 \item NB2: Only use this on lists with complex objects, for simpler structures there are faster operations.

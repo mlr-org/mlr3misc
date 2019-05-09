@@ -1,7 +1,7 @@
-#' @title Purrr-like apply functions
+#' @title Purrr-like Apply Functions
 #'
 #' @description
-#' `map`-like functions, similar to the ones implemented in \pkg{purrr}.
+#' `map`-like functions, similar to the ones implemented in \CRANpkg{purrr}.
 #'
 #' `map()` returns the results of `.f` applied to `.x` as list.
 #' If `.f` is not a function, `map` will call `[[` on all elements of `.x` using
@@ -34,11 +34,16 @@
 #'
 #'
 #' @param .x (`list()` or atomic `vector`).
-#' @param .f (`function` | `character()` | `integer()`): Function to apply.
-#' @param .p (`function` | `logical()`): Predicate function.
-#' @param .at (`character()` | `integer()` | `logical()`): Index vector.
-#' @param ... Additional arguments passed down to `.f` or `.p`.
-#' @param .fill (`logical(1)`): Passed down to [data.table::rbindlist()].
+#' @param .f (`function` | `character()` | `integer()`):
+#'   Function to apply.
+#' @param .p (`function` | `logical()`):
+#'   Predicate function.
+#' @param .at (`character()` | `integer()` | `logical()`):
+#'   Index vector.
+#' @param ... (any):
+#'   Additional arguments passed down to `.f` or `.p`.
+#' @param .fill (`logical(1)`):
+#'   Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map
 NULL

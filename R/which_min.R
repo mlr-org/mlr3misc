@@ -1,16 +1,18 @@
-#' @title Get the index of the minimum/maximum value, with ties correction
+#' @title Index of the Minimum/Maximum Value, with ties correction
 #'
 #' Works similar to [base::which.min()]/[base::which.max()], but corrects for ties.
 #'
-#' @param x (`numeric()`): Numeric vector.
+#' @param x (`numeric()`):
+#'    Numeric vector.
 #' @param ties_method (`character(1)`):
-#'  Handling of ties. One of "first", "last" or "random" to return the first index,
-#'  the last index, or a random index of the minimum/maximum values.
-#'  Passed down to [base::max.col()].
+#'   Handling of ties. One of "first", "last" or "random" (default) to return the first index,
+#'   the last index, or a random index of the minimum/maximum values.
+#'   Passed down to [base::max.col()].
 #' @param na_rm (`logical(1)`):
-#'  If `TRUE`, ignore missing values.
-#' @return (`integer(1)`): index of the minimum/maximum value.
-#'  Returns (`integer(0)`) for empty vectors and vectors with no non-missing values.
+#'   If `TRUE`, ignore missing values.
+#'
+#' @return (`integer()`): Index of the minimum/maximum value.
+#'   Returns an empty integer vector for empty input vectors and vectors with no non-missing values.
 #' @export
 #' @examples
 #' x = c(2, 3, 1, 3, 5, 1, 1)

@@ -14,7 +14,7 @@ Left-hand side of formula.}
 Right-hand side of formula. Multiple elements will be collapsed with \code{" + "}.}
 
 \item{env}{(\code{environment()})\cr
-Environment for the new formula. Default to \code{NULL}.}
+Environment for the new formula. Defaults to \code{NULL}.}
 }
 \value{
 \code{\link[stats:formula]{stats::formula()}}.

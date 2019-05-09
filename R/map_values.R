@@ -1,12 +1,14 @@
-#' @title Replace values with new values
+#' @title Replace Elements of Vectors with New Values
 #'
 #' @description
-#' Replaces all values in `x` which match `old` with values in `new`, matched by position.
+#' Replaces all values in `x` which match `old` with values in `new`.
 #' Values are matched with [base::match()].
 #'
 #' @param x (`vector()`).
-#' @param old (`vector()`). Values to replace.
-#' @param new (`vector()`). Values to replace with.
+#' @param old (`vector()`):
+#'   Vector with values to replace.
+#' @param new (`vector()`):
+#'   Values to replace with.
 #'   Will be forced to the same length as `old` with [base::rep_len()].
 #'
 #' @return (`vector()`) of the same length as `x`.

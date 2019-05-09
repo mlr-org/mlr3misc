@@ -9,9 +9,11 @@ set_names(x, nm = x, ...)
 \arguments{
 \item{x}{(\code{vector}).}
 
-\item{nm}{(\code{character()} | \code{function()}).}
+\item{nm}{(\code{character()} | \code{function()}):
+New names, or function which transforms already existing names.}
 
-\item{...}{(any). Passed down to \code{nm} if it is a function.}
+\item{...}{(any):
+Passed down to \code{nm} if \code{nm} is a function.}
 }
 \value{
 \code{x} with names set.

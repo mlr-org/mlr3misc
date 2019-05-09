@@ -31,12 +31,15 @@ remove_named(x, nn)
 \method{remove_named}{data.table}(x, nn)
 }
 \arguments{
-\item{x}{(\code{list()} | \code{environment} | \code{data.table}]: Object to insert elements into.
+\item{x}{(\code{list()} | \code{environment} | \code{data.table}]:
+Object to insert elements into.
 Changes are by-reference for environments and data tables.}
 
-\item{y}{(\code{list()}): List of element to insert into \code{x}.}
+\item{y}{(\code{list()}):
+List of elements to insert into \code{x}.}
 
-\item{nn}{(\code{character()}): Character vector of elements to remove.}
+\item{nn}{(\code{character()}):
+Character vector of elements to remove.}
 }
 \value{
 Updated object.

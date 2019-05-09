@@ -7,11 +7,14 @@
 invoke(.f, ..., .args = list())
 }
 \arguments{
-\item{.f}{(\code{\link[=function]{function()}}): Function to call.}
+\item{.f}{(\code{\link[=function]{function()}}):
+Function to call.}
 
-\item{...}{: Additional function arguments passed to \code{.f}.}
+\item{...}{:
+Additional function arguments passed to \code{.f}.}
 
-\item{.args}{(\code{\link[=list]{list()}}): List of function arguments passed to \code{.f}.
+\item{.args}{(\code{\link[=list]{list()}}):
+Additional function arguments passed to \code{.f}, as (named) list.
 These arguments will be concatenated to the arguments provided via \code{...}.}
 }
 \description{
@@ -19,7 +22,8 @@ An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the d
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
 
-It is recommended to pass all arguments named to not rely on on positional argument matching.
+It is recommended to pass all arguments named in order to to not rely on on positional
+argument matching.
 }
 \examples{
 invoke(mean, .args = list(x = 1:10))

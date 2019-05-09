@@ -3,14 +3,16 @@
 #' @description
 #' Collapse multiple strings into a single string.
 #'
-#' @param str (`character()`): Vector of strings.
-#' @param sep (`character(1)`):\cr
+#' @param str (`character()`):
+#'   Vector of strings.
+#' @param sep (`character(1)`):
 #'   String used to collapse the elements of `x`.
-#' @param quote (`character(1)`):\cr
+#' @param quote (`character(1)`):
 #'   Quotes to use around each element of `x`.
-#' @param n (`integer(1)`):\cr
+#' @param n (`integer(1)`):
 #'   Number of elements to keep from `x`. See [utils::head()].
-#' @param ellipsis (`character(1)`): If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
+#' @param ellipsis (`character(1)`):
+#'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
 #'
 #' @return (`character(1)`).
 #'

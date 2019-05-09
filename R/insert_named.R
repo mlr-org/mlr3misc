@@ -5,10 +5,13 @@
 #' Works for lists, environments and data frames and data tables.
 #' Objects with reference semantic (`environment` and `data.table`) might be modified in-place.
 #'
-#' @param x (`list()` | `environment` | `data.table`]: Object to insert elements into.
-#'  Changes are by-reference for environments and data tables.
-#' @param y (`list()`): List of element to insert into `x`.
-#' @param nn (`character()`): Character vector of elements to remove.
+#' @param x (`list()` | `environment` | `data.table`]:
+#'   Object to insert elements into.
+#'   Changes are by-reference for environments and data tables.
+#' @param y (`list()`):
+#'   List of elements to insert into `x`.
+#' @param nn (`character()`):
+#'   Character vector of elements to remove.
 #'
 #' @return Updated object.
 #' @export

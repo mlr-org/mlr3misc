@@ -1,7 +1,10 @@
 #' @title A wrapper for \code{class(x) = classes}.
 #'
-#' @param x : Your object.
-#' @param classes (\code{character(1)}): New classes.
+#' @param x (any):
+#'   Your object.
+#' @param classes (`character(1)`):
+#'   Vector of new classes.
+#'
 #' @return Changed object \code{x}.
 #' @export
 #' @examples

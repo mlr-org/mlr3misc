@@ -3,16 +3,18 @@
 #' In case of shuffling and vectors that cannot be chunked evenly,
 #' it is chosen randomly which levels / chunks will receive less elements.
 #'
-#' @param x (`vector()`). Vector to be split into chunks.
-#' @param chunk_size (`integer(1)`).
+#' @param x (`vector()`):
+#'   Vector to be split into chunks.
+#' @param chunk_size (`integer(1)`):
 #'   Requested number of elements in each chunk.
 #'   Mutually exclusive with `n_chunks` and `props`.
-#' @param n_chunks (`integer(1)`).
+#' @param n_chunks (`integer(1)`):
 #'   Requested number of chunks.
 #'   Mutually exclusive with `chunk_size` and `props`.
-#' @param shuffle (`logical(1)`). If `TRUE`, permutes the order of `x`.
-#' @return (integer()`) of chunk indices. Can be used with [base::split()]
-#'   to create a list of chunks.
+#' @param shuffle (`logical(1)`):
+#'   If `TRUE`, permutes the order of `x` before chunking.
+#' @return (integer()`) of chunk indices.
+#'   Pass to [base::split()] to create a list of chunks.
 #' @export
 #' @examples
 #' x = 1:11

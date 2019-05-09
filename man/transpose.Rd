@@ -14,7 +14,7 @@ transpose(.l)
 }
 \description{
 Transposes a list of list, and turns it inside out, similar to the
-function \code{transpose()} in package \pkg{purrr}.
+function \code{transpose()} in package \CRANpkg{purrr}.
 }
 \examples{
 x = list(list(a = 2, b = 3), list(a = 5, b = 10))

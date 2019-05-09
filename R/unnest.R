@@ -1,13 +1,24 @@
-#' @title Unnest list data table columns
+#' @title Unnest List Data Table Columns
 #'
 #' Transforms each element of a list columns into its own column, possibly
 #' by reference.
 #'
-#' @param x ([data.table::data.table()]): `data.table` with columns to unnest.
-#' @param cols (`character()`): Column names of list columns to unnest.
-#' @param prefix (`character(1)`): String to prefix the new column names with.
+#' @param x ([data.table::data.table()]):
+#'   `data.table` with columns to unnest.
+#' @param cols (`character()`):
+#'   Column names of list columns to operate on.
+#' @param prefix (`character(1)`):
+#'   String to prefix the new column names with.
+#'
 #' @return Updated `x` (`data.table`).
 #' @export
+#' @examples
+#' x = data.table::data.table(
+#'   id = 1:2,
+#'   value = list(list(a = 1, b = 2), list(a = 2, b = 2))
+#' )
+#' print(x)
+#' unnest(x, "value")
 unnest = function(x, cols, prefix = NULL) {
   assert_data_table(x)
   assert_character(cols, any.missing = FALSE)

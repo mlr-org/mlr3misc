@@ -9,7 +9,7 @@
 #' @param rhs (`character()`)\cr
 #'   Right-hand side of formula. Multiple elements will be collapsed with `" + "`.
 #' @param env (`environment()`)\cr
-#'   Environment for the new formula. Default to `NULL`.
+#'   Environment for the new formula. Defaults to `NULL`.
 #'
 #' @return [stats::formula()].
 #' @export

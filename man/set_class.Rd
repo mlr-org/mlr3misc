@@ -7,9 +7,11 @@
 set_class(x, classes)
 }
 \arguments{
-\item{x}{: Your object.}
+\item{x}{(any):
+Your object.}
 
-\item{classes}{(\code{character(1)}): New classes.}
+\item{classes}{(\code{character(1)}):
+Vector of new classes.}
 }
 \value{
 Changed object \code{x}.

@@ -7,10 +7,11 @@
 as_short_string(x, width = 30L, num_format = "\%.4g")
 }
 \arguments{
-\item{x}{The object.}
+\item{x}{(any):
+Arbitrary object.}
 
-\item{width}{(\code{integer(1)}): Truncate strings to width \code{width}.
-Default is 30}
+\item{width}{(\code{integer(1)}):
+Truncate strings to width \code{width}. Default is 30.}
 
 \item{num_format}{(\code{character(1)}):
 Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
@@ -23,7 +24,7 @@ Default is "\%.4g".}
 This function is intended to be convert any R object to a short descriptive string,
 e.g. in \code{\link[base:print]{base::print()}} functions.
 
-The following ruleset applies:
+The following rules apply:
 \itemize{
 \item \code{x} is \code{atomic} with length 0 or 1: printed as-is.
 \item \code{x} is of length greater than 1, they are first collapsed with ",", and the resulting string.

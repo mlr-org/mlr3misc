@@ -20,7 +20,7 @@ If \code{TRUE}, remove missing values prior to computing the mode.}
 (\code{vector(1)}): mode value.
 }
 \description{
-Compute the mode
+Computes the mode (most frequent value) of an atomic vector.
 }
 \examples{
 compute_mode(c(1, 1, 1, 2, 2, 2, 3))

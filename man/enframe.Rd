@@ -7,11 +7,14 @@
 enframe(x, name = "name", value = "value")
 }
 \arguments{
-\item{x}{(\code{vector()}): Vector to convert to a data.table.}
+\item{x}{(\code{vector()}):
+Vector to convert to a \code{data.table}.}
 
-\item{name}{(\code{character(1)}): Name for the first column with names.}
+\item{name}{(\code{character(1)}):
+Name for the first column with names.}
 
-\item{value}{(\code{character(1)}): Name for the second column with values.}
+\item{value}{(\code{character(1)}):
+Name for the second column with values.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.

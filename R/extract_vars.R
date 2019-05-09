@@ -1,4 +1,4 @@
-#' @title Extract Variables out of a formula
+#' @title Extract Variables from a Formula
 #'
 #' @description
 #' Given a [formula()] `f`, returns all variables used on the left-hand side and
@@ -9,7 +9,7 @@
 #' @return (`list()`) with elements `"lhs"` and `"rhs"`, both `character()`.
 #' @export
 #' @examples
-#' f = Species ~ Sepal.Width > 1
+#' f = Species ~ Sepal.Width + Sepal.Length
 #' extract_vars(f)
 extract_vars = function(f) {
   assert_formula(f)

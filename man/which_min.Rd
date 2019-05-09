@@ -3,7 +3,7 @@
 \name{which_min}
 \alias{which_min}
 \alias{which_max}
-\title{Get the index of the minimum/maximum value, with ties correction
+\title{Index of the Minimum/Maximum Value, with ties correction
 
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.}
 \usage{
@@ -12,10 +12,11 @@ which_min(x, ties_method = "random", na_rm = TRUE)
 which_max(x, ties_method = "random", na_rm = TRUE)
 }
 \arguments{
-\item{x}{(\code{numeric()}): Numeric vector.}
+\item{x}{(\code{numeric()}):
+Numeric vector.}
 
 \item{ties_method}{(\code{character(1)}):
-Handling of ties. One of "first", "last" or "random" to return the first index,
+Handling of ties. One of "first", "last" or "random" (default) to return the first index,
 the last index, or a random index of the minimum/maximum values.
 Passed down to \code{\link[base:max.col]{base::max.col()}}.}
 
@@ -23,11 +24,11 @@ Passed down to \code{\link[base:max.col]{base::max.col()}}.}
 If \code{TRUE}, ignore missing values.}
 }
 \value{
-(\code{integer(1)}): index of the minimum/maximum value.
-Returns (\code{integer(0)}) for empty vectors and vectors with no non-missing values.
+(\code{integer()}): Index of the minimum/maximum value.
+Returns an empty integer vector for empty input vectors and vectors with no non-missing values.
 }
 \description{
-Get the index of the minimum/maximum value, with ties correction
+Index of the Minimum/Maximum Value, with ties correction
 
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.
 }

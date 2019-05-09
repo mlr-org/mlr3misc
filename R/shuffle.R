@@ -1,11 +1,14 @@
-#' @title A safe version of sample
+#' @title A Safe Version of Sample
 #'
 #' @description
 #' A version of `sample()` which does not treat scalar integer `x` differently
 #'
-#' @param x (`vector`): Vector to sample elements from.
-#' @param n (`integer`): Number of elements to sample.
-#' @param ... Arguments passed down to [base::sample.int()].
+#' @param x (`vector`):
+#'   Vector to sample elements from.
+#' @param n (`integer`):
+#'   Number of elements to sample.
+#' @param ... (any):
+#'   Arguments passed down to [base::sample.int()].
 #'
 #' @export
 #' @examples

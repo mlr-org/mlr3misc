@@ -1,11 +1,14 @@
 #' @title Compute the mode
 #'
+#' @description
+#' Computes the mode (most frequent value) of an atomic vector.
+#'
 #' @param x (`vector()`).
 #' @param ties_method (`character(1)`):
-#'  Handling of ties. One of "first", "last" or "random" to return the first tied value,
+#'   Handling of ties. One of "first", "last" or "random" to return the first tied value,
 #'  the last tied value, or a randomly selected tied value, respectively.
 #' @param na_rm (`logical(1)`):
-#'  If `TRUE`, remove missing values prior to computing the mode.
+#'   If `TRUE`, remove missing values prior to computing the mode.
 #' @return (`vector(1)`): mode value.
 #' @export
 #' @examples

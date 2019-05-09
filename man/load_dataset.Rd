@@ -7,11 +7,14 @@
 load_dataset(id, package, keep_rownames = FALSE)
 }
 \arguments{
-\item{id}{(\code{character(1)}): Name of the data set.}
+\item{id}{(\code{character(1)}):
+Name of the data set.}
 
-\item{package}{(\code{character(1)}): Package to load the data set from.}
+\item{package}{(\code{character(1)}):
+Package to load the data set from.}
 
-\item{keep_rownames}{(\code{logical(1)}): Keep possible row names (default: \code{FALSE}).}
+\item{keep_rownames}{(\code{logical(1)}):
+Keep possible row names (default: \code{FALSE}).}
 }
 \description{
 Loads a data set with name \code{id} from package \code{package} and returns it.

@@ -2,13 +2,13 @@
 % Please edit documentation in R/named_list.R
 \name{named_list}
 \alias{named_list}
-\title{Create a named list, possibly initialized with a certain element.}
+\title{Create a Named List}
 \usage{
 named_list(nn = character(0L), init = NULL)
 }
 \arguments{
 \item{nn}{(\code{character()}):
-Names of elements.}
+Names of new list.}
 
 \item{init}{(valid R expression):
 All list elements are initialized to this value.}
@@ -17,7 +17,7 @@ All list elements are initialized to this value.}
 (\code{list()}].
 }
 \description{
-Create a named list, possibly initialized with a certain element.
+Create a Named List
 }
 \examples{
 named_list(c("a", "b"))
