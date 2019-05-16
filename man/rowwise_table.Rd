@@ -29,8 +29,8 @@ The remaining arguments will be put into the resulting table.
 }
 \examples{
 rowwise_table(
-  ~a,  ~b,
-  1,   "a",
-  2,   "b"
+  ~a, ~b,
+  1, "a",
+  2, "b"
 )
 }

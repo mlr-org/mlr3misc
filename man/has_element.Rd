@@ -16,7 +16,8 @@ Object to test for}
 Simply checks if a list contains a given object.
 \itemize{
 \item NB1: Objects are compared with identity.
-\item NB2: Only use this on lists with complex objects, for simpler structures there are faster operations.
+\item NB2: Only use this on lists with complex objects, for simpler structures
+there are faster operations.
 \item NB3: Clones of R6 objects are not detected.
 }
 }

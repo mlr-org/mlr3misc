@@ -33,7 +33,7 @@ remove_named.data.frame = function(x, nn) {
 remove_named.data.table = function(x, nn) {
   nn = intersect(nn, names(x))
   if (length(nn)) {
-    x[, (nn) := NULL]
+    x[, (nn) := NULL][]
   }
   x
 }
