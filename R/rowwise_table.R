@@ -1,4 +1,4 @@
-#' @title Construct a data.table in a row-wise fashion
+#' @title Row-Wise Fashion constructor for data.table
 #'
 #' @description
 #' Similar to the \CRANpkg{tibble} function `tribble()`, this function

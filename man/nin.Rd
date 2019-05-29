@@ -2,7 +2,7 @@
 % Please edit documentation in R/nin.R
 \name{\%nin\%}
 \alias{\%nin\%}
-\title{Negated \code{in} operator}
+\title{Negated in-operator}
 \usage{
 x \%nin\% y
 }
@@ -14,5 +14,5 @@ Values that should not be in \code{y}.}
 Values to match against.}
 }
 \description{
-Negated \code{in} operator
+This operator is equivalent to \code{!(x \%in\% y)}.
 }

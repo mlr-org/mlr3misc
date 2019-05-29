@@ -1,4 +1,4 @@
-#' @title Check if an argument is a single scalar value
+#' @title Check for a Single Scalar Value
 #'
 #' @param x (any):
 #'   Argument to check.

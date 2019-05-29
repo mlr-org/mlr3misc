@@ -6,7 +6,7 @@
 \alias{seq_col}
 \alias{seq_len0}
 \alias{seq_along0}
-\title{Sequence construction helpers for mlr3}
+\title{Sequence Construction Helpers}
 \usage{
 seq_row(x)
 

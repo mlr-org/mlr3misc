@@ -1,4 +1,4 @@
-#' @title Bind column by reference
+#' @title Bind Columns by Reference
 #'
 #' Performs [base::cbind()] on [data.tables][data.table::data.table()], possibly by reference.
 #'

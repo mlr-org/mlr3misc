@@ -3,7 +3,7 @@
 \name{chunk_vector}
 \alias{chunk_vector}
 \alias{chunk}
-\title{Chunk vectors into blocks of roughly equal size}
+\title{Chunk Vectors}
 \usage{
 chunk_vector(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 

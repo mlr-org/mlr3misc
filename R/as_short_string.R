@@ -1,4 +1,4 @@
-#' @title Converts any R object to a descriptive string
+#' @title Convert R Object to a Descriptive String
 #'
 #' @description
 #' This function is intended to be convert any R object to a short descriptive string,

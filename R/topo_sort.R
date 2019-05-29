@@ -1,4 +1,4 @@
-#' @title Topological sorting of a dependency graph
+#' @title Topological Sorting of Dependency Graphs
 #'
 #' @description
 #' Topologically sort a graph, where we are passed node labels and a list of direct
@@ -17,6 +17,14 @@
 #'
 #' @return `data.table`, with columns `id`, `depth`, sorted topologically for IDs.
 #' @export
+#' @examples
+#' nodes = rowwise_table(
+#'   ~id, ~parents,
+#'   "a", "b",
+#'   "b", "c",
+#'   "c", character()
+#' )
+#' topo_sort(nodes)
 topo_sort = function(nodes) {
 
   assert_data_table(nodes, ncols = 2L, types = c("character", "list"))

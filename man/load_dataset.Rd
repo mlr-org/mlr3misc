@@ -2,7 +2,7 @@
 % Please edit documentation in R/load_dataset.R
 \name{load_dataset}
 \alias{load_dataset}
-\title{Loads and Returns a Single Data Set}
+\title{Retrieve a Single Data Set}
 \usage{
 load_dataset(id, package, keep_rownames = FALSE)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/topo_sort.R
 \name{topo_sort}
 \alias{topo_sort}
-\title{Topological sorting of a dependency graph}
+\title{Topological Sorting of Dependency Graphs}
 \usage{
 topo_sort(nodes)
 }
@@ -24,4 +24,13 @@ Returns a table, in topological row order for IDs, and an entry \code{depth},
 which encodes the topological layer, starting at 0.
 So nodes with \code{depth == 0} are the ones with no dependencies,
 and the one with maximal \code{depth} are the ones on which nothing else depends on.
+}
+\examples{
+nodes = rowwise_table(
+  ~id, ~parents,
+  "a", "b",
+  "b", "c",
+  "c", character()
+)
+topo_sort(nodes)
 }

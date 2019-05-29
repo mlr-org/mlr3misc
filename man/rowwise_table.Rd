@@ -2,7 +2,7 @@
 % Please edit documentation in R/rowwise_table.R
 \name{rowwise_table}
 \alias{rowwise_table}
-\title{Construct a data.table in a row-wise fashion}
+\title{Row-Wise Fashion constructor for data.table}
 \usage{
 rowwise_table(...)
 }

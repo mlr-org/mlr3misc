@@ -1,4 +1,7 @@
-#' @title A wrapper for \code{class(x) = classes}.
+#' @title Set the Class
+#'
+#' @description
+#' Simple wrapper for `class(x) = classes`.
 #'
 #' @param x (any):
 #'   Your object.

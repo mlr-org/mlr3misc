@@ -1,4 +1,4 @@
-#' @title Create a New Formula
+#' @title Create Formulas
 #'
 #' @description
 #' Given the left-hand side and right-hand side as character vectors, generates a new

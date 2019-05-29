@@ -2,7 +2,7 @@
 % Please edit documentation in R/formulate.R
 \name{formulate}
 \alias{formulate}
-\title{Create a New Formula}
+\title{Create Formulas}
 \usage{
 formulate(lhs = NULL, rhs = NULL, env = NULL)
 }

@@ -1,4 +1,4 @@
-#' @title Check if an object is element of a list
+#' @title Check if an Object is Element of a List
 #'
 #' @description
 #' Simply checks if a list contains a given object.

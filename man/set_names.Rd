@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_names.R
 \name{set_names}
 \alias{set_names}
-\title{Wrapper for setNames}
+\title{Set Names}
 \usage{
 set_names(x, nm = x, ...)
 }

@@ -1,4 +1,4 @@
-#' @title Modify elements of a vector
+#' @title Selectively Modify Elements of a Vector
 #'
 #' @description
 #' Modifies elements of a vector selectively, similar to the functions in \CRANpkg{purrr}.

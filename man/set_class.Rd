@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_class.R
 \name{set_class}
 \alias{set_class}
-\title{A wrapper for \code{class(x) = classes}.}
+\title{Set the Class}
 \usage{
 set_class(x, classes)
 }
@@ -17,7 +17,7 @@ Vector of new classes.}
 Changed object \code{x}.
 }
 \description{
-A wrapper for \code{class(x) = classes}.
+Simple wrapper for \code{class(x) = classes}.
 }
 \examples{
 set_class(list(), c("foo1", "foo2"))

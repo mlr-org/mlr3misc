@@ -2,7 +2,7 @@
 % Please edit documentation in R/enframe.R
 \name{enframe}
 \alias{enframe}
-\title{Convert a named vector into a data.table}
+\title{Convert a Named Vector Into A data.table}
 \usage{
 enframe(x, name = "name", value = "value")
 }

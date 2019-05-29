@@ -3,7 +3,7 @@
 \name{modify_if}
 \alias{modify_if}
 \alias{modify_at}
-\title{Modify elements of a vector}
+\title{Selectively Modify Elements of a Vector}
 \usage{
 modify_if(.x, .p, .f, ...)
 

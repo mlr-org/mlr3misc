@@ -2,7 +2,7 @@
 % Please edit documentation in R/as_short_string.R
 \name{as_short_string}
 \alias{as_short_string}
-\title{Converts any R object to a descriptive string}
+\title{Convert R Object to a Descriptive String}
 \usage{
 as_short_string(x, width = 30L, num_format = "\%.4g")
 }

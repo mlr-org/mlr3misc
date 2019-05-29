@@ -1,4 +1,4 @@
-#' Chunk vectors into blocks of roughly equal size
+#' @title Chunk Vectors
 #'
 #' @description
 #' Chunk atomic vectors into parts of roughly equal size.

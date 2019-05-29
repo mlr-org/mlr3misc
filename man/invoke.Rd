@@ -2,7 +2,7 @@
 % Please edit documentation in R/invoke.R
 \name{invoke}
 \alias{invoke}
-\title{Invoke a function call}
+\title{Invoke a Function Call}
 \usage{
 invoke(.f, ..., .args = list())
 }

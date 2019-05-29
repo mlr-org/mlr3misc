@@ -1,4 +1,4 @@
-#' @title A type-stable names() replacement
+#' @title A Type-Stable names() Replacement
 #'
 #' @description
 #' A simple wrapper around [base::names()].

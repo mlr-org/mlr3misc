@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_seed.R
 \name{get_seed}
 \alias{get_seed}
-\title{Get the random seed}
+\title{Get the Random Seed}
 \usage{
 get_seed()
 }

@@ -1,4 +1,4 @@
-#' @title Wrapper for setNames
+#' @title Set Names
 #'
 #' @description
 #' Sets the names of `x` to `nm`.

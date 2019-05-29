@@ -2,7 +2,7 @@
 % Please edit documentation in R/names2.R
 \name{names2}
 \alias{names2}
-\title{A type-stable names() replacement}
+\title{A Type-Stable names() Replacement}
 \usage{
 names2(x, missing_val = NA_character_)
 }

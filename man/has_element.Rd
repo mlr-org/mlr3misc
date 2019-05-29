@@ -2,7 +2,7 @@
 % Please edit documentation in R/has_element.R
 \name{has_element}
 \alias{has_element}
-\title{Check if an object is element of a list}
+\title{Check if an Object is Element of a List}
 \usage{
 has_element(.x, .y)
 }

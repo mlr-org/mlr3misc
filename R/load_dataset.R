@@ -1,4 +1,4 @@
-#' @title Loads and Returns a Single Data Set
+#' @title Retrieve a Single Data Set
 #'
 #' @description
 #' Loads a data set with name `id` from package `package` and returns it.

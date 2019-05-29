@@ -1,4 +1,4 @@
-#' @title Selects closest suggestion from a set of strings
+#' @title Suggest Alternatives
 #'
 #' @description
 #' Helps to suggest something from a list of names, if the user mistyped in an argument check.

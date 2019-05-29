@@ -1,4 +1,4 @@
-#' @title Insert or remove named elements
+#' @title Insert or Remove Named Elements
 #'
 #' @description
 #' Insert elements from `y` into `x` by name, or remove elements from `x` by name.

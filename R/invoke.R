@@ -1,4 +1,4 @@
-#' @title Invoke a function call
+#' @title Invoke a Function Call
 #'
 #' @description
 #' An alternative interface for [do.call()], similar to the deprecated function in \pkg{purrr}.

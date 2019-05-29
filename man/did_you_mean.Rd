@@ -2,7 +2,7 @@
 % Please edit documentation in R/did_you_mean.R
 \name{did_you_mean}
 \alias{did_you_mean}
-\title{Selects closest suggestion from a set of strings}
+\title{Suggest Alternatives}
 \usage{
 did_you_mean(str, candidates)
 }

@@ -10,7 +10,7 @@
 \alias{remove_named.environment}
 \alias{remove_named.data.frame}
 \alias{remove_named.data.table}
-\title{Insert or remove named elements}
+\title{Insert or Remove Named Elements}
 \usage{
 insert_named(x, y)
 

@@ -1,4 +1,4 @@
-#' @title Sequence construction helpers for mlr3
+#' @title Sequence Construction Helpers
 #'
 #' @description
 #' `seq_row()` creates a sequence along the number of rows of `x`,

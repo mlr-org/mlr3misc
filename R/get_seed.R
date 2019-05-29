@@ -1,4 +1,4 @@
-#' @title Get the random seed
+#' @title Get the Random Seed
 #'
 #' @description
 #' Retrieves the current random seed (".Random.seed" in the global environment),

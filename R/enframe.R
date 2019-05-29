@@ -1,4 +1,4 @@
-#' @title Convert a named vector into a data.table
+#' @title Convert a Named Vector Into A data.table
 #'
 #' @description
 #' Returns a [data.table::data.table()] with two columns:

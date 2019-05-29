@@ -1,4 +1,7 @@
-#' @title Negated \code{in} operator
+#' @title Negated in-operator
+#'
+#' @description
+#' This operator is equivalent to `!(x %in% y)`.
 #'
 #' @param x (`vector()`):
 #'   Values that should not be in `y`.

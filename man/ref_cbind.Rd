@@ -2,7 +2,7 @@
 % Please edit documentation in R/ref_cbind.R
 \name{ref_cbind}
 \alias{ref_cbind}
-\title{Bind column by reference
+\title{Bind Columns by Reference
 
 Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.}
 \usage{
@@ -19,7 +19,7 @@ ref_cbind(x, y)
 Updated \code{x} (\code{data.table}).
 }
 \description{
-Bind column by reference
+Bind Columns by Reference
 
 Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.
 }

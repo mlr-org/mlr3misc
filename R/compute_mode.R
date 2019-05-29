@@ -1,4 +1,4 @@
-#' @title Compute the mode
+#' @title Compute The Mode
 #'
 #' @description
 #' Computes the mode (most frequent value) of an atomic vector.
