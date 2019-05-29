@@ -17,6 +17,6 @@ Given a \code{\link[=formula]{formula()}} \code{f}, returns all variables used o
 right-hand side of the formula.
 }
 \examples{
-f = Species ~ Sepal.Width + Sepal.Length
-extract_vars(f)
+extract_vars(Species ~ Sepal.Width + Sepal.Length)
+extract_vars(Species ~ .)
 }

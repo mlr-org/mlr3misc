@@ -6,21 +6,19 @@
 #'
 #' The following rules apply:
 #'
-#' * `x` is `atomic` with length 0 or 1: printed as-is.
-#' * `x` is of length greater than 1, they are first collapsed with ",", and the resulting string.
-#'   is then truncated to `trunc_width`.
-#' * `x` is an expression: converted to character.
-#' * Otherwise: print their class.
+#' * if `x` is `atomic()` with length 0 or 1: printed as-is.
+#' * if `x` is `atomic()` with length greater than 1, `x` is collapsed with ",", and the resulting string is truncated to `trunc_width` characters.
+#' * if `x` is an expression: converted to character.
+#' * Otherwise: the class is printed.
 #'
 #' If `x` is a list, the above rules are applied (non-recursively) to its elements.
 #'
 #' @param x (any):
 #'   Arbitrary object.
 #' @param width (`integer(1)`):
-#'   Truncate strings to width `width`. Default is 30.
+#'   Truncate strings to width `width`.
 #' @param num_format (`character(1)`):
 #'   Used to format numerical scalars via [base::sprintf()].
-#'   Default is "\%.4g".
 #' @return (`character(1)`).
 #' @export
 #' @examples

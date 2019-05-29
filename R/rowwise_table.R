@@ -1,5 +1,6 @@
 #' @title Construct a data.table in a row-wise fashion
 #'
+#' @description
 #' Similar to the \CRANpkg{tibble} function `tribble()`, this function
 #' allows to construct tabular data in a row-wise fashion.
 #'

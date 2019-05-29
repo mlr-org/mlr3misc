@@ -2,13 +2,7 @@
 % Please edit documentation in R/rowwise_table.R
 \name{rowwise_table}
 \alias{rowwise_table}
-\title{Construct a data.table in a row-wise fashion
-
-Similar to the \CRANpkg{tibble} function \code{tribble()}, this function
-allows to construct tabular data in a row-wise fashion.
-
-The first arguments passed as formula will be interpreted as column names.
-The remaining arguments will be put into the resulting table.}
+\title{Construct a data.table in a row-wise fashion}
 \usage{
 rowwise_table(...)
 }
@@ -19,8 +13,6 @@ rowwise_table(...)
 \code{\link[data.table:data.table]{data.table::data.table()}}.
 }
 \description{
-Construct a data.table in a row-wise fashion
-
 Similar to the \CRANpkg{tibble} function \code{tribble()}, this function
 allows to construct tabular data in a row-wise fashion.
 

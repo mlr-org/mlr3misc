@@ -22,5 +22,5 @@ If the package is not installed, an error with condition "packageNotFoundError" 
 The name of the missing packages is stored in the condition as \code{packages}.
 }
 \examples{
-load_dataset("iris", "datasets")
+head(load_dataset("iris", "datasets"))
 }

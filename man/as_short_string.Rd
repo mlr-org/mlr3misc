@@ -11,11 +11,10 @@ as_short_string(x, width = 30L, num_format = "\%.4g")
 Arbitrary object.}
 
 \item{width}{(\code{integer(1)}):
-Truncate strings to width \code{width}. Default is 30.}
+Truncate strings to width \code{width}.}
 
 \item{num_format}{(\code{character(1)}):
-Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.
-Default is "\%.4g".}
+Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.}
 }
 \value{
 (\code{character(1)}).
@@ -26,11 +25,10 @@ e.g. in \code{\link[base:print]{base::print()}} functions.
 
 The following rules apply:
 \itemize{
-\item \code{x} is \code{atomic} with length 0 or 1: printed as-is.
-\item \code{x} is of length greater than 1, they are first collapsed with ",", and the resulting string.
-is then truncated to \code{trunc_width}.
-\item \code{x} is an expression: converted to character.
-\item Otherwise: print their class.
+\item if \code{x} is \code{atomic()} with length 0 or 1: printed as-is.
+\item if \code{x} is \code{atomic()} with length greater than 1, \code{x} is collapsed with ",", and the resulting string is truncated to \code{trunc_width} characters.
+\item if \code{x} is an expression: converted to character.
+\item Otherwise: the class is printed.
 }
 
 If \code{x} is a list, the above rules are applied (non-recursively) to its elements.

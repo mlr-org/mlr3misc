@@ -1,7 +1,8 @@
-#' @title A Safe Version of Sample
+#' @title Safe Version of Sample
 #'
 #' @description
-#' A version of `sample()` which does not treat scalar integer `x` differently
+#' A version of `sample()` which does not treat positive scalar integer `x` differently.
+#' See example.
 #'
 #' @param x (`vector`):
 #'   Vector to sample elements from.

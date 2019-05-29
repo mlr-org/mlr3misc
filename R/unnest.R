@@ -1,7 +1,7 @@
 #' @title Unnest List Data Table Columns
 #'
-#' Transforms each element of a list columns into its own column, possibly
-#' by reference.
+#' @description
+#' Transforms each element of a list columns into its own column, possibly by reference.
 #'
 #' @param x ([data.table::data.table()]):
 #'   `data.table` with columns to unnest.

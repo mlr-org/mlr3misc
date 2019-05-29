@@ -25,4 +25,5 @@ Given the left-hand side and right-hand side as character vectors, generates a n
 }
 \examples{
 formulate("Species", c("Sepal.Length", "Sepal.Width"))
+formulate(rhs = c("Sepal.Length", "Sepal.Width"))
 }

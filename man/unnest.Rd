@@ -2,10 +2,7 @@
 % Please edit documentation in R/unnest.R
 \name{unnest}
 \alias{unnest}
-\title{Unnest List Data Table Columns
-
-Transforms each element of a list columns into its own column, possibly
-by reference.}
+\title{Unnest List Data Table Columns}
 \usage{
 unnest(x, cols, prefix = NULL)
 }
@@ -23,10 +20,7 @@ String to prefix the new column names with.}
 Updated \code{x} (\code{data.table}).
 }
 \description{
-Unnest List Data Table Columns
-
-Transforms each element of a list columns into its own column, possibly
-by reference.
+Transforms each element of a list columns into its own column, possibly by reference.
 }
 \examples{
 x = data.table::data.table(

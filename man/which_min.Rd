@@ -3,9 +3,7 @@
 \name{which_min}
 \alias{which_min}
 \alias{which_max}
-\title{Index of the Minimum/Maximum Value, with ties correction
-
-Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.}
+\title{Index of the Minimum/Maximum Value, with ties correction}
 \usage{
 which_min(x, ties_method = "random", na_rm = TRUE)
 
@@ -28,8 +26,6 @@ If \code{TRUE}, ignore missing values.}
 Returns an empty integer vector for empty input vectors and vectors with no non-missing values.
 }
 \description{
-Index of the Minimum/Maximum Value, with ties correction
-
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.
 }
 \examples{

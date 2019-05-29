@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @examples
-#' load_dataset("iris", "datasets")
+#' head(load_dataset("iris", "datasets"))
 load_dataset = function(id, package, keep_rownames = FALSE) {
 
   assert_string(id)

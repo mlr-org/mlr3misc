@@ -1,5 +1,8 @@
 #' @title Indent Strings
 #'
+#' @description
+#' Formats a text block for printing.
+#'
 #' @param initial (`character(1)`):
 #'   Initial string, passed to [strwrap()].
 #' @param str (`character()`):

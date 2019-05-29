@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Returns a [data.table::data.table()] with two columns:
-#' The names of `x` (or seq along `x` if unnamed) and the values of `x`.
+#' The names of `x` (or `seq_along(x)` if unnamed) and the values of `x`.
 #'
 #' @param x (`vector()`):
 #'   Vector to convert to a `data.table`.

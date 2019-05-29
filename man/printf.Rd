@@ -6,7 +6,7 @@
 \alias{messagef}
 \alias{warningf}
 \alias{stopf}
-\title{Output and condition helpers for mlr3}
+\title{Functions for Formated Output and Conditions}
 \usage{
 catf(msg, ..., file = "")
 
@@ -17,13 +17,13 @@ warningf(msg, ...)
 stopf(msg, ...)
 }
 \arguments{
-\item{msg}{(`character(1)):
+\item{msg}{(\code{character(1)}):
 Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
 
 \item{...}{(any):
 Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{file}{(`character(1)):
+\item{file}{(\code{character(1)}):
 Passed to \code{\link[base:cat]{base::cat()}}.}
 }
 \description{

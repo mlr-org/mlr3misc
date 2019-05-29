@@ -1,20 +1,22 @@
 #' @title Purrr-like Apply Functions
 #'
 #' @description
-#' `map`-like functions, similar to the ones implemented in \CRANpkg{purrr}.
+#' `map`-like functions, similar to the ones implemented in \CRANpkg{purrr}:
 #'
-#' `map()` returns the results of `.f` applied to `.x` as list.
-#' If `.f` is not a function, `map` will call `[[` on all elements of `.x` using
-#' the value of `.f` as index.
+#' * `map()` returns the results of `.f` applied to `.x` as list.
+#'   If `.f` is not a function, `map` will call `[[` on all elements of `.x` using the value of `.f` as index.
+#' * `imap()` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
+#'   If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
+#' * `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector of `.x`, then the second element of `.x`, and so on.
+#' * `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
+#' * `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
+#' * `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`,
+#' * `discard()` discards those elements of `.x` where predicate `.p` evaluates to `TRUE`.
+#' * `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
+#' * `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
 #'
-#' `imap()` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
-#' If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
 #'
-#' `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector
-#' of `.x`, then the second element of `.x`, and so on.
-#'
-#' The type-safe variants of map functions will convert the return value of `.f`, depending on the
-#' suffix:
+#' Additionally, the functions `map()`, `imap()` and `pmap` have type-safe variants with the following suffixes:
 #'
 #' * `*_lgl()` returns a `logical(length(.x))`.
 #' * `*_int()` returns a `integer(length(.x))`.
@@ -22,16 +24,6 @@
 #' * `*_chr()` returns a `character(length(.x))`.
 #' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
 #' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
-#'
-#' `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
-#'
-#' `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
-#'
-#' `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`, while `discard()` discards them.
-#'
-#' `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
-#' `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
-#'
 #'
 #' @param .x (`list()` or atomic `vector`).
 #' @param .f (`function` | `character()` | `integer()`):

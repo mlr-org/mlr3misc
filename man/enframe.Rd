@@ -21,7 +21,7 @@ Name for the second column with values.}
 }
 \description{
 Returns a \code{\link[data.table:data.table]{data.table::data.table()}} with two columns:
-The names of \code{x} (or seq along \code{x} if unnamed) and the values of \code{x}.
+The names of \code{x} (or \code{seq_along(x)} if unnamed) and the values of \code{x}.
 }
 \examples{
 x = 1:3

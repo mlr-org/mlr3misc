@@ -2,7 +2,7 @@
 % Please edit documentation in R/shuffle.R
 \name{shuffle}
 \alias{shuffle}
-\title{A Safe Version of Sample}
+\title{Safe Version of Sample}
 \usage{
 shuffle(x, n = length(x), ...)
 }
@@ -17,7 +17,8 @@ Number of elements to sample.}
 Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{
-A version of \code{sample()} which does not treat scalar integer \code{x} differently
+A version of \code{sample()} which does not treat positive scalar integer \code{x} differently.
+See example.
 }
 \examples{
 x = 2:3

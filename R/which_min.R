@@ -1,5 +1,6 @@
 #' @title Index of the Minimum/Maximum Value, with ties correction
 #'
+#'@description
 #' Works similar to [base::which.min()]/[base::which.max()], but corrects for ties.
 #'
 #' @param x (`numeric()`):

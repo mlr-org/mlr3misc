@@ -2,11 +2,11 @@
 #'
 #' @description
 #' Insert elements from `y` into `x` by name, or remove elements from `x` by name.
-#' Works for lists, environments and data frames and data tables.
+#' Works for vectors, lists, environments and data frames and data tables.
 #' Objects with reference semantic (`environment` and `data.table`) might be modified in-place.
 #'
-#' @param x (`list()` | `environment` | `data.table`]:
-#'   Object to insert elements into.
+#' @param x (`vector()` | `list()` | `environment` | `data.table`]:
+#'   Object to insert elements into, or remove elements from.
 #'   Changes are by-reference for environments and data tables.
 #' @param y (`list()`):
 #'   List of elements to insert into `x`.
@@ -15,6 +15,10 @@
 #'
 #' @return Updated object.
 #' @export
+#' @examples
+#' x = list(a = 1, b = 2)
+#' insert_named(x, list(b = 3, c = 4))
+#' remove_named(x, "b")
 insert_named = function(x, y) {
   if (length(y) == 0L) {
     return(x)
