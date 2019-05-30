@@ -17,13 +17,13 @@ warningf(msg, ...)
 stopf(msg, ...)
 }
 \arguments{
-\item{msg}{(\code{character(1)}):
+\item{msg}{:: \code{character(1)}\cr
 Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{...}{(any):
+\item{...}{:: any\cr
 Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{file}{(\code{character(1)}):
+\item{file}{:: \code{character(1)}\cr
 Passed to \code{\link[base:cat]{base::cat()}}.}
 }
 \description{

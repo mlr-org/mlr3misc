@@ -7,13 +7,13 @@
 invoke(.f, ..., .args = list())
 }
 \arguments{
-\item{.f}{(\code{\link[=function]{function()}}):
+\item{.f}{:: \code{function()}\cr
 Function to call.}
 
-\item{...}{:
+\item{...}{:: any\cr
 Additional function arguments passed to \code{.f}.}
 
-\item{.args}{(\code{\link[=list]{list()}}):
+\item{.args}{:: \code{list()}\cr
 Additional function arguments passed to \code{.f}, as (named) list.
 These arguments will be concatenated to the arguments provided via \code{...}.}
 }

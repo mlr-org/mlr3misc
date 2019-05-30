@@ -7,7 +7,8 @@
 #' The first arguments passed as formula will be interpreted as column names.
 #' The remaining arguments will be put into the resulting table.
 #'
-#' @param ... Arguments: Column names first as formula, then the tabular data.
+#' @param ... :: any\cr
+#'   Arguments: Column names first as formula, then the tabular data.
 #'
 #' @return [`data.table::data.table()`].
 #' @export

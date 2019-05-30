@@ -10,18 +10,18 @@ modify_if(.x, .p, .f, ...)
 modify_at(.x, .at, .f, ...)
 }
 \arguments{
-\item{.x}{(\code{vector()}).}
+\item{.x}{:: \code{vector()}.}
 
-\item{.p}{(\code{function()}):
+\item{.p}{:: \code{function()}\cr
 Predicate function.}
 
-\item{.f}{(\code{function()}):
+\item{.f}{:: \code{function()}\cr
 Function to apply on \code{.x}.}
 
-\item{...}{(any):
+\item{...}{:: any\cr
 Additional arguments passed to \code{.f}.}
 
-\item{.at}{(\code{integer()} | \code{character()}):
+\item{.at}{:: (\code{integer()} | \code{character()})\cr
 Index vector to select elements from \code{.x}.}
 }
 \description{

@@ -7,7 +7,7 @@
 transpose(.l)
 }
 \arguments{
-\item{.l}{(\code{list()} of \code{list()}).}
+\item{.l}{:: \code{list()} of \code{list()}.}
 }
 \value{
 \code{list()}.

@@ -9,11 +9,11 @@ Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]
 ref_cbind(x, y)
 }
 \arguments{
-\item{x}{(\code{data.table}):
-\code{data.table} to add columns to.}
+\item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\code{data.table()} to add columns to.}
 
-\item{y}{(\code{data.table}):
-\code{data.table} to take columns from.}
+\item{y}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\code{data.table()} to take columns from.}
 }
 \value{
 Updated \code{x} (\code{data.table}).

@@ -9,11 +9,11 @@
 #' argument matching.
 #'
 #'
-#' @param .f ([function()]):
+#' @param .f :: `function()`\cr
 #'   Function to call.
-#' @param ... :
+#' @param ... :: any\cr
 #'   Additional function arguments passed to `.f`.
-#' @param .args ([list()]):
+#' @param .args :: `list()`\cr
 #'   Additional function arguments passed to `.f`, as (named) list.
 #'   These arguments will be concatenated to the arguments provided via `...`.
 #' @export

@@ -7,12 +7,12 @@
 set_names(x, nm = x, ...)
 }
 \arguments{
-\item{x}{(\code{vector}).}
+\item{x}{:: \code{vector()}\cr}
 
-\item{nm}{(\code{character()} | \code{function()}):
+\item{nm}{:: (\code{character()} | \code{function()})\cr
 New names, or function which transforms already existing names.}
 
-\item{...}{(any):
+\item{...}{:: any\cr
 Passed down to \code{nm} if \code{nm} is a function.}
 }
 \value{

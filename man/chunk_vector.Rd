@@ -10,26 +10,26 @@ chunk_vector(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 chunk(n, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 }
 \arguments{
-\item{x}{(\code{vector()}):
+\item{x}{:: \code{vector()}\cr
 Vector to split into chunks.}
 
-\item{n_chunks}{(\code{integer(1)}):
+\item{n_chunks}{:: \code{integer(1)}\cr
 Requested number of chunks.
 Mutually exclusive with \code{chunk_size} and \code{props}.}
 
-\item{chunk_size}{(\code{integer(1)}):
+\item{chunk_size}{:: \code{integer(1)}\cr
 Requested number of elements in each chunk.
 Mutually exclusive with \code{n_chunks} and \code{props}.}
 
-\item{shuffle}{(\code{logical(1)}):
+\item{shuffle}{:: \code{logical(1)}:
 If \code{TRUE}, permutes the order of \code{x} before chunking.}
 
-\item{n}{(\code{integer(1)}):
+\item{n}{:: \code{integer(1)}\cr
 Length of vector to split.}
 }
 \value{
-(\code{integer()}) of chunk indices.
-Pass to \code{\link[base:split]{base::split()}} to create a list of chunks.
+\code{chunk()} returns a (\code{integer()}) of chunk indices,
+\code{chunk_vector()} a \code{list()} with chunked elements.
 }
 \description{
 Chunk atomic vectors into parts of roughly equal size.

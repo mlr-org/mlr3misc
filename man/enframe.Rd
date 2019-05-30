@@ -7,13 +7,13 @@
 enframe(x, name = "name", value = "value")
 }
 \arguments{
-\item{x}{(\code{vector()}):
+\item{x}{:: \code{vector()}\cr
 Vector to convert to a \code{data.table}.}
 
-\item{name}{(\code{character(1)}):
+\item{name}{:: \code{character(1)}\cr
 Name for the first column with names.}
 
-\item{value}{(\code{character(1)}):
+\item{value}{:: \code{character(1)}\cr
 Name for the second column with values.}
 }
 \value{

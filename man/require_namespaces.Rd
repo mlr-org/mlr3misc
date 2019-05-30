@@ -8,10 +8,10 @@ require_namespaces(pkgs,
   msg = "The following packages could not be loaded: \%s")
 }
 \arguments{
-\item{pkgs}{(\code{character()}):
+\item{pkgs}{:: \code{character()}\cr
 Packages to load.}
 
-\item{msg}{(\code{character(1)}):
+\item{msg}{:: \code{character(1)}\cr
 Message to print on error. \code{"\%s"} is placeholder for the list of packages.}
 }
 \description{

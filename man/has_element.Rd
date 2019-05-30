@@ -7,9 +7,9 @@
 has_element(.x, .y)
 }
 \arguments{
-\item{.x}{(\code{list()} or atomic \code{vector}).}
+\item{.x}{:: (\code{list()} or atomic \code{vector}).}
 
-\item{.y}{(any):
+\item{.y}{:: (any)\cr
 Object to test for}
 }
 \description{

@@ -3,15 +3,15 @@
 #' @description
 #' Formats a text block for printing.
 #'
-#' @param initial (`character(1)`):
+#' @param initial :: `character(1)`\cr
 #'   Initial string, passed to [strwrap()].
-#' @param str (`character()`):
+#' @param str :: `character()`\cr
 #'   Vector of strings.
-#' @param width (`integer(1)`):
+#' @param width :: `integer(1)`\cr
 #'   Width of the output.
-#' @param exdent (`integer(1)`):
+#' @param exdent :: `integer(1)`\cr
 #'   Indentation of subsequent lines in paragraph.
-#' @param ... (any):
+#' @param ... :: any\cr
 #'   Additional parameters passed to [str_collapse()].
 #'
 #' @return (`character()`).

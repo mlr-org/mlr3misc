@@ -3,13 +3,13 @@
 #'@description
 #' Works similar to [base::which.min()]/[base::which.max()], but corrects for ties.
 #'
-#' @param x (`numeric()`):
+#' @param x :: `numeric()`\cr
 #'    Numeric vector.
-#' @param ties_method (`character(1)`):
+#' @param ties_method :: `character(1)`\cr
 #'   Handling of ties. One of "first", "last" or "random" (default) to return the first index,
 #'   the last index, or a random index of the minimum/maximum values.
 #'   Passed down to [base::max.col()].
-#' @param na_rm (`logical(1)`):
+#' @param na_rm :: `logical(1)`\cr
 #'   If `TRUE`, ignore missing values.
 #'
 #' @return (`integer()`): Index of the minimum/maximum value.

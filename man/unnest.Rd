@@ -7,17 +7,17 @@
 unnest(x, cols, prefix = NULL)
 }
 \arguments{
-\item{x}{(\code{\link[data.table:data.table]{data.table::data.table()}}):
+\item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
 \code{data.table} with columns to unnest.}
 
-\item{cols}{(\code{character()}):
+\item{cols}{:: \code{character()}\cr
 Column names of list columns to operate on.}
 
-\item{prefix}{(\code{character(1)}):
+\item{prefix}{:: \code{character(1)}\cr
 String to prefix the new column names with.}
 }
 \value{
-Updated \code{x} (\code{data.table}).
+(\code{data.table()}).
 }
 \description{
 Transforms each element of a list columns into its own column, possibly by reference.

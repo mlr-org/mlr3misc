@@ -7,7 +7,8 @@
 rowwise_table(...)
 }
 \arguments{
-\item{...}{Arguments: Column names first as formula, then the tabular data.}
+\item{...}{:: any\cr
+Arguments: Column names first as formula, then the tabular data.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.

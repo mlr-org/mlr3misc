@@ -3,12 +3,12 @@
 #' @description
 #' Helps to suggest something from a list of names, if the user mistyped in an argument check.
 #'
-#' @param str (`character(1)`):
+#' @param str :: `character(1)`\cr
 #'   String.
-#' @param candidates (`character`):
+#' @param candidates :: `character`\cr
 #'   Candidate strings.
 #' @return (`character(1)`). Either a phrase suggesting one or more candidates from `candidates`,
-#'   or the empty string if no close match is found.
+#'   or an empty string if no close match is found.
 #' @export
 #' @examples
 #' did_you_mean("yep", c("yes", "no"))

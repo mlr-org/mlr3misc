@@ -5,18 +5,18 @@
 #' `chunk()` takes a vector length `n` and returns an integer with chunk numbers.
 #' `chunk_vector()` uses [base::split()] and `chunk()` to split an atomic vector into chunks.
 #'
-#' @param x (`vector()`):
+#' @param x :: `vector()`\cr
 #'   Vector to split into chunks.
-#' @param chunk_size (`integer(1)`):
+#' @param chunk_size :: `integer(1)`\cr
 #'   Requested number of elements in each chunk.
 #'   Mutually exclusive with `n_chunks` and `props`.
-#' @param n_chunks (`integer(1)`):
+#' @param n_chunks :: `integer(1)`\cr
 #'   Requested number of chunks.
 #'   Mutually exclusive with `chunk_size` and `props`.
-#' @param shuffle (`logical(1)`):
+#' @param shuffle :: `logical(1)`:
 #'   If `TRUE`, permutes the order of `x` before chunking.
-#' @return (`integer()`) of chunk indices.
-#'   Pass to [base::split()] to create a list of chunks.
+#' @return `chunk()` returns a (`integer()`) of chunk indices,
+#'   `chunk_vector()` a `list()` with chunked elements.
 #' @export
 #' @examples
 #' x = 1:11
@@ -33,7 +33,7 @@ chunk_vector = function(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
   unname(split(x, chunk(length(x), n_chunks, chunk_size, shuffle)))
 }
 
-#' @param n (`integer(1)`):
+#' @param n :: `integer(1)`\cr
 #'   Length of vector to split.
 #' @rdname chunk_vector
 #' @export
