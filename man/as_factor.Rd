@@ -4,7 +4,7 @@
 \alias{as_factor}
 \title{Convert to Factor}
 \usage{
-as_factor(x, levels)
+as_factor(x, levels, ordered = is.ordered(x))
 }
 \arguments{
 \item{x}{:: atomic \code{vector()}\cr
@@ -12,6 +12,9 @@ Vector to convert to factor.}
 
 \item{levels}{:: \code{character()}\cr
 Levels of the new factor.}
+
+\item{ordered}{:: \code{logical(1)}\cr
+If \code{TRUE}, create an ordered factor.}
 }
 \value{
 (\code{factor()}).

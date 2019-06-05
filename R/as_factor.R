@@ -8,6 +8,8 @@
 #'   Vector to convert to factor.
 #' @param levels :: `character()`\cr
 #'   Levels of the new factor.
+#' @param ordered :: `logical(1)`\cr
+#'   If `TRUE`, create an ordered factor.
 #' @return (`factor()`).
 #' @export
 #' @examples
@@ -19,14 +21,15 @@
 #'
 #' # y with the level order of x
 #' as_factor(y, levels(x))
-as_factor = function(x, levels) {
+as_factor = function(x, levels, ordered = is.ordered(x)) {
+  assert_flag(ordered)
   levels = as.character(levels)
   if (is.factor(x)) {
-    if (!identical(levels(x), levels)) {
-      x = factor(x, levels = levels)
+    if (!identical(levels(x), levels) || ordered != is.ordered(x)) {
+      x = factor(x, levels = levels, ordered = ordered)
     }
   } else {
-    x = factor(as.character(x), levels = levels)
+    x = factor(as.character(x), levels = levels, ordered = ordered)
   }
   x
 }
