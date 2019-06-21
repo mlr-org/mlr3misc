@@ -13,11 +13,11 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
+    R6,
     backports (>= 1.1.4),
     checkmate (>= 1.9.0),
     data.table
 Suggests:
-    R6,
     testthat
 ByteCompile: true
 Encoding: UTF-8
