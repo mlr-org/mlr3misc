@@ -11,6 +11,7 @@
 #' @param unique (`logical(1)`)\cr
 #'   See [data.table::CJ()].
 #' @return [data.table()].
+#' @export
 #' @examples
 #' cross_join(dots = list(sorted = 1:3, b = letters[1:2]))
 cross_join = function(dots, sorted = TRUE, unique = FALSE) {
