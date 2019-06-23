@@ -2,20 +2,20 @@
 % Please edit documentation in R/did_you_mean.R
 \name{did_you_mean}
 \alias{did_you_mean}
-\title{Selects closest suggestion from a set of strings}
+\title{Suggest Alternatives}
 \usage{
 did_you_mean(str, candidates)
 }
 \arguments{
-\item{str}{(\code{character(1)}):
+\item{str}{:: \code{character(1)}\cr
 String.}
 
-\item{candidates}{(\code{character}):
+\item{candidates}{:: \code{character}\cr
 Candidate strings.}
 }
 \value{
 (\code{character(1)}). Either a phrase suggesting one or more candidates from \code{candidates},
-or the empty string if no close match is found.
+or an empty string if no close match is found.
 }
 \description{
 Helps to suggest something from a list of names, if the user mistyped in an argument check.

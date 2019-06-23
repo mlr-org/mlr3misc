@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_seed.R
 \name{get_seed}
 \alias{get_seed}
-\title{Get the random seed}
+\title{Get the Random Seed}
 \usage{
 get_seed()
 }
@@ -10,7 +10,7 @@ get_seed()
 \code{integer()}. Depends on the \code{\link[base:RNGkind]{base::RNGkind()}}.
 }
 \description{
-Retrieves the random seed (".Random.seed" in the global environment).
+Retrieves the current random seed (".Random.seed" in the global environment),
 and initializes the RNG first, if necessary.
 }
 \examples{

@@ -8,19 +8,19 @@ str_collapse(str, sep = ", ", quote = "", n = Inf,
   ellipsis = "[...]")
 }
 \arguments{
-\item{str}{(\code{character()}):
+\item{str}{:: \code{character()}\cr
 Vector of strings.}
 
-\item{sep}{(\code{character(1)}):
+\item{sep}{:: \code{character(1)}\cr
 String used to collapse the elements of \code{x}.}
 
-\item{quote}{(\code{character(1)}):
+\item{quote}{:: \code{character(1)}\cr
 Quotes to use around each element of \code{x}.}
 
-\item{n}{(\code{integer(1)}):
+\item{n}{:: \code{integer(1)}\cr
 Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
 
-\item{ellipsis}{(\code{character(1)}):
+\item{ellipsis}{:: \code{character(1)}\cr
 If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
 }
 \value{

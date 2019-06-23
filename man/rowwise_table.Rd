@@ -2,25 +2,18 @@
 % Please edit documentation in R/rowwise_table.R
 \name{rowwise_table}
 \alias{rowwise_table}
-\title{Construct a data.table in a row-wise fashion
-
-Similar to the \CRANpkg{tibble} function \code{tribble()}, this function
-allows to construct tabular data in a row-wise fashion.
-
-The first arguments passed as formula will be interpreted as column names.
-The remaining arguments will be put into the resulting table.}
+\title{Row-Wise Fashion constructor for data.table}
 \usage{
 rowwise_table(...)
 }
 \arguments{
-\item{...}{Arguments: Column names first as formula, then the tabular data.}
+\item{...}{:: any\cr
+Arguments: Column names first as formula, then the tabular data.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.
 }
 \description{
-Construct a data.table in a row-wise fashion
-
 Similar to the \CRANpkg{tibble} function \code{tribble()}, this function
 allows to construct tabular data in a row-wise fashion.
 

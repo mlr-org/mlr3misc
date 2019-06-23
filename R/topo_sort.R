@@ -1,4 +1,4 @@
-#' @title Topological sorting of a dependency graph
+#' @title Topological Sorting of Dependency Graphs
 #'
 #' @description
 #' Topologically sort a graph, where we are passed node labels and a list of direct
@@ -10,13 +10,21 @@
 #' So nodes with `depth == 0` are the ones with no dependencies,
 #' and the one with maximal `depth` are the ones on which nothing else depends on.
 #'
-#' @param nodes (`data.table`):
+#' @param nodes :: [data.table::data.table()]\cr
 #'   Has 2 columns:
 #'     * `id` of type `character`, contains all node labels.
 #'     * `parents` of type `list` of `character`, contains all direct parents label of `id`.
 #'
 #' @return `data.table`, with columns `id`, `depth`, sorted topologically for IDs.
 #' @export
+#' @examples
+#' nodes = rowwise_table(
+#'   ~id, ~parents,
+#'   "a", "b",
+#'   "b", "c",
+#'   "c", character()
+#' )
+#' topo_sort(nodes)
 topo_sort = function(nodes) {
 
   assert_data_table(nodes, ncols = 2L, types = c("character", "list"))

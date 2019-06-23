@@ -2,31 +2,25 @@
 % Please edit documentation in R/unnest.R
 \name{unnest}
 \alias{unnest}
-\title{Unnest List Data Table Columns
-
-Transforms each element of a list columns into its own column, possibly
-by reference.}
+\title{Unnest List Data Table Columns}
 \usage{
 unnest(x, cols, prefix = NULL)
 }
 \arguments{
-\item{x}{(\code{\link[data.table:data.table]{data.table::data.table()}}):
+\item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
 \code{data.table} with columns to unnest.}
 
-\item{cols}{(\code{character()}):
+\item{cols}{:: \code{character()}\cr
 Column names of list columns to operate on.}
 
-\item{prefix}{(\code{character(1)}):
+\item{prefix}{:: \code{character(1)}\cr
 String to prefix the new column names with.}
 }
 \value{
-Updated \code{x} (\code{data.table}).
+(\code{data.table()}).
 }
 \description{
-Unnest List Data Table Columns
-
-Transforms each element of a list columns into its own column, possibly
-by reference.
+Transforms each element of a list columns into its own column, possibly by reference.
 }
 \examples{
 x = data.table::data.table(

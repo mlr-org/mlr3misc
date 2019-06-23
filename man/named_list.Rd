@@ -7,10 +7,10 @@
 named_list(nn = character(0L), init = NULL)
 }
 \arguments{
-\item{nn}{(\code{character()}):
+\item{nn}{:: \code{character()}\cr
 Names of new list.}
 
-\item{init}{(valid R expression):
+\item{init}{:: any\cr
 All list elements are initialized to this value.}
 }
 \value{

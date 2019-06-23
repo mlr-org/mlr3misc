@@ -4,13 +4,13 @@
 #' Given a [formula()] `f`, returns all variables used on the left-hand side and
 #' right-hand side of the formula.
 #'
-#' @param f (`formula()`).
+#' @param f :: `formula()`.
 #'
 #' @return (`list()`) with elements `"lhs"` and `"rhs"`, both `character()`.
 #' @export
 #' @examples
-#' f = Species ~ Sepal.Width + Sepal.Length
-#' extract_vars(f)
+#' extract_vars(Species ~ Sepal.Width + Sepal.Length)
+#' extract_vars(Species ~ .)
 extract_vars = function(f) {
   assert_formula(f)
   res = named_list(c("lhs", "rhs"))

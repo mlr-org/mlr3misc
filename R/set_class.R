@@ -1,8 +1,11 @@
-#' @title A wrapper for \code{class(x) = classes}.
+#' @title Set the Class
 #'
-#' @param x (any):
+#' @description
+#' Simple wrapper for `class(x) = classes`.
+#'
+#' @param x :: any\cr
 #'   Your object.
-#' @param classes (`character(1)`):
+#' @param classes :: `character(1)`\cr
 #'   Vector of new classes.
 #'
 #' @return Changed object \code{x}.

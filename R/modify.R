@@ -1,4 +1,4 @@
-#' @title Modify elements of a vector
+#' @title Selectively Modify Elements of a Vector
 #'
 #' @description
 #' Modifies elements of a vector selectively, similar to the functions in \CRANpkg{purrr}.
@@ -8,14 +8,14 @@
 #'
 #' `modify_at()` applies `.f` to those elements of `.x` selected via `.at`.
 #'
-#' @param .x (`vector()`).
-#' @param .p (`function()`):
+#' @param .x :: `vector()`.
+#' @param .p :: `function()`\cr
 #'   Predicate function.
-#' @param .f (`function()`):
+#' @param .f :: `function()`\cr
 #'   Function to apply on `.x`.
-#' @param .at (`integer()` | `character()`):
+#' @param .at :: (`integer()` | `character()`)\cr
 #'   Index vector to select elements from `.x`.
-#' @param ... (any):
+#' @param ... :: any\cr
 #'   Additional arguments passed to `.f`.
 #' @export
 #' @examples

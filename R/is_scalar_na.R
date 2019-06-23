@@ -1,6 +1,6 @@
-#' @title Check if an argument is a single scalar value
+#' @title Check for a Single Scalar Value
 #'
-#' @param x (any):
+#' @param x :: any\cr
 #'   Argument to check.
 #' @return (`logical(1)`).
 #' @export

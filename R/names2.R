@@ -1,14 +1,15 @@
-#' @title A type-stable names() replacement
+#' @title A Type-Stable names() Replacement
 #'
 #' @description
 #' A simple wrapper around [base::names()].
 #' Returns a character vector even if no names attribute is set.
 #' Values `NA` and `""` are treated as missing and replaced with the value provided in `missing_val`.
 #'
-#' @param x (any):
+#' @param x :: any\cr
 #'   Object.
-#' @param missing_val (`atomic(1)`):
-#'   Value to set for missing names. Default is `NA_character_`.
+#' @param missing_val :: `atomic(1)`\cr
+#'   Value to set for missing names.
+#'   Default is `NA_character_`.
 #'
 #' @return (`character(length(x))`).
 #' @export

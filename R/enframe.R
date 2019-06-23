@@ -1,14 +1,14 @@
-#' @title Convert a named vector into a data.table
+#' @title Convert a Named Vector Into A data.table
 #'
 #' @description
 #' Returns a [data.table::data.table()] with two columns:
-#' The names of `x` (or seq along `x` if unnamed) and the values of `x`.
+#' The names of `x` (or `seq_along(x)` if unnamed) and the values of `x`.
 #'
-#' @param x (`vector()`):
+#' @param x :: `vector()`\cr
 #'   Vector to convert to a `data.table`.
-#' @param name (`character(1)`):
+#' @param name :: `character(1)`\cr
 #'   Name for the first column with names.
-#' @param value (`character(1)`):
+#' @param value :: `character(1)`\cr
 #'   Name for the second column with values.
 #'
 #' @return [data.table::data.table()].

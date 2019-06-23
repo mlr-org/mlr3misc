@@ -6,7 +6,7 @@
 \alias{seq_col}
 \alias{seq_len0}
 \alias{seq_along0}
-\title{Sequence construction helpers for mlr3}
+\title{Sequence Construction Helpers}
 \usage{
 seq_row(x)
 
@@ -17,10 +17,10 @@ seq_len0(n)
 seq_along0(x)
 }
 \arguments{
-\item{x}{(any):
+\item{x}{:: any\cr
 Arbitrary object. Used to query its rows, cols or length.}
 
-\item{n}{(\code{integer(1)}):
+\item{n}{:: \code{integer(1)}\cr
 Length of the sequence.}
 }
 \description{

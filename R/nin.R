@@ -1,8 +1,11 @@
-#' @title Negated \code{in} operator
+#' @title Negated in-operator
 #'
-#' @param x (`vector()`):
+#' @description
+#' This operator is equivalent to `!(x %in% y)`.
+#'
+#' @param x :: `vector()`\cr
 #'   Values that should not be in `y`.
-#' @param y (`vector()`):
+#' @param y :: `vector()`\cr
 #'   Values to match against.
 #' @usage x \%nin\% y
 #' @rdname nin

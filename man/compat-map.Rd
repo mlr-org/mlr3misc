@@ -86,38 +86,40 @@ every(.x, .p, ...)
 some(.x, .p, ...)
 }
 \arguments{
-\item{.x}{(\code{list()} or atomic \code{vector}).}
+\item{.x}{:: (\code{list()} or atomic \code{vector}).}
 
-\item{.f}{(\code{function} | \code{character()} | \code{integer()}):
-Function to apply.}
+\item{.f}{:: (\code{function} | \code{character()} | \code{integer()})\cr
+Function to apply, or element to extract by name (if \code{.f} is \code{character()}) or position (if \code{.f} is \code{integer()}).}
 
-\item{...}{(any):
+\item{...}{:: (any)\cr
 Additional arguments passed down to \code{.f} or \code{.p}.}
 
-\item{.fill}{(\code{logical(1)}):
+\item{.fill}{:: \code{logical(1)})\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.p}{(\code{function} | \code{logical()}):
+\item{.p}{:: (\code{function} | \code{logical()})\cr
 Predicate function.}
 
-\item{.at}{(\code{character()} | \code{integer()} | \code{logical()}):
+\item{.at}{:: (\code{character()} | \code{integer()} | \code{logical()})\cr
 Index vector.}
 }
 \description{
-\code{map}-like functions, similar to the ones implemented in \CRANpkg{purrr}.
-
-\code{map()} returns the results of \code{.f} applied to \code{.x} as list.
-If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using
-the value of \code{.f} as index.
-
-\code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
+\code{map}-like functions, similar to the ones implemented in \CRANpkg{purrr}:
+\itemize{
+\item \code{map()} returns the results of \code{.f} applied to \code{.x} as list.
+If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using the value of \code{.f} as index.
+\item \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
+\item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector of \code{.x}, then the second element of \code{.x}, and so on.
+\item \code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
+\item \code{map_at()} applies \code{.f} to each element of \code{.x} referenced by \code{.at}. All other elements remain unchanged.
+\item \code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE},
+\item \code{discard()} discards those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}.
+\item \code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
+\item \code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
+}
 
-\code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector
-of \code{.x}, then the second element of \code{.x}, and so on.
-
-The type-safe variants of map functions will convert the return value of \code{.f}, depending on the
-suffix:
+Additionally, the functions \code{map()}, \code{imap()} and \code{pmap} have type-safe variants with the following suffixes:
 \itemize{
 \item \code{*_lgl()} returns a \code{logical(length(.x))}.
 \item \code{*_int()} returns a \code{integer(length(.x))}.
@@ -126,13 +128,4 @@ suffix:
 \item \code{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
 \item \code{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
-
-\code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
-
-\code{map_at()} applies \code{.f} to each element of \code{.x} referenced by \code{.at}. All other elements remain unchanged.
-
-\code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}, while \code{discard()} discards them.
-
-\code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
-\code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
 }

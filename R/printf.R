@@ -1,14 +1,14 @@
-#' @title Output and condition helpers for mlr3
+#' @title Functions for Formated Output and Conditions
 #'
 #' @description
 #' `catf()`, `messagef()`, `warningf()` and `stopf()` are wrappers around [base::cat()],
 #' [base::message()], [base::warning()] and [base::stop()], respectively.
 #'
-#' @param msg (`character(1)):
+#' @param msg :: `character(1)`\cr
 #'   Format string passed to [base::sprintf()].
-#' @param file (`character(1)):
+#' @param file :: `character(1)`\cr
 #'   Passed to [base::cat()].
-#' @param ... (any):
+#' @param ... :: any\cr
 #'   Arguments passed down to [base::sprintf()].
 #' @name printf
 NULL

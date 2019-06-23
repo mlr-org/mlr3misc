@@ -1,20 +1,20 @@
-#' @title Loads and Returns a Single Data Set
+#' @title Retrieve a Single Data Set
 #'
 #' @description
 #' Loads a data set with name `id` from package `package` and returns it.
 #' If the package is not installed, an error with condition "packageNotFoundError" is raised.
 #' The name of the missing packages is stored in the condition as `packages`.
 #'
-#' @param id (`character(1)`):
+#' @param id :: `character(1)`\cr
 #'   Name of the data set.
-#' @param package (`character(1)`):
+#' @param package :: `character(1)`\cr
 #'   Package to load the data set from.
-#' @param keep_rownames (`logical(1)`):
+#' @param keep_rownames :: `logical(1)`\cr
 #'   Keep possible row names (default: `FALSE`).
 #'
 #' @export
 #' @examples
-#' load_dataset("iris", "datasets")
+#' head(load_dataset("iris", "datasets"))
 load_dataset = function(id, package, keep_rownames = FALSE) {
 
   assert_string(id)

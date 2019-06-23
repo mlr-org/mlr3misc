@@ -2,18 +2,18 @@
 % Please edit documentation in R/compute_mode.R
 \name{compute_mode}
 \alias{compute_mode}
-\title{Compute the mode}
+\title{Compute The Mode}
 \usage{
 compute_mode(x, ties_method = "random", na_rm = TRUE)
 }
 \arguments{
-\item{x}{(\code{vector()}).}
+\item{x}{:: \code{vector()}.}
 
-\item{ties_method}{(\code{character(1)}):
+\item{ties_method}{:: \code{character(1)}\cr
 Handling of ties. One of "first", "last" or "random" to return the first tied value,
 the last tied value, or a randomly selected tied value, respectively.}
 
-\item{na_rm}{(\code{logical(1)}):
+\item{na_rm}{:: \code{logical(1)}\cr
 If \code{TRUE}, remove missing values prior to computing the mode.}
 }
 \value{

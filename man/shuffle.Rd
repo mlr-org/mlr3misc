@@ -2,22 +2,23 @@
 % Please edit documentation in R/shuffle.R
 \name{shuffle}
 \alias{shuffle}
-\title{A Safe Version of Sample}
+\title{Safe Version of Sample}
 \usage{
 shuffle(x, n = length(x), ...)
 }
 \arguments{
-\item{x}{(\code{vector}):
+\item{x}{:: \code{vector()}\cr
 Vector to sample elements from.}
 
-\item{n}{(\code{integer}):
+\item{n}{:: \code{integer()}\cr
 Number of elements to sample.}
 
-\item{...}{(any):
+\item{...}{:: any\cr
 Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{
-A version of \code{sample()} which does not treat scalar integer \code{x} differently
+A version of \code{sample()} which does not treat positive scalar integer \code{x} differently.
+See example.
 }
 \examples{
 x = 2:3

@@ -2,17 +2,17 @@
 % Please edit documentation in R/nin.R
 \name{\%nin\%}
 \alias{\%nin\%}
-\title{Negated \code{in} operator}
+\title{Negated in-operator}
 \usage{
 x \%nin\% y
 }
 \arguments{
-\item{x}{(\code{vector()}):
+\item{x}{:: \code{vector()}\cr
 Values that should not be in \code{y}.}
 
-\item{y}{(\code{vector()}):
+\item{y}{:: \code{vector()}\cr
 Values to match against.}
 }
 \description{
-Negated \code{in} operator
+This operator is equivalent to \code{!(x \%in\% y)}.
 }

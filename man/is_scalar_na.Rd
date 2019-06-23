@@ -2,17 +2,17 @@
 % Please edit documentation in R/is_scalar_na.R
 \name{is_scalar_na}
 \alias{is_scalar_na}
-\title{Check if an argument is a single scalar value}
+\title{Check for a Single Scalar Value}
 \usage{
 is_scalar_na(x)
 }
 \arguments{
-\item{x}{(any):
+\item{x}{:: any\cr
 Argument to check.}
 }
 \value{
 (\code{logical(1)}).
 }
 \description{
-Check if an argument is a single scalar value
+Check for a Single Scalar Value
 }

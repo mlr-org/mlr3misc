@@ -10,7 +10,7 @@
 \alias{remove_named.environment}
 \alias{remove_named.data.frame}
 \alias{remove_named.data.table}
-\title{Insert or remove named elements}
+\title{Insert or Remove Named Elements}
 \usage{
 insert_named(x, y)
 
@@ -31,14 +31,14 @@ remove_named(x, nn)
 \method{remove_named}{data.table}(x, nn)
 }
 \arguments{
-\item{x}{(\code{list()} | \code{environment} | \code{data.table}]:
-Object to insert elements into.
+\item{x}{:: (\code{vector()} | \code{list()} | \code{environment()} | \code{data.table()})\cr
+Object to insert elements into, or remove elements from.
 Changes are by-reference for environments and data tables.}
 
-\item{y}{(\code{list()}):
+\item{y}{:: \code{list()}\cr
 List of elements to insert into \code{x}.}
 
-\item{nn}{(\code{character()}):
+\item{nn}{:: \code{character()}\cr
 Character vector of elements to remove.}
 }
 \value{
@@ -46,6 +46,11 @@ Updated object.
 }
 \description{
 Insert elements from \code{y} into \code{x} by name, or remove elements from \code{x} by name.
-Works for lists, environments and data frames and data tables.
+Works for vectors, lists, environments and data frames and data tables.
 Objects with reference semantic (\code{environment} and \code{data.table}) might be modified in-place.
+}
+\examples{
+x = list(a = 1, b = 2)
+insert_named(x, list(b = 3, c = 4))
+remove_named(x, "b")
 }

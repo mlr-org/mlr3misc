@@ -2,18 +2,18 @@
 % Please edit documentation in R/load_dataset.R
 \name{load_dataset}
 \alias{load_dataset}
-\title{Loads and Returns a Single Data Set}
+\title{Retrieve a Single Data Set}
 \usage{
 load_dataset(id, package, keep_rownames = FALSE)
 }
 \arguments{
-\item{id}{(\code{character(1)}):
+\item{id}{:: \code{character(1)}\cr
 Name of the data set.}
 
-\item{package}{(\code{character(1)}):
+\item{package}{:: \code{character(1)}\cr
 Package to load the data set from.}
 
-\item{keep_rownames}{(\code{logical(1)}):
+\item{keep_rownames}{:: \code{logical(1)}\cr
 Keep possible row names (default: \code{FALSE}).}
 }
 \description{
@@ -22,5 +22,5 @@ If the package is not installed, an error with condition "packageNotFoundError" 
 The name of the missing packages is stored in the condition as \code{packages}.
 }
 \examples{
-load_dataset("iris", "datasets")
+head(load_dataset("iris", "datasets"))
 }
