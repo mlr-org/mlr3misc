@@ -1,4 +1,4 @@
-#' @rawNamespace import(data.table, except = transpose)
+#' @import data.table
 #' @import checkmate
 #' @importFrom utils head adist
 #' @importFrom stats setNames as.formula terms runif
