@@ -1,4 +1,4 @@
-#' @title Purrr-like Apply Functions
+#' @title Apply Functions in the spirit of 'purrr'
 #'
 #' @description
 #' `map`-like functions, similar to the ones implemented in \CRANpkg{purrr}:
@@ -219,8 +219,12 @@ map_if = function(.x, .p, .f, ...) {
 #' @export
 #' @rdname compat-map
 map_at = function(.x, .at, .f, ...) {
-  .x[.at] = map(.x[.at], .f, ...)
-  .x
+  if (is.data.table(.x)) {
+    .x[, (.at) := map(.SD, .f), .SDcols = .at][]
+  } else {
+    .x[.at] = map(.x[.at], .f, ...)
+    .x
+  }
 }
 
 #' @export

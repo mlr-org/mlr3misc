@@ -29,7 +29,7 @@
 \alias{map_at}
 \alias{every}
 \alias{some}
-\title{Purrr-like Apply Functions}
+\title{Apply Functions in the spirit of 'purrr'}
 \usage{
 map(.x, .f, ...)
 

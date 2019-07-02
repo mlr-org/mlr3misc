@@ -1,4 +1,4 @@
-#' @title Functions for Formated Output and Conditions
+#' @title Functions for Formatted Output and Conditions
 #'
 #' @description
 #' `catf()`, `messagef()`, `warningf()` and `stopf()` are wrappers around [base::cat()],

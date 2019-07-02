@@ -11,11 +11,11 @@
 #' @examples
 #' x = list(list(a = 2, b = 3), list(a = 5, b = 10))
 #' str(x)
-#' str(transpose(x))
+#' str(transpose_list(x))
 #'
 #' # list of data frame rows:
-#' transpose(iris[1:2, ])
-transpose = function(.l) {
+#' transpose_list(iris[1:2, ])
+transpose_list = function(.l) {
   assert(check_list(.l), check_data_frame(.l))
   if (length(.l) == 0L) {
     return(list())

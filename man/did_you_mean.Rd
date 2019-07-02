@@ -18,7 +18,7 @@ Candidate strings.}
 or an empty string if no close match is found.
 }
 \description{
-Helps to suggest something from a list of names, if the user mistyped in an argument check.
+Helps to suggest alternatives from a list of strings, based on the string similarity in \code{\link[base:adist]{base::adist()}}.
 }
 \examples{
 did_you_mean("yep", c("yes", "no"))

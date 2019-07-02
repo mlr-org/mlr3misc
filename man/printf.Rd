@@ -6,7 +6,7 @@
 \alias{messagef}
 \alias{warningf}
 \alias{stopf}
-\title{Functions for Formated Output and Conditions}
+\title{Functions for Formatted Output and Conditions}
 \usage{
 catf(msg, ..., file = "")
 
