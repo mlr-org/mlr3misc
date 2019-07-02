@@ -41,7 +41,7 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 (\code{character(1)}, \code{any}, ..., \code{character()}) -> \code{self}\cr
 Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
 Additional arguments in \code{...} are used as default arguments for \code{value} during construction.
-If the object is not constructible without additional arguments, the require argument names should be provided in \code{required_args}.
+If the object cannot be constructed without additional arguments, the require argument names should be provided in \code{required_args}.
 \item \code{remove(keys)}\cr
 \code{character()} -> \code{self}\cr
 Removes objects with keys \code{keys} from the dictionary.

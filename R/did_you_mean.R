@@ -1,7 +1,7 @@
 #' @title Suggest Alternatives
 #'
 #' @description
-#' Helps to suggest something from a list of names, if the user mistyped in an argument check.
+#' Helps to suggest alternatives from a list of strings, based on the string similarity in [base::adist()].
 #'
 #' @param str :: `character(1)`\cr
 #'   String.

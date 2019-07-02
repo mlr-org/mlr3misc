@@ -1,4 +1,4 @@
-#' @title Purrr-like Apply Functions
+#' @title Apply Functions in the spirit of 'purrr'
 #'
 #' @description
 #' `map`-like functions, similar to the ones implemented in \CRANpkg{purrr}:
