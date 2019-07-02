@@ -128,6 +128,12 @@ test_that("map_if", {
 test_that("map_at", {
   x = iris
   x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
+  expect_data_frame(x, nrow = 150, ncol = 5)
+  expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
+
+  x = as.data.table(iris)
+  x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
+  expect_data_table(x, nrow = 150, ncol = 5)
   expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
 })
 
