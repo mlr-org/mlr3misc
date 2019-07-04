@@ -14,7 +14,7 @@ Vector of strings.}
 Width of the output.}
 
 \item{ellipsis}{:: \code{character(1)}\cr
-If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
+If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{"[...]"}.}
 }
 \value{
 (\code{character()}).

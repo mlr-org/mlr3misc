@@ -7,7 +7,7 @@
 set_names(x, nm = x, ...)
 }
 \arguments{
-\item{x}{:: \code{vector()}\cr}
+\item{x}{:: \code{vector()}.\cr}
 
 \item{nm}{:: (\code{character()} | \code{function()})\cr
 New names, or function which transforms already existing names.}
@@ -16,7 +16,7 @@ New names, or function which transforms already existing names.}
 Passed down to \code{nm} if \code{nm} is a function.}
 }
 \value{
-\code{x} with names set.
+\code{x} with updated names.
 }
 \description{
 Sets the names of \code{x} to \code{nm}.

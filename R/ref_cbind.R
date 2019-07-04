@@ -1,5 +1,6 @@
 #' @title Bind Columns by Reference
 #'
+#' @description
 #' Performs [base::cbind()] on [data.tables][data.table::data.table()], possibly by reference.
 #'
 #' @param x :: [data.table::data.table()]\cr
@@ -9,7 +10,7 @@
 #'
 #' @return Updated `x` (`data.table`).
 #' @export
-ref_cbind = function(x, y) {
+rcbind = function(x, y) {
 
   assert_data_table(x)
   assert_data_table(y)

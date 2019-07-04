@@ -13,7 +13,7 @@
 #' @param nn :: `character()`\cr
 #'   Character vector of elements to remove.
 #'
-#' @return Updated object.
+#' @return Modified object.
 #' @export
 #' @examples
 #' x = list(a = 1, b = 2)

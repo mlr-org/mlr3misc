@@ -30,7 +30,7 @@ unnest = function(x, cols, prefix = NULL) {
     if (!is.null(prefix)) {
       setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
     }
-    x = ref_cbind(remove_named(x, col), tmp)
+    x = rcbind(remove_named(x, col), tmp)
   }
   x[]
 }

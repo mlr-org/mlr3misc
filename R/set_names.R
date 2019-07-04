@@ -4,13 +4,13 @@
 #' Sets the names of `x` to `nm`.
 #' If `nm` is a function, it is used to transform the already existing names of `x`.
 #'
-#' @param x :: `vector()`\cr
+#' @param x :: `vector()`.\cr
 #' @param nm :: (`character()` | `function()`)\cr
 #'   New names, or function which transforms already existing names.
 #' @param ... :: any\cr
 #'   Passed down to `nm` if `nm` is a function.
 #'
-#' @return `x` with names set.
+#' @return `x` with updated names.
 #'
 #' @export
 #' @examples

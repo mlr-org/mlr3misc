@@ -42,7 +42,7 @@ List of elements to insert into \code{x}.}
 Character vector of elements to remove.}
 }
 \value{
-Updated object.
+Modified object.
 }
 \description{
 Insert elements from \code{y} into \code{x} by name, or remove elements from \code{x} by name.

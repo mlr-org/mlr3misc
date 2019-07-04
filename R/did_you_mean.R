@@ -5,7 +5,7 @@
 #'
 #' @param str :: `character(1)`\cr
 #'   String.
-#' @param candidates :: `character`\cr
+#' @param candidates :: `character()`\cr
 #'   Candidate strings.
 #' @return (`character(1)`). Either a phrase suggesting one or more candidates from `candidates`,
 #'   or an empty string if no close match is found.

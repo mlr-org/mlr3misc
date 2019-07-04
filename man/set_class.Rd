@@ -7,14 +7,13 @@
 set_class(x, classes)
 }
 \arguments{
-\item{x}{:: any\cr
-Your object.}
+\item{x}{:: any.}
 
 \item{classes}{:: \code{character(1)}\cr
-Vector of new classes.}
+Vector of new class names.}
 }
 \value{
-Changed object \code{x}.
+Object \code{x}, with updated class attribute.
 }
 \description{
 Simple wrapper for \code{class(x) = classes}.

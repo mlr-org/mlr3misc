@@ -8,8 +8,8 @@
 #' * NB3: Clones of R6 objects are not detected.
 #'
 #' @inheritParams map
-#' @param .y :: (any)\cr
-#'   Object to test for
+#' @param .y :: any\cr
+#'   Object to test for.
 #' @export
 #' @examples
 #' has_element(list(1, 2, 3), 1)

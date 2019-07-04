@@ -12,10 +12,10 @@
 #'
 #' @param nodes :: [data.table::data.table()]\cr
 #'   Has 2 columns:
-#'     * `id` of type `character`, contains all node labels.
-#'     * `parents` of type `list` of `character`, contains all direct parents label of `id`.
+#'   * `id` of type `character`, contains all node labels.
+#'   * `parents` of type `list` of `character`, contains all direct parents label of `id`.
 #'
-#' @return `data.table`, with columns `id`, `depth`, sorted topologically for IDs.
+#' @return (`data.table()`) with columns `id`, `depth`, sorted topologically for IDs.
 #' @export
 #' @examples
 #' nodes = rowwise_table(

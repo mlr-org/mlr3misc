@@ -7,13 +7,14 @@
 #' The following rules apply:
 #'
 #' * if `x` is `atomic()` with length 0 or 1: printed as-is.
-#' * if `x` is `atomic()` with length greater than 1, `x` is collapsed with ",", and the resulting string is truncated to `trunc_width` characters.
+#' * if `x` is `atomic()` with length greater than 1, `x` is collapsed with `","`,
+#'   and the resulting string is truncated to `trunc_width` characters.
 #' * if `x` is an expression: converted to character.
 #' * Otherwise: the class is printed.
 #'
 #' If `x` is a list, the above rules are applied (non-recursively) to its elements.
 #'
-#' @param x :: (any)\cr
+#' @param x :: any\cr
 #'   Arbitrary object.
 #' @param width :: `integer(1)`\cr
 #'   Truncate strings to width `width`.

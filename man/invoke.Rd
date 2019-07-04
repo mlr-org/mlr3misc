@@ -14,7 +14,7 @@ Function to call.}
 Additional function arguments passed to \code{.f}.}
 
 \item{.args}{:: \code{list()}\cr
-Additional function arguments passed to \code{.f}, as (named) list.
+Additional function arguments passed to \code{.f}, as (named) \code{list()}.
 These arguments will be concatenated to the arguments provided via \code{...}.}
 }
 \description{

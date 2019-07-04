@@ -1,4 +1,4 @@
-#' @title Row-Wise Fashion constructor for data.table
+#' @title Row-Wise Constructor for 'data.table'
 #'
 #' @description
 #' Similar to the \CRANpkg{tibble} function `tribble()`, this function
@@ -8,7 +8,8 @@
 #' The remaining arguments will be put into the resulting table.
 #'
 #' @param ... :: any\cr
-#'   Arguments: Column names first as formula, then the tabular data.
+#'   Arguments: Column names in first rows as formulas (with empty left hand side),
+#'   then the tabular data in the following rows.
 #'
 #' @return [`data.table::data.table()`].
 #' @export

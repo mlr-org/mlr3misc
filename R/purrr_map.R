@@ -10,7 +10,7 @@
 #' * `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector of `.x`, then the second element of `.x`, and so on.
 #' * `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
 #' * `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
-#' * `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`,
+#' * `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`.
 #' * `discard()` discards those elements of `.x` where predicate `.p` evaluates to `TRUE`.
 #' * `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
 #' * `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
@@ -28,13 +28,13 @@
 #' @param .x :: (`list()` or atomic `vector`).
 #' @param .f :: (`function` | `character()` | `integer()`)\cr
 #'   Function to apply, or element to extract by name (if `.f` is `character()`) or position (if `.f` is `integer()`).
-#' @param .p :: (`function` | `logical()`)\cr
+#' @param .p :: (`function()` | `logical()`)\cr
 #'   Predicate function.
 #' @param .at :: (`character()` | `integer()` | `logical()`)\cr
 #'   Index vector.
-#' @param ... :: (any)\cr
+#' @param ... :: any\cr
 #'   Additional arguments passed down to `.f` or `.p`.
-#' @param .fill :: `logical(1)`)\cr
+#' @param .fill :: `logical(1)`\cr
 #'   Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map

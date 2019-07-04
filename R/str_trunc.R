@@ -8,7 +8,7 @@
 #' @param width :: `integer(1)`\cr
 #'   Width of the output.
 #' @param ellipsis :: `character(1)`\cr
-#'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `" [...]"`.
+#'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `"[...]"`.
 #'
 #' @return (`character()`).
 #' @export

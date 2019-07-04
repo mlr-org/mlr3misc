@@ -9,8 +9,8 @@ has_element(.x, .y)
 \arguments{
 \item{.x}{:: (\code{list()} or atomic \code{vector}).}
 
-\item{.y}{:: (any)\cr
-Object to test for}
+\item{.y}{:: any\cr
+Object to test for.}
 }
 \description{
 Simply checks if a list contains a given object.

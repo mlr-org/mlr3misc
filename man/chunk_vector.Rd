@@ -21,15 +21,15 @@ Mutually exclusive with \code{chunk_size} and \code{props}.}
 Requested number of elements in each chunk.
 Mutually exclusive with \code{n_chunks} and \code{props}.}
 
-\item{shuffle}{:: \code{logical(1)}:
+\item{shuffle}{:: \code{logical(1)}\cr
 If \code{TRUE}, permutes the order of \code{x} before chunking.}
 
 \item{n}{:: \code{integer(1)}\cr
 Length of vector to split.}
 }
 \value{
-\code{chunk()} returns a (\code{integer()}) of chunk indices,
-\code{chunk_vector()} a \code{list()} with chunked elements.
+\code{chunk()} returns a \code{integer()} of chunk indices,
+\code{chunk_vector()} a \code{list()} of \code{integer} vectors.
 }
 \description{
 Chunk atomic vectors into parts of roughly equal size.

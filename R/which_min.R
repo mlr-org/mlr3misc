@@ -31,7 +31,7 @@ which_min = function(x, ties_method = "random") {
 #' @rdname which_min
 #' @export
 which_max = function(x, ties_method = "random") {
-  assert_vector(x, strict = TRUE)
+  assert_numeric(x)
   if (length(x) == 0L) {
     return(integer())
   }

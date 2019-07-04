@@ -13,10 +13,11 @@
 #' @param n_chunks :: `integer(1)`\cr
 #'   Requested number of chunks.
 #'   Mutually exclusive with `chunk_size` and `props`.
-#' @param shuffle :: `logical(1)`:
+#' @param shuffle :: `logical(1)`\cr
 #'   If `TRUE`, permutes the order of `x` before chunking.
-#' @return `chunk()` returns a (`integer()`) of chunk indices,
-#'   `chunk_vector()` a `list()` with chunked elements.
+#'
+#' @return `chunk()` returns a `integer()` of chunk indices,
+#'   `chunk_vector()` a `list()` of `integer` vectors.
 #' @export
 #' @examples
 #' x = 1:11

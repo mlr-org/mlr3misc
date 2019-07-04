@@ -2,13 +2,14 @@
 % Please edit documentation in R/rowwise_table.R
 \name{rowwise_table}
 \alias{rowwise_table}
-\title{Row-Wise Fashion constructor for data.table}
+\title{Row-Wise Constructor for 'data.table'}
 \usage{
 rowwise_table(...)
 }
 \arguments{
 \item{...}{:: any\cr
-Arguments: Column names first as formula, then the tabular data.}
+Arguments: Column names in first rows as formulas (with empty left hand side),
+then the tabular data in the following rows.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.

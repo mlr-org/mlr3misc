@@ -14,7 +14,7 @@
 #' @param ... :: any\cr
 #'   Additional function arguments passed to `.f`.
 #' @param .args :: `list()`\cr
-#'   Additional function arguments passed to `.f`, as (named) list.
+#'   Additional function arguments passed to `.f`, as (named) `list()`.
 #'   These arguments will be concatenated to the arguments provided via `...`.
 #' @export
 #' @examples

@@ -31,11 +31,12 @@ seq_col = function(x) {
 #' @rdname sequence_helpers
 seq_len0 = function(n) {
   n = assert_int(n, coerce = TRUE)
-  if (n >= 1L) seq(from = 0L, to = n - 1L) else integer(0L)
+  if (n >= 1L) 0L:(n - 1L) else integer(0L)
 }
 
 #' @export
 #' @rdname sequence_helpers
 seq_along0 = function(x) {
-  seq_len0(length(x))
+  n = length(x)
+  if (n >= 1L) 0L:(n - 1L) else integer(0L)
 }

@@ -9,11 +9,13 @@ topo_sort(nodes)
 \arguments{
 \item{nodes}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
 Has 2 columns:
-* \code{id} of type \code{character}, contains all node labels.
-* \code{parents} of type \code{list} of \code{character}, contains all direct parents label of \code{id}.}
+\itemize{
+\item \code{id} of type \code{character}, contains all node labels.
+\item \code{parents} of type \code{list} of \code{character}, contains all direct parents label of \code{id}.
+}}
 }
 \value{
-\code{data.table}, with columns \code{id}, \code{depth}, sorted topologically for IDs.
+(\code{data.table()}) with columns \code{id}, \code{depth}, sorted topologically for IDs.
 }
 \description{
 Topologically sort a graph, where we are passed node labels and a list of direct

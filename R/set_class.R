@@ -3,12 +3,11 @@
 #' @description
 #' Simple wrapper for `class(x) = classes`.
 #'
-#' @param x :: any\cr
-#'   Your object.
+#' @param x :: any.
 #' @param classes :: `character(1)`\cr
-#'   Vector of new classes.
+#'   Vector of new class names.
 #'
-#' @return Changed object \code{x}.
+#' @return Object \code{x}, with updated class attribute.
 #' @export
 #' @examples
 #' set_class(list(), c("foo1", "foo2"))

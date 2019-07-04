@@ -7,7 +7,7 @@
 as_short_string(x, width = 30L, num_format = "\%.4g")
 }
 \arguments{
-\item{x}{:: (any)\cr
+\item{x}{:: any\cr
 Arbitrary object.}
 
 \item{width}{:: \code{integer(1)}\cr
@@ -26,7 +26,8 @@ e.g. in \code{\link[base:print]{base::print()}} functions.
 The following rules apply:
 \itemize{
 \item if \code{x} is \code{atomic()} with length 0 or 1: printed as-is.
-\item if \code{x} is \code{atomic()} with length greater than 1, \code{x} is collapsed with ",", and the resulting string is truncated to \code{trunc_width} characters.
+\item if \code{x} is \code{atomic()} with length greater than 1, \code{x} is collapsed with \code{","},
+and the resulting string is truncated to \code{trunc_width} characters.
 \item if \code{x} is an expression: converted to character.
 \item Otherwise: the class is printed.
 }
