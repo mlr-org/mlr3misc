@@ -2,27 +2,27 @@ Package: mlr3misc
 Title: Helper Functions for 'mlr3'
 Version: 0.9.0
 Authors@R:
-    c(person(given = "Michel",
-             family = "Lang",
-             role = c("cre", "aut"),
-             email = "michellang@gmail.com",
-             comment = c(ORCID = "0000-0001-9754-0393")))
-Description: Frequently used helper functions and assertions used in 'mlr3' and
-    its companion packages.
+    person(given = "Michel",
+           family = "Lang",
+           role = c("cre", "aut"),
+           email = "michellang@gmail.com",
+           comment = c(ORCID = "0000-0001-9754-0393"))
+Description: Frequently used helper functions and assertions
+    used in 'mlr3' and its companion packages.
 License: MIT + file LICENSE
+URL: https://mlr3misc.mlr-org.com
+BugReports: https://github.com/mlr-org/mlr3misc/issues
 Depends:
     R (>= 3.1.0)
 Imports:
-    R6,
     backports,
     checkmate,
-    data.table
+    data.table,
+    R6
 Suggests:
     testthat
 ByteCompile: true
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-URL: https://mlr3misc.mlr-org.com
-BugReports: https://github.com/mlr-org/mlr3misc/issues
 RoxygenNote: 6.1.1
