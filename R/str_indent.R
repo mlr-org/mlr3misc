@@ -11,7 +11,7 @@
 #'   Width of the output.
 #' @param exdent :: `integer(1)`\cr
 #'   Indentation of subsequent lines in paragraph.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Additional parameters passed to [str_collapse()].
 #'
 #' @return (`character()`).

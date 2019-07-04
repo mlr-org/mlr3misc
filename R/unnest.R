@@ -4,13 +4,13 @@
 #' Transforms each element of a list columns into its own column, possibly by reference.
 #'
 #' @param x :: [data.table::data.table()]\cr
-#'   `data.table` with columns to unnest.
+#'   [data.table::data.table()] with columns to unnest.
 #' @param cols :: `character()`\cr
 #'   Column names of list columns to operate on.
 #' @param prefix :: `character(1)`\cr
 #'   String to prefix the new column names with.
 #'
-#' @return (`data.table()`).
+#' @return ([data.table::data.table()]).
 #' @export
 #' @examples
 #' x = data.table::data.table(

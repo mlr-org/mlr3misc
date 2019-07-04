@@ -8,7 +8,7 @@
 #'   Format string passed to [base::sprintf()].
 #' @param file :: `character(1)`\cr
 #'   Passed to [base::cat()].
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Arguments passed down to [base::sprintf()].
 #' @name printf
 NULL

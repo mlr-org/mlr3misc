@@ -10,7 +10,7 @@ invoke(.f, ..., .args = list())
 \item{.f}{:: \code{function()}\cr
 Function to call.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Additional function arguments passed to \code{.f}.}
 
 \item{.args}{:: \code{list()}\cr

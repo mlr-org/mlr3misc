@@ -20,7 +20,7 @@ Width of the output.}
 \item{exdent}{:: \code{integer(1)}\cr
 Indentation of subsequent lines in paragraph.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}}.}
 }
 \value{

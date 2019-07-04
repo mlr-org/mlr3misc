@@ -15,7 +15,7 @@
 #'   Function to apply on `.x`.
 #' @param .at :: (`integer()` | `character()`)\cr
 #'   Index vector to select elements from `.x`.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Additional arguments passed to `.f`.
 #' @export
 #' @examples

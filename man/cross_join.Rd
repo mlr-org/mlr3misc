@@ -11,7 +11,7 @@ cross_join(dots, sorted = TRUE, unique = FALSE)
 Vectors to cross-join.}
 
 \item{sorted}{(\code{logical(1)})\cr
-See \code{data.table::CJ()}.}
+See \code{\link[data.table:CJ]{data.table::CJ()}}.}
 
 \item{unique}{(\code{logical(1)})\cr
 See \code{\link[data.table:CJ]{data.table::CJ()}}.}

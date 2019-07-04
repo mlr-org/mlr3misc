@@ -17,7 +17,7 @@ seq_len0(n)
 seq_along0(x)
 }
 \arguments{
-\item{x}{:: any\cr
+\item{x}{:: \code{any}\cr
 Arbitrary object. Used to query its rows, cols or length.}
 
 \item{n}{:: \code{integer(1)}\cr

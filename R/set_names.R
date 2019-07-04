@@ -7,7 +7,7 @@
 #' @param x :: `vector()`.\cr
 #' @param nm :: (`character()` | `function()`)\cr
 #'   New names, or function which transforms already existing names.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Passed down to `nm` if `nm` is a function.
 #'
 #' @return `x` with updated names.

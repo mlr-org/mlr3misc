@@ -2,7 +2,7 @@
 #'
 #' @param nn :: `character()`\cr
 #'   Names of new list.
-#' @param init :: any\cr
+#' @param init :: `any`\cr
 #'   All list elements are initialized to this value.
 #' @return (`list()`).
 #' @export

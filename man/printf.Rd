@@ -20,7 +20,7 @@ stopf(msg, ...)
 \item{msg}{:: \code{character(1)}\cr
 Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
 \item{file}{:: \code{character(1)}\cr

@@ -5,7 +5,7 @@
 #' The names of `x` (or `seq_along(x)` if unnamed) and the values of `x`.
 #'
 #' @param x :: `vector()`\cr
-#'   Vector to convert to a `data.table`.
+#'   Vector to convert to a [data.table::data.table()].
 #' @param name :: `character(1)`\cr
 #'   Name for the first column with names.
 #' @param value :: `character(1)`\cr

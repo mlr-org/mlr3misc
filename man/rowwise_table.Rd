@@ -7,7 +7,7 @@
 rowwise_table(...)
 }
 \arguments{
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Arguments: Column names in first rows as formulas (with empty left hand side),
 then the tabular data in the following rows.}
 }

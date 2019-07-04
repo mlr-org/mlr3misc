@@ -31,7 +31,7 @@ remove_named(x, nn)
 \method{remove_named}{data.table}(x, nn)
 }
 \arguments{
-\item{x}{:: (\code{vector()} | \code{list()} | \code{environment()} | \code{data.table()})\cr
+\item{x}{:: (\code{vector()} | \code{list()} | \code{environment()} | \code{\link[data.table:data.table]{data.table::data.table()}})\cr
 Object to insert elements into, or remove elements from.
 Changes are by-reference for environments and data tables.}
 
@@ -47,7 +47,7 @@ Modified object.
 \description{
 Insert elements from \code{y} into \code{x} by name, or remove elements from \code{x} by name.
 Works for vectors, lists, environments and data frames and data tables.
-Objects with reference semantic (\code{environment} and \code{data.table}) might be modified in-place.
+Objects with reference semantic (\code{environment()} and \code{\link[data.table:data.table]{data.table::data.table()}}) might be modified in-place.
 }
 \examples{
 x = list(a = 1, b = 2)

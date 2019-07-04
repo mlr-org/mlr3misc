@@ -54,7 +54,7 @@
 #' @section S3 methods:
 #' * `as.data.table(d)`\cr
 #'   [Dictionary] -> [data.table::data.table()]\cr
-#'   Converts the dictionary to a `data.table::data.table()`.
+#'   Converts the dictionary to a [data.table::data.table()].
 #'
 #' @family Dictionary
 #' @export

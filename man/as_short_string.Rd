@@ -7,7 +7,7 @@
 as_short_string(x, width = 30L, num_format = "\%.4g")
 }
 \arguments{
-\item{x}{:: any\cr
+\item{x}{:: \code{any}\cr
 Arbitrary object.}
 
 \item{width}{:: \code{integer(1)}\cr

@@ -8,7 +8,7 @@ enframe(x, name = "name", value = "value")
 }
 \arguments{
 \item{x}{:: \code{vector()}\cr
-Vector to convert to a \code{data.table}.}
+Vector to convert to a \code{\link[data.table:data.table]{data.table::data.table()}}.}
 
 \item{name}{:: \code{character(1)}\cr
 Name for the first column with names.}

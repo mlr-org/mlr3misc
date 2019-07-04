@@ -14,7 +14,7 @@
 #'
 #' If `x` is a list, the above rules are applied (non-recursively) to its elements.
 #'
-#' @param x :: any\cr
+#' @param x :: `any`\cr
 #'   Arbitrary object.
 #' @param width :: `integer(1)`\cr
 #'   Truncate strings to width `width`.

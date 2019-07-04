@@ -11,7 +11,7 @@
 #'
 #' @param .f :: `function()`\cr
 #'   Function to call.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Additional function arguments passed to `.f`.
 #' @param .args :: `list()`\cr
 #'   Additional function arguments passed to `.f`, as (named) `list()`.

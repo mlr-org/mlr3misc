@@ -3,7 +3,7 @@
 #' @description
 #' Simple wrapper for `class(x) = classes`.
 #'
-#' @param x :: any.
+#' @param x :: `any.`
 #' @param classes :: `character(1)`\cr
 #'   Vector of new class names.
 #'

@@ -32,7 +32,7 @@
 #'   Predicate function.
 #' @param .at :: (`character()` | `integer()` | `logical()`)\cr
 #'   Index vector.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Additional arguments passed down to `.f` or `.p`.
 #' @param .fill :: `logical(1)`\cr
 #'   Passed down to [data.table::rbindlist()].

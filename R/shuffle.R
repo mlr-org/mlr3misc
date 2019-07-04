@@ -8,7 +8,7 @@
 #'   Vector to sample elements from.
 #' @param n :: `integer()`\cr
 #'   Number of elements to sample.
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Arguments passed down to [base::sample.int()].
 #'
 #' @export

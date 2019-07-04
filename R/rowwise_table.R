@@ -7,11 +7,11 @@
 #' The first arguments passed as formula will be interpreted as column names.
 #' The remaining arguments will be put into the resulting table.
 #'
-#' @param ... :: any\cr
+#' @param ... :: `any`\cr
 #'   Arguments: Column names in first rows as formulas (with empty left hand side),
 #'   then the tabular data in the following rows.
 #'
-#' @return [`data.table::data.table()`].
+#' @return [data.table::data.table()].
 #' @export
 #' @examples
 #' rowwise_table(

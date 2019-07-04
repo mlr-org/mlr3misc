@@ -91,7 +91,7 @@ some(.x, .p, ...)
 \item{.f}{:: (\code{function} | \code{character()} | \code{integer()})\cr
 Function to apply, or element to extract by name (if \code{.f} is \code{character()}) or position (if \code{.f} is \code{integer()}).}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Additional arguments passed down to \code{.f} or \code{.p}.}
 
 \item{.fill}{:: \code{logical(1)}\cr

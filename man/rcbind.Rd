@@ -8,13 +8,13 @@ rcbind(x, y)
 }
 \arguments{
 \item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
-\code{data.table()} to add columns to.}
+\code{\link[data.table:data.table]{data.table::data.table()}} to add columns to.}
 
 \item{y}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
-\code{data.table()} to take columns from.}
+\code{\link[data.table:data.table]{data.table::data.table()}} to take columns from.}
 }
 \value{
-Updated \code{x} (\code{data.table}).
+(\code{\link[data.table:data.table]{data.table::data.table()}}): Updated \code{x} .
 }
 \description{
 Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.

@@ -7,7 +7,7 @@
 #' @param dots (named `list()`)\cr
 #'   Vectors to cross-join.
 #' @param sorted (`logical(1)`)\cr
-#'   See `data.table::CJ()`.
+#'   See [data.table::CJ()].
 #' @param unique (`logical(1)`)\cr
 #'   See [data.table::CJ()].
 #' @return [data.table()].

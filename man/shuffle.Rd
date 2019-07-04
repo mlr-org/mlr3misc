@@ -13,7 +13,7 @@ Vector to sample elements from.}
 \item{n}{:: \code{integer()}\cr
 Number of elements to sample.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{

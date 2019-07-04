@@ -12,7 +12,7 @@ set_names(x, nm = x, ...)
 \item{nm}{:: (\code{character()} | \code{function()})\cr
 New names, or function which transforms already existing names.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Passed down to \code{nm} if \code{nm} is a function.}
 }
 \value{

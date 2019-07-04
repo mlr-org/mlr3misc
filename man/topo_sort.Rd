@@ -15,7 +15,7 @@ Has 2 columns:
 }}
 }
 \value{
-(\code{data.table()}) with columns \code{id}, \code{depth}, sorted topologically for IDs.
+(\code{\link[data.table:data.table]{data.table::data.table()}}) with columns \code{id}, \code{depth}, sorted topologically for IDs.
 }
 \description{
 Topologically sort a graph, where we are passed node labels and a list of direct

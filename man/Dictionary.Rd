@@ -56,7 +56,7 @@ Returns the names of arguments required to construct the object.
 \itemize{
 \item \code{as.data.table(d)}\cr
 \link{Dictionary} -> \code{\link[data.table:data.table]{data.table::data.table()}}\cr
-Converts the dictionary to a \code{data.table::data.table()}.
+Converts the dictionary to a \code{\link[data.table:data.table]{data.table::data.table()}}.
 }
 }
 

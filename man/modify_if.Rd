@@ -18,7 +18,7 @@ Predicate function.}
 \item{.f}{:: \code{function()}\cr
 Function to apply on \code{.x}.}
 
-\item{...}{:: any\cr
+\item{...}{:: \code{any}\cr
 Additional arguments passed to \code{.f}.}
 
 \item{.at}{:: (\code{integer()} | \code{character()})\cr
