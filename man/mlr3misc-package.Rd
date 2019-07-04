@@ -12,7 +12,7 @@ Frequently used helper functions and assertions used in 'mlr3' and
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/mlr-org/mlr3misc}
+  \item \url{https://mlr3misc.mlr-org.com}
   \item Report bugs at \url{https://github.com/mlr-org/mlr3misc/issues}
 }
 
