@@ -21,9 +21,8 @@ Suggests:
     testthat
 ByteCompile: true
 Encoding: UTF-8
-LazyData: true
-NeedsCompilation: yes
+NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-URL: https://github.com/mlr-org/mlr3misc
+URL: https://mlr3misc.mlr-org.com
 BugReports: https://github.com/mlr-org/mlr3misc/issues
 RoxygenNote: 6.1.1
