@@ -1,7 +1,7 @@
 #' @title Suggest Alternatives
 #'
 #' @description
-#' Helps to suggest alternatives from a list of strings, based on the string similarity in [base::adist()].
+#' Helps to suggest alternatives from a list of strings, based on the string similarity in [utils::adist()].
 #'
 #' @param str :: `character(1)`\cr
 #'   String.
