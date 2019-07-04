@@ -3,7 +3,7 @@
 #' @importFrom utils head adist
 #' @importFrom stats setNames as.formula terms runif
 #' @importFrom R6 R6Class
-NULL
+"_PACKAGE"
 
 .onLoad = function(libname, pkgname) { # nocov start
   backports::import(pkgname)

@@ -14,8 +14,8 @@ Depends:
     R (>= 3.1.0)
 Imports:
     R6,
-    backports (>= 1.1.4),
-    checkmate (>= 1.9.0),
+    backports,
+    checkmate,
     data.table
 Suggests:
     testthat
