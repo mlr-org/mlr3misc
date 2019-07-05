@@ -6,8 +6,8 @@
 \alias{mlr3misc-package}
 \title{mlr3misc: Helper Functions for 'mlr3'}
 \description{
-Frequently used helper functions and assertions used in 'mlr3' and
-    its companion packages.
+Frequently used helper functions and assertions
+    used in 'mlr3' and its companion packages.
 }
 \seealso{
 Useful links:

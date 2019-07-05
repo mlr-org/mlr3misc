@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9754-0393"))
 Description: Frequently used helper functions and assertions
     used in 'mlr3' and its companion packages.
-License: MIT + file LICENSE
+License: LGPL-3
 URL: https://mlr3misc.mlr-org.com
 BugReports: https://github.com/mlr-org/mlr3misc/issues
 Depends:
