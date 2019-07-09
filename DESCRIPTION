@@ -8,7 +8,10 @@ Authors@R:
            email = "michellang@gmail.com",
            comment = c(ORCID = "0000-0001-9754-0393"))
 Description: Frequently used helper functions and assertions
-    used in 'mlr3' and its companion packages.
+    used in 'mlr3' and its companion packages. Comes with helper functions
+    for functional programming, for printing, to work with 'data.table',
+    as well as some generally useful 'R6' classes. This package also
+    superseeds the package 'BBmisc'.
 License: LGPL-3
 URL: https://mlr3misc.mlr-org.com
 BugReports: https://github.com/mlr-org/mlr3misc/issues
