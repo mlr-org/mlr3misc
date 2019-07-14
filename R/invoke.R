@@ -16,11 +16,18 @@
 #' @param .args :: `list()`\cr
 #'   Additional function arguments passed to `.f`, as (named) `list()`.
 #'   These arguments will be concatenated to the arguments provided via `...`.
+#' @param .opts :: `list()`\cr
+#'   List of options which are set before the `.f` is called.
+#'   Options are reset to their previous state afterwards.
 #' @export
 #' @examples
 #' invoke(mean, .args = list(x = 1:10))
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
-invoke = function(.f, ..., .args = list()) {
+invoke = function(.f, ..., .args = list(), .opts = list()) {
+  if (length(.opts)) {
+    old_opts = options(.opts)
+    on.exit(options(old_opts))
+  }
   call = match.call(expand.dots = FALSE)
   expr = as.call(c(list(call[[2L]]), call$..., .args))
   eval.parent(expr, n = 1L)

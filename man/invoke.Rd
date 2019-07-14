@@ -4,7 +4,7 @@
 \alias{invoke}
 \title{Invoke a Function Call}
 \usage{
-invoke(.f, ..., .args = list())
+invoke(.f, ..., .args = list(), .opts = list())
 }
 \arguments{
 \item{.f}{:: \code{function()}\cr
@@ -16,6 +16,10 @@ Additional function arguments passed to \code{.f}.}
 \item{.args}{:: \code{list()}\cr
 Additional function arguments passed to \code{.f}, as (named) \code{list()}.
 These arguments will be concatenated to the arguments provided via \code{...}.}
+
+\item{.opts}{:: \code{list()}\cr
+List of options which are set before the \code{.f} is called.
+Options are reset to their previous state afterwards.}
 }
 \description{
 An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the deprecated function in \pkg{purrr}.
