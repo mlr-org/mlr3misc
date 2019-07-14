@@ -23,7 +23,7 @@ test_that("Dictionary", {
   expect_set_equal(d$keys(), "f1")
   expect_false(d$has("f2"))
 
-  expect_data_table(as.data.table(d), nrow = 1L)
+  expect_data_table(as.data.table(d), nrows = 1L)
 })
 
 test_that("Dictionary required args", {

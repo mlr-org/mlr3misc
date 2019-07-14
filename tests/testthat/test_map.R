@@ -76,46 +76,46 @@ test_that("pmap", {
 
 test_that("map_dtr", {
   x = list(list(a = 1L), list(a = 2L))
-  expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
+  expect_data_table(map_dtr(x, identity), nrows = 2, ncols = 1)
 
   x = list(data.table(a = 1L), data.table(a = 2L))
-  expect_data_table(map_dtr(x, identity), nrow = 2, ncol = 1)
+  expect_data_table(map_dtr(x, identity), nrows = 2, ncols = 1)
 
   x = list(x = data.table(a = 1L), y = data.table(b = 2L))
   res = map_dtr(x, identity, .fill = TRUE)
-  expect_data_table(res, nrow = 2L, ncol = 2L)
+  expect_data_table(res, nrows = 2L, ncols = 2L)
   expect_names(names(res), identical.to = c("a", "b"))
 })
 
 test_that("map_dtc", {
   x = list(a = 1L, b = 2L)
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 2)
+  expect_data_table(res, nrows = 1, ncols = 2)
   expect_names(names(res), identical.to = names(x))
 
   x = list(data.table(a = 1L, b = 1L), data.table(c = 2L))
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_data_table(res, nrows = 1, ncols = 3)
   expect_names(names(res), identical.to = c("a", "b", "c"))
 
   x = list(data.table(a = 1L, b = 1L), data.table(b = 2L))
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_data_table(res, nrows = 1, ncols = 3)
   expect_names(names(res), identical.to = c("a", "b", "b.1"))
 
   # check that map_dtc doesnt prefix colnames in result
   x = list(a = list(1, 2), b = list(3, 4))
-  expect_data_table(map_dtc(x, identity), nrow = 2, ncol = 2)
+  expect_data_table(map_dtc(x, identity), nrows = 2, ncols = 2)
 
   # check that map_dtc doesn't prefix colnames in result
   x = list(foo = data.table(a = 1L, b = 1L), bar = data.table(c = 2L))
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_data_table(res, nrows = 1, ncols = 3)
   expect_names(names(res), identical.to = c("a", "b", "c"))
 
   x = list(foo = data.frame(a = 1L, b = 1L), c = 2)
   res = map_dtc(x, identity)
-  expect_data_table(res, nrow = 1, ncol = 3)
+  expect_data_table(res, nrows = 1, ncols = 3)
   expect_names(names(res), identical.to = c("a", "b", "c"))
 })
 
@@ -128,12 +128,12 @@ test_that("map_if", {
 test_that("map_at", {
   x = iris
   x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
-  expect_data_frame(x, nrow = 150, ncol = 5)
+  expect_data_frame(x, nrows = 150, ncols = 5)
   expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
 
   x = as.data.table(iris)
   x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
-  expect_data_table(x, nrow = 150, ncol = 5)
+  expect_data_table(x, nrows = 150, ncols = 5)
   expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
 })
 
