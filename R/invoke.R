@@ -8,7 +8,6 @@
 #' It is recommended to pass all arguments named in order to to not rely on on positional
 #' argument matching.
 #'
-#'
 #' @param .f :: `function()`\cr
 #'   Function to call.
 #' @param ... :: `any`\cr
@@ -19,15 +18,25 @@
 #' @param .opts :: `list()`\cr
 #'   List of options which are set before the `.f` is called.
 #'   Options are reset to their previous state afterwards.
+#' @param .seed :: `integer(1)`\cr
+#'   Random seed to set before invoking the function call.
+#'   Gets reset to the previous seed on exit.
 #' @export
 #' @examples
 #' invoke(mean, .args = list(x = 1:10))
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
-invoke = function(.f, ..., .args = list(), .opts = list()) {
+invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) {
   if (length(.opts)) {
     old_opts = options(.opts)
     on.exit(options(old_opts))
   }
+
+  if (!is.na(.seed)) {
+    prev_seed = get_seed()
+    on.exit(assign(".Random.seed", prev_seed, globalenv()))
+    set.seed(.seed)
+  }
+
   call = match.call(expand.dots = FALSE)
   expr = as.call(c(list(call[[2L]]), call$..., .args))
   eval.parent(expr, n = 1L)

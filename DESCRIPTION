@@ -23,6 +23,8 @@ Imports:
     data.table,
     R6
 Suggests:
+    callr,
+    evaluate,
     testthat
 Encoding: UTF-8
 NeedsCompilation: no
