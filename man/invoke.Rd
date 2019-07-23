@@ -4,7 +4,7 @@
 \alias{invoke}
 \title{Invoke a Function Call}
 \usage{
-invoke(.f, ..., .args = list(), .opts = list())
+invoke(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_)
 }
 \arguments{
 \item{.f}{:: \code{function()}\cr
@@ -20,6 +20,10 @@ These arguments will be concatenated to the arguments provided via \code{...}.}
 \item{.opts}{:: \code{list()}\cr
 List of options which are set before the \code{.f} is called.
 Options are reset to their previous state afterwards.}
+
+\item{.seed}{:: \code{integer(1)}\cr
+Random seed to set before invoking the function call.
+Gets reset to the previous seed on exit.}
 }
 \description{
 An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the deprecated function in \pkg{purrr}.
