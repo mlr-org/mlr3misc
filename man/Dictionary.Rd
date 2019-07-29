@@ -9,9 +9,9 @@
 A simple key-value store for \link[R6:R6]{R6::R6} generator objects.
 On retrieval of an object, the following applies:
 \itemize{
-\item R6 Factories (objects of class \code{R6ClassGenerator}) are initialized.
-\item Functions are called and must return an instance of a \link[R6:R6]{R6::R6} object.
-\item Other objects are returned as-is.
+\item If the object is a \code{R6ClassGenerator}), it is initialized with \code{new()}.
+\item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
+\item All other objects are returned as-is.
 }
 }
 \section{Construction}{
@@ -25,11 +25,11 @@ On retrieval of an object, the following applies:
 \item \code{get(key, ...)}\cr
 (\code{character(1)}, ...) -> \code{any}\cr
 Retrieves object with key \code{key} from the dictionary.
-Additional arguments are passed to the stored object during construction.
+Additional arguments must be named and are passed to the stored object during construction.
 \item \code{mget(keys, ...)}\cr
 (\code{character()}, ...) -> named \code{list()}\cr
 Returns objects with keys \code{keys} in a list named with \code{keys}.
-Additional arguments are passed to the stored objects during construction.
+Additional arguments must be named and are passed to the stored objects during construction.
 \item \code{has(keys)}\cr
 \code{character()} -> \code{logical()}\cr
 Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
@@ -40,7 +40,7 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 \item \code{add(key, value, ..., required_args = character())}\cr
 (\code{character(1)}, \code{any}, ..., \code{character()}) -> \code{self}\cr
 Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
-Additional arguments in \code{...} are used as default arguments for \code{value} during construction.
+Additional arguments in \code{...} must be named and are used as default arguments for \code{value} during construction.
 If the object cannot be constructed without additional arguments, the require argument names should be provided in \code{required_args}.
 \item \code{remove(keys)}\cr
 \code{character()} -> \code{self}\cr

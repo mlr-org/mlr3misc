@@ -35,3 +35,12 @@ test_that("Dictionary required args", {
   expect_equal(x$required_args("b"), "c")
   expect_equal(x$required_args("c"), NULL)
 })
+
+test_that("Dictionary throws exception on unnamed args", {
+  x = Dictionary$new()
+  x$add("a", 1)
+  x$add("b", 1)
+
+  expect_error(x$get("a", 1), "names")
+  expect_error(x$mget("a", "b"), "names")
+})

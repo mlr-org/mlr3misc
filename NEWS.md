@@ -1,10 +1,17 @@
-# mlr3misc 0.1.1
+# mlr3misc
+
+## v0.1.2
+
+* Additional arguments passed to `Dictionary$get()` and `Dictionary$mget()`
+  must now be named.
+
+## v0.1.1
 
 * New function `encapsulate()` to call functions while recording a log.
 * `invoke()`: New arguments `.opts` and `.seed` to temporarily set options or
   random seeds, respectively.
 * Fixed warnings about partial argument matching.
 
-# mlr3misc 0.1.0
+## v0.1.0
 
 * Initial release.
