@@ -37,12 +37,13 @@ Gets reset to the previous seed on exit.}
 }
 \description{
 Evaluates a function while both recording an output log and measuring the elapsed time.
-There are currently three different methods implemented to encapsulate a function call:
+There are currently three different modes implemented to encapsulate a function call:
 \itemize{
-\item \code{"none"}: This does not keep a log, just calls the function and measures the elapsed time.
-This encapsulation works well together with \code{\link[=traceback]{traceback()}}.
-\item \code{"evaluate"}: Uses the package \CRANpkg{evaluate} to call the function and do the logging.
-\item \code{"callr"}: Uses the package \CRANpkg{callr} to call the function and do the logging.
+\item \code{"none"}: Just runs the call in the current session and measures the elapsed time.
+Does not keep a log, output is printed directly to the console.
+Works well together with \code{\link[=traceback]{traceback()}}.
+\item \code{"evaluate"}: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
+\item \code{"callr"}: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 }

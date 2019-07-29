@@ -2,12 +2,13 @@
 #'
 #' @description
 #' Evaluates a function while both recording an output log and measuring the elapsed time.
-#' There are currently three different methods implemented to encapsulate a function call:
+#' There are currently three different modes implemented to encapsulate a function call:
 #'
-#' * `"none"`: This does not keep a log, just calls the function and measures the elapsed time.
-#'   This encapsulation works well together with [traceback()].
-#' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function and do the logging.
-#' * `"callr"`: Uses the package \CRANpkg{callr} to call the function and do the logging.
+#' * `"none"`: Just runs the call in the current session and measures the elapsed time.
+#'   Does not keep a log, output is printed directly to the console.
+#'   Works well together with [traceback()].
+#' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
+#' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 #'
