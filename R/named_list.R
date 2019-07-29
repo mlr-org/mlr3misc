@@ -4,7 +4,7 @@
 #'   Names of new list.
 #' @param init :: `any`\cr
 #'   All list elements are initialized to this value.
-#' @return (`list()`).
+#' @return (named `list()`).
 #' @export
 #' @examples
 #' named_list(c("a", "b"))

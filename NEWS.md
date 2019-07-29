@@ -2,6 +2,7 @@
 
 ## v0.1.2
 
+* New function `named_vector()`.
 * Additional arguments passed to `Dictionary$get()` and `Dictionary$mget()`
   must now be named.
 

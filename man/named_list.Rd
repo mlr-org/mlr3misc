@@ -14,7 +14,7 @@ Names of new list.}
 All list elements are initialized to this value.}
 }
 \value{
-(\code{list()}).
+(named \code{list()}).
 }
 \description{
 Create a Named List
