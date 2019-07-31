@@ -3,6 +3,7 @@
 ## v0.1.2
 
 * New function `named_vector()`.
+* New function `keep_in_bounds()`.
 * Additional arguments passed to `Dictionary$get()` and `Dictionary$mget()`
   must now be named.
 
