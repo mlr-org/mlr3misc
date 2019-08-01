@@ -4,6 +4,7 @@
 
 * New function `named_vector()`.
 * New function `keep_in_bounds()`.
+* New function `set_col_names()`.
 * Additional arguments passed to `Dictionary$get()` and `Dictionary$mget()`
   must now be named.
 

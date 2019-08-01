@@ -2,15 +2,19 @@
 % Please edit documentation in R/set_names.R
 \name{set_names}
 \alias{set_names}
+\alias{set_col_names}
 \title{Set Names}
 \usage{
 set_names(x, nm = x, ...)
+
+set_col_names(x, nm, ...)
 }
 \arguments{
-\item{x}{:: \code{vector()}.\cr}
+\item{x}{:: \code{any}.\cr
+Object to set names for.}
 
 \item{nm}{:: (\code{character()} | \code{function()})\cr
-New names, or function which transforms already existing names.}
+New names, or a function which transforms already existing names.}
 
 \item{...}{:: \code{any}\cr
 Passed down to \code{nm} if \code{nm} is a function.}
@@ -19,7 +23,7 @@ Passed down to \code{nm} if \code{nm} is a function.}
 \code{x} with updated names.
 }
 \description{
-Sets the names of \code{x} to \code{nm}.
+Sets the names (or colnames) of \code{x} to \code{nm}.
 If \code{nm} is a function, it is used to transform the already existing names of \code{x}.
 }
 \examples{

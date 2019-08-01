@@ -1,12 +1,13 @@
 #' @title Set Names
 #'
 #' @description
-#' Sets the names of `x` to `nm`.
+#' Sets the names (or colnames) of `x` to `nm`.
 #' If `nm` is a function, it is used to transform the already existing names of `x`.
 #'
-#' @param x :: `vector()`.\cr
+#' @param x :: `any`.\cr
+#'   Object to set names for.
 #' @param nm :: (`character()` | `function()`)\cr
-#'   New names, or function which transforms already existing names.
+#'   New names, or a function which transforms already existing names.
 #' @param ... :: `any`\cr
 #'   Passed down to `nm` if `nm` is a function.
 #'
@@ -29,4 +30,15 @@ set_names = function(x, nm = x, ...) {
   }
   names(x) = nm
   x
+}
+
+
+#' @rdname set_names
+#' @export
+set_col_names = function (x, nm, ...) {
+    if (is.function(nm)) {
+      nm = map_chr(names2(x), nm)
+    }
+    colnames(x) = nm
+    x
 }
