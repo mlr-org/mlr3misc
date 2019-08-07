@@ -4,12 +4,16 @@
 \alias{rowwise_table}
 \title{Row-Wise Constructor for 'data.table'}
 \usage{
-rowwise_table(...)
+rowwise_table(..., .key = NULL)
 }
 \arguments{
 \item{...}{:: \code{any}\cr
 Arguments: Column names in first rows as formulas (with empty left hand side),
 then the tabular data in the following rows.}
+
+\item{.key}{:: \code{character(1)}\cr
+If not \code{NULL}, set the key via \code{\link[data.table:setkeyv]{data.table::setkeyv()}} after constructing the
+table.}
 }
 \value{
 \code{\link[data.table:data.table]{data.table::data.table()}}.

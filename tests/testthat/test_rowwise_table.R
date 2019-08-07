@@ -10,4 +10,7 @@ test_that("construction", {
 
   expect_error(rowwise_table(1, 2), "No column names")
   expect_error(rowwise_table(~a, ~b, 1), "rectangular")
+
+  x = rowwise_table(~a, ~b, 1, "a", 2, "b", .key = "b")
+  expect_data_table(x, nrow = 2, ncol = 2, key = "b")
 })

@@ -10,6 +10,9 @@
 #' @param ... :: `any`\cr
 #'   Arguments: Column names in first rows as formulas (with empty left hand side),
 #'   then the tabular data in the following rows.
+#' @param .key :: `character(1)`\cr
+#'   If not `NULL`, set the key via [data.table::setkeyv()] after constructing the
+#'   table.
 #'
 #' @return [data.table::data.table()].
 #' @export
@@ -19,7 +22,7 @@
 #'   1, "a",
 #'   2, "b"
 #' )
-rowwise_table = function(...) {
+rowwise_table = function(..., .key = NULL) {
 
   dots = list(...)
 
@@ -33,11 +36,15 @@ rowwise_table = function(...) {
   if (ncol == 0L) {
     stop("No column names provided")
   }
+
   n = length(dots) - ncol
   if (n %% ncol != 0L) {
     stop("Data is not rectangular")
   }
 
   tab = lapply(seq_len(ncol), function(i) simplify2array(dots[seq(from = ncol + i, to = length(dots), by = ncol)]))
-  setnames(setDT(tab), map_chr(head(dots, ncol), function(x) attr(terms(x), "term.labels")))[]
+  tab = setnames(setDT(tab), map_chr(head(dots, ncol), function(x) attr(terms(x), "term.labels")))
+  if (!is.null(.key))
+    setkeyv(tab, .key)
+  tab
 }

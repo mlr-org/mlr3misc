@@ -6,6 +6,7 @@
 * New function `keep_in_bounds()`.
 * New function `set_col_names()`.
 * New function `distinct_values()`.
+* Added argument `.key` to `rowwise_table()`.
 * Additional arguments passed to `Dictionary$get()` and `Dictionary$mget()`
   must now be named.
 
