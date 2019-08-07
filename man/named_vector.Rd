@@ -17,8 +17,9 @@ All vector elements are initialized to this value.}
 (named \code{vector()}).
 }
 \description{
-Create a Named Vector
+Creates a simple atomic vector with \code{init} as values.
 }
 \examples{
 named_vector(c("a", "b"), NA)
+named_vector(character())
 }
