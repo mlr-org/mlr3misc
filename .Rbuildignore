@@ -12,3 +12,4 @@
 ^src/.+\.o$
 ^src/.+\.so$
 ^pkgdown$
+^revdep$

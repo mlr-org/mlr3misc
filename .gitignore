@@ -38,3 +38,5 @@ inst/doc
 
 /src/*.so
 /src/*.o
+
+revdep
