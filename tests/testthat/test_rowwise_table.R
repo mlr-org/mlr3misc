@@ -12,5 +12,5 @@ test_that("construction", {
   expect_error(rowwise_table(~a, ~b, 1), "rectangular")
 
   x = rowwise_table(~a, ~b, 1, "a", 2, "b", .key = "b")
-  expect_data_table(x, nrow = 2, ncol = 2, key = "b")
+  expect_data_table(x, nrows = 2, ncols = 2, key = "b")
 })

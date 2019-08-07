@@ -100,7 +100,7 @@ Dictionary = R6::R6Class("Dictionary",
     },
 
     get = function(key, ...) {
-      assert_string(key, min.chars = 1L, .var.name = .var.name)
+      assert_string(key, min.chars = 1L)
       dictionary_retrieve(self, key, ...)
     },
 
@@ -110,7 +110,7 @@ Dictionary = R6::R6Class("Dictionary",
     },
 
     add = function(key, value, ..., required_args = character()) {
-      assert_string(key, min.chars = 1L, .var.name = .var.name)
+      assert_string(key, min.chars = 1L)
       assert_character(required_args, any.missing = FALSE)
       dots = assert_list(list(...), names = "unique", .var.name =  "additional arguments passed to Dictionary" )
       assign(x = key, value = list(value = value, pars = dots, required_args = required_args), envir = self$items)
@@ -127,7 +127,7 @@ Dictionary = R6::R6Class("Dictionary",
     },
 
     required_args = function(key) {
-      assert_string(key, min.chars = 1L, .var.name = .var.name)
+      assert_string(key, min.chars = 1L)
       self$items[[key]][["required_args"]]
     }
   )

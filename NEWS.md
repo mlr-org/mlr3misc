@@ -1,5 +1,9 @@
 # mlr3misc
 
+# v0.1.3
+
+* Fix some assertions in `Dictionary`
+
 ## v0.1.2
 
 * New function `named_vector()`.
