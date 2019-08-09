@@ -16,6 +16,7 @@ Frequently used helper functions and assertions
 Useful links:
 \itemize{
   \item \url{https://mlr3misc.mlr-org.com}
+  \item \url{https://github.com/mlr-org/mlr3misc}
   \item Report bugs at \url{https://github.com/mlr-org/mlr3misc/issues}
 }
 
