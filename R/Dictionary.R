@@ -66,7 +66,6 @@
 #' d$get("a")
 #' d$mget(c("a", "b"))
 Dictionary = R6::R6Class("Dictionary",
-  cloneable = FALSE,
   public = list(
     items = NULL,
 
