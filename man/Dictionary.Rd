@@ -6,11 +6,12 @@
 \title{Key-Value Storage}
 \format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
-A key-value store initializing \link[R6:R6]{R6::R6} objects from stored \link[R6:R6]{R6::R6} generator objects.
+A key-value store for \link[R6:R6]{R6::R6} objects.
 On retrieval of an object, the following applies:
 \itemize{
 \item If the object is a \code{R6ClassGenerator}, it is initialized with \code{new()}.
 \item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
+\item If the object is an instance of a R6 class, it is returned as-is.
 }
 
 Default argument required for construction can be stored alongside their constructors by passing them to \code{$add()}.
@@ -68,6 +69,7 @@ item2 = R6Class("Item", public = list(x = 2))
 d = Dictionary$new()
 d$add("a", item1)
 d$add("b", item2)
+d$add("c", item1$new())
 d$keys()
 d$get("a")
 d$mget(c("a", "b"))

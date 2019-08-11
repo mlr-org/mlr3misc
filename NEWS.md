@@ -3,8 +3,7 @@
 # v0.1.3
 
 * New function `dictionary_sugar()`.
-* Dictionaries now can olny store constructors (R6 class generators or
-  functions). It is now asserted that the return value is a R6 object.
+* It is now asserted that the return value of Dictionaries is an R6 object.
 * Fix some more assertions in `Dictionary`
 
 ## v0.1.2

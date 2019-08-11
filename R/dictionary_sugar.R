@@ -70,6 +70,10 @@ get_constructor_formals = function(x) {
     }
     return(names2(formals(x$public_methods$initialize)))
   }
+  if (is.function(x)) {
+    return(names2(formals(x)))
+  }
 
-  return(names2(formals(x)))
+  return(x)
 }
+

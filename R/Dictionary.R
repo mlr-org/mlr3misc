@@ -5,11 +5,12 @@
 #' @format [R6::R6Class] object.
 #'
 #' @description
-#' A key-value store initializing [R6::R6] objects from stored [R6::R6] generator objects.
+#' A key-value store for [R6::R6] objects.
 #' On retrieval of an object, the following applies:
 #'
 #' * If the object is a `R6ClassGenerator`, it is initialized with `new()`.
 #' * If the object is a function, it is called and must return an instance of a [R6::R6] object.
+#' * If the object is an instance of a R6 class, it is returned as-is.
 #'
 #' Default argument required for construction can be stored alongside their constructors by passing them to `$add()`.
 #'
@@ -66,6 +67,7 @@
 #' d = Dictionary$new()
 #' d$add("a", item1)
 #' d$add("b", item2)
+#' d$add("c", item1$new())
 #' d$keys()
 #' d$get("a")
 #' d$mget(c("a", "b"))
@@ -114,7 +116,7 @@ Dictionary = R6::R6Class("Dictionary",
 
     add = function(key, value, ..., required_args = character()) {
       assert_string(key, min.chars = 1L)
-      assert(check_class(value, "R6ClassGenerator"), check_function(value))
+      assert(check_class(value, "R6ClassGenerator"), check_r6(value), check_function(value))
       assert_character(required_args, any.missing = FALSE)
 
       dots = assert_list(list(...), names = "unique", .var.name =  "additional arguments passed to Dictionary" )
@@ -162,8 +164,10 @@ dictionary_initialize_item = function(obj, cargs) {
   constructor = obj$value
   if (inherits(constructor, "R6ClassGenerator")) {
     do.call(constructor$new, cargs)
-  } else {
+  } else if (is.function(constructor)) {
     do.call(constructor, cargs)
+  } else {
+    constructor
   }
 }
 
