@@ -25,6 +25,7 @@ Imports:
 Suggests:
     callr,
     evaluate,
+    paradox,
     testthat
 Encoding: UTF-8
 NeedsCompilation: yes

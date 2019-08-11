@@ -27,9 +27,10 @@ test_that("Dictionary", {
 })
 
 test_that("Dictionary required args", {
+  foo = R6Class("Foo", public = list(x = 0))
   x = Dictionary$new()
-  x$add("a", 1)
-  x$add("b", 2, required_args = "c")
+  x$add("a", foo)
+  x$add("b", foo, required_args = "c")
 
   expect_equal(x$required_args("a"), character())
   expect_equal(x$required_args("b"), "c")
@@ -37,9 +38,10 @@ test_that("Dictionary required args", {
 })
 
 test_that("Dictionary throws exception on unnamed args", {
+  foo = R6Class("Foo", public = list(x = 0))
   x = Dictionary$new()
-  x$add("a", 1)
-  x$add("b", 1)
+  x$add("a", foo)
+  x$add("b", foo)
 
   expect_error(x$get("a", 1), "names")
   expect_error(x$mget("a", "b"), "names")

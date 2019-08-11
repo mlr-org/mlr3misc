@@ -6,13 +6,14 @@
 \title{Key-Value Storage}
 \format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
-A simple key-value store for \link[R6:R6]{R6::R6} generator objects.
+A key-value store initializing \link[R6:R6]{R6::R6} objects from stored \link[R6:R6]{R6::R6} generator objects.
 On retrieval of an object, the following applies:
 \itemize{
-\item If the object is a \code{R6ClassGenerator}), it is initialized with \code{new()}.
+\item If the object is a \code{R6ClassGenerator}, it is initialized with \code{new()}.
 \item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
-\item All other objects are returned as-is.
 }
+
+Default argument required for construction can be stored alongside their constructors by passing them to \code{$add()}.
 }
 \section{Construction}{
 \preformatted{d = Dictionary$new()
@@ -25,11 +26,11 @@ On retrieval of an object, the following applies:
 \item \code{get(key, ...)}\cr
 (\code{character(1)}, ...) -> \code{any}\cr
 Retrieves object with key \code{key} from the dictionary.
-Additional arguments must be named and are passed to the stored object during construction.
+Additional arguments must be named and are passed to the constructor of the stored object.
 \item \code{mget(keys, ...)}\cr
 (\code{character()}, ...) -> named \code{list()}\cr
 Returns objects with keys \code{keys} in a list named with \code{keys}.
-Additional arguments must be named and are passed to the stored objects during construction.
+Additional arguments must be named and are passed to the constructors of the stored objects.
 \item \code{has(keys)}\cr
 \code{character()} -> \code{logical()}\cr
 Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
@@ -40,8 +41,8 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 \item \code{add(key, value, ..., required_args = character())}\cr
 (\code{character(1)}, \code{any}, ..., \code{character()}) -> \code{self}\cr
 Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
-Additional arguments in \code{...} must be named and are used as default arguments for \code{value} during construction.
-If the object cannot be constructed without additional arguments, the require argument names should be provided in \code{required_args}.
+Additional arguments in \code{...} must be named and are passed as default arguments to \code{value} during construction.
+The names of all additional arguments which are mandatory for construction and missing in \code{...} should be listed in \code{required_args}.
 \item \code{remove(keys)}\cr
 \code{character()} -> \code{self}\cr
 Removes objects with keys \code{keys} from the dictionary.
@@ -61,9 +62,12 @@ Converts the dictionary to a \code{\link[data.table:data.table]{data.table::data
 }
 
 \examples{
+library(R6)
+item1 = R6Class("Item", public = list(x = 1))
+item2 = R6Class("Item", public = list(x = 2))
 d = Dictionary$new()
-d$add("a", 1)
-d$add("b", 2)
+d$add("a", item1)
+d$add("b", item2)
 d$keys()
 d$get("a")
 d$mget(c("a", "b"))
