@@ -15,8 +15,9 @@
 #' has_element(list(1, 2, 3), 1)
 has_element = function(.x, .y) {
   for (i in seq_along(.x)) {
-    if (identical(.x[[i]], .y))
+    if (identical(.x[[i]], .y)) {
       return(TRUE)
+    }
   }
   return(FALSE)
 }

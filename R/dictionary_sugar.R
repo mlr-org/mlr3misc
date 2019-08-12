@@ -26,11 +26,12 @@
 #' d$add("key", item)
 #' dictionary_sugar(d, "key", x = 2)
 dictionary_sugar = function(dict, key, ...) {
+
   assert_class(dict, "Dictionary")
   if (...length() == 0L) {
     return(dictionary_get(dict, key))
   }
-  dots = assert_list(list(...), names = "unique", .var.name =  "additional arguments passed to Dictionary")
+  dots = assert_list(list(...), names = "unique", .var.name = "additional arguments passed to Dictionary")
 
   obj = dictionary_retrieve_item(dict, key)
 
@@ -53,8 +54,9 @@ dictionary_sugar = function(dict, key, ...) {
   # remaining args go into fields
   if (length(dots)) {
     ndots = names(dots)
-    for (i in seq_along(dots))
+    for (i in seq_along(dots)) {
       instance[[ndots[i]]] = dots[[i]]
+    }
   }
 
   return(instance)
@@ -65,8 +67,9 @@ get_constructor_formals = function(x) {
     # recursively search for class constructor
     while (is.null(x$public_methods$initialize)) {
       x = x$get_inherit()
-      if (is.null(x))
+      if (is.null(x)) {
         return(character())
+      }
     }
     return(names2(formals(x$public_methods$initialize)))
   }
@@ -76,4 +79,3 @@ get_constructor_formals = function(x) {
 
   return(x)
 }
-

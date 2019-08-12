@@ -33,14 +33,16 @@
 #' @examples
 #' f = function(n) {
 #'   message("hi from f")
-#'   if (n > 5)
+#'   if (n > 5) {
 #'     stop("n must be <= 5")
+#'   }
 #'   runif(n)
 #' }
 #' encapsulate("none", f, list(n = 1), .seed = 1)
 #' encapsulate("evaluate", f, list(n = 1), .seed = 1)
 #' encapsulate("callr", f, list(n = 1), .seed = 1)
 encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(), .seed = NA_integer_) {
+
   assert_choice(method, c("none", "evaluate", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
@@ -122,8 +124,9 @@ parse_evaluate = function(log) {
 }
 
 parse_callr = function(log) {
-  if (length(log) == 0L)
+  if (length(log) == 0L) {
     return(NULL)
+  }
 
   log = data.table(class = "output", msg = log)
   parse_line = function(x) trimws(gsub("<br>", "\n", substr(x, 7L, nchar(x)), fixed = TRUE))

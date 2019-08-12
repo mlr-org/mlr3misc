@@ -35,10 +35,10 @@ set_names = function(x, nm = x, ...) {
 
 #' @rdname set_names
 #' @export
-set_col_names = function (x, nm, ...) {
-    if (is.function(nm)) {
-      nm = map_chr(names2(x), nm)
-    }
-    colnames(x) = nm
-    x
+set_col_names = function(x, nm, ...) {
+  if (is.function(nm)) {
+    nm = map_chr(names2(x), nm)
+  }
+  colnames(x) = nm
+  x
 }

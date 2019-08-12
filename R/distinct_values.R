@@ -36,8 +36,9 @@ distinct_values = function(x, drop = TRUE, na_rm = TRUE) {
 #' @export
 distinct_values.default = function(x, drop = TRUE, na_rm = TRUE) {
   lvls = unique(x)
-  if (na_rm)
+  if (na_rm) {
     lvls = lvls[!is.na(lvls)]
+  }
   lvls
 }
 
@@ -45,12 +46,14 @@ distinct_values.default = function(x, drop = TRUE, na_rm = TRUE) {
 distinct_values.logical = function(x, drop = TRUE, na_rm = TRUE) {
   if (!drop) {
     lvls = c(TRUE, FALSE)
-    if (!na_rm && anyMissing(x))
+    if (!na_rm && anyMissing(x)) {
       lvls = c(lvls, NA)
+    }
   } else {
     lvls = unique(x)
-    if (na_rm)
+    if (na_rm) {
       lvls = lvls[!is.na(lvls)]
+    }
   }
   lvls
 }
@@ -59,14 +62,14 @@ distinct_values.logical = function(x, drop = TRUE, na_rm = TRUE) {
 distinct_values.factor = function(x, drop = TRUE, na_rm = TRUE) {
   if (drop) {
     lvls = as.character(unique(x))
-    if (na_rm)
+    if (na_rm) {
       lvls = lvls[!is.na(lvls)]
+    }
   } else {
     lvls = levels(x)
-    if (!na_rm && anyMissing(x))
+    if (!na_rm && anyMissing(x)) {
       lvls = c(lvls, NA_character_)
+    }
   }
   lvls
 }
-
-

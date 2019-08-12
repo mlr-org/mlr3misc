@@ -38,8 +38,9 @@ insert_named.default = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.environment = function(x, y) {
-  for (nn in names(y))
+  for (nn in names(y)) {
     assign(nn, y[[nn]], envir = x)
+  }
   x
 }
 

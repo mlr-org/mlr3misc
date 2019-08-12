@@ -39,6 +39,7 @@ chunk_vector = function(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
 #' @rdname chunk_vector
 #' @export
 chunk = function(n, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
+
   assert_count(n)
   if (!xor(is.null(n_chunks), is.null(chunk_size))) {
     stop("You must provide either 'n_chunks' (x)or 'chunk_size'")

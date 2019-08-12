@@ -44,7 +44,8 @@ rowwise_table = function(..., .key = NULL) {
 
   tab = lapply(seq_len(ncol), function(i) simplify2array(dots[seq(from = ncol + i, to = length(dots), by = ncol)]))
   tab = setnames(setDT(tab), map_chr(head(dots, ncol), function(x) attr(terms(x), "term.labels")))
-  if (!is.null(.key))
+  if (!is.null(.key)) {
     setkeyv(tab, .key)
+  }
   tab
 }
