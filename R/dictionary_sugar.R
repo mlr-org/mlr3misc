@@ -38,7 +38,7 @@ dictionary_sugar = function(dict, key, ...) {
   # pass args to constructor and remove them
   cargs = get_constructor_formals(obj$value)
   ii = is.na(dots) | names(dots) %in% cargs
-  instance = assert_r6(dictionary_initialize_item(obj, dots[ii]))
+  instance = assert_r6(dictionary_initialize_item(key, obj, dots[ii]))
   dots = dots[!ii]
 
 
