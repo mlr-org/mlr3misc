@@ -143,7 +143,7 @@ Dictionary = R6::R6Class("Dictionary",
 dictionary_get = function(self, key, ...) {
   obj = dictionary_retrieve_item(self, key)
   dots = assert_list(list(...), names = "unique", .var.name = "arguments passed to Dictionary")
-  dictionary_initialize_item(obj, dots)
+  dictionary_initialize_item(key, obj, dots)
 }
 
 dictionary_retrieve_item = function(self, key) {
@@ -154,7 +154,7 @@ dictionary_retrieve_item = function(self, key) {
   obj
 }
 
-dictionary_initialize_item = function(obj, cargs) {
+dictionary_initialize_item = function(key, obj, cargs) {
   cargs = insert_named(obj$pars, cargs)
   ii = wf(obj$required_args %nin% names(args))
   if (length(ii)) {
