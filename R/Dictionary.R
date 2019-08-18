@@ -156,7 +156,7 @@ dictionary_retrieve_item = function(self, key) {
 
 dictionary_initialize_item = function(key, obj, cargs) {
   cargs = insert_named(obj$pars, cargs)
-  ii = wf(obj$required_args %nin% names(args))
+  ii = wf(obj$required_args %nin% names(cargs))
   if (length(ii)) {
     stopf("Need argument '%s' to construct '%s'", obj$required_args[ii], key)
   }
