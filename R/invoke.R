@@ -28,6 +28,13 @@
 invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) {
   if (length(.opts)) {
     old_opts = options(.opts)
+    if (getRversion() < "3.6.0") {
+      # fix for resetting some debug options
+      # https://github.com/HenrikBengtsson/Wishlist-for-R/issues/88
+      nn = intersect(c("warnPartialMatchArgs", "warnPartialMatchAttr", "warnPartialMatchDollar"), names(old_opts))
+      nn = nn[map_lgl(old_opts[nn], is.null)]
+      old_opts[nn] = FALSE
+    }
     on.exit(options(old_opts))
   }
 
