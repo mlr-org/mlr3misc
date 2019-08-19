@@ -60,10 +60,22 @@ test_that("dictionary_cast", {
 })
 
 test_that("dictionary_sugar", {
-  Foo = R6::R6Class("Foo", public = list(x = 0, y = 0, initialize = function(y) self$y = y), cloneable = TRUE)
+  Foo = R6::R6Class("Foo", public = list(x = 0, y = 0, key = 0, initialize = function(y, key = -1) { self$y = y ; self$key = key }), cloneable = TRUE)
   d = Dictionary$new()
   d$add("f1", Foo)
   x = dictionary_sugar(d, "f1", y = 99, x = 1)
   expect_equal(x$x, 1)
   expect_equal(x$y, 99)
+  expect_equal(x$key, -1)
+  x2 = dictionary_sugar(d, "f1", 99, x = 1)
+  expect_equal(x, x2)
+  x2 = dictionary_sugar(d, "f1", x = 1, 99)
+  expect_equal(x, x2)
+
+  x = dictionary_sugar(d, "f1", 1, 99)
+  expect_equal(x$x, 0)
+  expect_equal(x$y, 1)
+  expect_equal(x$key, 99)
+  x2 = dictionary_sugar(d, "f1", key = 99, y = 1)
+  expect_equal(x, x2)
 })
