@@ -51,8 +51,9 @@ While this comes with a considerable overhead, it also guards your session from 
 \examples{
 f = function(n) {
   message("hi from f")
-  if (n > 5)
+  if (n > 5) {
     stop("n must be <= 5")
+  }
   runif(n)
 }
 encapsulate("none", f, list(n = 1), .seed = 1)

@@ -26,7 +26,6 @@
 #' d$add("key", item)
 #' dictionary_sugar(d, "key", x = 2)
 dictionary_sugar = function(dict, key, ...) {
-
   assert_class(dict, "Dictionary")
   if (...length() == 0L) {
     return(dictionary_get(dict, key))
@@ -73,9 +72,62 @@ get_constructor_formals = function(x) {
     }
     return(names2(formals(x$public_methods$initialize)))
   }
+
   if (is.function(x)) {
     return(names2(formals(x)))
   }
 
-  return(x)
+  return(character())
+}
+
+
+#' @title Cast Objects Using a Dictionary
+#'
+#' @description
+#' Uses a dictionary to cast objects of a specific type of a [Dictionary].
+#' Intended for package developers.
+#'
+#' @param `x` :: (`character()` | `list()`)\cr
+#'  Object to cast.
+#' @param `type` :: `character(1)`\cr
+#'  Expected type of objects.
+#' @param `dict` :: [Dictionary]\cr
+#'  Expected type of objects.
+#' @param `clone` :: `logical(1)`\cr
+#'  Clone objects, if necessary. Default is `FALSE`.
+#' @param `multiple` :: `logical(1)`\cr
+#'  Cast multiple objects of type `type` or just a single one?
+#'
+#' @return Object of type `type` or list of objects of type `type`.
+#' @keywords internal
+#' @export
+dictionary_cast = function(dict, x, type, clone = FALSE, multiple = TRUE) {
+  if (inherits(x, type)) {
+    if (clone) {
+      x = x$clone(deep = TRUE)
+    }
+    return(list(x))
+  }
+
+  if (!is.character(x) && !is.list(x)) {
+    stopf("Argument %s must be an object of type '%2$s', a list of elements of type '%2$s' or a character vector of keys to lookup in the dictionary",
+      deparse(substitute(x)), type)
+  }
+
+  if (!multiple && length(x) != 1L) {
+    stopf("Argument %s must be an object of type '%2$s', a list with one element of type '%2$s' or a single key to lookup in the dictionary",
+      deparse(substitute(x)), type)
+  }
+
+  map(x, function(xi) {
+    if (inherits(xi, type)) {
+      return(if (clone) xi$clone(deep = TRUE) else xi)
+    }
+    if (is.character(xi) && length(xi) == 1L) {
+      return(dict$get(xi))
+    }
+
+    stopf("Argument %s must be an object of type '%2$s', a list of elements of type '%2$s' or a character vector of keys to lookup in the dictionary",
+      deparse(substitute(x)), type)
+  })
 }
