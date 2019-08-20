@@ -25,19 +25,20 @@
 #' d = Dictionary$new()
 #' d$add("key", item)
 #' dictionary_sugar(d, "key", x = 2)
-dictionary_sugar = function(dict, key, ...) {
+dictionary_sugar = function(dict, .key, ...) {
   assert_class(dict, "Dictionary")
   if (...length() == 0L) {
-    return(dictionary_get(dict, key))
+    return(dictionary_get(dict, .key))
   }
-  dots = assert_list(list(...), names = "unique", .var.name = "additional arguments passed to Dictionary")
+  dots = assert_list(list(...), .var.name = "additional arguments passed to Dictionary")
+  assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
 
-  obj = dictionary_retrieve_item(dict, key)
+  obj = dictionary_retrieve_item(dict, .key)
 
   # pass args to constructor and remove them
   cargs = get_constructor_formals(obj$value)
-  ii = is.na(dots) | names(dots) %in% cargs
-  instance = assert_r6(dictionary_initialize_item(key, obj, dots[ii]))
+  ii = is.na(names2(dots)) | names2(dots) %in% cargs
+  instance = assert_r6(dictionary_initialize_item(.key, obj, dots[ii]))
   dots = dots[!ii]
 
 
