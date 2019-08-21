@@ -9,11 +9,11 @@ dictionary_sugar(dict, .key, ...)
 \arguments{
 \item{dict}{:: \link{Dictionary}.}
 
+\item{.key}{:: \code{character(1)}\cr
+Key of the object to construct.}
+
 \item{...}{:: \code{any}\cr
 See description.}
-
-\item{key}{:: \code{character(1)}\cr
-Key of the object to construct.}
 }
 \value{
 \code{\link[R6:R6Class]{R6::R6Class()}}

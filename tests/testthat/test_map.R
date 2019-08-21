@@ -171,6 +171,4 @@ test_that("detect", {
   expect_equal(out, c("a", "b"))
   out = detect(x, is.logical)
   expect_null(out)
-
-  detect(x, TRUE)
 })

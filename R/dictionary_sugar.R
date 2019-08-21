@@ -13,7 +13,7 @@
 #'   are assigned via [`<-`].
 #'
 #' @param dict :: [Dictionary].
-#' @param key :: `character(1)`\cr
+#' @param .key :: `character(1)`\cr
 #'   Key of the object to construct.
 #' @param ... :: `any`\cr
 #'   See description.

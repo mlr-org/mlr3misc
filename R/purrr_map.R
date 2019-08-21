@@ -244,10 +244,10 @@ some = function(.x, .p, ...) {
 #' @export
 #' @rdname compat-map
 detect = function(.x, .p, ...) {
-  for (i in seq_along(x)) {
-    res = .p(x[[i]], ...)
-    if (!is.na(res) && res)
-      return(x[[i]])
+  for (i in seq_along(.x)) {
+    .res = .p(.x[[i]], ...)
+    if (!is.na(.res) && .res)
+      return(.x[[i]])
   }
   return(NULL)
 }
