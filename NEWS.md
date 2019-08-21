@@ -4,7 +4,6 @@
 
 * New function `detect()`.
 * New function `dictionary_sugar()`.
-* New function `dictionary_cast()` (moved from `mlr3`).
 * It is now asserted that the return value of Dictionaries is an R6 object.
 * Fix some more assertions in `Dictionary`
 

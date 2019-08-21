@@ -47,18 +47,6 @@ test_that("Dictionary throws exception on unnamed args", {
   expect_error(x$mget("a", "b"), "names")
 })
 
-test_that("dictionary_cast", {
-  Foo = R6::R6Class("Foo", public = list(x = 0), cloneable = TRUE)
-  d = Dictionary$new()
-  d$add("f1", Foo)
-
-  expect_list(dictionary_cast(d, "f1", "Foo"), "Foo", len = 1)
-  expect_list(dictionary_cast(d, Foo$new(), "Foo"), len = 1)
-  expect_list(dictionary_cast(d, c("f1", "f1"), "Foo"), "Foo", len = 2)
-  expect_list(dictionary_cast(d, list("f1", "f1"), "Foo"), "Foo", len = 2)
-  expect_list(dictionary_cast(d, list("f1", Foo$new()), "Foo"), "Foo", len = 2)
-})
-
 test_that("dictionary_sugar", {
   Foo = R6::R6Class("Foo", public = list(x = 0, y = 0, key = 0, initialize = function(y, key = -1) { self$y = y ; self$key = key }), cloneable = TRUE)
   d = Dictionary$new()
