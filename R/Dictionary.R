@@ -154,7 +154,7 @@ dictionary_retrieve_item = function(self, key) {
   obj
 }
 
-dictionary_initialize_item = function(key, obj, cargs) {
+dictionary_initialize_item = function(key, obj, cargs = list()) {
   cargs = c(cargs[is.na(names2(cargs))],
     insert_named(obj$pars, cargs[!is.na(names2(cargs))]))
   ii = wf(obj$required_args %nin% names(cargs))

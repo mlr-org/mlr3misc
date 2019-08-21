@@ -34,6 +34,9 @@ dictionary_sugar = function(dict, .key, ...) {
   assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
 
   obj = dictionary_retrieve_item(dict, .key)
+  if (length(dots) == 0L) {
+    return(assert_r6(dictionary_initialize_item(.key, obj)))
+  }
 
   # pass args to constructor and remove them
   cargs = get_constructor_formals(obj$value)
@@ -43,7 +46,7 @@ dictionary_sugar = function(dict, .key, ...) {
 
 
   # set params in ParamSet
-  if (exists("param_set", envir = instance, inherits = FALSE)) {
+  if (length(dots) && exists("param_set", envir = instance, inherits = FALSE)) {
     ii = names(dots) %in% instance$param_set$ids()
     if (any(ii)) {
       instance$param_set$values = insert_named(instance$param_set$values, dots[ii])
