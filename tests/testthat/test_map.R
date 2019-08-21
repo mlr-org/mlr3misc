@@ -162,3 +162,15 @@ test_that("some/every", {
   expect_true(some(x, "p"))
   expect_false(every(x, "p"))
 })
+
+test_that("detect", {
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  out = detect(x, is.numeric)
+  expect_equal(out, 1:3)
+  out = detect(x, is.character)
+  expect_equal(out, c("a", "b"))
+  out = detect(x, is.logical)
+  expect_null(out)
+
+  detect(x, TRUE)
+})

@@ -14,6 +14,7 @@
 #' * `discard()` discards those elements of `.x` where predicate `.p` evaluates to `TRUE`.
 #' * `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
 #' * `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
+#' * `detect()` returns the first element where predicate `.p` evaluates to `TRUE`.
 #'
 #'
 #' Additionally, the functions `map()`, `imap()` and `pmap` have type-safe variants with the following suffixes:
@@ -238,4 +239,15 @@ every = function(.x, .p, ...) {
 #' @rdname compat-map
 some = function(.x, .p, ...) {
   any(map_lgl(.x, .p, ...), na.rm = TRUE)
+}
+
+#' @export
+#' @rdname compat-map
+detect = function(.x, .p, ...) {
+  for (i in seq_along(x)) {
+    res = .p(x[[i]], ...)
+    if (!is.na(res) && res)
+      return(x[[i]])
+  }
+  return(NULL)
 }

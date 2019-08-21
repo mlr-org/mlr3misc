@@ -1,4 +1,4 @@
-context("purrr detect")
+context("has_element")
 
 test_that("has_element", {
   xs = list()

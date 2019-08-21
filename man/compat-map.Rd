@@ -29,6 +29,7 @@
 \alias{map_at}
 \alias{every}
 \alias{some}
+\alias{detect}
 \title{Apply Functions in the spirit of 'purrr'}
 \usage{
 map(.x, .f, ...)
@@ -84,6 +85,8 @@ map_at(.x, .at, .f, ...)
 every(.x, .p, ...)
 
 some(.x, .p, ...)
+
+detect(.x, .p, ...)
 }
 \arguments{
 \item{.x}{:: (\code{list()} or atomic \code{vector}).}
@@ -117,6 +120,7 @@ If \code{.x} does not have names, a sequence along \code{.x} is passed as second
 \item \code{discard()} discards those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}.
 \item \code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
 \item \code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
+\item \code{detect()} returns the first element where predicate \code{.p} evaluates to \code{TRUE}.
 }
 
 Additionally, the functions \code{map()}, \code{imap()} and \code{pmap} have type-safe variants with the following suffixes:
