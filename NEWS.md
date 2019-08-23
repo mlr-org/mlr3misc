@@ -1,5 +1,9 @@
 # mlr3misc
 
+# v0.1.4
+
+* Fixed a bug in `as_short_string()` for empty atomic vectors.
+
 # v0.1.3
 
 * New function `detect()`.

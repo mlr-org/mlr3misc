@@ -27,10 +27,10 @@
 as_short_string = function(x, width = 30L, num_format = "%.4g") {
   # convert non-list object to string
   convert = function(x) {
+    cl = class(x)[1L]
     if (is.atomic(x) && !is.null(x) && length(x) == 0L) {
       string = sprintf("%s(0)", cl)
     } else {
-      cl = class(x)[1L]
       string = switch(cl,
         "numeric" = paste0(sprintf(num_format, x), collapse = ","),
         "integer" = paste0(as.character(x), collapse = ","),
