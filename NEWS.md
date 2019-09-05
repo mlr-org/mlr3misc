@@ -2,6 +2,7 @@
 
 # v0.1.4
 
+* Added argument `na_rm` to `which_max()` and `which_min()`.
 * Fixed a bug in `as_short_string()` for empty atomic vectors.
 
 # v0.1.3

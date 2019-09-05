@@ -5,9 +5,9 @@
 \alias{which_max}
 \title{Index of the Minimum/Maximum Value, with ties correction}
 \usage{
-which_min(x, ties_method = "random")
+which_min(x, ties_method = "random", na_rm = FALSE)
 
-which_max(x, ties_method = "random")
+which_max(x, ties_method = "random", na_rm = FALSE)
 }
 \arguments{
 \item{x}{:: \code{numeric()}\cr
@@ -15,12 +15,13 @@ Numeric vector.}
 
 \item{ties_method}{:: \code{character(1)}\cr
 Handling of ties. One of "first", "last" or "random" (default) to return the first index,
-the last index, or a random index of the minimum/maximum values.
-Passed down to \code{\link[base:max.col]{base::max.col()}}.}
+the last index, or a random index of the minimum/maximum values.}
 }
 \value{
 (\code{integer()}): Index of the minimum/maximum value.
-Returns an empty integer vector for empty input vectors and vectors with no non-missing values.
+Returns an empty integer vector for empty input vectors and vectors with no non-missing values
+(if \code{na_rm} is \code{TRUE}).
+Returns \code{NA} if \code{na_rm} is \code{FALSE} and at least one \code{NA} is found in \code{x}.
 }
 \description{
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.
