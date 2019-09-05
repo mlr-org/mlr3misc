@@ -48,7 +48,7 @@ dictionary_sugar = function(dict, .key, ...) {
   # set params in ParamSet
   if (length(dots) && exists("param_set", envir = instance, inherits = FALSE)) {
     param_ids = instance$param_set$ids()
-    ii = names(dots) %in% par_ids
+    ii = names(dots) %in% param_ids
     if (any(ii)) {
       instance$param_set$values = insert_named(instance$param_set$values, dots[ii])
       dots = dots[!ii]
