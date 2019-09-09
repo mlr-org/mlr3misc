@@ -16,6 +16,9 @@ Numeric vector.}
 \item{ties_method}{:: \code{character(1)}\cr
 Handling of ties. One of "first", "last" or "random" (default) to return the first index,
 the last index, or a random index of the minimum/maximum values.}
+
+\item{na_rm}{:: \code{logical(1)}\cr
+Remove NAs before computation?}
 }
 \value{
 (\code{integer()}): Index of the minimum/maximum value.

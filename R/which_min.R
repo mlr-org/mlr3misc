@@ -9,6 +9,8 @@
 #' @param ties_method :: `character(1)`\cr
 #'   Handling of ties. One of "first", "last" or "random" (default) to return the first index,
 #'   the last index, or a random index of the minimum/maximum values.
+#' @param na_rm :: `logical(1)`\cr
+#'   Remove NAs before computation?
 #'
 #' @return (`integer()`): Index of the minimum/maximum value.
 #'   Returns an empty integer vector for empty input vectors and vectors with no non-missing values
