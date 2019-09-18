@@ -1,5 +1,9 @@
 # mlr3misc 0.1.4
 
+* Fixed error in C code discovered by UBSAN checks on CRAN.
+
+# mlr3misc 0.1.4
+
 * Added argument `na_rm` to `which_max()` and `which_min()`.
 * Fixed a bug in `as_short_string()` for empty atomic vectors.
 

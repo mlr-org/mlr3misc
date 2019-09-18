@@ -61,7 +61,7 @@ static int which_max_dbl(const double * x, const R_len_t nx, ties_method_t ties_
 
         if (ISNAN(xi)) {
             if (!na_rm) {
-                return NA_REAL;
+                return NA_INTEGER;
             }
         } else if (xi > max_value) {
             max_index = i;
