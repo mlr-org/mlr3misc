@@ -1,4 +1,4 @@
-# mlr3misc 0.1.4
+# mlr3misc 0.1.5
 
 * Fixed error in C code discovered by UBSAN checks on CRAN.
 
