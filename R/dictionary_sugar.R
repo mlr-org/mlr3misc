@@ -27,6 +27,7 @@
 #' dictionary_sugar(d, "key", x = 2)
 dictionary_sugar = function(dict, .key, ...) {
   assert_class(dict, "Dictionary")
+  assert_string(.key)
   if (...length() == 0L) {
     return(dictionary_get(dict, .key))
   }
