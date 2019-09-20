@@ -20,6 +20,9 @@ Key of the object to construct.}
 
 \item{...}{:: \code{any}\cr
 See description.}
+
+\item{.keys}{:: \code{character()}\cr
+Keys of the objects to construct.}
 }
 \value{
 \code{\link[R6:R6Class]{R6::R6Class()}}

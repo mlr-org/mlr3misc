@@ -19,6 +19,8 @@
 #' @param dict :: [Dictionary].
 #' @param .key :: `character(1)`\cr
 #'   Key of the object to construct.
+#' @param .keys :: `character()`\cr
+#'   Keys of the objects to construct.
 #' @param ... :: `any`\cr
 #'   See description.
 #' @return [R6::R6Class()]
