@@ -2,14 +2,21 @@
 % Please edit documentation in R/ids.R
 \name{ids}
 \alias{ids}
-\title{Short helper to extract ids from a typed R6 list of ID-able objects.}
+\title{Extract ids from a List of Objects}
 \usage{
 ids(xs)
 }
 \arguments{
-\item{xs}{:: \link{list}\cr
-Every element must be R6 and have a slot 'id'.}
+\item{xs}{:: \code{list()}\cr
+Every element must have a slot 'id'.}
+}
+\value{
+(\code{character()}).
 }
 \description{
 None.
+}
+\examples{
+xs = list(a = list(id = "foo", a = 1), bar = list(id = "bar", a = 2))
+ids(xs)
 }

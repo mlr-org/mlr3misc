@@ -1,6 +1,8 @@
 # mlr3misc 0.1.5
 
 * Fixed error in C code discovered by UBSAN checks on CRAN.
+* Added `dictionary_sugar_mget()`.
+* Renamed `dictionary_sugar()` to `dictionary_sugar_get()`.
 
 # mlr3misc 0.1.4
 

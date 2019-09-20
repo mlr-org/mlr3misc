@@ -1,11 +1,16 @@
-#' @title Short helper to extract ids from a typed R6 list of ID-able objects.
+#' @title Extract ids from a List of Objects
 #'
 #' @description
 #' None.
 #'
-#' @param xs :: [list]\cr
-#'   Every element must be R6 and have a slot 'id'.
+#' @param xs :: `list()`\cr
+#'   Every element must have a slot 'id'.
+#'
+#' @return (`character()`).
 #' @export
+#' @examples
+#' xs = list(a = list(id = "foo", a = 1), bar = list(id = "bar", a = 2))
+#' ids(xs)
 ids = function(xs) {
-  map_chr(xs, "id")
+  vapply(xs, "[[", "id", FUN.VALUE = NA_character_, USE.NAMES = FALSE)
 }
