@@ -21,6 +21,7 @@ String to prefix the new column names with.}
 }
 \description{
 Transforms each element of a list columns into its own column, possibly by reference.
+The original columns are removed from the returned table.
 }
 \examples{
 x = data.table::data.table(

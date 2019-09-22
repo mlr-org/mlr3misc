@@ -2,6 +2,7 @@
 #'
 #' @description
 #' Transforms each element of a list columns into its own column, possibly by reference.
+#' The original columns are removed from the returned table.
 #'
 #' @param x :: [data.table::data.table()]\cr
 #'   [data.table::data.table()] with columns to unnest.
