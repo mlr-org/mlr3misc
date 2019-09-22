@@ -40,5 +40,5 @@ cite_bib = function(package, key) {
     return(sprintf("bibtex:%s", key))
   }
 
-  tools::toRd(bib[[key]])
+  paste0(tools::toRd(bib[[key]]), "\n")
 }
