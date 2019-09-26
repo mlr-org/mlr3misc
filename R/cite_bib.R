@@ -26,7 +26,11 @@ cite_bib = function(package, key) {
   assert_string(package)
   assert_string(key)
 
-  require_namespaces("bibtex")
+  if (!requireNamespace("bibtex", quietly = TRUE)) {
+    warningf("Could not load package 'bibtex' to parse citation '%s'", key)
+    return(sprintf("bibtex:%s", key))
+  }
+
   path = system.file("references.bib", package = package)
   if (!file.exists(path)) {
     warningf("Bibtex file '%s' for package '%s' does not exist", path, package)
