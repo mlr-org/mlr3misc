@@ -20,8 +20,9 @@ String to prefix the new column names with.}
 (\code{\link[data.table:data.table]{data.table::data.table()}}).
 }
 \description{
-Transforms each element of a list columns into its own column, possibly by reference.
+Transforms list columns to separate columns, possibly by reference.
 The original columns are removed from the returned table.
+All non-atomic objects in the list columns are expand to new list column.
 }
 \examples{
 x = data.table::data.table(
