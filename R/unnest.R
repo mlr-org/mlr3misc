@@ -1,7 +1,7 @@
 #' @title Unnest List Data Table Columns
 #'
 #' @description
-#' Transforms each element of a list columns into its own column, possibly by reference.
+#' Transforms list columns to separate columns, possibly by reference.
 #' The original columns are removed from the returned table.
 #'
 #' @param x :: [data.table::data.table()]\cr
@@ -22,16 +22,38 @@
 #' unnest(x, "value")
 unnest = function(x, cols, prefix = NULL) {
   assert_data_table(x)
-  assert_character(cols, any.missing = FALSE)
+  assert_subset(cols, names(x))
   assert_string(prefix, null.ok = TRUE)
 
   for (col in intersect(cols, names(x))) {
-    x[lengths(get(col)) == 0L, (col) := list(list(list("__dummy__" = NA)))]
-    tmp = remove_named(rbindlist(x[[col]], fill = TRUE, use.names = TRUE), "__dummy__")
+    values = x[[col]]
+    if (!is.list(values)) {
+      next
+    }
+
+    tmp = safe_rbindlist(values)
     if (!is.null(prefix)) {
       setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
     }
+
     x = rcbind(remove_named(x, col), tmp)
   }
+
   x[]
+}
+
+safe_rbindlist = function(values) {
+  new_cols = rbindlist(lapply(values, function(row) {
+    # preserve row, we need at least one value
+    if (all(lengths(row) == 0L)) {
+      return(list("__dummy__" = NA))
+    }
+
+    # wrap non-atomics into an extra list
+    ii = which(!map_dbl(row, is.atomic))
+    row[ii] = lapply(row[ii], list)
+    row
+  }), fill = TRUE, use.names = TRUE)
+
+  remove_named(new_cols, "__dummy__")
 }
