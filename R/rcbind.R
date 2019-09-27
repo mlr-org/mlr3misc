@@ -28,9 +28,9 @@ rcbind = function(x, y) {
       nrow(x), nrow(y))
   }
 
-  ii = which(names(x) %in% names(y))
-  if (length(ii)) {
-    stopf("Duplicated names: %s", paste0(names(x[ii]), collapse = ","))
+  dup = intersect(names(x), names(y))
+  if (length(dup)) {
+    stopf("Duplicated names: %s", str_collapse(dup))
   }
 
   x[, names(y) := y][]
