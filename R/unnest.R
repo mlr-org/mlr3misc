@@ -3,6 +3,7 @@
 #' @description
 #' Transforms list columns to separate columns, possibly by reference.
 #' The original columns are removed from the returned table.
+#' All non-atomic objects in the list columns are expand to new list column.
 #'
 #' @param x :: [data.table::data.table()]\cr
 #'   [data.table::data.table()] with columns to unnest.
@@ -31,29 +32,33 @@ unnest = function(x, cols, prefix = NULL) {
       next
     }
 
-    tmp = safe_rbindlist(values)
+    tmp = rbindlist2(values)
     if (!is.null(prefix)) {
       setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
     }
 
+    # rcbind checks for duplicated column names
     x = rcbind(remove_named(x, col), tmp)
   }
 
   x[]
 }
 
-safe_rbindlist = function(values) {
+rbindlist2 = function(values) {
   new_cols = rbindlist(lapply(values, function(row) {
-    # preserve row, we need at least one value
+    # to preserve the row, we need at least one value
     if (all(lengths(row) == 0L)) {
-      return(list("__dummy__" = NA))
+      return(list("__rbindlist2_dummy__" = NA))
     }
 
     # wrap non-atomics into an extra list
-    ii = which(!map_dbl(row, is.atomic))
-    row[ii] = lapply(row[ii], list)
+    ii = which(!map_lgl(row, is.atomic))
+    if (length(ii)) {
+      row[ii] = lapply(row[ii], list)
+    }
+
     row
   }), fill = TRUE, use.names = TRUE)
 
-  remove_named(new_cols, "__dummy__")
+  remove_named(new_cols, "__rbindlist2_dummy__")
 }
