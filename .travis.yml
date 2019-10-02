@@ -12,7 +12,9 @@ after_failure: R -q -e 'tic::after_failure()'
 before_deploy: R -q -e 'tic::before_deploy()'
 deploy:
   provider: script
-  script: R -q -e 'tic::deploy()'
+  script:
+    - R -q -e 'remotes::install_github("mlr-org/mlr3pkgdowntemplate")'
+    - R -q -e 'tic::deploy()'
   on:
     all_branches: true
 after_deploy: R -q -e 'tic::after_deploy()'
@@ -29,8 +31,6 @@ dist: xenial
 cache: packages
 latex: true
 pandoc_version: 2.5
-
-r_github_packages: mlr-org/mlr3pkgdowntemplate
 
 env:
   global:
