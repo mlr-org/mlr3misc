@@ -91,7 +91,7 @@ detect(.x, .p, ...)
 \arguments{
 \item{.x}{:: (\code{list()} or atomic \code{vector}).}
 
-\item{.f}{:: (\code{function} | \code{character()} | \code{integer()})\cr
+\item{.f}{:: (\verb{function} | \code{character()} | \code{integer()})\cr
 Function to apply, or element to extract by name (if \code{.f} is \code{character()}) or position (if \code{.f} is \code{integer()}).}
 
 \item{...}{:: \code{any}\cr
@@ -100,7 +100,7 @@ Additional arguments passed down to \code{.f} or \code{.p}.}
 \item{.fill}{:: \code{logical(1)}\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.p}{:: (\code{function()} | \code{logical()})\cr
+\item{.p}{:: (\verb{function()} | \code{logical()})\cr
 Predicate function.}
 
 \item{.at}{:: (\code{character()} | \code{integer()} | \code{logical()})\cr
@@ -110,7 +110,7 @@ Index vector.}
 \code{map}-like functions, similar to the ones implemented in \CRANpkg{purrr}:
 \itemize{
 \item \code{map()} returns the results of \code{.f} applied to \code{.x} as list.
-If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using the value of \code{.f} as index.
+If \code{.f} is not a function, \code{map} will call \verb{[[} on all elements of \code{.x} using the value of \code{.f} as index.
 \item \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
 \item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector of \code{.x}, then the second element of \code{.x}, and so on.
@@ -125,11 +125,11 @@ If \code{.x} does not have names, a sequence along \code{.x} is passed as second
 
 Additionally, the functions \code{map()}, \code{imap()} and \code{pmap} have type-safe variants with the following suffixes:
 \itemize{
-\item \code{*_lgl()} returns a \code{logical(length(.x))}.
-\item \code{*_int()} returns a \code{integer(length(.x))}.
-\item \code{*_dbl()} returns a \code{double(length(.x))}.
-\item \code{*_chr()} returns a \code{character(length(.x))}.
-\item \code{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
-\item \code{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
+\item \verb{*_lgl()} returns a \code{logical(length(.x))}.
+\item \verb{*_int()} returns a \code{integer(length(.x))}.
+\item \verb{*_dbl()} returns a \code{double(length(.x))}.
+\item \verb{*_chr()} returns a \code{character(length(.x))}.
+\item \verb{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:rbind]{base::rbind()}} fashion.
+\item \verb{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
 }

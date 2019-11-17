@@ -4,14 +4,20 @@
 \alias{encapsulate}
 \title{Encapsulate Function Calls for Logging}
 \usage{
-encapsulate(method, .f, .args = list(), .opts = list(),
-  .pkgs = character(), .seed = NA_integer_)
+encapsulate(
+  method,
+  .f,
+  .args = list(),
+  .opts = list(),
+  .pkgs = character(),
+  .seed = NA_integer_
+)
 }
 \arguments{
 \item{method}{:: \code{character(1)}\cr
 One of \code{"none"}, \code{"evaluate"} or \code{"callr"}.}
 
-\item{.f}{:: \code{function()}\cr
+\item{.f}{:: \verb{function()}\cr
 Function to call.}
 
 \item{.args}{:: \code{list()}\cr

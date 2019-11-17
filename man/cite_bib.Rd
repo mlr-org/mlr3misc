@@ -17,7 +17,7 @@ Entry of the bibtex file.}
 (\code{character(1)}) Bibentry formated as Rd.
 }
 \description{
-This function is called by the provided Rd macro \code{\\cite{pkg}{key}}:
+This function is called by the provided Rd macro \verb{\\\\cite\{pkg\}\{key\}}:
 \itemize{
 \item Parses the bibtex file \code{references.bib} in the root directory of package \code{package} using \code{\link[bibtex:read.bib]{bibtex::read.bib()}}.
 \item Extracts the entry with key \code{key}.

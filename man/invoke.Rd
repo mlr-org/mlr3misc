@@ -7,7 +7,7 @@
 invoke(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_)
 }
 \arguments{
-\item{.f}{:: \code{function()}\cr
+\item{.f}{:: \verb{function()}\cr
 Function to call.}
 
 \item{...}{:: \code{any}\cr

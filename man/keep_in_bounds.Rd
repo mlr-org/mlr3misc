@@ -17,10 +17,10 @@ Lower bound.}
 Upper bound.}
 }
 \value{
-(integer()) with only values in \code{[lower, upper]}.
+(integer()) with only values in \verb{[lower, upper]}.
 }
 \description{
-Filters vector \code{x} to only keep elements which are in bounds \code{[lower, upper]}.
+Filters vector \code{x} to only keep elements which are in bounds \verb{[lower, upper]}.
 This is equivalent to the following, but tries to avoid unnecessary allocations:\preformatted{ x[!is.na(x) & x >= lower & x <= upper]
 }
 

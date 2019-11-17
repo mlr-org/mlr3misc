@@ -1,9 +1,5 @@
 #' @title Key-Value Storage
 #'
-#' @usage NULL
-#' @name Dictionary
-#' @format [R6::R6Class] object.
-#'
 #' @description
 #' A key-value store for [R6::R6] objects.
 #' On retrieval of an object, the following applies:
@@ -13,45 +9,6 @@
 #' * If the object is an instance of a R6 class, it is returned as-is.
 #'
 #' Default argument required for construction can be stored alongside their constructors by passing them to `$add()`.
-#'
-#' @section Construction:
-#' ```
-#' d = Dictionary$new()
-#' ```
-#'
-#' @section Methods:
-#' * `get(key, ...)`\cr
-#'   (`character(1)`, ...) -> `any`\cr
-#'   Retrieves object with key `key` from the dictionary.
-#'   Additional arguments must be named and are passed to the constructor of the stored object.
-#'
-#' * `mget(keys, ...)`\cr
-#'   (`character()`, ...) -> named `list()`\cr
-#'   Returns objects with keys `keys` in a list named with `keys`.
-#'   Additional arguments must be named and are passed to the constructors of the stored objects.
-#'
-#' * `has(keys)`\cr
-#'   `character()` -> `logical()`\cr
-#'   Returns a logical vector with `TRUE` at its i-th position if the i-th key exists.
-#'
-#' * `keys(pattern = NULL)`\cr
-#'   `character(1)` -> `character()`\cr
-#'   Returns all keys which comply to the regular expression `pattern`.
-#'   If `pattern` is `NULL` (default), all keys are returned.
-#'
-#' * `add(key, value, ..., required_args = character())`\cr
-#'   (`character(1)`, `any`, ..., `character()`) -> `self`\cr
-#'   Adds object `value` to the dictionary with key `key`, potentially overwriting a previously stored item.
-#'   Additional arguments in `...` must be named and are passed as default arguments to `value` during construction.
-#'   The names of all additional arguments which are mandatory for construction and missing in `...` should be listed in `required_args`.
-#'
-#' * `remove(keys)`\cr
-#'   `character()` -> `self`\cr
-#'   Removes objects with keys `keys` from the dictionary.
-#'
-#' * `required_args(key)`\cr
-#'   (`character(1)`) -> `character()`\cr
-#'   Returns the names of arguments required to construct the object.
 #'
 #' @section S3 methods:
 #' * `as.data.table(d)`\cr
@@ -73,23 +30,33 @@
 #' d$mget(c("a", "b"))
 Dictionary = R6::R6Class("Dictionary",
   public = list(
+    #' @field items Stores the items of the dictionary
     items = NULL,
 
-    # construct, set container type (string)
+    #' @description
+    #' Construct a new Dictionary.
     initialize = function() {
       self$items = new.env(parent = emptyenv())
     },
 
+    #' @description
+    #' Format object as simple string.
     format = function() {
       sprintf("<%s>", class(self)[1L])
     },
 
+    #' @description
+    #' Print object.
     print = function() {
       keys = self$keys()
       catf(sprintf("%s with %i stored values", format(self), length(keys)))
       catf(str_indent("Keys:", keys))
     },
 
+    #' @description
+    #' Returns all keys which comply to the regular expression `pattern`.
+    #' If `pattern` is `NULL` (default), all keys are returned.
+    #' @param pattern (`character(1)`).
     keys = function(pattern = NULL) {
       keys = ls(self$items, all.names = TRUE)
       if (!is.null(pattern)) {
@@ -99,21 +66,42 @@ Dictionary = R6::R6Class("Dictionary",
       keys
     },
 
+    #' @description
+    #' Returns a logical vector with `TRUE` at its i-th position if the i-th key exists.
+    #' @param keys (`logical()`).
     has = function(keys) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
       set_names(map_lgl(keys, exists, envir = self$items, inherits = FALSE), keys)
     },
 
+    #' @description
+    #' Retrieves object with key `key` from the dictionary.
+    #' Additional arguments must be named and are passed to the constructor of the stored object.
+    #' @param key (`character(1)`).
+    #' @param ... Passed down to constructor.
     get = function(key, ...) {
       assert_string(key, min.chars = 1L)
       dictionary_get(self, key, ...)
     },
 
+    #' @description
+    #' Returns objects with keys `keys` in a list named with `keys`.
+    #' Additional arguments must be named and are passed to the constructors of the stored objects.
+    #' @param keys (`character()`).
+    #' @param ... Passed down to constructor.
     mget = function(keys, ...) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
       set_names(lapply(keys, self$get, ...), keys)
     },
 
+    #' @description
+    #' Adds object `value` to the dictionary with key `key`, potentially overwriting a previously stored item.
+    #' Additional arguments in `...` must be named and are passed as default arguments to `value` during construction.
+    #' The names of all additional arguments which are mandatory for construction and missing in `...` should be listed in `required_args`.
+    #' @param key (`character(1)`).
+    #' @param value (any).
+    #' @param ... Passed down to constructor.
+    #' @param required_args (`character()`).
     add = function(key, value, ..., required_args = character()) {
       assert_string(key, min.chars = 1L)
       assert(check_class(value, "R6ClassGenerator"), check_r6(value), check_function(value))
@@ -124,6 +112,9 @@ Dictionary = R6::R6Class("Dictionary",
       invisible(self)
     },
 
+    #' @description
+    #' Removes objects with from the dictionary.
+    #' @param keys (`character()`) Keys of objects to remove.
     remove = function(keys) {
       i = wf(!self$has(keys))
       if (length(i)) {
@@ -133,6 +124,9 @@ Dictionary = R6::R6Class("Dictionary",
       invisible(self)
     },
 
+    #' @description
+    #' Returns the names of arguments required to construct the object.
+    #' @param key (`character(1)`) Key of object to query for required arguments.
     required_args = function(key) {
       assert_string(key, min.chars = 1L)
       self$items[[key]][["required_args"]]

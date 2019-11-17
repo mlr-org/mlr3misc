@@ -12,10 +12,10 @@ modify_at(.x, .at, .f, ...)
 \arguments{
 \item{.x}{:: \code{vector()}.}
 
-\item{.p}{:: \code{function()}\cr
+\item{.p}{:: \verb{function()}\cr
 Predicate function.}
 
-\item{.f}{:: \code{function()}\cr
+\item{.f}{:: \verb{function()}\cr
 Function to apply on \code{.x}.}
 
 \item{...}{:: \code{any}\cr

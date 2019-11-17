@@ -4,8 +4,7 @@
 \alias{str_collapse}
 \title{Collapse Strings}
 \usage{
-str_collapse(str, sep = ", ", quote = "", n = Inf,
-  ellipsis = "[...]")
+str_collapse(str, sep = ", ", quote = "", n = Inf, ellipsis = "[...]")
 }
 \arguments{
 \item{str}{:: \code{character()}\cr

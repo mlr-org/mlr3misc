@@ -4,8 +4,10 @@
 \alias{require_namespaces}
 \title{Require Multiple Namespaces}
 \usage{
-require_namespaces(pkgs,
-  msg = "The following packages could not be loaded: \%s")
+require_namespaces(
+  pkgs,
+  msg = "The following packages could not be loaded: \%s"
+)
 }
 \arguments{
 \item{pkgs}{:: \code{character()}\cr

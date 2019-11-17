@@ -6,7 +6,7 @@
 \alias{mlr3misc-package}
 \title{mlr3misc: Helper Functions for 'mlr3'}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Frequently used helper functions and assertions
     used in 'mlr3' and its companion packages. Comes with helper functions
@@ -24,6 +24,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Michel Lang \email{michellang@gmail.com} (0000-0001-9754-0393)
+\strong{Maintainer}: Michel Lang \email{michellang@gmail.com} (\href{https://orcid.org/0000-0001-9754-0393}{ORCID})
 
 }

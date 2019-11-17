@@ -13,7 +13,7 @@ set_col_names(x, nm, ...)
 \item{x}{:: \code{any}.\cr
 Object to set names for.}
 
-\item{nm}{:: (\code{character()} | \code{function()})\cr
+\item{nm}{:: (\code{character()} | \verb{function()})\cr
 New names, or a function which transforms already existing names.}
 
 \item{...}{:: \code{any}\cr
