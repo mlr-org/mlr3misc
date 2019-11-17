@@ -102,6 +102,9 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+List of objects with corresponding keys.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-has"></a>}}
@@ -114,9 +117,12 @@ Returns a logical vector with \code{TRUE} at its i-th position if the i-th key e
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{keys}}{(\code{logical()}).}
+\item{\code{keys}}{(\code{character()}).}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+(\code{logical()}).
 }
 }
 \if{html}{\out{<hr>}}
@@ -137,6 +143,9 @@ Additional arguments must be named and are passed to the constructor of the stor
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+(any) Object with corresponding key.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-mget"></a>}}
@@ -155,6 +164,9 @@ Additional arguments must be named and are passed to the constructors of the sto
 \item{\code{...}}{Passed down to constructor.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+(named \code{list()}) of objects with corresponding keys.
 }
 }
 \if{html}{\out{<hr>}}
@@ -180,6 +192,9 @@ The names of all additional arguments which are mandatory for construction and m
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+(\code{Dictionary}).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-remove"></a>}}
@@ -196,6 +211,9 @@ Removes objects with from the dictionary.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+(\code{Dictionary}).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-required_args"></a>}}
@@ -211,6 +229,9 @@ Returns the names of arguments required to construct the object.
 \item{\code{key}}{(\code{character(1)}) Key of object to query for required arguments.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+(\code{character()}) of names of required arguments.
 }
 }
 \if{html}{\out{<hr>}}

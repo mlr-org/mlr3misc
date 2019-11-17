@@ -57,6 +57,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' Returns all keys which comply to the regular expression `pattern`.
     #' If `pattern` is `NULL` (default), all keys are returned.
     #' @param pattern (`character(1)`).
+    #' @return List of objects with corresponding keys.
     keys = function(pattern = NULL) {
       keys = ls(self$items, all.names = TRUE)
       if (!is.null(pattern)) {
@@ -68,7 +69,8 @@ Dictionary = R6::R6Class("Dictionary",
 
     #' @description
     #' Returns a logical vector with `TRUE` at its i-th position if the i-th key exists.
-    #' @param keys (`logical()`).
+    #' @param keys (`character()`).
+    #' @return (`logical()`).
     has = function(keys) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
       set_names(map_lgl(keys, exists, envir = self$items, inherits = FALSE), keys)
@@ -79,6 +81,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' Additional arguments must be named and are passed to the constructor of the stored object.
     #' @param key (`character(1)`).
     #' @param ... Passed down to constructor.
+    #' @return (any) Object with corresponding key.
     get = function(key, ...) {
       assert_string(key, min.chars = 1L)
       dictionary_get(self, key, ...)
@@ -89,6 +92,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' Additional arguments must be named and are passed to the constructors of the stored objects.
     #' @param keys (`character()`).
     #' @param ... Passed down to constructor.
+    #' @return (named `list()`) of objects with corresponding keys.
     mget = function(keys, ...) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
       set_names(lapply(keys, self$get, ...), keys)
@@ -102,6 +106,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' @param value (any).
     #' @param ... Passed down to constructor.
     #' @param required_args (`character()`).
+    #' @return (`Dictionary`).
     add = function(key, value, ..., required_args = character()) {
       assert_string(key, min.chars = 1L)
       assert(check_class(value, "R6ClassGenerator"), check_r6(value), check_function(value))
@@ -115,6 +120,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Removes objects with from the dictionary.
     #' @param keys (`character()`) Keys of objects to remove.
+    #' @return (`Dictionary`).
     remove = function(keys) {
       i = wf(!self$has(keys))
       if (length(i)) {
@@ -127,6 +133,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Returns the names of arguments required to construct the object.
     #' @param key (`character(1)`) Key of object to query for required arguments.
+    #' @return (`character()`) of names of required arguments.
     required_args = function(key) {
       assert_string(key, min.chars = 1L)
       self$items[[key]][["required_args"]]
