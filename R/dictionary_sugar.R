@@ -5,6 +5,7 @@
 #' * `dictionary_sugar_get()` to retrieve a single object with key `.key`.
 #' * `dictionary_sugar_mget()` to retrieve a list of objects with keys `.keys`.
 #' * `dictionary_sugar()` is deprecated in favor of `dictionary_sugar_get()`.
+#' * If `.key` or `.keys` is missing, the dictionary itself is returned.
 #'
 #' Arguments in `...` must be named and are consumed in the following order:
 #'
@@ -33,6 +34,9 @@
 #' dictionary_sugar_get(d, "key", x = 2)
 dictionary_sugar_get = function(dict, .key, ...) {
   assert_class(dict, "Dictionary")
+  if (missing(.key)) {
+    return(dict)
+  }
   assert_string(.key)
   if (...length() == 0L) {
     return(dictionary_get(dict, .key))
@@ -87,6 +91,9 @@ dictionary_sugar = dictionary_sugar_get
 #' @rdname dictionary_sugar_get
 #' @export
 dictionary_sugar_mget = function(dict, .keys, ...) {
+  if (missing(.keys)) {
+    return(dict)
+  }
   objs = lapply(.keys, dictionary_sugar_get, dict = dict, ...)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)

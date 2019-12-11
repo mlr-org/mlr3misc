@@ -33,6 +33,7 @@ Given a \link{Dictionary}, retrieve objects with provided keys.
 \item \code{dictionary_sugar_get()} to retrieve a single object with key \code{.key}.
 \item \code{dictionary_sugar_mget()} to retrieve a list of objects with keys \code{.keys}.
 \item \code{dictionary_sugar()} is deprecated in favor of \code{dictionary_sugar_get()}.
+\item If \code{.key} or \code{.keys} is missing, the dictionary itself is returned.
 }
 
 Arguments in \code{...} must be named and are consumed in the following order:
