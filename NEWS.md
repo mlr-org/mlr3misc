@@ -1,3 +1,9 @@
+# mlr3misc 0.1.6
+
+* `cite_bib()` or Rd macro `\cite{}` can now return the citation information of
+  the package if key is set to `"pkg::citation"`.
+* Updated dictionary helpers.
+
 # mlr3misc 0.1.5
 
 * Fixed error in C code discovered by UBSAN checks on CRAN.

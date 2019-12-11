@@ -91,7 +91,7 @@ detect(.x, .p, ...)
 \arguments{
 \item{.x}{:: (\code{list()} or atomic \code{vector}).}
 
-\item{.f}{:: (\verb{function} | \code{character()} | \code{integer()})\cr
+\item{.f}{:: (\code{function} | \code{character()} | \code{integer()})\cr
 Function to apply, or element to extract by name (if \code{.f} is \code{character()}) or position (if \code{.f} is \code{integer()}).}
 
 \item{...}{:: \code{any}\cr
@@ -110,7 +110,7 @@ Index vector.}
 \code{map}-like functions, similar to the ones implemented in \CRANpkg{purrr}:
 \itemize{
 \item \code{map()} returns the results of \code{.f} applied to \code{.x} as list.
-If \code{.f} is not a function, \code{map} will call \verb{[[} on all elements of \code{.x} using the value of \code{.f} as index.
+If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using the value of \code{.f} as index.
 \item \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
 \item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector of \code{.x}, then the second element of \code{.x}, and so on.

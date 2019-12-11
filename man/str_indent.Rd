@@ -29,5 +29,5 @@ Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}}.}
 Formats a text block for printing.
 }
 \examples{
-cat(str_indent("Letters:", str_collapse(letters), width = 25), sep = "\\n")
+cat(str_indent("Letters:", str_collapse(letters), width = 25), sep = "\n")
 }
