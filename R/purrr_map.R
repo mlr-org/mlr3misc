@@ -37,6 +37,8 @@
 #'   Additional arguments passed down to `.f` or `.p`.
 #' @param .fill :: `logical(1)`\cr
 #'   Passed down to [data.table::rbindlist()].
+#' @param .idcol :: `logical(1)`\cr
+#'   Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map
 NULL
@@ -86,8 +88,8 @@ map_chr = function(.x, .f, ...) {
 
 #' @export
 #' @rdname compat-map
-map_dtr = function(.x, .f, ..., .fill = FALSE) {
-  rbindlist(unname(map(.x, .f, ...)), use.names = TRUE, fill = .fill)
+map_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
+  rbindlist(unname(map(.x, .f, ...)), use.names = TRUE, fill = .fill, idcol = .idcol)
 }
 
 #' @export
@@ -136,9 +138,9 @@ pmap_chr = function(.x, .f, ...) {
 
 #' @export
 #' @rdname compat-map
-pmap_dtr = function(.x, .f, ..., .fill = FALSE) {
+pmap_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
   out = .mapply(.f, .x, list(...))
-  rbindlist(out, fill = .fill, use.names = TRUE)
+  rbindlist(out, use.names = TRUE, fill = .fill, .idcol = .idcol)
 }
 
 #' @export
@@ -186,8 +188,8 @@ imap_chr = function(.x, .f, ...) {
 
 #' @export
 #' @rdname compat-map
-imap_dtr = function(.x, .f, ..., .fill = FALSE) {
-  rbindlist(imap(.x, .f, ...), fill = .fill, use.names = TRUE)
+imap_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
+  rbindlist(imap(.x, .f, ...), use.names = TRUE, fill = .fill, idcol = .idcol)
 }
 
 #' @export

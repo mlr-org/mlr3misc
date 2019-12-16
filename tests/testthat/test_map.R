@@ -85,6 +85,12 @@ test_that("map_dtr", {
   res = map_dtr(x, identity, .fill = TRUE)
   expect_data_table(res, nrows = 2L, ncols = 2L)
   expect_names(names(res), identical.to = c("a", "b"))
+
+  x = list(data.table(a = 1L), data.table(a = 2L))
+  res = map_dtr(x, identity, .idcol = "id")
+  expect_data_table(res, nrows = 2L, ncols = 2L)
+  expect_names(names(res), identical.to = c("id", "a"))
+  expect_equal(res$id, 1:2)
 })
 
 test_that("map_dtc", {

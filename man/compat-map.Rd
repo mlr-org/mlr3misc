@@ -42,7 +42,7 @@ map_dbl(.x, .f, ...)
 
 map_chr(.x, .f, ...)
 
-map_dtr(.x, .f, ..., .fill = FALSE)
+map_dtr(.x, .f, ..., .fill = FALSE, .idcol = NULL)
 
 map_dtc(.x, .f, ...)
 
@@ -56,7 +56,7 @@ pmap_dbl(.x, .f, ...)
 
 pmap_chr(.x, .f, ...)
 
-pmap_dtr(.x, .f, ..., .fill = FALSE)
+pmap_dtr(.x, .f, ..., .fill = FALSE, .idcol = NULL)
 
 pmap_dtc(.x, .f, ...)
 
@@ -70,7 +70,7 @@ imap_dbl(.x, .f, ...)
 
 imap_chr(.x, .f, ...)
 
-imap_dtr(.x, .f, ..., .fill = FALSE)
+imap_dtr(.x, .f, ..., .fill = FALSE, .idcol = NULL)
 
 imap_dtc(.x, .f, ...)
 
@@ -98,6 +98,9 @@ Function to apply, or element to extract by name (if \code{.f} is \code{characte
 Additional arguments passed down to \code{.f} or \code{.p}.}
 
 \item{.fill}{:: \code{logical(1)}\cr
+Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
+
+\item{.idcol}{:: \code{logical(1)}\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
 \item{.p}{:: (\verb{function()} | \code{logical()})\cr
