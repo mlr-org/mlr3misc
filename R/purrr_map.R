@@ -140,7 +140,7 @@ pmap_chr = function(.x, .f, ...) {
 #' @rdname compat-map
 pmap_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
   out = .mapply(.f, .x, list(...))
-  rbindlist(out, use.names = TRUE, fill = .fill, .idcol = .idcol)
+  rbindlist(out, use.names = TRUE, fill = .fill, idcol = .idcol)
 }
 
 #' @export
