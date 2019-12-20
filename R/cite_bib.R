@@ -34,7 +34,6 @@ cite_bib = function(package, key) {
   if (key == "pkg::citation") {
     tools::toRd(utils::citation(package))
   } else {
-    print(key)
     if (!requireNamespace("bibtex", quietly = TRUE)) {
       warningf("Could not load package 'bibtex' to parse citation '%s'", key)
       return(sprintf("bibtex:%s", key))
