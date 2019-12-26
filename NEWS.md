@@ -2,6 +2,8 @@
 
 * `map_dtr()`, `imap_dtr` and `pmap_dtr` now pass `.idcol` down to argument
   `idcol` of `data.table::rbindlist()`.
+* `cite_bib()` can now handle packages with multiple citation entries.
+
 
 # mlr3misc 0.1.6
 

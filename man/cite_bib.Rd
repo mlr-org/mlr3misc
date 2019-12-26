@@ -12,8 +12,8 @@ Package to read the bibtex file from.}
 
 \item{key}{(\code{character(1)})\cr
 Entry of the bibtex file.
-If the key is \code{"pkg::citation"}, the \code{\link[=citation]{citation()}} information of the
-package is used instead.}
+If the key is \code{"pkg::citation"}, the \code{\link[=citation]{citation()}} information of the package is used instead.
+If the package provides multiple citation entries, a specific one can be selected by appending \code{"::n"} to the string \code{key} where \code{n} is the number of the citation entry (defaults to the first entry).}
 }
 \value{
 (\code{character(1)}) Bibentry formated as Rd.
