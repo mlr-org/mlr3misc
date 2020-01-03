@@ -13,3 +13,4 @@
 ^src/.+\.so$
 ^pkgdown$
 ^revdep$
+^\.pre-commit-config\.yaml$
