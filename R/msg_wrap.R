@@ -32,6 +32,5 @@ cat_wrap = function(str, width = 0.9 * getOption("width")) {
 
 str_wrap = function(str, width = 0.9 * getOption("width")) {
   paste0(strwrap(gsub("[[:space:]]+", " ", str), width = width),
-         collapse = "\n")
+    collapse = "\n")
 }
-
