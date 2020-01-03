@@ -88,17 +88,28 @@ While this comes with a considerable overhead, it also guards your session from 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Development version">0.1.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.6</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
+     
+    Reference
+  </a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
+</li>
+<li>
+  <a href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
+     
+    mlr3book
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -227,7 +238,7 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; Empty data.table (0 rows and 2 cols): class,msg
 #&gt; 
 #&gt; $elapsed
-#&gt; [1] 0
+#&gt; [1] 0.001
 #&gt; </div><div class='input'><span class='fu'>encapsulate</span>(<span class='st'>"evaluate"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $result
 #&gt; [1] 0.570045
 #&gt; 
@@ -236,7 +247,7 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; 1: output hi from f
 #&gt; 
 #&gt; $elapsed
-#&gt; [1] 0.002
+#&gt; [1] 0.003
 #&gt; </div><div class='input'><span class='fu'>encapsulate</span>(<span class='st'>"callr"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $result
 #&gt; [1] 0.2655087
 #&gt; 
@@ -246,7 +257,7 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; 
 #&gt; $elapsed
 #&gt; elapsed 
-#&gt;   0.171 
+#&gt;   0.263 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

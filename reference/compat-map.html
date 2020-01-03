@@ -101,17 +101,28 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlr3misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Development version">0.1.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.6</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
+     
+    Reference
+  </a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
+</li>
+<li>
+  <a href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
+     
+    mlr3book
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -194,7 +205,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>map_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>map_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>map_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>map_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -208,7 +219,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>pmap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>pmap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>pmap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>pmap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -222,7 +233,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>imap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>imap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>imap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>imap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -259,11 +270,6 @@ Additional arguments passed down to <code>.f</code> or <code>.p</code>.</p></td>
     </tr>
     <tr>
       <th>.fill</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
-Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>.idcol</th>
       <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
