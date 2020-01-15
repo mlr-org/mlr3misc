@@ -8,13 +8,13 @@
 \alias{stopf}
 \title{Functions for Formatted Output and Conditions}
 \usage{
-catf(msg, ..., file = "")
+catf(msg, ..., file = "", wrap = FALSE)
 
-messagef(msg, ...)
+messagef(msg, ..., wrap = FALSE)
 
-warningf(msg, ...)
+warningf(msg, ..., wrap = FALSE)
 
-stopf(msg, ...)
+stopf(msg, ..., wrap = FALSE)
 }
 \arguments{
 \item{msg}{:: \code{character(1)}\cr
@@ -25,8 +25,23 @@ Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
 \item{file}{:: \code{character(1)}\cr
 Passed to \code{\link[base:cat]{base::cat()}}.}
+
+\item{wrap}{:: (\code{integer(1)} | \code{logical(1)})\cr
+If set to a positive integer, \code{\link[base:strwrap]{base::strwrap()}} is used to wrap the string to the provided width.
+If set to \code{TRUE}, the width defaults to \code{0.9 * getOption("width")}.
+If set to \code{FALSE}, wrapping is disabled (default).
+All whitespace characters (\verb{[[:space:]]}) are converted to spaces.
+Consecutive spaces are converted to a single space.}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},
 \code{\link[base:message]{base::message()}}, \code{\link[base:warning]{base::warning()}} and \code{\link[base:stop]{base::stop()}}, respectively.
+The call is not included for warnings and errors.
+}
+\examples{
+stopf("
+  This is a rather long \%s
+  on multiple lines
+  which will get wrapped.
+", "string", wrap = 15)
 }
