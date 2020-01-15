@@ -20,7 +20,7 @@
 #'
 #' @name printf
 #' @examples
-#' stopf("
+#' messagef("
 #'   This is a rather long %s
 #'   on multiple lines
 #'   which will get wrapped.

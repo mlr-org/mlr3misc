@@ -39,7 +39,7 @@ Consecutive spaces are converted to a single space.}
 The call is not included for warnings and errors.
 }
 \examples{
-stopf("
+messagef("
   This is a rather long \%s
   on multiple lines
   which will get wrapped.
