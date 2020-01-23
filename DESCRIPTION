@@ -2,11 +2,16 @@ Package: mlr3misc
 Title: Helper Functions for 'mlr3'
 Version: 0.1.6-9000
 Authors@R:
-    person(given = "Michel",
-           family = "Lang",
-           role = c("cre", "aut"),
-           email = "michellang@gmail.com",
-           comment = c(ORCID = "0000-0001-9754-0393"))
+    c(person(given = "Michel",
+             family = "Lang",
+             role = c("cre", "aut"),
+             email = "michellang@gmail.com",
+             comment = c(ORCID = "0000-0001-9754-0393")),
+      person(given = "Patrick",
+             family = "Schratz",
+             role = "aut",
+             email = "patrick.schratz@gmail.com",
+             comment = c(ORCID = "0000-0003-0748-6624")))
 Description: Frequently used helper functions and assertions
     used in 'mlr3' and its companion packages. Comes with helper functions
     for functional programming, for printing, to work with 'data.table',
