@@ -45,7 +45,8 @@
 
 <meta property="og:title" content="Functions for Formatted Output and Conditions — printf" />
 <meta property="og:description" content="catf(), messagef(), warningf() and stopf() are wrappers around base::cat(),
-base::message(), base::warning() and base::stop(), respectively." />
+base::message(), base::warning() and base::stop(), respectively.
+The call is not included for warnings and errors." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -146,16 +147,17 @@ base::message(), base::warning() and base::stop(), respectively." />
 
     <div class="ref-description">
     <p><code>catf()</code>, <code>messagef()</code>, <code>warningf()</code> and <code>stopf()</code> are wrappers around <code><a href='https://rdrr.io/r/base/cat.html'>base::cat()</a></code>,
-<code><a href='https://rdrr.io/r/base/message.html'>base::message()</a></code>, <code><a href='https://rdrr.io/r/base/warning.html'>base::warning()</a></code> and <code><a href='https://rdrr.io/r/base/stop.html'>base::stop()</a></code>, respectively.</p>
+<code><a href='https://rdrr.io/r/base/message.html'>base::message()</a></code>, <code><a href='https://rdrr.io/r/base/warning.html'>base::warning()</a></code> and <code><a href='https://rdrr.io/r/base/stop.html'>base::stop()</a></code>, respectively.
+The call is not included for warnings and errors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>)
+    <pre class="usage"><span class='fu'>catf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>messagef</span>(<span class='no'>msg</span>, <span class='no'>...</span>)
+<span class='fu'>messagef</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>warningf</span>(<span class='no'>msg</span>, <span class='no'>...</span>)
+<span class='fu'>warningf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>stopf</span>(<span class='no'>msg</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>stopf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,14 +177,35 @@ Arguments passed down to <code><a href='https://rdrr.io/r/base/sprintf.html'>bas
       <td><p>:: <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
 Passed to <code><a href='https://rdrr.io/r/base/cat.html'>base::cat()</a></code>.</p></td>
     </tr>
+    <tr>
+      <th>wrap</th>
+      <td><p>:: (<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+If set to a positive integer, <code><a href='https://rdrr.io/r/base/strwrap.html'>base::strwrap()</a></code> is used to wrap the string to the provided width.
+If set to <code>TRUE</code>, the width defaults to <code>0.9 * getOption("width")</code>.
+If set to <code>FALSE</code>, wrapping is disabled (default).
+All whitespace characters (<code>[[:space:]]</code>) are converted to spaces.
+Consecutive spaces are converted to a single space.</p></td>
+    </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>messagef</span>(<span class='st'>"
+  This is a rather long %s
+  on multiple lines
+  which will get wrapped.
+"</span>, <span class='st'>"string"</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>15</span>)</div><div class='output co'>#&gt; <span class='message'>This is a</span>
+#&gt; <span class='message'>rather long</span>
+#&gt; <span class='message'>string on</span>
+#&gt; <span class='message'>multiple lines</span>
+#&gt; <span class='message'>which will get</span>
+#&gt; <span class='message'>wrapped.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
@@ -191,7 +214,7 @@ Passed to <code><a href='https://rdrr.io/r/base/cat.html'>base::cat()</a></code>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang.</p>
+  <p>Developed by Michel Lang, Patrick Schratz.</p>
 </div>
 
 <div class="pkgdown">
