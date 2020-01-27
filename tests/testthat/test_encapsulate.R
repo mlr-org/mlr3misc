@@ -12,6 +12,8 @@ test_that("encapsulate", {
   }
 
   for (method in c("none", "evaluate", "callr")) {
+    if (method != "none" && !requireNamespace(method, quietly = TRUE))
+      next
     res = encapsulate(method, fun2)
     log = res$log
     expect_identical(res$result, 1L)
@@ -20,6 +22,8 @@ test_that("encapsulate", {
   }
 
   for (method in c("evaluate", "callr")) {
+    if (!requireNamespace(method, quietly = TRUE))
+      next
     res = encapsulate(method, fun1)
     log = res$log
     expect_identical(res$result, 99L)

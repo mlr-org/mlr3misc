@@ -62,7 +62,14 @@ f = function(n) {
   }
   runif(n)
 }
+
 encapsulate("none", f, list(n = 1), .seed = 1)
-encapsulate("evaluate", f, list(n = 1), .seed = 1)
-encapsulate("callr", f, list(n = 1), .seed = 1)
+
+if (requireNamespace("evaluate", quietly = TRUE)) {
+  encapsulate("evaluate", f, list(n = 1), .seed = 1)
+}
+
+if (requireNamespace("callr", quietly = TRUE)) {
+  encapsulate("callr", f, list(n = 1), .seed = 1)
+}
 }
