@@ -5,6 +5,7 @@
 * `cite_bib()` can now handle packages with multiple citation entries.
 * Added argument `wrap` to `catf()`, `messagef()`, `warningf()` and `stopf()` to
   wrap the respective messages to a desired length.
+* Added `with_package()` helper, similar to the one in package `withr`.
 
 # mlr3misc 0.1.6
 
