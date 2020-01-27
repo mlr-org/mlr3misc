@@ -1,10 +1,10 @@
 # mlr3misc 0.1.7
 
-* `map_dtr()`, `imap_dtr` and `pmap_dtr` now pass `.idcol` down to argument
+* `map_dtr()`, `imap_dtr()` and `pmap_dtr()` now pass `.idcol` down to argument
   `idcol` of `data.table::rbindlist()`.
 * `cite_bib()` can now handle packages with multiple citation entries.
 * Added argument `wrap` to `catf()`, `messagef()`, `warningf()` and `stopf()` to
-  wrap the respective messages to a desired length.
+  wrap the respective messages to a customizable width.
 * Added `with_package()` helper, similar to the one in package `withr`.
 
 # mlr3misc 0.1.6

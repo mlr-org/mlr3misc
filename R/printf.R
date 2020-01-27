@@ -15,8 +15,8 @@
 #'   If set to a positive integer, [base::strwrap()] is used to wrap the string to the provided width.
 #'   If set to `TRUE`, the width defaults to `0.9 * getOption("width")`.
 #'   If set to `FALSE`, wrapping is disabled (default).
-#'   All whitespace characters (`[[:space:]]`) are converted to spaces.
-#'   Consecutive spaces are converted to a single space.
+#'   If wrapping is enabled, all whitespace characters (`[[:space:]]`) are converted to spaces,
+#'   and consecutive spaces are converted to a single space.
 #'
 #' @name printf
 #' @examples
@@ -37,7 +37,7 @@ str_wrap = function(str, width = FALSE) {
     assert_count(width)
   }
 
-  paste(strwrap(gsub("[[:space:]]+", " ", str), width = width), collapse = "\n")
+  paste0(strwrap(gsub("[[:space:]]+", " ", str), width = width), collapse = "\n")
 }
 
 #' @export

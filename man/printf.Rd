@@ -30,8 +30,8 @@ Passed to \code{\link[base:cat]{base::cat()}}.}
 If set to a positive integer, \code{\link[base:strwrap]{base::strwrap()}} is used to wrap the string to the provided width.
 If set to \code{TRUE}, the width defaults to \code{0.9 * getOption("width")}.
 If set to \code{FALSE}, wrapping is disabled (default).
-All whitespace characters (\verb{[[:space:]]}) are converted to spaces.
-Consecutive spaces are converted to a single space.}
+If wrapping is enabled, all whitespace characters (\verb{[[:space:]]}) are converted to spaces,
+and consecutive spaces are converted to a single space.}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},
