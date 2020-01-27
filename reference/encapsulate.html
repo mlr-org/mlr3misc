@@ -229,6 +229,7 @@ Gets reset to the previous seed on exit.</p></td>
   }
   <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='no'>n</span>)
 }
+
 <span class='fu'>encapsulate</span>(<span class='st'>"none"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>hi from f</span></div><div class='output co'>#&gt; $result
 #&gt; [1] 0.2655087
 #&gt; 
@@ -236,8 +237,11 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; Empty data.table (0 rows and 2 cols): class,msg
 #&gt; 
 #&gt; $elapsed
-#&gt; [1] 0.001
-#&gt; </div><div class='input'><span class='fu'>encapsulate</span>(<span class='st'>"evaluate"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $result
+#&gt; [1] 0
+#&gt; </div><div class='input'>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"evaluate"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
+  <span class='fu'>encapsulate</span>(<span class='st'>"evaluate"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+}</div><div class='output co'>#&gt; $result
 #&gt; [1] 0.570045
 #&gt; 
 #&gt; $log
@@ -246,7 +250,10 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; 
 #&gt; $elapsed
 #&gt; [1] 0.002
-#&gt; </div><div class='input'><span class='fu'>encapsulate</span>(<span class='st'>"callr"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $result
+#&gt; </div><div class='input'>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"callr"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
+  <span class='fu'>encapsulate</span>(<span class='st'>"callr"</span>, <span class='no'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+}</div><div class='output co'>#&gt; $result
 #&gt; [1] 0.2655087
 #&gt; 
 #&gt; $log
@@ -255,7 +262,7 @@ Gets reset to the previous seed on exit.</p></td>
 #&gt; 
 #&gt; $elapsed
 #&gt; elapsed 
-#&gt;   0.176 
+#&gt;   0.179 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
