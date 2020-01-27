@@ -81,14 +81,14 @@ Converts to Rd with tools::toRd().
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mlr3misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.6</span>
-      </span>
-    </div>
 
+      <div class="navbar-brand-container">
+        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.7</small></a>
+      </div>
+    </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -106,8 +106,6 @@ Converts to Rd with tools::toRd().
     mlr3book
   </a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mlr-org/mlr3misc">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -173,8 +171,8 @@ Package to read the bibtex file from.</p></td>
       <th>key</th>
       <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Entry of the bibtex file.
-If the key is <code>"pkg::citation"</code>, the <code><a href='https://rdrr.io/r/utils/citation.html'>citation()</a></code> information of the
-package is used instead.</p></td>
+If the key is <code>"pkg::citation"</code>, the <code><a href='https://rdrr.io/r/utils/citation.html'>citation()</a></code> information of the package is used instead.
+If the package provides multiple citation entries, a specific one can be selected by appending <code>"::n"</code> to the string <code>key</code> where <code>n</code> is the number of the citation entry (defaults to the first entry).</p></td>
     </tr>
     </table>
 
@@ -196,9 +194,9 @@ package is used instead.</p></td>
 #&gt;   url     = {http://jmlr.org/papers/v17/15-066.html}
 #&gt; }</div><div class='input'>
 <span class='co'># bibtex entry as raw Rd</span>
-<span class='fu'>cite_bib</span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"mlr"</span>)</div><div class='output co'>#&gt; [1] "mlr"</div><div class='output co'>#&gt; [1] "Bischl B, Lang M, Kotthoff L, Schiffner J, Richter J, Studerus E, Casalicchio G, Jones ZM (2016).\n\\dQuote{mlr: Machine Learning in R.}\n\\emph{Journal of Machine Learning Research}, \\bold{17}(170), 1-5.\n\\url{http://jmlr.org/papers/v17/15-066.html}.\n"</div><div class='input'>
+<span class='fu'>cite_bib</span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"mlr"</span>)</div><div class='output co'>#&gt; [1] "Bischl B, Lang M, Kotthoff L, Schiffner J, Richter J, Studerus E, Casalicchio G, Jones ZM (2016).\n\\dQuote{mlr: Machine Learning in R.}\n\\emph{Journal of Machine Learning Research}, \\bold{17}(170), 1-5.\n\\url{http://jmlr.org/papers/v17/15-066.html}.\n"</div><div class='input'>
 <span class='co'># citation info as raw Rd</span>
-<span class='fu'>cite_bib</span>(<span class='st'>"stats"</span>, <span class='st'>"pkg::citation"</span>)</div><div class='output co'>#&gt; [1] "R Core Team (2019).\n\\emph{R: A Language and Environment for Statistical Computing}.\nR Foundation for Statistical Computing, Vienna, Austria.\n\\url{https://www.R-project.org/}."</div></pre>
+<span class='fu'>cite_bib</span>(<span class='st'>"stats"</span>, <span class='st'>"pkg::citation"</span>)</div><div class='output co'>#&gt; [1] "R Core Team (2017).\n\\emph{R: A Language and Environment for Statistical Computing}.\nR Foundation for Statistical Computing, Vienna, Austria.\n\\url{https://www.R-project.org/}."</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -214,7 +212,7 @@ package is used instead.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang.</p>
+  <p>Developed by Michel Lang, Patrick Schratz.</p>
 </div>
 
 <div class="pkgdown">

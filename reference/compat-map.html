@@ -99,14 +99,14 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mlr3misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.6</span>
-      </span>
-    </div>
 
+      <div class="navbar-brand-container">
+        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.7</small></a>
+      </div>
+    </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -124,8 +124,6 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
     mlr3book
   </a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mlr-org/mlr3misc">
     <span class="fab fa fab fa-github fa-lg"></span>
@@ -205,7 +203,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>map_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>map_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>map_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>map_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -219,7 +217,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>pmap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>pmap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pmap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>pmap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -233,7 +231,7 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>imap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
-<span class='fu'>imap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>imap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>imap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
 
@@ -274,6 +272,11 @@ Additional arguments passed down to <code>.f</code> or <code>.p</code>.</p></td>
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
     <tr>
+      <th>.idcol</th>
+      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>.p</th>
       <td><p>:: (<code>function()</code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>)<br />
 Predicate function.</p></td>
@@ -299,7 +302,7 @@ Index vector.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang.</p>
+  <p>Developed by Michel Lang, Patrick Schratz.</p>
 </div>
 
 <div class="pkgdown">
