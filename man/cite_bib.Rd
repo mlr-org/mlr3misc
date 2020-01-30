@@ -27,16 +27,13 @@ This function is called by the provided Rd macro \verb{\\\\cite\{pkg\}\{key\}}:
 }
 }
 \examples{
-# only run example if package bibtex is installed
-if (requireNamespace("bibtex", quietly = TRUE)) {
-  # examplary bibtex file
-  path = system.file("references.bib", package = "mlr3misc")
-  cat(readLines(path), sep = "\n")
+# examplary bibtex file
+path = system.file("references.bib", package = "mlr3misc")
+cat(readLines(path), sep = "\n")
 
-  # bibtex entry as raw Rd
-  cite_bib("mlr3misc", "mlr")
+# bibtex entry as raw Rd
+cite_bib("mlr3misc", "mlr")
 
-  # citation info as raw Rd
-  cite_bib("stats", "pkg::citation")
-}
+# citation info as raw Rd
+cite_bib("stats", "pkg::citation")
 }
