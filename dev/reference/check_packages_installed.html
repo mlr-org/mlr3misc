@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Require Multiple Namespaces — require_namespaces • mlr3misc</title>
+<title>Check that packages are installed, without loading them — check_packages_installed • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,10 +43,9 @@
 
 
 
-<meta property="og:title" content="Require Multiple Namespaces — require_namespaces" />
-<meta property="og:description" content="Packages are loaded (not attached) via base::requireNamespace().
-If at least on package can not be loaded, an exception of class &quot;packageNotFoundError&quot; is raised.
-The character vector of missing packages is stored in the condition as packages." />
+<meta property="og:title" content="Check that packages are installed, without loading them — check_packages_installed" />
+<meta property="og:description" content="Calls find.package() to check if the all packages are installed.
+Returns a" />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -140,20 +139,20 @@ The character vector of missing packages is stored in the condition as packages.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Require Multiple Namespaces</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/require_namespaces.R'><code>R/require_namespaces.R</code></a></small>
-    <div class="hidden name"><code>require_namespaces.Rd</code></div>
+    <h1>Check that packages are installed, without loading them</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/check_packages_installed.R'><code>R/check_packages_installed.R</code></a></small>
+    <div class="hidden name"><code>check_packages_installed.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Packages are loaded (not attached) via <code><a href='https://rdrr.io/r/base/ns-load.html'>base::requireNamespace()</a></code>.
-If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
-The character vector of missing packages is stored in the condition as <code>packages</code>.</p>
+    <p>Calls <code><a href='https://rdrr.io/r/base/find.package.html'>find.package()</a></code> to check if the all packages are installed.
+Returns a</p>
     </div>
 
-    <pre class="usage"><span class='fu'>require_namespaces</span>(
+    <pre class="usage"><span class='fu'>check_packages_installed</span>(
   <span class='no'>pkgs</span>,
-  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='st'>"The following packages could not be loaded: %s"</span>
+  <span class='kw'>warn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='st'>"The following packages are required but not installed: %s"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,25 +161,30 @@ The character vector of missing packages is stored in the condition as <code>pac
     <tr>
       <th>pkgs</th>
       <td><p>:: <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code><br />
-Packages to load.</p></td>
+Packages to check.</p></td>
+    </tr>
+    <tr>
+      <th>warn</th>
+      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+If <code>TRUE</code>, signals a warning of class <code>"packageNotFoundWarning"</code> about the missing packages.</p></td>
     </tr>
     <tr>
       <th>msg</th>
       <td><p>:: <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
-Message to print on error. Use <code>"%s"</code> as placeholder for the list of packages.</p></td>
+Format of the warning message. Use <code>"%s"</code> as placeholder for the list of packages.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(named <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>) of loaded packages (invisibly).</p>
+    <p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>) named with package names. <code>TRUE</code> if the respective package is installed, <code>FALSE</code> otherwise.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>require_namespaces</span>(<span class='st'>"mlr3misc"</span>)
-
-<span class='co'># catch condition, return missing packages</span>
-<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(<span class='fu'>require_namespaces</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span>)),
-  <span class='kw'>packageNotFoundError</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>$<span class='no'>packages</span>)</div><div class='output co'>#&gt; [1] "foobaaar"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>check_packages_installed</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"foobar"</span>), <span class='kw'>warn</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; mlr3misc   foobar 
+#&gt;     TRUE    FALSE </div><div class='input'>
+<span class='co'># catch warning</span>
+<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(<span class='fu'>check_packages_installed</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span>)),
+  <span class='kw'>packageNotFoundWarning</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>w</span>) <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>w</span>))</div><div class='output co'>#&gt; [1] "packageNotFoundWarning: The following packages are required but not installed: foobaaar\n"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
