@@ -8,8 +8,9 @@
 #' @param pkgs :: `character()`\cr
 #'   Packages to load.
 #' @param msg :: `character(1)`\cr
-#'   Message to print on error. `"%s"` is placeholder for the list of packages.
+#'   Message to print on error. Use `"%s"` as placeholder for the list of packages.
 #'
+#' @return (named `character()`) of loaded packages (invisibly).
 #' @export
 #' @examples
 #' require_namespaces("mlr3misc")

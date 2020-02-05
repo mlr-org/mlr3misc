@@ -10,4 +10,5 @@
 ^pkgdown$
 ^revdep$
 ^\.pre-commit-config\.yaml$
-^\.github/
+^\.github
+^LICENSE.md$
