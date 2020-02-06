@@ -7,7 +7,7 @@
 is_scalar_na(x)
 }
 \arguments{
-\item{x}{:: \code{any}\cr
+\item{x}{(\code{any})\cr
 Argument to check.}
 }
 \value{

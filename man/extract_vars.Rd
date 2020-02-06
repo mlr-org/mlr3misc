@@ -7,7 +7,7 @@
 extract_vars(f)
 }
 \arguments{
-\item{f}{:: \code{formula()}.}
+\item{f}{(\code{formula()}).}
 }
 \value{
 (\code{list()}) with elements \code{"lhs"} and \code{"rhs"}, both \code{character()}.

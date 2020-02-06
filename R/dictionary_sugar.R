@@ -17,12 +17,12 @@
 #' 3. All remaining arguments are assumed to be regular fields of the constructed R6 instance, and
 #'   are assigned via [`<-`].
 #'
-#' @param dict :: [Dictionary].
-#' @param .key :: `character(1)`\cr
+#' @param dict ([Dictionary]).
+#' @param .key (`character(1)`)\cr
 #'   Key of the object to construct.
-#' @param .keys :: `character()`\cr
+#' @param .keys (`character()`)\cr
 #'   Keys of the objects to construct.
-#' @param ... :: `any`\cr
+#' @param ... (`any`)\cr
 #'   See description.
 #' @return [R6::R6Class()]
 #' @export

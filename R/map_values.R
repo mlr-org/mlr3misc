@@ -4,10 +4,10 @@
 #' Replaces all values in `x` which match `old` with values in `new`.
 #' Values are matched with [base::match()].
 #'
-#' @param x :: `vector()`.
-#' @param old :: `vector()`\cr
+#' @param x (`vector())`.
+#' @param old (`vector()`)\cr
 #'   Vector with values to replace.
-#' @param new :: `vector()`\cr
+#' @param new (`vector()`)\cr
 #'   Values to replace with.
 #'   Will be forced to the same length as `old` with [base::rep_len()].
 #'

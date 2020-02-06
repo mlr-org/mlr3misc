@@ -7,10 +7,10 @@
 did_you_mean(str, candidates)
 }
 \arguments{
-\item{str}{:: \code{character(1)}\cr
+\item{str}{(\code{character(1)})\cr
 String.}
 
-\item{candidates}{:: \code{character()}\cr
+\item{candidates}{(\code{character()})\cr
 Candidate strings.}
 }
 \value{

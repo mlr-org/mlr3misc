@@ -8,14 +8,14 @@
 #'
 #' `modify_at()` applies `.f` to those elements of `.x` selected via `.at`.
 #'
-#' @param .x :: `vector()`.
-#' @param .p :: `function()`\cr
+#' @param .x (`vector()`).
+#' @param .p (`function()`)\cr
 #'   Predicate function.
-#' @param .f :: `function()`\cr
+#' @param .f (`function()`)\cr
 #'   Function to apply on `.x`.
-#' @param .at :: (`integer()` | `character()`)\cr
+#' @param .at ((`integer()` | `character()`))\cr
 #'   Index vector to select elements from `.x`.
-#' @param ... :: `any`\cr
+#' @param ... (`any`)\cr
 #'   Additional arguments passed to `.f`.
 #' @export
 #' @examples

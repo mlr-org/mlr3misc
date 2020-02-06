@@ -3,7 +3,7 @@
 #' @description
 #' None.
 #'
-#' @param xs :: `list()`\cr
+#' @param xs (`list()`)\cr
 #'   Every element must have a slot 'id'.
 #'
 #' @return (`character()`).

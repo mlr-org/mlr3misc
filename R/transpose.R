@@ -4,7 +4,7 @@
 #' Transposes a list of list, and turns it inside out, similar to the
 #' function `transpose()` in package \CRANpkg{purrr}.
 #'
-#' @param .l :: `list()` of `list()`.
+#' @param .l (`list()` of `list()`).
 #'
 #' @return `list()`.
 #' @export

@@ -7,13 +7,13 @@
 keep_in_bounds(x, lower, upper)
 }
 \arguments{
-\item{x}{:: \code{integer()}\cr
+\item{x}{(\code{integer()})\cr
 Vector to filter.}
 
-\item{lower}{:: \code{integer(1)}\cr
+\item{lower}{(\code{integer(1)})\cr
 Lower bound.}
 
-\item{upper}{:: \code{integer(1)}\cr
+\item{upper}{(\code{integer(1)})\cr
 Upper bound.}
 }
 \value{

@@ -10,10 +10,10 @@ require_namespaces(
 )
 }
 \arguments{
-\item{pkgs}{:: \code{character()}\cr
+\item{pkgs}{(\code{character()})\cr
 Packages to load.}
 
-\item{msg}{:: \code{character(1)}\cr
+\item{msg}{(\code{character(1)})\cr
 Message to print on error. Use \code{"\%s"} as placeholder for the list of packages.}
 }
 \value{

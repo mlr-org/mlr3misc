@@ -3,11 +3,11 @@
 #' @description
 #' `str_trunc()` truncates a string to a given width.
 #'
-#' @param str :: `character()`\cr
+#' @param str (`character()`)\cr
 #'   Vector of strings.
-#' @param width :: `integer(1)`\cr
+#' @param width (`integer(1)`)\cr
 #'   Width of the output.
-#' @param ellipsis :: `character(1)`\cr
+#' @param ellipsis (`character(1)`)\cr
 #'   If the string has to be shortened, this is signaled by appending `ellipsis` to `str`. Default is `"[...]"`.
 #'
 #' @return (`character()`).

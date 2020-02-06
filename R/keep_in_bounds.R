@@ -8,11 +8,11 @@
 #' ```
 #' Currently only works for integer `x`.
 #'
-#' @param x :: `integer()`\cr
+#' @param x (`integer()`)\cr
 #'   Vector to filter.
-#' @param lower :: `integer(1)`\cr
+#' @param lower (`integer(1)`)\cr
 #'   Lower bound.
-#' @param upper :: `integer(1)`\cr
+#' @param upper (`integer(1)`)\cr
 #'   Upper bound.
 #' @return (integer()) with only values in `[lower, upper]`.
 #' @useDynLib mlr3misc c_keep_in_bounds

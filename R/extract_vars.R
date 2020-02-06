@@ -4,7 +4,7 @@
 #' Given a [formula()] `f`, returns all variables used on the left-hand side and
 #' right-hand side of the formula.
 #'
-#' @param f :: `formula()`.
+#' @param f (`formula()`).
 #'
 #' @return (`list()`) with elements `"lhs"` and `"rhs"`, both `character()`.
 #' @export

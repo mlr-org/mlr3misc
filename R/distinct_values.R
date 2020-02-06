@@ -4,7 +4,7 @@
 #' Extracts the distinct values of an atomic vector, with the possibility to drop levels
 #' and remove missing values.
 #'
-#' @param x :: atomic `vector()`.
+#' @param x (atomic `vector()`).
 #' @param drop :: `logical(1)`\cr
 #'   If `TRUE`, only returns values which are present in `x`.
 #'   If `FALSE`, returns all levels for [factor()] and [ordered()], as well as

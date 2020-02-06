@@ -7,13 +7,13 @@
 unnest(x, cols, prefix = NULL)
 }
 \arguments{
-\item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\item{x}{(\code{\link[data.table:data.table]{data.table::data.table()}})\cr
 \code{\link[data.table:data.table]{data.table::data.table()}} with columns to unnest.}
 
-\item{cols}{:: \code{character()}\cr
+\item{cols}{(\code{character()})\cr
 Column names of list columns to operate on.}
 
-\item{prefix}{:: \code{character(1)}\cr
+\item{prefix}{(\code{character(1)})\cr
 String to prefix the new column names with.}
 }
 \value{

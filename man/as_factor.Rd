@@ -7,13 +7,13 @@
 as_factor(x, levels, ordered = is.ordered(x))
 }
 \arguments{
-\item{x}{:: atomic \code{vector()}\cr
+\item{x}{(atomic \code{vector()})\cr
 Vector to convert to factor.}
 
-\item{levels}{:: \code{character()}\cr
+\item{levels}{(\code{character()})\cr
 Levels of the new factor.}
 
-\item{ordered}{:: \code{logical(1)}\cr
+\item{ordered}{(\code{logical(1)})\cr
 If \code{TRUE}, create an ordered factor.}
 }
 \value{

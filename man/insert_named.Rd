@@ -31,14 +31,14 @@ remove_named(x, nn)
 \method{remove_named}{data.table}(x, nn)
 }
 \arguments{
-\item{x}{:: (\code{vector()} | \code{list()} | \code{environment()} | \code{\link[data.table:data.table]{data.table::data.table()}})\cr
+\item{x}{(\code{vector()} | \code{list()} | \code{environment()} | \code{\link[data.table:data.table]{data.table::data.table()}})\cr
 Object to insert elements into, or remove elements from.
 Changes are by-reference for environments and data tables.}
 
-\item{y}{:: \code{list()}\cr
+\item{y}{(\code{list()})\cr
 List of elements to insert into \code{x}.}
 
-\item{nn}{:: \code{character()}\cr
+\item{nn}{(\code{character()})\cr
 Character vector of elements to remove.}
 }
 \value{

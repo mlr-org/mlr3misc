@@ -3,8 +3,8 @@
 #' @description
 #' Simple wrapper for `class(x) = classes`.
 #'
-#' @param x :: `any.`
-#' @param classes :: `character(1)`\cr
+#' @param x (`any`).
+#' @param classes (`character(1)`)\cr
 #'   Vector of new class names.
 #'
 #' @return Object \code{x}, with updated class attribute.

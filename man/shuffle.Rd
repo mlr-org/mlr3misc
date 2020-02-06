@@ -7,13 +7,13 @@
 shuffle(x, n = length(x), ...)
 }
 \arguments{
-\item{x}{:: \code{vector()}\cr
+\item{x}{(\code{vector()})\cr
 Vector to sample elements from.}
 
-\item{n}{:: \code{integer()}\cr
+\item{n}{(\code{integer()})\cr
 Number of elements to sample.}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
 }
 \description{

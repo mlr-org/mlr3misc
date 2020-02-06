@@ -7,10 +7,10 @@
 rcbind(x, y)
 }
 \arguments{
-\item{x}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\item{x}{(\code{\link[data.table:data.table]{data.table::data.table()}})\cr
 \code{\link[data.table:data.table]{data.table::data.table()}} to add columns to.}
 
-\item{y}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\item{y}{(\code{\link[data.table:data.table]{data.table::data.table()}})\cr
 \code{\link[data.table:data.table]{data.table::data.table()}} to take columns from.}
 }
 \value{

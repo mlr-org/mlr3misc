@@ -4,11 +4,11 @@
 #' A version of `sample()` which does not treat positive scalar integer `x` differently.
 #' See example.
 #'
-#' @param x :: `vector()`\cr
+#' @param x (`vector()`)\cr
 #'   Vector to sample elements from.
-#' @param n :: `integer()`\cr
+#' @param n (`integer()`)\cr
 #'   Number of elements to sample.
-#' @param ... :: `any`\cr
+#' @param ... (`any`)\cr
 #'   Arguments passed down to [base::sample.int()].
 #'
 #' @export

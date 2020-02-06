@@ -7,7 +7,7 @@
 open_help(man)
 }
 \arguments{
-\item{man}{:: \code{character(1)}\cr
+\item{man}{(\code{character(1)})\cr
 Manual page to open in "package::topic" syntax.}
 }
 \value{

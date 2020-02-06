@@ -26,18 +26,18 @@
 #' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
 #' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
 #'
-#' @param .x :: (`list()` or atomic `vector`).
-#' @param .f :: (`function` | `character()` | `integer()`)\cr
+#' @param .x (`list()` | atomic `vector()`).
+#' @param .f (`function()` | `character()` | `integer()`)\cr
 #'   Function to apply, or element to extract by name (if `.f` is `character()`) or position (if `.f` is `integer()`).
-#' @param .p :: (`function()` | `logical()`)\cr
+#' @param .p (`function()` | `logical()`)\cr
 #'   Predicate function.
-#' @param .at :: (`character()` | `integer()` | `logical()`)\cr
+#' @param .at (`character()` | `integer()` | `logical()`)\cr
 #'   Index vector.
-#' @param ... :: `any`\cr
+#' @param ... (`any`)\cr
 #'   Additional arguments passed down to `.f` or `.p`.
-#' @param .fill :: `logical(1)`\cr
+#' @param .fill (`logical(1)`)\cr
 #'   Passed down to [data.table::rbindlist()].
-#' @param .idcol :: `logical(1)`\cr
+#' @param .idcol (`logical(1)`)\cr
 #'   Passed down to [data.table::rbindlist()].
 #'
 #' @name compat-map

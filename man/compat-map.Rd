@@ -89,24 +89,24 @@ some(.x, .p, ...)
 detect(.x, .p, ...)
 }
 \arguments{
-\item{.x}{:: (\code{list()} or atomic \code{vector}).}
+\item{.x}{(\code{list()} | atomic \code{vector()}).}
 
-\item{.f}{:: (\code{function} | \code{character()} | \code{integer()})\cr
+\item{.f}{(\verb{function()} | \code{character()} | \code{integer()})\cr
 Function to apply, or element to extract by name (if \code{.f} is \code{character()}) or position (if \code{.f} is \code{integer()}).}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 Additional arguments passed down to \code{.f} or \code{.p}.}
 
-\item{.fill}{:: \code{logical(1)}\cr
+\item{.fill}{(\code{logical(1)})\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.idcol}{:: \code{logical(1)}\cr
+\item{.idcol}{(\code{logical(1)})\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
-\item{.p}{:: (\verb{function()} | \code{logical()})\cr
+\item{.p}{(\verb{function()} | \code{logical()})\cr
 Predicate function.}
 
-\item{.at}{:: (\code{character()} | \code{integer()} | \code{logical()})\cr
+\item{.at}{(\code{character()} | \code{integer()} | \code{logical()})\cr
 Index vector.}
 }
 \description{

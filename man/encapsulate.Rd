@@ -14,22 +14,22 @@ encapsulate(
 )
 }
 \arguments{
-\item{method}{:: \code{character(1)}\cr
+\item{method}{(\code{character(1)})\cr
 One of \code{"none"}, \code{"evaluate"} or \code{"callr"}.}
 
-\item{.f}{:: \verb{function()}\cr
+\item{.f}{(\verb{function()})\cr
 Function to call.}
 
-\item{.args}{:: \code{list()}\cr
+\item{.args}{(\code{list()})\cr
 Arguments passed to \code{.f}.}
 
-\item{.opts}{:: named \code{list()}\cr
+\item{.opts}{(named \code{list()})\cr
 Options to set for the function call. Options get reset on exit.}
 
-\item{.pkgs}{:: \code{character()}\cr
+\item{.pkgs}{(\code{character()})\cr
 Packages to load (not attach).}
 
-\item{.seed}{:: \code{integer(1)}\cr
+\item{.seed}{(\code{integer(1)})\cr
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.}
 }

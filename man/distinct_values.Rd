@@ -7,7 +7,7 @@
 distinct_values(x, drop = TRUE, na_rm = TRUE)
 }
 \arguments{
-\item{x}{:: atomic \code{vector()}.}
+\item{x}{(atomic \code{vector()}).}
 
 \item{drop}{:: \code{logical(1)}\cr
 If \code{TRUE}, only returns values which are present in \code{x}.

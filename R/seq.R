@@ -6,9 +6,9 @@
 #' `seq_len0()` and `seq_along0()` are the 0-based counterparts to [base::seq_len()] and
 #' [base::seq_along()].
 #'
-#' @param x :: `any`\cr
+#' @param x (`any`)\cr
 #'   Arbitrary object. Used to query its rows, cols or length.
-#' @param n :: `integer(1)`\cr
+#' @param n (`integer(1)`)\cr
 #'   Length of the sequence.
 #' @name sequence_helpers
 #' @examples

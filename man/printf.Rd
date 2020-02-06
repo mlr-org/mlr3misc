@@ -17,16 +17,16 @@ warningf(msg, ..., wrap = FALSE)
 stopf(msg, ..., wrap = FALSE)
 }
 \arguments{
-\item{msg}{:: \code{character(1)}\cr
+\item{msg}{(\code{character(1)})\cr
 Format string passed to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 Arguments passed down to \code{\link[base:sprintf]{base::sprintf()}}.}
 
-\item{file}{:: \code{character(1)}\cr
+\item{file}{(\code{character(1)})\cr
 Passed to \code{\link[base:cat]{base::cat()}}.}
 
-\item{wrap}{:: (\code{integer(1)} | \code{logical(1)})\cr
+\item{wrap}{((\code{integer(1)} | \code{logical(1)}))\cr
 If set to a positive integer, \code{\link[base:strwrap]{base::strwrap()}} is used to wrap the string to the provided width.
 If set to \code{TRUE}, the width defaults to \code{0.9 * getOption("width")}.
 If set to \code{FALSE}, wrapping is disabled (default).

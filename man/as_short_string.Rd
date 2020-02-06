@@ -7,13 +7,13 @@
 as_short_string(x, width = 30L, num_format = "\%.4g")
 }
 \arguments{
-\item{x}{:: \code{any}\cr
+\item{x}{(\code{any})\cr
 Arbitrary object.}
 
-\item{width}{:: \code{integer(1)}\cr
+\item{width}{(\code{integer(1)})\cr
 Truncate strings to width \code{width}.}
 
-\item{num_format}{:: \code{character(1)}\cr
+\item{num_format}{(\code{character(1)})\cr
 Used to format numerical scalars via \code{\link[base:sprintf]{base::sprintf()}}.}
 }
 \value{

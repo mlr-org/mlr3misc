@@ -7,7 +7,7 @@
 ids(xs)
 }
 \arguments{
-\item{xs}{:: \code{list()}\cr
+\item{xs}{(\code{list()})\cr
 Every element must have a slot 'id'.}
 }
 \value{

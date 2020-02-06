@@ -4,11 +4,11 @@
 #' Converts a vector to a [factor()] and ensures that levels are
 #' in the order of the provided levels.
 #'
-#' @param x :: atomic `vector()`\cr
+#' @param x (atomic `vector()`)\cr
 #'   Vector to convert to factor.
-#' @param levels :: `character()`\cr
+#' @param levels (`character()`)\cr
 #'   Levels of the new factor.
-#' @param ordered :: `logical(1)`\cr
+#' @param ordered (`logical(1)`)\cr
 #'   If `TRUE`, create an ordered factor.
 #' @return (`factor()`).
 #' @export

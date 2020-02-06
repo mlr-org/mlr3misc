@@ -5,9 +5,9 @@
 #' Returns a character vector even if no names attribute is set.
 #' Values `NA` and `""` are treated as missing and replaced with the value provided in `missing_val`.
 #'
-#' @param x :: `any`\cr
+#' @param x (`any`)\cr
 #'   Object.
-#' @param missing_val :: `atomic(1)`\cr
+#' @param missing_val (`atomic(1)`)\cr
 #'   Value to set for missing names.
 #'   Default is `NA_character_`.
 #'

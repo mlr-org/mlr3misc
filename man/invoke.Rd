@@ -7,21 +7,21 @@
 invoke(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_)
 }
 \arguments{
-\item{.f}{:: \verb{function()}\cr
+\item{.f}{(\verb{function()})\cr
 Function to call.}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 Additional function arguments passed to \code{.f}.}
 
-\item{.args}{:: \code{list()}\cr
+\item{.args}{(\code{list()})\cr
 Additional function arguments passed to \code{.f}, as (named) \code{list()}.
 These arguments will be concatenated to the arguments provided via \code{...}.}
 
-\item{.opts}{:: \code{list()}\cr
+\item{.opts}{(\code{list()})\cr
 List of options which are set before the \code{.f} is called.
 Options are reset to their previous state afterwards.}
 
-\item{.seed}{:: \code{integer(1)}\cr
+\item{.seed}{(\code{integer(1)})\cr
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.}
 }

@@ -5,11 +5,11 @@
 #' The original columns are removed from the returned table.
 #' All non-atomic objects in the list columns are expand to new list column.
 #'
-#' @param x :: [data.table::data.table()]\cr
+#' @param x ([data.table::data.table()])\cr
 #'   [data.table::data.table()] with columns to unnest.
-#' @param cols :: `character()`\cr
+#' @param cols (`character()`)\cr
 #'   Column names of list columns to operate on.
-#' @param prefix :: `character(1)`\cr
+#' @param prefix (`character(1)`)\cr
 #'   String to prefix the new column names with.
 #'
 #' @return ([data.table::data.table()]).

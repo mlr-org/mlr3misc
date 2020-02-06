@@ -7,12 +7,12 @@
 map_values(x, old, new)
 }
 \arguments{
-\item{x}{:: \code{vector()}.}
+\item{x}{(\verb{vector())}.}
 
-\item{old}{:: \code{vector()}\cr
+\item{old}{(\code{vector()})\cr
 Vector with values to replace.}
 
-\item{new}{:: \code{vector()}\cr
+\item{new}{(\code{vector()})\cr
 Values to replace with.
 Will be forced to the same length as \code{old} with \code{\link[base:rep_len]{base::rep_len()}}.}
 }

@@ -7,19 +7,19 @@
 str_indent(initial, str, width = 0.9 * getOption("width"), exdent = 2L, ...)
 }
 \arguments{
-\item{initial}{:: \code{character(1)}\cr
+\item{initial}{(\code{character(1)})\cr
 Initial string, passed to \code{\link[=strwrap]{strwrap()}}.}
 
-\item{str}{:: \code{character()}\cr
+\item{str}{(\code{character()})\cr
 Vector of strings.}
 
-\item{width}{:: \code{integer(1)}\cr
+\item{width}{(\code{integer(1)})\cr
 Width of the output.}
 
-\item{exdent}{:: \code{integer(1)}\cr
+\item{exdent}{(\code{integer(1)})\cr
 Indentation of subsequent lines in paragraph.}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 Additional parameters passed to \code{\link[=str_collapse]{str_collapse()}}.}
 }
 \value{

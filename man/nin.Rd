@@ -7,10 +7,10 @@
 x \%nin\% y
 }
 \arguments{
-\item{x}{:: \code{vector()}\cr
+\item{x}{(\code{vector()})\cr
 Values that should not be in \code{y}.}
 
-\item{y}{:: \code{vector()}\cr
+\item{y}{(\code{vector()})\cr
 Values to match against.}
 }
 \description{

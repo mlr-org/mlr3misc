@@ -8,17 +8,17 @@
 #' It is recommended to pass all arguments named in order to to not rely on on positional
 #' argument matching.
 #'
-#' @param .f :: `function()`\cr
+#' @param .f (`function()`)\cr
 #'   Function to call.
-#' @param ... :: `any`\cr
+#' @param ... (`any`)\cr
 #'   Additional function arguments passed to `.f`.
-#' @param .args :: `list()`\cr
+#' @param .args (`list()`)\cr
 #'   Additional function arguments passed to `.f`, as (named) `list()`.
 #'   These arguments will be concatenated to the arguments provided via `...`.
-#' @param .opts :: `list()`\cr
+#' @param .opts (`list()`)\cr
 #'   List of options which are set before the `.f` is called.
 #'   Options are reset to their previous state afterwards.
-#' @param .seed :: `integer(1)`\cr
+#' @param .seed (`integer(1)`)\cr
 #'   Random seed to set before invoking the function call.
 #'   Gets reset to the previous seed on exit.
 #' @export

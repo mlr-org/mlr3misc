@@ -12,17 +12,17 @@
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 #'
-#' @param method :: `character(1)`\cr
+#' @param method (`character(1)`)\cr
 #'   One of `"none"`, `"evaluate"` or `"callr"`.
-#' @param .f :: `function()`\cr
+#' @param .f (`function()`)\cr
 #'   Function to call.
-#' @param .args :: `list()`\cr
+#' @param .args (`list()`)\cr
 #'   Arguments passed to `.f`.
-#' @param .opts :: named `list()`\cr
+#' @param .opts (named `list()`)\cr
 #'   Options to set for the function call. Options get reset on exit.
-#' @param .pkgs :: `character()`\cr
+#' @param .pkgs (`character()`)\cr
 #'   Packages to load (not attach).
-#' @param .seed :: `integer(1)`\cr
+#' @param .seed (`integer(1)`)\cr
 #'   Random seed to set before invoking the function call.
 #'   Gets reset to the previous seed on exit.
 #' @return (named `list()`) with three fields:

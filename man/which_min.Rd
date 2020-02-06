@@ -10,14 +10,14 @@ which_min(x, ties_method = "random", na_rm = FALSE)
 which_max(x, ties_method = "random", na_rm = FALSE)
 }
 \arguments{
-\item{x}{:: \code{numeric()}\cr
+\item{x}{(\code{numeric()})\cr
 Numeric vector.}
 
-\item{ties_method}{:: \code{character(1)}\cr
+\item{ties_method}{(\code{character(1)})\cr
 Handling of ties. One of "first", "last" or "random" (default) to return the first index,
 the last index, or a random index of the minimum/maximum values.}
 
-\item{na_rm}{:: \code{logical(1)}\cr
+\item{na_rm}{(\code{logical(1)})\cr
 Remove NAs before computation?}
 }
 \value{

@@ -4,11 +4,11 @@
 #' Calls [find.package()] to check if the all packages are installed.
 #' Returns a
 #'
-#' @param pkgs :: `character()`\cr
+#' @param pkgs (`character()`)\cr
 #'   Packages to check.
-#' @param warn :: `logical(1)`\cr
+#' @param warn (`logical(1)`)\cr
 #'   If `TRUE`, signals a warning of class `"packageNotFoundWarning"` about the missing packages.
-#' @param msg :: `character(1)`\cr
+#' @param msg (`character(1)`)\cr
 #'   Format of the warning message. Use `"%s"` as placeholder for the list of packages.
 #' @return (`logical()`) named with package names. `TRUE` if the respective package is installed, `FALSE` otherwise.
 #' @export

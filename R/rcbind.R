@@ -3,9 +3,9 @@
 #' @description
 #' Performs [base::cbind()] on [data.tables][data.table::data.table()], possibly by reference.
 #'
-#' @param x :: [data.table::data.table()]\cr
+#' @param x ([data.table::data.table()])\cr
 #'   [data.table::data.table()] to add columns to.
-#' @param y :: [data.table::data.table()]\cr
+#' @param y ([data.table::data.table()])\cr
 #'   [data.table::data.table()] to take columns from.
 #'
 #' @return ([data.table::data.table()]): Updated `x` .

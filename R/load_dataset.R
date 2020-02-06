@@ -5,11 +5,11 @@
 #' If the package is not installed, an error with condition "packageNotFoundError" is raised.
 #' The name of the missing packages is stored in the condition as `packages`.
 #'
-#' @param id :: `character(1)`\cr
+#' @param id (`character(1)`)\cr
 #'   Name of the data set.
-#' @param package :: `character(1)`\cr
+#' @param package (`character(1)`)\cr
 #'   Package to load the data set from.
-#' @param keep_rownames :: `logical(1)`\cr
+#' @param keep_rownames (`logical(1)`)\cr
 #'   Keep possible row names (default: `FALSE`).
 #'
 #' @export

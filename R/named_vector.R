@@ -3,9 +3,9 @@
 #' @description
 #' Creates a simple atomic vector with `init` as values.
 #'
-#' @param nn :: `character()`\cr
+#' @param nn (`character()`)\cr
 #'   Names of new vector
-#' @param init :: `atomic`\cr
+#' @param init (`atomic`)\cr
 #'   All vector elements are initialized to this value.
 #' @return (named `vector()`).
 #' @export

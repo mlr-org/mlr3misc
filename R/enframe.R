@@ -4,11 +4,11 @@
 #' Returns a [data.table::data.table()] with two columns:
 #' The names of `x` (or `seq_along(x)` if unnamed) and the values of `x`.
 #'
-#' @param x :: `vector()`\cr
+#' @param x (`vector()`)\cr
 #'   Vector to convert to a [data.table::data.table()].
-#' @param name :: `character(1)`\cr
+#' @param name (`character(1)`)\cr
 #'   Name for the first column with names.
-#' @param value :: `character(1)`\cr
+#' @param value (`character(1)`)\cr
 #'   Name for the second column with values.
 #'
 #' @return [data.table::data.table()].

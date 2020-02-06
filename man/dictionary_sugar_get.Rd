@@ -13,15 +13,15 @@ dictionary_sugar(dict, .key, ...)
 dictionary_sugar_mget(dict, .keys, ...)
 }
 \arguments{
-\item{dict}{:: \link{Dictionary}.}
+\item{dict}{(\link{Dictionary}).}
 
-\item{.key}{:: \code{character(1)}\cr
+\item{.key}{(\code{character(1)})\cr
 Key of the object to construct.}
 
-\item{...}{:: \code{any}\cr
+\item{...}{(\code{any})\cr
 See description.}
 
-\item{.keys}{:: \code{character()}\cr
+\item{.keys}{(\code{character()})\cr
 Keys of the objects to construct.}
 }
 \value{

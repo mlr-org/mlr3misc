@@ -7,10 +7,10 @@
 names2(x, missing_val = NA_character_)
 }
 \arguments{
-\item{x}{:: \code{any}\cr
+\item{x}{(\code{any})\cr
 Object.}
 
-\item{missing_val}{:: \code{atomic(1)}\cr
+\item{missing_val}{(\code{atomic(1)})\cr
 Value to set for missing names.
 Default is \code{NA_character_}.}
 }

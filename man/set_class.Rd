@@ -7,9 +7,9 @@
 set_class(x, classes)
 }
 \arguments{
-\item{x}{:: \code{any.}}
+\item{x}{(\code{any}).}
 
-\item{classes}{:: \code{character(1)}\cr
+\item{classes}{(\code{character(1)})\cr
 Vector of new class names.}
 }
 \value{

@@ -5,15 +5,15 @@
 #' `chunk()` takes a vector length `n` and returns an integer with chunk numbers.
 #' `chunk_vector()` uses [base::split()] and `chunk()` to split an atomic vector into chunks.
 #'
-#' @param x :: `vector()`\cr
+#' @param x (`vector()`)\cr
 #'   Vector to split into chunks.
-#' @param chunk_size :: `integer(1)`\cr
+#' @param chunk_size (`integer(1)`)\cr
 #'   Requested number of elements in each chunk.
 #'   Mutually exclusive with `n_chunks` and `props`.
-#' @param n_chunks :: `integer(1)`\cr
+#' @param n_chunks (`integer(1)`)\cr
 #'   Requested number of chunks.
 #'   Mutually exclusive with `chunk_size` and `props`.
-#' @param shuffle :: `logical(1)`\cr
+#' @param shuffle (`logical(1)`)\cr
 #'   If `TRUE`, permutes the order of `x` before chunking.
 #'
 #' @return `chunk()` returns a `integer()` of chunk indices,

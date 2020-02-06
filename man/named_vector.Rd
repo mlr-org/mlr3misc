@@ -7,10 +7,10 @@
 named_vector(nn = character(0L), init = NA)
 }
 \arguments{
-\item{nn}{:: \code{character()}\cr
+\item{nn}{(\code{character()})\cr
 Names of new vector}
 
-\item{init}{:: \code{atomic}\cr
+\item{init}{(\code{atomic})\cr
 All vector elements are initialized to this value.}
 }
 \value{

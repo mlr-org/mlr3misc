@@ -11,13 +11,13 @@ check_packages_installed(
 )
 }
 \arguments{
-\item{pkgs}{:: \code{character()}\cr
+\item{pkgs}{(\code{character()})\cr
 Packages to check.}
 
-\item{warn}{:: \code{logical(1)}\cr
+\item{warn}{(\code{logical(1)})\cr
 If \code{TRUE}, signals a warning of class \code{"packageNotFoundWarning"} about the missing packages.}
 
-\item{msg}{:: \code{character(1)}\cr
+\item{msg}{(\code{character(1)})\cr
 Format of the warning message. Use \code{"\%s"} as placeholder for the list of packages.}
 }
 \value{

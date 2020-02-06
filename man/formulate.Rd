@@ -7,13 +7,13 @@
 formulate(lhs = NULL, rhs = NULL, env = NULL)
 }
 \arguments{
-\item{lhs}{:: \code{character(1)}\cr
+\item{lhs}{(\code{character(1)})\cr
 Left-hand side of formula.}
 
-\item{rhs}{:: \code{character()}\cr
+\item{rhs}{(\code{character()})\cr
 Right-hand side of formula. Multiple elements will be collapsed with \code{" + "}.}
 
-\item{env}{:: \code{environment()}\cr
+\item{env}{(\code{environment()})\cr
 Environment for the new formula. Defaults to \code{NULL}.}
 }
 \value{

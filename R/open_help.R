@@ -3,7 +3,7 @@
 #' @description
 #' Simply opens a manual page specified in "package::topic" syntax.
 #'
-#' @param man :: `character(1)`\cr
+#' @param man (`character(1)`)\cr
 #'   Manual page to open in "package::topic" syntax.
 #' @return Nothing.
 #' @export

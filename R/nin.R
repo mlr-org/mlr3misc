@@ -3,9 +3,9 @@
 #' @description
 #' This operator is equivalent to `!(x %in% y)`.
 #'
-#' @param x :: `vector()`\cr
+#' @param x (`vector()`)\cr
 #'   Values that should not be in `y`.
-#' @param y :: `vector()`\cr
+#' @param y (`vector()`)\cr
 #'   Values to match against.
 #' @usage x \%nin\% y
 #' @rdname nin

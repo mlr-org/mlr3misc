@@ -5,9 +5,9 @@
 #' If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
 #' The character vector of missing packages is stored in the condition as `packages`.
 #'
-#' @param pkgs :: `character()`\cr
+#' @param pkgs (`character()`)\cr
 #'   Packages to load.
-#' @param msg :: `character(1)`\cr
+#' @param msg (`character(1)`)\cr
 #'   Message to print on error. Use `"%s"` as placeholder for the list of packages.
 #'
 #' @return (named `character()`) of loaded packages (invisibly).

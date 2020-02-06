@@ -3,11 +3,11 @@
 #' @description
 #' Computes the mode (most frequent value) of an atomic vector.
 #'
-#' @param x :: `vector()`.
-#' @param ties_method :: `character(1)`\cr
+#' @param x (`vector()`).
+#' @param ties_method (`character(1)`)\cr
 #'   Handling of ties. One of "first", "last" or "random" to return the first tied value,
 #'  the last tied value, or a randomly selected tied value, respectively.
-#' @param na_rm :: `logical(1)`\cr
+#' @param na_rm (`logical(1)`)\cr
 #'   If `TRUE`, remove missing values prior to computing the mode.
 #' @return (`vector(1)`): mode value.
 #' @export

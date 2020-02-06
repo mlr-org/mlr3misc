@@ -10,18 +10,18 @@ chunk_vector(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 chunk(n, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 }
 \arguments{
-\item{x}{:: \code{vector()}\cr
+\item{x}{(\code{vector()})\cr
 Vector to split into chunks.}
 
-\item{n_chunks}{:: \code{integer(1)}\cr
+\item{n_chunks}{(\code{integer(1)})\cr
 Requested number of chunks.
 Mutually exclusive with \code{chunk_size} and \code{props}.}
 
-\item{chunk_size}{:: \code{integer(1)}\cr
+\item{chunk_size}{(\code{integer(1)})\cr
 Requested number of elements in each chunk.
 Mutually exclusive with \code{n_chunks} and \code{props}.}
 
-\item{shuffle}{:: \code{logical(1)}\cr
+\item{shuffle}{(\code{logical(1)})\cr
 If \code{TRUE}, permutes the order of \code{x} before chunking.}
 
 \item{n}{:: \code{integer(1)}\cr

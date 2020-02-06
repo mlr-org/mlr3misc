@@ -7,7 +7,7 @@
 topo_sort(nodes)
 }
 \arguments{
-\item{nodes}{:: \code{\link[data.table:data.table]{data.table::data.table()}}\cr
+\item{nodes}{(\code{\link[data.table:data.table]{data.table::data.table()}})\cr
 Has 2 columns:
 \itemize{
 \item \code{id} of type \code{character}, contains all node labels.

@@ -7,13 +7,13 @@
 load_dataset(id, package, keep_rownames = FALSE)
 }
 \arguments{
-\item{id}{:: \code{character(1)}\cr
+\item{id}{(\code{character(1)})\cr
 Name of the data set.}
 
-\item{package}{:: \code{character(1)}\cr
+\item{package}{(\code{character(1)})\cr
 Package to load the data set from.}
 
-\item{keep_rownames}{:: \code{logical(1)}\cr
+\item{keep_rownames}{(\code{logical(1)})\cr
 Keep possible row names (default: \code{FALSE}).}
 }
 \description{
