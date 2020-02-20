@@ -1,6 +1,7 @@
 # mlr3misc 0.1.8
 
 * New function `check_packages_installed()`.
+* New function `open_help()`.
 
 # mlr3misc 0.1.7
 
