@@ -56,7 +56,9 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Returns all keys which comply to the regular expression `pattern`.
     #' If `pattern` is `NULL` (default), all keys are returned.
+    #'
     #' @param pattern (`character(1)`).
+    #'
     #' @return List of objects with corresponding keys.
     keys = function(pattern = NULL) {
       keys = ls(self$items, all.names = TRUE)
@@ -69,7 +71,9 @@ Dictionary = R6::R6Class("Dictionary",
 
     #' @description
     #' Returns a logical vector with `TRUE` at its i-th position if the i-th key exists.
+    #'
     #' @param keys (`character()`).
+    #'
     #' @return (`logical()`).
     has = function(keys) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
@@ -79,8 +83,11 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Retrieves object with key `key` from the dictionary.
     #' Additional arguments must be named and are passed to the constructor of the stored object.
+    #'
     #' @param key (`character(1)`).
+    #'
     #' @param ... Passed down to constructor.
+    #'
     #' @return (any) Object with corresponding key.
     get = function(key, ...) {
       assert_string(key, min.chars = 1L)
@@ -90,8 +97,11 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Returns objects with keys `keys` in a list named with `keys`.
     #' Additional arguments must be named and are passed to the constructors of the stored objects.
+    #'
     #' @param keys (`character()`).
+    #'
     #' @param ... Passed down to constructor.
+    #'
     #' @return (named `list()`) of objects with corresponding keys.
     mget = function(keys, ...) {
       assert_character(keys, min.chars = 1L, any.missing = FALSE)
@@ -102,10 +112,15 @@ Dictionary = R6::R6Class("Dictionary",
     #' Adds object `value` to the dictionary with key `key`, potentially overwriting a previously stored item.
     #' Additional arguments in `...` must be named and are passed as default arguments to `value` during construction.
     #' The names of all additional arguments which are mandatory for construction and missing in `...` should be listed in `required_args`.
+    #'
     #' @param key (`character(1)`).
+    #'
     #' @param value (any).
+    #'
     #' @param ... Passed down to constructor.
+    #'
     #' @param required_args (`character()`).
+    #'
     #' @return (`Dictionary`).
     add = function(key, value, ..., required_args = character()) {
       assert_string(key, min.chars = 1L)
@@ -119,7 +134,9 @@ Dictionary = R6::R6Class("Dictionary",
 
     #' @description
     #' Removes objects with from the dictionary.
+    #'
     #' @param keys (`character()`) Keys of objects to remove.
+    #'
     #' @return (`Dictionary`).
     remove = function(keys) {
       i = wf(!self$has(keys))
@@ -132,7 +149,9 @@ Dictionary = R6::R6Class("Dictionary",
 
     #' @description
     #' Returns the names of arguments required to construct the object.
+    #'
     #' @param key (`character(1)`) Key of object to query for required arguments.
+    #'
     #' @return (`character()`) of names of required arguments.
     required_args = function(key) {
       assert_string(key, min.chars = 1L)
