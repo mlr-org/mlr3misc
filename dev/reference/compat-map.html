@@ -102,7 +102,7 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.7.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -254,43 +254,43 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.x</th>
-      <td><p>:: (<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code> or atomic <code>vector</code>).</p></td>
+      <td><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code> | atomic <code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>).</p></td>
     </tr>
     <tr>
       <th>.f</th>
-      <td><p>:: (<code>function</code> | <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> | <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
+      <td><p>(<code>function()</code> | <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> | <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
 Function to apply, or element to extract by name (if <code>.f</code> is <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>) or position (if <code>.f</code> is <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>).</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>:: <code>any</code><br />
+      <td><p>(<code>any</code>)<br />
 Additional arguments passed down to <code>.f</code> or <code>.p</code>.</p></td>
     </tr>
     <tr>
       <th>.fill</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
     <tr>
       <th>.idcol</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
     <tr>
       <th>.p</th>
-      <td><p>:: (<code>function()</code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>)<br />
+      <td><p>(<code>function()</code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>)<br />
 Predicate function.</p></td>
     </tr>
     <tr>
       <th>.at</th>
-      <td><p>:: (<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> | <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>)<br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> | <code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code> | <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>)<br />
 Index vector.</p></td>
     </tr>
     </table>
 
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

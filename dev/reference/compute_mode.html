@@ -79,7 +79,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.7.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -154,17 +154,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>.</p></td>
+      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>).</p></td>
     </tr>
     <tr>
       <th>ties_method</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Handling of ties. One of "first", "last" or "random" to return the first tied value,
 the last tied value, or a randomly selected tied value, respectively.</p></td>
     </tr>
     <tr>
       <th>na_rm</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
 If <code>TRUE</code>, remove missing values prior to computing the mode.</p></td>
     </tr>
     </table>
@@ -176,7 +176,7 @@ If <code>TRUE</code>, remove missing values prior to computing the mode.</p></td
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>compute_mode</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>compute_mode</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>ties_method</span> <span class='kw'>=</span> <span class='st'>"last"</span>)</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='fu'>compute_mode</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>ties_method</span> <span class='kw'>=</span> <span class='st'>"random"</span>)</div><div class='output co'>#&gt; [1] 2</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

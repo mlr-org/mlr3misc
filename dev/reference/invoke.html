@@ -83,7 +83,7 @@ argument matching." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.7.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -162,29 +162,29 @@ argument matching.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.f</th>
-      <td><p>:: <code>function()</code><br />
+      <td><p>(<code>function()</code>)<br />
 Function to call.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>:: <code>any</code><br />
+      <td><p>(<code>any</code>)<br />
 Additional function arguments passed to <code>.f</code>.</p></td>
     </tr>
     <tr>
       <th>.args</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 Additional function arguments passed to <code>.f</code>, as (named) <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>.
 These arguments will be concatenated to the arguments provided via <code>...</code>.</p></td>
     </tr>
     <tr>
       <th>.opts</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 List of options which are set before the <code>.f</code> is called.
 Options are reset to their previous state afterwards.</p></td>
     </tr>
     <tr>
       <th>.seed</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code><br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.</p></td>
     </tr>
@@ -194,7 +194,7 @@ Gets reset to the previous seed on exit.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>invoke</span>(<span class='no'>mean</span>, <span class='kw'>.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] 5.5</div><div class='input'><span class='fu'>invoke</span>(<span class='no'>mean</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] 5.5</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
