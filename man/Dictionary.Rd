@@ -39,7 +39,8 @@ d$mget(c("a", "b"))
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{items}}{Stores the items of the dictionary}
+\item{\code{items}}{(\code{environment()})\cr
+Stores the items of the dictionary}
 }
 \if{html}{\out{</div>}}
 }
@@ -103,7 +104,7 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-List of objects with corresponding keys.
+\code{character()} of keys.
 }
 }
 \if{html}{\out{<hr>}}
@@ -122,7 +123,7 @@ Returns a logical vector with \code{TRUE} at its i-th position if the i-th key e
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(\code{logical()}).
+\code{logical()}.
 }
 }
 \if{html}{\out{<hr>}}
@@ -139,12 +140,13 @@ Additional arguments must be named and are passed to the constructor of the stor
 \describe{
 \item{\code{key}}{(\code{character(1)}).}
 
-\item{\code{...}}{Passed down to constructor.}
+\item{\code{...}}{\cr
+Passed down to constructor.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(any) Object with corresponding key.
+Object with corresponding key.
 }
 }
 \if{html}{\out{<hr>}}
@@ -161,12 +163,13 @@ Additional arguments must be named and are passed to the constructors of the sto
 \describe{
 \item{\code{keys}}{(\code{character()}).}
 
-\item{\code{...}}{Passed down to constructor.}
+\item{\code{...}}{\cr
+Passed down to constructor.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(named \code{list()}) of objects with corresponding keys.
+Named \code{list()} of objects with corresponding keys.
 }
 }
 \if{html}{\out{<hr>}}
@@ -184,16 +187,17 @@ The names of all additional arguments which are mandatory for construction and m
 \describe{
 \item{\code{key}}{(\code{character(1)}).}
 
-\item{\code{value}}{(any).}
+\item{\code{value}}{(\code{any}).}
 
-\item{\code{...}}{Passed down to constructor.}
+\item{\code{...}}{\cr
+Passed down to constructor.}
 
 \item{\code{required_args}}{(\code{character()}).}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(\code{Dictionary}).
+\code{Dictionary}.
 }
 }
 \if{html}{\out{<hr>}}
@@ -207,12 +211,13 @@ Removes objects with from the dictionary.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{keys}}{(\code{character()}) Keys of objects to remove.}
+\item{\code{keys}}{(\code{character()})\cr
+Keys of objects to remove.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(\code{Dictionary}).
+\code{Dictionary}.
 }
 }
 \if{html}{\out{<hr>}}
@@ -226,12 +231,13 @@ Returns the names of arguments required to construct the object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{key}}{(\code{character(1)}) Key of object to query for required arguments.}
+\item{\code{key}}{(\code{character(1)})\cr
+Key of object to query for required arguments.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(\code{character()}) of names of required arguments.
+\code{character()} of names of required arguments.
 }
 }
 \if{html}{\out{<hr>}}

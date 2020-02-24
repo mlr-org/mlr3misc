@@ -34,7 +34,7 @@ chunk_vector = function(x, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE) {
   unname(split(x, chunk(length(x), n_chunks, chunk_size, shuffle)))
 }
 
-#' @param n :: `integer(1)`\cr
+#' @param n (`integer(1)`)\cr
 #'   Length of vector to split.
 #' @rdname chunk_vector
 #' @export

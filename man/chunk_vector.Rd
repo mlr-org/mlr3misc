@@ -24,7 +24,7 @@ Mutually exclusive with \code{n_chunks} and \code{props}.}
 \item{shuffle}{(\code{logical(1)})\cr
 If \code{TRUE}, permutes the order of \code{x} before chunking.}
 
-\item{n}{:: \code{integer(1)}\cr
+\item{n}{(\code{integer(1)})\cr
 Length of vector to split.}
 }
 \value{

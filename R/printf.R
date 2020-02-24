@@ -11,7 +11,7 @@
 #'   Passed to [base::cat()].
 #' @param ... (`any`)\cr
 #'   Arguments passed down to [base::sprintf()].
-#' @param wrap ((`integer(1)` | `logical(1)`))\cr
+#' @param wrap (`integer(1)` | `logical(1)`)\cr
 #'   If set to a positive integer, [base::strwrap()] is used to wrap the string to the provided width.
 #'   If set to `TRUE`, the width defaults to `0.9 * getOption("width")`.
 #'   If set to `FALSE`, wrapping is disabled (default).
