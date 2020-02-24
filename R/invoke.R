@@ -35,12 +35,12 @@ invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) 
       nn = nn[map_lgl(old_opts[nn], is.null)]
       old_opts[nn] = FALSE
     }
-    on.exit(options(old_opts))
+    on.exit(options(old_opts), add = TRUE)
   }
 
   if (!is.na(.seed)) {
     prev_seed = get_seed()
-    on.exit(assign(".Random.seed", prev_seed, globalenv()))
+    on.exit(assign(".Random.seed", prev_seed, globalenv()), add = TRUE)
     set.seed(.seed)
   }
 

@@ -1,3 +1,8 @@
+# mlr3misc 0.1.9
+
+* Fixed broken `on.exit()` in `invoke()` if both a seed and a list of options
+  were provided.
+
 # mlr3misc 0.1.8
 
 * New function `check_packages_installed()`.
