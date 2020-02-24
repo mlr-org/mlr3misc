@@ -176,7 +176,8 @@ Converts the dictionary to a <code><a href='https://Rdatatable.gitlab.io/data.ta
     <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
 
     <p><div class="r6-fields"></p><dl class='dl-horizontal'>
-<dt><code>items</code></dt><dd><p>Stores the items of the dictionary</p></dd>
+<dt><code>items</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/environment.html'>environment()</a></code>)<br />
+Stores the items of the dictionary</p></dd>
 
 </dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -224,7 +225,7 @@ If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>List of objects with corresponding keys.</p>
+<p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> of keys.</p>
 <p><hr>
 <a id="method-has"></a></p><h3>Method <code>has()</code></h3>
 <p>Returns a logical vector with <code>TRUE</code> at its i-th position if the i-th key exists.</p><h3>Usage</h3>
@@ -236,7 +237,7 @@ If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>).</p>
+<p><code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>.</p>
 <p><hr>
 <a id="method-get"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/get.html'>get()</a></code></h3>
 <p>Retrieves object with key <code>key</code> from the dictionary.
@@ -247,11 +248,12 @@ Additional arguments must be named and are passed to the constructor of the stor
 <p><div class="arguments"></p><dl class='dl-horizontal'>
 <dt><code>key</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></dd>
 
-<dt><code>...</code></dt><dd><p>Passed down to constructor.</p></dd>
+<dt><code>...</code></dt><dd><p><br />
+Passed down to constructor.</p></dd>
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(any) Object with corresponding key.</p>
+<p>Object with corresponding key.</p>
 <p><hr>
 <a id="method-mget"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/get.html'>mget()</a></code></h3>
 <p>Returns objects with keys <code>keys</code> in a list named with <code>keys</code>.
@@ -262,11 +264,12 @@ Additional arguments must be named and are passed to the constructors of the sto
 <p><div class="arguments"></p><dl class='dl-horizontal'>
 <dt><code>keys</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p></dd>
 
-<dt><code>...</code></dt><dd><p>Passed down to constructor.</p></dd>
+<dt><code>...</code></dt><dd><p><br />
+Passed down to constructor.</p></dd>
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>) of objects with corresponding keys.</p>
+<p>Named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code> of objects with corresponding keys.</p>
 <p><hr>
 <a id="method-add"></a></p><h3>Method <code>add()</code></h3>
 <p>Adds object <code>value</code> to the dictionary with key <code>key</code>, potentially overwriting a previously stored item.
@@ -278,15 +281,16 @@ The names of all additional arguments which are mandatory for construction and m
 <p><div class="arguments"></p><dl class='dl-horizontal'>
 <dt><code>key</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p></dd>
 
-<dt><code>value</code></dt><dd><p>(any).</p></dd>
+<dt><code>value</code></dt><dd><p>(<code>any</code>).</p></dd>
 
-<dt><code>...</code></dt><dd><p>Passed down to constructor.</p></dd>
+<dt><code>...</code></dt><dd><p><br />
+Passed down to constructor.</p></dd>
 
 <dt><code>required_args</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p></dd>
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(<code>Dictionary</code>).</p>
+<p><code>Dictionary</code>.</p>
 <p><hr>
 <a id="method-remove"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/rm.html'>remove()</a></code></h3>
 <p>Removes objects with from the dictionary.</p><h3>Usage</h3>
@@ -294,11 +298,12 @@ The names of all additional arguments which are mandatory for construction and m
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>keys</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>) Keys of objects to remove.</p></dd>
+<dt><code>keys</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Keys of objects to remove.</p></dd>
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(<code>Dictionary</code>).</p>
+<p><code>Dictionary</code>.</p>
 <p><hr>
 <a id="method-required_args"></a></p><h3>Method <code>required_args()</code></h3>
 <p>Returns the names of arguments required to construct the object.</p><h3>Usage</h3>
@@ -306,11 +311,12 @@ The names of all additional arguments which are mandatory for construction and m
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
-<dt><code>key</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>) Key of object to query for required arguments.</p></dd>
+<dt><code>key</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Key of object to query for required arguments.</p></dd>
 
 </dl><p></div></p>
 <h3>Returns</h3>
-<p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>) of names of required arguments.</p>
+<p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> of names of required arguments.</p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
