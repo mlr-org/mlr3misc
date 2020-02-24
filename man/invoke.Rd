@@ -17,7 +17,7 @@ Additional function arguments passed to \code{.f}.}
 Additional function arguments passed to \code{.f}, as (named) \code{list()}.
 These arguments will be concatenated to the arguments provided via \code{...}.}
 
-\item{.opts}{(\code{list()})\cr
+\item{.opts}{(named \code{list()})\cr
 List of options which are set before the \code{.f} is called.
 Options are reset to their previous state afterwards.}
 

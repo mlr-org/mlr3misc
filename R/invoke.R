@@ -15,7 +15,7 @@
 #' @param .args (`list()`)\cr
 #'   Additional function arguments passed to `.f`, as (named) `list()`.
 #'   These arguments will be concatenated to the arguments provided via `...`.
-#' @param .opts (`list()`)\cr
+#' @param .opts (named `list()`)\cr
 #'   List of options which are set before the `.f` is called.
 #'   Options are reset to their previous state afterwards.
 #' @param .seed (`integer(1)`)\cr
@@ -27,6 +27,7 @@
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
 invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) {
   if (length(.opts)) {
+    assert_list(.opts, names = "unique")
     old_opts = options(.opts)
     if (getRversion() < "3.6.0") {
       # fix for resetting some debug options
