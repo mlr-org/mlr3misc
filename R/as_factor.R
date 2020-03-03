@@ -23,7 +23,8 @@
 #' as_factor(y, levels(x))
 as_factor = function(x, levels, ordered = is.ordered(x)) {
   assert_flag(ordered)
-  levels = as.character(levels)
+  levels = unique(as.character(levels))
+  levels = levels[!is.na(levels)]
   if (is.factor(x)) {
     if (!identical(levels(x), levels) || ordered != is.ordered(x)) {
       x = factor(x, levels = levels, ordered = ordered)
