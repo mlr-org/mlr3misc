@@ -33,7 +33,7 @@ Suggests:
     callr,
     evaluate,
     paradox,
-    testthat
+    tinytest
 Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
