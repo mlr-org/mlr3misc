@@ -86,7 +86,7 @@ Default argument required for construction can be stored alongside their constru
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -201,23 +201,23 @@ Stores the items of the dictionary</p></dd>
 <p><hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Construct a new Dictionary.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$new()</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>new</span>()</pre><p></div></p>
 
 <p><hr>
 <a id="method-format"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
 <p>Format object as simple string.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$format()</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>()</pre><p></div></p>
 
 <p><hr>
 <a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
 <p>Print object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$print()</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>()</pre><p></div></p>
 
 <p><hr>
 <a id="method-keys"></a></p><h3>Method <code>keys()</code></h3>
 <p>Returns all keys which comply to the regular expression <code>pattern</code>.
 If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$keys(pattern = NULL)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>keys</span>(<span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -229,7 +229,7 @@ If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</
 <p><hr>
 <a id="method-has"></a></p><h3>Method <code>has()</code></h3>
 <p>Returns a logical vector with <code>TRUE</code> at its i-th position if the i-th key exists.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$has(keys)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>has</span>(<span class='no'>keys</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -242,7 +242,7 @@ If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</
 <a id="method-get"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/get.html'>get()</a></code></h3>
 <p>Retrieves object with key <code>key</code> from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$get(key, ...)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='no'>key</span>, <span class='no'>...</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -258,7 +258,7 @@ Passed down to constructor.</p></dd>
 <a id="method-mget"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/get.html'>mget()</a></code></h3>
 <p>Returns objects with keys <code>keys</code> in a list named with <code>keys</code>.
 Additional arguments must be named and are passed to the constructors of the stored objects.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$mget(keys, ...)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>mget</a></span>(<span class='no'>keys</span>, <span class='no'>...</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -275,7 +275,7 @@ Passed down to constructor.</p></dd>
 <p>Adds object <code>value</code> to the dictionary with key <code>key</code>, potentially overwriting a previously stored item.
 Additional arguments in <code>...</code> must be named and are passed as default arguments to <code>value</code> during construction.
 The names of all additional arguments which are mandatory for construction and missing in <code>...</code> should be listed in <code>required_args</code>.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$add(key, value, ..., required_args = character())</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>add</span>(<span class='no'>key</span>, <span class='no'>value</span>, <span class='no'>...</span>, <span class='kw'>required_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>())</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -294,7 +294,7 @@ Passed down to constructor.</p></dd>
 <p><hr>
 <a id="method-remove"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/rm.html'>remove()</a></code></h3>
 <p>Removes objects with from the dictionary.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$remove(keys)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>remove</a></span>(<span class='no'>keys</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -307,7 +307,7 @@ Keys of objects to remove.</p></dd>
 <p><hr>
 <a id="method-required_args"></a></p><h3>Method <code>required_args()</code></h3>
 <p>Returns the names of arguments required to construct the object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$required_args(key)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>required_args</span>(<span class='no'>key</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
@@ -320,7 +320,7 @@ Key of object to query for required arguments.</p></dd>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre>Dictionary$clone(deep = FALSE)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>Dictionary</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl class='dl-horizontal'>
