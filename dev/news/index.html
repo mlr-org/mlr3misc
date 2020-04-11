@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -63,7 +67,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -101,7 +105,7 @@
   </a>
 </li>
         <li>
-  <a href="https://github.com/mlr-org/mlr3misc">
+  <a href="https://github.com/mlr-org/mlr3misc/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -137,20 +141,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="mlr3misc-019" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.9">
 <a href="#mlr3misc-019" class="anchor"></a>mlr3misc 0.1.9<small> Unreleased </small>
 </h1>
 <ul>
+<li>Fixed an issue with <code><a href="../reference/rcbind.html">rcbind()</a></code> for columns of <code>x</code> named <code>y</code> (<a href='https://github.com/mlr-org/mlr3misc/issues/42'>#42</a>).</li>
 <li>Fixed broken <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> in <code><a href="../reference/invoke.html">invoke()</a></code> if both a seed and a list of options were provided.</li>
 </ul>
 </div>
     <div id="mlr3misc-018" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.8">
 <a href="#mlr3misc-018" class="anchor"></a>mlr3misc 0.1.8<small> 2020-02-21 </small>
 </h1>
 <ul>
@@ -159,7 +164,7 @@
 </ul>
 </div>
     <div id="mlr3misc-017" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.7">
 <a href="#mlr3misc-017" class="anchor"></a>mlr3misc 0.1.7<small> 2020-01-28 </small>
 </h1>
 <ul>
@@ -172,7 +177,7 @@
 </ul>
 </div>
     <div id="mlr3misc-016" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.6">
 <a href="#mlr3misc-016" class="anchor"></a>mlr3misc 0.1.6<small> 2019-12-12 </small>
 </h1>
 <ul>
@@ -182,7 +187,7 @@
 </ul>
 </div>
     <div id="mlr3misc-015" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.5">
 <a href="#mlr3misc-015" class="anchor"></a>mlr3misc 0.1.5<small> 2019-09-28 </small>
 </h1>
 <ul>
@@ -195,7 +200,7 @@
 </ul>
 </div>
     <div id="mlr3misc-014" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.4">
 <a href="#mlr3misc-014" class="anchor"></a>mlr3misc 0.1.4<small> 2019-09-17 </small>
 </h1>
 <ul>
@@ -204,7 +209,7 @@
 </ul>
 </div>
     <div id="mlr3misc-013" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.3">
 <a href="#mlr3misc-013" class="anchor"></a>mlr3misc 0.1.3<small> 2019-08-22 </small>
 </h1>
 <ul>
@@ -216,7 +221,7 @@
 </ul>
 </div>
     <div id="mlr3misc-012" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.2">
 <a href="#mlr3misc-012" class="anchor"></a>mlr3misc 0.1.2<small> 2019-08-07 </small>
 </h1>
 <ul>
@@ -229,7 +234,7 @@
 </ul>
 </div>
     <div id="mlr3misc-011" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.1">
 <a href="#mlr3misc-011" class="anchor"></a>mlr3misc 0.1.1<small> 2019-07-23 </small>
 </h1>
 <ul>
@@ -240,7 +245,7 @@
 </ul>
 </div>
     <div id="mlr3misc-010" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.0">
 <a href="#mlr3misc-010" class="anchor"></a>mlr3misc 0.1.0<small> 2019-07-10 </small>
 </h1>
 <ul>
@@ -250,21 +255,9 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#mlr3misc-019">0.1.9</a></li>
-        <li><a href="#mlr3misc-018">0.1.8</a></li>
-        <li><a href="#mlr3misc-017">0.1.7</a></li>
-        <li><a href="#mlr3misc-016">0.1.6</a></li>
-        <li><a href="#mlr3misc-015">0.1.5</a></li>
-        <li><a href="#mlr3misc-014">0.1.4</a></li>
-        <li><a href="#mlr3misc-013">0.1.3</a></li>
-        <li><a href="#mlr3misc-012">0.1.2</a></li>
-        <li><a href="#mlr3misc-011">0.1.1</a></li>
-        <li><a href="#mlr3misc-010">0.1.0</a></li>
-      </ul>
-    </div>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -276,7 +269,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
