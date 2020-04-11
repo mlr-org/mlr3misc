@@ -62,6 +62,7 @@ Stores the items of the dictionary}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Construct a new Dictionary.
 \subsection{Usage}{
@@ -71,6 +72,7 @@ Construct a new Dictionary.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 Format object as simple string.
 \subsection{Usage}{
@@ -80,6 +82,7 @@ Format object as simple string.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Print object.
 \subsection{Usage}{
@@ -89,6 +92,7 @@ Print object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-keys"></a>}}
+\if{latex}{\out{\hypertarget{method-keys}{}}}
 \subsection{Method \code{keys()}}{
 Returns all keys which comply to the regular expression \code{pattern}.
 If \code{pattern} is \code{NULL} (default), all keys are returned.
@@ -109,6 +113,7 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-has"></a>}}
+\if{latex}{\out{\hypertarget{method-has}{}}}
 \subsection{Method \code{has()}}{
 Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
 \subsection{Usage}{
@@ -128,6 +133,7 @@ Returns a logical vector with \code{TRUE} at its i-th position if the i-th key e
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-get"></a>}}
+\if{latex}{\out{\hypertarget{method-get}{}}}
 \subsection{Method \code{get()}}{
 Retrieves object with key \code{key} from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.
@@ -151,6 +157,7 @@ Object with corresponding key.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-mget"></a>}}
+\if{latex}{\out{\hypertarget{method-mget}{}}}
 \subsection{Method \code{mget()}}{
 Returns objects with keys \code{keys} in a list named with \code{keys}.
 Additional arguments must be named and are passed to the constructors of the stored objects.
@@ -174,6 +181,7 @@ Named \code{list()} of objects with corresponding keys.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add"></a>}}
+\if{latex}{\out{\hypertarget{method-add}{}}}
 \subsection{Method \code{add()}}{
 Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
 Additional arguments in \code{...} must be named and are passed as default arguments to \code{value} during construction.
@@ -202,6 +210,7 @@ Passed down to constructor.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-remove}{}}}
 \subsection{Method \code{remove()}}{
 Removes objects with from the dictionary.
 \subsection{Usage}{
@@ -222,6 +231,7 @@ Keys of objects to remove.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-required_args"></a>}}
+\if{latex}{\out{\hypertarget{method-required_args}{}}}
 \subsection{Method \code{required_args()}}{
 Returns the names of arguments required to construct the object.
 \subsection{Usage}{
@@ -242,6 +252,7 @@ Key of object to query for required arguments.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

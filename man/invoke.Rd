@@ -30,7 +30,7 @@ An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the d
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
 
-It is recommended to pass all arguments named in order to to not rely on on positional
+It is recommended to pass all arguments named in order not to rely on on positional
 argument matching.
 }
 \examples{

@@ -10,8 +10,11 @@
 #'
 #' @return ([data.table::data.table()]): Updated `x` .
 #' @export
+#' @examples
+#' x = data.table::data.table(a = 1:3, b = 3:1)
+#' y = data.table::data.table(c = runif(3))
+#' rcbind(x, y)
 rcbind = function(x, y) {
-
   assert_data_table(x)
   assert_data_table(y)
 
@@ -33,5 +36,6 @@ rcbind = function(x, y) {
     stopf("Duplicated names: %s", str_collapse(dup))
   }
 
-  x[, names(y) := y][]
+  ..y = NULL
+  x[, (names(y)) := ..y][]
 }

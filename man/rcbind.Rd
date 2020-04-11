@@ -19,3 +19,8 @@ rcbind(x, y)
 \description{
 Performs \code{\link[base:cbind]{base::cbind()}} on \link[data.table:data.table]{data.tables}, possibly by reference.
 }
+\examples{
+x = data.table::data.table(a = 1:3, b = 3:1)
+y = data.table::data.table(c = runif(3))
+rcbind(x, y)
+}
