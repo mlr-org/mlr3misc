@@ -1,4 +1,4 @@
-# mlr3misc 0.1.9
+# mlr3misc 0.2.0
 
 * Fixed an issue with `rcbind()` for columns of `x` named `y` (#42).
 * Fixed broken `on.exit()` in `invoke()` if both a seed and a list of options
