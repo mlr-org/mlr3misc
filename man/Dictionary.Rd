@@ -146,7 +146,7 @@ Additional arguments must be named and are passed to the constructor of the stor
 \describe{
 \item{\code{key}}{(\code{character(1)}).}
 
-\item{\code{...}}{\cr
+\item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
 }
 \if{html}{\out{</div>}}
@@ -170,7 +170,7 @@ Additional arguments must be named and are passed to the constructors of the sto
 \describe{
 \item{\code{keys}}{(\code{character()}).}
 
-\item{\code{...}}{\cr
+\item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
 }
 \if{html}{\out{</div>}}
@@ -197,7 +197,7 @@ The names of all additional arguments which are mandatory for construction and m
 
 \item{\code{value}}{(\code{any}).}
 
-\item{\code{...}}{\cr
+\item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
 
 \item{\code{required_args}}{(\code{character()}).}

@@ -87,7 +87,7 @@ Dictionary = R6::R6Class("Dictionary",
     #'
     #' @param key (`character(1)`).
     #'
-    #' @param ... \cr
+    #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
     #' @return Object with corresponding key.
@@ -102,7 +102,7 @@ Dictionary = R6::R6Class("Dictionary",
     #'
     #' @param keys (`character()`).
     #'
-    #' @param ... \cr
+    #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
     #' @return Named `list()` of objects with corresponding keys.
@@ -120,7 +120,7 @@ Dictionary = R6::R6Class("Dictionary",
     #'
     #' @param value (`any`).
     #'
-    #' @param ... \cr
+    #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
     #' @param required_args (`character()`).
