@@ -4,6 +4,8 @@
 #' Attaches a package to the search path (if not already attached), executes code and
 #' eventually removes the package from the search path again, restoring the previous state.
 #'
+#' Note that this function is deprecated in favor of the (now fixed) version in \CRANpkg{withr}.
+#'
 #' @param package (`character(1)`)\cr
 #'   Name of the package to attach.
 #' @param code (`expression`)\cr

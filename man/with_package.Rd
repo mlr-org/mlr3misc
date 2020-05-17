@@ -22,6 +22,8 @@ Result of the evaluation of \code{code}.
 \description{
 Attaches a package to the search path (if not already attached), executes code and
 eventually removes the package from the search path again, restoring the previous state.
+
+Note that this function is deprecated in favor of the (now fixed) version in \CRANpkg{withr}.
 }
 \seealso{
 \CRANpkg{withr} package.
