@@ -49,7 +49,8 @@
 
 <meta property="og:title" content="Execture code with a modified search path — with_package" />
 <meta property="og:description" content="Attaches a package to the search path (if not already attached), executes code and
-eventually removes the package from the search path again, restoring the previous state." />
+eventually removes the package from the search path again, restoring the previous state.
+Note that this function is deprecated in favor of the (now fixed) version in withr." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -151,6 +152,7 @@ eventually removes the package from the search path again, restoring the previou
     <div class="ref-description">
     <p>Attaches a package to the search path (if not already attached), executes code and
 eventually removes the package from the search path again, restoring the previous state.</p>
+<p>Note that this function is deprecated in favor of the (now fixed) version in <a href='https://CRAN.R-project.org/package=withr'><span class="pkg">withr</span></a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>with_package</span>(<span class='no'>package</span>, <span class='no'>code</span>, <span class='no'>...</span>)</pre>

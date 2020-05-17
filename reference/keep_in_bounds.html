@@ -49,8 +49,7 @@
 
 <meta property="og:title" content="Remove All Elements Out Of Bounds — keep_in_bounds" />
 <meta property="og:description" content="Filters vector x to only keep elements which are in bounds [lower, upper].
-This is equivalent to the following, but tries to avoid unnecessary allocations: x[!is.na(x) &amp;amp;amp; x &amp;amp;gt;= lower &amp;amp;amp; x &amp;amp;lt;= upper]
-
+This is equivalent to the following, but tries to avoid unnecessary allocations: x[!is.na(x) &amp;amp; x &amp;gt;= lower &amp;amp; x &amp;lt;= upper]
 
 Currently only works for integer x." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
@@ -153,8 +152,7 @@ Currently only works for integer x." />
 
     <div class="ref-description">
     <p>Filters vector <code>x</code> to only keep elements which are in bounds <code>[lower, upper]</code>.
-This is equivalent to the following, but tries to avoid unnecessary allocations:</p><pre> x[!is.na(x) &amp;amp; x &amp;gt;= lower &amp;amp; x &amp;lt;= upper]
-</pre>
+This is equivalent to the following, but tries to avoid unnecessary allocations:</p><pre> <span class='no'>x</span>[!<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>x</span>) <span class='kw'>&amp;</span> <span class='no'>x</span> <span class='kw'>&gt;=</span> <span class='no'>lower</span> <span class='kw'>&amp;</span> <span class='no'>x</span> <span class='kw'>&lt;=</span> <span class='no'>upper</span>]</pre>
 
 <p>Currently only works for integer <code>x</code>.</p>
     </div>
