@@ -40,3 +40,4 @@ inst/doc
 /src/*.o
 
 revdep
+docs/

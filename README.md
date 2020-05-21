@@ -5,7 +5,7 @@ Package website: [release](https://mlr3misc.mlr-org.com/) | [dev](https://mlr3mi
 Miscellaneous helper functions for [mlr3](https://mlr3.mlr-org.com).
 
 <!-- badges: start -->
-[![R build status](https://github.com/mlr-org/mlr3misc/workflows/R-CMD-check/badge.svg)](https://github.com/mlr-org/mlr3misc/actions)
+[![R CMD Check via {tic}](https://github.com/mlr-org/mlr3misc/workflows/R%20CMD%20Check%20via%20{tic}/badge.svg?branch=master)](https://github.com/mlr-org/mlr3misc/actions)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-ago/mlr3misc)](https://cran.r-project.org/package=mlr3misc)
 [![Cran Checks](https://cranchecks.info/badges/worst/mlr3misc)](https://cran.r-project.org/web/checks/check_results_mlr3misc.html)
 [![codecov](https://codecov.io/gh/mlr-org/mlr3misc/branch/master/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3misc)
