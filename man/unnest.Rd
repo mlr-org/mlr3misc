@@ -13,8 +13,9 @@ unnest(x, cols, prefix = NULL)
 \item{cols}{(\code{character()})\cr
 Column names of list columns to operate on.}
 
-\item{prefix}{(\code{character(1)})\cr
-String to prefix the new column names with.}
+\item{prefix}{(\code{logical(1)} | \code{character(1)})\cr
+String to prefix the new column names with.
+Use \code{"{col}"} (without the quotes) as placeholder for the original column name.}
 }
 \value{
 (\code{\link[data.table:data.table]{data.table::data.table()}}).
@@ -30,5 +31,6 @@ x = data.table::data.table(
   value = list(list(a = 1, b = 2), list(a = 2, b = 2))
 )
 print(x)
-unnest(x, "value")
+unnest(data.table::copy(x), "value")
+unnest(data.table::copy(x), "value", prefix = "{col}.")
 }

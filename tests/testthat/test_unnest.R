@@ -50,3 +50,13 @@ test_that("unnest with nested lists", {
   expect_integer(tab$mtry, any.missing = FALSE)
   expect_list(tab$aggr, "function", any.missing = FALSE)
 })
+
+test_that("prefix with placeholder", {
+  x = data.table(
+    id = 1:2,
+    p1 = list(list(mtry = 1L, ctrl = list(eps = 0.1)), list(mtry = 2L, ctrl = list(eps = 0.2))),
+    p2 = list(list(mtry = 1L, aggr = mean), list(mtry = 2L, aggr = median))
+  )
+
+  unnest(x, c("p1", "p2"), prefix = "{col}.")
+})

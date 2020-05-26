@@ -1,3 +1,7 @@
+# mlr3misc 0.2.1
+
+* Introduced a placeholder for column name prefixes in `unnest()`.
+
 # mlr3misc 0.2.0
 
 * Fixed an issue with `rcbind()` for columns of `x` named `y` (#42).

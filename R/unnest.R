@@ -9,8 +9,9 @@
 #'   [data.table::data.table()] with columns to unnest.
 #' @param cols (`character()`)\cr
 #'   Column names of list columns to operate on.
-#' @param prefix (`character(1)`)\cr
+#' @param prefix (`logical(1)` | `character(1)`)\cr
 #'   String to prefix the new column names with.
+#'   Use `"{col}"` (without the quotes) as placeholder for the original column name.
 #'
 #' @return ([data.table::data.table()]).
 #' @export
@@ -20,7 +21,8 @@
 #'   value = list(list(a = 1, b = 2), list(a = 2, b = 2))
 #' )
 #' print(x)
-#' unnest(x, "value")
+#' unnest(data.table::copy(x), "value")
+#' unnest(data.table::copy(x), "value", prefix = "{col}.")
 unnest = function(x, cols, prefix = NULL) {
   assert_data_table(x)
   assert_subset(cols, names(x))
@@ -34,7 +36,7 @@ unnest = function(x, cols, prefix = NULL) {
 
     tmp = rbindlist2(values)
     if (!is.null(prefix)) {
-      setnames(tmp, names(tmp), paste0(prefix, names(tmp)))
+      setnames(tmp, paste0(gsub("{col}", col, prefix, fixed = TRUE), names(tmp)))
     }
 
     # rcbind checks for duplicated column names
