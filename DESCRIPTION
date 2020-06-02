@@ -1,6 +1,6 @@
 Package: mlr3misc
 Title: Helper Functions for 'mlr3'
-Version: 0.2.1
+Version: 0.3.0
 Authors@R:
     c(person(given = "Michel",
              family = "Lang",

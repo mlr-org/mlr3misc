@@ -1,4 +1,4 @@
-# mlr3misc 0.2.1
+# mlr3misc 0.3.0
 
 * Introduced a placeholder for column name prefixes in `unnest()`.
 
