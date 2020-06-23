@@ -4,11 +4,11 @@
 \alias{Dictionary}
 \title{Key-Value Storage}
 \description{
-A key-value store for \link[R6:R6]{R6::R6} objects.
+A key-value store for \link[R6:R6Class]{R6::R6} objects.
 On retrieval of an object, the following applies:
 \itemize{
 \item If the object is a \code{R6ClassGenerator}, it is initialized with \code{new()}.
-\item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
+\item If the object is a function, it is called and must return an instance of a \link[R6:R6Class]{R6::R6} object.
 \item If the object is an instance of a R6 class, it is returned as-is.
 }
 

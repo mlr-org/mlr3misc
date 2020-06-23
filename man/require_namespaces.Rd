@@ -20,7 +20,7 @@ Message to print on error. Use \code{"\%s"} as placeholder for the list of packa
 (named \code{character()}) of loaded packages (invisibly).
 }
 \description{
-Packages are loaded (not attached) via \code{\link[base:requireNamespace]{base::requireNamespace()}}.
+Packages are loaded (not attached) via \code{\link[base:ns-load]{base::requireNamespace()}}.
 If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
 The character vector of missing packages is stored in the condition as \code{packages}.
 }

@@ -27,7 +27,7 @@ Returns an empty integer vector for empty input vectors and vectors with no non-
 Returns \code{NA} if \code{na_rm} is \code{FALSE} and at least one \code{NA} is found in \code{x}.
 }
 \description{
-Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.max]{base::which.max()}}, but corrects for ties.
+Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.min]{base::which.max()}}, but corrects for ties.
 Missing values are set to \code{Inf} for \code{which_min} and to \code{-Inf} for \code{which_max()}.
 }
 \examples{
