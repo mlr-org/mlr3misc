@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1.9000
-pkgdown_sha: cb74ce08c4b25adda98256ea46196b1182f4e0ea
+pkgdown: 1.5.1
+pkgdown_sha: ~
 articles: []
-last_built: 2020-04-11T21:39Z
+last_built: 2020-07-04T06:04Z
 urls:
   reference: https://mlr3misc.mlr-org.com/reference
   article: https://mlr3misc.mlr-org.com/articles

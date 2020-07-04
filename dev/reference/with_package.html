@@ -49,7 +49,8 @@
 
 <meta property="og:title" content="Execture code with a modified search path — with_package" />
 <meta property="og:description" content="Attaches a package to the search path (if not already attached), executes code and
-eventually removes the package from the search path again, restoring the previous state." />
+eventually removes the package from the search path again, restoring the previous state.
+Note that this function is deprecated in favor of the (now fixed) version in withr." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -84,7 +85,7 @@ eventually removes the package from the search path again, restoring the previou
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.1.8-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.3.0.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -151,6 +152,7 @@ eventually removes the package from the search path again, restoring the previou
     <div class="ref-description">
     <p>Attaches a package to the search path (if not already attached), executes code and
 eventually removes the package from the search path again, restoring the previous state.</p>
+<p>Note that this function is deprecated in favor of the (now fixed) version in <a href='https://CRAN.R-project.org/package=withr'><span class="pkg">withr</span></a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>with_package</span>(<span class='no'>package</span>, <span class='no'>code</span>, <span class='no'>...</span>)</pre>
@@ -197,7 +199,7 @@ Additional arguments passed to <code><a href='https://rdrr.io/r/base/library.htm
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
