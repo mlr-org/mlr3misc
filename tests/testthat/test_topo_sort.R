@@ -1,10 +1,9 @@
 context("topo_sort")
-
 test_that("topo_sort", {
   # graph:
   # a
   nodes = rbindlist(list(
-    list(id = "a", parents = list(character(0L)))
+    list(id = "a", parents = list(character()))
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(id = "a", depth = 0)
@@ -13,8 +12,8 @@ test_that("topo_sort", {
   # graph:
   # a      b
   nodes = rbindlist(list(
-    list(id = "a", parents = list(character(0L))),
-    list(id = "b", parents = list(character(0L)))
+    list(id = "a", parents = list(character())),
+    list(id = "b", parents = list(character()))
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
@@ -25,9 +24,9 @@ test_that("topo_sort", {
   # graph:
   # c -> b -> a
   nodes = rbindlist(list(
-    list(id = "a", parents = list(c("b"))),
-    list(id = "b", parents = list(c("c"))),
-    list(id = "c", parents = list(character(0L)))
+    list(id = "a", parents = list("b")),
+    list(id = "b", parents = list("c")),
+    list(id = "c", parents = list(character()))
   ), use.names = TRUE)
   r = topo_sort(nodes)
   rr = data.table(
@@ -40,10 +39,10 @@ test_that("topo_sort", {
   #      b -> a ----> e
   # d -> b
   nodes = rbindlist(list(
-    list(id = "a", parents = list(c("b"))),
+    list(id = "a", parents = list("b")),
     list(id = "b", parents = list(c("c", "d"))),
-    list(id = "c", parents = list(character(0L))),
-    list(id = "d", parents = list(character(0L))),
+    list(id = "c", parents = list(character())),
+    list(id = "d", parents = list(character())),
     list(id = "e", parents = list(c("a", "b")))
   ), use.names = TRUE)
   r = topo_sort(nodes)
@@ -55,9 +54,9 @@ test_that("topo_sort", {
   # graph:
   # a -> b -> c -> a
   nodes = rbindlist(list(
-    list(id = "a", parents = list(c("c"))),
-    list(id = "b", parents = list(c("a"))),
-    list(id = "c", parents = list(c("a")))
+    list(id = "a", parents = list("c")),
+    list(id = "b", parents = list("a")),
+    list(id = "c", parents = list("a"))
   ), use.names = TRUE)
   expect_error(topo_sort(nodes), "Cycle")
 })

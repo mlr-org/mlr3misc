@@ -6,8 +6,8 @@ test_that("map_values", {
   new = c("x", "y", "1")
   expect_equal(map_values(x, old, new), c("a", "x", "c", "y", "e"))
 
-  old = c("m")
-  new = c("n")
+  old = "m"
+  new = "n"
   expect_equal(map_values(x, old, new), x)
 
   old = c("a", "b")

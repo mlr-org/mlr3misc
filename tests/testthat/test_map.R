@@ -154,7 +154,7 @@ test_that("discard", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = discard(x, is.numeric)
   expect_list(out, len = 1L)
-  expect_equal(names(out), c("b"))
+  expect_equal(names(out), "b")
 })
 
 test_that("some/every", {

@@ -5,7 +5,7 @@ test_that("as_short_string", {
   expect_equal(as_short_string(1.0), "1")
   expect_equal(as_short_string(1.23), "1.23")
   expect_equal(as_short_string(numeric(0)), "numeric(0)")
-  expect_equal(as_short_string(factor(c())), "factor(0)")
+  expect_equal(as_short_string(factor(NULL)), "factor(0)")
   expect_equal(as_short_string(iris), "<data.frame>")
   expect_equal(as_short_string(NULL), "<NULL>")
   expect_equal(as_short_string(c(a=1, b=2)), "1,2")
