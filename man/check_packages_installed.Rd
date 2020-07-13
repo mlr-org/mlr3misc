@@ -25,7 +25,6 @@ Format of the warning message. Use \code{"\%s"} as placeholder for the list of p
 }
 \description{
 Calls \code{\link[=find.package]{find.package()}} to check if the all packages are installed.
-Returns a
 }
 \examples{
 check_packages_installed(c("mlr3misc", "foobar"), warn = FALSE)

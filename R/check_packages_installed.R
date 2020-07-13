@@ -2,7 +2,6 @@
 #'
 #' @description
 #' Calls [find.package()] to check if the all packages are installed.
-#' Returns a
 #'
 #' @param pkgs (`character()`)\cr
 #'   Packages to check.
