@@ -10,18 +10,18 @@
 #' @keywords Internal
 #' @export
 meta_info_learner = function(id) {
-  learner = lrn(id)
-  params = as.data.table(learner$param_set)
+  obj = lrn(id)
+  params = as.data.table(obj$param_set)
   params$default = replace(params$default, map_lgl(params$default, inherits, "NoDefault"), list("-"))
   id = storage_type = default = lower = upper = levels = NULL
   params = params[, .(Id = id, Type = storage_type, Default = default, Lower = lower, Upper = upper, Levels = levels)]
 
   c("",
-    sprintf("* Default ID: %s", str_collapse(learner$id, quote = "\"")),
-    sprintf("* Supported task type: %s", str_collapse(learner$task_type, quote = "\"")),
-    sprintf("* Required packages: %s", str_collapse(learner$packages, quote = "\"")),
-    sprintf("* Supported predict types: %s", str_collapse(learner$predict_types, quote = "\"")),
-    sprintf("* Supported Features: %s", str_collapse(learner$feature_types, quote = "\"")),
+    sprintf("* Default ID: %s", str_collapse(obj$id, quote = "\"")),
+    sprintf("* Supported task type: %s", str_collapse(obj$task_type, quote = "\"")),
+    sprintf("* Required packages: %s", str_collapse(obj$packages, quote = "\"")),
+    sprintf("* Supported predict types: %s", str_collapse(obj$predict_types, quote = "\"")),
+    sprintf("* Supported Features: %s", str_collapse(obj$feature_types, quote = "\"")),
     "",
     "Param Set:",
     "",
