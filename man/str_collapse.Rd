@@ -4,7 +4,7 @@
 \alias{str_collapse}
 \title{Collapse Strings}
 \usage{
-str_collapse(str, sep = ", ", quote = "", n = Inf, ellipsis = "[...]")
+str_collapse(str, sep = ", ", quote = character(), n = Inf, ellipsis = "[...]")
 }
 \arguments{
 \item{str}{(\code{character()})\cr
@@ -13,8 +13,10 @@ Vector of strings.}
 \item{sep}{(\code{character(1)})\cr
 String used to collapse the elements of \code{x}.}
 
-\item{quote}{(\code{character(1)})\cr
-Quotes to use around each element of \code{x}.}
+\item{quote}{(\code{character()})\cr
+Quotes to use around each element of \code{x}.
+
+Will be replicated to lenght 2.}
 
 \item{n}{(\code{integer(1)})\cr
 Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
