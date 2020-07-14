@@ -3,14 +3,14 @@
 \name{meta_info_task}
 \alias{meta_info_task}
 \alias{meta_info_learner}
-\alias{meta_info_measure}
+\alias{meta_info_param_set}
 \title{Creates Markdown Code for Manual Pages}
 \usage{
 meta_info_task(obj)
 
 meta_info_learner(obj)
 
-meta_info_measure(obj)
+meta_info_param_set(obj)
 }
 \arguments{
 \item{obj}{(\code{any})\cr

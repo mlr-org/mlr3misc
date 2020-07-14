@@ -1,22 +1,23 @@
-format_range = function(r) {
-  l = r[1L]
-  u = r[2L]
-
+format_range = function(lower, upper) {
   str = sprintf("%s%s, %s%s",
-    if (is.finite(l)) "[" else "(",
-    if (is.finite(l)) c(l, l) else c("-\\infty", "-Inf"),
-    if (is.finite(u)) c(u, u) else c("\\infty", "Inf"),
-    if (is.finite(u)) "]" else ")")
+    if (is.finite(lower)) "[" else "(",
+    if (is.finite(lower)) c(lower, lower) else c("-\\infty", "-Inf"),
+    if (is.finite(upper)) c(upper, upper) else c("\\infty", "Inf"),
+    if (is.finite(upper)) "]" else ")")
   paste0("\\eqn{", str[1L], "}{", str[2L], "}")
 }
 
+format_string = function(s, quote = c("\\dQuote{", "}")) {
+  if (length(s) == 0L)
+    return("-")
+  str_collapse(s, quote = quote)
+}
 
 #' @title Creates Markdown Code for Manual Pages
 #'
 #' @description
 #' Internal function to generate the "Meta Information" section of for
 #' \CRANpkg{mlr3} tasks, learners or measures.
-#'
 #'
 #' @param obj (`any`)\cr
 #'   Object of the respective class.
@@ -25,20 +26,13 @@ format_range = function(r) {
 #' @keywords Internal
 #' @export
 meta_info_task = function(obj) {
-  tab = obj$feature_types
-  id = type = NULL
-  tab = tab[, .(Name = id, Type = type)]
-
   c("",
-    sprintf("* Default ID: \"%s\"", obj$id),
-    sprintf("* Task type: \"%s\"", obj$task_type),
+    sprintf("* Task type: %s", format_string(obj$task_type)),
     sprintf("* Dimensions: %ix%i", obj$nrow, obj$ncol),
-    sprintf("* Properties: %s", str_collapse(obj$properties, quote = "\"")),
-    sprintf("* Has missings: `%s`", any(obj$missings() > 0L)),
-    "",
-    "Features:",
-    "",
-    knitr::kable(tab)
+    sprintf("* Properties: %s", format_string(obj$properties)),
+    sprintf("* Has Missings: %s", any(obj$missings() > 0L)),
+    sprintf("* Target: %s", format_string(obj$target_names)),
+    sprintf("* Features: %s", format_string(obj$feature_names))
   )
 }
 
@@ -47,39 +41,26 @@ meta_info_task = function(obj) {
 #' @keywords Internal
 #' @export
 meta_info_learner = function(obj) {
-  params = as.data.table(obj$param_set)
-  params$default = replace(params$default, map_lgl(params$default, inherits, "NoDefault"), list("-"))
-  id = storage_type = default = lower = upper = levels = NULL
-  params = params[, .(Id = id, Type = storage_type, Default = default, Lower = lower, Upper = upper, Levels = levels)]
-
   c("",
-    sprintf("* Default ID: \"%s\"", obj$id),
-    sprintf("* Task type: \"%s\"", obj$task_type),
-    sprintf("* Required Packages: %s", str_collapse(obj$packages, quote = "\"")),
-    sprintf("* Supported Predict Types: %s", str_collapse(obj$predict_types, quote = "\"")),
-    sprintf("* Supported Features: %s", str_collapse(obj$feature_types, quote = "\"")),
-    "",
-    "Param Set:",
-    "",
-    knitr::kable(params)
+    sprintf("* Task type: %s", format_string(obj$task_type)),
+    sprintf("* Required Packages: %s", format_string(obj$packages, quote = c("\\CRANpkg{", "}"))),
+    sprintf("* Supported Predict Types: %s", format_string(obj$predict_types)),
+    sprintf("* Supported Features: %s", format_string(obj$feature_types))
   )
 }
-
 
 #' @rdname meta_info_task
 #' @keywords Internal
 #' @export
-meta_info_measure = function(obj) {
-  c("",
-    sprintf("* Default ID: \"%s\"", obj$id),
-    sprintf("* Task type: \"%s\"", obj$task_type),
-    sprintf("* Required packages: %s", str_collapse(obj$packages, quote = "\"")),
-    sprintf("* Task Properties: %s", str_collapse(obj$task_properties, quote = "\"")),
-    sprintf("* Range: %s", format_range(obj$range)),
-    sprintf("* Minimize: %s", obj$minimize),
-    sprintf("* Properties: %s", str_collapse(obj$properties, quote = "\"")),
-    sprintf("* Required Predict Type: %s", str_collapse(obj$predict_type, quote = "\""))
+meta_info_param_set = function(obj) {
+  params = as.data.table(obj$param_set)
+  params$default = replace(params$default, map_lgl(params$default, inherits, "NoDefault"), list("-"))
+  params$levels = replace(params$levels, lengths(params$levels) == 0L, list("-"))
+  params$range = pmap_chr(params[, c("lower", "upper"), with = FALSE], format_range)
+  params = params[, c("id", "storage_type", "default", "range", "levels")]
+  setnames(params, c("Id", "Type", "Default", "Range", "Levels"))
+  c(
+    "",
+    knitr::kable(params)
   )
 }
-
-
