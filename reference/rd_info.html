@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Replace Elements of Vectors with New Values — map_values • mlr3misc</title>
+<title>Helpers to Create Manual Pages — rd_info • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,10 @@
 
 
 
-<meta property="og:title" content="Replace Elements of Vectors with New Values — map_values" />
-<meta property="og:description" content="Replaces all values in x which match old with values in new.
-Values are matched with base::match()." />
+<meta property="og:title" content="Helpers to Create Manual Pages — rd_info" />
+<meta property="og:description" content="rd_info() is an internal generic to generate Rd or markdown code to be used in manual pages.
+rd_format_string() and rd_format_range() are string functions to assist generating
+proper Rd code." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,49 +144,63 @@ Values are matched with base::match()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Replace Elements of Vectors with New Values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/map_values.R'><code>R/map_values.R</code></a></small>
-    <div class="hidden name"><code>map_values.Rd</code></div>
+    <h1>Helpers to Create Manual Pages</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/rd_info.R'><code>R/rd_info.R</code></a></small>
+    <div class="hidden name"><code>rd_info.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Replaces all values in <code>x</code> which match <code>old</code> with values in <code>new</code>.
-Values are matched with <code><a href='https://rdrr.io/r/base/match.html'>base::match()</a></code>.</p>
+    <p><code>rd_info()</code> is an internal generic to generate Rd or markdown code to be used in manual pages.
+<code>rd_format_string()</code> and <code>rd_format_range()</code> are string functions to assist generating
+proper Rd code.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>map_values</span>(<span class='no'>x</span>, <span class='no'>old</span>, <span class='no'>new</span>)</pre>
+    <pre class="usage"><span class='fu'>rd_info</span>(<span class='no'>obj</span>, <span class='no'>...</span>)
+
+<span class='fu'>rd_format_range</span>(<span class='no'>lower</span>, <span class='no'>upper</span>)
+
+<span class='fu'>rd_format_string</span>(<span class='no'>str</span>, <span class='kw'>quote</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"\\dQuote{"</span>, <span class='st'>"}"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>(<code>vector())</code>.</p></td>
+      <th>obj</th>
+      <td><p>(<code>any</code>)<br />
+Object of the respective class.</p></td>
     </tr>
     <tr>
-      <th>old</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>)<br />
-Vector with values to replace.</p></td>
+      <th>...</th>
+      <td><p>(<code>any)</code>)<br />
+Additional arguments.</p></td>
     </tr>
     <tr>
-      <th>new</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>)<br />
-Values to replace with.
-Will be forced to the same length as <code>old</code> with <code><a href='https://rdrr.io/r/base/rep.html'>base::rep_len()</a></code>.</p></td>
+      <th>lower</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Lower bound.</p></td>
+    </tr>
+    <tr>
+      <th>upper</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Upper bound.</p></td>
+    </tr>
+    <tr>
+      <th>str</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Vector of strings.</p></td>
+    </tr>
+    <tr>
+      <th>quote</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Quotes to use around each element of <code>x</code>.</p>
+<p>Will be replicated to lenght 2.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>) of the same length as <code>x</code>.</p>
+    <p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>, possibly with markdown code.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>]
-
-<span class='co'># replace all "b" with "_b_", and all "c" with "_c_"</span>
-<span class='no'>old</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>)
-<span class='no'>new</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_b_"</span>, <span class='st'>"_c_"</span>)
-<span class='fu'>map_values</span>(<span class='no'>x</span>, <span class='no'>old</span>, <span class='no'>new</span>)</div><div class='output co'>#&gt; [1] "a"   "_b_" "_c_" "d"   "e"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
