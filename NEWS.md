@@ -1,4 +1,7 @@
-# mlr3misc (development version)
+# mlr3misc 0.4.0
+
+* Added helper functions to assist in generating Rd documentation for 'mlr3'
+  objects.
 
 # mlr3misc 0.3.0
 
