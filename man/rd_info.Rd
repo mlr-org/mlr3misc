@@ -4,6 +4,7 @@
 \alias{rd_info}
 \alias{rd_format_range}
 \alias{rd_format_string}
+\alias{rd_format_packages}
 \title{Helpers to Create Manual Pages}
 \usage{
 rd_info(obj, ...)
@@ -11,6 +12,8 @@ rd_info(obj, ...)
 rd_format_range(lower, upper)
 
 rd_format_string(str, quote = c("\\\\dQuote{", "}"))
+
+rd_format_packages(packages)
 }
 \arguments{
 \item{obj}{(\code{any})\cr
@@ -32,6 +35,9 @@ Vector of strings.}
 Quotes to use around each element of \code{x}.
 
 Will be replicated to lenght 2.}
+
+\item{packages}{(\code{character()})\cr
+Vector of package names.}
 }
 \value{
 \code{character()}, possibly with markdown code.

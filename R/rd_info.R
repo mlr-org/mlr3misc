@@ -40,3 +40,23 @@ rd_format_string = function(str, quote = c("\\dQuote{", "}")) {
     return("-")
   str_collapse(str, quote = quote)
 }
+
+
+#' @rdname rd_info
+#' @param packages (`character()`)\cr
+#'   Vector of package names.
+#' @export
+rd_format_packages = function(packages) {
+  if (length(packages) == 0L)
+
+    return("-")
+  base_pkgs = c("base", "compiler", "datasets", "graphics", "grDevices", "grid", "methods",
+    "parallel", "splines", "stats", "stats4", "tcltk", "tools", "translations", "utils"
+  )
+  link = packages %nin% base_pkgs
+  str_collapse(sprintf("%s%s%s",
+    ifelse(link, "\\CRANpkg{", "'"),
+    pkgs,
+    ifelse(link, "}", "'")
+  ))
+}
