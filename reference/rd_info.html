@@ -159,7 +159,9 @@ proper Rd code.</p>
 
 <span class='fu'>rd_format_range</span>(<span class='no'>lower</span>, <span class='no'>upper</span>)
 
-<span class='fu'>rd_format_string</span>(<span class='no'>str</span>, <span class='kw'>quote</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"\\dQuote{"</span>, <span class='st'>"}"</span>))</pre>
+<span class='fu'>rd_format_string</span>(<span class='no'>str</span>, <span class='kw'>quote</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"\\dQuote{"</span>, <span class='st'>"}"</span>))
+
+<span class='fu'>rd_format_packages</span>(<span class='no'>packages</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,6 +196,11 @@ Vector of strings.</p></td>
       <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Quotes to use around each element of <code>x</code>.</p>
 <p>Will be replicated to lenght 2.</p></td>
+    </tr>
+    <tr>
+      <th>packages</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Vector of package names.</p></td>
     </tr>
     </table>
 
