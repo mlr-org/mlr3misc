@@ -187,9 +187,9 @@ Use <code>"{col}"</code> (without the quotes) as placeholder for the original co
   <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,
   <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>))
 )
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    id  value
-#&gt; 1:  1 &lt;list&gt;
-#&gt; 2:  2 &lt;list&gt;</div><div class='input'><span class='fu'>unnest</span>(<span class='kw pkg'>data.table</span><span class='kw ns'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span>(<span class='no'>x</span>), <span class='st'>"value"</span>)</div><div class='output co'>#&gt;    id a b
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    id     value
+#&gt; 1:  1 &lt;list[2]&gt;
+#&gt; 2:  2 &lt;list[2]&gt;</div><div class='input'><span class='fu'>unnest</span>(<span class='kw pkg'>data.table</span><span class='kw ns'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span>(<span class='no'>x</span>), <span class='st'>"value"</span>)</div><div class='output co'>#&gt;    id a b
 #&gt; 1:  1 1 2
 #&gt; 2:  2 2 2</div><div class='input'><span class='fu'>unnest</span>(<span class='kw pkg'>data.table</span><span class='kw ns'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span>(<span class='no'>x</span>), <span class='st'>"value"</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"{col}."</span>)</div><div class='output co'>#&gt;    id value.a value.b
 #&gt; 1:  1       1       2
