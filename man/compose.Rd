@@ -7,7 +7,7 @@
 compose(...)
 }
 \arguments{
-\item{...}{\code{\link{functions}}\cr
+\item{...}{(\code{functions})\cr
 Functions to compose.}
 }
 \value{

@@ -6,7 +6,7 @@
 #' The return value of the last function servers as input
 #' for the next to last function, and so on.
 #'
-#' @param ... [`functions`]\cr
+#' @param ... (`functions`)\cr
 #'   Functions to compose.
 #'
 #' @return (`function()`) which calls the functions provided via `...`

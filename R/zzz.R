@@ -1,6 +1,6 @@
 #' @import data.table
 #' @import checkmate
-#' @importFrom utils head adist
+#' @importFrom utils head tail adist
 #' @importFrom stats setNames as.formula terms runif
 #' @importFrom R6 R6Class
 "_PACKAGE"
