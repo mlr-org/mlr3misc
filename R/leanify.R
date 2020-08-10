@@ -40,9 +40,10 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 #' @title Move all methods of an R6 Class to an environment
 #'
 #' @description
-#' `leanify_r6` Moves the content of all of an [`R6::R6Class`]'s functions to an environment,
+#' `leanify_r6` moves the content of all of an [`R6::R6Class`]'s functions to an environment,
 #' preferably a package's namespace, to save space. This is useful
 #' because of \url{https://github.com/mlr-org/mlr3/issues/482}.
+#' `leanify_package` move all methods of *all* R6 Classes to an environment.
 #'
 #' The function in the class (i.e. the object generator) is replaced by a stump
 #' function that does nothing except call the original function that now resides
@@ -71,7 +72,7 @@ leanify_r6 = function(cls, env = cls$parent_env) {
   }
 }
 
-#' @describeIn leanify_r6 Move all methods of all R6 Classes to ban environment
+#' @rdname leanify_r6
 #'
 #' @param `pkg_env` :: `environment`\cr
 #'   The namespace from which to leanify all R6 classes. Does not have to be a

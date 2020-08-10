@@ -32,9 +32,10 @@ always (i.e. skipping no classes).}
 \code{NULL}.
 }
 \description{
-\code{leanify_r6} Moves the content of all of an \code{\link[R6:R6Class]{R6::R6Class}}'s functions to an environment,
+\code{leanify_r6} moves the content of all of an \code{\link[R6:R6Class]{R6::R6Class}}'s functions to an environment,
 preferably a package's namespace, to save space. This is useful
 because of \url{https://github.com/mlr-org/mlr3/issues/482}.
+\code{leanify_package} move all methods of \emph{all} R6 Classes to an environment.
 
 The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except call the original function that now resides
@@ -44,8 +45,3 @@ It is possible to call this function after the definition of an \code{\link[R6:R
 class inside a package, but it is preferred to use \code{\link[=leanify_package]{leanify_package()}}
 to just leanify all \code{\link[R6:R6Class]{R6::R6}} classes inside a package.
 }
-\section{Functions}{
-\itemize{
-\item \code{leanify_package}: Move all methods of all R6 Classes to ban environment
-}}
-
