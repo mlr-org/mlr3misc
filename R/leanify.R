@@ -1,11 +1,11 @@
 
-# Moves a method of an R6ClassGenerator to the package namespace. The R6ClassGenerator's
+# Moves a method of an R6Class Generator to the package namespace. The R6Class's
 # method is reduced to a stum method that calls the moved function.
 #
 # This creates a function named `.__<CLASSNAME>__<FUNCTIONNAME>` inside `env`.
 #
 # leanificate_method is called by leanify_r6 for each function of an R6 class.
-# @param cls (`R6ClassGenerator`): R6ClassGenerator object (i.e. R6 object generator) to modify
+# @param cls (`R6ClassGenerator`): R6Class object (i.e. R6 object generator) to modify
 # @param name (`character(1)`): name of the function
 # @param env (`environment`): the target environment where the function should
 #   be stored. Should be either `cls$parent_env` or one of its parent environments,
@@ -40,7 +40,7 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 #' @title Move all methods of an R6 Class to an environment
 #'
 #' @description
-#' `leanify_r6` Moves the content of all of an [`R6::R6ClassGenerator`]'s functions to an environment,
+#' `leanify_r6` Moves the content of all of an [`R6::R6Class`]'s functions to an environment,
 #' preferably a package's namespace, to save space. This is useful
 #' because of \url{https://github.com/mlr-org/mlr3/issues/482}.
 #'
@@ -52,7 +52,7 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 #' class inside a package, but it is preferred to use [leanify_package()]
 #' to just leanify all [`R6::R6`] classes inside a package.
 #'
-#' @param cls :: [`R6::R6ClassGenerator`]\cr
+#' @param cls :: [`R6::R6Class`]\cr
 #'   Class generator to modify.
 #' @param env :: `environment`\cr
 #'   The target environment where the function should
@@ -77,7 +77,7 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 #'   The namespace from which to leanify all R6 classes. Does not have to be a
 #'   package namespace, but this is the intended usecase.
 #' @param `skip_if` :: `function`\cr
-#'   Function with one argument: Is called for each individual [`R6::R6ClassGenerator`].
+#'   Function with one argument: Is called for each individual [`R6::R6Class`].
 #'   If it returns `TRUE`, the class is skipped. Default function evaluating to `FALSE`
 #'   always (i.e. skipping no classes).
 #' @export
