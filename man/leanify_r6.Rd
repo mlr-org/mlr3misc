@@ -19,11 +19,11 @@ be stored. This should be either \code{cls$parent_env} (default) or one of its
 parent environments, otherwise the stump function will not find the moved
 (original code) function.}
 
-\item{`pkg_env`}{:: \code{environment}\cr
+\item{pkg_env}{:: \code{environment}\cr
 The namespace from which to leanify all R6 classes. Does not have to be a
 package namespace, but this is the intended usecase.}
 
-\item{`skip_if`}{:: \code{function}\cr
+\item{skip_if}{:: \code{function}\cr
 Function with one argument: Is called for each individual \code{\link[R6:R6Class]{R6::R6Class}}.
 If it returns \code{TRUE}, the class is skipped. Default function evaluating to \code{FALSE}
 always (i.e. skipping no classes).}
