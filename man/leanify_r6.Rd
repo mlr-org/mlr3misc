@@ -7,7 +7,7 @@
 \usage{
 leanify_r6(cls, env = cls$parent_env)
 
-leanify_package(pkg.env = parent.frame(), skip_if = function(x) FALSE)
+leanify_package(pkg_env = parent.frame(), skip_if = function(x) FALSE)
 }
 \arguments{
 \item{cls}{:: \code{\link[R6:R6Class]{R6::R6Class}}\cr
@@ -19,7 +19,7 @@ be stored. This should be either \code{cls$parent_env} (default) or one of its
 parent environments, otherwise the stump function will not find the moved
 (original code) function.}
 
-\item{`pkg.env`}{:: \code{environment}\cr
+\item{`pkg_env`}{:: \code{environment}\cr
 The namespace from which to leanify all R6 classes. Does not have to be a
 package namespace, but this is the intended usecase.}
 

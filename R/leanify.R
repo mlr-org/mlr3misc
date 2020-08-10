@@ -73,7 +73,7 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 
 #' @describeIn leanify_r6 Move all methods of all R6 Classes to ban environment
 #'
-#' @param `pkg.env` :: `environment`\cr
+#' @param `pkg_env` :: `environment`\cr
 #'   The namespace from which to leanify all R6 classes. Does not have to be a
 #'   package namespace, but this is the intended usecase.
 #' @param `skip_if` :: `function`\cr
@@ -81,11 +81,11 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 #'   If it returns `TRUE`, the class is skipped. Default function evaluating to `FALSE`
 #'   always (i.e. skipping no classes).
 #' @export
-leanify_package = function(pkg.env = parent.frame(), skip_if = function(x) FALSE) {
-  assert_environment(pkg.env)
+leanify_package = function(pkg_env = parent.frame(), skip_if = function(x) FALSE) {
+  assert_environment(pkg_env)
   assert_function(skip_if)
-  for (varname in names(pkg.env)) {
-    content = get(varname, envir = pkg.env)
+  for (varname in names(pkg_env)) {
+    content = get(varname, envir = pkg_env)
     if (!R6::is.R6Class(content)) next
     if (isTRUE(skip_if(content))) next
     leanify_r6(content)
