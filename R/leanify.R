@@ -34,13 +34,16 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 
   exportfname = sprintf(".__%s__%s", cname, fname)
   origformals = formals(fn)
+  origattributes = attributes(fn)
   formals(fn) = c(pairlist(self = substitute(), private = substitute(), super = substitute()), formals(fn))
+  attributes(fn) = origattributes
   assign(exportfname, fn, env)
   replacingfn = eval(call("function", origformals,
     as.call(c(list(as.symbol(exportfname)), sapply(names(formals(fn)), as.symbol, simplify = FALSE)))))
   environment(replacingfn) = environment(fn)
 
   function_kind = switch(function_kind_container, public_methods = "public", private_methods = "private", active = "active")
+  attributes(replacingfn) = origattributes
   cls$set(function_kind, fname, replacingfn, overwrite = TRUE)
 }
 
