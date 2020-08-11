@@ -10,12 +10,12 @@ leanify_r6(cls, env = cls$parent_env)
 leanify_package(pkg_env = parent.frame(), skip_if = function(x) FALSE)
 }
 \arguments{
-\item{cls}{:: \code{\link[R6:R6Class]{R6::R6Class}}\cr
+\item{cls}{(\link[R6:R6Class]{R6::R6Class})\cr
 Class generator to modify.}
 
-\item{env}{:: \code{environment}\cr
-The target environment where the function should
-be stored. This should be either \code{cls$parent_env} (default) or one of its
+\item{env}{(\code{environment})\cr
+The target environment where the function should be stored.
+This should be either \code{cls$parent_env} (default) or one of its
 parent environments, otherwise the stump function will not find the moved
 (original code) function.}
 
@@ -32,16 +32,15 @@ always (i.e. skipping no classes).}
 \code{NULL}.
 }
 \description{
-\code{leanify_r6} moves the content of all of an \code{\link[R6:R6Class]{R6::R6Class}}'s functions to an environment,
-preferably a package's namespace, to save space. This is useful
-because of \url{https://github.com/mlr-org/mlr3/issues/482}.
+\code{leanify_r6} moves the content of an \code{\link[R6:R6Class]{R6::R6Class}}'s functions to an environment,
+usually the package's namespace, to save space during serialization of R6 objects.
 \code{leanify_package} move all methods of \emph{all} R6 Classes to an environment.
 
 The function in the class (i.e. the object generator) is replaced by a stump
-function that does nothing except call the original function that now resides
+function that does nothing except calling the original function that now resides
 somewhere else.
 
-It is possible to call this function after the definition of an \code{\link[R6:R6Class]{R6::R6}}
+It is possible to call this function after the definition of an \link[R6:R6Class]{R6::R6}
 class inside a package, but it is preferred to use \code{\link[=leanify_package]{leanify_package()}}
-to just leanify all \code{\link[R6:R6Class]{R6::R6}} classes inside a package.
+to just leanify all \link[R6:R6Class]{R6::R6} classes inside a package.
 }

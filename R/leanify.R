@@ -1,16 +1,23 @@
-
-# Moves a method of an R6Class Generator to the package namespace. The R6Class's
-# method is reduced to a stum method that calls the moved function.
-#
-# This creates a function named `.__<CLASSNAME>__<FUNCTIONNAME>` inside `env`.
-#
-# leanificate_method is called by leanify_r6 for each function of an R6 class.
-# @param cls (`R6ClassGenerator`): R6Class object (i.e. R6 object generator) to modify
-# @param name (`character(1)`): name of the function
-# @param env (`environment`): the target environment where the function should
-#   be stored. Should be either `cls$parent_env` or one of its parent environments,
-#   otherwise the stump function will not find the moved (original code) function.
-# @return NULL
+#' @title
+#'
+#' @description
+#' Moves a single method of an R6Class Generator to its package namespace.
+#' The R6Class's method is reduced to a call to  the moved function.
+#'
+#' This creates a function named `.__<CLASSNAME>__<FUNCTIONNAME>` inside `env`.
+#'
+#' leanificate_method is called by [leanify_r6] for each function of an [R6] class.
+#'
+#' @param cls (`R6ClassGenerator`)\cr
+#'   R6Class object (i.e. R6 object generator) to modify.
+#' @param name (`character(1)`)\cr
+#'   Name of the function
+#' @param env (`environment`)\cr
+#'   The target environment where the function should be stored.
+#'   Should be either `cls$parent_env` or one of its parent environments,
+#'   otherwise the stump function will not find the moved (original code) function.
+#' @return NULL
+#' @noRd
 leanificate_method = function(cls, fname, env = cls$parent_env) {
   cname = cls$classname
 
@@ -40,24 +47,23 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 #' @title Move all methods of an R6 Class to an environment
 #'
 #' @description
-#' `leanify_r6` moves the content of all of an [`R6::R6Class`]'s functions to an environment,
-#' preferably a package's namespace, to save space. This is useful
-#' because of \url{https://github.com/mlr-org/mlr3/issues/482}.
+#' `leanify_r6` moves the content of an [`R6::R6Class`]'s functions to an environment,
+#' usually the package's namespace, to save space during serialization of R6 objects.
 #' `leanify_package` move all methods of *all* R6 Classes to an environment.
 #'
 #' The function in the class (i.e. the object generator) is replaced by a stump
-#' function that does nothing except call the original function that now resides
+#' function that does nothing except calling the original function that now resides
 #' somewhere else.
 #'
-#' It is possible to call this function after the definition of an [`R6::R6`]
+#' It is possible to call this function after the definition of an [R6::R6]
 #' class inside a package, but it is preferred to use [leanify_package()]
-#' to just leanify all [`R6::R6`] classes inside a package.
+#' to just leanify all [R6::R6] classes inside a package.
 #'
-#' @param cls :: [`R6::R6Class`]\cr
+#' @param cls ([R6::R6Class])\cr
 #'   Class generator to modify.
-#' @param env :: `environment`\cr
-#'   The target environment where the function should
-#'   be stored. This should be either `cls$parent_env` (default) or one of its
+#' @param env (`environment`)\cr
+#'   The target environment where the function should be stored.
+#'   This should be either `cls$parent_env` (default) or one of its
 #'   parent environments, otherwise the stump function will not find the moved
 #'   (original code) function.
 #' @return `NULL`.
@@ -85,10 +91,11 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 leanify_package = function(pkg_env = parent.frame(), skip_if = function(x) FALSE) {
   assert_environment(pkg_env)
   assert_function(skip_if)
+
   for (varname in names(pkg_env)) {
-    content = get(varname, envir = pkg_env)
-    if (!R6::is.R6Class(content)) next
-    if (isTRUE(skip_if(content))) next
-    leanify_r6(content)
+    content = get(varname, envir = pkg_env, inherits = FALSE)
+    if (R6::is.R6Class(content) && !isTRUE(skip_if(content))) {
+      leanify_r6(content)
+    }
   }
 }
