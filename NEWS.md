@@ -1,3 +1,8 @@
+# mlr3misc 0.4.0-9000
+
+* Add method `leanify_package()` that shrinks memory taken by copies of R6
+  objects.
+
 # mlr3misc 0.4.0
 
 * Added helper functions to assist in generating Rd documentation for 'mlr3'
