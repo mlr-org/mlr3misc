@@ -1,6 +1,6 @@
 # mlr3misc 0.4.0-9000
 
-* Add method `leanify_package()` that shrinks memory taken by copies of R6
+* Add method `leanify_package()` that shrinks the size of serialized R6
   objects.
 
 # mlr3misc 0.4.0
