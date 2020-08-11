@@ -58,5 +58,5 @@ test_that("prefix with placeholder", {
     p2 = list(list(mtry = 1L, aggr = mean), list(mtry = 2L, aggr = median))
   )
 
-  unnest(x, c("p1", "p2"), prefix = "{col}.")
+  expect_data_table(unnest(x, c("p1", "p2"), prefix = "{col}."))
 })
