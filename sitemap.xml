@@ -25,6 +25,9 @@
     <loc>https://mlr3misc.mlr-org.com/reference/compat-map.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/compose.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/compute_mode.html</loc>
   </url>
   <url>
@@ -71,6 +74,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/keep_in_bounds.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/leanify_r6.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/load_dataset.html</loc>

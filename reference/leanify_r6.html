@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the Class — set_class • mlr3misc</title>
+<title>Move all methods of an R6 Class to an environment — leanify_r6 • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,8 +47,16 @@
 
 
 
-<meta property="og:title" content="Set the Class — set_class" />
-<meta property="og:description" content="Simple wrapper for class(x) = classes." />
+<meta property="og:title" content="Move all methods of an R6 Class to an environment — leanify_r6" />
+<meta property="og:description" content="leanify_r6 moves the content of an R6::R6Class's functions to an environment,
+usually the package's namespace, to save space during serialization of R6 objects.
+leanify_package move all methods of all R6 Classes to an environment.
+The function in the class (i.e. the object generator) is replaced by a stump
+function that does nothing except calling the original function that now resides
+somewhere else.
+It is possible to call this function after the definition of an R6::R6
+class inside a package, but it is preferred to use leanify_package()
+to just leanify all R6::R6 classes inside a package." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -142,39 +150,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the Class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/set_class.R'><code>R/set_class.R</code></a></small>
-    <div class="hidden name"><code>set_class.Rd</code></div>
+    <h1>Move all methods of an R6 Class to an environment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/leanify.R'><code>R/leanify.R</code></a></small>
+    <div class="hidden name"><code>leanify_r6.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simple wrapper for <code>class(x) = classes</code>.</p>
+    <p><code>leanify_r6</code> moves the content of an <code><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a></code>'s functions to an environment,
+usually the package's namespace, to save space during serialization of R6 objects.
+<code>leanify_package</code> move all methods of <em>all</em> R6 Classes to an environment.</p>
+<p>The function in the class (i.e. the object generator) is replaced by a stump
+function that does nothing except calling the original function that now resides
+somewhere else.</p>
+<p>It is possible to call this function after the definition of an <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6</a>
+class inside a package, but it is preferred to use <code>leanify_package()</code>
+to just leanify all <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6</a> classes inside a package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_class</span>(<span class='no'>x</span>, <span class='no'>classes</span>)</pre>
+    <pre class="usage"><span class='fu'>leanify_r6</span>(<span class='no'>cls</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='no'>cls</span>$<span class='no'>parent_env</span>)
+
+<span class='fu'>leanify_package</span>(<span class='kw'>pkg_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), <span class='kw'>skip_if</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>(<code>any</code>).</p></td>
+      <th>cls</th>
+      <td><p>(<a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a>)<br />
+Class generator to modify.</p></td>
     </tr>
     <tr>
-      <th>classes</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Vector of new class names.</p></td>
+      <th>env</th>
+      <td><p>(<code>environment</code>)<br />
+The target environment where the function should be stored.
+This should be either <code>cls$parent_env</code> (default) or one of its
+parent environments, otherwise the stump function will not find the moved
+(original code) function.</p></td>
+    </tr>
+    <tr>
+      <th>pkg_env</th>
+      <td><p>:: <code>environment</code><br />
+The namespace from which to leanify all R6 classes. Does not have to be a
+package namespace, but this is the intended usecase.</p></td>
+    </tr>
+    <tr>
+      <th>skip_if</th>
+      <td><p>:: <code>function</code><br />
+Function with one argument: Is called for each individual <code><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a></code>.
+If it returns <code>TRUE</code>, the class is skipped. Default function evaluating to <code>FALSE</code>
+always (i.e. skipping no classes).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object <code>x</code>, with updated class attribute.</p>
+    <p><code>NULL</code>.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>set_class</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"foo1"</span>, <span class='st'>"foo2"</span>))</div><div class='output co'>#&gt; list()
-#&gt; attr(,"class")
-#&gt; [1] "foo1" "foo2"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
