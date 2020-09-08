@@ -165,7 +165,7 @@ So nodes with <code>depth == 0</code> are the ones with no dependencies,
 and the one with maximal <code>depth</code> are the ones on which nothing else depends on.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>topo_sort</span>(<span class='no'>nodes</span>)</pre>
+    <pre class="usage"><span class='fu'>topo_sort</span>(<span class='kw'>nodes</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,13 +185,14 @@ Has 2 columns:</p><ul>
     <p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>) with columns <code>id</code>, <code>depth</code>, sorted topologically for IDs.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>nodes</span> <span class='kw'>=</span> <span class='fu'><a href='rowwise_table.html'>rowwise_table</a></span>(
-  ~<span class='no'>id</span>, ~<span class='no'>parents</span>,
+    <pre class="examples"><div class='input'><span class='kw'>nodes</span> <span class='op'>=</span> <span class='fu'><a href='rowwise_table.html'>rowwise_table</a></span>(
+  <span class='op'>~</span><span class='kw'>id</span>, <span class='op'>~</span><span class='kw'>parents</span>,
   <span class='st'>"a"</span>, <span class='st'>"b"</span>,
   <span class='st'>"b"</span>, <span class='st'>"c"</span>,
   <span class='st'>"c"</span>, <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>()
 )
-<span class='fu'>topo_sort</span>(<span class='no'>nodes</span>)</div><div class='output co'>#&gt;    id depth
+<span class='fu'>topo_sort</span>(<span class='kw'>nodes</span>)
+</div><div class='output co'>#&gt;    id depth
 #&gt; 1:  c     0
 #&gt; 2:  b     1
 #&gt; 3:  a     2</div></pre>
@@ -210,7 +211,7 @@ Has 2 columns:</p><ul>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

@@ -155,13 +155,13 @@ The call is not included for warnings and errors." />
 The call is not included for warnings and errors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>catf</span>(<span class='kw'>msg</span>, <span class='kw'>...</span>, file = <span class='st'>""</span>, wrap = <span class='fl'>FALSE</span>)
 
-<span class='fu'>messagef</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>messagef</span>(<span class='kw'>msg</span>, <span class='kw'>...</span>, wrap = <span class='fl'>FALSE</span>)
 
-<span class='fu'>warningf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>warningf</span>(<span class='kw'>msg</span>, <span class='kw'>...</span>, wrap = <span class='fl'>FALSE</span>)
 
-<span class='fu'>stopf</span>(<span class='no'>msg</span>, <span class='no'>...</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>stopf</span>(<span class='kw'>msg</span>, <span class='kw'>...</span>, wrap = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -198,7 +198,8 @@ and consecutive spaces are converted to a single space.</p></td>
   This is a rather long %s
   on multiple lines
   which will get wrapped.
-"</span>, <span class='st'>"string"</span>, <span class='kw'>wrap</span> <span class='kw'>=</span> <span class='fl'>15</span>)</div><div class='output co'>#&gt; <span class='message'>This is a</span>
+"</span>, <span class='st'>"string"</span>, wrap = <span class='fl'>15</span>)
+</div><div class='output co'>#&gt; <span class='message'>This is a</span>
 #&gt; <span class='message'>rather long</span>
 #&gt; <span class='message'>string on</span>
 #&gt; <span class='message'>multiple lines</span>
@@ -219,7 +220,7 @@ and consecutive spaces are converted to a single space.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

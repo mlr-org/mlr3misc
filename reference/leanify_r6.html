@@ -167,9 +167,9 @@ class inside a package, but it is preferred to use <code>leanify_package()</code
 to just leanify all <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6</a> classes inside a package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>leanify_r6</span>(<span class='no'>cls</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='no'>cls</span>$<span class='no'>parent_env</span>)
+    <pre class="usage"><span class='fu'>leanify_r6</span>(<span class='kw'>cls</span>, env = <span class='kw'>cls</span><span class='op'>$</span><span class='kw'>parent_env</span>)
 
-<span class='fu'>leanify_package</span>(<span class='kw'>pkg_env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), <span class='kw'>skip_if</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>leanify_package</span>(pkg_env = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), skip_if = <span class='fu'>function</span>(<span class='kw'>x</span>) <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -221,7 +221,7 @@ always (i.e. skipping no classes).</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

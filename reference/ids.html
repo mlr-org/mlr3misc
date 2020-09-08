@@ -151,7 +151,7 @@
     <p>None.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ids</span>(<span class='no'>xs</span>)</pre>
+    <pre class="usage"><span class='fu'>ids</span>(<span class='kw'>xs</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,8 +168,9 @@ Every element must have a slot 'id'.</p></td>
     <p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>xs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"foo"</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"bar"</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='fu'>ids</span>(<span class='no'>xs</span>)</div><div class='output co'>#&gt; [1] "foo" "bar"</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>xs</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(id = <span class='st'>"foo"</span>, a = <span class='fl'>1</span>), bar = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(id = <span class='st'>"bar"</span>, a = <span class='fl'>2</span>))
+<span class='fu'>ids</span>(<span class='kw'>xs</span>)
+</div><div class='output co'>#&gt; [1] "foo" "bar"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -185,7 +186,7 @@ Every element must have a slot 'id'.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

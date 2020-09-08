@@ -153,7 +153,7 @@ function transpose() in package purrr." />
 function <code>transpose()</code> in package <a href='https://CRAN.R-project.org/package=purrr'><span class="pkg">purrr</span></a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>transpose_list</span>(<span class='no'>.l</span>)</pre>
+    <pre class="usage"><span class='fu'>transpose_list</span>(<span class='kw'>.l</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,14 +169,16 @@ function <code>transpose()</code> in package <a href='https://CRAN.R-project.org
     <p><code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>10</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; List of 2
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>2</span>, b = <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>5</span>, b = <span class='fl'>10</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; List of 2
 #&gt;  $ :List of 2
 #&gt;   ..$ a: num 2
 #&gt;   ..$ b: num 3
 #&gt;  $ :List of 2
 #&gt;   ..$ a: num 5
-#&gt;   ..$ b: num 10</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>transpose_list</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; List of 2
+#&gt;   ..$ b: num 10</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>transpose_list</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; List of 2
 #&gt;  $ a:List of 2
 #&gt;   ..$ : num 2
 #&gt;   ..$ : num 5
@@ -184,7 +186,8 @@ function <code>transpose()</code> in package <a href='https://CRAN.R-project.org
 #&gt;   ..$ : num 3
 #&gt;   ..$ : num 10</div><div class='input'>
 <span class='co'># list of data frame rows:</span>
-<span class='fu'>transpose_list</span>(<span class='no'>iris</span>[<span class='fl'>1</span>:<span class='fl'>2</span>, ])</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>transpose_list</span>(<span class='kw'>iris</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, ])
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$Sepal.Length
 #&gt; [1] 5.1
 #&gt; 
@@ -235,7 +238,7 @@ function <code>transpose()</code> in package <a href='https://CRAN.R-project.org
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

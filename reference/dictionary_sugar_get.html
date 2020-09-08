@@ -183,11 +183,11 @@ are assigned via <code>&lt;-</code>.</p></li>
 
     </div>
 
-    <pre class="usage"><span class='fu'>dictionary_sugar_get</span>(<span class='no'>dict</span>, <span class='no'>.key</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>dictionary_sugar_get</span>(<span class='kw'>dict</span>, <span class='kw'>.key</span>, <span class='kw'>...</span>)
 
-<span class='fu'>dictionary_sugar</span>(<span class='no'>dict</span>, <span class='no'>.key</span>, <span class='no'>...</span>)
+<span class='fu'>dictionary_sugar</span>(<span class='kw'>dict</span>, <span class='kw'>.key</span>, <span class='kw'>...</span>)
 
-<span class='fu'>dictionary_sugar_mget</span>(<span class='no'>dict</span>, <span class='no'>.keys</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>dictionary_sugar_mget</span>(<span class='kw'>dict</span>, <span class='kw'>.keys</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,11 +218,12 @@ Keys of the objects to construct.</p></td>
     <p><code><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class()</a></code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>R6</span>)
-<span class='no'>item</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6Class</a></span>(<span class='st'>"Item"</span>, <span class='kw'>public</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0</span>))
-<span class='no'>d</span> <span class='kw'>=</span> <span class='no'>Dictionary</span>$<span class='fu'>new</span>()
-<span class='no'>d</span>$<span class='fu'>add</span>(<span class='st'>"key"</span>, <span class='no'>item</span>)
-<span class='fu'>dictionary_sugar_get</span>(<span class='no'>d</span>, <span class='st'>"key"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; &lt;Item&gt;
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://r6.r-lib.org'>R6</a></span>)
+<span class='kw'>item</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6Class</a></span>(<span class='st'>"Item"</span>, public = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(x = <span class='fl'>0</span>))
+<span class='kw'>d</span> <span class='op'>=</span> <span class='kw'>Dictionary</span><span class='op'>$</span><span class='fu'>new</span>()
+<span class='kw'>d</span><span class='op'>$</span><span class='fu'>add</span>(<span class='st'>"key"</span>, <span class='kw'>item</span>)
+<span class='fu'>dictionary_sugar_get</span>(<span class='kw'>d</span>, <span class='st'>"key"</span>, x = <span class='fl'>2</span>)
+</div><div class='output co'>#&gt; &lt;Item&gt;
 #&gt;   Public:
 #&gt;     clone: function (deep = FALSE) 
 #&gt;     x: 2</div></pre>
@@ -241,7 +242,7 @@ Keys of the objects to construct.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

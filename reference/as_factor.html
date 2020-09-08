@@ -153,7 +153,7 @@ in the order of the provided levels." />
 in the order of the provided levels.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>levels</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>is.ordered</a></span>(<span class='no'>x</span>))</pre>
+    <pre class="usage"><span class='fu'>as_factor</span>(<span class='kw'>x</span>, <span class='kw'>levels</span>, ordered = <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>is.ordered</a></span>(<span class='kw'>x</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,14 +180,16 @@ If <code>TRUE</code>, create an ordered factor.</p></td>
     <p>(<code><a href='https://rdrr.io/r/base/factor.html'>factor()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>))
-<span class='no'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"a"</span>))
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>))
+<span class='kw'>y</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), levels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"a"</span>))
 
 <span class='co'># x with the level order of y</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] a b
+<span class='fu'>as_factor</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='kw'>y</span>))
+</div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: b a</div><div class='input'>
 <span class='co'># y with the level order of x</span>
-<span class='fu'>as_factor</span>(<span class='no'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] a b
+<span class='fu'>as_factor</span>(<span class='kw'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] a b
 #&gt; Levels: a b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -204,7 +206,7 @@ If <code>TRUE</code>, create an ordered factor.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

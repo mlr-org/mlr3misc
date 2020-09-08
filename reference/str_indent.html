@@ -151,7 +151,7 @@
     <p>Formats a text block for printing.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>str_indent</span>(<span class='no'>initial</span>, <span class='no'>str</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>0.9</span> * <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>), <span class='kw'>exdent</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>str_indent</span>(<span class='kw'>initial</span>, <span class='kw'>str</span>, width = <span class='fl'>0.9</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"width"</span>), exdent = <span class='fl'>2L</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,7 +188,8 @@ Additional parameters passed to <code><a href='str_collapse.html'>str_collapse()
     <p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'>str_indent</span>(<span class='st'>"Letters:"</span>, <span class='fu'><a href='str_collapse.html'>str_collapse</a></span>(<span class='no'>letters</span>), <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>25</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"\n"</span>)</div><div class='output co'>#&gt; Letters: a, b, c, d, e,
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'>str_indent</span>(<span class='st'>"Letters:"</span>, <span class='fu'><a href='str_collapse.html'>str_collapse</a></span>(<span class='kw'>letters</span>), width = <span class='fl'>25</span>), sep = <span class='st'>"\n"</span>)
+</div><div class='output co'>#&gt; Letters: a, b, c, d, e,
 #&gt;   f, g, h, i, j, k, l,
 #&gt;   m, n, o, p, q, r, s,
 #&gt;   t, u, v, w, x, y, z</div></pre>
@@ -207,7 +208,7 @@ Additional parameters passed to <code><a href='str_collapse.html'>str_collapse()
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

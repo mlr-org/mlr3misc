@@ -173,7 +173,7 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
     <div class="ref-description">
     <p><code>map</code>-like functions, similar to the ones implemented in <a href='https://CRAN.R-project.org/package=purrr'><span class="pkg">purrr</span></a>:</p><ul>
 <li><p><code>map()</code> returns the results of <code>.f</code> applied to <code>.x</code> as list.
-If <code>.f</code> is not a function, <code>map</code> will call <code>[[</code> on all elements of <code>.x</code> using the value of <code>.f</code> as index.</p></li>
+If <code>.f</code> is not a function, <code>map</code> will call <code><a href='https://rdrr.io/r/base/Extract.html'>[[</a></code> on all elements of <code>.x</code> using the value of <code>.f</code> as index.</p></li>
 <li><p><code>imap()</code> applies <code>.f</code> to each value of <code>.x</code> (passed as first argument) and its name (passed as second argument).
 If <code>.x</code> does not have names, a sequence along <code>.x</code> is passed as second argument instead.</p></li>
 <li><p><code>pmap()</code> expects <code>.x</code> to be a list of vectors of equal length, and then applies <code>.f</code> to the first element of each vector of <code>.x</code>, then the second element of <code>.x</code>, and so on.</p></li>
@@ -197,61 +197,61 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
     </div>
 
-    <pre class="usage"><span class='fu'>map</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>map</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_lgl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_lgl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_int</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_int</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_dbl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_dbl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_chr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>map_dtr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>, .fill = <span class='fl'>FALSE</span>, .idcol = <span class='kw'>NULL</span>)
 
-<span class='fu'>map_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_dtc</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap_lgl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap_lgl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap_int</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap_int</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap_dbl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap_dbl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap_chr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>pmap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>pmap_dtr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>, .fill = <span class='fl'>FALSE</span>, .idcol = <span class='kw'>NULL</span>)
 
-<span class='fu'>pmap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>pmap_dtc</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap_lgl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap_lgl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap_int</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap_int</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap_dbl</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap_dbl</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap_chr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap_chr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>imap_dtr</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.fill</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.idcol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>imap_dtr</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>, .fill = <span class='fl'>FALSE</span>, .idcol = <span class='kw'>NULL</span>)
 
-<span class='fu'>imap_dtc</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>imap_dtc</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>keep</span>(<span class='no'>.x</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>keep</span>(<span class='kw'>.x</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>discard</span>(<span class='no'>.x</span>, <span class='no'>.p</span>, <span class='no'>...</span>)
+<span class='fu'>discard</span>(<span class='kw'>.x</span>, <span class='kw'>.p</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_if</span>(<span class='no'>.x</span>, <span class='no'>.p</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_if</span>(<span class='kw'>.x</span>, <span class='kw'>.p</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>map_at</span>(<span class='no'>.x</span>, <span class='no'>.at</span>, <span class='no'>.f</span>, <span class='no'>...</span>)
+<span class='fu'>map_at</span>(<span class='kw'>.x</span>, <span class='kw'>.at</span>, <span class='kw'>.f</span>, <span class='kw'>...</span>)
 
-<span class='fu'>every</span>(<span class='no'>.x</span>, <span class='no'>.p</span>, <span class='no'>...</span>)
+<span class='fu'>every</span>(<span class='kw'>.x</span>, <span class='kw'>.p</span>, <span class='kw'>...</span>)
 
-<span class='fu'>some</span>(<span class='no'>.x</span>, <span class='no'>.p</span>, <span class='no'>...</span>)
+<span class='fu'>some</span>(<span class='kw'>.x</span>, <span class='kw'>.p</span>, <span class='kw'>...</span>)
 
-<span class='fu'>detect</span>(<span class='no'>.x</span>, <span class='no'>.p</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>detect</span>(<span class='kw'>.x</span>, <span class='kw'>.p</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -308,7 +308,7 @@ Index vector.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

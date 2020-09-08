@@ -157,7 +157,7 @@ allows to construct tabular data in a row-wise fashion.</p>
 The remaining arguments will be put into the resulting table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rowwise_table</span>(<span class='no'>...</span>, <span class='kw'>.key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rowwise_table</span>(<span class='kw'>...</span>, .key = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,10 +182,11 @@ table.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>rowwise_table</span>(
-  ~<span class='no'>a</span>, ~<span class='no'>b</span>,
+  <span class='op'>~</span><span class='kw'>a</span>, <span class='op'>~</span><span class='kw'>b</span>,
   <span class='fl'>1</span>, <span class='st'>"a"</span>,
   <span class='fl'>2</span>, <span class='st'>"b"</span>
-)</div><div class='output co'>#&gt;    a b
+)
+</div><div class='output co'>#&gt;    a b
 #&gt; 1: 1 a
 #&gt; 2: 2 b</div></pre>
   </div>
@@ -203,7 +204,7 @@ table.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

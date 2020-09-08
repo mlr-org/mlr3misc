@@ -153,7 +153,7 @@ The names of x (or seq_along(x) if unnamed) and the values of x." />
 The names of <code>x</code> (or <code><a href='https://rdrr.io/r/base/seq.html'>seq_along(x)</a></code> if unnamed) and the values of <code>x</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>enframe</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"name"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"value"</span>)</pre>
+    <pre class="usage"><span class='fu'>enframe</span>(<span class='kw'>x</span>, name = <span class='st'>"name"</span>, value = <span class='st'>"value"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,13 +180,15 @@ Name for the second column with values.</p></td>
     <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>
-<span class='fu'>enframe</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    name value
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
+<span class='fu'>enframe</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;    name value
 #&gt; 1:    1     1
 #&gt; 2:    2     2
 #&gt; 3:    3     3</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='set_names.html'>set_names</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>])
-<span class='fu'>enframe</span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"x_values"</span>)</div><div class='output co'>#&gt;    name x_values
+<span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='set_names.html'>set_names</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>])
+<span class='fu'>enframe</span>(<span class='kw'>x</span>, value = <span class='st'>"x_values"</span>)
+</div><div class='output co'>#&gt;    name x_values
 #&gt; 1:    a        1
 #&gt; 2:    b        2
 #&gt; 3:    c        3</div></pre>
@@ -205,7 +207,7 @@ Name for the second column with values.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
