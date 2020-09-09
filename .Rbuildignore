@@ -15,4 +15,5 @@
 ^tic\.R$
 ^\.ccache$
 ^\.github$
+^\.lintr$
 ^docs$
