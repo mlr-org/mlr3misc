@@ -32,8 +32,6 @@ remove_named.data.frame = function(x, nn) {
 #' @rdname insert_named
 remove_named.data.table = function(x, nn) {
   nn = intersect(nn, names(x))
-  if (length(nn)) {
-    x[, (nn) := NULL][]
-  }
-  x
+  lapply(nn, function(j) set(x = x, j = j, value = NULL))
+  x[]
 }

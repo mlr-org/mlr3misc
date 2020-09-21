@@ -58,10 +58,6 @@ insert_named.data.frame = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.data.table = function(x, y) {
-  if (ncol(x) > 0L) {
-    ..y = y
-    x[, names(..y) := ..y][]
-  } else { # null data.table, we cannot assign with `:=`
-    setDT(y)
-  }
+  mapply(set, j = names(y), value = y, MoreArgs = list(x = x), SIMPLIFY = FALSE, USE.NAMES = FALSE)
+  x[]
 }
