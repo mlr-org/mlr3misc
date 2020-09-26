@@ -153,7 +153,7 @@ Values are matched with base::match()." />
 Values are matched with <code><a href='https://rdrr.io/r/base/match.html'>base::match()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>map_values</span>(<span class='kw'>x</span>, <span class='kw'>old</span>, <span class='kw'>new</span>)</pre>
+    <pre class="usage"><span class='fu'>map_values</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -180,12 +180,12 @@ Will be forced to the same length as <code>old</code> with <code><a href='https:
     <p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>) of the same length as <code>x</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>]
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>
 
 <span class='co'># replace all "b" with "_b_", and all "c" with "_c_"</span>
-<span class='kw'>old</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>)
-<span class='kw'>new</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_b_"</span>, <span class='st'>"_c_"</span>)
-<span class='fu'>map_values</span>(<span class='kw'>x</span>, <span class='kw'>old</span>, <span class='kw'>new</span>)
+<span class='va'>old</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span>
+<span class='va'>new</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_b_"</span>, <span class='st'>"_c_"</span><span class='op'>)</span>
+<span class='fu'>map_values</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "a"   "_b_" "_c_" "d"   "e"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

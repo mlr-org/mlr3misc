@@ -151,7 +151,7 @@
     <p>Performs <code><a href='https://rdrr.io/r/base/cbind.html'>base::cbind()</a></code> on <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.tables</a>, possibly by reference.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rcbind</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)</pre>
+    <pre class="usage"><span class='fu'>rcbind</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,9 +173,9 @@
     <p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>): Updated <code>x</code> .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>data.table</span>::<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(a = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b = <span class='fl'>3</span><span class='op'>:</span><span class='fl'>1</span>)
-<span class='kw'>y</span> <span class='op'>=</span> <span class='kw'>data.table</span>::<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(c = <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>3</span>))
-<span class='fu'>rcbind</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>=</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>c <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>rcbind</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    a b         c
 #&gt; 1: 1 3 0.8056800
 #&gt; 2: 2 2 0.8140513

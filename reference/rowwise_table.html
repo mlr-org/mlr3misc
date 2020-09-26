@@ -157,7 +157,7 @@ allows to construct tabular data in a row-wise fashion.</p>
 The remaining arguments will be put into the resulting table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rowwise_table</span>(<span class='kw'>...</span>, .key = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rowwise_table</span><span class='op'>(</span><span class='va'>...</span>, .key <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,11 +181,11 @@ table.</p></td>
     <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>rowwise_table</span>(
-  <span class='op'>~</span><span class='kw'>a</span>, <span class='op'>~</span><span class='kw'>b</span>,
+    <pre class="examples"><div class='input'><span class='fu'>rowwise_table</span><span class='op'>(</span>
+  <span class='op'>~</span><span class='va'>a</span>, <span class='op'>~</span><span class='va'>b</span>,
   <span class='fl'>1</span>, <span class='st'>"a"</span>,
   <span class='fl'>2</span>, <span class='st'>"b"</span>
-)
+<span class='op'>)</span>
 </div><div class='output co'>#&gt;    a b
 #&gt; 1: 1 a
 #&gt; 2: 2 b</div></pre>

@@ -161,7 +161,7 @@ Converts to Rd with tools::toRd().
 
     </div>
 
-    <pre class="usage"><span class='fu'>cite_bib</span>(<span class='kw'>package</span>, <span class='kw'>key</span>)</pre>
+    <pre class="usage"><span class='fu'>cite_bib</span><span class='op'>(</span><span class='va'>package</span>, <span class='va'>key</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,8 +186,8 @@ If the package provides multiple citation entries, a specific one can be selecte
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># examplary bibtex file</span>
-<span class='kw'>path</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"references.bib"</span>, package = <span class='st'>"mlr3misc"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>path</span>), sep = <span class='st'>"\n"</span>)
+<span class='va'>path</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"references.bib"</span>, package <span class='op'>=</span> <span class='st'>"mlr3misc"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"\n"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; @article{mlr,
 #&gt;   author  = {Bernd Bischl and Michel Lang and Lars Kotthoff and Julia Schiffner and Jakob Richter and Erich Studerus and Giuseppe Casalicchio and Zachary M. Jones},
 #&gt;   title   = {mlr: Machine Learning in R},
@@ -199,10 +199,10 @@ If the package provides multiple citation entries, a specific one can be selecte
 #&gt;   url     = {http://jmlr.org/papers/v17/15-066.html}
 #&gt; }</div><div class='input'>
 <span class='co'># bibtex entry as raw Rd</span>
-<span class='fu'>cite_bib</span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"mlr"</span>)
+<span class='fu'>cite_bib</span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"mlr"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "Bischl B, Lang M, Kotthoff L, Schiffner J, Richter J, Studerus E, Casalicchio G, Jones ZM (2016).\n\\dQuote{mlr: Machine Learning in R.}\n\\emph{Journal of Machine Learning Research}, \\bold{17}(170), 1-5.\n\\url{http://jmlr.org/papers/v17/15-066.html}.\n"</div><div class='input'>
 <span class='co'># citation info as raw Rd</span>
-<span class='fu'>cite_bib</span>(<span class='st'>"stats"</span>, <span class='st'>"pkg::citation"</span>)
+<span class='fu'>cite_bib</span><span class='op'>(</span><span class='st'>"stats"</span>, <span class='st'>"pkg::citation"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "R Core Team (2020).\n\\emph{R: A Language and Environment for Statistical Computing}.\nR Foundation for Statistical Computing, Vienna, Austria.\n\\url{https://www.R-project.org/}."</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

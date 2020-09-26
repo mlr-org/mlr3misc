@@ -155,7 +155,7 @@ The original columns are removed from the returned table.
 All non-atomic objects in the list columns are expand to new list column.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest</span>(<span class='kw'>x</span>, <span class='kw'>cols</span>, prefix = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>cols</span>, prefix <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,17 +183,17 @@ Use <code>"{col}"</code> (without the quotes) as placeholder for the original co
     <p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='kw'>data.table</span>::<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(
-  id = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,
-  value = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>, b = <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>2</span>, b = <span class='fl'>2</span>))
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>)
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,
+  value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    id     value
 #&gt; 1:  1 &lt;list[2]&gt;
-#&gt; 2:  2 &lt;list[2]&gt;</div><div class='input'><span class='fu'>unnest</span>(<span class='kw'>data.table</span>::<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span>(<span class='kw'>x</span>), <span class='st'>"value"</span>)
+#&gt; 2:  2 &lt;list[2]&gt;</div><div class='input'><span class='fu'>unnest</span><span class='op'>(</span><span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='st'>"value"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    id a b
 #&gt; 1:  1 1 2
-#&gt; 2:  2 2 2</div><div class='input'><span class='fu'>unnest</span>(<span class='kw'>data.table</span>::<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span>(<span class='kw'>x</span>), <span class='st'>"value"</span>, prefix = <span class='st'>"{col}."</span>)
+#&gt; 2:  2 2 2</div><div class='input'><span class='fu'>unnest</span><span class='op'>(</span><span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/copy.html'>copy</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='st'>"value"</span>, prefix <span class='op'>=</span> <span class='st'>"{col}."</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    id value.a value.b
 #&gt; 1:  1       1       2
 #&gt; 2:  2       2       2</div></pre>

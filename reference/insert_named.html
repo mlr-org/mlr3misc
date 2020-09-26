@@ -155,30 +155,30 @@ Works for vectors, lists, environments and data frames and data tables.
 Objects with reference semantic (<code><a href='https://rdrr.io/r/base/environment.html'>environment()</a></code> and <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>) might be modified in-place.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+    <pre class="usage"><span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+<span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 
 <span class='co'># S3 method for environment</span>
-<span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+<span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+<span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.table</span>
-<span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='kw'>y</span>)
+<span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 
-<span class='fu'>remove_named</span>(<span class='kw'>x</span>, <span class='kw'>nn</span>)
+<span class='fu'>remove_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nn</span><span class='op'>)</span>
 
 <span class='co'># S3 method for environment</span>
-<span class='fu'>remove_named</span>(<span class='kw'>x</span>, <span class='kw'>nn</span>)
+<span class='fu'>remove_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nn</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>remove_named</span>(<span class='kw'>x</span>, <span class='kw'>nn</span>)
+<span class='fu'>remove_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nn</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.table</span>
-<span class='fu'>remove_named</span>(<span class='kw'>x</span>, <span class='kw'>nn</span>)</pre>
+<span class='fu'>remove_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nn</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -206,8 +206,8 @@ Character vector of elements to remove.</p></td>
     <p>Modified object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span>, b = <span class='fl'>2</span>)
-<span class='fu'>insert_named</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(b = <span class='fl'>3</span>, c = <span class='fl'>4</span>))
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'>insert_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>b <span class='op'>=</span> <span class='fl'>3</span>, c <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
@@ -216,7 +216,7 @@ Character vector of elements to remove.</p></td>
 #&gt; 
 #&gt; $c
 #&gt; [1] 4
-#&gt; </div><div class='input'><span class='fu'>remove_named</span>(<span class='kw'>x</span>, <span class='st'>"b"</span>)
+#&gt; </div><div class='input'><span class='fu'>remove_named</span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"b"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; </div></pre>
