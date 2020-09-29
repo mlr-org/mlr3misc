@@ -4,7 +4,14 @@
 \alias{invoke}
 \title{Invoke a Function Call}
 \usage{
-invoke(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_)
+invoke(
+  .f,
+  ...,
+  .args = list(),
+  .opts = list(),
+  .seed = NA_integer_,
+  .timeout = Inf
+)
 }
 \arguments{
 \item{.f}{(\verb{function()})\cr
@@ -24,13 +31,17 @@ Options are reset to their previous state afterwards.}
 \item{.seed}{(\code{integer(1)})\cr
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.}
+
+\item{.timeout}{(\code{numeric(1)})\cr
+Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}}. Note that timeouts are only
+triggered on a user interrupt, not in compiled code.}
 }
 \description{
 An alternative interface for \code{\link[=do.call]{do.call()}}, similar to the deprecated function in \pkg{purrr}.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
 
-It is recommended to pass all arguments named in order not to rely on on positional
+It is recommended to pass all arguments named in order to not rely on on positional
 argument matching.
 }
 \examples{

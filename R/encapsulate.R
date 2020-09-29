@@ -25,6 +25,9 @@
 #' @param .seed (`integer(1)`)\cr
 #'   Random seed to set before invoking the function call.
 #'   Gets reset to the previous seed on exit.
+#' @param .timeout (`numeric(1)`)\cr
+#'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"`  encapsulation.
+#'   For `"callr"` encapsulation, the timeout is passed to [callr::r()].
 #' @return (named `list()`) with three fields:
 #'   * `"result"`: the return value of `.f`
 #'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
@@ -48,20 +51,22 @@
 #' if (requireNamespace("callr", quietly = TRUE)) {
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
-encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(), .seed = NA_integer_) {
+encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
+  .seed = NA_integer_, .timeout = Inf) {
 
   assert_choice(method, c("none", "evaluate", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
   assert_character(.pkgs, any.missing = FALSE)
   assert_count(.seed, na.ok = TRUE)
+  assert_number(.timeout, lower = 0)
   log = NULL
 
   if (method == "none") {
     require_namespaces(.pkgs)
 
     now = proc.time()[[3L]]
-    result = invoke(.f, .args = .args, .opts = .opts, .seed = .seed)
+    result = invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout)
     elapsed = proc.time()[[3L]] - now
   } else if (method == "evaluate") {
     require_namespaces(c("evaluate", .pkgs))
@@ -69,7 +74,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     now = proc.time()[[3L]]
     result = NULL
     log = evaluate::evaluate(
-      "result <- invoke(.f, .args = .args)",
+      "result <- invoke(.f, .args = .args, .timeout = .timeout)",
       stop_on_error = 1L,
       new_device = FALSE,
       include_timing = FALSE
@@ -81,7 +86,9 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 
     logfile = tempfile()
     now = proc.time()[3L]
-    result = try(callr::r(callr_wrapper, list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed), stdout = logfile, stderr = logfile), silent = TRUE)
+    result = try(callr::r(callr_wrapper,
+        list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed),
+        stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
     if (file.exists(logfile)) {
@@ -92,8 +99,13 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     }
 
     if (inherits(result, "try-error")) {
-      status = attr(result, "condition")$status
-      log = c(log, sprintf("[ERR] callr process exited with status %i", status))
+      condition = attr(result, "condition")
+      if (inherits(condition, "callr_timeout_error")) {
+        log = c(log, "[ERR] reached elapsed time limit")
+      } else {
+        status = attr(result, "condition")$status
+        log = c(log, sprintf("[ERR] callr process exited with status %i", status))
+      }
       result = NULL
     }
 

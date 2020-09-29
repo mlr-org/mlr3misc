@@ -5,7 +5,7 @@
 #' This function tries hard to not evaluate the passed arguments too eagerly which is
 #' important when working with large R objects.
 #'
-#' It is recommended to pass all arguments named in order not to rely on on positional
+#' It is recommended to pass all arguments named in order to not rely on on positional
 #' argument matching.
 #'
 #' @param .f (`function()`)\cr
@@ -21,11 +21,14 @@
 #' @param .seed (`integer(1)`)\cr
 #'   Random seed to set before invoking the function call.
 #'   Gets reset to the previous seed on exit.
+#' @param .timeout (`numeric(1)`)\cr
+#'   Timeout in seconds. Uses [setTimeLimit()]. Note that timeouts are only
+#'   triggered on a user interrupt, not in compiled code.
 #' @export
 #' @examples
 #' invoke(mean, .args = list(x = 1:10))
 #' invoke(mean, na.rm = TRUE, .args = list(1:10))
-invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) {
+invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_, .timeout = Inf) {
   if (length(.opts)) {
     assert_list(.opts, names = "unique")
     old_opts = options(.opts)
@@ -37,6 +40,11 @@ invoke = function(.f, ..., .args = list(), .opts = list(), .seed = NA_integer_) 
       old_opts[nn] = FALSE
     }
     on.exit(options(old_opts), add = TRUE)
+  }
+
+  if (is.finite(assert_number(.timeout, lower = 0))) {
+    setTimeLimit(elapsed = .timeout, transient = TRUE)
+    on.exit(setTimeLimit(cpu = Inf, elapsed = Inf, transient = FALSE), add = TRUE)
   }
 
   if (!is.na(.seed)) {

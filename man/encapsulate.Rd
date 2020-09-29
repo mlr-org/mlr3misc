@@ -10,7 +10,8 @@ encapsulate(
   .args = list(),
   .opts = list(),
   .pkgs = character(),
-  .seed = NA_integer_
+  .seed = NA_integer_,
+  .timeout = Inf
 )
 }
 \arguments{
@@ -32,6 +33,10 @@ Packages to load (not attach).}
 \item{.seed}{(\code{integer(1)})\cr
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.}
+
+\item{.timeout}{(\code{numeric(1)})\cr
+Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"}  encapsulation.
+For \code{"callr"} encapsulation, the timeout is passed to \code{\link[callr:r]{callr::r()}}.}
 }
 \value{
 (named \code{list()}) with three fields:

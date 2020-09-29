@@ -33,3 +33,24 @@ test_that("encapsulate", {
     expect_true(log[class == "warning", grepl("\n", msg, fixed = TRUE)])
   }
 })
+
+test_that("timeout", {
+  f = function(x) {
+    for (i in 1:10) {
+      Sys.sleep(x)
+    }
+    return(1)
+  }
+
+  expect_error(encapsulate("none", .f = f, .args = list(x = 1), .timeout = 1), "time limit")
+
+  res = encapsulate("evaluate", .f = f, .args = list(x = 1), .timeout = 1)
+  expect_null(res$result)
+  expect_true("error" %in% res$log$class)
+  expect_true(any(grepl("time limit", res$log$msg)))
+
+  res = encapsulate("callr", .f = f, .args = list(x = 1), .timeout = 1)
+  expect_null(res$result)
+  expect_true("error" %in% res$log$class)
+  expect_true(any(grepl("time limit", res$log$msg)))
+})

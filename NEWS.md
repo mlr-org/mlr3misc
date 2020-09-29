@@ -1,3 +1,9 @@
+# mlr3misc 0.6.0
+
+* New argument `.timeout` for `invoke()`.
+* New argument `.timeout` for `encapsulate()`.
+* Improved performance for `insert_named()` and `remove_named()` on data.tables.
+
 # mlr3misc 0.5.0
 
 * Added `compose()` function for function composition.
