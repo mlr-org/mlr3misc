@@ -51,7 +51,7 @@
 <meta property="og:description" content="An alternative interface for do.call(), similar to the deprecated function in purrr.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
-It is recommended to pass all arguments named in order not to rely on on positional
+It is recommended to pass all arguments named in order to not rely on on positional
 argument matching." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -155,11 +155,18 @@ argument matching." />
     <p>An alternative interface for <code><a href='https://rdrr.io/r/base/do.call.html'>do.call()</a></code>, similar to the deprecated function in <span class="pkg">purrr</span>.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.</p>
-<p>It is recommended to pass all arguments named in order not to rely on on positional
+<p>It is recommended to pass all arguments named in order to not rely on on positional
 argument matching.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>invoke</span><span class='op'>(</span><span class='va'>.f</span>, <span class='va'>...</span>, .args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, .opts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='cn'>NA_integer_</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>invoke</span><span class='op'>(</span>
+  <span class='va'>.f</span>,
+  <span class='va'>...</span>,
+  .args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  .opts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  .seed <span class='op'>=</span> <span class='cn'>NA_integer_</span>,
+  .timeout <span class='op'>=</span> <span class='cn'>Inf</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,6 +198,12 @@ Options are reset to their previous state afterwards.</p></td>
       <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.</p></td>
+    </tr>
+    <tr>
+      <th>.timeout</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Timeout in seconds. Uses <code><a href='https://rdrr.io/r/base/setTimeLimit.html'>setTimeLimit()</a></code>. Note that timeouts are only
+triggered on a user interrupt, not in compiled code.</p></td>
     </tr>
     </table>
 
