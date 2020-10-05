@@ -29,7 +29,6 @@ Imports:
     data.table,
     R6
 Suggests:
-    bibtex,
     callr,
     evaluate,
     paradox,

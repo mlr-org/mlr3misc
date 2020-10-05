@@ -3,6 +3,8 @@
 * New argument `.timeout` for `invoke()`.
 * New argument `.timeout` for `encapsulate()`.
 * Improved performance for `insert_named()` and `remove_named()` on data.tables.
+* Removed `cite_bib()` and Rd macro `\cite{}` and removed orphaned package
+  `bibtex` from suggests.
 
 # mlr3misc 0.5.0
 
