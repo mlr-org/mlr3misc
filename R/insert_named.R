@@ -29,7 +29,7 @@ insert_named = function(x, y) {
 
 #' @export
 #' @rdname insert_named
-insert_named.default = function(x, y) {
+insert_named.default = function(x, y) { # nolint
   assert_vector(x, names = "unique")
   x[names(y)] = y
   x
@@ -37,7 +37,7 @@ insert_named.default = function(x, y) {
 
 #' @export
 #' @rdname insert_named
-insert_named.environment = function(x, y) {
+insert_named.environment = function(x, y) { # nolint
   for (nn in names(y)) {
     assign(nn, y[[nn]], envir = x)
   }
@@ -46,7 +46,7 @@ insert_named.environment = function(x, y) {
 
 #' @export
 #' @rdname insert_named
-insert_named.data.frame = function(x, y) {
+insert_named.data.frame = function(x, y) { # nolint
   if (ncol(x) > 0L) {
     x[names(y)] = as.list(y)
     as.data.frame(x)
@@ -57,7 +57,11 @@ insert_named.data.frame = function(x, y) {
 
 #' @export
 #' @rdname insert_named
-insert_named.data.table = function(x, y) {
-  mapply(set, j = names(y), value = y, MoreArgs = list(x = x), SIMPLIFY = FALSE, USE.NAMES = FALSE)
-  x[]
+insert_named.data.table = function(x, y) { # nolint
+  if (ncol(x) > 0L) {
+     ..y = y
+     x[, names(..y) := ..y][]
+  } else { # null data.table, we cannot assign with `:=`
+    as.data.table(y)
+  }
 }
