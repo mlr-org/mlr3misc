@@ -35,5 +35,5 @@ remove_named.data.table = function(x, nn) { # nolint
   if (length(nn)) {
     x[, (nn) := NULL][]
   }
-  x[]
+  x
 }
