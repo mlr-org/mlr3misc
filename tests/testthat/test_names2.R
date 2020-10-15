@@ -1,5 +1,3 @@
-context("names2")
-
 test_that("names2", {
   x = 1:3
   expect_identical(names2(x), rep.int(NA_character_, 3))

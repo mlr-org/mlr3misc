@@ -1,5 +1,3 @@
-context("extract_vars")
-
 test_that("extract_vars", {
   f = Species ~ Sepal.Width > 1 + Petal.Length
   x = extract_vars(f)

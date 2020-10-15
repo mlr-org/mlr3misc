@@ -1,5 +1,3 @@
-context("compose")
-
 test_that("compose", {
   f = compose(function(x) x + 1, function(x) x / 2)
   expect_equal(f(10), 6)

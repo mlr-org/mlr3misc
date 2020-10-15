@@ -1,5 +1,3 @@
-context("map_values")
-
 test_that("map_values", {
   x = letters[1:5]
   old = c("b", "d", "z")

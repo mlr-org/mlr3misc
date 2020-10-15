@@ -1,5 +1,3 @@
-context("seq")
-
 test_that("seq", {
   expect_identical(seq_row(iris), seq_len(nrow(iris)))
   expect_identical(seq_col(iris), seq_len(ncol(iris)))

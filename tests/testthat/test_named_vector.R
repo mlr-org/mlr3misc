@@ -1,5 +1,3 @@
-context("named_vector")
-
 test_that("named_vector", {
   expect_equal(named_vector(character()), setNames(vector("logical", 0), nm = character()))
   expect_equal(named_vector(), setNames(vector("logical", 0), nm = character()))

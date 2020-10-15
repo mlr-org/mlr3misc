@@ -1,5 +1,3 @@
-context("rowwise_table")
-
 test_that("construction", {
   x = rowwise_table(~a, ~b, 1, "a", 2, "b")
 

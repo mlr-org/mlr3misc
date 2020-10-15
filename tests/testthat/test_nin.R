@@ -1,5 +1,3 @@
-context("nin")
-
 test_that("nin", {
   expect_true(1 %nin% 2:3)
   expect_false(1 %nin% 1)

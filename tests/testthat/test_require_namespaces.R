@@ -1,5 +1,3 @@
-context("require_namespaces")
-
 test_that("require_namespaces", {
   expect_equal(require_namespaces("mlr3misc"), "mlr3misc")
   expect_equal(require_namespaces("checkmate"), "checkmate")

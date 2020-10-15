@@ -1,5 +1,3 @@
-context("with_package")
-
 test_that("with_package", {
   skip_if_not_installed("callr")
 

@@ -1,5 +1,3 @@
-context("rcbind")
-
 test_that("rcbind", {
   x = data.table(a = 1:3)
   y = data.table(b = 3:1)

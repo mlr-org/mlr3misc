@@ -1,5 +1,3 @@
-context("formulate")
-
 test_that("formulate", {
   f = formulate("Species", c("Sepal.Width", "Petal.Length"))
   expect_formula(f)

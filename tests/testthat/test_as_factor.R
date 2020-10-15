@@ -1,5 +1,3 @@
-context("as_factor")
-
 test_that("as_factor", {
   x = as_factor(c("a", "b"), c("a", "b"))
   y = as_factor(c("a", "b"), c("b", "a"))

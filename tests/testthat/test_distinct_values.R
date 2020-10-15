@@ -1,5 +1,3 @@
-context("distinct_values")
-
 test_that("distinct_values", {
   x = factor(c(letters[1:2], NA), levels = letters[1:3])
   expect_character(distinct_values(x), len = 2, any.missing = FALSE)

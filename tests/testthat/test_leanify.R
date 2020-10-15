@@ -1,5 +1,3 @@
-context("leanify")
-
 make_classes = function(pe = parent.frame()) {
   cls_top = R6::R6Class("test", parent_env = pe,
     public = list(a = function() 1),

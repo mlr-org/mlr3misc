@@ -1,5 +1,3 @@
-context("chunk")
-
 test_that("chunk", {
   x = 1:10
   n_chunks = 2

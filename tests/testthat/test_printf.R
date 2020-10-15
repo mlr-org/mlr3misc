@@ -1,5 +1,3 @@
-context("printf variants")
-
 test_that("messagef", {
   expect_message(messagef("xxx%ixxx", 123), "xxx123xxx")
 })

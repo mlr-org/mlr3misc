@@ -1,5 +1,3 @@
-context("map")
-
 test_that("map (lapply)", {
   x = 1:2
   names(x) = letters[1:2]

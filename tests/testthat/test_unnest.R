@@ -1,5 +1,3 @@
-context("unnest")
-
 test_that("unnest", {
   x = data.table(id = 1:2, x = list(list(a = 1L), list(a = 2L, b = 2L)))
   expect_data_table(x, ncols = 2, nrows = 2)

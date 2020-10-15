@@ -1,4 +1,3 @@
-context("topo_sort")
 test_that("topo_sort", {
   # graph:
   # a

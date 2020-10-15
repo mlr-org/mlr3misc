@@ -1,5 +1,3 @@
-context("encapsulate")
-
 test_that("encapsulate", {
   fun1 = function(...) {
     message("foo")

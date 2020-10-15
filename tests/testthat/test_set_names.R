@@ -1,5 +1,3 @@
-context("set_names")
-
 test_that("set_names", {
   x = 1:3
   expect_names(names(x), "unnamed")

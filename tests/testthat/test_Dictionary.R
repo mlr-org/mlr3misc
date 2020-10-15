@@ -1,5 +1,3 @@
-context("Dictionary")
-
 test_that("Dictionary", {
   Foo = R6::R6Class("Foo", public = list(x = 0, id = NULL, initialize = function(x) self$x = x), cloneable = TRUE)
   d = Dictionary$new()

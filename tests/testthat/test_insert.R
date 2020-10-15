@@ -1,5 +1,3 @@
-context("insert_named + drop_named")
-
 test_that("insert_named.list", {
   x = named_list(letters[1:3], 1)
   x = insert_named(x, list(d = 1))

@@ -1,5 +1,3 @@
-context("which_max")
-
 test_that("which_max", {
   expect_identical(which_min(c(1, 9), ties_method = "first"), 1L)
   expect_identical(which_min(c(1, NA, 9), ties_method = "first", na_rm = TRUE), 1L)

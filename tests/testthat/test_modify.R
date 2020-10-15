@@ -1,5 +1,3 @@
-context("modify")
-
 test_that("modify_if", {
   x = modify_if(iris, is.factor, as.character)
   expect_character(x$Species)

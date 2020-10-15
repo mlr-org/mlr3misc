@@ -1,5 +1,3 @@
-context("str_trunc")
-
 test_that("str_trunc", {
   expect_equal(str_trunc("abcdefghij", 7), "ab[...]")
   expect_equal(str_trunc("abcdef", 7), "abcdef")

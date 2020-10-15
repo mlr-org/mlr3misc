@@ -1,5 +1,3 @@
-context("named_list")
-
 test_that("named_list", {
   expect_equal(named_list(character()), setNames(vector("list", 0), nm = character()))
   expect_equal(named_list(), setNames(vector("list", 0), nm = character()))

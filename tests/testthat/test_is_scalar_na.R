@@ -1,5 +1,3 @@
-context("is_scalar_na")
-
 test_that("is_scalar_na", {
   expect_true(is_scalar_na(NA))
   expect_false(is_scalar_na(1))

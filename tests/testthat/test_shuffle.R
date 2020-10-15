@@ -1,5 +1,3 @@
-context("shuffle")
-
 test_that("shuffle", {
   x = shuffle(1:3)
   expect_true(setequal(x, 1:3))

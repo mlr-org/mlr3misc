@@ -1,5 +1,3 @@
-context("keep_in_bounds")
-
 test_that("keep_in_bounds", {
   expect_equal(keep_in_bounds(1:10, 1, 10), 1:10)
   expect_equal(keep_in_bounds(10:1, 1, 10), 10:1)

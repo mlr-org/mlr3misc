@@ -1,5 +1,3 @@
-context("as_short_string")
-
 test_that("as_short_string", {
   expect_equal(as_short_string(1L), "1")
   expect_equal(as_short_string(1.0), "1")
