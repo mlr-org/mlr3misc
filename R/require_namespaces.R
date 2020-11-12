@@ -9,6 +9,9 @@
 #'   Packages to load.
 #' @param msg (`character(1)`)\cr
 #'   Message to print on error. Use `"%s"` as placeholder for the list of packages.
+#' @param quietly (`logical(1)`)\cr
+#'   If `TRUE` then returns `TRUE` if all packages available, otherwise `FALSE`.
+#'
 #'
 #' @return (named `character()`) of loaded packages (invisibly).
 #' @export
@@ -18,12 +21,18 @@
 #' # catch condition, return missing packages
 #' tryCatch(require_namespaces(c("mlr3misc", "foobaaar")),
 #'   packageNotFoundError = function(e) e$packages)
-require_namespaces = function(pkgs, msg = "The following packages could not be loaded: %s") {
+require_namespaces = function(pkgs, msg = "The following packages could not be loaded: %s",
+                              quietly = FALSE) {
   pkgs = unique(assert_character(pkgs, any.missing = FALSE))
   ii = which(!map_lgl(pkgs, requireNamespace, quietly = TRUE))
+
   if (length(ii)) {
+    if (quietly) return(FALSE)
     msg = sprintf(msg, paste0(pkgs[ii], collapse = ","))
     stop(errorCondition(msg, packages = pkgs[ii], class = "packageNotFoundError"))
+  } else if (quietly) {
+    return(TRUE)
+  } else {
+    invisible(pkgs)
   }
-  invisible(pkgs)
 }

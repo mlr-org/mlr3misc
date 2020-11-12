@@ -6,7 +6,8 @@
 \usage{
 require_namespaces(
   pkgs,
-  msg = "The following packages could not be loaded: \%s"
+  msg = "The following packages could not be loaded: \%s",
+  quietly = FALSE
 )
 }
 \arguments{
@@ -15,6 +16,9 @@ Packages to load.}
 
 \item{msg}{(\code{character(1)})\cr
 Message to print on error. Use \code{"\%s"} as placeholder for the list of packages.}
+
+\item{quietly}{(\code{logical(1)})\cr
+If \code{TRUE} then returns \code{TRUE} if all packages available, otherwise \code{FALSE}.}
 }
 \value{
 (named \code{character()}) of loaded packages (invisibly).
