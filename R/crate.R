@@ -7,6 +7,8 @@
 #'   function to crate
 #' @param ... (any)\cr
 #'   The objects, which should be visible inside `.fn`.
+#' @param .parent (`environment`)\cr
+#'   Parent environment to look up names. Default so the global environment.
 #'
 #' @export
 #' @examples
@@ -22,8 +24,8 @@
 #' z = 300
 #' f = meta_f(1)
 #' f()
-crate = function(.fn, ...) {
+crate = function(.fn, ..., .parent = .GlobalEnv) {
   nn = map_chr(substitute(list(...)), as.character)[-1L]
-  environment(.fn) = list2env(setNames(list(...), nn), parent = .GlobalEnv)
+  environment(.fn) = list2env(setNames(list(...), nn), parent = .parent)
   .fn
 }

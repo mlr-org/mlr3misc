@@ -4,7 +4,7 @@ test_that("crate", {
     y = 2
     crate(function() {
       c(x, y, z)
-    }, x)
+    }, x, .parent = parent.frame())
   }
   x = 100
   y = 200
