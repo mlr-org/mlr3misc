@@ -28,6 +28,9 @@
     <loc>https://mlr3misc.mlr-org.com/reference/compute_mode.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/crate.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/cross_join.html</loc>
   </url>
   <url>
@@ -110,6 +113,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/rd_info.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/register_namespace_callback.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/require_namespaces.html</loc>
