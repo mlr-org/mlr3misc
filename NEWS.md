@@ -5,6 +5,7 @@
 * Removed `cite_bib()` and Rd macro `\cite{}` and removed orphaned package
   `bibtex` from suggests.
 * New argument `quietly` for `require_namespaces()`.
+* New function `crate()`.
 
 # mlr3misc 0.5.0
 
