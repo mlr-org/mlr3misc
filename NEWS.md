@@ -4,6 +4,7 @@
 * New argument `.timeout` for `encapsulate()`.
 * Removed `cite_bib()` and Rd macro `\cite{}` and removed orphaned package
   `bibtex` from suggests.
+* New argument `quietly` for `require_namespaces()`.
 
 # mlr3misc 0.5.0
 
