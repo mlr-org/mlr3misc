@@ -53,7 +53,8 @@ map() returns the results of .f applied to .x as list.
 If .f is not a function, map will call [[ on all elements of .x using the value of .f as index.
 imap() applies .f to each value of .x (passed as first argument) and its name (passed as second argument).
 If .x does not have names, a sequence along .x is passed as second argument instead.
-pmap() expects .x to be a list of vectors of equal length, and then applies .f to the first element of each vector of .x, then the second element of .x, and so on.
+pmap() expects .x to be a list of vectors of equal length, and then applies .f to the first element of
+each vector of .x, then the second element of .x, and so on.
 map_if() applies .f to each element of .x where the predicate .p evaluates to TRUE.
 map_at() applies .f to each element of .x referenced by .at. All other elements remain unchanged.
 keep() keeps those elements of .x where predicate .p evaluates to TRUE.
@@ -68,8 +69,10 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
 *_int() returns a integer(length(.x)).
 *_dbl() returns a double(length(.x)).
 *_chr() returns a character(length(.x)).
-*_dtr() returns a data.table::data.table() where the results of .f are put together in an base::rbind() fashion.
-*_dtc() returns a data.table::data.table() where the results of .f are put together in an base::cbind() fashion.
+*_dtr() returns a data.table::data.table() where the results of .f are put together
+in an base::rbind() fashion.
+*_dtc() returns a data.table::data.table() where the results of .f are put together
+in an base::cbind() fashion.
 
 " />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
@@ -176,7 +179,8 @@ Additionally, the functions map(), imap() and pmap have type-safe variants with 
 If <code>.f</code> is not a function, <code>map</code> will call <code><a href='https://rdrr.io/r/base/Extract.html'>[[</a></code> on all elements of <code>.x</code> using the value of <code>.f</code> as index.</p></li>
 <li><p><code>imap()</code> applies <code>.f</code> to each value of <code>.x</code> (passed as first argument) and its name (passed as second argument).
 If <code>.x</code> does not have names, a sequence along <code>.x</code> is passed as second argument instead.</p></li>
-<li><p><code>pmap()</code> expects <code>.x</code> to be a list of vectors of equal length, and then applies <code>.f</code> to the first element of each vector of <code>.x</code>, then the second element of <code>.x</code>, and so on.</p></li>
+<li><p><code>pmap()</code> expects <code>.x</code> to be a list of vectors of equal length, and then applies <code>.f</code> to the first element of
+each vector of <code>.x</code>, then the second element of <code>.x</code>, and so on.</p></li>
 <li><p><code>map_if()</code> applies <code>.f</code> to each element of <code>.x</code> where the predicate <code>.p</code> evaluates to <code>TRUE</code>.</p></li>
 <li><p><code>map_at()</code> applies <code>.f</code> to each element of <code>.x</code> referenced by <code>.at</code>. All other elements remain unchanged.</p></li>
 <li><p><code>keep()</code> keeps those elements of <code>.x</code> where predicate <code>.p</code> evaluates to <code>TRUE</code>.</p></li>
@@ -191,8 +195,10 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 <li><p><code>*_int()</code> returns a <code><a href='https://rdrr.io/r/base/integer.html'>integer(length(.x))</a></code>.</p></li>
 <li><p><code>*_dbl()</code> returns a <code><a href='https://rdrr.io/r/base/double.html'>double(length(.x))</a></code>.</p></li>
 <li><p><code>*_chr()</code> returns a <code><a href='https://rdrr.io/r/base/character.html'>character(length(.x))</a></code>.</p></li>
-<li><p><code>*_dtr()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together in an <code><a href='https://rdrr.io/r/base/cbind.html'>base::rbind()</a></code> fashion.</p></li>
-<li><p><code>*_dtc()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together in an <code><a href='https://rdrr.io/r/base/cbind.html'>base::cbind()</a></code> fashion.</p></li>
+<li><p><code>*_dtr()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together
+in an <code><a href='https://rdrr.io/r/base/cbind.html'>base::rbind()</a></code> fashion.</p></li>
+<li><p><code>*_dtc()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together
+in an <code><a href='https://rdrr.io/r/base/cbind.html'>base::cbind()</a></code> fashion.</p></li>
 </ul>
 
     </div>
@@ -243,6 +249,9 @@ If <code>.x</code> does not have names, a sequence along <code>.x</code> is pass
 
 <span class='fu'>discard</span><span class='op'>(</span><span class='va'>.x</span>, <span class='va'>.p</span>, <span class='va'>...</span><span class='op'>)</span>
 
+<span class='fu'>map_if</span><span class='op'>(</span><span class='va'>.x</span>, <span class='va'>.p</span>, <span class='va'>.f</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for default</span>
 <span class='fu'>map_if</span><span class='op'>(</span><span class='va'>.x</span>, <span class='va'>.p</span>, <span class='va'>.f</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>map_at</span><span class='op'>(</span><span class='va'>.x</span>, <span class='va'>.at</span>, <span class='va'>.f</span>, <span class='va'>...</span><span class='op'>)</span>
