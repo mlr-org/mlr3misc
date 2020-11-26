@@ -86,7 +86,7 @@ The remaining arguments will be put into the resulting table." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.4.0-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.6.0-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -157,7 +157,7 @@ allows to construct tabular data in a row-wise fashion.</p>
 The remaining arguments will be put into the resulting table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rowwise_table</span>(<span class='no'>...</span>, <span class='kw'>.key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rowwise_table</span><span class='op'>(</span><span class='va'>...</span>, .key <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,11 +181,12 @@ table.</p></td>
     <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>rowwise_table</span>(
-  ~<span class='no'>a</span>, ~<span class='no'>b</span>,
+    <pre class="examples"><div class='input'><span class='fu'>rowwise_table</span><span class='op'>(</span>
+  <span class='op'>~</span><span class='va'>a</span>, <span class='op'>~</span><span class='va'>b</span>,
   <span class='fl'>1</span>, <span class='st'>"a"</span>,
   <span class='fl'>2</span>, <span class='st'>"b"</span>
-)</div><div class='output co'>#&gt;    a b
+<span class='op'>)</span>
+</div><div class='output co'>#&gt;    a b
 #&gt; 1: 1 a
 #&gt; 2: 2 b</div></pre>
   </div>
@@ -203,7 +204,7 @@ table.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -51,7 +51,7 @@
 <meta property="og:description" content="An alternative interface for do.call(), similar to the deprecated function in purrr.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.
-It is recommended to pass all arguments named in order not to rely on on positional
+It is recommended to pass all arguments named in order to not rely on on positional
 argument matching." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -87,7 +87,7 @@ argument matching." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.4.0-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.6.0-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -155,11 +155,18 @@ argument matching." />
     <p>An alternative interface for <code><a href='https://rdrr.io/r/base/do.call.html'>do.call()</a></code>, similar to the deprecated function in <span class="pkg">purrr</span>.
 This function tries hard to not evaluate the passed arguments too eagerly which is
 important when working with large R objects.</p>
-<p>It is recommended to pass all arguments named in order not to rely on on positional
+<p>It is recommended to pass all arguments named in order to not rely on on positional
 argument matching.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>invoke</span>(<span class='no'>.f</span>, <span class='no'>...</span>, <span class='kw'>.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>.opts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>.seed</span> <span class='kw'>=</span> <span class='fl'>NA_integer_</span>)</pre>
+    <pre class="usage"><span class='fu'>invoke</span><span class='op'>(</span>
+  <span class='va'>.f</span>,
+  <span class='va'>...</span>,
+  .args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  .opts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  .seed <span class='op'>=</span> <span class='cn'>NA_integer_</span>,
+  .timeout <span class='op'>=</span> <span class='cn'>Inf</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,11 +199,19 @@ Options are reset to their previous state afterwards.</p></td>
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.</p></td>
     </tr>
+    <tr>
+      <th>.timeout</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+Timeout in seconds. Uses <code><a href='https://rdrr.io/r/base/setTimeLimit.html'>setTimeLimit()</a></code>. Note that timeouts are only
+triggered on a user interrupt, not in compiled code.</p></td>
+    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>invoke</span>(<span class='no'>mean</span>, <span class='kw'>.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] 5.5</div><div class='input'><span class='fu'>invoke</span>(<span class='no'>mean</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>))</div><div class='output co'>#&gt; [1] 5.5</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>invoke</span><span class='op'>(</span><span class='va'>mean</span>, .args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 5.5</div><div class='input'><span class='fu'>invoke</span><span class='op'>(</span><span class='va'>mean</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>, .args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 5.5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -212,7 +227,7 @@ Gets reset to the previous seed on exit.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

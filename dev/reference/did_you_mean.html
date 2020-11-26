@@ -83,7 +83,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.4.0-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.6.0-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -151,7 +151,7 @@
     <p>Helps to suggest alternatives from a list of strings, based on the string similarity in <code><a href='https://rdrr.io/r/utils/adist.html'>utils::adist()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>did_you_mean</span>(<span class='no'>str</span>, <span class='no'>candidates</span>)</pre>
+    <pre class="usage"><span class='fu'>did_you_mean</span><span class='op'>(</span><span class='va'>str</span>, <span class='va'>candidates</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,7 +174,8 @@ Candidate strings.</p></td>
 or an empty string if no close match is found.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>did_you_mean</span>(<span class='st'>"yep"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"no"</span>))</div><div class='output co'>#&gt; [1] " Did you mean 'yes'?"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>did_you_mean</span><span class='op'>(</span><span class='st'>"yep"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span>, <span class='st'>"no"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] " Did you mean 'yes'?"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -190,7 +191,7 @@ or an empty string if no close match is found.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

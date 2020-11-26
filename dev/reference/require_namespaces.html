@@ -85,7 +85,7 @@ The character vector of missing packages is stored in the condition as packages.
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.4.0-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.6.0-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -150,15 +150,16 @@ The character vector of missing packages is stored in the condition as packages.
     </div>
 
     <div class="ref-description">
-    <p>Packages are loaded (not attached) via <code>base::requireNamespace()</code>.
+    <p>Packages are loaded (not attached) via <code><a href='https://rdrr.io/r/base/ns-load.html'>base::requireNamespace()</a></code>.
 If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
 The character vector of missing packages is stored in the condition as <code>packages</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>require_namespaces</span>(
-  <span class='no'>pkgs</span>,
-  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='st'>"The following packages could not be loaded: %s"</span>
-)</pre>
+    <pre class="usage"><span class='fu'>require_namespaces</span><span class='op'>(</span>
+  <span class='va'>pkgs</span>,
+  msg <span class='op'>=</span> <span class='st'>"The following packages could not be loaded: %s"</span>,
+  quietly <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,6 +174,11 @@ Packages to load.</p></td>
       <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Message to print on error. Use <code>"%s"</code> as placeholder for the list of packages.</p></td>
     </tr>
+    <tr>
+      <th>quietly</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+If <code>TRUE</code> then returns <code>TRUE</code> if all packages available, otherwise <code>FALSE</code>.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -180,11 +186,12 @@ Message to print on error. Use <code>"%s"</code> as placeholder for the list of 
     <p>(named <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>) of loaded packages (invisibly).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>require_namespaces</span>(<span class='st'>"mlr3misc"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>require_namespaces</span><span class='op'>(</span><span class='st'>"mlr3misc"</span><span class='op'>)</span>
 
 <span class='co'># catch condition, return missing packages</span>
-<span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(<span class='fu'>require_namespaces</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span>)),
-  <span class='kw'>packageNotFoundError</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>$<span class='no'>packages</span>)</div><div class='output co'>#&gt; [1] "foobaaar"</div></pre>
+<span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span><span class='fu'>require_namespaces</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span><span class='op'>)</span><span class='op'>)</span>,
+  packageNotFoundError <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>e</span><span class='op'>)</span> <span class='va'>e</span><span class='op'>$</span><span class='va'>packages</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "foobaaar"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -200,7 +207,7 @@ Message to print on error. Use <code>"%s"</code> as placeholder for the list of 
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

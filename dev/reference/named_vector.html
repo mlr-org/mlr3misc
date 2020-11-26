@@ -83,7 +83,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.4.0-9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.6.0-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -151,7 +151,7 @@
     <p>Creates a simple atomic vector with <code>init</code> as values.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>named_vector</span>(<span class='kw'>nn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'>named_vector</span><span class='op'>(</span>nn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='fl'>0L</span><span class='op'>)</span>, init <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,8 +173,10 @@ All vector elements are initialized to this value.</p></td>
     <p>(named <code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>named_vector</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='fl'>NA</span>)</div><div class='output co'>#&gt;  a  b 
-#&gt; NA NA </div><div class='input'><span class='fu'>named_vector</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>())</div><div class='output co'>#&gt; named logical(0)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>named_vector</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  a  b 
+#&gt; NA NA </div><div class='input'><span class='fu'>named_vector</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; named logical(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -190,7 +192,7 @@ All vector elements are initialized to this value.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
