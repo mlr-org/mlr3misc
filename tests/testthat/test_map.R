@@ -127,6 +127,14 @@ test_that("map_if", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = map_if(x, is.numeric, length)
   expect_equal(out, set_names(list(3L, c("a", "b"), 3L), names(x)))
+
+  x = iris
+  out = map_if(x, is.numeric, sqrt)
+  expect_equal(out$Sepal.Length, sqrt(x$Sepal.Length))
+
+  x = as.data.table(iris)
+  out = map_if(x, is.numeric, sqrt)
+  expect_equal(out$Sepal.Length, sqrt(x$Sepal.Length))
 })
 
 test_that("map_at", {
@@ -146,6 +154,14 @@ test_that("keep", {
   out = keep(x, is.numeric)
   expect_list(out, len = 2L)
   expect_equal(names(out), c("a", "c"))
+
+  x = iris
+  out = keep(x, is.numeric)
+  expect_data_frame(out, types = "numeric")
+
+  x = as.data.table(iris)
+  out = keep(x, is.numeric)
+  expect_data_table(out, types = "numeric")
 })
 
 test_that("discard", {
@@ -153,6 +169,14 @@ test_that("discard", {
   out = discard(x, is.numeric)
   expect_list(out, len = 1L)
   expect_equal(names(out), "b")
+
+  x = iris
+  out = discard(x, is.numeric)
+  expect_data_frame(out, types = "factor")
+
+  x = as.data.table(iris)
+  out = discard(x, is.numeric)
+  expect_data_table(out, types = "factor")
 })
 
 test_that("some/every", {

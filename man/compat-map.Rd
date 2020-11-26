@@ -26,6 +26,7 @@
 \alias{keep}
 \alias{discard}
 \alias{map_if}
+\alias{map_if.default}
 \alias{map_at}
 \alias{every}
 \alias{some}
@@ -80,6 +81,8 @@ discard(.x, .p, ...)
 
 map_if(.x, .p, .f, ...)
 
+\method{map_if}{default}(.x, .p, .f, ...)
+
 map_at(.x, .at, .f, ...)
 
 every(.x, .p, ...)
@@ -116,7 +119,8 @@ Index vector.}
 If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using the value of \code{.f} as index.
 \item \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
-\item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of each vector of \code{.x}, then the second element of \code{.x}, and so on.
+\item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of
+each vector of \code{.x}, then the second element of \code{.x}, and so on.
 \item \code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.
 \item \code{map_at()} applies \code{.f} to each element of \code{.x} referenced by \code{.at}. All other elements remain unchanged.
 \item \code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}.
@@ -132,7 +136,9 @@ Additionally, the functions \code{map()}, \code{imap()} and \code{pmap} have typ
 \item \verb{*_int()} returns a \code{integer(length(.x))}.
 \item \verb{*_dbl()} returns a \code{double(length(.x))}.
 \item \verb{*_chr()} returns a \code{character(length(.x))}.
-\item \verb{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::rbind()}} fashion.
-\item \verb{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together in an \code{\link[base:cbind]{base::cbind()}} fashion.
+\item \verb{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together
+in an \code{\link[base:cbind]{base::rbind()}} fashion.
+\item \verb{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together
+in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
 }

@@ -7,7 +7,8 @@
 #'   If `.f` is not a function, `map` will call `[[` on all elements of `.x` using the value of `.f` as index.
 #' * `imap()` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
 #'   If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
-#' * `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of each vector of `.x`, then the second element of `.x`, and so on.
+#' * `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of
+#'   each vector of `.x`, then the second element of `.x`, and so on.
 #' * `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
 #' * `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
 #' * `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`.
@@ -23,8 +24,10 @@
 #' * `*_int()` returns a `integer(length(.x))`.
 #' * `*_dbl()` returns a `double(length(.x))`.
 #' * `*_chr()` returns a `character(length(.x))`.
-#' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::rbind()] fashion.
-#' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together in an [base::cbind()] fashion.
+#' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together
+#'   in an [base::rbind()] fashion.
+#' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together
+#'   in an [base::cbind()] fashion.
 #'
 #' @param .x (`list()` | atomic `vector()`).
 #' @param .f (`function()` | `character()` | `integer()`)\cr
@@ -201,33 +204,102 @@ imap_dtc = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 keep = function(.x, .f, ...) {
+  UseMethod("keep")
+}
+
+#' @export
+keep.default = function(.x, .f, ...) { # nolint
   .x[probe(.x, .f, ...)]
+}
+
+#' @export
+keep.data.frame = function(.x, .f, ...) { # nolint
+  .x[, probe(.x, .f, ...), drop = FALSE]
+}
+
+#' @export
+keep.data.table = function(.x, .f, ...) { # nolint
+  .x[, probe(.x, .f, ...), with = FALSE]
 }
 
 #' @export
 #' @rdname compat-map
 discard = function(.x, .p, ...) {
+  UseMethod("discard")
+}
+
+#' @export
+discard.default = function(.x, .p, ...) { # nolint
   sel = probe(.x, .p, ...)
   .x[is.na(sel) | !sel]
 }
 
 #' @export
+discard.data.frame = function(.x, .p, ...) { # nolint
+  sel = probe(.x, .p, ...)
+  .x[, is.na(sel) | !sel, drop = FALSE]
+}
+
+#' @export
+discard.data.table = function(.x, .p, ...) { # nolint
+  sel = probe(.x, .p, ...)
+  .x[, is.na(sel) | !sel, with = FALSE]
+}
+
+#' @export
 #' @rdname compat-map
 map_if = function(.x, .p, .f, ...) {
+  UseMethod("map_if")
+}
+
+#' @export
+#' @rdname compat-map
+map_if.default = function(.x, .p, .f, ...) { # nolint
   matches = probe(.x, .p)
   .x[matches] = map(.x[matches], .f, ...)
   .x
 }
 
 #' @export
+map_if.data.frame = function(.x, .p, .f, ...) { # nolint
+  matches = probe(.x, .p)
+  .x[, matches] = map(.x[, matches, drop = FALSE], .f, ...)
+  .x
+}
+
+#' @export
+map_if.data.table = function(.x, .p, .f, ...) { # nolint
+  matches = which(probe(.x, .p))
+  if (length(matches)) {
+    .x = copy(.x)
+    for (j in matches) {
+      set(.x, j = j, value = .f(.x[[j]]))
+    }
+  }
+  .x
+}
+
+#' @export
 #' @rdname compat-map
 map_at = function(.x, .at, .f, ...) {
-  if (is.data.table(.x)) {
-    .x[, (.at) := map(.SD, .f), .SDcols = .at][]
-  } else {
-    .x[.at] = map(.x[.at], .f, ...)
-    .x
+  UseMethod("map_at")
+}
+
+#' @export
+map_at.default = function(.x, .at, .f, ...) { # nolint
+  .x[.at] = map(.x[.at], .f, ...)
+  .x
+}
+
+#' @export
+map_at.data.table = function(.x, .at, .f, ...) { # nolint
+  if (length(.at)) {
+    .x = copy(.x)
+    for (j in .at) {
+      set(.x, j = j, value = .f(.x[[j]]))
+    }
   }
+  .x
 }
 
 #' @export
