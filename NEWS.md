@@ -1,6 +1,7 @@
 # mlr3misc 0.7.0
 
 * Make more map functions work nicely with data frames and data tables.
+* `formulate()` now supports multiple LHS terms.
 
 # mlr3misc 0.6.0
 
