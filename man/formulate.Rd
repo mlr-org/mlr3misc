@@ -7,8 +7,8 @@
 formulate(lhs = NULL, rhs = NULL, env = NULL)
 }
 \arguments{
-\item{lhs}{(\code{character(1)})\cr
-Left-hand side of formula.}
+\item{lhs}{(\code{character()})\cr
+Left-hand side of formula. Multiple elements will be collapsed with \code{" + "}.}
 
 \item{rhs}{(\code{character()})\cr
 Right-hand side of formula. Multiple elements will be collapsed with \code{" + "}.}
