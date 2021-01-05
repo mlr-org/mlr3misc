@@ -106,7 +106,7 @@
 </li>
         <li>
   <a href="https://github.com/mlr-org/mlr3misc/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -118,13 +118,13 @@
 </li>
 <li>
   <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa fab fa-stack-overflow"></span>
+    <span class="fab fa-stack-overflow"></span>
      
   </a>
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fa fa-rss"></span>
+    <span class="fas fa-rss"></span>
      
   </a>
 </li>
@@ -151,6 +151,9 @@
 </h1>
 <ul>
 <li>Make more map functions work nicely with data frames and data tables.</li>
+<li>
+<code><a href="../reference/formulate.html">formulate()</a></code> now supports multiple LHS terms.</li>
+<li>Added <code><a href="../reference/format_bib.html">format_bib()</a></code> and <code><a href="../reference/format_bib.html">cite_bib()</a></code> helpers for working with bibentires and roxygen2.</li>
 </ul>
 </div>
     <div id="mlr3misc-060" class="section level1">
@@ -160,7 +163,7 @@
 <ul>
 <li>New argument <code>.timeout</code> for <code><a href="../reference/invoke.html">invoke()</a></code>.</li>
 <li>New argument <code>.timeout</code> for <code><a href="../reference/encapsulate.html">encapsulate()</a></code>.</li>
-<li>Removed <code>cite_bib()</code> and Rd macro <code>\cite{}</code> and removed orphaned package <code>bibtex</code> from suggests.</li>
+<li>Removed <code><a href="../reference/format_bib.html">cite_bib()</a></code> and Rd macro <code>\cite{}</code> and removed orphaned package <code>bibtex</code> from suggests.</li>
 <li>New argument <code>quietly</code> for <code><a href="../reference/require_namespaces.html">require_namespaces()</a></code>.</li>
 <li>New function <code><a href="../reference/crate.html">crate()</a></code> to cleanly separate a function from its environment.</li>
 <li>New function <code><a href="../reference/register_namespace_callback.html">register_namespace_callback()</a></code>.</li>
@@ -217,7 +220,7 @@
 <li>
 <code><a href="../reference/compat-map.html">map_dtr()</a></code>, <code><a href="../reference/compat-map.html">imap_dtr()</a></code> and <code><a href="../reference/compat-map.html">pmap_dtr()</a></code> now pass <code>.idcol</code> down to argument <code>idcol</code> of <code><a href="https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html">data.table::rbindlist()</a></code>.</li>
 <li>
-<code>cite_bib()</code> can now handle packages with multiple citation entries.</li>
+<code><a href="../reference/format_bib.html">cite_bib()</a></code> can now handle packages with multiple citation entries.</li>
 <li>Added argument <code>wrap</code> to <code><a href="../reference/printf.html">catf()</a></code>, <code><a href="../reference/printf.html">messagef()</a></code>, <code><a href="../reference/printf.html">warningf()</a></code> and <code><a href="../reference/printf.html">stopf()</a></code> to wrap the respective messages to a customizable width.</li>
 <li>Added <code><a href="../reference/with_package.html">with_package()</a></code> helper, similar to the one in package <code>withr</code>.</li>
 </ul>
@@ -228,7 +231,7 @@
 </h1>
 <ul>
 <li>
-<code>cite_bib()</code> or Rd macro <code>\cite{}</code> can now return the citation information of the package if key is set to <code>"pkg::citation"</code>.</li>
+<code><a href="../reference/format_bib.html">cite_bib()</a></code> or Rd macro <code>\cite{}</code> can now return the citation information of the package if key is set to <code>"pkg::citation"</code>.</li>
 <li>Updated dictionary helpers.</li>
 </ul>
 </div>
@@ -240,7 +243,7 @@
 <li>Fixed error in C code discovered by UBSAN checks on CRAN.</li>
 <li>Added <code><a href="../reference/dictionary_sugar_get.html">dictionary_sugar_mget()</a></code>.</li>
 <li>Renamed <code><a href="../reference/dictionary_sugar_get.html">dictionary_sugar()</a></code> to <code><a href="../reference/dictionary_sugar_get.html">dictionary_sugar_get()</a></code>.</li>
-<li>Added function <code>cite_bib()</code> and Rd macro <code>\cite{}</code> to insert entries from bibtex files into roxygen documentation.</li>
+<li>Added function <code><a href="../reference/format_bib.html">cite_bib()</a></code> and Rd macro <code>\cite{}</code> to insert entries from bibtex files into roxygen documentation.</li>
 <li>
 <code><a href="../reference/unnest.html">unnest()</a></code> now creates list columns for non atomic list elements.</li>
 </ul>
