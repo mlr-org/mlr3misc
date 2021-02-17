@@ -4,7 +4,7 @@
 \alias{formulate}
 \title{Create Formulas}
 \usage{
-formulate(lhs = NULL, rhs = NULL, env = NULL)
+formulate(lhs = character(), rhs = character(), env = NULL, quote = "right")
 }
 \arguments{
 \item{lhs}{(\code{character()})\cr
@@ -15,6 +15,10 @@ Right-hand side of formula. Multiple elements will be collapsed with \code{" + "
 
 \item{env}{(\code{environment()})\cr
 Environment for the new formula. Defaults to \code{NULL}.}
+
+\item{quote}{(\code{character(1)})\cr
+Which side of the formula to quote?
+Subset of \verb{("left", "right")}, defaulting to \code{"right"}.}
 }
 \value{
 \code{\link[stats:formula]{stats::formula()}}.

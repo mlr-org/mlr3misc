@@ -10,22 +10,34 @@
 #'   Right-hand side of formula. Multiple elements will be collapsed with `" + "`.
 #' @param env (`environment()`)\cr
 #'   Environment for the new formula. Defaults to `NULL`.
-#'
+#' @param env (`environment()`)\cr
+#'   Environment for the new formula. Defaults to `NULL`.
+#' @param quote (`character(1)`)\cr
+#'   Which side of the formula to quote?
+#'   Subset of `("left", "right")`, defaulting to `"right"`.
 #' @return [stats::formula()].
 #' @export
 #' @examples
 #' formulate("Species", c("Sepal.Length", "Sepal.Width"))
 #' formulate(rhs = c("Sepal.Length", "Sepal.Width"))
-formulate = function(lhs = NULL, rhs = NULL, env = NULL) {
+formulate = function(lhs = character(), rhs = character(), env = NULL, quote = "right") {
+  assert_subset(quote, choices = c("left", "right"))
+
   if (length(lhs) == 0L) {
     lhs = ""
+  } else if ("left" %in% quote) {
+    lhs = paste0("`", lhs, "`")
   }
+
   if (length(rhs) == 0L) {
     rhs = "1"
+  } else if ("right" %in% quote) {
+    rhs = paste0("`", rhs, "`")
   }
-  f = as.formula(sprintf("`%s` ~ `%s`",
-      paste0(lhs, collapse = "` + `"),
-      paste0(rhs, collapse = "` + `"))
+
+  f = as.formula(sprintf("%s ~ %s",
+      paste0(lhs, collapse = " + "),
+      paste0(rhs, collapse = " + "))
   )
   environment(f) = env
   f
