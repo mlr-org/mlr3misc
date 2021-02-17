@@ -1,5 +1,9 @@
 # mlr3misc 0.7.0
 
+* `formulate()` now quotes all terms.
+
+# mlr3misc 0.7.0
+
 * Make more map functions work nicely with data frames and data tables.
 * `formulate()` now supports multiple LHS terms.
 * Added `format_bib()` and `cite_bib()` helpers for working with bibentires and

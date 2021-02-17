@@ -23,7 +23,10 @@ formulate = function(lhs = NULL, rhs = NULL, env = NULL) {
   if (length(rhs) == 0L) {
     rhs = "1"
   }
-  f = as.formula(sprintf("%s ~ %s", paste0(lhs, collapse = " + "), paste0(rhs, collapse = " + ")))
+  f = as.formula(sprintf("`%s` ~ `%s`",
+      paste0(lhs, collapse = "` + `"),
+      paste0(rhs, collapse = "` + `"))
+  )
   environment(f) = env
   f
 }
