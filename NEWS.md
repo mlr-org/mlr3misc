@@ -1,6 +1,7 @@
 # mlr3misc 0.7.0
 
-* `formulate()` now quotes all terms.
+* `formulate()` can now quote all terms, defaulting to quote all terms on the
+  right hand side.
 
 # mlr3misc 0.7.0
 
