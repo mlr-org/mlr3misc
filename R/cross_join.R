@@ -18,5 +18,5 @@ cross_join = function(dots, sorted = TRUE, unique = FALSE) {
   assert_list(dots, names = "unique")
   nn = names(dots)
   tab = invoke(CJ, sorted = sorted, unique = unique, .args = unname(dots))
-  setnames(tab, nn)
+  setnames(tab, nn)[]
 }
