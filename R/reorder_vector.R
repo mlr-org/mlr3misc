@@ -17,26 +17,14 @@
 #' # x subset of y
 #' x = c("b", "a", "c", "d")
 #' y = letters
-#' reorder_vector(x, y)
+#' x[reorder_vector(x, y)]
 #'
 #' # y subset of x
 #' y = letters[1:3]
-#' reorder_vector(x, y)
-#' reorder_vector(x, y, na_last = TRUE)
-#' reorder_vector(x, y, na_last = FALSE)
+#' x[reorder_vector(x, y)]
+#' x[reorder_vector(x, y, na_last = TRUE)]
+#' x[reorder_vector(x, y, na_last = FALSE)]
 reorder_vector = function(x, y, na_last = NA) {
-  assert_atomic_vector(x)
-  assert_atomic_vector(y)
   assert_flag(na_last, na.ok = TRUE)
-
-  y = unique(y)
-  idx = match(y, x, nomatch = 0L)
-
-  if (is.na(na_last)) {
-    return(x[idx])
-  } else if (na_last) {
-    c(x[idx], x[-idx])
-  } else {
-    c(x[-idx], x[idx])
-  }
+  order(match(x, y), na.last = na_last)
 }
