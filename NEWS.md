@@ -1,5 +1,6 @@
 # mlr3misc 0.7.0
 
+* New function `reorder_vector()`.
 * `formulate()` can now quote all terms, defaulting to quote all terms on the
   right hand side.
 
