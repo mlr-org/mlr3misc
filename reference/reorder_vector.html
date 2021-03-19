@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Formulas — formulate • mlr3misc</title>
+<title>Reorder Vector According to Second Vector — reorder_vector • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,9 @@
 
 
 
-<meta property="og:title" content="Create Formulas — formulate" />
-<meta property="og:description" content="Given the left-hand side and right-hand side as character vectors, generates a new
-stats::formula()." />
+<meta property="og:title" content="Reorder Vector According to Second Vector — reorder_vector" />
+<meta property="og:description" content="Reorders x to have the same order as y.
+Duplicated elements will be removed." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,54 +143,56 @@ stats::formula()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Formulas</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/formulate.R'><code>R/formulate.R</code></a></small>
-    <div class="hidden name"><code>formulate.Rd</code></div>
+    <h1>Reorder Vector According to Second Vector</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/reorder_vector.R'><code>R/reorder_vector.R</code></a></small>
+    <div class="hidden name"><code>reorder_vector.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Given the left-hand side and right-hand side as character vectors, generates a new
-<code><a href='https://rdrr.io/r/stats/formula.html'>stats::formula()</a></code>.</p>
+    <p>Reorders <code>x</code> to have the same order as <code>y</code>.
+Duplicated elements will be removed.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>formulate</span><span class='op'>(</span>lhs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>, rhs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>, env <span class='op'>=</span> <span class='cn'>NULL</span>, quote <span class='op'>=</span> <span class='st'>"right"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>reorder_vector</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, na_last <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>lhs</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Left-hand side of formula. Multiple elements will be collapsed with <code>" + "</code>.</p></td>
+      <th>x</th>
+      <td><p>(<code>vector())</code>.</p></td>
     </tr>
     <tr>
-      <th>rhs</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Right-hand side of formula. Multiple elements will be collapsed with <code>" + "</code>.</p></td>
+      <th>y</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>).</p></td>
     </tr>
     <tr>
-      <th>env</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/environment.html'>environment()</a></code>)<br />
-Environment for the new formula. Defaults to <code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>quote</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Which side of the formula to quote?
-Subset of <code>("left", "right")</code>, defaulting to <code>"right"</code>.</p></td>
+      <th>na_last</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+What to do with values in <code>x</code> which are not in <code>y</code>?</p><ul>
+<li><p><code>NA</code>: Extra values are removed.</p></li>
+<li><p><code>FALSE</code>: Extra values are moved to the beginning of the new vector.</p></li>
+<li><p><code>TRUE</code>: Extra values are moved to the end of the new vector.</p></li>
+</ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://rdrr.io/r/stats/formula.html'>stats::formula()</a></code>.</p>
+    <p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>) <code>x</code> with reordered values.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>formulate</span><span class='op'>(</span><span class='st'>"Species"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Species ~ Sepal.Length + Sepal.Width
-#&gt; NULL</div><div class='input'><span class='fu'>formulate</span><span class='op'>(</span>rhs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; ~Sepal.Length + Sepal.Width
-#&gt; NULL</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># x subset of y</span>
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>=</span> <span class='va'>letters</span>
+<span class='fu'>reorder_vector</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "a" "b" "c" "d"</div><div class='input'>
+<span class='co'># y subset of x</span>
+<span class='va'>y</span> <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='fu'>reorder_vector</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "a" "b" "c"</div><div class='input'><span class='fu'>reorder_vector</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, na_last <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "a" "b" "c" "d"</div><div class='input'><span class='fu'>reorder_vector</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, na_last <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "d" "a" "b" "c"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
