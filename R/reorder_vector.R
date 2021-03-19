@@ -1,8 +1,7 @@
 #' @title Reorder Vector According to Second Vector
 #'
 #' @description
-#' Reorders `x` to have the same order as `y`.
-#' Duplicated elements will be removed.
+#' Returns an integer vector to order vector `x` according to vector `y`.
 #'
 #' @param x (`vector())`.
 #' @param y (`vector()`).
@@ -11,7 +10,7 @@
 #'   * `NA`: Extra values are removed.
 #'   * `FALSE`: Extra values are moved to the beginning of the new vector.
 #'   * `TRUE`: Extra values are moved to the end of the new vector.
-#' @return (`vector()`) `x` with reordered values.
+#' @return (`integer()`).
 #' @export
 #' @examples
 #' # x subset of y

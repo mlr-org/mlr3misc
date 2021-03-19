@@ -20,21 +20,20 @@ What to do with values in \code{x} which are not in \code{y}?
 }}
 }
 \value{
-(\code{vector()}) \code{x} with reordered values.
+(\code{integer()}).
 }
 \description{
-Reorders \code{x} to have the same order as \code{y}.
-Duplicated elements will be removed.
+Returns an integer vector to order vector \code{x} according to vector \code{y}.
 }
 \examples{
 # x subset of y
 x = c("b", "a", "c", "d")
 y = letters
-reorder_vector(x, y)
+x[reorder_vector(x, y)]
 
 # y subset of x
 y = letters[1:3]
-reorder_vector(x, y)
-reorder_vector(x, y, na_last = TRUE)
-reorder_vector(x, y, na_last = FALSE)
+x[reorder_vector(x, y)]
+x[reorder_vector(x, y, na_last = TRUE)]
+x[reorder_vector(x, y, na_last = FALSE)]
 }
