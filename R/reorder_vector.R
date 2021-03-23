@@ -25,5 +25,5 @@
 #' x[reorder_vector(x, y, na_last = FALSE)]
 reorder_vector = function(x, y, na_last = NA) {
   assert_flag(na_last, na.ok = TRUE)
-  order(match(x, y), na.last = na_last)
+  order(match(x, y), na.last = na_last, method = "radix")
 }
