@@ -200,3 +200,7 @@ test_that("detect", {
   out = detect(x, is.logical)
   expect_null(out)
 })
+
+test_that("pmap does not segfault (#56)", {
+  expect_error(pmap(1:4, function(x) x), "list")
+})

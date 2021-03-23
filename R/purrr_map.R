@@ -65,6 +65,14 @@ map_mold = function(.x, .f, .value, ...) {
   setNames(out, names(.x))
 }
 
+mapply_list = function(.f, .dots, .args = list()) {
+  # assertions to avoid segfault (#56)
+  assert_function(.f)
+  assert_list(.dots)
+  assert_list(.args)
+  .mapply(.f, .dots, .args)
+}
+
 #' @export
 #' @rdname compat-map
 map_lgl = function(.x, .f, ...) {
@@ -108,48 +116,48 @@ map_dtc = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 pmap = function(.x, .f, ...) {
-  .mapply(.f, .x, list(...))
+  mapply_list(.f, .x, list(...))
 }
 
 #' @export
 #' @rdname compat-map
 pmap_lgl = function(.x, .f, ...) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   tryCatch(as.vector(out, "logical"), warning = function(w) stop("Cannot convert to logical"))
 }
 
 #' @export
 #' @rdname compat-map
 pmap_int = function(.x, .f, ...) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   tryCatch(as.vector(out, "integer"), warning = function(w) stop("Cannot convert to integer"))
 }
 
 #' @export
 #' @rdname compat-map
 pmap_dbl = function(.x, .f, ...) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   tryCatch(as.vector(out, "double"), warning = function(w) stop("Cannot convert to double"))
 }
 
 #' @export
 #' @rdname compat-map
 pmap_chr = function(.x, .f, ...) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   tryCatch(as.vector(out, "character"), warning = function(w) stop("Cannot convert to character"))
 }
 
 #' @export
 #' @rdname compat-map
 pmap_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   rbindlist(out, use.names = TRUE, fill = .fill, idcol = .idcol)
 }
 
 #' @export
 #' @rdname compat-map
 pmap_dtc = function(.x, .f, ...) {
-  out = .mapply(.f, .x, list(...))
+  out = mapply_list(.f, .x, list(...))
   do.call(data.table, out)
 }
 
@@ -158,7 +166,7 @@ pmap_dtc = function(.x, .f, ...) {
 #' @rdname compat-map
 imap = function(.x, .f, ...) {
   nn = names(.x) %??% seq_along(.x)
-  setNames(.mapply(.f, list(.x, nn), list(...)), names(.x))
+  setNames(mapply_list(.f, list(.x, nn), list(...)), names(.x))
 }
 
 #' @export
