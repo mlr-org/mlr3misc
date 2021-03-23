@@ -68,8 +68,8 @@ map_mold = function(.x, .f, .value, ...) {
 mapply_list = function(.f, .dots, .args = list()) {
   # assertions to avoid segfault (#56)
   assert_function(.f)
-  assert_list(.dots)
   assert_list(.args)
+  stopifnot(is.list(.dots)) # also allow data.frame alike objects
   .mapply(.f, .dots, .args)
 }
 
