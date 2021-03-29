@@ -219,7 +219,7 @@ Gets reset to the previous seed on exit.</p></td>
       <th>.timeout</th>
       <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
 Timeout in seconds. Uses <code><a href='https://rdrr.io/r/base/setTimeLimit.html'>setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>  encapsulation.
-For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='https://rdrr.io/pkg/callr/man/r.html'>callr::r()</a></code>.</p></td>
+For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='https://callr.r-lib.org/reference/r.html'>callr::r()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -249,7 +249,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='
 #&gt; Empty data.table (0 rows and 2 cols): class,msg
 #&gt; 
 #&gt; $elapsed
-#&gt; [1] 0.001
+#&gt; [1] 0
 #&gt; </div><div class='input'>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"evaluate"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"evaluate"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
@@ -276,7 +276,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='
 #&gt; 
 #&gt; $elapsed
 #&gt; elapsed 
-#&gt;   0.228 
+#&gt;    0.22 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
