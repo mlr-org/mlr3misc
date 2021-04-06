@@ -26,7 +26,7 @@
 #'   Random seed to set before invoking the function call.
 #'   Gets reset to the previous seed on exit.
 #' @param .timeout (`numeric(1)`)\cr
-#'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"`  encapsulation.
+#'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"` encapsulation.
 #'   For `"callr"` encapsulation, the timeout is passed to [callr::r()].
 #' @return (named `list()`) with three fields:
 #'   * `"result"`: the return value of `.f`
