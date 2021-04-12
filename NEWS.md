@@ -1,7 +1,8 @@
-# mlr3misc 0.8.1
+# mlr3misc 0.9.0
 
 * Changed return type of `reorder_vector()`.
 * Added assertions to avoid a segfault (#56).
+* Added `count_missing()`.
 
 # mlr3misc 0.8.0
 
