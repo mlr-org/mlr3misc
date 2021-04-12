@@ -35,7 +35,7 @@ Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.}
 
 \item{.timeout}{(\code{numeric(1)})\cr
-Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"}  encapsulation.
+Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"} encapsulation.
 For \code{"callr"} encapsulation, the timeout is passed to \code{\link[callr:r]{callr::r()}}.}
 }
 \value{
