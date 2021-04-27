@@ -1,3 +1,7 @@
+# mlr3misc 0.9.1
+
+* Fixed compilation for R versions older than 3.5.0 (#59).
+
 # mlr3misc 0.9.0
 
 * Changed return type of `reorder_vector()`.

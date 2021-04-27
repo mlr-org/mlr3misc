@@ -1,6 +1,7 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <Rversion.h>
+#include "backports.h"
 
 static R_xlen_t count_missing_logical(SEXP x) {
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 6, 0)
