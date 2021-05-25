@@ -38,9 +38,8 @@ formulate = function(lhs = character(), rhs = character(), env = NULL, quote = "
   }
 
   f = as.formula(sprintf("%s ~ %s",
-      paste0(lhs, collapse = " + "),
-      paste0(rhs, collapse = " + "))
-  )
+    paste0(lhs, collapse = " + "),
+    paste0(rhs, collapse = " + ")))
   environment(f) = env
   f
 }

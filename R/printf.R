@@ -28,8 +28,9 @@
 NULL
 
 str_wrap = function(str, width = FALSE) {
-  if (isFALSE(width))
+  if (isFALSE(width)) {
     return(str)
+  }
 
   if (isTRUE(width)) {
     width = as.integer(0.9 * getOption("width"))

@@ -20,7 +20,8 @@ test_that("has_element with R6", {
       bar = 123,
       initialize = function(b) {
         self$bar = b
-      })
+      }
+    )
   )
   f1 = Foo$new(1)
   f2 = Foo$new(2)

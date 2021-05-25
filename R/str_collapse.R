@@ -26,10 +26,11 @@ str_collapse = function(str, sep = ", ", quote = character(), n = Inf, ellipsis 
 
   if (length(quote)) {
     assert_character(quote, min.len = 1L, max.len = 2L, any.missing = FALSE)
-    formatted = if (length(quote) == 1L)
+    formatted = if (length(quote) == 1L) {
       paste0(quote, formatted, quote)
-    else
-    formatted = paste0(quote[1L], formatted, quote[2L])
+    } else {
+      formatted = paste0(quote[1L], formatted, quote[2L])
+    }
   }
 
   if (length(str) > n) {

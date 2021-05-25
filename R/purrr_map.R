@@ -328,8 +328,9 @@ some = function(.x, .p, ...) {
 detect = function(.x, .p, ...) {
   for (i in seq_along(.x)) {
     .res = .p(.x[[i]], ...)
-    if (!is.na(.res) && .res)
+    if (!is.na(.res) && .res) {
       return(.x[[i]])
+    }
   }
   return(NULL)
 }

@@ -20,8 +20,9 @@
 #' x = set_names(1:3, letters[1:3])
 #' enframe(x, value = "x_values")
 enframe = function(x, name = "name", value = "value") {
-  if (is.environment(x))
+  if (is.environment(x)) {
     x = as.list(x)
+  }
   dt = data.table(names(x) %??% seq_along(x), unname(x))
   setnames(dt, c(name, value))[]
 }

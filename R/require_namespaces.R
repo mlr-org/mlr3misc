@@ -22,12 +22,14 @@
 #' tryCatch(require_namespaces(c("mlr3misc", "foobaaar")),
 #'   packageNotFoundError = function(e) e$packages)
 require_namespaces = function(pkgs, msg = "The following packages could not be loaded: %s",
-                              quietly = FALSE) {
+  quietly = FALSE) {
   pkgs = unique(assert_character(pkgs, any.missing = FALSE))
   ii = which(!map_lgl(pkgs, requireNamespace, quietly = TRUE))
 
   if (length(ii)) {
-    if (quietly) return(FALSE)
+    if (quietly) {
+      return(FALSE)
+    }
     msg = sprintf(msg, paste0(pkgs[ii], collapse = ","))
     stop(errorCondition(msg, packages = pkgs[ii], class = "packageNotFoundError"))
   } else if (quietly) {

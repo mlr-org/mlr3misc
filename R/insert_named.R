@@ -59,8 +59,8 @@ insert_named.data.frame = function(x, y) { # nolint
 #' @rdname insert_named
 insert_named.data.table = function(x, y) { # nolint
   if (ncol(x) > 0L) {
-     ..y = y
-     x[, names(..y) := ..y][]
+    ..y = y
+    x[, names(..y) := ..y][]
   } else { # null data.table, we cannot assign with `:=`
     as.data.table(y)
   }

@@ -36,8 +36,9 @@ rd_format_range = function(lower, upper) {
 #' @inheritParams str_collapse
 #' @export
 rd_format_string = function(str, quote = c("\\dQuote{", "}")) {
-  if (length(str) == 0L)
+  if (length(str) == 0L) {
     return("-")
+  }
   str_collapse(str, quote = quote)
 }
 
@@ -47,9 +48,9 @@ rd_format_string = function(str, quote = c("\\dQuote{", "}")) {
 #'   Vector of package names.
 #' @export
 rd_format_packages = function(packages) {
-  if (length(packages) == 0L)
-
+  if (length(packages) == 0L) {
     return("-")
+  }
   base_pkgs = c("base", "compiler", "datasets", "graphics", "grDevices", "grid", "methods",
     "parallel", "splines", "stats", "stats4", "tcltk", "tools", "translations", "utils"
   )

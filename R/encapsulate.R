@@ -87,8 +87,8 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     logfile = tempfile()
     now = proc.time()[3L]
     result = try(callr::r(callr_wrapper,
-        list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed),
-        stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
+      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed),
+      stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
     if (file.exists(logfile)) {
@@ -169,7 +169,8 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed) {
       error = function(e) {
         cat("[ERR]", gsub("\r?\n|\r", "<br>", conditionMessage(e)), "\n")
         NULL
-      }),
+      }
+    ),
     warning = function(w) {
       cat("[WRN]", gsub("\r?\n|\r", "<br>", conditionMessage(w)), "\n")
       invokeRestart("muffleWarning")
