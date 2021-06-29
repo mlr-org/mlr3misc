@@ -193,6 +193,8 @@ dictionary_initialize_item = function(key, obj, cargs = list()) {
     do.call(constructor$new, cargs)
   } else if (is.function(constructor)) {
     do.call(constructor, cargs)
+  } else if (is.R6(constructor) && exists("clone", envir = constructor)) {
+    constructor$clone(deep = TRUE)
   } else {
     constructor
   }

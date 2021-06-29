@@ -1,3 +1,7 @@
+# mlr3misc 0.9.2
+
+* R6 objects retrieved from the dictionary are now properly cloned.
+
 # mlr3misc 0.9.1
 
 * Fixed compilation for R versions older than 3.5.0 (#59).
