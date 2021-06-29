@@ -24,6 +24,13 @@ test_that("Dictionary", {
   expect_data_table(as.data.table(d), nrows = 1L)
 })
 
+test_that("Dictionary clones R6", {
+  foo = R6Class("Foo")$new()
+  d = Dictionary$new()
+  d$add("f", foo)
+  expect_false(data.table::address(foo) == data.table::address(d$get("f")))
+})
+
 test_that("Dictionary required args", {
   foo = R6Class("Foo", public = list(x = 0))
   x = Dictionary$new()
