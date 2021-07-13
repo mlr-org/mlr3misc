@@ -27,6 +27,7 @@ Imports:
     backports (>= 0.1.5),
     checkmate,
     data.table,
+    digest,
     R6
 Suggests:
     callr,
