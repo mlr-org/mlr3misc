@@ -22,7 +22,7 @@
 calculate_hash = function(...) {
   digest(lapply(list(...), function(x) {
     if (is.function(x)) {
-      list(formals(fun), as.character(body(fun)))
+      list(formals(x), as.character(body(x)))
     } else if (is.data.table(x)) {
       as.list(x)
     } else {
