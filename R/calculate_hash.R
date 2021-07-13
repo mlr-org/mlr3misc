@@ -17,6 +17,7 @@
 #'   Objects to hash.
 #'
 #' @return (`character(1)`).
+#' @export
 #' @examples
 #' calculate_hash(iris, 1, "a")
 calculate_hash = function(...) {
