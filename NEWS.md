@@ -1,3 +1,7 @@
+# mlr3misc 0.9.3
+
+* New (internal) helper functions: `calculate_hash()` and `assert_ro_binding()`
+
 # mlr3misc 0.9.2
 
 * R6 objects retrieved from the dictionary are now properly cloned.
