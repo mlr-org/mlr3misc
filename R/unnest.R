@@ -1,4 +1,4 @@
-#' @title Unnest List Data Table Columns
+#' @title Unnest List Columns
 #'
 #' @description
 #' Transforms list columns to separate columns, possibly by reference.

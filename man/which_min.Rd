@@ -3,7 +3,7 @@
 \name{which_min}
 \alias{which_min}
 \alias{which_max}
-\title{Index of the Minimum/Maximum Value, with ties correction}
+\title{Index of the Minimum/Maximum Value, with Correction for Ties}
 \usage{
 which_min(x, ties_method = "random", na_rm = FALSE)
 
@@ -28,7 +28,7 @@ Returns \code{NA} if \code{na_rm} is \code{FALSE} and at least one \code{NA} is 
 }
 \description{
 Works similar to \code{\link[base:which.min]{base::which.min()}}/\code{\link[base:which.min]{base::which.max()}}, but corrects for ties.
-Missing values are set to \code{Inf} for \code{which_min} and to \code{-Inf} for \code{which_max()}.
+Missing values are treated as \code{Inf} for \code{which_min} and as \code{-Inf} for \code{which_max()}.
 }
 \examples{
 x = c(2, 3, 1, 3, 5, 1, 1)

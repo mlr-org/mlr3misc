@@ -32,5 +32,6 @@ load_dataset = function(id, package, keep_rownames = FALSE) {
   if (!keep_rownames && (is.data.frame(data) || is.matrix(data))) {
     rownames(data) = NULL
   }
+
   data
 }

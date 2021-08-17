@@ -2,7 +2,7 @@
 % Please edit documentation in R/unnest.R
 \name{unnest}
 \alias{unnest}
-\title{Unnest List Data Table Columns}
+\title{Unnest List Columns}
 \usage{
 unnest(x, cols, prefix = NULL)
 }

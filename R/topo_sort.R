@@ -26,7 +26,6 @@
 #' )
 #' topo_sort(nodes)
 topo_sort = function(nodes) {
-
   assert_data_table(nodes, ncols = 2L, types = c("character", "list"))
   assert_names(names(nodes), identical.to = c("id", "parents"))
   assert_list(nodes$parents, types = "character")

@@ -1,8 +1,8 @@
-#' @title Index of the Minimum/Maximum Value, with ties correction
+#' @title Index of the Minimum/Maximum Value, with Correction for Ties
 #'
 #' @description
 #' Works similar to [base::which.min()]/[base::which.max()], but corrects for ties.
-#' Missing values are set to `Inf` for `which_min` and to `-Inf` for `which_max()`.
+#' Missing values are treated as `Inf` for `which_min` and as `-Inf` for `which_max()`.
 #'
 #' @param x (`numeric()`)\cr
 #'   Numeric vector.
