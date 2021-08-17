@@ -15,5 +15,7 @@
 named_vector = function(nn = character(0L), init = NA) {
   assert_character(nn, any.missing = FALSE)
   assert_atomic(init, len = 1L)
-  set_names(rep(init, length.out = length(nn)), nn)
+  res = rep(init, length.out = length(nn))
+  names(res) = nn
+  res
 }
