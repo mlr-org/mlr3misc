@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Index of the Minimum/Maximum Value, with ties correction — which_min • mlr3misc</title>
+<title>Index of the Minimum/Maximum Value, with Correction for Ties — which_min • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,9 @@
 
 
 
-<meta property="og:title" content="Index of the Minimum/Maximum Value, with ties correction — which_min" />
+<meta property="og:title" content="Index of the Minimum/Maximum Value, with Correction for Ties — which_min" />
 <meta property="og:description" content="Works similar to base::which.min()/base::which.max(), but corrects for ties.
-Missing values are set to Inf for which_min and to -Inf for which_max()." />
+Missing values are treated as Inf for which_min and as -Inf for which_max()." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,14 +143,14 @@ Missing values are set to Inf for which_min and to -Inf for which_max()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Index of the Minimum/Maximum Value, with ties correction</h1>
+    <h1>Index of the Minimum/Maximum Value, with Correction for Ties</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/which_max.R'><code>R/which_max.R</code></a></small>
     <div class="hidden name"><code>which_min.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Works similar to <code><a href='https://rdrr.io/r/base/which.min.html'>base::which.min()</a></code>/<code><a href='https://rdrr.io/r/base/which.min.html'>base::which.max()</a></code>, but corrects for ties.
-Missing values are set to <code>Inf</code> for <code>which_min</code> and to <code>-Inf</code> for <code>which_max()</code>.</p>
+Missing values are treated as <code>Inf</code> for <code>which_min</code> and as <code>-Inf</code> for <code>which_max()</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>which_min</span><span class='op'>(</span><span class='va'>x</span>, ties_method <span class='op'>=</span> <span class='st'>"random"</span>, na_rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
