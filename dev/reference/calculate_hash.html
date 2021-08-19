@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the Class — set_class • mlr3misc</title>
+<title>Calculate a Hash for Multiple Objects — calculate_hash • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,8 +47,18 @@
 
 
 
-<meta property="og:title" content="Set the Class — set_class" />
-<meta property="og:description" content="Simple wrapper for class(x) = classes." />
+<meta property="og:title" content="Calculate a Hash for Multiple Objects — calculate_hash" />
+<meta property="og:description" content="Calls digest::digest() to calculate the hash for all objects provided.
+The following operations are performed to make hashing more robust:
+If an object is a function(), the formals and the body are hashed separately.
+This ensures that the bytecode or parent environment are not be included
+in the hash.
+If an object is a data.table::data.table(), the data.table is converted to a
+regular list. This ensures that keys and indices are not included in the hash.
+
+
+Note that this only applies to top level objects, these transformations are not done
+recursively." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -142,40 +152,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the Class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/set_class.R'><code>R/set_class.R</code></a></small>
-    <div class="hidden name"><code>set_class.Rd</code></div>
+    <h1>Calculate a Hash for Multiple Objects</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/calculate_hash.R'><code>R/calculate_hash.R</code></a></small>
+    <div class="hidden name"><code>calculate_hash.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simple wrapper for <code>class(x) = classes</code>.</p>
+    <p>Calls <code><a href='https://rdrr.io/pkg/digest/man/digest.html'>digest::digest()</a></code> to calculate the hash for all objects provided.</p>
+<p>The following operations are performed to make hashing more robust:</p><ul>
+<li><p>If an object is a <code><a href='https://rdrr.io/r/base/function.html'>function()</a></code>, the formals and the body are hashed separately.
+This ensures that the bytecode or parent environment are not be included
+in the hash.</p></li>
+<li><p>If an object is a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>, the data.table is converted to a
+regular list. This ensures that keys and indices are not included in the hash.</p></li>
+</ul>
+
+<p>Note that this only applies to top level objects, these transformations are not done
+recursively.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_class</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>classes</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>calculate_hash</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>(<code>any</code>).</p></td>
-    </tr>
-    <tr>
-      <th>classes</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Vector of new class names.</p></td>
+      <th>...</th>
+      <td><p>(any)<br />
+Objects to hash.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object <code>x</code>, with updated class attribute.</p>
+    <p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>set_class</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"foo1"</span>, <span class='st'>"foo2"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; list()
-#&gt; attr(,"class")
-#&gt; [1] "foo1" "foo2"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>calculate_hash</span><span class='op'>(</span><span class='va'>iris</span>, <span class='fl'>1</span>, <span class='st'>"a"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "9dec48c68dae0533"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

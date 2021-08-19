@@ -13,6 +13,12 @@
     <loc>https://mlr3misc.mlr-org.com/reference/as_short_string.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/assert_ro_binding.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/calculate_hash.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/check_packages_installed.html</loc>
   </url>
   <url>
@@ -152,6 +158,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/str_trunc.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/to_decimal.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/topo_sort.html</loc>
