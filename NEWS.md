@@ -1,3 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# mlr3misc 0.9.3.9000
+
+- Same as previous version.
+
+
 # mlr3misc 0.9.3
 
 * New (internal) helper functions: `calculate_hash()` and `assert_ro_binding()`
