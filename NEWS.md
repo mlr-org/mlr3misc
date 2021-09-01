@@ -1,8 +1,7 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+# mlr3misc 0.9.4
 
-# mlr3misc 0.9.3.9000
-
-- Added helper `capitalize()`.
+* Added helper `capitalize()`.
+* Fixed cleanup in `register_namespace_callback()`.
 
 
 # mlr3misc 0.9.3
