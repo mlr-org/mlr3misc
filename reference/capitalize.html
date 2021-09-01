@@ -6,9 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count Missing Values in a Vector
-
-Same as sum(is.na(x)), but without the allocation. — count_missing • mlr3misc</title>
+<title>Capitalize the First Letter of Strings — capitalize • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -49,11 +47,9 @@ Same as sum(is.na(x)), but without the allocation. — count_missing • mlr3mis
 
 
 
-<meta property="og:title" content="Count Missing Values in a Vector
-
-Same as sum(is.na(x)), but without the allocation. — count_missing" />
-<meta property="og:description" content="Count Missing Values in a Vector
-Same as sum(is.na(x)), but without the allocation." />
+<meta property="og:title" content="Capitalize the First Letter of Strings — capitalize" />
+<meta property="og:description" content="Takes a character vector and changes the first letter of each element to
+uppercase." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -147,37 +143,34 @@ Same as sum(is.na(x)), but without the allocation." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count Missing Values in a Vector
-
-Same as <code>sum(is.na(x))</code>, but without the allocation.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/count_missing.R'><code>R/count_missing.R</code></a></small>
-    <div class="hidden name"><code>count_missing.Rd</code></div>
+    <h1>Capitalize the First Letter of Strings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/capitalize.R'><code>R/capitalize.R</code></a></small>
+    <div class="hidden name"><code>capitalize.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Count Missing Values in a Vector</p>
-<p>Same as <code><a href='https://rdrr.io/r/base/sum.html'>sum(is.na(x))</a></code>, but without the allocation.</p>
+    <p>Takes a character vector and changes the first letter of each element to
+uppercase.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>count_missing</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>capitalize</span><span class='op'>(</span><span class='va'>str</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code><br />
-Supported are logical, integer, double, complex and string vectors.</p></td>
+      <th>str</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>) number of missing values.</p>
+    <p>Character vector, same length as <code>str</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>count_missing</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='fl'>4</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 2</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>capitalize</span><span class='op'>(</span><span class='st'>"foo bar"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Foo bar"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
