@@ -2,7 +2,7 @@
 
 # mlr3misc 0.9.3.9000
 
-- Same as previous version.
+- Added helper `capitalize()`.
 
 
 # mlr3misc 0.9.3
