@@ -19,12 +19,7 @@ register_namespace_callback = function(pkgname, namespace, callback) {
   assert_string(namespace)
   assert_function(callback)
 
-  if (isNamespaceLoaded(namespace)) {
-    callback()
-  }
-
-  remove_hook = function() {
-    event = packageEvent(namespace, "onLoad")
+  remove_hook = function(event) {
     hooks = getHook(event)
     pkgnames = vapply(hooks, function(x) {
       ee = environment(x)
@@ -33,6 +28,15 @@ register_namespace_callback = function(pkgname, namespace, callback) {
     setHook(event, hooks[pkgnames != pkgname], action = "replace")
   }
 
+  remove_hooks = function(...) {
+    remove_hook(packageEvent(namespace, "onLoad"))
+    remove_hook(packageEvent(pkgname, "onUnload"))
+  }
+
+  if (isNamespaceLoaded(namespace)) {
+    callback()
+  }
+
   setHook(packageEvent(namespace, "onLoad"), callback, action = "append")
-  setHook(packageEvent(pkgname, "onUnload"), remove_hook, action = "replace")
+  setHook(packageEvent(pkgname, "onUnload"), remove_hooks, action = "append")
 }
