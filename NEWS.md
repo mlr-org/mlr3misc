@@ -1,6 +1,7 @@
 # mlr3misc 0.9.4
 
 * Added helper `capitalize()`.
+* Added helper `to_decimal()`.
 * Fixed cleanup in `register_namespace_callback()`.
 
 
