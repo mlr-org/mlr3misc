@@ -1,3 +1,7 @@
+# mlr3misc 0.9.5
+
+* Added helper `deframe()`.
+
 # mlr3misc 0.9.4
 
 * Added helper `capitalize()`.
