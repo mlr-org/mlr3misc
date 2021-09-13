@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert a Named Vector Into A data.table — enframe • mlr3misc</title>
+<title>Convert a Named Vector into a data.table and Vice Versa — enframe • mlr3misc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,11 @@
 
 
 
-<meta property="og:title" content="Convert a Named Vector Into A data.table — enframe" />
-<meta property="og:description" content="Returns a data.table::data.table() with two columns:
-The names of x (or seq_along(x) if unnamed) and the values of x." />
+<meta property="og:title" content="Convert a Named Vector into a data.table and Vice Versa — enframe" />
+<meta property="og:description" content="enframe() returns a data.table::data.table() with two columns:
+The names of x (or seq_along(x) if unnamed) and the values of x.
+deframe() converts a two-column data.frame to a named vector.
+If the data.frame only has a single column, an unnamed vector is returned." />
 <meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -84,7 +86,7 @@ The names of x (or seq_along(x) if unnamed) and the values of x." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.3.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4-9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -143,24 +145,28 @@ The names of x (or seq_along(x) if unnamed) and the values of x." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert a Named Vector Into A data.table</h1>
+    <h1>Convert a Named Vector into a data.table and Vice Versa</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3misc/blob/master/R/enframe.R'><code>R/enframe.R</code></a></small>
     <div class="hidden name"><code>enframe.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> with two columns:
+    <p><code>enframe()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> with two columns:
 The names of <code>x</code> (or <code><a href='https://rdrr.io/r/base/seq.html'>seq_along(x)</a></code> if unnamed) and the values of <code>x</code>.</p>
+<p><code>deframe()</code> converts a two-column data.frame to a named vector.
+If the data.frame only has a single column, an unnamed vector is returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span>, name <span class='op'>=</span> <span class='st'>"name"</span>, value <span class='op'>=</span> <span class='st'>"value"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span>, name <span class='op'>=</span> <span class='st'>"name"</span>, value <span class='op'>=</span> <span class='st'>"value"</span><span class='op'>)</span>
+
+<span class='fu'>deframe</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>)<br />
+      <td><p>(<code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code> (<code>enframe()</code>) or <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame()</a></code> (<code>deframe()</code>))<br />
 Vector to convert to a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p></td>
     </tr>
     <tr>
@@ -177,7 +183,7 @@ Name for the second column with values.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>.</p>
+    <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> or named <code>vector</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
