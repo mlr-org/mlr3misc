@@ -156,15 +156,15 @@ to just leanify all R6::R6 classes inside a package." />
     </div>
 
     <div class="ref-description">
-    <p><code>leanify_r6</code> moves the content of an <code><a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6Class</a></code>'s functions to an environment,
+    <p><code>leanify_r6</code> moves the content of an <code><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a></code>'s functions to an environment,
 usually the package's namespace, to save space during serialization of R6 objects.
 <code>leanify_package</code> move all methods of <em>all</em> R6 Classes to an environment.</p>
 <p>The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except calling the original function that now resides
 somewhere else.</p>
-<p>It is possible to call this function after the definition of an <a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6</a>
+<p>It is possible to call this function after the definition of an <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6</a>
 class inside a package, but it is preferred to use <code>leanify_package()</code>
-to just leanify all <a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6</a> classes inside a package.</p>
+to just leanify all <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6</a> classes inside a package.</p>
     </div>
 
     <pre class="usage"><span class='fu'>leanify_r6</span><span class='op'>(</span><span class='va'>cls</span>, env <span class='op'>=</span> <span class='va'>cls</span><span class='op'>$</span><span class='va'>parent_env</span><span class='op'>)</span>
@@ -176,7 +176,7 @@ to just leanify all <a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>cls</th>
-      <td><p>(<a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6Class</a>)<br />
+      <td><p>(<a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a>)<br />
 Class generator to modify.</p></td>
     </tr>
     <tr>
@@ -196,7 +196,7 @@ package namespace, but this is the intended usecase.</p></td>
     <tr>
       <th>skip_if</th>
       <td><p>:: <code>function</code><br />
-Function with one argument: Is called for each individual <code><a href='https://r6.r-lib.org/reference/R6Class.html'>R6::R6Class</a></code>.
+Function with one argument: Is called for each individual <code><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a></code>.
 If it returns <code>TRUE</code>, the class is skipped. Default function evaluating to <code>FALSE</code>
 always (i.e. skipping no classes).</p></td>
     </tr>
