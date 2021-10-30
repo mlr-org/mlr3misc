@@ -163,7 +163,7 @@ Vector of strings.</p></td>
     </tr>
     <tr>
       <th>sep</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 String used to collapse the elements of <code>x</code>.</p></td>
     </tr>
     <tr>
@@ -174,23 +174,24 @@ Quotes to use around each element of <code>x</code>.</p>
     </tr>
     <tr>
       <th>n</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Number of elements to keep from <code>x</code>. See <code><a href='https://rdrr.io/r/utils/head.html'>utils::head()</a></code>.</p></td>
     </tr>
     <tr>
       <th>ellipsis</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 If the string has to be shortened, this is signaled by appending <code>ellipsis</code> to <code>str</code>. Default is <code>" [...]"</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>).</p>
+    <p>(<code>character(1)</code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>str_collapse</span><span class='op'>(</span><span class='va'>letters</span>, quote <span class='op'>=</span> <span class='st'>"'"</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "'a', 'b', 'c', 'd', 'e', [...]"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>str_collapse</span><span class='op'>(</span><span class='va'>letters</span>, quote <span class='op'>=</span> <span class='st'>"'"</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "'a', 'b', 'c', 'd', 'e', [...]"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

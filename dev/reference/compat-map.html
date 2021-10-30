@@ -176,7 +176,7 @@ in an base::cbind() fashion.
     <div class="ref-description">
     <p><code>map</code>-like functions, similar to the ones implemented in <a href='https://CRAN.R-project.org/package=purrr'><span class="pkg">purrr</span></a>:</p><ul>
 <li><p><code>map()</code> returns the results of <code>.f</code> applied to <code>.x</code> as list.
-If <code>.f</code> is not a function, <code>map</code> will call <code><a href='https://rdrr.io/r/base/Extract.html'>[[</a></code> on all elements of <code>.x</code> using the value of <code>.f</code> as index.</p></li>
+If <code>.f</code> is not a function, <code>map</code> will call <code>[[</code> on all elements of <code>.x</code> using the value of <code>.f</code> as index.</p></li>
 <li><p><code>imap()</code> applies <code>.f</code> to each value of <code>.x</code> (passed as first argument) and its name (passed as second argument).
 If <code>.x</code> does not have names, a sequence along <code>.x</code> is passed as second argument instead.</p></li>
 <li><p><code>pmap()</code> expects <code>.x</code> to be a list of vectors of equal length, and then applies <code>.f</code> to the first element of
@@ -191,10 +191,10 @@ each vector of <code>.x</code>, then the second element of <code>.x</code>, and 
 </ul>
 
 <p>Additionally, the functions <code>map()</code>, <code>imap()</code> and <code>pmap</code> have type-safe variants with the following suffixes:</p><ul>
-<li><p><code>*_lgl()</code> returns a <code><a href='https://rdrr.io/r/base/logical.html'>logical(length(.x))</a></code>.</p></li>
-<li><p><code>*_int()</code> returns a <code><a href='https://rdrr.io/r/base/integer.html'>integer(length(.x))</a></code>.</p></li>
-<li><p><code>*_dbl()</code> returns a <code><a href='https://rdrr.io/r/base/double.html'>double(length(.x))</a></code>.</p></li>
-<li><p><code>*_chr()</code> returns a <code><a href='https://rdrr.io/r/base/character.html'>character(length(.x))</a></code>.</p></li>
+<li><p><code>*_lgl()</code> returns a <code>logical(length(.x))</code>.</p></li>
+<li><p><code>*_int()</code> returns a <code>integer(length(.x))</code>.</p></li>
+<li><p><code>*_dbl()</code> returns a <code>double(length(.x))</code>.</p></li>
+<li><p><code>*_chr()</code> returns a <code>character(length(.x))</code>.</p></li>
 <li><p><code>*_dtr()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together
 in an <code><a href='https://rdrr.io/r/base/cbind.html'>base::rbind()</a></code> fashion.</p></li>
 <li><p><code>*_dtc()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> where the results of <code>.f</code> are put together
@@ -281,12 +281,12 @@ Additional arguments passed down to <code>.f</code> or <code>.p</code>.</p></td>
     </tr>
     <tr>
       <th>.fill</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+      <td><p>(<code>logical(1)</code>)<br />
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
     <tr>
       <th>.idcol</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+      <td><p>(<code>logical(1)</code>)<br />
 Passed down to <code><a href='https://Rdatatable.gitlab.io/data.table/reference/rbindlist.html'>data.table::rbindlist()</a></code>.</p></td>
     </tr>
     <tr>

@@ -165,12 +165,12 @@ Vectors to cross-join.</p></td>
     </tr>
     <tr>
       <th>sorted</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+      <td><p>(<code>logical(1)</code>)<br />
 See <code><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>data.table::CJ()</a></code>.</p></td>
     </tr>
     <tr>
       <th>unique</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+      <td><p>(<code>logical(1)</code>)<br />
 See <code><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>data.table::CJ()</a></code>.</p></td>
     </tr>
     </table>
@@ -180,14 +180,15 @@ See <code><a href='https://Rdatatable.gitlab.io/data.table/reference/J.html'>dat
     <p><code>data.table()</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>cross_join</span><span class='op'>(</span>dots <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sorted <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    sorted b
-#&gt; 1:      1 a
-#&gt; 2:      1 b
-#&gt; 3:      2 a
-#&gt; 4:      2 b
-#&gt; 5:      3 a
-#&gt; 6:      3 b</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>cross_join</span><span class='op'>(</span>dots <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sorted <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    sorted b</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:      1 a</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:      1 b</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3:      2 a</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4:      2 b</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5:      3 a</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6:      3 b</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

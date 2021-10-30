@@ -185,17 +185,18 @@ Has 2 columns:</p><ul>
     <p>(<code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code>) with columns <code>id</code>, <code>depth</code>, sorted topologically for IDs.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>nodes</span> <span class='op'>=</span> <span class='fu'><a href='rowwise_table.html'>rowwise_table</a></span><span class='op'>(</span>
-  <span class='op'>~</span><span class='va'>id</span>, <span class='op'>~</span><span class='va'>parents</span>,
-  <span class='st'>"a"</span>, <span class='st'>"b"</span>,
-  <span class='st'>"b"</span>, <span class='st'>"c"</span>,
-  <span class='st'>"c"</span>, <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'>topo_sort</span><span class='op'>(</span><span class='va'>nodes</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    id depth
-#&gt; 1:  c     0
-#&gt; 2:  b     1
-#&gt; 3:  a     2</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>nodes</span> <span class='op'>=</span> <span class='fu'><a href='rowwise_table.html'>rowwise_table</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='op'>~</span><span class='va'>id</span>, <span class='op'>~</span><span class='va'>parents</span>,</span>
+<span class='r-in'>  <span class='st'>"a"</span>, <span class='st'>"b"</span>,</span>
+<span class='r-in'>  <span class='st'>"b"</span>, <span class='st'>"c"</span>,</span>
+<span class='r-in'>  <span class='st'>"c"</span>, <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>topo_sort</span><span class='op'>(</span><span class='va'>nodes</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    id depth</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:  c     0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:  b     1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3:  a     2</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

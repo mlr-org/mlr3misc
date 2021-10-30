@@ -152,7 +152,7 @@ If the data.frame only has a single column, an unnamed vector is returned." />
 
     <div class="ref-description">
     <p><code>enframe()</code> returns a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> with two columns:
-The names of <code>x</code> (or <code><a href='https://rdrr.io/r/base/seq.html'>seq_along(x)</a></code> if unnamed) and the values of <code>x</code>.</p>
+The names of <code>x</code> (or <code>seq_along(x)</code> if unnamed) and the values of <code>x</code>.</p>
 <p><code>deframe()</code> converts a two-column data.frame to a named vector.
 If the data.frame only has a single column, an unnamed vector is returned.</p>
     </div>
@@ -171,12 +171,12 @@ Vector to convert to a <code><a href='https://Rdatatable.gitlab.io/data.table/re
     </tr>
     <tr>
       <th>name</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 Name for the first column with names.</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 Name for the second column with values.</p></td>
     </tr>
     </table>
@@ -186,18 +186,20 @@ Name for the second column with values.</p></td>
     <p><code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table::data.table()</a></code> or named <code>vector</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
-<span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    name value
-#&gt; 1:    1     1
-#&gt; 2:    2     2
-#&gt; 3:    3     3</div><div class='input'>
-<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='set_names.html'>set_names</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
-<span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span>, value <span class='op'>=</span> <span class='st'>"x_values"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    name x_values
-#&gt; 1:    a        1
-#&gt; 2:    b        2
-#&gt; 3:    c        3</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span></span>
+<span class='r-in'><span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    name value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:    1     1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:    2     2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3:    3     3</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='set_names.html'>set_names</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>enframe</span><span class='op'>(</span><span class='va'>x</span>, value <span class='op'>=</span> <span class='st'>"x_values"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    name x_values</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:    a        1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:    b        2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3:    c        3</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

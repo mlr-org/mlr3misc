@@ -169,60 +169,63 @@ function <code>transpose()</code> in package <a href='https://CRAN.R-project.org
     <p><code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>5</span>, b <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; List of 2
-#&gt;  $ :List of 2
-#&gt;   ..$ a: num 2
-#&gt;   ..$ b: num 3
-#&gt;  $ :List of 2
-#&gt;   ..$ a: num 5
-#&gt;   ..$ b: num 10</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>transpose_list</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; List of 2
-#&gt;  $ a:List of 2
-#&gt;   ..$ : num 2
-#&gt;   ..$ : num 5
-#&gt;  $ b:List of 2
-#&gt;   ..$ : num 3
-#&gt;   ..$ : num 10</div><div class='input'>
-<span class='co'># list of data frame rows:</span>
-<span class='fu'>transpose_list</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, <span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [[1]]
-#&gt; [[1]]$Sepal.Length
-#&gt; [1] 5.1
-#&gt; 
-#&gt; [[1]]$Sepal.Width
-#&gt; [1] 3.5
-#&gt; 
-#&gt; [[1]]$Petal.Length
-#&gt; [1] 1.4
-#&gt; 
-#&gt; [[1]]$Petal.Width
-#&gt; [1] 0.2
-#&gt; 
-#&gt; [[1]]$Species
-#&gt; [1] setosa
-#&gt; Levels: setosa versicolor virginica
-#&gt; 
-#&gt; 
-#&gt; [[2]]
-#&gt; [[2]]$Sepal.Length
-#&gt; [1] 4.9
-#&gt; 
-#&gt; [[2]]$Sepal.Width
-#&gt; [1] 3
-#&gt; 
-#&gt; [[2]]$Petal.Length
-#&gt; [1] 1.4
-#&gt; 
-#&gt; [[2]]$Petal.Width
-#&gt; [1] 0.2
-#&gt; 
-#&gt; [[2]]$Species
-#&gt; [1] setosa
-#&gt; Levels: setosa versicolor virginica
-#&gt; 
-#&gt; </div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>5</span>, b <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ :List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ a: num 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ b: num 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ :List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ a: num 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ b: num 10</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>transpose_list</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ a:List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ : num 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ : num 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ b:List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ : num 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ : num 10</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># list of data frame rows:</span></span>
+<span class='r-in'><span class='fu'>transpose_list</span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, <span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$Sepal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 5.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$Sepal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3.5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$Petal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$Petal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[1]]$Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] setosa</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: setosa versicolor virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]$Sepal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 4.9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]$Sepal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]$Petal.Length</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]$Petal.Width</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [[2]]$Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] setosa</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: setosa versicolor virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

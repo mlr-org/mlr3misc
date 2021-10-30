@@ -171,12 +171,12 @@ Vector to filter.</p></td>
     </tr>
     <tr>
       <th>lower</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Lower bound.</p></td>
     </tr>
     <tr>
       <th>upper</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Upper bound.</p></td>
     </tr>
     </table>
@@ -186,8 +186,9 @@ Upper bound.</p></td>
     <p>(integer()) with only values in <code>[lower, upper]</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>keep_in_bounds</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span>, <span class='fl'>5</span>, <span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 10  6  7  9  8  5</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>keep_in_bounds</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span>, <span class='fl'>5</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 10  6  7  9  8  5</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
