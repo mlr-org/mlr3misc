@@ -5,7 +5,7 @@
 #' This function tries hard to not evaluate the passed arguments too eagerly which is
 #' important when working with large R objects.
 #'
-#' It is recommended to pass all arguments named in order to not rely on on positional
+#' It is recommended to pass all arguments named in order to not rely on positional
 #' argument matching.
 #'
 #' @param .f (`function()`)\cr
