@@ -24,6 +24,8 @@ rd_info = function(obj, ...) {
 #'   Upper bound.
 #' @export
 rd_format_range = function(lower, upper) {
+  if (is.na(lower) || is.na(upper)) return("-")
+
   str = sprintf("%s%s, %s%s",
     if (is.finite(lower)) "[" else "(",
     if (is.finite(lower)) c(lower, lower) else c("-\\infty", "-Inf"),
