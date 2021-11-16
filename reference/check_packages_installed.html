@@ -83,7 +83,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.5</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -167,12 +167,12 @@ Packages to check.</p></td>
     </tr>
     <tr>
       <th>warn</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>)<br />
+      <td><p>(<code>logical(1)</code>)<br />
 If <code>TRUE</code>, signals a warning of class <code>"packageNotFoundWarning"</code> about the missing packages.</p></td>
     </tr>
     <tr>
       <th>msg</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 Format of the warning message. Use <code>"%s"</code> as placeholder for the list of packages.</p></td>
     </tr>
     </table>
@@ -182,13 +182,15 @@ Format of the warning message. Use <code>"%s"</code> as placeholder for the list
     <p>(<code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>) named with package names. <code>TRUE</code> if the respective package is installed, <code>FALSE</code> otherwise.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>check_packages_installed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"foobar"</span><span class='op'>)</span>, warn <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; mlr3misc   foobar 
-#&gt;     TRUE    FALSE </div><div class='input'>
-<span class='co'># catch warning</span>
-<span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span><span class='fu'>check_packages_installed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span><span class='op'>)</span><span class='op'>)</span>,
-  packageNotFoundWarning <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "packageNotFoundWarning: The following packages are required but not installed: foobaaar\n"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>check_packages_installed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"foobar"</span><span class='op'>)</span>, warn <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> mlr3misc   foobar </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     TRUE    FALSE </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># catch warning</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span><span class='op'>(</span><span class='fu'>check_packages_installed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mlr3misc"</span>, <span class='st'>"foobaaar"</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>  packageNotFoundWarning <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "packageNotFoundWarning: The following packages are required but not installed: foobaaar\n"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

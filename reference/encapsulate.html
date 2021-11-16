@@ -93,7 +93,7 @@ While this comes with a considerable overhead, it also guards your session from 
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.5</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -186,7 +186,7 @@ While this comes with a considerable overhead, it also guards your session from 
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>method</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 One of <code>"none"</code>, <code>"evaluate"</code> or <code>"callr"</code>.</p></td>
     </tr>
     <tr>
@@ -211,13 +211,13 @@ Packages to load (not attach).</p></td>
     </tr>
     <tr>
       <th>.seed</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Random seed to set before invoking the function call.
 Gets reset to the previous seed on exit.</p></td>
     </tr>
     <tr>
       <th>.timeout</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>)<br />
+      <td><p>(<code>numeric(1)</code>)<br />
 Timeout in seconds. Uses <code><a href='https://rdrr.io/r/base/setTimeLimit.html'>setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code> encapsulation.
 For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='https://callr.r-lib.org/reference/r.html'>callr::r()</a></code>.</p></td>
     </tr>
@@ -233,51 +233,55 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href='
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>f</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"hi from f"</span><span class='op'>)</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>n</span> <span class='op'>&gt;</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='st'>"n must be &lt;= 5"</span><span class='op'>)</span>
-  <span class='op'>}</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"none"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>hi from f</span></div><div class='output co'>#&gt; $result
-#&gt; [1] 0.2655087
-#&gt; 
-#&gt; $log
-#&gt; Empty data.table (0 rows and 2 cols): class,msg
-#&gt; 
-#&gt; $elapsed
-#&gt; [1] 0.001
-#&gt; </div><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"evaluate"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"evaluate"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; $result
-#&gt; [1] 0.570045
-#&gt; 
-#&gt; $log
-#&gt;     class       msg
-#&gt; 1: output hi from f
-#&gt; 
-#&gt; $elapsed
-#&gt; [1] 0.003
-#&gt; </div><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"callr"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"callr"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; $result
-#&gt; [1] 0.2655087
-#&gt; 
-#&gt; $log
-#&gt;     class       msg
-#&gt; 1: output hi from f
-#&gt; 
-#&gt; $elapsed
-#&gt; elapsed 
-#&gt;   0.205 
-#&gt; </div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>f</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>message</a></span><span class='op'>(</span><span class='st'>"hi from f"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>n</span> <span class='op'>&gt;</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>    <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='st'>"n must be &lt;= 5"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>}</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"none"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> hi from f</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.2655087</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $log</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Empty data.table (0 rows and 2 cols): class,msg</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $elapsed</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.001</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"evaluate"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"evaluate"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.570045</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $log</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     class       msg</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: output hi from f</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $elapsed</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.004</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"callr"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>encapsulate</span><span class='op'>(</span><span class='st'>"callr"</span>, <span class='va'>f</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, .seed <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $result</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.2655087</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $log</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     class       msg</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1: output hi from f</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $elapsed</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> elapsed </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    0.26 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

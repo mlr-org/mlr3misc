@@ -83,7 +83,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.5</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -163,12 +163,12 @@ Vector of strings.</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Width of the output.</p></td>
     </tr>
     <tr>
       <th>ellipsis</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 If the string has to be shortened, this is signaled by appending <code>ellipsis</code> to <code>str</code>. Default is <code>"[...]"</code>.</p></td>
     </tr>
     </table>
@@ -178,8 +178,9 @@ If the string has to be shortened, this is signaled by appending <code>ellipsis<
     <p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>str_trunc</span><span class='op'>(</span><span class='st'>"This is a quite long string"</span>, <span class='fl'>20</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "This is a quite[...]"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>str_trunc</span><span class='op'>(</span><span class='st'>"This is a quite long string"</span>, <span class='fl'>20</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "This is a quite[...]"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

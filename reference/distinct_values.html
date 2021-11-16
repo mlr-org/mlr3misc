@@ -84,7 +84,7 @@ and remove missing values." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.5</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -164,14 +164,14 @@ and remove missing values.</p>
     </tr>
     <tr>
       <th>drop</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+      <td><p>:: <code>logical(1)</code><br />
 If <code>TRUE</code>, only returns values which are present in <code>x</code>.
 If <code>FALSE</code>, returns all levels for <code><a href='https://rdrr.io/r/base/factor.html'>factor()</a></code> and <code><a href='https://rdrr.io/r/base/factor.html'>ordered()</a></code>, as well as
 <code>TRUE</code> and <code>FALSE</code> for <code><a href='https://rdrr.io/r/base/logical.html'>logical()</a></code>s.</p></td>
     </tr>
     <tr>
       <th>na_rm</th>
-      <td><p>:: <code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+      <td><p>:: <code>logical(1)</code><br />
 If <code>TRUE</code>, missing values are removed from the vector of distinct values.</p></td>
     </tr>
     </table>
@@ -181,19 +181,25 @@ If <code>TRUE</code>, missing values are removed from the vector of distinct val
     <p>(atomic <code><a href='https://rdrr.io/r/base/vector.html'>vector()</a></code>) with distinct values in no particular order.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># for factors:</span>
-<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>, <span class='cn'>NA</span><span class='op'>)</span>, levels <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
-<span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a" "b"</div><div class='input'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, na_rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a" "b" NA </div><div class='input'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a" "b" "c"</div><div class='input'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span>, na_rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a" "b" "c" NA </div><div class='input'>
-<span class='co'># for logicals:</span>
-<span class='fu'>distinct_values</span><span class='op'>(</span><span class='cn'>TRUE</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'>
-<span class='co'># for numerics:</span>
-<span class='fu'>distinct_values</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 1 2 3</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># for factors:</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>, <span class='cn'>NA</span><span class='op'>)</span>, levels <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a" "b"</span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, na_rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a" "b" NA </span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a" "b" "c"</span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='va'>x</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span>, na_rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a" "b" "c" NA </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># for logicals:</span></span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='cn'>TRUE</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  TRUE FALSE</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># for numerics:</span></span>
+<span class='r-in'><span class='fu'>distinct_values</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

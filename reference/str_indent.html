@@ -83,7 +83,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.4</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3misc <small>v0.9.5</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -158,7 +158,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>initial</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+      <td><p>(<code>character(1)</code>)<br />
 Initial string, passed to <code><a href='https://rdrr.io/r/base/strwrap.html'>strwrap()</a></code>.</p></td>
     </tr>
     <tr>
@@ -168,12 +168,12 @@ Vector of strings.</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Width of the output.</p></td>
     </tr>
     <tr>
       <th>exdent</th>
-      <td><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>)<br />
+      <td><p>(<code>integer(1)</code>)<br />
 Indentation of subsequent lines in paragraph.</p></td>
     </tr>
     <tr>
@@ -188,11 +188,12 @@ Additional parameters passed to <code><a href='str_collapse.html'>str_collapse()
     <p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>str_indent</span><span class='op'>(</span><span class='st'>"Letters:"</span>, <span class='fu'><a href='str_collapse.html'>str_collapse</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"\n"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Letters: a, b, c, d, e,
-#&gt;   f, g, h, i, j, k, l,
-#&gt;   m, n, o, p, q, r, s,
-#&gt;   t, u, v, w, x, y, z</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'>str_indent</span><span class='op'>(</span><span class='st'>"Letters:"</span>, <span class='fu'><a href='str_collapse.html'>str_collapse</a></span><span class='op'>(</span><span class='va'>letters</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"\n"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Letters: a, b, c, d, e,</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   f, g, h, i, j, k, l,</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   m, n, o, p, q, r, s,</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   t, u, v, w, x, y, z</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
