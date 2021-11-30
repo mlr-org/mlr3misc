@@ -1,3 +1,9 @@
+# mlr3misc 0.10.0
+
+* Added helper `get_private()`.
+* Added helper `recycle_vectors()`.
+* Added helpers `walk()`, `iwalk()` and `pwalk()`.
+
 # mlr3misc 0.9.5
 
 * Added helper `deframe()`.

@@ -16,9 +16,11 @@
 #' * `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
 #' * `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
 #' * `detect()` returns the first element where predicate `.p` evaluates to `TRUE`.
+#' * `walk()`, `iwalk()` and `pwalk()` are the counterparts to `map()`, `imap()` and `pmap()`, but
+#'   just visit (or change by reference) the elements of `.x`. They return input `.x` invisibly.
 #'
 #'
-#' Additionally, the functions `map()`, `imap()` and `pmap` have type-safe variants with the following suffixes:
+#' Additionally, the functions `map()`, `imap()` and `pmap()` have type-safe variants with the following suffixes:
 #'
 #' * `*_lgl()` returns a `logical(length(.x))`.
 #' * `*_int()` returns a `integer(length(.x))`.
@@ -70,6 +72,7 @@ mapply_list = function(.f, .dots, .args = list()) {
   assert_function(.f)
   assert_list(.args)
   stopifnot(is.list(.dots)) # also allow data.frame alike objects
+
   .mapply(.f, .dots, .args)
 }
 
@@ -126,6 +129,7 @@ pmap_lgl = function(.x, .f, ...) {
   tryCatch(as.vector(out, "logical"), warning = function(w) stop("Cannot convert to logical"))
 }
 
+
 #' @export
 #' @rdname compat-map
 pmap_int = function(.x, .f, ...) {
@@ -165,36 +169,36 @@ pmap_dtc = function(.x, .f, ...) {
 #' @export
 #' @rdname compat-map
 imap = function(.x, .f, ...) {
-  nn = names(.x) %??% seq_along(.x)
-  setNames(mapply_list(.f, list(.x, nn), list(...)), names(.x))
+  .nn = names(.x) %??% seq_along(.x)
+  setNames(mapply_list(.f, list(.x, .nn), list(...)), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_lgl = function(.x, .f, ...) {
-  nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_lgl(c(list(.x, nn)), .f), names(.x))
+  .nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_lgl(c(list(.x, .nn)), .f), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_int = function(.x, .f, ...) {
-  nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_int(c(list(.x, nn)), .f), names(.x))
+  .nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_int(c(list(.x, .nn)), .f), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_dbl = function(.x, .f, ...) {
-  nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_dbl(c(list(.x, nn)), .f), names(.x))
+  .nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_dbl(c(list(.x, .nn)), .f), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_chr = function(.x, .f, ...) {
-  nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_chr(c(list(.x, nn)), .f), names(.x))
+  .nn = names(.x) %??% seq_along(.x)
+  setNames(pmap_chr(c(list(.x, .nn)), .f), names(.x))
 }
 
 #' @export
@@ -238,20 +242,20 @@ discard = function(.x, .p, ...) {
 
 #' @export
 discard.default = function(.x, .p, ...) { # nolint
-  sel = probe(.x, .p, ...)
-  .x[is.na(sel) | !sel]
+  .sel = probe(.x, .p, ...)
+  .x[is.na(.sel) | !.sel]
 }
 
 #' @export
 discard.data.frame = function(.x, .p, ...) { # nolint
-  sel = probe(.x, .p, ...)
-  .x[, is.na(sel) | !sel, drop = FALSE]
+  .sel = probe(.x, .p, ...)
+  .x[, is.na(.sel) | !.sel, drop = FALSE]
 }
 
 #' @export
 discard.data.table = function(.x, .p, ...) { # nolint
-  sel = probe(.x, .p, ...)
-  .x[, is.na(sel) | !sel, with = FALSE]
+  .sel = probe(.x, .p, ...)
+  .x[, is.na(.sel) | !.sel, with = FALSE]
 }
 
 #' @export
@@ -263,24 +267,24 @@ map_if = function(.x, .p, .f, ...) {
 #' @export
 #' @rdname compat-map
 map_if.default = function(.x, .p, .f, ...) { # nolint
-  matches = probe(.x, .p)
-  .x[matches] = map(.x[matches], .f, ...)
+  .matches = probe(.x, .p)
+  .x[.matches] = map(.x[.matches], .f, ...)
   .x
 }
 
 #' @export
 map_if.data.frame = function(.x, .p, .f, ...) { # nolint
-  matches = probe(.x, .p)
-  .x[, matches] = map(.x[, matches, drop = FALSE], .f, ...)
+  .matches = probe(.x, .p)
+  .x[, .matches] = map(.x[, .matches, drop = FALSE], .f, ...)
   .x
 }
 
 #' @export
 map_if.data.table = function(.x, .p, .f, ...) { # nolint
-  matches = which(probe(.x, .p))
-  if (length(matches)) {
+  .matches = which(probe(.x, .p))
+  if (length(.matches)) {
     .x = copy(.x)
-    for (j in matches) {
+    for (j in .matches) {
       set(.x, j = j, value = .f(.x[[j]]))
     }
   }
@@ -333,4 +337,46 @@ detect = function(.x, .p, ...) {
     }
   }
   return(NULL)
+}
+
+#' @export
+#' @rdname compat-map
+walk = function(.x, .f, ...) {
+  for (.xi in .x) {
+    .f(.xi, ...)
+  }
+
+  invisible(.x)
+}
+
+walk2 = function(.x, .f, ...) {
+  .wrapper = function(...) { .f(...); NULL }
+  map(.x, .wrapper, ...)
+
+  invisible(.x)
+}
+
+#' @export
+#' @rdname compat-map
+iwalk = function(.x, .f, ...) {
+  .nn = names(.x) %??% seq_along(.x)
+  for (.i in seq_along(.x)) {
+    .f(.x[[.i]], .nn[.i], ...)
+  }
+
+  invisible(.x)
+}
+
+#' @export
+#' @rdname compat-map
+pwalk = function(.x, .f, ...) {
+  # a loop is too slow here, so we wrap the function and NULL the return value
+  # this allows the GC to collect the return values of the function calls
+  .wrapper = function(...) {
+    .f(...)
+    NULL
+  }
+
+  pmap(.x, .wrapper, ...)
+  invisible(.x)
 }

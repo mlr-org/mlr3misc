@@ -31,6 +31,9 @@
 \alias{every}
 \alias{some}
 \alias{detect}
+\alias{walk}
+\alias{iwalk}
+\alias{pwalk}
 \title{Apply Functions in the spirit of 'purrr'}
 \usage{
 map(.x, .f, ...)
@@ -90,6 +93,12 @@ every(.x, .p, ...)
 some(.x, .p, ...)
 
 detect(.x, .p, ...)
+
+walk(.x, .f, ...)
+
+iwalk(.x, .f, ...)
+
+pwalk(.x, .f, ...)
 }
 \arguments{
 \item{.x}{(\code{list()} | atomic \code{vector()}).}
@@ -128,9 +137,11 @@ each vector of \code{.x}, then the second element of \code{.x}, and so on.
 \item \code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
 \item \code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
 \item \code{detect()} returns the first element where predicate \code{.p} evaluates to \code{TRUE}.
+\item \code{walk()}, \code{iwalk()} and \code{pwalk()} are the counterparts to \code{map()}, \code{imap()} and \code{pmap()}, but
+just visit (or change by reference) the elements of \code{.x}. They return input \code{.x} invisibly.
 }
 
-Additionally, the functions \code{map()}, \code{imap()} and \code{pmap} have type-safe variants with the following suffixes:
+Additionally, the functions \code{map()}, \code{imap()} and \code{pmap()} have type-safe variants with the following suffixes:
 \itemize{
 \item \verb{*_lgl()} returns a \code{logical(length(.x))}.
 \item \verb{*_int()} returns a \code{integer(length(.x))}.
