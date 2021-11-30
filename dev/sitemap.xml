@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mlr3misc.mlr-org.com/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/authors.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/index.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/news/index.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/Dictionary.html</loc>
@@ -79,6 +91,9 @@
     <loc>https://mlr3misc.mlr-org.com/reference/ids.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/insert_named.html</loc>
   </url>
   <url>
@@ -128,6 +143,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/rd_info.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/recycle_vectors.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/register_namespace_callback.html</loc>
