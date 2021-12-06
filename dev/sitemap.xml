@@ -1,204 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mlr3misc.mlr-org.com/LICENSE-text.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/LICENSE.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/authors.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/index.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/news/index.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/Dictionary.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/Dictionary.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/as_factor.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/as_factor.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/as_short_string.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/as_short_string.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/assert_ro_binding.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/assert_ro_binding.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/calculate_hash.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/calculate_hash.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/capitalize.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/capitalize.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/check_packages_installed.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/check_packages_installed.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/chunk_vector.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/chunk_vector.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/compat-map.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/compat-map.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/compose.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/compose.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/compute_mode.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/compute_mode.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/count_missing.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/count_missing.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/crate.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/crate.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/cross_join.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/cross_join.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/dictionary_sugar_get.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/did_you_mean.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/did_you_mean.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/distinct_values.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/distinct_values.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/encapsulate.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/encapsulate.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/enframe.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/enframe.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/extract_vars.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/extract_vars.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/format_bib.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/format_bib.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/formulate.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/formulate.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/get_private.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/get_private.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/get_seed.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/get_seed.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/has_element.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/has_element.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/ids.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/ids.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/index.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/insert_named.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/insert_named.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/invoke.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/invoke.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/is_scalar_na.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/is_scalar_na.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/keep_in_bounds.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/keep_in_bounds.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/leanify_r6.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/leanify_r6.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/load_dataset.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/load_dataset.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/map_values.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/map_values.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/mlr3misc-package.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/mlr3misc-package.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/modify_if.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/modify_if.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/named_list.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/named_list.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/named_vector.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/named_vector.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/names2.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/names2.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/nin.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/nin.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/open_help.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/open_help.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/printf.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/printf.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/rcbind.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/rcbind.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/rd_info.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/rd_info.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/recycle_vectors.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/recycle_vectors.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/register_namespace_callback.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/register_namespace_callback.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/reorder_vector.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/reorder_vector.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/require_namespaces.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/require_namespaces.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/rowwise_table.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/rowwise_table.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/sequence_helpers.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/sequence_helpers.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/set_class.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/set_class.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/set_names.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/set_names.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/shuffle.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/shuffle.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/str_collapse.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/str_collapse.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/str_indent.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/str_indent.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/str_trunc.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/str_trunc.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/to_decimal.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/to_decimal.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/topo_sort.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/topo_sort.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/transpose_list.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/transpose_list.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/unnest.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/unnest.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/which_min.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/which_min.html</loc>
   </url>
   <url>
-    <loc>https://mlr3misc.mlr-org.com/reference/with_package.html</loc>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/with_package.html</loc>
   </url>
 </urlset>
