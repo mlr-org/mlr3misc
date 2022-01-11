@@ -7,6 +7,8 @@
 \alias{map_int}
 \alias{map_dbl}
 \alias{map_chr}
+\alias{map_br}
+\alias{map_bc}
 \alias{map_dtr}
 \alias{map_dtc}
 \alias{pmap}
@@ -45,6 +47,10 @@ map_int(.x, .f, ...)
 map_dbl(.x, .f, ...)
 
 map_chr(.x, .f, ...)
+
+map_br(.x, .f, ...)
+
+map_bc(.x, .f, ...)
 
 map_dtr(.x, .f, ..., .fill = FALSE, .idcol = NULL)
 
@@ -147,9 +153,11 @@ Additionally, the functions \code{map()}, \code{imap()} and \code{pmap()} have t
 \item \verb{*_int()} returns a \code{integer(length(.x))}.
 \item \verb{*_dbl()} returns a \code{double(length(.x))}.
 \item \verb{*_chr()} returns a \code{character(length(.x))}.
+\item \verb{*_br()} returns an object where the results of \code{.f} are put together with \code{\link[base:cbind]{base::rbind()}}.
+\item \verb{*_bc()} returns an object where the results of \code{.f} are put together with \code{\link[base:cbind]{base::cbind()}}.
 \item \verb{*_dtr()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together
 in an \code{\link[base:cbind]{base::rbind()}} fashion.
-\item \verb{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put together
-in an \code{\link[base:cbind]{base::cbind()}} fashion.
+\item \verb{*_dtc()} returns a \code{\link[data.table:data.table]{data.table::data.table()}} where the results of \code{.f} are put
+together in an \code{\link[base:cbind]{base::cbind()}} fashion.
 }
 }

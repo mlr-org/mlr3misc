@@ -26,10 +26,12 @@
 #' * `*_int()` returns a `integer(length(.x))`.
 #' * `*_dbl()` returns a `double(length(.x))`.
 #' * `*_chr()` returns a `character(length(.x))`.
+#' * `*_br()` returns an object where the results of `.f` are put together with [base::rbind()].
+#' * `*_bc()` returns an object where the results of `.f` are put together with [base::cbind()].
 #' * `*_dtr()` returns a [data.table::data.table()] where the results of `.f` are put together
 #'   in an [base::rbind()] fashion.
-#' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put together
-#'   in an [base::cbind()] fashion.
+#' * `*_dtc()` returns a [data.table::data.table()] where the results of `.f` are put
+#'   together in an [base::cbind()] fashion.
 #'
 #' @param .x (`list()` | atomic `vector()`).
 #' @param .f (`function()` | `character()` | `integer()`)\cr
@@ -98,6 +100,18 @@ map_dbl = function(.x, .f, ...) {
 #' @rdname compat-map
 map_chr = function(.x, .f, ...) {
   map_mold(.x, .f, NA_character_, ...)
+}
+
+#' @export
+#' @rdname compat-map
+map_br = function(.x, .f, ...) {
+  do.call(rbind, map(.x, .f, ...))
+}
+
+#' @export
+#' @rdname compat-map
+map_bc = function(.x, .f, ...) {
+  do.call(cbind, map(.x, .f, ...))
 }
 
 #' @export

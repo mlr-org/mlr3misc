@@ -1,6 +1,7 @@
 # mlr3misc 0.10.0
 
 * Added helper `get_private()`.
+* Added helper `map_br()` and `map_bc()`.
 * Added helper `recycle_vectors()`.
 * Added helpers `walk()`, `iwalk()` and `pwalk()`.
 

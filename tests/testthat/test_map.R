@@ -222,3 +222,17 @@ test_that("pwalk", {
   f = function(a, b) a + b
   expect_equal(pwalk(.x, f), .x)
 })
+
+test_that("map_br / map_bc", {
+  .x = list(1:3, 4:6, 7:9)
+
+  expect_equal(
+    map_bc(.x, identity),
+    matrix(1:9, nrow = 3, byrow = FALSE)
+  )
+
+  expect_equal(
+    map_br(.x, identity),
+    matrix(1:9, nrow = 3, byrow = TRUE)
+  )
+})
