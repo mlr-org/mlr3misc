@@ -363,13 +363,6 @@ walk = function(.x, .f, ...) {
   invisible(.x)
 }
 
-walk2 = function(.x, .f, ...) {
-  .wrapper = function(...) { .f(...); NULL }
-  map(.x, .wrapper, ...)
-
-  invisible(.x)
-}
-
 #' @export
 #' @rdname compat-map
 iwalk = function(.x, .f, ...) {
