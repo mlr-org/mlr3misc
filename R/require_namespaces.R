@@ -10,10 +10,10 @@
 #' @param msg (`character(1)`)\cr
 #'   Message to print on error. Use `"%s"` as placeholder for the list of packages.
 #' @param quietly (`logical(1)`)\cr
-#'   If `TRUE` then returns `TRUE` if all packages available, otherwise `FALSE`.
+#'   If `TRUE` then returns `TRUE` if all packages are loaded, otherwise `FALSE`.
 #'
 #'
-#' @return (named `character()`) of loaded packages (invisibly).
+#' @return (`character()`) of loaded packages (invisibly).
 #' @export
 #' @examples
 #' require_namespaces("mlr3misc")

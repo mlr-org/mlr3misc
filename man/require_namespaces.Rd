@@ -18,10 +18,10 @@ Packages to load.}
 Message to print on error. Use \code{"\%s"} as placeholder for the list of packages.}
 
 \item{quietly}{(\code{logical(1)})\cr
-If \code{TRUE} then returns \code{TRUE} if all packages available, otherwise \code{FALSE}.}
+If \code{TRUE} then returns \code{TRUE} if all packages are loaded, otherwise \code{FALSE}.}
 }
 \value{
-(named \code{character()}) of loaded packages (invisibly).
+(\code{character()}) of loaded packages (invisibly).
 }
 \description{
 Packages are loaded (not attached) via \code{\link[base:ns-load]{base::requireNamespace()}}.
