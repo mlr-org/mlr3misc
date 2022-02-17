@@ -1,0 +1,10 @@
+*.Rdata   binary
+*.RData   binary
+*.rda     binary
+*.rds     binary
+*.Rd      text
+*.Rmd	  text
+*.R  	  text
+*.Rproj   text
+*.[Rr]md  linguist-detectable
+NEWS.md merge=union
