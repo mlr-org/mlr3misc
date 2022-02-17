@@ -22,8 +22,8 @@
 #' formulate(rhs = c("Sepal.Length", "Sepal.Width"))
 formulate = function(lhs = character(), rhs = character(), env = NULL, quote = "right") {
   assert_subset(quote, choices = c("left", "right"))
-  lhs = as.character(lhs)
-  rhs = as.character(rhs)
+  lhs = as.character(lhs, any.missing = FALSE)
+  rhs = as.character(rhs, any.missing = FALSE)
 
   if (length(lhs) == 0L) {
     lhs = ""
@@ -33,7 +33,7 @@ formulate = function(lhs = character(), rhs = character(), env = NULL, quote = "
 
   if (length(rhs) == 0L) {
     rhs = "1"
-  } else if ("right" %in% quote && !identical(rhs, "1")) {
+  } else if ("right" %in% quote && !identical(rhs, ".") && !identical(rhs, "1")) {
     rhs = paste0("`", rhs, "`")
   }
 

@@ -17,3 +17,10 @@ test_that("formulate_multioutput", {
   expect_set_equal(x$lhs, c("Pepal.Width", "Petal.Length"))
   expect_set_equal(x$rhs, c("Sepal.Width", "Sepal.Length"))
 })
+
+test_that("formulate quotes", {
+  f = formulate("y", "a-b")
+  str = as.character(f)
+  expect_character(str, len = 3)
+  expect_equal(str[3], "`a-b`")
+})
