@@ -2,6 +2,7 @@
 ^.ignore$
 ^.editorconfig$
 ^.gitignore$
+^.gitattributes$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^man-roxygen$
