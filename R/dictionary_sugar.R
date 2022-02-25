@@ -102,6 +102,7 @@ dictionary_sugar_mget = function(dict, .keys, ...) {
       objs[[i]]$id = nn[i]
     }
   }
+  names(objs) = map_chr(objs, "id")
   objs
 }
 
