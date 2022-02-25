@@ -29,6 +29,15 @@ insert_named = function(x, y) {
 
 #' @export
 #' @rdname insert_named
+insert_named.NULL = function(x, y) { # nolint
+  if (!test_named(y)) {
+    stopf("insert_named(NULL, y) failed: 'y' is unnamed")
+  }
+  y
+}
+
+#' @export
+#' @rdname insert_named
 insert_named.default = function(x, y) { # nolint
   assert_vector(x, names = "unique")
   x[names(y)] = y

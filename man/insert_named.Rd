@@ -2,6 +2,7 @@
 % Please edit documentation in R/insert_named.R, R/remove_named.R
 \name{insert_named}
 \alias{insert_named}
+\alias{insert_named.NULL}
 \alias{insert_named.default}
 \alias{insert_named.environment}
 \alias{insert_named.data.frame}
@@ -13,6 +14,8 @@
 \title{Insert or Remove Named Elements}
 \usage{
 insert_named(x, y)
+
+\method{insert_named}{`NULL`}(x, y)
 
 \method{insert_named}{default}(x, y)
 
