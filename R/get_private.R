@@ -38,7 +38,7 @@ get_private = function(x) {
 #' library(R6)
 #' item = R6Class("Item", private = list(x = 1))$new()
 #' get_private(item)$x
-#' get_private(item, "x")a = 2L
+#' get_private(item, "x") = 2L
 #' get_private(item)$x
 `get_private<-` = function(x, which, value) {
   if (!inherits(x, "R6")) {

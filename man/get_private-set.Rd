@@ -23,6 +23,6 @@ Convenience function to assign a value to a private field of an \link{R6} instan
 library(R6)
 item = R6Class("Item", private = list(x = 1))$new()
 get_private(item)$x
-get_private(item, "x")a = 2L
+get_private(item, "x") = 2L
 get_private(item)$x
 }
