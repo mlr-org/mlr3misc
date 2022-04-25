@@ -29,8 +29,8 @@ get_private = function(x) {
 #'   Object whose private field should be modified.
 #' @param which (character(1))\cr
 #'   Private field that is being modified.
-# @param  value (any)\cr
-#   Value to assign to the private field.
+#' @param value (any)\cr
+#'   Value to assign to the private field.
 #'
 #' @return The R6 instance x, modified in-place. If it is not an R6 instance, NULL is returned.
 #' @export

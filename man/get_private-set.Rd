@@ -12,6 +12,9 @@ Object whose private field should be modified.}
 
 \item{which}{(character(1))\cr
 Private field that is being modified.}
+
+\item{value}{(any)\cr
+Value to assign to the private field.}
 }
 \value{
 The R6 instance x, modified in-place. If it is not an R6 instance, NULL is returned.
