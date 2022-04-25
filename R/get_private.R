@@ -19,3 +19,29 @@ get_private = function(x) {
 
   x[[".__enclos_env__"]][["private"]]
 }
+
+#' @title Assign Value to Private Field
+#'
+#' @description
+#' Convenience function to assign a value to a private field of an [R6] instance.
+#'
+#' @param x (any)\cr
+#'   Object to assign a private field to.
+#' @param val (any)\cr
+#'   Value to assign to the
+#'
+#'
+#' @return `environment()` of private members, or `NULL` if `x` is not an R6 object.
+#' @export
+#' @examples
+#' library(R6)
+#' item = R6Class("Item", private = list(x = 1))$new()
+#' get_private(item)$x
+`get_private<-` = function(x, which, value) {
+  if (!inherits(x, "R6")) {
+    return(NULL)
+  }
+
+  x[[".__enclos_env__"]][["private"]][[which]] = value
+  x
+}
