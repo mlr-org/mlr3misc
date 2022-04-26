@@ -21,11 +21,8 @@
 #' set_params(param_set, b = 4, .insert = TRUE)
 set_params = function(.ps, ..., .values = list(), .insert = TRUE) {
   dots = list(...)
-  assert_named(dots)
-  assert_list(.values)
-  if (length(.values)) {
-    assert_names(names(.values))
-  }
+  assert_list(dots, names = "unique")
+  assert_list(.values, names = "unique")
   assert_disjunct(names(dots), names(.values))
   new_values = c(dots, .values)
   if (.insert) {
