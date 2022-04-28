@@ -18,8 +18,7 @@ Description: Frequently used helper functions and assertions
     as well as some generally useful 'R6' classes. This package also
     supersedes the package 'BBmisc'.
 License: LGPL-3
-URL: https://mlr3misc.mlr-org.com,
-    https://github.com/mlr-org/mlr3misc
+URL: https://mlr3misc.mlr-org.com, https://github.com/mlr-org/mlr3misc
 BugReports: https://github.com/mlr-org/mlr3misc/issues
 Depends:
     R (>= 3.1.0)
@@ -34,9 +33,9 @@ Suggests:
     evaluate,
     paradox,
     testthat (>= 3.0.0)
-Encoding: UTF-8
-NeedsCompilation: yes
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Encoding: UTF-8
+NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
