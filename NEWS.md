@@ -1,5 +1,6 @@
 # mlr3misc 0.11.0
 
+* Added `get_private<-` function.
 * `insert_named()` has a new S3 method for `NULL` (#57).
 * Elements returned by dictionary helpers are now named by key.
 * Improved assertions for `formulate()`.
