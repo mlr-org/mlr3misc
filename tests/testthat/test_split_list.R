@@ -8,9 +8,6 @@ test_that("split_list works", {
   expected = list(list(1, 3, 4, a = 7), list(b = 2))
   expect_equal(expected, observed)
 
-  l = list()
-  expect_error(split_list(l, list("a", "b")))
-
   l = list(a = 1, b = 2)
   observed = split_list(l, list(aaa = "a"))
   expected = list(aaa = list(a = 1))
@@ -20,4 +17,7 @@ test_that("split_list works", {
   observed = split_list(list(1, 2), list("*"))
   expected = list(list(1, 2))
   expect_equal(observed, expected)
+
+  expect_error(split_list(l, c("a", "b")))
+
 })

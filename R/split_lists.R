@@ -16,6 +16,7 @@
 #' @export
 split_list = function(x, patterns, ...) {
   assert_list(x)
+  assert_list(patterns)
   nms = names(x) %??% ""
   out = map(
     patterns,
