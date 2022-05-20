@@ -1,4 +1,5 @@
 #' @title Splits a list based on names
+#'
 #' @description
 #' Named lists can be split into multiple lists by applying regexes to its names.
 #'
