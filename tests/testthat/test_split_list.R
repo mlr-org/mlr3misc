@@ -15,4 +15,9 @@ test_that("split_list works", {
   observed = split_list(l, list(aaa = "a"))
   expected = list(aaa = list(a = 1))
   expect_equal(observed, expected)
+
+  l = list(1, 2)
+  observed = split_list(list(1, 2), list("*"))
+  expected = list(list(1, 2))
+  expect_equal(observed, expected)
 })

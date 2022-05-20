@@ -16,11 +16,11 @@
 #' @export
 split_list = function(x, patterns, ...) {
   assert_list(x)
-  assert_true(!is.null(names(x)))
+  nms = names(x) %??% ""
   out = map(
     patterns,
     function(pattern) {
-      x[grepl(pattern, names(x), ...)]
+      x[grepl(pattern, nms, ...)]
     }
   )
   set_names(out, names(patterns))
