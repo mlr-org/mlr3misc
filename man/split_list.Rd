@@ -10,7 +10,7 @@ split_list(x, patterns, ...)
 \item{x}{(named \code{list()})\cr
 The list that will be split.}
 
-\item{patterns}{(\code{list()})\cr
+\item{patterns}{(\code{character()})\cr
 A list containing various regex patterns. If it is named, the output inherits those names.}
 
 \item{...}{(any)\cr
@@ -21,4 +21,5 @@ A (possibly named) \code{list()} of subsets of x.
 }
 \description{
 Named lists can be split into multiple lists by applying regexes to its names.
+If the list is unnamed, all names are treated to be \code{""} for consistency.
 }
