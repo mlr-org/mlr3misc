@@ -164,74 +164,74 @@ together in an <code><a href="https://rdrr.io/r/base/cbind.html" class="external
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">map</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_br</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_bc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">map_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pmap_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">pmap_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">imap_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">imap_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">keep</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">discard</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_if</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">map_if</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">map_at</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.at</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">every</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">some</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">detect</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">walk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">iwalk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">pwalk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">map</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_br</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_bc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pmap_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_lgl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_int</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_dbl</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_chr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_dtr</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span>, .fill <span class="op">=</span> <span class="cn">FALSE</span>, .idcol <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">imap_dtc</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">keep</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">discard</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_if</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">map_if</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">map_at</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.at</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">every</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">some</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">detect</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">walk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">iwalk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pwalk</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">

@@ -89,7 +89,7 @@ The remaining arguments will be put into the resulting table.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rowwise_table</span><span class="op">(</span><span class="va">...</span>, .key <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rowwise_table</span><span class="op">(</span><span class="va">...</span>, .key <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -115,11 +115,11 @@ table.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">rowwise_table</span><span class="op">(</span></span>
-<span class="r-in">  <span class="op">~</span><span class="va">a</span>, <span class="op">~</span><span class="va">b</span>,</span>
-<span class="r-in">  <span class="fl">1</span>, <span class="st">"a"</span>,</span>
-<span class="r-in">  <span class="fl">2</span>, <span class="st">"b"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">rowwise_table</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="op">~</span><span class="va">a</span>, <span class="op">~</span><span class="va">b</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">1</span>, <span class="st">"a"</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">2</span>, <span class="st">"b"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    a b</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: 1 a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2: 2 b</span>

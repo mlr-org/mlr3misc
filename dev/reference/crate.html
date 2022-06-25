@@ -80,7 +80,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crate</span><span class="op">(</span><span class="va">.fn</span>, <span class="va">...</span>, .parent <span class="op">=</span> <span class="va">.GlobalEnv</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crate</span><span class="op">(</span><span class="va">.fn</span>, <span class="va">...</span>, .parent <span class="op">=</span> <span class="va">.GlobalEnv</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -103,18 +103,18 @@ Parent environment to look up names. Default so the global environment.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">meta_f</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">=</span> <span class="fl">1</span></span>
-<span class="r-in">  <span class="va">y</span> <span class="op">=</span> <span class="fl">2</span></span>
-<span class="r-in">  <span class="fu">crate</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span>, <span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fl">100</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">=</span> <span class="fl">200</span></span>
-<span class="r-in"><span class="va">z</span> <span class="op">=</span> <span class="fl">300</span></span>
-<span class="r-in"><span class="va">f</span> <span class="op">=</span> <span class="fu">meta_f</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">meta_f</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">=</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">=</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span>  <span class="fu">crate</span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span>, <span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">100</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="fl">200</span></span></span>
+<span class="r-in"><span><span class="va">z</span> <span class="op">=</span> <span class="fl">300</span></span></span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">=</span> <span class="fu">meta_f</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in f():</span> object 'y' not found</span>
 </code></pre></div>
     </div>
