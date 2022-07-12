@@ -12,7 +12,7 @@
 #'     or R6Class itself. Read-only access can be implemented using active bindings.
 #'   * One or more callback functions.
 #'
-#' Use the `as_callback()` function to create a [Callback].
+#' Use the `as_callback()` function to create a Callback.
 #'
 #' @examples
 #' MyCallback = R6Class("MyCallback",
@@ -94,4 +94,33 @@ call_back = function(step, callbacks, context) {
 assert_callback = function(callback) {
   assert_class(callback, "Callback")
   invisible(callback)
+}
+
+
+#' @title Dictionary with Callbacks
+#'
+#' @description
+#' This dictionary contains predefined callbacks.
+#' As a convention, the key should start with the name of the package, i.e. package.callback
+#' The elements can be retried using `cllb` or `cllbs`.
+#' @export
+#' @include Dictionary.R
+mlr_callbacks = Dictionary$new()
+
+#' @title Retrieve a Callback
+#'
+#' @description Retries a predefined callback from mlr_callbacks.
+#'
+#'
+#' @name cllb
+#' @seealso Callback call_back
+#' @export
+cllb = function(.key, ...) {
+  dictionary_sugar_get(mlr_callacks, .key, ...)
+}
+
+#' @rdname cllb
+#' @export
+cllbs = function(.keys, ...) {
+  dictionary_sugar_mget(mlr_callbacks, .keys, ...)
 }

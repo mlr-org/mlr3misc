@@ -47,22 +47,22 @@ Stores the items of the dictionary}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Dictionary$new()}}
-\item \href{#method-format}{\code{Dictionary$format()}}
-\item \href{#method-print}{\code{Dictionary$print()}}
-\item \href{#method-keys}{\code{Dictionary$keys()}}
-\item \href{#method-has}{\code{Dictionary$has()}}
-\item \href{#method-get}{\code{Dictionary$get()}}
-\item \href{#method-mget}{\code{Dictionary$mget()}}
-\item \href{#method-add}{\code{Dictionary$add()}}
-\item \href{#method-remove}{\code{Dictionary$remove()}}
-\item \href{#method-required_args}{\code{Dictionary$required_args()}}
-\item \href{#method-clone}{\code{Dictionary$clone()}}
+\item \href{#method-Dictionary-new}{\code{Dictionary$new()}}
+\item \href{#method-Dictionary-format}{\code{Dictionary$format()}}
+\item \href{#method-Dictionary-print}{\code{Dictionary$print()}}
+\item \href{#method-Dictionary-keys}{\code{Dictionary$keys()}}
+\item \href{#method-Dictionary-has}{\code{Dictionary$has()}}
+\item \href{#method-Dictionary-get}{\code{Dictionary$get()}}
+\item \href{#method-Dictionary-mget}{\code{Dictionary$mget()}}
+\item \href{#method-Dictionary-add}{\code{Dictionary$add()}}
+\item \href{#method-Dictionary-remove}{\code{Dictionary$remove()}}
+\item \href{#method-Dictionary-required_args}{\code{Dictionary$required_args()}}
+\item \href{#method-Dictionary-clone}{\code{Dictionary$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Dictionary-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-new}{}}}
 \subsection{Method \code{new()}}{
 Construct a new Dictionary.
 \subsection{Usage}{
@@ -71,8 +71,8 @@ Construct a new Dictionary.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-Dictionary-format"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-format}{}}}
 \subsection{Method \code{format()}}{
 Format object as simple string.
 \subsection{Usage}{
@@ -81,8 +81,8 @@ Format object as simple string.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Dictionary-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-print}{}}}
 \subsection{Method \code{print()}}{
 Print object.
 \subsection{Usage}{
@@ -91,8 +91,8 @@ Print object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-keys"></a>}}
-\if{latex}{\out{\hypertarget{method-keys}{}}}
+\if{html}{\out{<a id="method-Dictionary-keys"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-keys}{}}}
 \subsection{Method \code{keys()}}{
 Returns all keys which comply to the regular expression \code{pattern}.
 If \code{pattern} is \code{NULL} (default), all keys are returned.
@@ -112,8 +112,8 @@ If \code{pattern} is \code{NULL} (default), all keys are returned.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-has"></a>}}
-\if{latex}{\out{\hypertarget{method-has}{}}}
+\if{html}{\out{<a id="method-Dictionary-has"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-has}{}}}
 \subsection{Method \code{has()}}{
 Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
 \subsection{Usage}{
@@ -132,8 +132,8 @@ Returns a logical vector with \code{TRUE} at its i-th position if the i-th key e
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get"></a>}}
-\if{latex}{\out{\hypertarget{method-get}{}}}
+\if{html}{\out{<a id="method-Dictionary-get"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-get}{}}}
 \subsection{Method \code{get()}}{
 Retrieves object with key \code{key} from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.
@@ -156,8 +156,8 @@ Object with corresponding key.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-mget"></a>}}
-\if{latex}{\out{\hypertarget{method-mget}{}}}
+\if{html}{\out{<a id="method-Dictionary-mget"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-mget}{}}}
 \subsection{Method \code{mget()}}{
 Returns objects with keys \code{keys} in a list named with \code{keys}.
 Additional arguments must be named and are passed to the constructors of the stored objects.
@@ -180,8 +180,8 @@ Named \code{list()} of objects with corresponding keys.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add"></a>}}
-\if{latex}{\out{\hypertarget{method-add}{}}}
+\if{html}{\out{<a id="method-Dictionary-add"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-add}{}}}
 \subsection{Method \code{add()}}{
 Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
 Additional arguments in \code{...} must be named and are passed as default arguments to \code{value} during construction.
@@ -209,8 +209,8 @@ Passed down to constructor.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-remove"></a>}}
-\if{latex}{\out{\hypertarget{method-remove}{}}}
+\if{html}{\out{<a id="method-Dictionary-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-remove}{}}}
 \subsection{Method \code{remove()}}{
 Removes objects with from the dictionary.
 \subsection{Usage}{
@@ -230,8 +230,8 @@ Keys of objects to remove.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-required_args"></a>}}
-\if{latex}{\out{\hypertarget{method-required_args}{}}}
+\if{html}{\out{<a id="method-Dictionary-required_args"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-required_args}{}}}
 \subsection{Method \code{required_args()}}{
 Returns the names of arguments required to construct the object.
 \subsection{Usage}{
@@ -251,8 +251,8 @@ Key of object to query for required arguments.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Dictionary-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
