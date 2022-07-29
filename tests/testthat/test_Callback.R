@@ -6,6 +6,9 @@ test_that("Callback works", {
     }
   )
 
+  expect_class(test_callback, "CallbackTest")
+  expect_string(test_callback$id, "test")
+
   context = new.env()
   test_callback$call("step", context)
   expect_equal(context$a, 1)
@@ -57,6 +60,3 @@ test_that("call_back works", {
   expect_equal(context$c, 2)
   expect_equal(context$d, 1)
 })
-
-
-

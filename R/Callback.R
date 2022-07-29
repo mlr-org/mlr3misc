@@ -90,19 +90,19 @@ Callback = R6Class("Callback",
 #'
 #' @param ... (Named list of `function()`s)
 #'   Public methods of the [Callback].
-#'   The functions must have a single argument named `context`.
+#'   The functions must have two arguments named `callback` and `context`.
 #'   The argument names indicate the step in which the method is called.
 #'
 #' @export
 as_callback = function(id, ...) {
-  callback_methods = list(...)
+  public = list(...)
   # assert_subset(names(callback_methods), bbotk_reflections$callback_steps)
-  walk(callback_methods, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
-  callback = Callback$new(id = id)
-  iwalk(callback_methods, function(method, step) {
-    callback[[step]] = method
-  })
-  callback
+  walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
+  callback = R6Class(paste0("Callback", capitalize(id)),
+    inherit = Callback,
+    public = public
+  )
+  callback$new(id = id)
 }
 
 #' @title Call Callbacks
@@ -122,7 +122,6 @@ assert_callback = function(callback) {
   assert_class(callback, "Callback")
   invisible(callback)
 }
-
 
 #' @title Dictionary with Callbacks
 #'
