@@ -113,6 +113,7 @@ as_callback = function(id, ...) {
 #' @keywords internal
 #' @export
 call_back = function(step, callbacks, context) {
+  if (!length(callbacks)) return(invisible(NULL))
   walk(callbacks, function(callback) callback$call(step, context))
   return(invisible(NULL))
 }
