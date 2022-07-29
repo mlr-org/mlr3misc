@@ -33,15 +33,17 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Collate: 
     'Dictionary.R'
     'Callback.R'
+    'Context.R'
     'as_factor.R'
     'as_short_string.R'
     'assert_ro_binding.R'
     'calculate_hash.R'
     'capitalize.R'
+    'catn.R'
     'check_packages_installed.R'
     'chunk.R'
     'compose.R'

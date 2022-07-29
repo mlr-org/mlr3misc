@@ -50,6 +50,7 @@
 #' f(callbacks)
 #' @export
 Callback = R6Class("Callback",
+  lock_objects = FALSE,
   public = list(
     #' @field id (`character(1)`)\cr
     #'   Identifier of the callback.
@@ -73,11 +74,36 @@ Callback = R6Class("Callback",
     #'   Context.
     call = function(step, context) {
       if (!is.null(self[[step]])) {
-        self[[step]](context)
+        self[[step]](self, context)
       }
     }
   )
 )
+
+#' @title Create a Callback
+#'
+#' @description
+#' Create a [Callback] from a list of functions.
+#'
+#' @param id (`character(1)`)\cr
+#'   Identifier for the new callback.
+#'
+#' @param ... (Named list of `function()`s)
+#'   Public methods of the [Callback].
+#'   The functions must have a single argument named `context`.
+#'   The argument names indicate the step in which the method is called.
+#'
+#' @export
+as_callback = function(id, ...) {
+  callback_methods = list(...)
+  # assert_subset(names(callback_methods), bbotk_reflections$callback_steps)
+  walk(callback_methods, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
+  callback = Callback$new(id = id)
+  iwalk(callback_methods, function(method, step) {
+    callback[[step]] = method
+  })
+  callback
+}
 
 #' @title Call Callbacks
 #'

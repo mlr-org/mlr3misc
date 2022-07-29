@@ -20,6 +20,11 @@ Context = R6::R6Class("Context",
 
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
+    #'
+    #' @param id (`character(1)`)\cr
+    #'   Identifier for the new instance.
+    #' @param label (`character(1)`)\cr
+    #'   Label for the new instance.
     initialize = function(id, label = NA_character_) {
       self$id = assert_string(id, min.chars = 1L)
       self$label = assert_string(label, na.ok = TRUE)

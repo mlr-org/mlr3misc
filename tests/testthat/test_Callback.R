@@ -1,30 +1,62 @@
 test_that("Callback works", {
-  MyCallback = R6Class("MyCallback",
-    inherit = Callback,
-    lock_objects = FALSE,
-    public = list(
-      initialize = function(id = "mycallback", a, b) {
-        self$id = assert_character(id, len = 1L)
-      },
-      step1 = function(context) {
+
+  test_callback = as_callback("test",
+    step = function(callback, context) {
         context$a = 1
-      },
-      step2 = function(context) {
-        context$b = 2
-      }
-    )
+    }
   )
 
-  mycb = MyCallback$new()
-  callbacks = list(mycb)
   context = new.env()
-  f = function(context, callbacks) {
-    call_back("step1", callbacks, context)
-    call_back("step2", callbacks, context)
-  }
-  f(context, callbacks)
-  expect_true(context$a == 1)
-  expect_true(context$b == 2)
+  test_callback$call("step", context)
+  expect_equal(context$a, 1)
 })
+
+test_that("call_back works", {
+
+  test_callback_1 = as_callback("test",
+    step_1 = function(callback, context) {
+      context$a = 1
+    },
+    step_2 = function(callback, context) {
+      context$b = 2
+    }
+  )
+
+  test_callback_2 = as_callback("test",
+    step_1 = function(callback, context) {
+      context$c = 2
+    }
+  )
+
+  test_callback_3 = as_callback("test",
+    step_3 = function(callback, context) {
+      context$d = 1
+    }
+  )
+
+  callbacks = list(test_callback_1, test_callback_2, test_callback_3)
+  context = new.env()
+  call_back("step_1", callbacks, context)
+
+  expect_equal(context$a, 1)
+  expect_null(context$b)
+  expect_equal(context$c, 2)
+  expect_null(context$d)
+
+  call_back("step_2", callbacks, context)
+
+  expect_equal(context$a, 1)
+  expect_equal(context$b, 2)
+  expect_equal(context$c, 2)
+  expect_null(context$d)
+
+  call_back("step_3", callbacks, context)
+
+  expect_equal(context$a, 1)
+  expect_equal(context$b, 2)
+  expect_equal(context$c, 2)
+  expect_equal(context$d, 1)
+})
+
 
 
