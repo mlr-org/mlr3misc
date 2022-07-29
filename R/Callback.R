@@ -1,53 +1,30 @@
 #' @title Callback
 #'
 #' @description
-#' Generic implementation of a callback mechanism.
+#' This is the abstract base class for callbacks.
 #' Callbacks allow to give more user control to customize the behaviour of mlr3 processes.
 #' To make use of this mechanism, three elements are required:
 #'
-#'   * A function that accepts a list of callbacks and executes them using the function
-#'   `call_back()`.
-#'   * A context that defines which information of the function can be accessed from the callback.
-#'     If the callback is allowed to modify this information the context can be an environment
-#'     or R6Class itself. Read-only access can be implemented using active bindings.
-#'   * One or more callback functions.
+#' * A function that executes a list of callbacks using the function [call_back()].
+#' * A [Context] that defines which information of the function can be accessed from the callback.
+#' * One or more callback functions.
 #'
-#' Use the `as_callback()` function to create a Callback.
+#' Use the [as_callback()] function to create a Callback.
 #'
 #' @examples
-#' MyCallback = R6Class("MyCallback",
-#'   inherit = Callback,
-#'   lock_objects = FALSE,
-#'   public = list(
-#'     initialize = function(id = "mycallback", a, b) {
-#'       self$id = id
-#'       self$a = a
-#'       self$b = b
-#'     },
-#'     step1 = function(context) {
-#'       catf("This is step1 calling!")
-#'       context$info = "New value"
-#'       self$x = runif(1, min = self$a, max = self$b)
-#'     },
-#'     step2 = function(context) {
-#'       catf("This is step2 calling!")
-#'       catf("The value 'info' of context is now: %s", context$info)
-#'       catf("The randomly generated number of step1 was: %.2f", self$x)
-#'     }
-#'   )
+#' # write callback
+#' callback_counter = as_callback("counter",
+#'   step_1 = function(callback, context) {
+#'     context$i = context$i %??% 0 + 1
+#'   }
 #' )
-#' mycb = MyCallback$new(a = -1, b = 1)
-#' callbacks = list(mycb)
-#' f = function(callbacks) {
-#'   context = new.env()
-#'   context$info = "Some Information"
 #'
-#'   call_back("step1", callbacks, context)
-#'   catf("foo")
-#'   call_back("step2", callbacks, context)
-#'   return(NULL)
-#' }
-#' f(callbacks)
+#' # define context
+#' ContextTest = R6Class("ContextTest", inherit = Context, public = list(i = NULL))
+#' context = ContextTest$new(id = "test")
+#'
+#' # call list of callbacks at specific step
+#' call_back("step_1", list(callback_counter), context)
 #' @export
 Callback = R6Class("Callback",
   lock_objects = FALSE,
@@ -114,13 +91,9 @@ as_callback = function(id, ...) {
 #' @export
 call_back = function(step, callbacks, context) {
   if (!length(callbacks)) return(invisible(NULL))
+  assert_class(context, "Context")
   walk(callbacks, function(callback) callback$call(step, context))
   return(invisible(NULL))
-}
-
-assert_callback = function(callback) {
-  assert_class(callback, "Callback")
-  invisible(callback)
 }
 
 #' @title Dictionary with Callbacks
@@ -149,4 +122,9 @@ cllb = function(.key, ...) {
 #' @export
 cllbs = function(.keys, ...) {
   dictionary_sugar_mget(mlr_callbacks, .keys, ...)
+}
+
+assert_callback = function(callback) {
+  assert_class(callback, "Callback")
+  invisible(callback)
 }
