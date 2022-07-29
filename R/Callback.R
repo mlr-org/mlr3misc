@@ -73,7 +73,6 @@ Callback = R6Class("Callback",
 #' @export
 as_callback = function(id, ...) {
   public = list(...)
-  # assert_subset(names(callback_methods), bbotk_reflections$callback_steps)
   walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
   callback = R6Class(paste0("Callback", capitalize(id)),
     inherit = Callback,
@@ -115,7 +114,7 @@ mlr_callbacks = Dictionary$new()
 #' @seealso Callback call_back
 #' @export
 cllb = function(.key, ...) {
-  dictionary_sugar_get(mlr_callacks, .key, ...)
+  dictionary_sugar_get(mlr_callbacks, .key, ...)
 }
 
 #' @rdname cllb
