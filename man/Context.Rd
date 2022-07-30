@@ -5,7 +5,41 @@
 \title{Context}
 \description{
 This is the abstract base class for context objects.
-Context objects provide modifiable data to \link{Callback} objects.
+Context objects allow \link{Callback} objects to access data.
+}
+\examples{
+library(data.table)
+library(R6)
+
+# data table with column x an y
+data = data.table(x = runif(10), y = sample(c("A", "B"), 10, replace = TRUE))
+
+# context only allows to access column y
+ContextExample = R6Class("ContextExample",
+  inherit = Context,
+  public = list(
+    data = NULL,
+
+    initialize = function(data) {
+        self$data = data
+    }
+  ),
+
+  active = list(
+    y = function(rhs) {
+      if (missing(rhs)) return(self$data$y)
+      self$data$y = rhs
+    }
+  )
+)
+
+context = ContextExample$new(data)
+
+# retrieve content of column y
+context$y
+
+# change content of column y to "C"
+context$y = "C"
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
