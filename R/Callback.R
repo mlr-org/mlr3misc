@@ -20,7 +20,7 @@
 #' )
 #'
 #' # define context
-#' ContextTest = R6Class("ContextTest", inherit = Context, public = list(i = NULL))
+#' ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
 #' context = ContextTest$new(id = "test")
 #'
 #' # call list of callbacks at specific step
@@ -95,29 +95,48 @@ call_back = function(step, callbacks, context) {
   return(invisible(NULL))
 }
 
-#' @title Dictionary with Callbacks
+#' @title Dictionary of Callbacks
+#'
+#' @include Dictionary.R
 #'
 #' @description
-#' This dictionary contains predefined callbacks.
-#' As a convention, the key should start with the name of the package, i.e. package.callback
-#' The elements can be retried using `cllb` or `cllbs`.
+#' A simple [mlr3misc::Dictionary] storing objects of class [Callback].
+#' Each callback has an associated help page, see `mlr_callbacks_[id]`.
+#'
+#' This dictionary can get populated with additional callbacks by add-on packages.
+#' As a convention, the key should start with the name of the package, i.e. `package.callback`.
+#'
+#' For a more convenient way to retrieve and construct learners, see [cllb()]/[cllbs()].
+#'
 #' @export
-#' @include Dictionary.R
-mlr_callbacks = Dictionary$new()
+mlr_callbacks = R6Class("DictionaryCallbacks",
+  inherit = Dictionary,
+  cloneable = FALSE
+)$new()
 
-#' @title Retrieve a Callback
-#'
-#' @description Retries a predefined callback from mlr_callbacks.
-#'
+#' @title Syntactic Sugar for Callback Construction
 #'
 #' @name cllb
+#'
+#' @description
+#' Retrieve a callback from [mlr_callbacks].
+#'
+#' @param .key (`character(1)`)\cr
+#'   Key of the object to construct.
+#' @param ... (ignored).
+#'
 #' @seealso Callback call_back
+#'
 #' @export
 cllb = function(.key, ...) {
   dictionary_sugar_get(mlr_callbacks, .key, ...)
 }
 
 #' @rdname cllb
+#'
+#' @param .keys (`character()`)\cr
+#'   Keys of the objects to construct.
+#'
 #' @export
 cllbs = function(.keys, ...) {
   dictionary_sugar_mget(mlr_callbacks, .keys, ...)

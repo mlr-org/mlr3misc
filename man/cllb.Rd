@@ -3,14 +3,23 @@
 \name{cllb}
 \alias{cllb}
 \alias{cllbs}
-\title{Retrieve a Callback}
+\title{Syntactic Sugar for Callback Construction}
 \usage{
 cllb(.key, ...)
 
 cllbs(.keys, ...)
 }
+\arguments{
+\item{.key}{(\code{character(1)})\cr
+Key of the object to construct.}
+
+\item{...}{(ignored).}
+
+\item{.keys}{(\code{character()})\cr
+Keys of the objects to construct.}
+}
 \description{
-Retries a predefined callback from mlr_callbacks.
+Retrieve a callback from \link{mlr_callbacks}.
 }
 \seealso{
 Callback call_back

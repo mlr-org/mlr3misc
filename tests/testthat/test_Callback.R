@@ -9,7 +9,7 @@ test_that("Callback works", {
   expect_class(test_callback, "CallbackTest")
   expect_string(test_callback$id, "test")
 
-  ContextTest = R6Class("ContextTest", inherit = Context, public = list(a = NULL))
+  ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(a = NULL))
   context = ContextTest$new(id = "test")
   test_callback$call("step", context)
   expect_equal(context$a, 1)
@@ -39,7 +39,7 @@ test_that("call_back works", {
   )
 
   callbacks = list(test_callback_1, test_callback_2, test_callback_3)
-  ContextTest = R6Class("ContextTest", inherit = Context, public = list(a = NULL, b = NULL, c = NULL, d = NULL))
+  ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(a = NULL, b = NULL, c = NULL, d = NULL))
   context = ContextTest$new(id = "test")
   call_back("step_1", callbacks, context)
 

@@ -22,6 +22,7 @@ Imports:
     checkmate,
     data.table,
     digest,
+    methods,
     R6
 Suggests:
     callr,
@@ -34,7 +35,7 @@ Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
-Collate: 
+Collate:
     'Dictionary.R'
     'Callback.R'
     'Context.R'

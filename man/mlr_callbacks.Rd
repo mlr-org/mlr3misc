@@ -3,16 +3,20 @@
 \docType{data}
 \name{mlr_callbacks}
 \alias{mlr_callbacks}
-\title{Dictionary with Callbacks}
+\title{Dictionary of Callbacks}
 \format{
-An object of class \code{Dictionary} (inherits from \code{R6}) of length 13.
+An object of class \code{DictionaryCallbacks} (inherits from \code{Dictionary}, \code{R6}) of length 13.
 }
 \usage{
 mlr_callbacks
 }
 \description{
-This dictionary contains predefined callbacks.
-As a convention, the key should start with the name of the package, i.e. package.callback
-The elements can be retried using \code{cllb} or \code{cllbs}.
+A simple \link{Dictionary} storing objects of class \link{Callback}.
+Each callback has an associated help page, see \code{mlr_callbacks_[id]}.
+
+This dictionary can get populated with additional callbacks by add-on packages.
+As a convention, the key should start with the name of the package, i.e. \code{package.callback}.
+
+For a more convenient way to retrieve and construct learners, see \code{\link[=cllb]{cllb()}}/\code{\link[=cllbs]{cllbs()}}.
 }
 \keyword{datasets}

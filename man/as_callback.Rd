@@ -12,7 +12,7 @@ Identifier for the new callback.}
 
 \item{...}{(Named list of \verb{function()}s)
 Public methods of the \link{Callback}.
-The functions must have a single argument named \code{context}.
+The functions must have two arguments named \code{callback} and \code{context}.
 The argument names indicate the step in which the method is called.}
 }
 \description{
