@@ -7,24 +7,24 @@
 #'
 #' * A function that executes a list of callbacks using the function [call_back()].
 #' * A [Context] that defines which information of the function can be accessed from the callback.
-#' * One or more callback functions.
+#' * One or more callback objects.
 #'
 #' Use the [as_callback()] function to create a Callback.
 #'
 #' @examples
-#' # write callback
+#' # callback increases a counter
 #' callback_counter = as_callback("counter",
-#'   step_1 = function(callback, context) {
+#'   on_stage = function(callback, context) {
 #'     context$i = context$i %??% 0 + 1
 #'   }
 #' )
 #'
-#' # define context
+#' # context with the count variable
 #' ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
 #' context = ContextTest$new(id = "test")
 #'
-#' # call list of callbacks at specific step
-#' call_back("step_1", list(callback_counter), context)
+#' # callback is called with context and stage
+#' call_back("on_stage", list(callback_counter), context)
 #' @export
 Callback = R6Class("Callback",
   lock_objects = FALSE,
@@ -43,15 +43,15 @@ Callback = R6Class("Callback",
     },
 
     #' @description
-    #' Call the specific step for a given context.
+    #' Call the specific stage for a given context.
     #'
-    #' @param step (`character(1)`)\cr
-    #'   Step.
+    #' @param stage (`character(1)`)\cr
+    #'   stage.
     #' @param context (`Context`)\cr
     #'   Context.
-    call = function(step, context) {
-      if (!is.null(self[[step]])) {
-        self[[step]](self, context)
+    call = function(stage, context) {
+      if (!is.null(self[[stage]])) {
+        self[[stage]](self, context)
       }
     }
   )
@@ -68,7 +68,7 @@ Callback = R6Class("Callback",
 #' @param ... (Named list of `function()`s)
 #'   Public methods of the [Callback].
 #'   The functions must have two arguments named `callback` and `context`.
-#'   The argument names indicate the step in which the method is called.
+#'   The argument names indicate the stage in which the method is called.
 #'
 #' @export
 as_callback = function(id, ...) {
@@ -84,14 +84,14 @@ as_callback = function(id, ...) {
 #' @title Call Callbacks
 #'
 #' @description
-#' Call list of callbacks with context at specific step.
+#' Call list of callbacks with context at specific stage.
 #'
 #' @keywords internal
 #' @export
-call_back = function(step, callbacks, context) {
+call_back = function(stage, callbacks, context) {
   if (!length(callbacks)) return(invisible(NULL))
   assert_class(context, "Context")
-  walk(callbacks, function(callback) callback$call(step, context))
+  walk(callbacks, function(callback) callback$call(stage, context))
   return(invisible(NULL))
 }
 

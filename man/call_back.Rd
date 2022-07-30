@@ -4,9 +4,9 @@
 \alias{call_back}
 \title{Call Callbacks}
 \usage{
-call_back(step, callbacks, context)
+call_back(stage, callbacks, context)
 }
 \description{
-Call list of callbacks with context at specific step.
+Call list of callbacks with context at specific stage.
 }
 \keyword{internal}

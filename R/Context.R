@@ -3,7 +3,7 @@
 #' @description
 #' This is the abstract base class for context objects.
 #' Context objects allow [Callback] objects to access and modify data.
-#'
+#' Access to data can be restricted with active bindings (see example).
 #'
 #' @export
 #' @examples

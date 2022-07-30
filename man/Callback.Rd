@@ -10,25 +10,25 @@ To make use of this mechanism, three elements are required:
 \itemize{
 \item A function that executes a list of callbacks using the function \code{\link[=call_back]{call_back()}}.
 \item A \link{Context} that defines which information of the function can be accessed from the callback.
-\item One or more callback functions.
+\item One or more callback objects.
 }
 
 Use the \code{\link[=as_callback]{as_callback()}} function to create a Callback.
 }
 \examples{
-# write callback
+# callback increases a counter
 callback_counter = as_callback("counter",
-  step_1 = function(callback, context) {
+  on_stage = function(callback, context) {
     context$i = context$i \%??\% 0 + 1
   }
 )
 
-# define context
+# context with the count variable
 ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
 context = ContextTest$new(id = "test")
 
-# call list of callbacks at specific step
-call_back("step_1", list(callback_counter), context)
+# callback is called with context and stage
+call_back("on_stage", list(callback_counter), context)
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -68,16 +68,16 @@ Identifier for the new callback.}
 \if{html}{\out{<a id="method-Callback-call"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-call}{}}}
 \subsection{Method \code{call()}}{
-Call the specific step for a given context.
+Call the specific stage for a given context.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$call(step, context)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Callback$call(stage, context)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{step}}{(\code{character(1)})\cr
-Step.}
+\item{\code{stage}}{(\code{character(1)})\cr
+stage.}
 
 \item{\code{context}}{(\code{Context})\cr
 Context.}
