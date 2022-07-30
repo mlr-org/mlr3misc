@@ -62,3 +62,7 @@ test_that("call_back works", {
   expect_equal(context$c, 2)
   expect_equal(context$d, 1)
 })
+
+test_that("as_callback function checks for context argument", {
+  expect_error(as_callback("test", on_result = function(env) context), "identical")
+})
