@@ -14,7 +14,6 @@
 #' @examples
 #' # callback increases a counter
 #' callback_counter = as_callback("mlr3misc.counter",
-#'   class = "CallbackCounter",
 #'   on_stage = function(callback, context) {
 #'     context$i = context$i %??% 0 + 1
 #'   }
@@ -170,7 +169,24 @@ cllbs = function(.keys, ...) {
   dictionary_sugar_mget(mlr_callbacks, .keys, ...)
 }
 
+#' @title Assertions for Callbacks
+#'
+#' @description
+#' Assertions for [Callback] class.
+#'
+#' @param callback ([Callback]).
+#'
+#' @return [Callback] | List of [Callback]s.
+#' @export
 assert_callback = function(callback) {
   assert_class(callback, "Callback")
   invisible(callback)
+}
+
+#' @export
+#' @param callbacks (list of [Callback]).
+#' @rdname assert_callback
+assert_callbacks = function(callbacks) {
+  assert_list(callbacks)
+  if (length(callbacks)) invisible(lapply(callbacks, assert_callback)) else invisible(NULL)
 }

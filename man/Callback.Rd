@@ -18,7 +18,6 @@ Use the \code{\link[=as_callback]{as_callback()}} function to create a Callback.
 \examples{
 # callback increases a counter
 callback_counter = as_callback("mlr3misc.counter",
-  class = "CallbackCounter",
   on_stage = function(callback, context) {
     context$i = context$i \%??\% 0 + 1
   }

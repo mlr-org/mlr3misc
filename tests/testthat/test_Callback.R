@@ -6,7 +6,6 @@ test_that("Callback works", {
     }
   )
 
-  expect_class(test_callback, "CallbackTest")
   expect_equal(test_callback$id, "mlr3misc.test")
   expect_equal(test_callback$label, "Test Callback")
 
