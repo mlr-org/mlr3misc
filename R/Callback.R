@@ -103,7 +103,8 @@ as_callback = function(id, label = NA_character_, ...) {
   walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
   callback = R6Class("Callback",
     inherit = Callback,
-    public = public
+    public = public,
+    lock_objects = FALSE
   )
   callback$new(id = id, label = label)
 }
