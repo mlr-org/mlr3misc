@@ -4,11 +4,17 @@
 \alias{as_callback}
 \title{Create a Callback}
 \usage{
-as_callback(id, ...)
+as_callback(id, class, label = NA_character_, ...)
 }
 \arguments{
 \item{id}{(\code{character(1)})\cr
-Identifier for the new callback.}
+Identifier for the new \link{Callback}.}
+
+\item{class}{(\code{character(1)})\cr
+Class name for the new \link{Callback}.}
+
+\item{label}{(\code{character(1)})\cr
+Label for the new \link{Callback}.}
 
 \item{...}{(Named list of \verb{function()}s)
 Public methods of the \link{Callback}.

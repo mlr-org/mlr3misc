@@ -13,7 +13,8 @@
 #'
 #' @examples
 #' # callback increases a counter
-#' callback_counter = as_callback("counter",
+#' callback_counter = as_callback("mlr3misc.counter",
+#'   class = "CallbackCounter",
 #'   on_stage = function(callback, context) {
 #'     context$i = context$i %??% 0 + 1
 #'   }
@@ -33,13 +34,36 @@ Callback = R6Class("Callback",
     #'   Identifier of the callback.
     id = NULL,
 
+    #' @field label (`character(1)`)\cr
+    #' Label for this object.
+    #' Can be used in tables, plot and text output instead of the ID.
+    label = NULL,
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     #'
     #' @param id (`character(1)`)\cr
-    #'   Identifier for the new callback.
-    initialize = function(id) {
-      self$id = assert_character(id)
+    #'   Identifier for the new instance.
+    #' @param label (`character(1)`)\cr
+    #'   Label for the new instance.
+    initialize = function(id, label) {
+      self$id = assert_string(id)
+      self$label = assert_string(label, na.ok = TRUE)
+    },
+
+    #' @description
+    #' Helper for print outputs.
+    format = function() {
+      sprintf("<%s:%s>", class(self)[1L], self$id)
+    },
+
+    #' @description
+    #' Printer.
+    #' @param ... (ignored).
+    print = function(...) {
+      catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
+      catn(c("* Stages:", grep("^on_.*", names(self), value = TRUE)))
+
     },
 
     #' @description
@@ -63,7 +87,13 @@ Callback = R6Class("Callback",
 #' Create a [Callback] from a list of functions.
 #'
 #' @param id (`character(1)`)\cr
-#'   Identifier for the new callback.
+#'   Identifier for the new [Callback].
+#'
+#' @param class (`character(1)`)\cr
+#'   Class name for the new [Callback].
+#'
+#' @param label (`character(1)`)\cr
+#'   Label for the new [Callback].
 #'
 #' @param ... (Named list of `function()`s)
 #'   Public methods of the [Callback].
@@ -71,14 +101,14 @@ Callback = R6Class("Callback",
 #'   The argument names indicate the stage in which the method is called.
 #'
 #' @export
-as_callback = function(id, ...) {
+as_callback = function(id, class, label = NA_character_, ...) {
   public = list(...)
   walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
-  callback = R6Class(paste0("Callback", capitalize(id)),
+  callback = R6Class(class,
     inherit = Callback,
     public = public
   )
-  callback$new(id = id)
+  callback$new(id = id, label = label)
 }
 
 #' @title Call Callbacks

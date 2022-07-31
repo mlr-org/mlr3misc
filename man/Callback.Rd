@@ -17,7 +17,8 @@ Use the \code{\link[=as_callback]{as_callback()}} function to create a Callback.
 }
 \examples{
 # callback increases a counter
-callback_counter = as_callback("counter",
+callback_counter = as_callback("mlr3misc.counter",
+  class = "CallbackCounter",
   on_stage = function(callback, context) {
     context$i = context$i \%??\% 0 + 1
   }
@@ -35,6 +36,10 @@ call_back("on_stage", list(callback_counter), context)
 \describe{
 \item{\code{id}}{(\code{character(1)})\cr
 Identifier of the callback.}
+
+\item{\code{label}}{(\code{character(1)})\cr
+Label for this object.
+Can be used in tables, plot and text output instead of the ID.}
 }
 \if{html}{\out{</div>}}
 }
@@ -42,6 +47,8 @@ Identifier of the callback.}
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Callback-new}{\code{Callback$new()}}
+\item \href{#method-Callback-format}{\code{Callback$format()}}
+\item \href{#method-Callback-print}{\code{Callback$print()}}
 \item \href{#method-Callback-call}{\code{Callback$call()}}
 \item \href{#method-Callback-clone}{\code{Callback$clone()}}
 }
@@ -52,14 +59,44 @@ Identifier of the callback.}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id, label)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{id}}{(\code{character(1)})\cr
-Identifier for the new callback.}
+Identifier for the new instance.}
+
+\item{\code{label}}{(\code{character(1)})\cr
+Label for the new instance.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Callback-format"></a>}}
+\if{latex}{\out{\hypertarget{method-Callback-format}{}}}
+\subsection{Method \code{format()}}{
+Helper for print outputs.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Callback$format()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Callback-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Callback-print}{}}}
+\subsection{Method \code{print()}}{
+Printer.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Callback$print(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(ignored).}
 }
 \if{html}{\out{</div>}}
 }
