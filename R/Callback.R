@@ -50,7 +50,7 @@ Callback = R6Class("Callback",
     #' @param context (`Context`)\cr
     #'   Context.
     call = function(stage, context) {
-      if (!is.null(self[[stage]])) {
+      if (exists(stage, envir = self)) {
         self[[stage]](self, context)
       }
     }

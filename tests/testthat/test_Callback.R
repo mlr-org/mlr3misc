@@ -13,9 +13,10 @@ test_that("Callback works", {
   context = ContextTest$new(id = "test")
   test_callback$call("stage", context)
   expect_equal(context$a, 1)
+  expect_null(test_callback$call("stage_2", context))
 })
 
-test_that("call_back works", {
+test_that("call_back() function works", {
 
   test_callback_1 = as_callback("test",
     stage_1 = function(callback, context) {
@@ -63,6 +64,7 @@ test_that("call_back works", {
   expect_equal(context$d, 1)
 })
 
-test_that("as_callback function checks for context argument", {
+test_that("as_callback function checks for callback and context argument", {
   expect_error(as_callback("test", on_result = function(env) context), "identical")
 })
+
