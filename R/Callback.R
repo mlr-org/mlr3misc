@@ -89,9 +89,6 @@ Callback = R6Class("Callback",
 #' @param id (`character(1)`)\cr
 #'   Identifier for the new [Callback].
 #'
-#' @param class (`character(1)`)\cr
-#'   Class name for the new [Callback].
-#'
 #' @param label (`character(1)`)\cr
 #'   Label for the new [Callback].
 #'
@@ -101,10 +98,10 @@ Callback = R6Class("Callback",
 #'   The argument names indicate the stage in which the method is called.
 #'
 #' @export
-as_callback = function(id, class, label = NA_character_, ...) {
+as_callback = function(id, label = NA_character_, ...) {
   public = list(...)
   walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
-  callback = R6Class(class,
+  callback = R6Class("Callback",
     inherit = Callback,
     public = public
   )

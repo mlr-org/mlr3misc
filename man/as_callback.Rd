@@ -4,14 +4,11 @@
 \alias{as_callback}
 \title{Create a Callback}
 \usage{
-as_callback(id, class, label = NA_character_, ...)
+as_callback(id, label = NA_character_, ...)
 }
 \arguments{
 \item{id}{(\code{character(1)})\cr
 Identifier for the new \link{Callback}.}
-
-\item{class}{(\code{character(1)})\cr
-Class name for the new \link{Callback}.}
 
 \item{label}{(\code{character(1)})\cr
 Label for the new \link{Callback}.}

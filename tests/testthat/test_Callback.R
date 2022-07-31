@@ -1,6 +1,5 @@
 test_that("Callback works", {
   test_callback = as_callback("mlr3misc.test",
-    class = "CallbackTest",
     label = "Test Callback",
     on_stage = function(callback, context) {
         context$a = 1
@@ -21,7 +20,6 @@ test_that("Callback works", {
 test_that("call_back() function works", {
 
   test_callback_1 = as_callback("mlr3misc.test",
-    class = "CallbackTest",
     label = "Test Callback",
     on_stage_1 = function(callback, context) {
       context$a = 1
@@ -32,7 +30,6 @@ test_that("call_back() function works", {
   )
 
   test_callback_2 = as_callback("mlr3misc.test",
-    class = "CallbackTest",
     label = "Test Callback",
     on_stage_1 = function(callback, context) {
       context$c = 2
@@ -40,7 +37,6 @@ test_that("call_back() function works", {
   )
 
   test_callback_3 = as_callback("mlr3misc.test",
-    class = "CallbackTest",
     label = "Test Callback",
     on_stage_3 = function(callback, context) {
       context$d = 1
@@ -73,5 +69,5 @@ test_that("call_back() function works", {
 })
 
 test_that("as_callback function checks for callback and context argument", {
-  expect_error(as_callback("mlr3misc.test", "CallbackTest", on_result = function(env) context), "identical")
+  expect_error(as_callback("mlr3misc.test", on_result = function(env) context), "identical")
 })
