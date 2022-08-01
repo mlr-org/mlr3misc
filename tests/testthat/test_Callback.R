@@ -1,13 +1,17 @@
 test_that("Callback works", {
   test_callback = as_callback("mlr3misc.test",
     label = "Test Callback",
+    man = "mlr3misc::Callback",
     on_stage = function(callback, context) {
         context$a = 1
-    }
+    },
+    info = "Test"
   )
 
   expect_equal(test_callback$id, "mlr3misc.test")
   expect_equal(test_callback$label, "Test Callback")
+  expect_equal(test_callback$info, "Test")
+  expect_man_exists(test_callback$man)
 
   ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(a = NULL))
   context = ContextTest$new(id = "test")

@@ -39,6 +39,10 @@ Identifier of the callback.}
 \item{\code{label}}{(\code{character(1)})\cr
 Label for this object.
 Can be used in tables, plot and text output instead of the ID.}
+
+\item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
+Defaults to \code{NA}, but can be set by child classes.}
 }
 \if{html}{\out{</div>}}
 }
@@ -48,6 +52,7 @@ Can be used in tables, plot and text output instead of the ID.}
 \item \href{#method-Callback-new}{\code{Callback$new()}}
 \item \href{#method-Callback-format}{\code{Callback$format()}}
 \item \href{#method-Callback-print}{\code{Callback$print()}}
+\item \href{#method-Callback-help}{\code{Callback$help()}}
 \item \href{#method-Callback-call}{\code{Callback$call()}}
 \item \href{#method-Callback-clone}{\code{Callback$clone()}}
 }
@@ -58,7 +63,7 @@ Can be used in tables, plot and text output instead of the ID.}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id, label)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id, label = NA_character_, man = NA_character_)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -69,6 +74,10 @@ Identifier for the new instance.}
 
 \item{\code{label}}{(\code{character(1)})\cr
 Label for the new instance.}
+
+\item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
+The referenced help package can be opened via method \verb{$help()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -99,6 +108,16 @@ Printer.
 }
 \if{html}{\out{</div>}}
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Callback-help"></a>}}
+\if{latex}{\out{\hypertarget{method-Callback-help}{}}}
+\subsection{Method \code{help()}}{
+Opens the corresponding help page referenced by field \verb{$man}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Callback$help()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-call"></a>}}

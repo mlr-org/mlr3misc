@@ -4,7 +4,7 @@
 \alias{as_callback}
 \title{Create a Callback}
 \usage{
-as_callback(id, label = NA_character_, ...)
+as_callback(id, label = NA_character_, man = NA_character_, ...)
 }
 \arguments{
 \item{id}{(\code{character(1)})\cr
@@ -13,8 +13,12 @@ Identifier for the new \link{Callback}.}
 \item{label}{(\code{character(1)})\cr
 Label for the new \link{Callback}.}
 
+\item{man}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
+The referenced help package can be opened via method \verb{$help()}.}
+
 \item{...}{(Named list of \verb{function()}s)
-Public methods of the \link{Callback}.
+Public methods and fields of the \link{Callback}.
 The functions must have two arguments named \code{callback} and \code{context}.
 The argument names indicate the stage in which the method is called.}
 }

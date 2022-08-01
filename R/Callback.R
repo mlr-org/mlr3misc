@@ -38,6 +38,11 @@ Callback = R6Class("Callback",
     #' Can be used in tables, plot and text output instead of the ID.
     label = NULL,
 
+    #' @field man (`character(1)`)\cr
+    #' String in the format `[pkg]::[topic]` pointing to a manual page for this object.
+    #' Defaults to `NA`, but can be set by child classes.
+    man = NULL,
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     #'
@@ -45,9 +50,13 @@ Callback = R6Class("Callback",
     #'   Identifier for the new instance.
     #' @param label (`character(1)`)\cr
     #'   Label for the new instance.
-    initialize = function(id, label) {
+    #' @param man (`character(1)`)\cr
+    #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
+    #'   The referenced help package can be opened via method `$help()`.
+    initialize = function(id, label = NA_character_, man = NA_character_) {
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
+      self$man =  assert_string(man, na.ok = TRUE)
     },
 
     #' @description
@@ -63,6 +72,12 @@ Callback = R6Class("Callback",
       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
       catn(c("* Stages:", grep("^on_.*", names(self), value = TRUE)))
 
+    },
+
+    #' @description
+    #' Opens the corresponding help page referenced by field `$man`.
+    help = function() {
+      open_help(self$man)
     },
 
     #' @description
@@ -87,25 +102,26 @@ Callback = R6Class("Callback",
 #'
 #' @param id (`character(1)`)\cr
 #'   Identifier for the new [Callback].
-#'
 #' @param label (`character(1)`)\cr
 #'   Label for the new [Callback].
-#'
+#' @param man (`character(1)`)\cr
+#'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
+#'   The referenced help package can be opened via method `$help()`.
 #' @param ... (Named list of `function()`s)
-#'   Public methods of the [Callback].
+#'   Public methods and fields of the [Callback].
 #'   The functions must have two arguments named `callback` and `context`.
 #'   The argument names indicate the stage in which the method is called.
 #'
 #' @export
-as_callback = function(id, label = NA_character_, ...) {
+as_callback = function(id, label = NA_character_, man = NA_character_, ...) {
   public = list(...)
-  walk(public, function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
+  walk(keep(public, function(x) inherits(x, "function")), function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
   callback = R6Class("Callback",
     inherit = Callback,
     public = public,
     lock_objects = FALSE
   )
-  callback$new(id = id, label = label)
+  callback$new(id = id, label = label, man = man)
 }
 
 #' @title Call Callbacks
