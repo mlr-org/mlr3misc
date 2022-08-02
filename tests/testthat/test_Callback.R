@@ -18,6 +18,10 @@ test_that("Callback works", {
   test_callback$call("on_stage", context)
   expect_equal(context$a, 1)
   expect_null(test_callback$call("on_stage_2", context))
+
+  expect_list(test_callback$state)
+  test_callback$state$b = 1
+  expect_equal(test_callback$state$b)
 })
 
 test_that("call_back() function works", {

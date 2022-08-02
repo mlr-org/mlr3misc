@@ -37,6 +37,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Collate:
     'Dictionary.R'
+    'named_list.R'
     'Callback.R'
     'Context.R'
     'as_factor.R'
@@ -72,7 +73,6 @@ Collate:
     'load_dataset.R'
     'map_values.R'
     'modify.R'
-    'named_list.R'
     'named_vector.R'
     'names2.R'
     'nin.R'

@@ -43,6 +43,9 @@ Can be used in tables, plot and text output instead of the ID.}
 \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
 Defaults to \code{NA}, but can be set by child classes.}
+
+\item{\code{state}}{(named \code{list()})\cr
+A callback can write data into the state.}
 }
 \if{html}{\out{</div>}}
 }

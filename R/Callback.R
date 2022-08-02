@@ -1,5 +1,7 @@
 #' @title Callback
 #'
+#' @include named_list.R
+#'
 #' @description
 #' This is the abstract base class for callbacks.
 #' Callbacks allow to give more user control to customize the behaviour of mlr3 processes.
@@ -27,7 +29,6 @@
 #' call_back("on_stage", list(callback_counter), context)
 #' @export
 Callback = R6Class("Callback",
-  lock_objects = FALSE,
   public = list(
     #' @field id (`character(1)`)\cr
     #'   Identifier of the callback.
@@ -43,6 +44,10 @@ Callback = R6Class("Callback",
     #' Defaults to `NA`, but can be set by child classes.
     man = NULL,
 
+    #' @field state (named `list()`)\cr
+    #' A callback can write data into the state.
+    state = named_list(),
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     #'
@@ -56,7 +61,7 @@ Callback = R6Class("Callback",
     initialize = function(id, label = NA_character_, man = NA_character_) {
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
-      self$man =  assert_string(man, na.ok = TRUE)
+      self$man = assert_string(man, na.ok = TRUE)
     },
 
     #' @description
@@ -118,8 +123,7 @@ as_callback = function(id, label = NA_character_, man = NA_character_, ...) {
   walk(keep(public, function(x) inherits(x, "function")), function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
   callback = R6Class("Callback",
     inherit = Callback,
-    public = public,
-    lock_objects = FALSE
+    public = public
   )
   callback$new(id = id, label = label, man = man)
 }
