@@ -16,7 +16,16 @@
     <loc>https://mlr3misc.mlr-org.com/dev/news/index.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/Callback.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/Context.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/Dictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/as_callback.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/as_factor.html</loc>
@@ -25,19 +34,31 @@
     <loc>https://mlr3misc.mlr-org.com/dev/reference/as_short_string.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/assert_callback.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/assert_ro_binding.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/calculate_hash.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/call_back.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/capitalize.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/catn.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/check_packages_installed.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/chunk_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/clbk.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/compat-map.html</loc>
@@ -122,6 +143,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/mlr3misc-package.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/dev/reference/mlr_callbacks.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/dev/reference/modify_if.html</loc>
