@@ -163,7 +163,7 @@ mlr_callbacks = R6Class("DictionaryCallbacks",
 
 #' @title Syntactic Sugar for Callback Construction
 #'
-#' @name cllb
+#' @name clbk
 #'
 #' @description
 #' Retrieve a callback from [mlr_callbacks].
@@ -175,17 +175,17 @@ mlr_callbacks = R6Class("DictionaryCallbacks",
 #' @seealso Callback call_back
 #'
 #' @export
-cllb = function(.key, ...) {
+clbk = function(.key, ...) {
   dictionary_sugar_get(mlr_callbacks, .key, ...)
 }
 
-#' @rdname cllb
+#' @rdname clbk
 #'
 #' @param .keys (`character()`)\cr
 #'   Keys of the objects to construct.
 #'
 #' @export
-cllbs = function(.keys, ...) {
+clbks = function(.keys, ...) {
   dictionary_sugar_mget(mlr_callbacks, .keys, ...)
 }
 

@@ -74,8 +74,7 @@ Context = R6::R6Class("Context",
     #' Print object.
     print = function() {
        catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
-       catn("Modifiable objects:")
-       catn(paste("-", names(self$.__enclos_env__$.__active__)))
+       catn(str_indent("* Modifiable objects:", setdiff(names(self), c(".__enclos_env__", "label", "id", "clone", "initialize", "print", "format"))))
     }
   )
 )

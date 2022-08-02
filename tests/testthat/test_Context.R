@@ -24,7 +24,7 @@ test_that("Context", {
   table = data.table::data.table(x1 = runif(10))
   test = ContextTest$new(table)
 
-  expect_output(print(test), "- data")
+  expect_output(print(test), "data")
   expect_string(test$label, "Context Test")
   expect_string(test$id, "test")
   expect_data_table(test$data)
