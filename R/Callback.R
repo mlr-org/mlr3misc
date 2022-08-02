@@ -75,7 +75,7 @@ Callback = R6Class("Callback",
     #' @param ... (ignored).
     print = function(...) {
       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
-      catn(c("* Stages:", grep("^on_.*", names(self), value = TRUE)))
+      catn(str_indent("* Stages:", grep("^on_.*", names(self), value = TRUE)))
 
     },
 
