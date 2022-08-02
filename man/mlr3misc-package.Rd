@@ -6,7 +6,7 @@
 \alias{mlr3misc-package}
 \title{mlr3misc: Helper Functions for 'mlr3'}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Frequently used helper functions and assertions used in 'mlr3' and its companion packages. Comes with helper functions for functional programming, for printing, to work with 'data.table', as well as some generally useful 'R6' classes. This package also supersedes the package 'BBmisc'.
 }

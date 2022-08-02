@@ -21,8 +21,10 @@ Upper bound.}
 }
 \description{
 Filters vector \code{x} to only keep elements which are in bounds \verb{[lower, upper]}.
-This is equivalent to the following, but tries to avoid unnecessary allocations:\preformatted{ x[!is.na(x) & x >= lower & x <= upper]
-}
+This is equivalent to the following, but tries to avoid unnecessary allocations:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{ x[!is.na(x) & x >= lower & x <= upper]
+}\if{html}{\out{</div>}}
 
 Currently only works for integer \code{x}.
 }

@@ -1,4 +1,4 @@
-#' @title
+#' @title Strip Methods from R6 Objects
 #'
 #' @description
 #' Moves a single method of an R6Class Generator to its package namespace.
@@ -6,7 +6,7 @@
 #'
 #' This creates a function named `.__<CLASSNAME>__<FUNCTIONNAME>` inside `env`.
 #'
-#' leanificate_method is called by [leanify_r6] for each function of an [R6] class.
+#' `leanificate_method()` is called by [leanify_r6] for each function of an [R6] class.
 #'
 #' @param cls (`R6ClassGenerator`)\cr
 #'   R6Class object (i.e. R6 object generator) to modify.
