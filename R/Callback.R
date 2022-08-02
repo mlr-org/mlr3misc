@@ -153,7 +153,7 @@ call_back = function(stage, callbacks, context) {
 #' This dictionary can get populated with additional callbacks by add-on packages.
 #' As a convention, the key should start with the name of the package, i.e. `package.callback`.
 #'
-#' For a more convenient way to retrieve and construct learners, see [cllb()]/[cllbs()].
+#' For a more convenient way to retrieve and construct learners, see [clbk()]/[clbks()].
 #'
 #' @export
 mlr_callbacks = R6Class("DictionaryCallbacks",

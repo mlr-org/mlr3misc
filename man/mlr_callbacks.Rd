@@ -17,6 +17,6 @@ Each callback has an associated help page, see \code{mlr_callbacks_[id]}.
 This dictionary can get populated with additional callbacks by add-on packages.
 As a convention, the key should start with the name of the package, i.e. \code{package.callback}.
 
-For a more convenient way to retrieve and construct learners, see \code{\link[=cllb]{cllb()}}/\code{\link[=cllbs]{cllbs()}}.
+For a more convenient way to retrieve and construct learners, see \code{\link[=clbk]{clbk()}}/\code{\link[=clbks]{clbks()}}.
 }
 \keyword{datasets}
