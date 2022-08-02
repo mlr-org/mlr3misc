@@ -1,4 +1,4 @@
-#' @title
+#' @title Leanifies a Method
 #'
 #' @description
 #' Moves a single method of an R6Class Generator to its package namespace.

@@ -2,9 +2,7 @@
 % Please edit documentation in R/count_missing.R
 \name{count_missing}
 \alias{count_missing}
-\title{Count Missing Values in a Vector
-
-Same as \code{sum(is.na(x))}, but without the allocation.}
+\title{Count Missing Values in a Vector}
 \usage{
 count_missing(x)
 }
@@ -16,8 +14,6 @@ Supported are logical, integer, double, complex and string vectors.}
 (\code{integer(1)}) number of missing values.
 }
 \description{
-Count Missing Values in a Vector
-
 Same as \code{sum(is.na(x))}, but without the allocation.
 }
 \examples{

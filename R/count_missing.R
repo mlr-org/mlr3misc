@@ -1,5 +1,6 @@
 #' @title Count Missing Values in a Vector
 #'
+#' @description
 #' Same as `sum(is.na(x))`, but without the allocation.
 #'
 #' @param x [`vector()`]\cr

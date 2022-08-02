@@ -1,7 +1,7 @@
 Package: mlr3misc
 Title: Helper Functions for 'mlr3'
 Version: 0.10.0-9000
-Authors@R:c(
+Authors@R: c(
     person("Michel", "Lang", , "michellang@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0001-9754-0393")),
     person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = "aut",
@@ -22,6 +22,7 @@ Imports:
     checkmate,
     data.table,
     digest,
+    methods,
     R6
 Suggests:
     callr,
@@ -33,4 +34,72 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
+Collate:
+    'Dictionary.R'
+    'named_list.R'
+    'Callback.R'
+    'Context.R'
+    'as_factor.R'
+    'as_short_string.R'
+    'assert_ro_binding.R'
+    'calculate_hash.R'
+    'capitalize.R'
+    'catn.R'
+    'check_packages_installed.R'
+    'chunk.R'
+    'compose.R'
+    'compute_mode.R'
+    'count_missing.R'
+    'crate.R'
+    'cross_join.R'
+    'dictionary_sugar.R'
+    'did_you_mean.R'
+    'distinct_values.R'
+    'encapsulate.R'
+    'enframe.R'
+    'extract_vars.R'
+    'format_bib.R'
+    'formulate.R'
+    'get_private.R'
+    'get_seed.R'
+    'has_element.R'
+    'ids.R'
+    'insert_named.R'
+    'invoke.R'
+    'is_scalar_na.R'
+    'keep_in_bounds.R'
+    'leanify.R'
+    'load_dataset.R'
+    'map_values.R'
+    'modify.R'
+    'named_vector.R'
+    'names2.R'
+    'nin.R'
+    'open_help.R'
+    'printf.R'
+    'probe.R'
+    'purrr_map.R'
+    'rcbind.R'
+    'rd_info.R'
+    'recycle_vector.R'
+    'register_namespace_callback.R'
+    'remove_named.R'
+    'reorder_vector.R'
+    'require_namespaces.R'
+    'rowwise_table.R'
+    'seq.R'
+    'set_class.R'
+    'set_names.R'
+    'set_params.R'
+    'shuffle.R'
+    'str_collapse.R'
+    'str_indent.R'
+    'str_trunc.R'
+    'to_decimal.R'
+    'topo_sort.R'
+    'transpose.R'
+    'unnest.R'
+    'which_max.R'
+    'with_package.R'
+    'zzz.R'

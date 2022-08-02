@@ -4,6 +4,7 @@
 #' @importFrom stats setNames as.formula terms runif
 #' @importFrom R6 R6Class is.R6
 #' @importFrom digest digest
+#' @importFrom methods formalArgs
 "_PACKAGE"
 
 .onLoad = function(libname, pkgname) {
