@@ -1,3 +1,5 @@
+skip_if_not_installed("paradox")
+
 test_that("set_params checks inputs correctly", {
   .ps = paradox::ps(a = paradox::p_dbl(), b = paradox::p_dbl())
   expect_error(set_params(.ps, a = 2, .values = list(a = 1)))

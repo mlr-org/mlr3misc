@@ -14,11 +14,13 @@
 #'
 #' @export
 #' @examples
-#' param_set = paradox::ps(a = paradox::p_dbl(), b = paradox::p_dbl())
-#' param_set$values$a = 0
-#' set_params(param_set, a = 1, .values = list(b = 2), .insert = TRUE)
-#' set_params(param_set, a = 3, .insert = FALSE)
-#' set_params(param_set, b = 4, .insert = TRUE)
+#' if (requireNamespace("paradox")) {
+#'   param_set = paradox::ps(a = paradox::p_dbl(), b = paradox::p_dbl())
+#'   param_set$values$a = 0
+#'   set_params(param_set, a = 1, .values = list(b = 2), .insert = TRUE)
+#'   set_params(param_set, a = 3, .insert = FALSE)
+#'   set_params(param_set, b = 4, .insert = TRUE)
+#' }
 set_params = function(.ps, ..., .values = list(), .insert = TRUE) {
   dots = list(...)
   assert_list(dots, names = "unique")
