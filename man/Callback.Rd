@@ -13,11 +13,11 @@ To make use of this mechanism, three elements are required:
 \item One or more callback objects.
 }
 
-Use the \code{\link[=as_callback]{as_callback()}} function to create a Callback.
+Use the \code{\link[=custom_callback]{custom_callback()}} function to create a Callback.
 }
 \examples{
 # callback increases a counter
-callback_counter = as_callback("mlr3misc.counter",
+callback_counter = custom_callback("mlr3misc.counter",
   on_stage = function(callback, context) {
     context$i = context$i \%??\% 0 + 1
   }

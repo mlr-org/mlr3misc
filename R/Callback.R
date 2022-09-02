@@ -11,11 +11,11 @@
 #' * A [Context] that defines which information of the function can be accessed from the callback.
 #' * One or more callback objects.
 #'
-#' Use the [as_callback()] function to create a Callback.
+#' Use the [custom_callback()] function to create a Callback.
 #'
 #' @examples
 #' # callback increases a counter
-#' callback_counter = as_callback("mlr3misc.counter",
+#' callback_counter = custom_callback("mlr3misc.counter",
 #'   on_stage = function(callback, context) {
 #'     context$i = context$i %??% 0 + 1
 #'   }
@@ -100,7 +100,49 @@ Callback = R6Class("Callback",
   )
 )
 
-#' @title Create a Callback
+#' @title Convert to a Callback
+#'
+#' @description
+#' Convert object to a [Callback] or a list of [Callback].
+#'
+#' @param x (any)\cr
+#'   Object to convert.
+#' @param ... (any)\cr
+#'   Additional arguments.
+#'
+#' @return [Callback].
+#' @export
+as_callback = function(x, ...) { # nolint
+  UseMethod("as_callback")
+}
+
+#' @rdname as_callback
+#' @param clone (`logical(1)`)\cr
+#'   If `TRUE`, ensures that the returned object is not the same as the input `x`.
+#' @export
+as_callback.Callback = function(x, clone = FALSE, ...) { # nolint
+  if (clone) x$clone(deep = TRUE) else x
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks = function(x, clone = FALSE, ...) { # nolint
+  UseMethod("as_callbacks")
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks.list = function(x, clone = FALSE, ...) { # nolint
+  lapply(x, as_callback, clone = clone, ...)
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
+  list(if (clone) x$clone(deep = TRUE) else x)
+}
+
+#' @title Create Custom Callback
 #'
 #' @description
 #' Create a [Callback] from a list of functions.
@@ -118,7 +160,7 @@ Callback = R6Class("Callback",
 #'   The argument names indicate the stage in which the method is called.
 #'
 #' @export
-as_callback = function(id, label = NA_character_, man = NA_character_, ...) {
+custom_callback = function(id, label = NA_character_, man = NA_character_, ...) {
   public = list(...)
   walk(keep(public, function(x) inherits(x, "function")), function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
   callback = R6Class("Callback",

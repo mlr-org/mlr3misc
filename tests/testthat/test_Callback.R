@@ -1,5 +1,5 @@
 test_that("Callback works", {
-  test_callback = as_callback("mlr3misc.test",
+  test_callback = custom_callback("mlr3misc.test",
     label = "Test Callback",
     man = "mlr3misc::Callback",
     on_stage = function(callback, context) {
@@ -26,7 +26,7 @@ test_that("Callback works", {
 
 test_that("call_back() function works", {
 
-  test_callback_1 = as_callback("mlr3misc.test",
+  test_callback_1 = custom_callback("mlr3misc.test",
     label = "Test Callback",
     on_stage_1 = function(callback, context) {
       context$a = 1
@@ -36,14 +36,14 @@ test_that("call_back() function works", {
     }
   )
 
-  test_callback_2 = as_callback("mlr3misc.test",
+  test_callback_2 = custom_callback("mlr3misc.test",
     label = "Test Callback",
     on_stage_1 = function(callback, context) {
       context$c = 2
     }
   )
 
-  test_callback_3 = as_callback("mlr3misc.test",
+  test_callback_3 = custom_callback("mlr3misc.test",
     label = "Test Callback",
     on_stage_3 = function(callback, context) {
       context$d = 1
@@ -75,6 +75,19 @@ test_that("call_back() function works", {
   expect_equal(context$d, 1)
 })
 
-test_that("as_callback function checks for callback and context argument", {
-  expect_error(as_callback("mlr3misc.test", on_result = function(env) context), "identical")
+test_that("custom_callback function checks for callback and context argument", {
+  expect_error(custom_callback("mlr3misc.test", on_result = function(env) context), "identical")
+})
+
+test_that("custom_callbacks.Callback works", {
+  test_callback = custom_callback("mlr3misc.test",
+    label = "Test Callback",
+    man = "mlr3misc::Callback",
+    on_stage = function(callback, context) {
+        context$a = 1
+    },
+    info = "Test"
+  )
+
+  expect_list(as_callbacks(test_callback))
 })
