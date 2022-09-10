@@ -26,8 +26,8 @@ A \link{Context} defines which information can be accessed from the callback.
 CallbackExample = R6Class("CallbackExample",
   inherit = mlr3misc::Callback,
   public = list(
-    on_stage_a = NULL
-    on_stage_b = NULL
+    on_stage_a = NULL,
+    on_stage_b = NULL,
     on_stage_c = NULL
   )
 )
