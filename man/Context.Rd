@@ -4,9 +4,19 @@
 \alias{Context}
 \title{Context}
 \description{
-This is the abstract base class for context objects.
 Context objects allow \link{Callback} objects to access and modify data.
-Access to data can be restricted with active bindings (see example).
+The following packages implement context subclasses:
+\itemize{
+\item \code{ContextOptimization} in \CRANpkg{bbotk}.
+\item \code{ContextEval} in \CRANpkg{mlr3tuning}.
+\item \code{ContextTorch} in \href{https://github.com/mlr-org/mlr3torch}{\code{mlr3torch}}
+}
+}
+\details{
+\link{Context} is an abstract base class.
+A subclass inherits from \link{Context}.
+Data is stored in public fields.
+Access to the data can be restricted with active bindings (see example).
 }
 \examples{
 library(data.table)

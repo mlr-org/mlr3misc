@@ -1,9 +1,18 @@
 #' @title Context
 #'
 #' @description
-#' This is the abstract base class for context objects.
 #' Context objects allow [Callback] objects to access and modify data.
-#' Access to data can be restricted with active bindings (see example).
+#' The following packages implement context subclasses:
+#'
+#'   * `ContextOptimization` in \CRANpkg{bbotk}.
+#'   * `ContextEval` in \CRANpkg{mlr3tuning}.
+#'   * `ContextTorch` in [`mlr3torch`](https://github.com/mlr-org/mlr3torch)
+#'
+#' @details
+#' [Context] is an abstract base class.
+#' A subclass inherits from [Context].
+#' Data is stored in public fields.
+#' Access to the data can be restricted with active bindings (see example).
 #'
 #' @export
 #' @examples

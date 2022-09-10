@@ -1,12 +1,14 @@
 test_that("Callback works", {
-  test_callback = custom_callback("mlr3misc.test",
-    label = "Test Callback",
-    man = "mlr3misc::Callback",
-    on_stage = function(callback, context) {
+  CallbackTest  = R6Class("CallbackTest",
+    inherit = Callback,
+    public = list(
+      on_stage = function(callback, context) {
         context$a = 1
-    },
-    info = "Test"
+      },
+      info = "Test"
+    )
   )
+  test_callback = CallbackTest$new(id = "mlr3misc.test", label = "Test Callback", man = "mlr3misc::Callback")
 
   expect_equal(test_callback$id, "mlr3misc.test")
   expect_equal(test_callback$label, "Test Callback")
@@ -26,29 +28,41 @@ test_that("Callback works", {
 
 test_that("call_back() function works", {
 
-  test_callback_1 = custom_callback("mlr3misc.test",
-    label = "Test Callback",
-    on_stage_1 = function(callback, context) {
-      context$a = 1
-    },
-    on_stage_2 = function(callback, context) {
-      context$b = 2
-    }
+  CallbackTest1 = R6Class("CallbackTest1",
+    inherit = Callback,
+    public = list(
+      on_stage_1 = function(callback, context) {
+        context$a = 1
+      },
+      on_stage_2 = function(callback, context) {
+        context$b = 2
+      }
+    )
   )
 
-  test_callback_2 = custom_callback("mlr3misc.test",
-    label = "Test Callback",
-    on_stage_1 = function(callback, context) {
-      context$c = 2
-    }
+  test_callback_1 = CallbackTest1$new(id = "mlr3misc.test", label = "Test Callback")
+
+  CallbackTest2 = R6Class("CallbackTest1",
+    inherit = Callback,
+    public = list(
+      on_stage_1 = function(callback, context) {
+        context$c = 2
+      }
+    )
   )
 
-  test_callback_3 = custom_callback("mlr3misc.test",
-    label = "Test Callback",
-    on_stage_3 = function(callback, context) {
-      context$d = 1
-    }
+  test_callback_2 = CallbackTest2$new(id = "mlr3misc.test", label = "Test Callback")
+
+  CallbackTest3 = R6Class("CallbackTest1",
+    inherit = Callback,
+    public = list(
+      on_stage_3 = function(callback, context) {
+        context$d = 1
+      }
+    )
   )
+
+  test_callback_3 = CallbackTest3$new(id = "mlr3misc.test", label = "Test Callback")
 
   callbacks = list(test_callback_1, test_callback_2, test_callback_3)
   ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(a = NULL, b = NULL, c = NULL, d = NULL))
@@ -75,19 +89,19 @@ test_that("call_back() function works", {
   expect_equal(context$d, 1)
 })
 
-test_that("custom_callback function checks for callback and context argument", {
-  expect_error(custom_callback("mlr3misc.test", on_result = function(env) context), "identical")
-})
 
-test_that("custom_callbacks.Callback works", {
-  test_callback = custom_callback("mlr3misc.test",
-    label = "Test Callback",
-    man = "mlr3misc::Callback",
-    on_stage = function(callback, context) {
+
+test_that("as_callbacks.Callback works", {
+  CallbackTest  = R6Class("CallbackTest",
+    inherit = Callback,
+    public = list(
+      on_stage = function(callback, context) {
         context$a = 1
-    },
-    info = "Test"
+      },
+      info = "Test"
+    )
   )
+  test_callback = CallbackTest$new(id = "mlr3misc.test", label = "Test Callback", man = "mlr3misc::Callback")
 
   expect_list(as_callbacks(test_callback))
 })

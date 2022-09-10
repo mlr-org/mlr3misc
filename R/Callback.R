@@ -3,30 +3,34 @@
 #' @include named_list.R
 #'
 #' @description
-#' This is the abstract base class for callbacks.
-#' Callbacks allow to give more user control to customize the behaviour of mlr3 processes.
-#' To make use of this mechanism, three elements are required:
+#' Callbacks allow to customize the behavior of processes in mlr3 packages.
+#' The following packages implement callbacks:
 #'
-#' * A function that executes a list of callbacks using the function [call_back()].
-#' * A [Context] that defines which information of the function can be accessed from the callback.
-#' * One or more callback objects.
+#'   * `CallbackOptimization` in \CRANpkg{bbotk}.
+#'   * `CallbackTuning` in \CRANpkg{mlr3tuning}.
+#'   * `CallbackTorch` in [`mlr3torch`](https://github.com/mlr-org/mlr3torch)
 #'
-#' Use the [custom_callback()] function to create a Callback.
+#' @details
+#' [Callback] is an abstract base class.
+#' A subclass inherits from [Callback] and adds stages as public members.
+#' Names of stages should start with `"on_"`.
+#' For each subclass a function should be implemented to create the callback.
+#' For an example on how to implement such a function see `callback_optimization()` in \CRANpkg{bbotk}.
+#' Callbacks are executed at stages using the function [call_back()].
+#' A [Context] defines which information can be accessed from the callback.
 #'
 #' @examples
-#' # callback increases a counter
-#' callback_counter = custom_callback("mlr3misc.counter",
-#'   on_stage = function(callback, context) {
-#'     context$i = context$i %??% 0 + 1
-#'   }
+#' library(R6)
+#'
+#' # implement callback subclass
+#' CallbackExample = R6Class("CallbackExample",
+#'   inherit = mlr3misc::Callback,
+#'   public = list(
+#'     on_stage_a = NULL,
+#'     on_stage_b = NULL,
+#'     on_stage_c = NULL
+#'   )
 #' )
-#'
-#' # context with the count variable
-#' ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
-#' context = ContextTest$new(id = "test")
-#'
-#' # callback is called with context and stage
-#' call_back("on_stage", list(callback_counter), context)
 #' @export
 Callback = R6Class("Callback",
   public = list(
@@ -75,7 +79,8 @@ Callback = R6Class("Callback",
     #' @param ... (ignored).
     print = function(...) {
       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
-      catn(str_indent("* Stages:", grep("^on_.*", names(self), value = TRUE)))
+      # get methods that start with "on_" and discard null
+      catn(str_indent("* Active Stages:", names(discard(as.list(self)[grep("^on_.*", names(self), value = TRUE)], is.null))))
 
     },
 
@@ -93,7 +98,7 @@ Callback = R6Class("Callback",
     #' @param context (`Context`)\cr
     #'   Context.
     call = function(stage, context) {
-      if (exists(stage, envir = self)) {
+      if (!is.null(self[[stage]])) {
         self[[stage]](self, context)
       }
     }
@@ -142,34 +147,6 @@ as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
   list(if (clone) x$clone(deep = TRUE) else x)
 }
 
-#' @title Create Custom Callback
-#'
-#' @description
-#' Create a [Callback] from a list of functions.
-#'
-#' @param id (`character(1)`)\cr
-#'   Identifier for the new [Callback].
-#' @param label (`character(1)`)\cr
-#'   Label for the new [Callback].
-#' @param man (`character(1)`)\cr
-#'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-#'   The referenced help package can be opened via method `$help()`.
-#' @param ... (Named list of `function()`s)
-#'   Public methods and fields of the [Callback].
-#'   The functions must have two arguments named `callback` and `context`.
-#'   The argument names indicate the stage in which the method is called.
-#'
-#' @export
-custom_callback = function(id, label = NA_character_, man = NA_character_, ...) {
-  public = list(...)
-  walk(keep(public, function(x) inherits(x, "function")), function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
-  callback = R6Class("Callback",
-    inherit = Callback,
-    public = public
-  )
-  callback$new(id = id, label = label, man = man)
-}
-
 #' @title Call Callbacks
 #'
 #' @description
@@ -208,17 +185,20 @@ mlr_callbacks = R6Class("DictionaryCallbacks",
 #' @name clbk
 #'
 #' @description
-#' Retrieve a callback from [mlr_callbacks].
+#' Functions to retrieve callbacks from [mlr_callbacks] and set parameters in one go.
 #'
 #' @param .key (`character(1)`)\cr
 #'   Key of the object to construct.
-#' @param ... (ignored).
+#' @param ... (named `list()`)\cr
+#'   Named arguments passed to the state of the callback.
 #'
 #' @seealso Callback call_back
 #'
 #' @export
 clbk = function(.key, ...) {
-  dictionary_sugar_get(mlr_callbacks, .key, ...)
+  callback = dictionary_sugar_get(mlr_callbacks, .key)
+  callback$state = list(...)
+  callback
 }
 
 #' @rdname clbk
@@ -227,8 +207,8 @@ clbk = function(.key, ...) {
 #'   Keys of the objects to construct.
 #'
 #' @export
-clbks = function(.keys, ...) {
-  dictionary_sugar_mget(mlr_callbacks, .keys, ...)
+clbks = function(.keys) {
+  dictionary_sugar_mget(mlr_callbacks, .keys)
 }
 
 #' @title Assertions for Callbacks
