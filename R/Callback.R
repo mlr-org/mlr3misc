@@ -3,30 +3,30 @@
 #' @include named_list.R
 #'
 #' @description
-#' This is the abstract base class for callbacks.
-#' Callbacks allow to give more user control to customize the behaviour of mlr3 processes.
-#' To make use of this mechanism, three elements are required:
+#' Callbacks allow to customize the behavior of processes in mlr3 packages.
+#' The following packages implement callbacks:
 #'
-#' * A function that executes a list of callbacks using the function [call_back()].
-#' * A [Context] that defines which information of the function can be accessed from the callback.
-#' * One or more callback objects.
+#'   * `CallbackOptimization` in \CRANpkg{bbotk}.
+#'   * `CallbackTuning` in \CRANpkg{mlr3tuning}.
+#'   * `CallbackTorch` in [`mlr3torch`](https://github.com/mlr-org/mlr3torch)
 #'
-#' Use the [as_callback()] function to create a Callback.
+#' @details
+#' [Callback] is the abstract base class for callbacks.
+#' A subclass inherits from [Callback] and adds stages as public members.
+#' Names of stages should start with `"on_"`.
+#' For each subclass a function should be implemented to create the callback.
+#' For an example on how to implement such a function see `callback_optimization()` in \CRANpkg{bbotk}.
 #'
 #' @examples
-#' # callback increases a counter
-#' callback_counter = as_callback("mlr3misc.counter",
-#'   on_stage = function(callback, context) {
-#'     context$i = context$i %??% 0 + 1
-#'   }
+#' # implement callback subclass
+#' CallbackExample = R6Class("CallbackExample",
+#'   inherit = mlr3misc::Callback,
+#'   public = list(
+#'     on_stage_a = NULL
+#'     on_stage_b = NULL
+#'     on_stage_c = NULL
+#'   )
 #' )
-#'
-#' # context with the count variable
-#' ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
-#' context = ContextTest$new(id = "test")
-#'
-#' # callback is called with context and stage
-#' call_back("on_stage", list(callback_counter), context)
 #' @export
 Callback = R6Class("Callback",
   public = list(
@@ -75,7 +75,8 @@ Callback = R6Class("Callback",
     #' @param ... (ignored).
     print = function(...) {
       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
-      catn(str_indent("* Stages:", grep("^on_.*", names(self), value = TRUE)))
+      # get methods that start with "on_" and discard null
+      catn(str_indent("* Active Stages:", names(discard(as.list(self)[grep("^on_.*", names(self), value = TRUE)], is.null))))
 
     },
 
