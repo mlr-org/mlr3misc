@@ -4,31 +4,33 @@
 \alias{Callback}
 \title{Callback}
 \description{
-This is the abstract base class for callbacks.
-Callbacks allow to give more user control to customize the behaviour of mlr3 processes.
-To make use of this mechanism, three elements are required:
+Callbacks allow to customize the behavior of processes in mlr3 packages.
+The following packages implement callbacks:
 \itemize{
-\item A function that executes a list of callbacks using the function \code{\link[=call_back]{call_back()}}.
-\item A \link{Context} that defines which information of the function can be accessed from the callback.
-\item One or more callback objects.
+\item \code{CallbackOptimization} in \CRANpkg{bbotk}.
+\item \code{CallbackTuning} in \CRANpkg{mlr3tuning}.
+\item \code{CallbackTorch} in \href{https://github.com/mlr-org/mlr3torch}{\code{mlr3torch}}
 }
-
-Use the \code{\link[=as_callback]{as_callback()}} function to create a Callback.
+}
+\details{
+\link{Callback} is the abstract base class for callbacks.
+A subclass inherits from \link{Callback} and adds stages as public members.
+Names of stages should start with \code{"on_"}.
+For each subclass a function should be implemented to create the callback.
+For an example on how to implement such a function see \code{callback_optimization()} in \CRANpkg{bbotk}.
+Callbacks are executed at stages using the function \code{\link[=call_back]{call_back()}}.
+A \link{Context} defines which information can be accessed from the callback.
 }
 \examples{
-# callback increases a counter
-callback_counter = as_callback("mlr3misc.counter",
-  on_stage = function(callback, context) {
-    context$i = context$i \%??\% 0 + 1
-  }
+# implement callback subclass
+CallbackExample = R6Class("CallbackExample",
+  inherit = mlr3misc::Callback,
+  public = list(
+    on_stage_a = NULL
+    on_stage_b = NULL
+    on_stage_c = NULL
+  )
 )
-
-# context with the count variable
-ContextTest = R6::R6Class("ContextTest", inherit = Context, public = list(i = NULL))
-context = ContextTest$new(id = "test")
-
-# callback is called with context and stage
-call_back("on_stage", list(callback_counter), context)
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}

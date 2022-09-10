@@ -2,26 +2,35 @@
 % Please edit documentation in R/Callback.R
 \name{as_callback}
 \alias{as_callback}
-\title{Create a Callback}
+\alias{as_callback.Callback}
+\alias{as_callbacks}
+\alias{as_callbacks.list}
+\alias{as_callbacks.Callback}
+\title{Convert to a Callback}
 \usage{
-as_callback(id, label = NA_character_, man = NA_character_, ...)
+as_callback(x, ...)
+
+\method{as_callback}{Callback}(x, clone = FALSE, ...)
+
+as_callbacks(x, clone = FALSE, ...)
+
+\method{as_callbacks}{list}(x, clone = FALSE, ...)
+
+\method{as_callbacks}{Callback}(x, clone = FALSE, ...)
 }
 \arguments{
-\item{id}{(\code{character(1)})\cr
-Identifier for the new \link{Callback}.}
+\item{x}{(any)\cr
+Object to convert.}
 
-\item{label}{(\code{character(1)})\cr
-Label for the new \link{Callback}.}
+\item{...}{(any)\cr
+Additional arguments.}
 
-\item{man}{(\code{character(1)})\cr
-String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
-The referenced help package can be opened via method \verb{$help()}.}
-
-\item{...}{(Named list of \verb{function()}s)
-Public methods and fields of the \link{Callback}.
-The functions must have two arguments named \code{callback} and \code{context}.
-The argument names indicate the stage in which the method is called.}
+\item{clone}{(\code{logical(1)})\cr
+If \code{TRUE}, ensures that the returned object is not the same as the input \code{x}.}
+}
+\value{
+\link{Callback}.
 }
 \description{
-Create a \link{Callback} from a list of functions.
+Convert object to a \link{Callback} or a list of \link{Callback}.
 }

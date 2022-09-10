@@ -16,6 +16,8 @@
 #' Names of stages should start with `"on_"`.
 #' For each subclass a function should be implemented to create the callback.
 #' For an example on how to implement such a function see `callback_optimization()` in \CRANpkg{bbotk}.
+#' Callbacks are executed at stages using the function [call_back()].
+#' A [Context] defines which information can be accessed from the callback.
 #'
 #' @examples
 #' # implement callback subclass
@@ -94,39 +96,53 @@ Callback = R6Class("Callback",
     #' @param context (`Context`)\cr
     #'   Context.
     call = function(stage, context) {
-      if (exists(stage, envir = self)) {
+      if (!is.null(self[[stage]])) {
         self[[stage]](self, context)
       }
     }
   )
 )
 
-#' @title Create a Callback
+#' @title Convert to a Callback
 #'
 #' @description
-#' Create a [Callback] from a list of functions.
+#' Convert object to a [Callback] or a list of [Callback].
 #'
-#' @param id (`character(1)`)\cr
-#'   Identifier for the new [Callback].
-#' @param label (`character(1)`)\cr
-#'   Label for the new [Callback].
-#' @param man (`character(1)`)\cr
-#'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-#'   The referenced help package can be opened via method `$help()`.
-#' @param ... (Named list of `function()`s)
-#'   Public methods and fields of the [Callback].
-#'   The functions must have two arguments named `callback` and `context`.
-#'   The argument names indicate the stage in which the method is called.
+#' @param x (any)\cr
+#'   Object to convert.
+#' @param ... (any)\cr
+#'   Additional arguments.
 #'
+#' @return [Callback].
 #' @export
-as_callback = function(id, label = NA_character_, man = NA_character_, ...) {
-  public = list(...)
-  walk(keep(public, function(x) inherits(x, "function")), function(method) assert_names(formalArgs(method), identical.to = c("callback", "context")))
-  callback = R6Class("Callback",
-    inherit = Callback,
-    public = public
-  )
-  callback$new(id = id, label = label, man = man)
+as_callback = function(x, ...) { # nolint
+  UseMethod("as_callback")
+}
+
+#' @rdname as_callback
+#' @param clone (`logical(1)`)\cr
+#'   If `TRUE`, ensures that the returned object is not the same as the input `x`.
+#' @export
+as_callback.Callback = function(x, clone = FALSE, ...) { # nolint
+  if (clone) x$clone(deep = TRUE) else x
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks = function(x, clone = FALSE, ...) { # nolint
+  UseMethod("as_callbacks")
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks.list = function(x, clone = FALSE, ...) { # nolint
+  lapply(x, as_callback, clone = clone, ...)
+}
+
+#' @rdname as_callback
+#' @export
+as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
+  list(if (clone) x$clone(deep = TRUE) else x)
 }
 
 #' @title Call Callbacks
