@@ -13,7 +13,7 @@ The following packages implement callbacks:
 }
 }
 \details{
-\link{Callback} is the abstract base class for callbacks.
+\link{Callback} is an abstract base class.
 A subclass inherits from \link{Callback} and adds stages as public members.
 Names of stages should start with \code{"on_"}.
 For each subclass a function should be implemented to create the callback.

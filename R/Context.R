@@ -9,8 +9,10 @@
 #'   * `ContextTorch` in [`mlr3torch`](https://github.com/mlr-org/mlr3torch)
 #'
 #' @details
-#' [Context] is the abstract base class for context subclasses.
-#' A subclass stores data and allows to modify the data with active bindings (see example).
+#' [Context] is an abstract base class.
+#' A subclass inherits from [Context].
+#' Data is stored in public fields.
+#' Access to the data can be restricted with active bindings (see example).
 #'
 #' @export
 #' @examples

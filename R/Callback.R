@@ -11,7 +11,7 @@
 #'   * `CallbackTorch` in [`mlr3torch`](https://github.com/mlr-org/mlr3torch)
 #'
 #' @details
-#' [Callback] is the abstract base class for callbacks.
+#' [Callback] is an abstract base class.
 #' A subclass inherits from [Callback] and adds stages as public members.
 #' Names of stages should start with `"on_"`.
 #' For each subclass a function should be implemented to create the callback.
