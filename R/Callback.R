@@ -20,6 +20,8 @@
 #' A [Context] defines which information can be accessed from the callback.
 #'
 #' @examples
+#' library(R6)
+#'
 #' # implement callback subclass
 #' CallbackExample = R6Class("CallbackExample",
 #'   inherit = mlr3misc::Callback,
@@ -183,17 +185,20 @@ mlr_callbacks = R6Class("DictionaryCallbacks",
 #' @name clbk
 #'
 #' @description
-#' Retrieve a callback from [mlr_callbacks].
+#' Functions to retrieve callbacks from [mlr_callbacks] and set parameters in one go.
 #'
 #' @param .key (`character(1)`)\cr
 #'   Key of the object to construct.
-#' @param ... (ignored).
+#' @param ... (named `list()`)\cr
+#'   Named arguments passed to the state of the callback.
 #'
 #' @seealso Callback call_back
 #'
 #' @export
 clbk = function(.key, ...) {
-  dictionary_sugar_get(mlr_callbacks, .key, ...)
+  callback = dictionary_sugar_get(mlr_callbacks, .key)
+  callback$state = list(...)
+  callback
 }
 
 #' @rdname clbk
@@ -202,8 +207,8 @@ clbk = function(.key, ...) {
 #'   Keys of the objects to construct.
 #'
 #' @export
-clbks = function(.keys, ...) {
-  dictionary_sugar_mget(mlr_callbacks, .keys, ...)
+clbks = function(.keys) {
+  dictionary_sugar_mget(mlr_callbacks, .keys)
 }
 
 #' @title Assertions for Callbacks

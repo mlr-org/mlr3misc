@@ -7,19 +7,20 @@
 \usage{
 clbk(.key, ...)
 
-clbks(.keys, ...)
+clbks(.keys)
 }
 \arguments{
 \item{.key}{(\code{character(1)})\cr
 Key of the object to construct.}
 
-\item{...}{(ignored).}
+\item{...}{(named \code{list()})\cr
+Named arguments passed to the state of the callback.}
 
 \item{.keys}{(\code{character()})\cr
 Keys of the objects to construct.}
 }
 \description{
-Retrieve a callback from \link{mlr_callbacks}.
+Functions to retrieve callbacks from \link{mlr_callbacks} and set parameters in one go.
 }
 \seealso{
 Callback call_back

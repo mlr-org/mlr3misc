@@ -22,6 +22,8 @@ Callbacks are executed at stages using the function \code{\link[=call_back]{call
 A \link{Context} defines which information can be accessed from the callback.
 }
 \examples{
+library(R6)
+
 # implement callback subclass
 CallbackExample = R6Class("CallbackExample",
   inherit = mlr3misc::Callback,
