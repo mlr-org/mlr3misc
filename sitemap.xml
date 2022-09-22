@@ -19,7 +19,16 @@
     <loc>https://mlr3misc.mlr-org.com/news/index.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/Callback.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/Context.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/Dictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/as_callback.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/as_factor.html</loc>
@@ -28,19 +37,31 @@
     <loc>https://mlr3misc.mlr-org.com/reference/as_short_string.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/assert_callback.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/assert_ro_binding.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/calculate_hash.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/call_back.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/capitalize.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/catn.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/check_packages_installed.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/chunk_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/clbk.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/compat-map.html</loc>
@@ -85,6 +106,9 @@
     <loc>https://mlr3misc.mlr-org.com/reference/formulate.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/get_private-set.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/get_private.html</loc>
   </url>
   <url>
@@ -122,6 +146,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/mlr3misc-package.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/mlr_callbacks.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/modify_if.html</loc>
@@ -173,6 +200,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/set_names.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/set_params.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/shuffle.html</loc>
