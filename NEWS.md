@@ -1,3 +1,11 @@
+# mlr3misc 0.11.0
+
+* Added initial support for a callback mechanism, see `as_callback()`.
+* Added helper `catn()`.
+* Added helper `set_params()`.
+* Added assign method for `get_private()`.
+* Elements of a dictionary via `dictionary_sugar_mget()` are now returned named.
+
 # mlr3misc 0.10.0
 
 * Added helper `get_private()`.
