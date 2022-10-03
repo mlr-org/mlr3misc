@@ -128,3 +128,69 @@ get_constructor_formals = function(x) {
 fields = function(x) {
   c(setdiff(names(x$public_methods), c("initialize", "clone", "print", "format")), names(x$active))
 }
+
+#' @title A Quick Way to Initialize Objects from Dictionaries with Incremented ID
+#'
+#' @description
+#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of of ID
+#' clashes which is useful when the same object is used multiple times and the ids have to be unique.
+#' Let `<key>` be the key of the object to retrieve. When passing the `<key>_<n>` to this
+#' function, where `<n>` is any natural numer, the object with key `<key>` is retrieved and the
+#' suffix `_<n>` is appended to the id after the object is constructed.
+#'
+#' @param dict ([Dictionary])\cr
+#'   Dictionary from which to retrieve an element.
+#' @param .key (`character(1)`)\cr
+#'   Key of the object to construct - possibly with a suffix of the form `_<n>` which will be appended to the id.
+#' @param .keys (`character()`)\cr
+#'   Keys of the objects to construct - possibly with suffixes of the form `_<n>` which will be appended to the ids.
+#' @param ... (any)\cr
+#'   See description of [mlr3misc::dictionary_sugar].
+#'
+#' @return An element from the dictionary.
+#'
+#' @examples
+#' d = Dictionary$new()
+#' d$add("a", R6::R6Class("A", public = list(id = "a")))
+#' d$add("b", R6::R6Class("B", public = list(id = "c")))
+#' obj1 = dictionary_sugar_inc_get(d, "a_1")
+#' obj1$id
+#'
+#' obj2 = dictionary_sugar_inc_get(d, "b_1")
+#' obj2$id
+#'
+#' objs = dictionary_sugar_inc_mget(d, c("a_10", "b_2"))
+#' map(objs, "id")
+#'
+#' @rdname dictionary_sugar_inc_get
+#' @export
+dictionary_sugar_inc_get = function(dict, .key, ...) {
+  newkey = gsub("_\\d+$", "", .key)
+  add_suffix = .key != newkey
+  if (add_suffix) {
+    assert_true(!methods::hasArg("id"))
+    suffix = regmatches(.key, regexpr("_\\d+$", .key))
+  }
+  obj = dictionary_sugar_get(dict = dict, .key = newkey, ...)
+
+  if (add_suffix) {
+    obj$id = paste0(obj$id, suffix)
+  }
+  obj
+
+}
+
+#' @rdname dictionary_sugar_inc_get
+#' @export
+dictionary_sugar_inc_mget = function(dict, .keys, ...) {
+  objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ...)
+  if (!is.null(names(.keys))) {
+    nn = names2(.keys)
+    ii = which(!is.na(nn))
+    for (i in ii) {
+      objs[[i]]$id = nn[i]
+    }
+  }
+  names(objs) = map_chr(objs, "id")
+  objs
+}
