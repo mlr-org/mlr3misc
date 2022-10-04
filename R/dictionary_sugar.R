@@ -165,11 +165,12 @@ fields = function(x) {
 #' @rdname dictionary_sugar_inc_get
 #' @export
 dictionary_sugar_inc_get = function(dict, .key, ...) {
-  newkey = gsub("_\\d+$", "", .key)
+  m = regexpr("_\\d+$", .key)
+  newkey = paste0(regmatches(.key, m, invert = TRUE)[[1L]], collapse = "")
   add_suffix = .key != newkey
   if (add_suffix) {
     assert_true(!methods::hasArg("id"))
-    suffix = regmatches(.key, regexpr("_\\d+$", .key))
+    suffix = regmatches(.key, m, invert = FALSE)
   }
   obj = dictionary_sugar_get(dict = dict, .key = newkey, ...)
 
