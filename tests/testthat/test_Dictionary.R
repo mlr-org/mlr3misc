@@ -94,3 +94,22 @@ test_that("mget", {
   expect_list(x, len = 2, types = "Foo")
   expect_equal(ids(x), c("a", "b"))
 })
+
+test_that("incrementing ids works", {
+  d = Dictionary$new()
+  d$add("a", R6Class("A", public = list(id = "a")))
+  d$add("b", R6Class("B", public = list(id = "c")))
+  obj1 = dictionary_sugar_inc_get(d, "a_1")
+  expect_r6(obj1, "A")
+  expect_true(obj1$id == "a_1")
+
+  obj2 = dictionary_sugar_inc_get(d, "b_1")
+  expect_r6(obj2, "B")
+  expect_true(obj2$id == "c_1")
+
+  objs = dictionary_sugar_inc_mget(d, c("a_10", "b_2"))
+  expect_r6(objs$a_10, "A")
+  expect_true(objs$a_10$id == "a_10")
+  expect_r6(objs$c_2, "B")
+  expect_true(objs$c_2$id == "c_2")
+})
