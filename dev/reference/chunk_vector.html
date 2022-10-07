@@ -139,29 +139,29 @@ Length of vector to split.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 5 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">ch</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1  5  7  8 10 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 4 5 6 7 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 3 4 6 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2  3  9 10 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">chunk_vector</span><span class="op">(</span><span class="va">x</span>, n_chunks <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1  2  3  8 10 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3  5  7  8  9 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 5 6 7 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1  2  4  6 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">chunk_vector</span><span class="op">(</span><span class="va">x</span>, n_chunks <span class="op">=</span> <span class="fl">3</span>, shuffle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  2  5  8 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3  4  9 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6  7  9 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 6 7 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 3 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  1  2 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
