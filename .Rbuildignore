@@ -13,7 +13,6 @@
 ^\.pre-commit-config\.yaml$
 ^\.github
 ^LICENSE.md$
-^tic\.R$
 ^\.ccache$
 ^\.github$
 ^\.lintr$
