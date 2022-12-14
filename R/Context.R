@@ -75,6 +75,7 @@ Context = R6::R6Class("Context",
 
     #' @description
     #' Format object as simple string.
+    #' @param ... (ignored).
     format = function(...) {
       sprintf("<%s>", class(self)[1L])
     },

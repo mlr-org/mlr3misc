@@ -76,9 +76,16 @@ Construct a new Dictionary.
 \subsection{Method \code{format()}}{
 Format object as simple string.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Dictionary$format()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$format(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-print"></a>}}
