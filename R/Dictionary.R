@@ -42,7 +42,7 @@ Dictionary = R6::R6Class("Dictionary",
 
     #' @description
     #' Format object as simple string.
-    format = function() {
+    format = function(...) {
       sprintf("<%s>", class(self)[1L])
     },
 
