@@ -1,6 +1,7 @@
 # mlr3misc 0.12.0
 
-* added functions `dictionary_sugar_inc_get` and `dictionary_sugar_inc_mget`
+* Added new encapsulation mode `"try-catch"`.
+* Added functions `dictionary_sugar_inc_get` and `dictionary_sugar_inc_mget`
   which  allow to conveniently add suffixes to dictionary ids when retrieving
   objects.
 
