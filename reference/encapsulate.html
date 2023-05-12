@@ -4,7 +4,7 @@ There are currently three different modes implemented to encapsulate a function 
 "none": Just runs the call in the current session and measures the elapsed time.
 Does not keep a log, output is printed directly to the console.
 Works well together with traceback().
-"try-catch": Similar to "none", but catches error. Output is printed to the console and
+"try": Similar to "none", but catches error. Output is printed to the console and
 not logged.
 "evaluate": Uses the package evaluate to call the function, measure time and do the logging.
 "callr": Uses the package callr to call the function, measure time and do the logging.
@@ -16,7 +16,7 @@ There are currently three different modes implemented to encapsulate a function 
 "none": Just runs the call in the current session and measures the elapsed time.
 Does not keep a log, output is printed directly to the console.
 Works well together with traceback().
-"try-catch": Similar to "none", but catches error. Output is printed to the console and
+"try": Similar to "none", but catches error. Output is printed to the console and
 not logged.
 "evaluate": Uses the package evaluate to call the function, measure time and do the logging.
 "callr": Uses the package callr to call the function, measure time and do the logging.
@@ -103,7 +103,7 @@ While this comes with a considerable overhead, it also guards your session from 
 There are currently three different modes implemented to encapsulate a function call:</p><ul><li><p><code>"none"</code>: Just runs the call in the current session and measures the elapsed time.
 Does not keep a log, output is printed directly to the console.
 Works well together with <code><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback()</a></code>.</p></li>
-<li><p><code>"try-catch"</code>: Similar to <code>"none"</code>, but catches error. Output is printed to the console and
+<li><p><code>"try"</code>: Similar to <code>"none"</code>, but catches error. Output is printed to the console and
 not logged.</p></li>
 <li><p><code>"evaluate"</code>: Uses the package <a href="https://CRAN.R-project.org/package=evaluate" class="external-link"><span class="pkg">evaluate</span></a> to call the function, measure time and do the logging.</p></li>
 <li><p><code>"callr"</code>: Uses the package <a href="https://CRAN.R-project.org/package=callr" class="external-link"><span class="pkg">callr</span></a> to call the function, measure time and do the logging.
@@ -191,21 +191,21 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 <span class="r-out co"><span class="r-pr">#&gt;</span> Empty data.table (0 rows and 2 cols): class,msg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"evaluate"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">encapsulate</span><span class="op">(</span><span class="st">"evaluate"</span>, <span class="va">f</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, .seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $result</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2449562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2164401</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     class       msg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.003</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"callr"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -220,7 +220,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     0.2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.25 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
