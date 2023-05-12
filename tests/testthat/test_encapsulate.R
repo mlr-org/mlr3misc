@@ -56,7 +56,7 @@ test_that("timeout", {
 })
 
 
-test_that("try-catch", {
+test_that("try", {
   fun1 = function(...) {
     message("foo")
   }
@@ -65,6 +65,6 @@ test_that("try-catch", {
     message("foo")
   }
 
-  expect_message(encapsulate("try-catch", function(...) message("foo")))
-  expect_warning(encapsulate("try-catch", function(...) warning("foo")))
+  expect_message(encapsulate("try", function(...) message("foo")))
+  expect_warning(encapsulate("try", function(...) warning("foo")))
 })
