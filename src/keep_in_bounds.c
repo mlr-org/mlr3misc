@@ -1,3 +1,4 @@
+#define R_NO_REMAP
 #include <R.h>
 #include <Rinternals.h>
 
@@ -5,7 +6,7 @@ SEXP c_keep_in_bounds(SEXP in, SEXP lower, SEXP upper) {
     const int * x = INTEGER(in);
     const int ll = INTEGER(lower)[0];
     const int lu = INTEGER(upper)[0];
-    const R_xlen_t n = length(in);
+    const R_xlen_t n = Rf_xlength(in);
     R_xlen_t i;
 
     // fast-forward to first element not in bounds
@@ -21,7 +22,7 @@ SEXP c_keep_in_bounds(SEXP in, SEXP lower, SEXP upper) {
     }
 
     // allocate output vector
-    SEXP out = PROTECT(allocVector(INTSXP, n));
+    SEXP out = PROTECT(Rf_allocVector(INTSXP, n));
     int * y = INTEGER(out);
     R_xlen_t j;
 

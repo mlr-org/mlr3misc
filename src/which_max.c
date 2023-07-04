@@ -1,3 +1,4 @@
+#define R_NO_REMAP
 #include <R.h>
 #include <Rinternals.h>
 #include <limits.h>
@@ -14,7 +15,7 @@ static ties_method_t translate_ties_method(SEXP ties_method_) {
     if (strcmp(str, "last") == 0)
         return TM_LAST;
 
-    error("Unknown ties method '%s'", str);
+    Rf_error("Unknown ties method '%s'", str);
 }
 
 
@@ -93,23 +94,23 @@ SEXP c_which_max(SEXP x_, SEXP ties_method_, SEXP na_rm_) {
 
     switch(TYPEOF(x_)) {
         case LGLSXP:
-            index = which_max_int(LOGICAL(x_), length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_int(LOGICAL(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
             break;
         case INTSXP:
-            index = which_max_int(INTEGER(x_), length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_int(INTEGER(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
             break;
         case REALSXP:
-            index = which_max_dbl(REAL(x_), length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_dbl(REAL(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
             break;
-        default: error("Unsupported vector type in which_max(). Supported are logical and numerical vectors.");
+        default: Rf_error("Unsupported vector type in which_max(). Supported are logical and numerical vectors.");
     }
 
     if (ties_method == TM_RANDOM)
         PutRNGstate();
 
     if (index == -1) {
-        return allocVector(INTSXP, 0);
+        return Rf_allocVector(INTSXP, 0);
     }
 
-   return ScalarInteger(index);
+   return Rf_ScalarInteger(index);
 }
