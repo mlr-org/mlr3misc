@@ -54,14 +54,17 @@
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
 encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
-  .seed = NA_integer_, .timeout = Inf) {
+  .seed = NA_integer_, .timeout = Inf, check = TRUE) {
 
-  assert_choice(method, c("none", "try", "evaluate", "callr"))
-  assert_list(.args, names = "unique")
-  assert_list(.opts, names = "unique")
-  assert_character(.pkgs, any.missing = FALSE)
-  assert_count(.seed, na.ok = TRUE)
-  assert_number(.timeout, lower = 0)
+  if (check) {
+    assert_choice(method, c("none", "try", "evaluate", "callr"))
+    assert_list(.args, names = "unique")
+    assert_list(.opts, names = "unique")
+    assert_character(.pkgs, any.missing = FALSE)
+    assert_count(.seed, na.ok = TRUE)
+    assert_number(.timeout, lower = 0)
+  }
+
   log = NULL
 
   if (method %in% c("none", "try")) {
