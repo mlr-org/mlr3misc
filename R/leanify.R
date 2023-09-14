@@ -43,6 +43,8 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
   environment(replacingfn) = environment(fn)
 
   function_kind = switch(function_kind_container, public_methods = "public", private_methods = "private", active = "active")
+  # otherwise leanification is not applied properly when installing mlr3 with --with-keep.source
+  # this can cause serialized objects to be unreasonably large
   origattributes$srcref = NULL
   attributes(replacingfn) = origattributes
   cls$set(function_kind, fname, replacingfn, overwrite = TRUE)
