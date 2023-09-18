@@ -1,3 +1,8 @@
+# mlr3misc 0.12.0-9000
+
+* fix: Fixed an important bug that caused serialized objects to be overly large
+when installing mlr3 with `--with-keep.source` (#88)
+
 # mlr3misc 0.12.0
 
 * Added new encapsulation mode `"try"`.
