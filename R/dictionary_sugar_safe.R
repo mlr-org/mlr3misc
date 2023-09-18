@@ -88,62 +88,6 @@ dictionary_sugar_get_safe = function(.dict, .key, ...) {
 }
 
 
-#' @title A Quick Way to Initialize Objects from Dictionaries with Incremented ID
-#' @description
-#' Like [`dictionary_sugar_get_safe`]
-#' @export
-dictionary_sugar_get_safe = function(.dict, .key, ...) {
-  assert_class(.dict, "Dictionary")
-  if (missing(.key)) {
-    return(.dict)
-  }
-  assert_string(.key)
-  if (...length() == 0L) {
-    return(dictionary_get(.dict, .key))
-  }
-  dots = assert_list(list(...), .var.name = "additional arguments passed to Dictionary")
-  assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
-
-  obj = dictionary_retrieve_item(.dict, .key)
-  if (length(dots) == 0L) {
-    return(assert_r6(dictionary_initialize_item(.key, obj)))
-  }
-
-  # pass args to constructor and remove them
-  constructor_args = get_constructor_formals(obj$value)
-  ii = is.na(names2(dots)) | names2(dots) %in% constructor_args
-  instance = assert_r6(dictionary_initialize_item(.key, obj, dots[ii]))
-  dots = dots[!ii]
-
-
-  # set params in ParamSet
-  if (length(dots) && exists("param_set", envir = instance, inherits = FALSE)) {
-    param_ids = instance$param_set$ids()
-    ii = names(dots) %in% param_ids
-    if (any(ii)) {
-      instance$param_set$values = insert_named(instance$param_set$values, dots[ii])
-      dots = dots[!ii]
-    }
-  } else {
-    param_ids = character()
-  }
-
-  # remaining args go into fields
-  if (length(dots)) {
-    ndots = names(dots)
-    for (i in seq_along(dots)) {
-      nn = ndots[[i]]
-      if (!exists(nn, envir = instance, inherits = FALSE)) {
-        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field.%s",
-          nn, class(instance)[1L], did_you_mean(nn, c(constructor_args, param_ids, fields(obj$value))))
-      }
-      instance[[nn]] = dots[[i]]
-    }
-  }
-
-  return(instance)
-}
-
 #' @rdname dictionary_sugar_get_safe
 #' @export
 dictionary_sugar_mget_safe = function(.dict, .keys, ...) {
