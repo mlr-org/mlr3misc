@@ -1,3 +1,7 @@
+# mlr3misc 0.12.0-9000
+
+* Added safe methods for dictionary retrieval (#83)
+
 # mlr3misc 0.12.0
 
 * added functions `dictionary_sugar_inc_get` and `dictionary_sugar_inc_mget`
