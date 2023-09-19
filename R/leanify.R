@@ -43,6 +43,10 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
   environment(replacingfn) = environment(fn)
 
   function_kind = switch(function_kind_container, public_methods = "public", private_methods = "private", active = "active")
+  # We remove the srcref (which exists when installing with option --with-keep.source) because:
+  # (1) incorrect rendering of leanified functions
+  # (2) use up memory unnecessarily
+  origattributes$srcref = NULL
   attributes(replacingfn) = origattributes
   cls$set(function_kind, fname, replacingfn, overwrite = TRUE)
 }
