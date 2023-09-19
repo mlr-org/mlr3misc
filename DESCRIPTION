@@ -54,6 +54,7 @@ Collate:
     'crate.R'
     'cross_join.R'
     'dictionary_sugar.R'
+    'dictionary_sugar_safe.R'
     'did_you_mean.R'
     'distinct_values.R'
     'encapsulate.R'
