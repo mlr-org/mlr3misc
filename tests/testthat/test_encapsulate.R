@@ -54,3 +54,17 @@ test_that("timeout", {
   expect_true("error" %in% res$log$class)
   expect_true(any(grepl("time limit", res$log$msg)))
 })
+
+
+test_that("try", {
+  fun1 = function(...) {
+    message("foo")
+  }
+
+  fun2 = function(...) {
+    message("foo")
+  }
+
+  expect_message(encapsulate("try", function(...) message("foo")))
+  expect_warning(encapsulate("try", function(...) warning("foo")))
+})

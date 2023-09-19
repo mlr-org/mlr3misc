@@ -112,6 +112,12 @@ test_that("incrementing ids works", {
   expect_true(objs$a_10$id == "a_10")
   expect_r6(objs$c_2, "B")
   expect_true(objs$c_2$id == "c_2")
+
+  objs = dictionary_sugar_inc_mget(d, c("a", "b_1"))
+  expect_identical(ids(objs), c("a", "c_1"))
+
+  obj = dictionary_sugar_inc_get(d, "a")
+  expect_class(obj, "A")
 })
 
 test_that("avoid unintended partial argument matching", {

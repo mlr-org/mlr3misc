@@ -162,12 +162,11 @@ fields = function(x) {
 #' objs = dictionary_sugar_inc_mget(d, c("a_10", "b_2"))
 #' map(objs, "id")
 #'
-#' @rdname dictionary_sugar_inc_get
 #' @export
 dictionary_sugar_inc_get = function(dict, .key, ...) {
   m = regexpr("_\\d+$", .key)
   if (attr(m, "match.length") == -1L)  {
-    return(dictionary_sugar_get(dict = dict, .key = key, ...))
+    return(dictionary_sugar_get(dict = dict, .key = .key, ...))
   }
   assert_true(!methods::hasArg("id"))
   split = regmatches(.key, m, invert = NA)[[1L]]

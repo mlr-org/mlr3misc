@@ -1,3 +1,4 @@
+#define R_NO_REMAP
 #include <R.h>
 #include <Rinternals.h>
 #include <Rversion.h>
@@ -8,7 +9,7 @@ static R_xlen_t count_missing_logical(SEXP x) {
     if (LOGICAL_NO_NA(x))
         return 0;
 #endif
-    const R_xlen_t n = xlength(x);
+    const R_xlen_t n = Rf_xlength(x);
     const int * xp = LOGICAL_RO(x);
     R_xlen_t count = 0;
     for (R_xlen_t i = 0; i < n; i++) {
@@ -23,7 +24,7 @@ static R_xlen_t count_missing_integer(SEXP x) {
     if (INTEGER_NO_NA(x))
         return 0;
 #endif
-    const R_xlen_t n = xlength(x);
+    const R_xlen_t n = Rf_xlength(x);
     const int * xp = INTEGER_RO(x);
     R_xlen_t count = 0;
     for (R_xlen_t i = 0; i < n; i++) {
@@ -38,7 +39,7 @@ static R_xlen_t count_missing_double(SEXP x) {
     if (REAL_NO_NA(x))
         return 0;
 #endif
-    const R_xlen_t n = xlength(x);
+    const R_xlen_t n = Rf_xlength(x);
     const double * xp = REAL_RO(x);
     R_xlen_t count = 0;
     for (R_xlen_t i = 0; i < n; i++) {
@@ -49,7 +50,7 @@ static R_xlen_t count_missing_double(SEXP x) {
 }
 
 static R_xlen_t count_missing_complex(SEXP x) {
-    const R_xlen_t n = xlength(x);
+    const R_xlen_t n = Rf_xlength(x);
     const Rcomplex * xp = COMPLEX_RO(x);
     R_xlen_t count = 0;
     for (R_xlen_t i = 0; i < n; i++) {
@@ -64,7 +65,7 @@ static R_xlen_t count_missing_string(SEXP x) {
     if (STRING_NO_NA(x))
         return 0;
 #endif
-    const R_xlen_t nx = xlength(x);
+    const R_xlen_t nx = Rf_xlength(x);
     R_xlen_t count = 0;
     for (R_xlen_t i = 0; i < nx; i++) {
         if (STRING_ELT(x, i) == NA_STRING)
@@ -75,11 +76,11 @@ static R_xlen_t count_missing_string(SEXP x) {
 
 SEXP c_count_missing(SEXP x) {
     switch(TYPEOF(x)) {
-        case LGLSXP:  return ScalarInteger(count_missing_logical(x));
-        case INTSXP:  return ScalarInteger(count_missing_integer(x));
-        case REALSXP: return ScalarInteger(count_missing_double(x));
-        case CPLXSXP: return ScalarInteger(count_missing_complex(x));
-        case STRSXP:  return ScalarInteger(count_missing_string(x));
-        default: error("Object of type '%s' not supported", type2char(TYPEOF(x)));
+        case LGLSXP:  return Rf_ScalarInteger(count_missing_logical(x));
+        case INTSXP:  return Rf_ScalarInteger(count_missing_integer(x));
+        case REALSXP: return Rf_ScalarInteger(count_missing_double(x));
+        case CPLXSXP: return Rf_ScalarInteger(count_missing_complex(x));
+        case STRSXP:  return Rf_ScalarInteger(count_missing_string(x));
+        default: Rf_error("Object of type '%s' not supported", Rf_type2char(TYPEOF(x)));
     }
 }

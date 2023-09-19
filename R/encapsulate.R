@@ -7,6 +7,8 @@
 #' * `"none"`: Just runs the call in the current session and measures the elapsed time.
 #'   Does not keep a log, output is printed directly to the console.
 #'   Works well together with [traceback()].
+#' * `"try"`: Similar to `"none"`, but catches error. Output is printed to the console and
+#'   not logged.
 #' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
 #' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 #'   This encapsulation spawns a separate R session in which the function is called.
@@ -54,7 +56,7 @@
 encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
   .seed = NA_integer_, .timeout = Inf) {
 
-  assert_choice(method, c("none", "evaluate", "callr"))
+  assert_choice(method, c("none", "try", "evaluate", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
   assert_character(.pkgs, any.missing = FALSE)
@@ -62,11 +64,18 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   assert_number(.timeout, lower = 0)
   log = NULL
 
-  if (method == "none") {
+  if (method %in% c("none", "try")) {
     require_namespaces(.pkgs)
 
     now = proc.time()[[3L]]
-    result = invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout)
+    if (method == "none") {
+      result = invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout)
+    } else {
+      result = try(invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout))
+      if (inherits(result, "try-error")) {
+        result = NULL
+      }
+    }
     elapsed = proc.time()[[3L]] - now
   } else if (method == "evaluate") {
     require_namespaces(c("evaluate", .pkgs))
