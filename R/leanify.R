@@ -96,6 +96,14 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 #'   always (i.e. skipping no classes).
 #' @export
 leanify_package = function(pkg_env = parent.frame(), skip_if = function(x) FALSE) {
+  # To generate the R6 documentation, roxygen needs access to the srcref (in order to associate methods with method
+  # documentation)
+  # Because our srcrefs are set to NULL during leanification we need to disable it
+  if (grepl("(document|roxygenise|roxygenize)", deparse(as.list(sys.calls()[[1L]])[[1L]]))) {
+    messagef("Skipping leanification for documentation!")
+    return(NULL)
+  }
+
   assert_environment(pkg_env)
   assert_function(skip_if)
 
