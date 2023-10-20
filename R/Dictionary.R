@@ -147,7 +147,7 @@ Dictionary = R6::R6Class("Dictionary",
       assert_character(required_args, any.missing = FALSE)
 
       dots = assert_list(list(...), names = "unique", .var.name = "additional arguments passed to Dictionary")
-      assert_list(.prototype_args, names = "unique", .var.name = "prototype args")
+      assert_list(.prototype_args, names = "unique", .var.name = "prototype arguments")
       assign(x = key, value = list(value = value, pars = dots, required_args = required_args, prototype_args = .prototype_args), envir = self$items) # nolint
       invisible(self)
     },
