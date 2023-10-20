@@ -57,6 +57,7 @@ Stores the items of the dictionary}
 \item \href{#method-Dictionary-add}{\code{Dictionary$add()}}
 \item \href{#method-Dictionary-remove}{\code{Dictionary$remove()}}
 \item \href{#method-Dictionary-required_args}{\code{Dictionary$required_args()}}
+\item \href{#method-Dictionary-prototype_args}{\code{Dictionary$prototype_args()}}
 \item \href{#method-Dictionary-clone}{\code{Dictionary$clone()}}
 }
 }
@@ -145,7 +146,7 @@ Returns a logical vector with \code{TRUE} at its i-th position if the i-th key e
 Retrieves object with key \code{key} from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Dictionary$get(key, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$get(key, ..., .prototype = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -155,6 +156,9 @@ Additional arguments must be named and are passed to the constructor of the stor
 
 \item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
+
+\item{\code{.prototype}}{(\code{logical(1)})\cr
+Whether to construct a protoype object.}
 }
 \if{html}{\out{</div>}}
 }
@@ -194,7 +198,13 @@ Adds object \code{value} to the dictionary with key \code{key}, potentially over
 Additional arguments in \code{...} must be named and are passed as default arguments to \code{value} during construction.
 The names of all additional arguments which are mandatory for construction and missing in \code{...} should be listed in \code{required_args}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Dictionary$add(key, value, ..., required_args = character())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$add(
+  key,
+  value,
+  ...,
+  required_args = character(),
+  .prototype_args = list()
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -207,7 +217,12 @@ The names of all additional arguments which are mandatory for construction and m
 \item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
 
-\item{\code{required_args}}{(\code{character()}).}
+\item{\code{required_args}}{(\code{character()}).
+Names of arguments required for construction.}
+
+\item{\code{.prototype_args}}{(\code{list()})\cr
+List of arguments to construct a prototype object.
+Can be used when objects have construction arguments without defaults.}
 }
 \if{html}{\out{</div>}}
 }
@@ -255,6 +270,27 @@ Key of object to query for required arguments.}
 }
 \subsection{Returns}{
 \code{character()} of names of required arguments.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Dictionary-prototype_args"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-prototype_args}{}}}
+\subsection{Method \code{prototype_args()}}{
+Returns the arguments required to construct a simple prototype of the object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$prototype_args(key)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{(\code{character(1)})\cr
+Key of object to query for required arguments.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{list()} of prototype arguments
 }
 }
 \if{html}{\out{<hr>}}

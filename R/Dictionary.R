@@ -91,10 +91,19 @@ Dictionary = R6::R6Class("Dictionary",
     #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
+    #' @param .prototype (`logical(1)`)\cr
+    #'   Whether to construct a protoype object.
+    #'
     #' @return Object with corresponding key.
-    get = function(key, ...) {
+    get = function(key, ..., .prototype = FALSE) {
       assert_string(key, min.chars = 1L)
-      dictionary_get(self, key, ...)
+      assert_flag(.prototype)
+      args = list(...)
+      if (.prototype) {
+        args = c(args, self$prototype_args(key))
+      }
+
+      invoke(dictionary_get, self = self, key = key, .args = args)
     },
 
     #' @description
@@ -125,15 +134,21 @@ Dictionary = R6::R6Class("Dictionary",
     #' Passed down to constructor.
     #'
     #' @param required_args (`character()`).
+    #'   Names of arguments required for construction.
+    #'
+    #' @param .prototype_args (`list()`)\cr
+    #'   List of arguments to construct a prototype object.
+    #'   Can be used when objects have construction arguments without defaults.
     #'
     #' @return `Dictionary`.
-    add = function(key, value, ..., required_args = character()) {
+    add = function(key, value, ..., required_args = character(), .prototype_args = list()) {
       assert_string(key, min.chars = 1L)
       assert(check_class(value, "R6ClassGenerator"), check_r6(value), check_function(value))
       assert_character(required_args, any.missing = FALSE)
 
       dots = assert_list(list(...), names = "unique", .var.name = "additional arguments passed to Dictionary")
-      assign(x = key, value = list(value = value, pars = dots, required_args = required_args), envir = self$items)
+      assert_list(.prototype_args, names = "unique", .var.name = "prototype args")
+      assign(x = key, value = list(value = value, pars = dots, required_args = required_args, prototype_args = .prototype_args), envir = self$items) # nolint
       invisible(self)
     },
 
@@ -163,6 +178,18 @@ Dictionary = R6::R6Class("Dictionary",
     required_args = function(key) {
       assert_string(key, min.chars = 1L)
       self$items[[key]][["required_args"]]
+    },
+
+    #' @description
+    #' Returns the arguments required to construct a simple prototype of the object.
+    #'
+    #' @param key (`character(1)`)\cr
+    #'   Key of object to query for required arguments.
+    #'
+    #' @return `list()` of prototype arguments
+    prototype_args = function(key) {
+      assert_string(key, min.chars = 1L)
+      self$items[[key]][["prototype_args"]]
     }
   )
 )

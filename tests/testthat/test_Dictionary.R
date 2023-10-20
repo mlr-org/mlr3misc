@@ -128,3 +128,13 @@ test_that("avoid unintended partial argument matching", {
   expect_r6(a, "A")
   expect_equal(a$d, 1)
 })
+
+
+test_that("prototype_args works", {
+  A = R6Class("A", public = list(x = NULL, initialize = function(x) self$x = x))
+  d = Dictionary$new()
+  d$add("a", A, .prototype_args = list(x = 1))
+  expect_identical(d$prototype_args("a"), list(x = 1))
+  a = d$get("a", .prototype = TRUE)
+  expect_identical(a$x, 1)
+})
