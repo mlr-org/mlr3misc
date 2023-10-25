@@ -217,7 +217,7 @@ The names of all additional arguments which are mandatory for construction and m
 \item{\code{...}}{(\code{any})\cr
 Passed down to constructor.}
 
-\item{\code{required_args}}{(\code{character()}).
+\item{\code{required_args}}{(\code{character()})\cr
 Names of arguments required for construction.}
 
 \item{\code{.prototype_args}}{(\code{list()})\cr

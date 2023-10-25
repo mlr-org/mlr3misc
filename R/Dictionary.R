@@ -100,7 +100,7 @@ Dictionary = R6::R6Class("Dictionary",
       assert_flag(.prototype)
       args = list(...)
       if (.prototype) {
-        args = c(args, self$prototype_args(key))
+        args = insert_named(args, self$prototype_args(key))
       }
 
       invoke(dictionary_get, self = self, key = key, .args = args)
@@ -133,7 +133,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
-    #' @param required_args (`character()`).
+    #' @param required_args (`character()`)\cr
     #'   Names of arguments required for construction.
     #'
     #' @param .prototype_args (`list()`)\cr
