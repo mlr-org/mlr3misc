@@ -9,6 +9,8 @@
 #'   The objects, which should be visible inside `.fn`.
 #' @param .parent (`environment`)\cr
 #'   Parent environment to look up names. Default to [topenv()].
+#' @param .compile (`logical(1)`)\cr
+#'   Whether to jit-compile the function.
 #'
 #' @export
 #' @examples
@@ -24,8 +26,11 @@
 #' z = 300
 #' f = meta_f(1)
 #' f()
-crate = function(.fn, ..., .parent = topenv()) {
+crate = function(.fn, ..., .parent = topenv(), .compile = TRUE) {
   nn = map_chr(substitute(list(...)), as.character)[-1L]
   environment(.fn) = list2env(setNames(list(...), nn), parent = .parent)
-  .fn
+  if (.compile) {
+    .fn = compiler::cmpfun(.fn)
+  }
+  return(.fn)
 }
