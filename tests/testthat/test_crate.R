@@ -16,4 +16,9 @@ test_that("crate", {
 test_that("compilation works", {
   expect_error(compiler::disassemble(crate(function() NULL, .compile = FALSE)), regexp = "function is not compiled")
   expect_error(compiler::disassemble(crate(function() NULL, .compile = TRUE)), regexp = NA)
+
+  f = function() NULL
+  fc = compiler::cmpfun(f)
+
+  expect_true(is_compiled(fc))
 })

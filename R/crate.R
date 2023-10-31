@@ -11,6 +11,8 @@
 #'   Parent environment to look up names. Default to [topenv()].
 #' @param .compile (`logical(1)`)\cr
 #'   Whether to jit-compile the function.
+#'   In case the function is already compiled.
+#'   If the input function `.fn` is compiled, this has no effect, and the output function will always be compiled.
 #'
 #' @export
 #' @examples
@@ -27,10 +29,18 @@
 #' f = meta_f(1)
 #' f()
 crate = function(.fn, ..., .parent = topenv(), .compile = TRUE) {
+  assert_flag(.compile)
   nn = map_chr(substitute(list(...)), as.character)[-1L]
   environment(.fn) = list2env(setNames(list(...), nn), parent = .parent)
-  if (.compile) {
+  if (.compile || is_compiled(.fn)) {
     .fn = compiler::cmpfun(.fn)
   }
   return(.fn)
+}
+
+is_compiled = function(x) {
+  tryCatch({
+    capture.output(compiler::disassemble(x))
+    TRUE
+  }, error = function(e) FALSE)
 }
