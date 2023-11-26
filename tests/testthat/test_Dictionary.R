@@ -31,17 +31,6 @@ test_that("Dictionary clones R6", {
   expect_false(data.table::address(foo) == data.table::address(d$get("f")))
 })
 
-test_that("Dictionary required args", {
-  foo = R6Class("Foo", public = list(x = 0))
-  x = Dictionary$new()
-  x$add("a", foo)
-  x$add("b", foo, required_args = "c")
-
-  expect_equal(x$required_args("a"), character())
-  expect_equal(x$required_args("b"), "c")
-  expect_equal(x$required_args("c"), NULL)
-})
-
 test_that("Dictionary throws exception on unnamed args", {
   foo = R6Class("Foo", public = list(x = 0))
   x = Dictionary$new()

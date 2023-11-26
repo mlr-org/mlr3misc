@@ -1,6 +1,7 @@
 # mlr3misc 0.13.0-9000
 
 * Added the possibility to include prototype arguments when adding elements to a `Dictionary`
+* Removed unused argument `required_args` from `Dictionary` class
 
 # mlr3misc 0.13.0
 

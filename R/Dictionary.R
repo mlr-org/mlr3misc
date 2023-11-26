@@ -100,7 +100,7 @@ Dictionary = R6::R6Class("Dictionary",
       assert_flag(.prototype)
       args = list(...)
       if (.prototype) {
-        args = insert_named(args, self$prototype_args(key))
+        args = insert_named(self$prototype_args(key), args)
       }
 
       invoke(dictionary_get, self = self, key = key, .args = args)
@@ -124,7 +124,6 @@ Dictionary = R6::R6Class("Dictionary",
     #' @description
     #' Adds object `value` to the dictionary with key `key`, potentially overwriting a previously stored item.
     #' Additional arguments in `...` must be named and are passed as default arguments to `value` during construction.
-    #' The names of all additional arguments which are mandatory for construction and missing in `...` should be listed in `required_args`.
     #'
     #' @param key (`character(1)`).
     #'
@@ -133,22 +132,18 @@ Dictionary = R6::R6Class("Dictionary",
     #' @param ... (`any`)\cr
     #' Passed down to constructor.
     #'
-    #' @param required_args (`character()`)\cr
-    #'   Names of arguments required for construction.
-    #'
     #' @param .prototype_args (`list()`)\cr
     #'   List of arguments to construct a prototype object.
     #'   Can be used when objects have construction arguments without defaults.
     #'
     #' @return `Dictionary`.
-    add = function(key, value, ..., required_args = character(), .prototype_args = list()) {
+    add = function(key, value, ..., .prototype_args = list()) {
       assert_string(key, min.chars = 1L)
       assert(check_class(value, "R6ClassGenerator"), check_r6(value), check_function(value))
-      assert_character(required_args, any.missing = FALSE)
 
       dots = assert_list(list(...), names = "unique", .var.name = "additional arguments passed to Dictionary")
       assert_list(.prototype_args, names = "unique", .var.name = "prototype arguments")
-      assign(x = key, value = list(value = value, pars = dots, required_args = required_args, prototype_args = .prototype_args), envir = self$items) # nolint
+      assign(x = key, value = list(value = value, pars = dots, prototype_args = .prototype_args), envir = self$items) # nolint
       invisible(self)
     },
 
@@ -166,18 +161,6 @@ Dictionary = R6::R6Class("Dictionary",
       }
       rm(list = keys, envir = self$items)
       invisible(self)
-    },
-
-    #' @description
-    #' Returns the names of arguments required to construct the object.
-    #'
-    #' @param key (`character(1)`)\cr
-    #'   Key of object to query for required arguments.
-    #'
-    #' @return `character()` of names of required arguments.
-    required_args = function(key) {
-      assert_string(key, min.chars = 1L)
-      self$items[[key]][["required_args"]]
     },
 
     #' @description
@@ -211,10 +194,6 @@ dictionary_retrieve_item = function(self, key) {
 dictionary_initialize_item = function(key, obj, cargs = list()) {
   cargs = c(cargs[is.na(names2(cargs))],
     insert_named(obj$pars, cargs[!is.na(names2(cargs))]))
-  ii = wf(obj$required_args %nin% names(cargs))
-  if (length(ii)) {
-    stopf("Need argument '%s' to construct '%s'", obj$required_args[ii], key)
-  }
 
   constructor = obj$value
   if (inherits(constructor, "R6ClassGenerator")) {
