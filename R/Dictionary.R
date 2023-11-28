@@ -92,7 +92,7 @@ Dictionary = R6::R6Class("Dictionary",
     #' Passed down to constructor.
     #'
     #' @param .prototype (`logical(1)`)\cr
-    #'   Whether to construct a protoype object.
+    #'   Whether to construct a prototype object.
     #'
     #' @return Object with corresponding key.
     get = function(key, ..., .prototype = FALSE) {

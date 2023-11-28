@@ -157,7 +157,7 @@ Additional arguments must be named and are passed to the constructor of the stor
 Passed down to constructor.}
 
 \item{\code{.prototype}}{(\code{logical(1)})\cr
-Whether to construct a protoype object.}
+Whether to construct a prototype object.}
 }
 \if{html}{\out{</div>}}
 }
