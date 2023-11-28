@@ -126,4 +126,5 @@ test_that("prototype_args works", {
   expect_identical(d$prototype_args("a"), list(x = 1))
   a = d$get("a", .prototype = TRUE)
   expect_identical(a$x, 1)
+  expect_identical(d$prototype_args("a"), list(x = 1))
 })
