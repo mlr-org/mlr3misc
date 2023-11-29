@@ -8,6 +8,13 @@
 #'
 #' leanificate_method is called by [leanify_r6] for each function of an [R6] class.
 #'
+#' Leanification also removes the `"srcref"` attribute of functions (sets it to `NULL`), because
+#' 1) it is incorrect and
+#' 2) srcrefs can lead to exploding object sizes.
+#'
+#' However, because `roxgyen2` needs the srcrefs to create the documentation for R6 classes, leanification
+#' is skipped during `roxygenize()`, i.e. when the `ROXYGEN_PKG` environment variable is set.
+#'
 #' @param cls (`R6ClassGenerator`)\cr
 #'   R6Class object (i.e. R6 object generator) to modify.
 #' @param name (`character(1)`)\cr
@@ -98,6 +105,13 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 leanify_package = function(pkg_env = parent.frame(), skip_if = function(x) FALSE) {
   assert_environment(pkg_env)
   assert_function(skip_if)
+
+  # otherwise creation of R6 docs fails
+  pkg = Sys.getenv("ROXYGEN_PKG")
+  if (nzchar(pkg)) {
+    messagef("Skipping leanification of package '%s' during roxygenize.", pkg)
+    return(NULL)
+  }
 
   for (varname in names(pkg_env)) {
     content = get(varname, envir = pkg_env, inherits = FALSE)

@@ -4,7 +4,7 @@
 \alias{crate}
 \title{Isolate a Function from its Environment}
 \usage{
-crate(.fn, ..., .parent = .GlobalEnv)
+crate(.fn, ..., .parent = topenv())
 }
 \arguments{
 \item{.fn}{(\verb{function()})\cr
@@ -14,7 +14,7 @@ function to crate}
 The objects, which should be visible inside \code{.fn}.}
 
 \item{.parent}{(\code{environment})\cr
-Parent environment to look up names. Default so the global environment.}
+Parent environment to look up names. Default to \code{\link[=topenv]{topenv()}}.}
 }
 \description{
 Put a function in a "lean" environment that does not carry unnecessary baggage with it (e.g. references to datasets).
