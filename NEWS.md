@@ -1,8 +1,9 @@
 # mlr3misc 0.13.0-9000
 
-* Loading `mlr3misc` now gives a warning when the package is being installed
+* Feat: Loading `mlr3misc` now gives a warning when the package is being installed
   with source references, which can lead to unreasonable memory usage.
   This can be disabled using option `"mlr3misc.warn_srcref"`
+* Fix: disable leanification when `ROXYGEN_PKG` environment variable is set
 
 # mlr3misc 0.13.0
 
