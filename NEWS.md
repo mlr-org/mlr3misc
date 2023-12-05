@@ -2,6 +2,7 @@
 
 * Loading `mlr3misc` now gives a warning when the package is being installed
   with source references, which can lead to unreasonable memory usage.
+  This can be disabled using option `"mlr3misc.warn_srcref"`
 
 # mlr3misc 0.13.0
 
