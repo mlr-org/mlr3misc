@@ -1,6 +1,8 @@
-# mlr3misc 0.13.0
+# mlr3misc 0.13.0-9000
 
-* Bugfix: disable leanification when `ROXYGEN_PKG` environment variable is set
+* Added the possibility to include prototype arguments when adding elements to a `Dictionary`
+* Removed unused argument `required_args` from `Dictionary` class
+* Disable leanification when `ROXYGEN_PKG` environment variable is set
 
 # mlr3misc 0.13.0
 
