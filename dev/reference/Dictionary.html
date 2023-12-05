@@ -24,7 +24,7 @@ Default argument required for construction can be stored alongside their constru
     
     <a class="navbar-brand me-2" href="../index.html">mlr3misc</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.13.0-9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,7 +129,7 @@ Stores the items of the dictionary</p></dd>
 <li><p><a href="#method-Dictionary-mget"><code>Dictionary$mget()</code></a></p></li>
 <li><p><a href="#method-Dictionary-add"><code>Dictionary$add()</code></a></p></li>
 <li><p><a href="#method-Dictionary-remove"><code>Dictionary$remove()</code></a></p></li>
-<li><p><a href="#method-Dictionary-required_args"><code>Dictionary$required_args()</code></a></p></li>
+<li><p><a href="#method-Dictionary-prototype_args"><code>Dictionary$prototype_args()</code></a></p></li>
 <li><p><a href="#method-Dictionary-clone"><code>Dictionary$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-Dictionary-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -209,7 +209,7 @@ If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</
 <p>Retrieves object with key <code>key</code> from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="va">key</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="va">key</span>, <span class="va">...</span>, .prototype <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -221,6 +221,11 @@ Additional arguments must be named and are passed to the constructor of the stor
 <dt><code>...</code></dt>
 <dd><p>(<code>any</code>)<br>
 Passed down to constructor.</p></dd>
+
+
+<dt><code>.prototype</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether to construct a prototype object.</p></dd>
 
 
 </dl><p></p></div>
@@ -259,10 +264,9 @@ Passed down to constructor.</p></dd>
 </div><p></p><hr><a id="method-Dictionary-add"></a><div class="section">
 <h3 id="method-add-">Method <code>add()</code><a class="anchor" aria-label="anchor" href="#method-add-"></a></h3>
 <p>Adds object <code>value</code> to the dictionary with key <code>key</code>, potentially overwriting a previously stored item.
-Additional arguments in <code>...</code> must be named and are passed as default arguments to <code>value</code> during construction.
-The names of all additional arguments which are mandatory for construction and missing in <code>...</code> should be listed in <code>required_args</code>.</p><div class="section">
+Additional arguments in <code>...</code> must be named and are passed as default arguments to <code>value</code> during construction.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">add</span><span class="op">(</span><span class="va">key</span>, <span class="va">value</span>, <span class="va">...</span>, required_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">add</span><span class="op">(</span><span class="va">key</span>, <span class="va">value</span>, <span class="va">...</span>, .prototype_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -280,8 +284,10 @@ The names of all additional arguments which are mandatory for construction and m
 Passed down to constructor.</p></dd>
 
 
-<dt><code>required_args</code></dt>
-<dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>).</p></dd>
+<dt><code>.prototype_args</code></dt>
+<dd><p>(<code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>)<br>
+List of arguments to construct a prototype object.
+Can be used when objects have construction arguments without defaults.</p></dd>
 
 
 </dl><p></p></div>
@@ -312,11 +318,11 @@ Keys of objects to remove.</p></dd>
 <p><code>Dictionary</code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-required_args"></a><div class="section">
-<h3 id="method-required-args-">Method <code>required_args()</code><a class="anchor" aria-label="anchor" href="#method-required-args-"></a></h3>
-<p>Returns the names of arguments required to construct the object.</p><div class="section">
+</div><p></p><hr><a id="method-Dictionary-prototype_args"></a><div class="section">
+<h3 id="method-prototype-args-">Method <code>prototype_args()</code><a class="anchor" aria-label="anchor" href="#method-prototype-args-"></a></h3>
+<p>Returns the arguments required to construct a simple prototype of the object.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">required_args</span><span class="op">(</span><span class="va">key</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">prototype_args</span><span class="op">(</span><span class="va">key</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -330,7 +336,7 @@ Key of object to query for required arguments.</p></dd>
 </div>
 <div class="section">
 <h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
-<p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> of names of required arguments.</p>
+<p><code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of prototype arguments</p>
 </div>
 
 </div><p></p><hr><a id="method-Dictionary-clone"></a><div class="section">
