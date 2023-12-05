@@ -106,3 +106,8 @@ leanify_package = function(pkg_env = parent.frame(), skip_if = function(x) FALSE
     }
   }
 }
+
+has_srcref = function(fn) {
+  # we could also just inspect the attributes but this would evaluate the promise
+  !identical(as.character(substitute(lines, attr(attr(fn, "srcref"), "srcfile")$original)), "lines")
+}

@@ -10,6 +10,15 @@
 
 Frequently used helper functions and assertions used in 'mlr3' and its companion packages. Comes with helper functions for functional programming, for printing, to work with 'data.table', as well as some generally useful 'R6' classes. This package also supersedes the package 'BBmisc'.
 }
+\section{Package Options}{
+
+\itemize{
+\item \code{"mlr3misc.warn_srcref"}:
+Disable giving a warning during package loading when packages seem to be installed with the \code{"--with-keep.source"}
+option by setting this option to \code{FALSE}. Defaults to \code{TRUE}.
+}
+}
+
 \seealso{
 Useful links:
 \itemize{

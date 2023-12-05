@@ -1,4 +1,8 @@
-# mlr3misc 0.12.0-9000
+# mlr3misc 0.13.0-9000
+
+* Warn when the package is installed with source references.
+
+# mlr3misc 0.13.0
 
 * Updated default environment for `crate()` to `topenv()` (#86).
 * Added safe methods for dictionary retrieval (#83)
