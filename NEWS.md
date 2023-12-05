@@ -1,6 +1,7 @@
 # mlr3misc 0.13.0-9000
 
-* Warn when the package is installed with source references.
+* Loading `mlr3misc` now gives a warning when the package is being installed
+  with source references, which can lead to unreasonable memory usage.
 
 # mlr3misc 0.13.0
 
