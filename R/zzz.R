@@ -15,7 +15,7 @@
 .onLoad = function(libname, pkgname) {
   # nocov start
   if (has_srcref(ids) && getOption("mlr3misc.warn_srcref", TRUE)) {
-    warningf(paste0("It looks like you are installing packages with the '--with-keep.source' flag, which is discouraged.\n", # nolint
+    warningf(paste0("It looks like you installed packages with the '--with-keep.source' flag, which is discouraged.\n", # nolint
       "You can find more information on this on the FAQ section of our website: https://mlr-org.com/faq.html\n",
       "This warning can be disabled by setting the 'mlr3misc.warn_srcref' option to FALSE.\n"))
   }
