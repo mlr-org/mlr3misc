@@ -30,9 +30,10 @@
 #' f()
 crate = function(.fn, ..., .parent = topenv(), .compile = TRUE) {
   assert_flag(.compile)
+  .compile = .compile || is_compiled(.fn)
   nn = map_chr(substitute(list(...)), as.character)[-1L]
   environment(.fn) = list2env(setNames(list(...), nn), parent = .parent)
-  if (.compile || is_compiled(.fn)) {
+  if (.compile) {
     .fn = compiler::cmpfun(.fn)
   }
   return(.fn)
