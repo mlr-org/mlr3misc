@@ -2,7 +2,6 @@
 #'
 #' @description
 #' Calls [digest::digest()] to calculate the hash for all objects provided.
-#' The hash is calculated using the [xxhash64] algorithm.
 #' By specifying methods for the [`hash_input`] generic, you can control which information of an object
 #' is used to calculate the hash.
 #'
