@@ -5,6 +5,7 @@
 #' @importFrom R6 R6Class is.R6
 #' @importFrom digest digest
 #' @importFrom methods formalArgs hasArg
+#' @importFrom utils capture.output
 "_PACKAGE"
 
 .onLoad = function(libname, pkgname) {
