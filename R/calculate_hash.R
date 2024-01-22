@@ -2,8 +2,11 @@
 #'
 #' @description
 #' Calls [digest::digest()] to calculate the hash for all objects provided.
+#' The hash is calculated using the [xxhash64] algorithm.
+#' By specifying methods for the [`hash_input`] generic, you can control which information of an object
+#' is used to calculate the hash.
 #'
-#' The following operations are performed to make hashing more robust:
+#' Methods exist for:
 #' * If an object is a [function()], the formals and the body are hashed separately.
 #'   This ensures that the bytecode or parent environment are not be included
 #'   in the hash.
@@ -21,13 +24,32 @@
 #' @examples
 #' calculate_hash(iris, 1, "a")
 calculate_hash = function(...) {
-  digest(lapply(list(...), function(x) {
-    if (is.function(x)) {
-      list(formals(x), as.character(body(x)))
-    } else if (is.data.table(x)) {
-      as.list(x)
-    } else {
-      x
-    }
-  }), algo = "xxhash64")
+  digest(lapply(list(...), hash_info), algo = "xxhash64")
 }
+
+#' Hash Input
+#'
+#' Returns the information of an object to be used to calculate its hash.
+#' @param x (any)\cr
+#'   Object for which to calculate the hash.
+#' @export
+hash_input = function(x) {
+  UseMethod("hash_input")
+}
+
+#' @export
+hash_input.function = function(x) {
+  list(formals(x), as.character(body(x)))
+}
+
+#' @export
+#' @method hash_input data.table
+hash_input.data.table = function(x) {
+  as.list(x)
+}
+
+#' @export
+hash_input.default = function(x) {
+  x
+}
+

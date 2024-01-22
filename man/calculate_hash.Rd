@@ -15,8 +15,11 @@ Objects to hash.}
 }
 \description{
 Calls \code{\link[digest:digest]{digest::digest()}} to calculate the hash for all objects provided.
+The hash is calculated using the \link{xxhash64} algorithm.
+By specifying methods for the \code{\link{hash_input}} generic, you can control which information of an object
+is used to calculate the hash.
 
-The following operations are performed to make hashing more robust:
+Methods exist for:
 \itemize{
 \item If an object is a \code{\link[=function]{function()}}, the formals and the body are hashed separately.
 This ensures that the bytecode or parent environment are not be included
