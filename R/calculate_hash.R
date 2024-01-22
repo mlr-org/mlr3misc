@@ -24,7 +24,7 @@
 #' @examples
 #' calculate_hash(iris, 1, "a")
 calculate_hash = function(...) {
-  digest(lapply(list(...), hash_info), algo = "xxhash64")
+  digest(lapply(list(...), hash_input), algo = "xxhash64")
 }
 
 #' Hash Input
