@@ -44,7 +44,7 @@ hash_input.function = function(x) {
 #' @export
 #' @method hash_input data.table
 hash_input.data.table = function(x) {
-  as.list(x)
+  lapply(as.list(x), hash_input)
 }
 
 #' @export
