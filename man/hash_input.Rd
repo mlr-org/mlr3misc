@@ -8,7 +8,7 @@ hash_input(x)
 }
 \arguments{
 \item{x}{(any)\cr
-Object for which to calculate the hash.}
+Object that is part of the object to be hashed.}
 }
 \description{
 Returns the information of an object to be used to calculate its hash.

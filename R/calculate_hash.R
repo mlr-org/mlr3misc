@@ -30,7 +30,7 @@ calculate_hash = function(...) {
 #'
 #' Returns the information of an object to be used to calculate its hash.
 #' @param x (any)\cr
-#'   Object for which to calculate the hash.
+#'   Object that is part of the object to be hashed.
 #' @export
 hash_input = function(x) {
   UseMethod("hash_input")
