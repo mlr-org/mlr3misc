@@ -14,21 +14,7 @@ Objects to hash.}
 (\code{character(1)}).
 }
 \description{
-Calls \code{\link[digest:digest]{digest::digest()}} to calculate the hash for all objects provided.
-By specifying methods for the \code{\link{hash_input}} generic, you can control which information of an object
-is used to calculate the hash.
-
-Methods exist for:
-\itemize{
-\item If an object is a \code{\link[=function]{function()}}, the formals and the body are hashed separately.
-This ensures that the bytecode or parent environment are not be included
-in the hash.
-\item If an object is a \code{\link[data.table:data.table]{data.table::data.table()}}, the data.table is converted to a
-regular list. This ensures that keys and indices are not included in the hash.
-}
-
-Note that this only applies to top level objects, these transformations are not done
-recursively.
+Calls \code{\link[digest:digest]{digest::digest()}} using the 'xxhash64' algorithm after applying \code{\link[=hash_input]{hash_input()}}.
 }
 \examples{
 calculate_hash(iris, 1, "a")
