@@ -22,18 +22,14 @@ Object for which to retrieve the hash input.}
 \description{
 Returns the part of an object to be used to calculate its hash.
 }
-\details{
-Methods exist for:
-}
 \section{Methods (by class)}{
 \itemize{
-\item \code{hash_input(`function`)}: The formals and the body are hashed separately.
-This ensures that the bytecode or parent environment are not be included
+\item \code{hash_input(`function`)}: The formals and the body are returned in a \code{list()}.
+This ensures that the bytecode or parent environment are not included.
 in the hash.
 
-\item \code{hash_input(data.table)}: The data.table is converted to a regular list and.
-This ensures that keys and indices are not included in the hash.
-Then, \code{\link{hash_input}} is applied to each element of the list.
+\item \code{hash_input(data.table)}: The data.table is converted to a regular list and \code{hash_input()} is applied to all elements.
+The conversion to a list ensures that keys and indices are not included in the hash.
 
 \item \code{hash_input(default)}: Returns the object as is.
 

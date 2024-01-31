@@ -1,7 +1,11 @@
 #' @title Calculate a Hash for Multiple Objects
 #'
 #' @description
-#' Calls [digest::digest()] using the 'xxhash64' algorithm after applying [`hash_input()`].
+#' Calls [digest::digest()] using the 'xxhash64' algorithm after applying [`hash_input`] to each object.
+#' To customize the hashing behaviour, you can overwrite [`hash_input`] for specific classes.
+#' For `data.table` objects, [`hash_input`] is applied to all columns, so you can overwrite [`hash_input`] for
+#' columns of a specific class.
+#' Objects that don't have a specific method are hashes as is.
 #'
 #' @param ... (any)\cr
 #'   Objects to hash.
