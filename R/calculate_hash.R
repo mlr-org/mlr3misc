@@ -18,7 +18,6 @@ calculate_hash = function(...) {
 #'
 #' Returns the part of an object to be used to calculate its hash.
 #'
-#' Methods exist for:
 #' @param x (any)\cr
 #'   Object for which to retrieve the hash input.
 #' @export
