@@ -26,8 +26,8 @@ hash_input = function(x) {
 }
 
 #' @describeIn hash_input
-#' The formals and the body are hashed separately.
-#' This ensures that the bytecode or parent environment are not be included
+#' The formals and the body are returned in a `list()`.
+#' This ensures that the bytecode or parent environment are not included.
 #' in the hash.
 #' @export
 hash_input.function = function(x) {
@@ -35,9 +35,8 @@ hash_input.function = function(x) {
 }
 
 #' @describeIn hash_input
-#' The data.table is converted to a regular list and.
-#' This ensures that keys and indices are not included in the hash.
-#' Then, [`hash_input`] is applied to each element of the list.
+#' The data.table is converted to a regular list and `hash_input()` is applied to all elements.
+#' The conversion to a list ensures that keys and indices are not included in the hash.
 #' @export
 #' @method hash_input data.table
 hash_input.data.table = function(x) {
