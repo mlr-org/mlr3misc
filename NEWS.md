@@ -1,3 +1,5 @@
+# mlr3misc 0.14.0
+
 # mlr3misc 0.13.0-9000
 
 * Added argument `.compile` to function `crate()` because R disables byte-code
