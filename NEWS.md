@@ -1,7 +1,5 @@
 # mlr3misc 0.14.0
 
-# mlr3misc 0.13.0-9000
-
 * Added argument `.compile` to function `crate()` because R disables byte-code
 compilation of functions when changing their enclosing environment
 * Added the possibility to include prototype arguments when adding elements to a `Dictionary`
