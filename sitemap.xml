@@ -85,7 +85,13 @@
     <loc>https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html</loc>
   </url>
   <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get_safe.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3misc.mlr-org.com/reference/dictionary_sugar_inc_get.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/dictionary_sugar_inc_get_safe.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/did_you_mean.html</loc>
@@ -119,6 +125,9 @@
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/has_element.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3misc.mlr-org.com/reference/hash_input.html</loc>
   </url>
   <url>
     <loc>https://mlr3misc.mlr-org.com/reference/ids.html</loc>
