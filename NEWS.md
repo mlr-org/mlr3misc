@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* Feat: Added `strip_screfs` S3 generic, which removes source references from objects
+
 # mlr3misc 0.14.0
 
 * Added argument `.compile` to function `crate()` because R disables byte-code
