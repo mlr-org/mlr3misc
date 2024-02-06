@@ -1,4 +1,4 @@
-# mlr3misc 0.13.0-9000
+# mlr3misc 0.14.0
 
 * Added argument `.compile` to function `crate()` because R disables byte-code
 compilation of functions when changing their enclosing environment
