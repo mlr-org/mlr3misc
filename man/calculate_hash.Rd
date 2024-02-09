@@ -18,7 +18,7 @@ Calls \code{\link[digest:digest]{digest::digest()}} using the 'xxhash64' algorit
 To customize the hashing behaviour, you can overwrite \code{\link{hash_input}} for specific classes.
 For \code{data.table} objects, \code{\link{hash_input}} is applied to all columns, so you can overwrite \code{\link{hash_input}} for
 columns of a specific class.
-Objects that don't have a specific method are hashes as is.
+Objects that don't have a specific method are hashed as is.
 }
 \examples{
 calculate_hash(iris, 1, "a")

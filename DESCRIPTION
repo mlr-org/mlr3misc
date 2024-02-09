@@ -1,6 +1,6 @@
 Package: mlr3misc
 Title: Helper Functions for 'mlr3'
-Version: 0.13.0-9000
+Version: 0.14.0.9000
 Authors@R: c(
     person("Michel", "Lang", , "michellang@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0001-9754-0393")),
@@ -34,7 +34,7 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3.9000
+RoxygenNote: 7.3.1
 Collate:
     'Dictionary.R'
     'named_list.R'
@@ -97,6 +97,7 @@ Collate:
     'str_collapse.R'
     'str_indent.R'
     'str_trunc.R'
+    'strip_srcrefs.R'
     'to_decimal.R'
     'topo_sort.R'
     'transpose.R'
