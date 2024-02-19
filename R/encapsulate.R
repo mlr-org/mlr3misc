@@ -93,11 +93,12 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   } else { # method == "callr"
     require_namespaces("callr")
 
+    .memory_limit = getOption("callr_memory_limit", NULL)
     .rng_state = .GlobalEnv$.Random.seed
     logfile = tempfile()
     now = proc.time()[3L]
     result = try(callr::r(callr_wrapper,
-      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
+      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state, .memory_limit = .memory_limit),
       stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
@@ -166,7 +167,7 @@ parse_callr = function(log) {
   log[]
 }
 
-callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
+callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state, .memory_limit) {
   suppressPackageStartupMessages({
     lapply(.pkgs, requireNamespace)
   })
@@ -174,6 +175,11 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   options(.opts)
   if (!is.na(.seed)) {
     set.seed(.seed)
+  }
+
+  if (!is.null(.memory_limit)) {
+    mlr3misc::require_namespaces("unix")
+    unix::rlimit_as(cur = .memory_limit, max = .memory_limit)
   }
 
   assign(".Random.seed", .rng_state, envir = globalenv())
