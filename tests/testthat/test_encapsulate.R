@@ -105,3 +105,28 @@ test_that("callr rng state", {
   expect_equal(fun(), 371)
   expect_equal(sample(seq(1000), 1), 359)
 })
+
+test_that("callr memory limit", {
+
+  fun = function() {
+    runif(1e10)
+  }
+
+  res = encapsulate("callr", fun, .memory_limit = 1e6)
+  expect_match(res$log$msg, "cannot allocate vector of size")
+})
+
+# test_that("callr memory limit external process", {
+
+#   fun = function() {
+#     library(mlr3)
+#     library(mlr3learners)
+
+#     task = tsk("spam")
+#     learner = lrn("classif.ranger", num.trees = 500000)
+#     learner$train(task)
+#   }
+
+#   res = encapsulate("callr", fun, .memory_limit = 1e9)
+#   expect_null(res$result)
+# })

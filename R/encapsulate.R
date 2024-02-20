@@ -54,7 +54,7 @@
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
 encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
-  .seed = NA_integer_, .timeout = Inf) {
+  .seed = NA_integer_, .timeout = Inf, .memory_limit = Inf) {
 
   assert_choice(method, c("none", "try", "evaluate", "callr"))
   assert_list(.args, names = "unique")
@@ -93,7 +93,6 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   } else { # method == "callr"
     require_namespaces("callr")
 
-    .memory_limit = getOption("callr_memory_limit", NULL)
     .rng_state = .GlobalEnv$.Random.seed
     logfile = tempfile()
     now = proc.time()[3L]
@@ -177,7 +176,7 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state, .memory_lim
     set.seed(.seed)
   }
 
-  if (!is.null(.memory_limit)) {
+  if (is.finite(.memory_limit)) {
     mlr3misc::require_namespaces("unix")
     unix::rlimit_as(cur = .memory_limit, max = .memory_limit)
   }
