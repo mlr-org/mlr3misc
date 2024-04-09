@@ -78,6 +78,10 @@ test_that("callr rng state", {
     sample(seq(1000), 1)
   }
 
+  # no seed
+  res = encapsulate("callr", fun)
+  expect_number(res$result)
+
   set.seed(1, kind = "Mersenne-Twister")
   res = encapsulate("callr", fun)
   expect_equal(res$result, 836)

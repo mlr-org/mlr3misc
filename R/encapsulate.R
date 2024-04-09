@@ -93,6 +93,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   } else { # method == "callr"
     require_namespaces("callr")
 
+    # callr does not copy the RNG state, so we need to do it manually
     .rng_state = .GlobalEnv$.Random.seed
     logfile = tempfile()
     now = proc.time()[3L]
@@ -118,7 +119,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       }
       result = NULL
     } else {
-      assign(".Random.seed", result$rng_state, envir = globalenv())
+      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
       result = result$result
     }
     log = parse_callr(log)
@@ -181,7 +182,8 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state, .memory_lim
     unix::rlimit_as(cur = .memory_limit, max = .memory_limit)
   }
 
-  assign(".Random.seed", .rng_state, envir = globalenv())
+  # restore RNG state from parent R session
+  if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
 
   result = withCallingHandlers(
     tryCatch(do.call(.f, .args),
@@ -196,5 +198,6 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state, .memory_lim
     }
   )
 
+  # copy new RNG state back to parent R session
   list(result = result, rng_state = .GlobalEnv$.Random.seed)
 }
