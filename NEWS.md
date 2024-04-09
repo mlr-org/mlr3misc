@@ -1,6 +1,7 @@
-# mlr3misc (development version)
+# mlr3misc 0.15.0
 
 * Feat: Added `strip_screfs` S3 generic, which removes source references from objects
+* The RNG state is now copied to the callr session when using `encapsulate()`.
 
 # mlr3misc 0.14.0
 
