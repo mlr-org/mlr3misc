@@ -93,10 +93,12 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   } else { # method == "callr"
     require_namespaces("callr")
 
+    # callr does not copy the RNG state, so we need to do it manually
+    .rng_state = .GlobalEnv$.Random.seed
     logfile = tempfile()
     now = proc.time()[3L]
     result = try(callr::r(callr_wrapper,
-      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed),
+      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
       stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
@@ -116,8 +118,10 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
         log = c(log, sprintf("[ERR] callr process exited with status %i", status))
       }
       result = NULL
+    } else {
+      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      result = result$result
     }
-
     log = parse_callr(log)
   }
 
@@ -163,7 +167,7 @@ parse_callr = function(log) {
   log[]
 }
 
-callr_wrapper = function(.f, .args, .opts, .pkgs, .seed) {
+callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   suppressPackageStartupMessages({
     lapply(.pkgs, requireNamespace)
   })
@@ -173,7 +177,10 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed) {
     set.seed(.seed)
   }
 
-  withCallingHandlers(
+  # restore RNG state from parent R session
+  if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+
+  result = withCallingHandlers(
     tryCatch(do.call(.f, .args),
       error = function(e) {
         cat("[ERR]", gsub("\r?\n|\r", "<br>", conditionMessage(e)), "\n")
@@ -185,4 +192,7 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed) {
       invokeRestart("muffleWarning")
     }
   )
+
+  # copy new RNG state back to parent R session
+  list(result = result, rng_state = .GlobalEnv$.Random.seed)
 }
