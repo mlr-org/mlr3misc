@@ -5,7 +5,7 @@
 \alias{assert_callbacks}
 \title{Assertions for Callbacks}
 \usage{
-assert_callback(callback)
+assert_callback(callback, null_ok = FALSE)
 
 assert_callbacks(callbacks)
 }

@@ -4,6 +4,7 @@
 \alias{as_callback}
 \alias{as_callback.Callback}
 \alias{as_callbacks}
+\alias{as_callbacks.NULL}
 \alias{as_callbacks.list}
 \alias{as_callbacks.Callback}
 \title{Convert to a Callback}
@@ -13,6 +14,8 @@ as_callback(x, ...)
 \method{as_callback}{Callback}(x, clone = FALSE, ...)
 
 as_callbacks(x, clone = FALSE, ...)
+
+\method{as_callbacks}{`NULL`}(x, ...)
 
 \method{as_callbacks}{list}(x, clone = FALSE, ...)
 

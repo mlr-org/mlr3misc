@@ -2,6 +2,7 @@
 
 S3method(as.data.table,Dictionary)
 S3method(as_callback,Callback)
+S3method(as_callbacks,"NULL")
 S3method(as_callbacks,Callback)
 S3method(as_callbacks,list)
 S3method(discard,data.frame)
