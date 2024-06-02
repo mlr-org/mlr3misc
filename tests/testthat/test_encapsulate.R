@@ -68,3 +68,44 @@ test_that("try", {
   expect_message(encapsulate("try", function(...) message("foo")))
   expect_warning(encapsulate("try", function(...) warning("foo")))
 })
+
+test_that("callr rng state", {
+
+  rng_state = .GlobalEnv$.Random.seed
+  on.exit({.GlobalEnv$.Random.seed = rng_state})
+
+  fun = function() {
+    sample(seq(1000), 1)
+  }
+
+  # no seed
+  res = encapsulate("callr", fun)
+  expect_number(res$result)
+
+  set.seed(1, kind = "Mersenne-Twister")
+  res = encapsulate("callr", fun)
+  expect_equal(res$result, 836)
+  expect_equal(sample(seq(1000), 1), 679)
+
+  set.seed(1, kind = "Mersenne-Twister")
+  expect_equal(fun(), 836)
+  expect_equal(sample(seq(1000), 1), 679)
+
+  set.seed(1, kind = "Wichmann-Hill")
+  res = encapsulate("callr", fun)
+  expect_equal(res$result, 309)
+  expect_equal(sample(seq(1000), 1), 885)
+
+  set.seed(1, kind = "Wichmann-Hill")
+  expect_equal(fun(), 309)
+  expect_equal(sample(seq(1000), 1), 885)
+
+  set.seed(1, kind = "L'Ecuyer-CMRG")
+  res = encapsulate("callr", fun)
+  expect_equal(res$result, 371)
+  expect_equal(sample(seq(1000), 1), 359)
+
+  set.seed(1, kind = "L'Ecuyer-CMRG")
+  expect_equal(fun(), 371)
+  expect_equal(sample(seq(1000), 1), 359)
+})

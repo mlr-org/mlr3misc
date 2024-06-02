@@ -14,19 +14,11 @@ Objects to hash.}
 (\code{character(1)}).
 }
 \description{
-Calls \code{\link[digest:digest]{digest::digest()}} to calculate the hash for all objects provided.
-
-The following operations are performed to make hashing more robust:
-\itemize{
-\item If an object is a \code{\link[=function]{function()}}, the formals and the body are hashed separately.
-This ensures that the bytecode or parent environment are not be included
-in the hash.
-\item If an object is a \code{\link[data.table:data.table]{data.table::data.table()}}, the data.table is converted to a
-regular list. This ensures that keys and indices are not included in the hash.
-}
-
-Note that this only applies to top level objects, these transformations are not done
-recursively.
+Calls \code{\link[digest:digest]{digest::digest()}} using the 'xxhash64' algorithm after applying \code{\link{hash_input}} to each object.
+To customize the hashing behaviour, you can overwrite \code{\link{hash_input}} for specific classes.
+For \code{data.table} objects, \code{\link{hash_input}} is applied to all columns, so you can overwrite \code{\link{hash_input}} for
+columns of a specific class.
+Objects that don't have a specific method are hashed as is.
 }
 \examples{
 calculate_hash(iris, 1, "a")
