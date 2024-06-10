@@ -32,11 +32,11 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
       string = sprintf("%s(0)", cl)
     } else {
       string = switch(cl,
-        "numeric" = paste0(sprintf(num_format, x), collapse = ","),
-        "integer" = paste0(as.character(x), collapse = ","),
-        "logical" = paste0(as.character(x), collapse = ","),
-        "character" = paste0(x, collapse = ","),
-        "expression" = as.character(x),
+        numeric = paste0(sprintf(num_format, x), collapse = ","),
+        integer = paste0(as.character(x), collapse = ","),
+        logical = paste0(as.character(x), collapse = ","),
+        character = paste0(x, collapse = ","),
+        expression = as.character(x),
         sprintf("<%s>", cl)
       )
     }
@@ -52,7 +52,7 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
     }
     ns = names2(x, missing_val = "<unnamed>")
     ss = lapply(x, convert)
-    paste0(paste0(ns, "=", ss), collapse = ", ")
+    toString(paste0(ns, "=", ss))
   } else {
     convert(x)
   }

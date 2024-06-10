@@ -33,7 +33,7 @@ topo_sort = function(nodes) {
   nodes = copy(nodes) # copy ref to be sure
   n = nrow(nodes)
   # sort nodes with few parent to start
-  o = order(map_int(nodes$parents, length), decreasing = FALSE)
+  o = order(lengths(nodes$parents), decreasing = FALSE)
   nodes = nodes[o]
 
   nodes$topo = nodes$depth = NA_integer_ # cols for topo-index and depth layer in sort

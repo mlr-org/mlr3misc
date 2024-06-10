@@ -42,7 +42,7 @@ test_that("imap", {
 
   res = imap_chr(x, fun)
   expect_character(res, len = 2)
-  expect_equal(names(res), c("a", "b"))
+  expect_named(res, c("a", "b"))
   expect_equal(unname(res), c("a:1", "b:2"))
 
   x = list(1L, 2L)
@@ -153,7 +153,7 @@ test_that("keep", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = keep(x, is.numeric)
   expect_list(out, len = 2L)
-  expect_equal(names(out), c("a", "c"))
+  expect_named(out, c("a", "c"))
 
   x = iris
   out = keep(x, is.numeric)
@@ -168,7 +168,7 @@ test_that("discard", {
   x = list(a = 1:3, b = c("a", "b"), c = runif(3))
   out = discard(x, is.numeric)
   expect_list(out, len = 1L)
-  expect_equal(names(out), "b")
+  expect_named(out, "b")
 
   x = iris
   out = discard(x, is.numeric)

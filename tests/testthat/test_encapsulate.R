@@ -47,12 +47,12 @@ test_that("timeout", {
   res = encapsulate("evaluate", .f = f, .args = list(x = 1), .timeout = 1)
   expect_null(res$result)
   expect_true("error" %in% res$log$class)
-  expect_true(any(grepl("time limit", res$log$msg)))
+  expect_match(res$log$msg, "time limit", fixed = TRUE)
 
   res = encapsulate("callr", .f = f, .args = list(x = 1), .timeout = 1)
   expect_null(res$result)
   expect_true("error" %in% res$log$class)
-  expect_true(any(grepl("time limit", res$log$msg)))
+  expect_match(res$log$msg, "time limit", fixed = TRUE)
 })
 
 

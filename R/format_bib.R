@@ -49,7 +49,7 @@ cite_bib = function(..., bibentries = NULL, envir = parent.frame()) {
   })
 
   if (length(str) >= 3L) {
-    str = c(paste0(head(str, -1L), collapse = ", "), tail(str, 1L))
+    str = c(toString(head(str, -1L)), tail(str, 1L))
   }
 
   paste0(str, collapse = " and ")

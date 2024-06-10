@@ -7,5 +7,5 @@ test_that("names2", {
   expect_identical(names2(x, ""), c("a", rep.int("", 2)))
 
   names(x) = letters[1:3]
-  expect_identical(names(x), names2(x))
+  expect_named(x, names2(x))
 })

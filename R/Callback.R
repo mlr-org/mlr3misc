@@ -224,6 +224,8 @@ clbks = function(.keys) {
 #' Assertions for [Callback] class.
 #'
 #' @param callback ([Callback]).
+#' @param null_ok (`logical(1)`)\cr
+#'   If `TRUE`, `NULL` is allowed.
 #'
 #' @return [Callback] | List of [Callback]s.
 #' @export

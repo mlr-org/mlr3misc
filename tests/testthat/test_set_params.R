@@ -11,7 +11,7 @@ test_that("set_params works for ... with correct inputs", {
   .ps = paradox::ps(a = paradox::p_dbl(), b = paradox::p_dbl())
   .ps$values$a = 1
   set_params(.ps, b = 2, .insert = FALSE)
-  expect_true(is.null(.ps$values$a))
+  expect_null(.ps$values$a)
   expect_true(.ps$values$b == 2)
   .ps$values = list(a = 1)
   set_params(.ps, b = 2, .insert = TRUE)
@@ -23,7 +23,7 @@ test_that("set_params works for .values with correct inputs", {
   .ps = paradox::ps(a = paradox::p_dbl(), b = paradox::p_dbl())
   .ps$values$a = 1
   set_params(.ps, .values = list(b = 2), .insert = FALSE)
-  expect_true(is.null(.ps$values$a))
+  expect_null(.ps$values$a)
   expect_true(.ps$values$b == 2)
   .ps$values = list(a = 1)
   set_params(.ps, .values = list(b = 2), .insert = TRUE)
@@ -41,7 +41,7 @@ test_that("set_params works for .values and ... with correct inputs", {
 
   .ps$values = list(a = 1)
   set_params(.ps, b = 2, .values = list(c = 3), .insert = FALSE)
-  expect_true(is.null(.ps$values$a))
+  expect_null(.ps$values$a)
   expect_true(.ps$values$b == 2)
   expect_true(.ps$values$c == 3)
 })
