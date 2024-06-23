@@ -23,7 +23,7 @@ get_private = function(x) {
 #' @title Assign Value to Private Field
 #'
 #' @description
-#' Convenience function to assign a value to a private field of an [R6] instance.
+#' Convenience function to assign a value to a private field of an [R6::R6Class] instance.
 #'
 #' @param x (any)\cr
 #'   Object whose private field should be modified.

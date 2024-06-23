@@ -17,7 +17,7 @@ See \code{\link[data.table:J]{data.table::CJ()}}.}
 See \code{\link[data.table:J]{data.table::CJ()}}.}
 }
 \value{
-\code{\link[=data.table]{data.table()}}.
+\code{\link[data.table:data.table]{data.table::data.table()}}.
 }
 \description{
 A safe version of \code{\link[data.table:J]{data.table::CJ()}} in case a column is called
