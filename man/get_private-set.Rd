@@ -20,7 +20,7 @@ Value to assign to the private field.}
 The R6 instance x, modified in-place. If it is not an R6 instance, NULL is returned.
 }
 \description{
-Convenience function to assign a value to a private field of an \link{R6} instance.
+Convenience function to assign a value to a private field of an \link[R6:R6Class]{R6::R6Class} instance.
 }
 \examples{
 library(R6)

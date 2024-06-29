@@ -1,4 +1,6 @@
-# mlr3misc (development version)
+# mlr3misc 0.15.1
+
+* refactor: Update `as_callback()` functions.
 
 # mlr3misc 0.15.0
 
