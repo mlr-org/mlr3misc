@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* Bugfix: `crate()` is using the correct 'topenv' environment now.
+
 # mlr3misc 0.15.1
 
 * refactor: Update `as_callback()` functions.
