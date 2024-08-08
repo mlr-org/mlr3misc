@@ -28,7 +28,7 @@
 #' z = 300
 #' f = meta_f(1)
 #' f()
-crate = function(.fn, ..., .parent = topenv(), .compile = TRUE) {
+crate = function(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE) {
   assert_flag(.compile)
   .compile = .compile || is_compiled(.fn)
   nn = map_chr(substitute(list(...)), as.character)[-1L]
