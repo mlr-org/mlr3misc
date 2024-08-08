@@ -4,7 +4,7 @@
 \alias{crate}
 \title{Isolate a Function from its Environment}
 \usage{
-crate(.fn, ..., .parent = topenv(), .compile = TRUE)
+crate(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE)
 }
 \arguments{
 \item{.fn}{(\verb{function()})\cr
