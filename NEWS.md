@@ -1,6 +1,7 @@
 # mlr3misc (development version)
 
 * Bugfix: `crate()` is using the correct 'topenv' environment now.
+* Remove the unused 'safe' variants of dictionary getters
 
 # mlr3misc 0.15.1
 

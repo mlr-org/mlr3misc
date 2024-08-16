@@ -41,27 +41,27 @@ test_that("Dictionary throws exception on unnamed args", {
   expect_error(x$mget("a", "b"), "names")
 })
 
-test_that("dictionary_sugar_get_safe", {
+test_that("dictionary_sugar_get", {
   Foo = R6::R6Class("Foo", public = list(x = 0, y = 0, key = 0, initialize = function(y, key = -1) {
     self$y = y
     self$key = key
   }), cloneable = TRUE)
   d = Dictionary$new()
   d$add("f1", Foo)
-  x = dictionary_sugar_get_safe(d, "f1", y = 99, x = 1)
+  x = dictionary_sugar_get(d, "f1", y = 99, x = 1)
   expect_equal(x$x, 1)
   expect_equal(x$y, 99)
   expect_equal(x$key, -1)
-  x2 = dictionary_sugar_get_safe(d, "f1", 99, x = 1)
+  x2 = dictionary_sugar_get(d, "f1", 99, x = 1)
   expect_equal(x, x2)
-  x2 = dictionary_sugar_get_safe(d, "f1", x = 1, 99)
+  x2 = dictionary_sugar_get(d, "f1", x = 1, 99)
   expect_equal(x, x2)
 
-  x = dictionary_sugar_get_safe(d, "f1", 1, 99)
+  x = dictionary_sugar_get(d, "f1", 1, 99)
   expect_equal(x$x, 0)
   expect_equal(x$y, 1)
   expect_equal(x$key, 99)
-  x2 = dictionary_sugar_get_safe(d, "f1", key = 99, y = 1)
+  x2 = dictionary_sugar_get(d, "f1", key = 99, y = 1)
   expect_equal(x, x2)
 })
 
@@ -73,13 +73,13 @@ test_that("mget", {
   d = Dictionary$new()
   d$add("f1", Foo)
   d$add("f2", Foo)
-  x = dictionary_sugar_mget_safe(d, "f1", y = 99, x = 1)
+  x = dictionary_sugar_mget(d, "f1", y = 99, x = 1)
   expect_list(x, len = 1, types = "Foo")
-  x = dictionary_sugar_mget_safe(d, c("f1", "f2"), y = 99)
+  x = dictionary_sugar_mget(d, c("f1", "f2"), y = 99)
   expect_list(x, len = 2, types = "Foo")
   expect_equal(ids(x), c("foo", "foo"))
 
-  x = dictionary_sugar_mget_safe(d, c(a = "f1", b = "f2"), y = 99)
+  x = dictionary_sugar_mget(d, c(a = "f1", b = "f2"), y = 99)
   expect_list(x, len = 2, types = "Foo")
   expect_equal(ids(x), c("a", "b"))
 })
@@ -88,15 +88,15 @@ test_that("incrementing ids works", {
   d = Dictionary$new()
   d$add("a", R6Class("A", public = list(id = "a")))
   d$add("b", R6Class("B", public = list(id = "c")))
-  obj1 = dictionary_sugar_inc_get_safe(d, "a_1")
+  obj1 = dictionary_sugar_inc_get(d, "a_1")
   expect_r6(obj1, "A")
   expect_true(obj1$id == "a_1")
 
-  obj2 = dictionary_sugar_inc_get_safe(d, "b_1")
+  obj2 = dictionary_sugar_inc_get(d, "b_1")
   expect_r6(obj2, "B")
   expect_true(obj2$id == "c_1")
 
-  objs = dictionary_sugar_inc_mget_safe(d, c("a_10", "b_2"))
+  objs = dictionary_sugar_inc_mget(d, c("a_10", "b_2"))
   expect_r6(objs$a_10, "A")
   expect_true(objs$a_10$id == "a_10")
   expect_r6(objs$c_2, "B")
@@ -109,16 +109,6 @@ test_that("incrementing ids works", {
   expect_class(obj, "A")
 })
 
-test_that("avoid unintended partial argument matching", {
-  d = Dictionary$new()
-  A = R6Class("A", public = list(d = NULL))
-  d$add("a", function() A$new())
-  a = dictionary_sugar_get_safe(d, "a", d = 1)
-  expect_r6(a, "A")
-  expect_equal(a$d, 1)
-})
-
-
 test_that("prototype_args works", {
   A = R6Class("A", public = list(x = NULL, initialize = function(x) self$x = x))
   d = Dictionary$new()
@@ -127,4 +117,11 @@ test_that("prototype_args works", {
   a = d$get("a", .prototype = TRUE)
   expect_identical(a$x, 1)
   expect_identical(d$prototype_args("a"), list(x = 1))
+})
+
+test_that("#115", {
+  A = R6Class("A", public = list(x = NULL))
+  d = Dictionary$new()
+  d$add("a", function() A$new())
+  expect_error(dictionary_sugar_get(d, "a", y = 10), "Did you mean")
 })
