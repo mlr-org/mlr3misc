@@ -89,8 +89,6 @@ test_that("call_back() function works", {
   expect_equal(context$d, 1)
 })
 
-
-
 test_that("as_callbacks.Callback works", {
   CallbackTest  = R6Class("CallbackTest",
     inherit = Callback,
@@ -104,4 +102,28 @@ test_that("as_callbacks.Callback works", {
   test_callback = CallbackTest$new(id = "mlr3misc.test", label = "Test Callback", man = "mlr3misc::Callback")
 
   expect_list(as_callbacks(test_callback))
+})
+
+test_that("initialize callback works", {
+  CallbackTest  = R6Class("CallbackTest",
+    inherit = Callback,
+    public = list(
+      on_stage = function(callback, context) {
+        context$a = 1
+      },
+      info = "Test"
+    )
+  )
+
+  initialize_callback = function(self) {
+    self$state$b = 1
+  }
+
+  test_callback = CallbackTest$new(
+    id = "mlr3misc.test",
+    label = "Test Callback",
+    man = "mlr3misc::Callback",
+    initialize_callback = initialize_callback)
+
+  expect_equal(test_callback$state$b, 1)
 })

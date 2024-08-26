@@ -52,6 +52,10 @@ Callback = R6Class("Callback",
     #' A callback can write data into the state.
     state = named_list(),
 
+    #' @field initialize_callback (`function()`)\cr
+    #' Function to be called when the callback is initialized.
+    initialize_callback = NULL,
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     #'
@@ -62,10 +66,16 @@ Callback = R6Class("Callback",
     #' @param man (`character(1)`)\cr
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
     #'   The referenced help package can be opened via method `$help()`.
-    initialize = function(id, label = NA_character_, man = NA_character_) {
+    #' @param initialize_callback (`function()`)\cr
+    #'  Function to be called when the callback is initialized.
+    #'  The function should have the signature `function(self)`.
+    #'  The function can be used to set default values in the state via `self$state$...`.
+    initialize = function(id, label = NA_character_, man = NA_character_, initialize_callback = NULL) {
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
       self$man = assert_string(man, na.ok = TRUE)
+      self$initialize_callback = assert_function(initialize_callback, null.ok = TRUE, args = "self")
+      if (!is.null(self$initialize_callback)) self$initialize_callback(self)
     },
 
     #' @description

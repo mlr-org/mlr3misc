@@ -50,6 +50,9 @@ Defaults to \code{NA}, but can be set by child classes.}
 
 \item{\code{state}}{(named \code{list()})\cr
 A callback can write data into the state.}
+
+\item{\code{initialize_callback}}{(\verb{function()})\cr
+Function to be called when the callback is initialized.}
 }
 \if{html}{\out{</div>}}
 }
@@ -70,7 +73,12 @@ A callback can write data into the state.}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id, label = NA_character_, man = NA_character_)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Callback$new(
+  id,
+  label = NA_character_,
+  man = NA_character_,
+  initialize_callback = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -85,6 +93,11 @@ Label for the new instance.}
 \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
 The referenced help package can be opened via method \verb{$help()}.}
+
+\item{\code{initialize_callback}}{(\verb{function()})\cr
+Function to be called when the callback is initialized.
+The function should have the signature \verb{function(self)}.
+The function can be used to set default values in the state via \code{self$state$...}.}
 }
 \if{html}{\out{</div>}}
 }
