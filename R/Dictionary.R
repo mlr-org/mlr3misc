@@ -177,15 +177,18 @@ Dictionary = R6::R6Class("Dictionary",
   )
 )
 
+# ADD .dicts_suggest
 dictionary_get = function(self, key, ...) {
   obj = dictionary_retrieve_item(self, key)
   dots = assert_list(list(...), names = "unique", .var.name = "arguments passed to Dictionary")
   dictionary_initialize_item(key, obj, dots)
 }
 
+# ADD .dicts_suggest
 dictionary_retrieve_item = function(self, key) {
   obj = get0(key, envir = self$items, inherits = FALSE, ifnotfound = NULL)
   if (is.null(obj)) {
+    # ADD did_you_mean_dicts here?
     stopf("Element with key '%s' not found in %s!%s", key, class(self)[1L], did_you_mean(key, self$keys()))
   }
   obj

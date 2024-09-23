@@ -32,18 +32,22 @@
 #' d = Dictionary$new()
 #' d$add("key", item)
 #' dictionary_sugar_get(d, "key", x = 2)
-dictionary_sugar_get = function(dict, .key, ...) {
+dictionary_sugar_get = function(dict, .key, .dicts_suggest, ...) {
   assert_class(dict, "Dictionary")
   if (missing(.key)) {
     return(dict)
   }
   assert_string(.key)
+  # ASSERT .dicts_suggest
+  # either class Dictionary or list of Dictionaries?
   if (...length() == 0L) {
+    # ADD .dicts_suggest
     return(dictionary_get(dict, .key))
   }
   dots = assert_list(list(...), .var.name = "additional arguments passed to Dictionary")
   assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
 
+  # ADD .dicts_suggest
   obj = dictionary_retrieve_item(dict, .key)
   if (length(dots) == 0L) {
     return(assert_r6(dictionary_initialize_item(.key, obj)))
@@ -54,7 +58,6 @@ dictionary_sugar_get = function(dict, .key, ...) {
   ii = is.na(names2(dots)) | names2(dots) %in% constructor_args
   instance = assert_r6(dictionary_initialize_item(.key, obj, dots[ii]))
   dots = dots[!ii]
-
 
   # set params in ParamSet
   if (length(dots) && exists("param_set", envir = instance, inherits = FALSE)) {
@@ -94,6 +97,7 @@ dictionary_sugar_mget = function(dict, .keys, ...) {
   if (missing(.keys)) {
     return(dict)
   }
+  # ADD .dicts_suggest
   objs = lapply(.keys, dictionary_sugar_get, dict = dict, ...)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
@@ -132,10 +136,10 @@ fields = function(x) {
 #' @title A Quick Way to Initialize Objects from Dictionaries with Incremented ID
 #'
 #' @description
-#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of of ID
+#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of ID
 #' clashes which is useful when the same object is used multiple times and the ids have to be unique.
 #' Let `<key>` be the key of the object to retrieve. When passing the `<key>_<n>` to this
-#' function, where `<n>` is any natural numer, the object with key `<key>` is retrieved and the
+#' function, where `<n>` is any natural number, the object with key `<key>` is retrieved and the
 #' suffix `_<n>` is appended to the id after the object is constructed.
 #'
 #' @param dict ([Dictionary])\cr
@@ -166,12 +170,14 @@ fields = function(x) {
 dictionary_sugar_inc_get = function(dict, .key, ...) {
   m = regexpr("_\\d+$", .key)
   if (attr(m, "match.length") == -1L)  {
+    # ADD .dicts_suggest
     return(dictionary_sugar_get(dict = dict, .key = .key, ...))
   }
   assert_true(!methods::hasArg("id"))
   split = regmatches(.key, m, invert = NA)[[1L]]
   newkey = split[[1L]]
   suffix = split[[2L]]
+  # ADD .dicts_suggest
   obj = dictionary_sugar_get(dict = dict, .key = newkey, ...)
   obj$id = paste0(obj$id, suffix)
   obj
@@ -181,6 +187,7 @@ dictionary_sugar_inc_get = function(dict, .key, ...) {
 #' @rdname dictionary_sugar_inc_get
 #' @export
 dictionary_sugar_inc_mget = function(dict, .keys, ...) {
+  # ADD .dicts_suggest
   objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ...)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)

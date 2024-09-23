@@ -22,3 +22,15 @@ did_you_mean = function(str, candidates) {
   }
   sprintf(" Did you mean %s?", str_collapse(suggested, quote = "'", sep = " / "))
 }
+
+# write new function: did_you_mean_dicts
+# extracts keys from dicts
+# passes this to same logic as did_you_mean (can't call directioly, bc of the "Did you mean?" everytime)
+# Wraps results according to the dictionary, i.e. "po(%s)" or some such
+# Returns string with full message
+did_you_mean_dicts = function(key, dicts) {
+  # ASSERTIONS
+  # maybe not necessary; did_you_mean doesn't and should be checked higher up anyway?
+
+
+}
