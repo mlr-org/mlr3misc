@@ -24,6 +24,8 @@
 #'   Keys of the objects to construct.
 #' @param ... (`any`)\cr
 #'   See description.
+#' @param .dicts_suggest (named [`list`])
+#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` in cases of misspelling.
 #' @return [R6::R6Class()]
 #' @export
 #' @examples
@@ -32,23 +34,20 @@
 #' d = Dictionary$new()
 #' d$add("key", item)
 #' dictionary_sugar_get(d, "key", x = 2)
-dictionary_sugar_get = function(dict, .key, .dicts_suggest, ...) {
+dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   assert_class(dict, "Dictionary")
   if (missing(.key)) {
     return(dict)
   }
   assert_string(.key)
-  # ASSERT .dicts_suggest
-  # either class Dictionary or list of Dictionaries?
+  assert_list(.dicts_suggest, "Dictionary", any.missing = FALSE, min.len = 1, unique = TRUE, names = "named", null.ok = TRUE)
   if (...length() == 0L) {
-    # ADD .dicts_suggest
-    return(dictionary_get(dict, .key))
+    return(dictionary_get(dict, .key, .dicts_suggest = .dicts_suggest))
   }
   dots = assert_list(list(...), .var.name = "additional arguments passed to Dictionary")
   assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
 
-  # ADD .dicts_suggest
-  obj = dictionary_retrieve_item(dict, .key)
+  obj = dictionary_retrieve_item(dict, .key, .dicts_suggest)
   if (length(dots) == 0L) {
     return(assert_r6(dictionary_initialize_item(.key, obj)))
   }
@@ -93,12 +92,11 @@ dictionary_sugar = dictionary_sugar_get
 
 #' @rdname dictionary_sugar_get
 #' @export
-dictionary_sugar_mget = function(dict, .keys, ...) {
+dictionary_sugar_mget = function(dict, .keys, ..., .dicts_suggest = NULL) {
   if (missing(.keys)) {
     return(dict)
   }
-  # ADD .dicts_suggest
-  objs = lapply(.keys, dictionary_sugar_get, dict = dict, ...)
+  objs = lapply(.keys, dictionary_sugar_get, dict = dict, .dicts_suggest = .dicts_suggest, ...)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
     ii = which(!is.na(nn))
@@ -167,28 +165,25 @@ fields = function(x) {
 #' map(objs, "id")
 #'
 #' @export
-dictionary_sugar_inc_get = function(dict, .key, ...) {
+dictionary_sugar_inc_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   m = regexpr("_\\d+$", .key)
   if (attr(m, "match.length") == -1L)  {
-    # ADD .dicts_suggest
-    return(dictionary_sugar_get(dict = dict, .key = .key, ...))
+    return(dictionary_sugar_get(dict = dict, .key = .key, ..., .dicts_suggest = .dicts_suggest))
   }
   assert_true(!methods::hasArg("id"))
   split = regmatches(.key, m, invert = NA)[[1L]]
   newkey = split[[1L]]
   suffix = split[[2L]]
-  # ADD .dicts_suggest
-  obj = dictionary_sugar_get(dict = dict, .key = newkey, ...)
+  obj = dictionary_sugar_get(dict = dict, .key = newkey, ..., .dicts_suggest = .dicts_suggest)
   obj$id = paste0(obj$id, suffix)
   obj
-
 }
 
 #' @rdname dictionary_sugar_inc_get
 #' @export
-dictionary_sugar_inc_mget = function(dict, .keys, ...) {
+dictionary_sugar_inc_mget = function(dict, .keys, ..., .dicts_suggest = NULL) {
   # ADD .dicts_suggest
-  objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ...)
+  objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ..., .dicts_suggest = .dicts_suggest)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
     ii = which(!is.na(nn))
