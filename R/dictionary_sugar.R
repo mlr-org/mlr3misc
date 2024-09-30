@@ -182,7 +182,6 @@ dictionary_sugar_inc_get = function(dict, .key, ..., .dicts_suggest = NULL) {
 #' @rdname dictionary_sugar_inc_get
 #' @export
 dictionary_sugar_inc_mget = function(dict, .keys, ..., .dicts_suggest = NULL) {
-  # ADD .dicts_suggest
   objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ..., .dicts_suggest = .dicts_suggest)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
