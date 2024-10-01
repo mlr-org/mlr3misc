@@ -76,7 +76,7 @@ dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
     for (i in seq_along(dots)) {
       nn = ndots[[i]]
       if (!exists(nn, envir = instance, inherits = FALSE)) {
-        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field.%s",
+        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field).%s",
           nn, class(instance)[1L], did_you_mean(nn, c(constructor_args, param_ids, setdiff(names(instance), ".__enclos_env__")))) # nolint
       }
       instance[[nn]] = dots[[i]]

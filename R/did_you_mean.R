@@ -13,7 +13,7 @@
 #' @examples
 #' did_you_mean("yep", c("yes", "no"))
 did_you_mean = function(str, candidates) {
-  suggestions = find_suggestions(str, candidates, threshold = 0.2, max_candidates = 3L, ret_dist = FALSE)
+  suggestions = find_suggestions(str, candidates, threshold = 0.2, max_candidates = 3L, ret_distances = FALSE)
 
   if (!length(suggestions)) {
     return("")
@@ -33,17 +33,17 @@ did_you_mean = function(str, candidates) {
 #' @return (`character(1)`). Either a phrase suggesting one or more keys based on the dictionaries in `dicts`,
 #'   or an empty string if no close match is found.
 did_you_mean_dicts = function(key, dicts) {
+  # No message if no dictionaries are given
   if (is.null(dicts)) {
     return("")
   }
 
-  # Initialize variables to store suggestions and minimum distances
   suggestions = character(length(dicts))
   min_distance_per_dict = numeric(length(dicts))
 
   for (i in seq_along(dicts)) {
     # Get distances and the corresponding entries for the current dictionary
-    distances = find_suggestions(key, dicts[[i]]$keys(), ret_dist = TRUE)
+    distances = find_suggestions(key, dicts[[i]]$keys(), ret_distances = TRUE)
     entries = names(distances)
 
     # Handle the case of no matches: skip the dictionary
@@ -63,8 +63,8 @@ did_you_mean_dicts = function(key, dicts) {
   suggestions = suggestions[order(min_distance_per_dict)]
   # Remove empty suggestions (i.e., dictionaries with no close matches)
   valid_suggestions = suggestions[nchar(suggestions) > 0L]
-  # Only show 3 dictionaries with best matches
-  # valid_suggestions = head(valid_suggestions, 3L)
+  # Only show the 3 dictionaries with the best matches
+  valid_suggestions = head(valid_suggestions, 3L)
 
   # If no valid suggestions, return an empty string
   if (!length(valid_suggestions)) {
@@ -87,11 +87,11 @@ did_you_mean_dicts = function(key, dicts) {
 #' @param ret_similarity (`logical(1)`)\cr
 #'   Return similarity values instead of names.
 #' @return (`character(1)`). Either suggested candidates from `candidates` or an empty string if no close match is found.
-find_suggestions = function(str, candidates, threshold = 0.2, max_candidates = 3L, ret_dist = FALSE) {
+find_suggestions = function(str, candidates, threshold = 0.2, max_candidates = 3L, ret_distances = FALSE) {
   candidates = unique(candidates)
   D = set_names(adist(str, candidates, ignore.case = TRUE, partial = TRUE)[1L, ], candidates)
   sorted = head(sort(D[D <= ceiling(threshold * nchar(str))]), max_candidates)
-  if (ret_dist) {
+  if (ret_distances) {
     sorted
   } else {
     names(sorted)
