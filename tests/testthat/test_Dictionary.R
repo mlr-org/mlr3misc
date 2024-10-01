@@ -125,3 +125,24 @@ test_that("#115", {
   d$add("a", function() A$new())
   expect_error(dictionary_sugar_get(d, "a", y = 10), "Did you mean")
 })
+
+test_that("similar entries in other dictionaries", {
+  obj = R6Class("A", public = list(x = NULL))
+
+  d = Dictionary$new()
+  d$add("abc", obj)
+
+  d_lookup1 = Dictionary$new()
+  d_lookup1$add("cde", obj)
+
+  expect_error(dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1)), "Similar entries in other dictionaries")
+
+  d_lookup2 = Dictionary$new()
+  d_lookup2$add("bcd", obj)
+
+  # Dictionaries ordered by closest match per dictionary
+  expect_error(
+    dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1, "lookup2" = d_lookup2)),
+    "Similar entries in other dictionaries.*lookup1.*lookup2"
+  )
+})

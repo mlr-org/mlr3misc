@@ -13,12 +13,12 @@
 #' @examples
 #' did_you_mean("yep", c("yes", "no"))
 did_you_mean = function(str, candidates) {
-  suggested = find_suggested(str, candidates, threshold = 0.2)
+  suggestions = find_suggestions(str, candidates, threshold = 0.2, max_candidates = 3L, ret_dist = FALSE)
 
-  if (!length(suggested)) {
+  if (!length(suggestions)) {
     return("")
   }
-  sprintf(" Did you mean %s?", str_collapse(suggested, quote = "'", sep = " / "))
+  sprintf(" Did you mean %s?", str_collapse(suggestions, quote = "'", sep = " / "))
 }
 
 #' @title Suggest Alternatives from Given Dictionaries
@@ -36,27 +36,42 @@ did_you_mean_dicts = function(key, dicts) {
   if (is.null(dicts)) {
     return("")
   }
-  # Iterate through dicts, get suggestions, paste as messages
-  suggested = character(length(dicts))
+
+  # Initialize variables to store suggestions and minimum distances
+  suggestions = character(length(dicts))
+  min_distance_per_dict = numeric(length(dicts))
+
   for (i in seq_along(dicts)) {
-    entries = find_suggested(key, dicts[[i]]$keys())
+    # Get distances and the corresponding entries for the current dictionary
+    distances = find_suggestions(key, dicts[[i]]$keys(), ret_dist = TRUE)
+    entries = names(distances)
 
-    if (length(entries)) {
-      suggested[[i]] = sprintf("%s: %s", names(dicts)[[i]],
-                               str_collapse(entries, quote = "'", sep = " / "))
+    # Handle the case of no matches: skip the dictionary
+    if (!length(entries)) {
+      min_distance_per_dict[[i]] = NA
+      next
     }
-  }
-  # Drop elements for dicts for which no suggestions could be made
-  suggested = suggested[nchar(suggested) > 0L]
+    # Record the closest distance
+    min_distance_per_dict[[i]] = min(distances)
 
-  if (!length(suggested)) {
+    # Create a suggestion message for the current dictionary
+    suggestions[[i]] = sprintf("%s: %s", names(dicts)[[i]],
+                               str_collapse(entries, quote = "'", sep = " / "))
+  }
+
+  # Order the suggestions by their closest match
+  suggestions = suggestions[order(min_distance_per_dict)]
+  # Remove empty suggestions (i.e., dictionaries with no close matches)
+  valid_suggestions = suggestions[nchar(suggestions) > 0L]
+  # Only show 3 dictionaries with best matches
+  # valid_suggestions = head(valid_suggestions, 3L)
+
+  # If no valid suggestions, return an empty string
+  if (!length(valid_suggestions)) {
     return("")
   }
-  sprintf(" Similar entries in other dictionaries, %s?", str_collapse(suggested, sep = " or "))
 
-  # TODO: handle ordering for exact hits (order dicts approriately?)
-  # TODO: maximum number of suggestions (within dict is handled by find_suggested, but not if we are looking at many dicts)
-  # TODO: Tests
+  sprintf("\nSimilar entries in other dictionaries, %s.", str_collapse(valid_suggestions, sep = ", or "))
 }
 
 #' @title Find Suggestions
@@ -67,9 +82,18 @@ did_you_mean_dicts = function(key, dicts) {
 #'   Candidate strings.
 #' @param threshold (`numeric(1)`)\cr
 #'   Percentage value of characters when sorting `candidates` by distance
+#' @param max_candidates (`integer(1)`)\cr
+#'   Maximum number of candidates to return.
+#' @param ret_similarity (`logical(1)`)\cr
+#'   Return similarity values instead of names.
 #' @return (`character(1)`). Either suggested candidates from `candidates` or an empty string if no close match is found.
-find_suggested = function(str, candidates, threshold = 0.2) {
+find_suggestions = function(str, candidates, threshold = 0.2, max_candidates = 3L, ret_dist = FALSE) {
   candidates = unique(candidates)
   D = set_names(adist(str, candidates, ignore.case = TRUE, partial = TRUE)[1L, ], candidates)
-  names(head(sort(D[D <= ceiling(threshold * nchar(str))]), 3L))
+  sorted = head(sort(D[D <= ceiling(threshold * nchar(str))]), max_candidates)
+  if (ret_dist) {
+    sorted
+  } else {
+    names(sorted)
+  }
 }
