@@ -22,7 +22,7 @@ Key of the object to construct.}
 See description.}
 
 \item{.dicts_suggest}{(named \code{\link{list}})
-Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} in cases of misspelling.}
+Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
 
 \item{.keys}{(\code{character()})\cr
 Keys of the objects to construct.}
@@ -56,4 +56,5 @@ item = R6Class("Item", public = list(x = 0))
 d = Dictionary$new()
 d$add("key", item)
 dictionary_sugar_get(d, "key", x = 2)
+
 }

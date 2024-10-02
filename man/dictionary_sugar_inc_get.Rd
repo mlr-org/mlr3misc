@@ -19,6 +19,9 @@ Key of the object to construct - possibly with a suffix of the form \verb{_<n>} 
 \item{...}{(any)\cr
 See description of \link{dictionary_sugar}.}
 
+\item{.dicts_suggest}{(named \code{\link{list}})
+Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
+
 \item{.keys}{(\code{character()})\cr
 Keys of the objects to construct - possibly with suffixes of the form \verb{_<n>} which will be appended to the ids.}
 }

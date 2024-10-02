@@ -25,15 +25,18 @@
 #' @param ... (`any`)\cr
 #'   See description.
 #' @param .dicts_suggest (named [`list`])
-#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` in cases of misspelling.
+#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
+#'
 #' @return [R6::R6Class()]
-#' @export
+#'
 #' @examples
 #' library(R6)
 #' item = R6Class("Item", public = list(x = 0))
 #' d = Dictionary$new()
 #' d$add("key", item)
 #' dictionary_sugar_get(d, "key", x = 2)
+#'
+#' @export
 dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   assert_class(dict, "Dictionary")
   if (missing(.key)) {
@@ -148,6 +151,8 @@ fields = function(x) {
 #'   Keys of the objects to construct - possibly with suffixes of the form `_<n>` which will be appended to the ids.
 #' @param ... (any)\cr
 #'   See description of [mlr3misc::dictionary_sugar].
+#' @param .dicts_suggest (named [`list`])
+#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
 #'
 #' @return An element from the dictionary.
 #'
