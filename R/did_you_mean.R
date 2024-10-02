@@ -38,8 +38,8 @@ did_you_mean_dicts = function(key, dicts) {
     return("")
   }
 
-  suggestions = character(length(dicts))
-  min_distance_per_dict = numeric(length(dicts))
+  suggestions = character(0)
+  min_distance_per_dict = numeric(0)
 
   for (i in seq_along(dicts)) {
     # Get distances and the corresponding entries for the current dictionary
@@ -48,21 +48,19 @@ did_you_mean_dicts = function(key, dicts) {
 
     # Handle the case of no matches: skip the dictionary
     if (!length(entries)) {
-      min_distance_per_dict[[i]] = NA
       next
     }
     # Record the closest distance
-    min_distance_per_dict[[i]] = min(distances)
+    min_distance_per_dict[[length(min_distance_per_dict) + 1]] = min(distances)
 
     # Create a suggestion message for the current dictionary
-    suggestions[[i]] = sprintf("%s: %s", names(dicts)[[i]],
+    suggestions[[length(suggestions) + 1]] = sprintf("%s: %s", names(dicts)[[i]],
                                str_collapse(entries, quote = "'", sep = " / "))
   }
 
   # Order the suggestions by their closest match
   suggestions = suggestions[order(min_distance_per_dict)]
   # Remove empty suggestions (i.e., dictionaries with no close matches)
-  valid_suggestions = suggestions[nchar(suggestions) > 0L]
   # Only show the 3 dictionaries with the best matches
   valid_suggestions = head(valid_suggestions, 3L)
 
