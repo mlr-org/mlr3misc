@@ -60,7 +60,6 @@ did_you_mean_dicts = function(key, dicts) {
 
   # Order the suggestions by their closest match
   suggestions = suggestions[order(min_distance_per_dict)]
-  # Remove empty suggestions (i.e., dictionaries with no close matches)
   # Only show the 3 dictionaries with the best matches
   valid_suggestions = head(valid_suggestions, 3L)
 
