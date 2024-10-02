@@ -135,14 +135,14 @@ test_that("similar entries in other dictionaries", {
   d_lookup1 = Dictionary$new()
   d_lookup1$add("cde", obj)
 
+  # Makes suggestions
   expect_error(dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1)), "Similar entries in other dictionaries")
+  # Makes no suggestsions
+  expect_error(dictionary_sugar_get(d, "xyz", .dicts_suggest = list("lookup1" = d_lookup1)), "(?!(Similar entries in other dictionaries))", perl = TRUE)
 
   d_lookup2 = Dictionary$new()
   d_lookup2$add("bcd", obj)
 
   # Dictionaries ordered by closest match per dictionary
-  expect_error(
-    dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1, "lookup2" = d_lookup2)),
-    "Similar entries in other dictionaries.*lookup1.*lookup2"
-  )
+  expect_error(dictionary_sugar_get(d, "bcd", .dicts_suggest = list("lookup1" = d_lookup1, "lookup2" = d_lookup2)), "Similar entries in other dictionaries.*lookup2.*lookup1")
 })
