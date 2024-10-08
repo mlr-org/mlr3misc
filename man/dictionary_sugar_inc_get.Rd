@@ -5,9 +5,9 @@
 \alias{dictionary_sugar_inc_mget}
 \title{A Quick Way to Initialize Objects from Dictionaries with Incremented ID}
 \usage{
-dictionary_sugar_inc_get(dict, .key, ...)
+dictionary_sugar_inc_get(dict, .key, ..., .dicts_suggest = NULL)
 
-dictionary_sugar_inc_mget(dict, .keys, ...)
+dictionary_sugar_inc_mget(dict, .keys, ..., .dicts_suggest = NULL)
 }
 \arguments{
 \item{dict}{(\link{Dictionary})\cr
@@ -19,6 +19,9 @@ Key of the object to construct - possibly with a suffix of the form \verb{_<n>} 
 \item{...}{(any)\cr
 See description of \link{dictionary_sugar}.}
 
+\item{.dicts_suggest}{(named \code{\link{list}})
+Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
+
 \item{.keys}{(\code{character()})\cr
 Keys of the objects to construct - possibly with suffixes of the form \verb{_<n>} which will be appended to the ids.}
 }
@@ -26,10 +29,10 @@ Keys of the objects to construct - possibly with suffixes of the form \verb{_<n>
 An element from the dictionary.
 }
 \description{
-Covenience wrapper around \link{dictionary_sugar_get} and \link{dictionary_sugar_mget} to allow easier avoidance of of ID
+Covenience wrapper around \link{dictionary_sugar_get} and \link{dictionary_sugar_mget} to allow easier avoidance of ID
 clashes which is useful when the same object is used multiple times and the ids have to be unique.
 Let \verb{<key>} be the key of the object to retrieve. When passing the \verb{<key>_<n>} to this
-function, where \verb{<n>} is any natural numer, the object with key \verb{<key>} is retrieved and the
+function, where \verb{<n>} is any natural number, the object with key \verb{<key>} is retrieved and the
 suffix \verb{_<n>} is appended to the id after the object is constructed.
 }
 \examples{

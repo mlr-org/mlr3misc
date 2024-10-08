@@ -6,11 +6,11 @@
 \alias{dictionary_sugar_mget}
 \title{A Quick Way to Initialize Objects from Dictionaries}
 \usage{
-dictionary_sugar_get(dict, .key, ...)
+dictionary_sugar_get(dict, .key, ..., .dicts_suggest = NULL)
 
-dictionary_sugar(dict, .key, ...)
+dictionary_sugar(dict, .key, ..., .dicts_suggest = NULL)
 
-dictionary_sugar_mget(dict, .keys, ...)
+dictionary_sugar_mget(dict, .keys, ..., .dicts_suggest = NULL)
 }
 \arguments{
 \item{dict}{(\link{Dictionary}).}
@@ -20,6 +20,9 @@ Key of the object to construct.}
 
 \item{...}{(\code{any})\cr
 See description.}
+
+\item{.dicts_suggest}{(named \code{\link{list}})
+Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
 
 \item{.keys}{(\code{character()})\cr
 Keys of the objects to construct.}
@@ -53,4 +56,5 @@ item = R6Class("Item", public = list(x = 0))
 d = Dictionary$new()
 d$add("key", item)
 dictionary_sugar_get(d, "key", x = 2)
+
 }

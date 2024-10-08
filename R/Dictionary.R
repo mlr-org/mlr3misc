@@ -177,16 +177,18 @@ Dictionary = R6::R6Class("Dictionary",
   )
 )
 
-dictionary_get = function(self, key, ...) {
-  obj = dictionary_retrieve_item(self, key)
+dictionary_get = function(self, key, ..., .dicts_suggest) {
+  obj = dictionary_retrieve_item(self, key, .dicts_suggest)
   dots = assert_list(list(...), names = "unique", .var.name = "arguments passed to Dictionary")
   dictionary_initialize_item(key, obj, dots)
 }
 
-dictionary_retrieve_item = function(self, key) {
+dictionary_retrieve_item = function(self, key, dicts_suggest) {
   obj = get0(key, envir = self$items, inherits = FALSE, ifnotfound = NULL)
   if (is.null(obj)) {
-    stopf("Element with key '%s' not found in %s!%s", key, class(self)[1L], did_you_mean(key, self$keys()))
+    stopf("Element with key '%s' not found in %s!%s%s", key, class(self)[1L],
+          did_you_mean(key, self$keys()),
+          did_you_mean_dicts(key, dicts_suggest))
   }
   obj
 }
@@ -206,7 +208,6 @@ dictionary_initialize_item = function(key, obj, cargs = list()) {
     constructor
   }
 }
-
 
 #' @export
 as.data.table.Dictionary = function(x, ...) {

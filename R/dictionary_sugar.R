@@ -24,27 +24,33 @@
 #'   Keys of the objects to construct.
 #' @param ... (`any`)\cr
 #'   See description.
+#' @param .dicts_suggest (named [`list`])
+#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
+#'
 #' @return [R6::R6Class()]
-#' @export
+#'
 #' @examples
 #' library(R6)
 #' item = R6Class("Item", public = list(x = 0))
 #' d = Dictionary$new()
 #' d$add("key", item)
 #' dictionary_sugar_get(d, "key", x = 2)
-dictionary_sugar_get = function(dict, .key, ...) {
+#'
+#' @export
+dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   assert_class(dict, "Dictionary")
   if (missing(.key)) {
     return(dict)
   }
   assert_string(.key)
+  assert_list(.dicts_suggest, "Dictionary", any.missing = FALSE, min.len = 1, unique = TRUE, names = "named", null.ok = TRUE)
   if (...length() == 0L) {
-    return(dictionary_get(dict, .key))
+    return(dictionary_get(dict, .key, .dicts_suggest = .dicts_suggest))
   }
   dots = assert_list(list(...), .var.name = "additional arguments passed to Dictionary")
   assert_list(dots[!is.na(names2(dots))], names = "unique", .var.name = "named arguments passed to Dictionary")
 
-  obj = dictionary_retrieve_item(dict, .key)
+  obj = dictionary_retrieve_item(dict, .key, .dicts_suggest)
   if (length(dots) == 0L) {
     return(assert_r6(dictionary_initialize_item(.key, obj)))
   }
@@ -54,7 +60,6 @@ dictionary_sugar_get = function(dict, .key, ...) {
   ii = is.na(names2(dots)) | names2(dots) %in% constructor_args
   instance = assert_r6(dictionary_initialize_item(.key, obj, dots[ii]))
   dots = dots[!ii]
-
 
   # set params in ParamSet
   if (length(dots) && exists("param_set", envir = instance, inherits = FALSE)) {
@@ -74,7 +79,7 @@ dictionary_sugar_get = function(dict, .key, ...) {
     for (i in seq_along(dots)) {
       nn = ndots[[i]]
       if (!exists(nn, envir = instance, inherits = FALSE)) {
-        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field.%s",
+        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field).%s",
           nn, class(instance)[1L], did_you_mean(nn, c(constructor_args, param_ids, setdiff(names(instance), ".__enclos_env__")))) # nolint
       }
       instance[[nn]] = dots[[i]]
@@ -90,11 +95,11 @@ dictionary_sugar = dictionary_sugar_get
 
 #' @rdname dictionary_sugar_get
 #' @export
-dictionary_sugar_mget = function(dict, .keys, ...) {
+dictionary_sugar_mget = function(dict, .keys, ..., .dicts_suggest = NULL) {
   if (missing(.keys)) {
     return(dict)
   }
-  objs = lapply(.keys, dictionary_sugar_get, dict = dict, ...)
+  objs = lapply(.keys, dictionary_sugar_get, dict = dict, .dicts_suggest = .dicts_suggest, ...)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
     ii = which(!is.na(nn))
@@ -132,10 +137,10 @@ fields = function(x) {
 #' @title A Quick Way to Initialize Objects from Dictionaries with Incremented ID
 #'
 #' @description
-#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of of ID
+#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of ID
 #' clashes which is useful when the same object is used multiple times and the ids have to be unique.
 #' Let `<key>` be the key of the object to retrieve. When passing the `<key>_<n>` to this
-#' function, where `<n>` is any natural numer, the object with key `<key>` is retrieved and the
+#' function, where `<n>` is any natural number, the object with key `<key>` is retrieved and the
 #' suffix `_<n>` is appended to the id after the object is constructed.
 #'
 #' @param dict ([Dictionary])\cr
@@ -146,6 +151,8 @@ fields = function(x) {
 #'   Keys of the objects to construct - possibly with suffixes of the form `_<n>` which will be appended to the ids.
 #' @param ... (any)\cr
 #'   See description of [mlr3misc::dictionary_sugar].
+#' @param .dicts_suggest (named [`list`])
+#'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
 #'
 #' @return An element from the dictionary.
 #'
@@ -163,25 +170,24 @@ fields = function(x) {
 #' map(objs, "id")
 #'
 #' @export
-dictionary_sugar_inc_get = function(dict, .key, ...) {
+dictionary_sugar_inc_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   m = regexpr("_\\d+$", .key)
   if (attr(m, "match.length") == -1L)  {
-    return(dictionary_sugar_get(dict = dict, .key = .key, ...))
+    return(dictionary_sugar_get(dict = dict, .key = .key, ..., .dicts_suggest = .dicts_suggest))
   }
   assert_true(!methods::hasArg("id"))
   split = regmatches(.key, m, invert = NA)[[1L]]
   newkey = split[[1L]]
   suffix = split[[2L]]
-  obj = dictionary_sugar_get(dict = dict, .key = newkey, ...)
+  obj = dictionary_sugar_get(dict = dict, .key = newkey, ..., .dicts_suggest = .dicts_suggest)
   obj$id = paste0(obj$id, suffix)
   obj
-
 }
 
 #' @rdname dictionary_sugar_inc_get
 #' @export
-dictionary_sugar_inc_mget = function(dict, .keys, ...) {
-  objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ...)
+dictionary_sugar_inc_mget = function(dict, .keys, ..., .dicts_suggest = NULL) {
+  objs = lapply(.keys, dictionary_sugar_inc_get, dict = dict, ..., .dicts_suggest = .dicts_suggest)
   if (!is.null(names(.keys))) {
     nn = names2(.keys)
     ii = which(!is.na(nn))
