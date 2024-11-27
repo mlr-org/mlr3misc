@@ -1,7 +1,7 @@
 # mlr3misc 0.16.0
 
 * fix: `crate()` is using the correct 'topenv' environment now.
-* BREAKING CHANGE: Remove the unused 'safe' variants of dictionary getters
+* BREAKING CHANGE: Remove the unused 'safe' variants of dictionary getters.
 * feat: `dictionary_sugar_get()` and corresponding functions now take a list of dictionaries as optional argument `.dicts_suggest` to look for suggestions if `.key` is not part of the dictionary.
 
 # mlr3misc 0.15.1
