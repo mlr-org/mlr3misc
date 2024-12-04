@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* feat: `as_callbacks()` returns a list named by the callback ids now.
+
 # mlr3misc 0.16.0
 
 * fix: `crate()` is using the correct 'topenv' environment now.

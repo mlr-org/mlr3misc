@@ -145,13 +145,14 @@ as_callbacks.NULL = function(x, ...) { # nolint
 #' @rdname as_callback
 #' @export
 as_callbacks.list = function(x, clone = FALSE, ...) { # nolint
-  lapply(x, as_callback, clone = clone, ...)
+  callbacks = lapply(x, as_callback, clone = clone, ...)
+  set_names(callbacks, map(callbacks, "id"))
 }
 
 #' @rdname as_callback
 #' @export
 as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
-  list(if (clone) x$clone(deep = TRUE) else x)
+  set_names(list(if (clone) x$clone(deep = TRUE) else x), x$id)
 }
 
 #' @title Call Callbacks
