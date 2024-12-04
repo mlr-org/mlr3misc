@@ -3,7 +3,7 @@
 #' @description
 #' Provides access to the private members of [R6::R6Class] objects.
 #'
-#' @param x (any)\cr
+#' @param x (`any`)\cr
 #'   Object to extract the private members from.
 #'
 #' @return `environment()` of private members, or `NULL` if `x` is not an R6 object.
@@ -25,11 +25,11 @@ get_private = function(x) {
 #' @description
 #' Convenience function to assign a value to a private field of an [R6::R6Class] instance.
 #'
-#' @param x (any)\cr
+#' @param x (`any`)\cr
 #'   Object whose private field should be modified.
 #' @param which (character(1))\cr
 #'   Private field that is being modified.
-#' @param value (any)\cr
+#' @param value (`any`)\cr
 #'   Value to assign to the private field.
 #'
 #' @return The R6 instance x, modified in-place. If it is not an R6 instance, NULL is returned.

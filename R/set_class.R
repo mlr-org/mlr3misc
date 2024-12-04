@@ -7,7 +7,7 @@
 #' @param classes (`character(1)`)\cr
 #'   Vector of new class names.
 #'
-#' @return Object \code{x}, with updated class attribute.
+#' @return Object `x`, with updated class attribute.
 #' @export
 #' @examples
 #' set_class(list(), c("foo1", "foo2"))

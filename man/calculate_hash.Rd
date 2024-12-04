@@ -7,7 +7,7 @@
 calculate_hash(...)
 }
 \arguments{
-\item{...}{(any)\cr
+\item{...}{(\code{any})\cr
 Objects to hash.}
 }
 \value{

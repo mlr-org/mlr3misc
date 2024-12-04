@@ -7,10 +7,10 @@
 strip_srcrefs(x, ...)
 }
 \arguments{
-\item{x}{(any)\cr
+\item{x}{(\code{any})\cr
 The object to strip of source references.}
 
-\item{...}{(any)\cr
+\item{...}{(\code{any})\cr
 Additional arguments to the method.}
 }
 \description{

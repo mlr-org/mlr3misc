@@ -7,7 +7,7 @@
 #' columns of a specific class.
 #' Objects that don't have a specific method are hashed as is.
 #'
-#' @param ... (any)\cr
+#' @param ... (`any`)\cr
 #'   Objects to hash.
 #'
 #' @return (`character(1)`).
@@ -22,7 +22,7 @@ calculate_hash = function(...) {
 #'
 #' Returns the part of an object to be used to calculate its hash.
 #'
-#' @param x (any)\cr
+#' @param x (`any`)\cr
 #'   Object for which to retrieve the hash input.
 #' @export
 hash_input = function(x) {

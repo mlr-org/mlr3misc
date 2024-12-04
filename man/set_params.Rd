@@ -10,7 +10,7 @@ set_params(.ps, ..., .values = list(), .insert = TRUE)
 \item{.ps}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
 The parameter set whose values are changed.}
 
-\item{...}{(any)
+\item{...}{(\code{any})
 Named parameter values.}
 
 \item{.values}{(\code{list()})
