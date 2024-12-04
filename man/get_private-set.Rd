@@ -7,13 +7,13 @@
 get_private(x, which) <- value
 }
 \arguments{
-\item{x}{(any)\cr
+\item{x}{(\code{any})\cr
 Object whose private field should be modified.}
 
 \item{which}{(character(1))\cr
 Private field that is being modified.}
 
-\item{value}{(any)\cr
+\item{value}{(\code{any})\cr
 Value to assign to the private field.}
 }
 \value{

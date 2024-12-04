@@ -10,7 +10,7 @@ crate(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE)
 \item{.fn}{(\verb{function()})\cr
 function to crate}
 
-\item{...}{(any)\cr
+\item{...}{(\code{any})\cr
 The objects, which should be visible inside \code{.fn}.}
 
 \item{.parent}{(\code{environment})\cr

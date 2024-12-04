@@ -16,10 +16,10 @@ Dictionary from which to retrieve an element.}
 \item{.key}{(\code{character(1)})\cr
 Key of the object to construct - possibly with a suffix of the form \verb{_<n>} which will be appended to the id.}
 
-\item{...}{(any)\cr
+\item{...}{(\code{any})\cr
 See description of \link{dictionary_sugar}.}
 
-\item{.dicts_suggest}{(named \code{\link{list}})
+\item{.dicts_suggest}{(named \code{list()})
 Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
 
 \item{.keys}{(\code{character()})\cr

@@ -22,10 +22,10 @@ as_callbacks(x, clone = FALSE, ...)
 \method{as_callbacks}{Callback}(x, clone = FALSE, ...)
 }
 \arguments{
-\item{x}{(any)\cr
+\item{x}{(\code{any})\cr
 Object to convert.}
 
-\item{...}{(any)\cr
+\item{...}{(\code{any})\cr
 Additional arguments.}
 
 \item{clone}{(\code{logical(1)})\cr

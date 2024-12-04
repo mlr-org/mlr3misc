@@ -28,7 +28,7 @@ did_you_mean = function(str, candidates) {
 #
 # @param key (`character(1)`) \cr
 #   Key to look for in `dicts`.
-# @param dicts (named list)\cr
+# @param dicts (named `list()`)\cr
 #   Named list of [dictionaries][Dictionary].
 # @param max_candidates_dicts (`integer(1)`) \cr
 #   Maximum number of dictionaries for which suggestions are outputted.

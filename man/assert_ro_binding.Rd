@@ -7,7 +7,7 @@
 assert_ro_binding(rhs)
 }
 \arguments{
-\item{rhs}{(any)\cr
+\item{rhs}{(\code{any})\cr
 If not missing, an exception is raised.}
 }
 \value{

@@ -4,7 +4,7 @@
 #'
 #' @param .ps ([paradox::ParamSet])\cr
 #'   The parameter set whose values are changed.
-#' @param ... (any)
+#' @param ... (`any`)
 #'   Named parameter values.
 #' @param .values (`list()`)
 #'   Named list with parameter values.

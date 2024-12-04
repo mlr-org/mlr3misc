@@ -16,7 +16,7 @@ hash_input(x)
 \method{hash_input}{default}(x)
 }
 \arguments{
-\item{x}{(any)\cr
+\item{x}{(\code{any})\cr
 Object for which to retrieve the hash input.}
 }
 \description{
