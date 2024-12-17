@@ -48,6 +48,7 @@ Collate:
     'calculate_hash.R'
     'capitalize.R'
     'catn.R'
+    'check_operators.R'
     'check_packages_installed.R'
     'chunk.R'
     'compose.R'
