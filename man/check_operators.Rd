@@ -12,7 +12,7 @@ lhs \%check||\% rhs
 }
 \arguments{
 \item{lhs, rhs}{(\verb{function()})\cr
-\verb{check_*}-functions that return either \code{TRUE} or an error message.}
+\verb{check_*}-functions that return either \code{TRUE} or an error message as a \code{character(1)}.}
 }
 \value{
 Either \code{TRUE} or a \code{character(1)}.
@@ -23,7 +23,7 @@ Logical AND and OR operators for \verb{check_*}-functions from \code{\link[check
 \examples{
 library(checkmate)
 
-x = c(0, 1, 2, 3)#
+x = c(0, 1, 2, 3)
 check_numeric(x) \%check&&\% check_names(names(x), "unnamed")  # is TRUE
 check_numeric(x) \%check&&\% check_true(all(x < 0))  # fails
 
