@@ -6,13 +6,18 @@
 #' @param lhs,rhs (`function()`)\cr
 #'   `check_*`-functions that return either `TRUE` or an error message.
 #'
+#' @return Either `TRUE` or a `character(1)`.
+#'
 #' @name check_operators
 #' @examples
 #' library(checkmate)
 #'
-#' x = c(0, 1, 2, 3)
-#' check_numeric(x) %check&&% check_true(all(x < 0))
-#' check_numeric(x) %check||% check_character(x)
+#' x = c(0, 1, 2, 3)#
+#' check_numeric(x) %check&&% check_names(names(x), "unnamed")  # is TRUE
+#' check_numeric(x) %check&&% check_true(all(x < 0))  # fails
+#'
+#' check_numeric(x) %check||% check_character(x)  # is TRUE
+#' check_number(x) %check||% check_flag(x)  # fails
 NULL
 
 #' @export

@@ -14,13 +14,19 @@ lhs \%check||\% rhs
 \item{lhs, rhs}{(\verb{function()})\cr
 \verb{check_*}-functions that return either \code{TRUE} or an error message.}
 }
+\value{
+Either \code{TRUE} or a \code{character(1)}.
+}
 \description{
 Logical AND and OR operators for \verb{check_*}-functions from \code{\link[checkmate:checkmate-package]{checkmate}}.
 }
 \examples{
 library(checkmate)
 
-x = c(0, 1, 2, 3)
-check_numeric(x) \%check&&\% check_true(all(x < 0))
-check_numeric(x) \%check||\% check_character(x)
+x = c(0, 1, 2, 3)#
+check_numeric(x) \%check&&\% check_names(names(x), "unnamed")  # is TRUE
+check_numeric(x) \%check&&\% check_true(all(x < 0))  # fails
+
+check_numeric(x) \%check||\% check_character(x)  # is TRUE
+check_number(x) \%check||\% check_flag(x)  # fails
 }
