@@ -11,13 +11,16 @@ lhs \%check&&\% rhs
 lhs \%check||\% rhs
 }
 \arguments{
-\item{lhs, rhs}{(\verb{check_*}-functions)\cr
+\item{lhs, rhs}{(\verb{function()})\cr
 \verb{check_*}-functions that return either \code{TRUE} or an error message.}
 }
 \description{
-Logical AND and OR operators for \code{\link{checkmate}} \verb{check_*}-functions.
+Logical AND and OR operators for \verb{check_*}-functions from \code{\link[checkmate:checkmate-package]{checkmate}}.
 }
 \examples{
+library(checkmate)
+
+x = c(0, 1, 2, 3)
 check_numeric(x) \%check&&\% check_true(all(x < 0))
 check_numeric(x) \%check||\% check_character(x)
 }

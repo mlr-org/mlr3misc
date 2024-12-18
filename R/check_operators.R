@@ -1,13 +1,16 @@
 #' @title Logical Check Operators
 #'
 #' @description
-#' Logical AND and OR operators for `check_*`-functions from [`checkmate`].
+#' Logical AND and OR operators for `check_*`-functions from [`checkmate`][`checkmate::checkmate`].
 #'
 #' @param lhs,rhs (`function()`)\cr
 #'   `check_*`-functions that return either `TRUE` or an error message.
 #'
 #' @name check_operators
 #' @examples
+#' library(checkmate)
+#'
+#' x = c(0, 1, 2, 3)
 #' check_numeric(x) %check&&% check_true(all(x < 0))
 #' check_numeric(x) %check||% check_character(x)
 NULL
