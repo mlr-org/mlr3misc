@@ -6,6 +6,7 @@
 #' @importFrom digest digest
 #' @importFrom methods formalArgs hasArg
 #' @importFrom utils capture.output
+#' @importFrom cli cli_h1 cli_li cli_format_method
 "_PACKAGE"
 
 .onLoad = function(libname, pkgname) {

@@ -22,6 +22,7 @@ Depends:
 Imports:
     backports (>= 0.1.5),
     checkmate,
+    cli,
     data.table,
     digest,
     methods,
@@ -47,6 +48,7 @@ Collate:
     'assert_ro_binding.R'
     'calculate_hash.R'
     'capitalize.R'
+    'cat_cli.R'
     'catn.R'
     'check_operators.R'
     'check_packages_installed.R'
