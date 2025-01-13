@@ -2,6 +2,7 @@
 
 * feat: `as_callbacks()` returns a list named by the callback ids now.
 * feat: Added logical operators `%check&&%` and `%check||%` for `check_*`-functions from `checkmate` (moved here from `mlr3pipelines`).
+* Added helper `cat_cli()`.
 
 # mlr3misc 0.16.0
 
