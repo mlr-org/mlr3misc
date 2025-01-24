@@ -274,6 +274,7 @@ discard.data.table = function(.x, .p, ...) { # nolint
 }
 
 #' @export
+#' @rdname compat-map
 compact = function(.x) { # nolint
   .x[as.logical(lengths(.x))]
 }

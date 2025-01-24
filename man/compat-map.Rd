@@ -27,6 +27,7 @@
 \alias{imap_dtc}
 \alias{keep}
 \alias{discard}
+\alias{compact}
 \alias{map_if}
 \alias{map_if.default}
 \alias{map_at}
@@ -87,6 +88,8 @@ imap_dtc(.x, .f, ...)
 keep(.x, .f, ...)
 
 discard(.x, .p, ...)
+
+compact(.x)
 
 map_if(.x, .p, .f, ...)
 
