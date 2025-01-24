@@ -6,9 +6,9 @@
 #' from objects.
 #' Methods should remove source references from the input, but should otherwise leave the input unchanged.
 #'
-#' @param x (any)\cr
+#' @param x (`any`)\cr
 #'   The object to strip of source references.
-#' @param ... (any)\cr
+#' @param ... (`any`)\cr
 #'   Additional arguments to the method.
 #'
 #' @keywords internal

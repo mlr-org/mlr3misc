@@ -111,9 +111,9 @@ Callback = R6Class("Callback",
 #' @description
 #' Convert object to a [Callback] or a list of [Callback].
 #'
-#' @param x (any)\cr
+#' @param x (`any`)\cr
 #'   Object to convert.
-#' @param ... (any)\cr
+#' @param ... (`any`)\cr
 #'   Additional arguments.
 #'
 #' @return [Callback].

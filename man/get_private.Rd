@@ -7,7 +7,7 @@
 get_private(x)
 }
 \arguments{
-\item{x}{(any)\cr
+\item{x}{(\code{any})\cr
 Object to extract the private members from.}
 }
 \value{

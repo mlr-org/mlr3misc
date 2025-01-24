@@ -5,7 +5,7 @@
 #' [R6::R6Class] which does not allow assignment.
 #' If `rhs` is not missing, an exception is raised.
 #'
-#' @param rhs (any)\cr
+#' @param rhs (`any`)\cr
 #'   If not missing, an exception is raised.
 #'
 #' @return Nothing.

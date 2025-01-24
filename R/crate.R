@@ -5,7 +5,7 @@
 #'
 #' @param .fn (`function()`)\cr
 #'   function to crate
-#' @param ... (any)\cr
+#' @param ... (`any`)\cr
 #'   The objects, which should be visible inside `.fn`.
 #' @param .parent (`environment`)\cr
 #'   Parent environment to look up names. Default to [topenv()].

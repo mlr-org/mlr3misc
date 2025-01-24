@@ -24,7 +24,7 @@
 #'   Keys of the objects to construct.
 #' @param ... (`any`)\cr
 #'   See description.
-#' @param .dicts_suggest (named [`list`])
+#' @param .dicts_suggest (named `list()`)
 #'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
 #'
 #' @return [R6::R6Class()]
@@ -149,9 +149,9 @@ fields = function(x) {
 #'   Key of the object to construct - possibly with a suffix of the form `_<n>` which will be appended to the id.
 #' @param .keys (`character()`)\cr
 #'   Keys of the objects to construct - possibly with suffixes of the form `_<n>` which will be appended to the ids.
-#' @param ... (any)\cr
+#' @param ... (`any`)\cr
 #'   See description of [mlr3misc::dictionary_sugar].
-#' @param .dicts_suggest (named [`list`])
+#' @param .dicts_suggest (named `list()`)
 #'   Named list of [dictionaries][Dictionary] used to look up suggestions for `.key` if `.key` does not exist in `dict`.
 #'
 #' @return An element from the dictionary.

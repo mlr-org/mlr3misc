@@ -21,7 +21,7 @@ Key of the object to construct.}
 \item{...}{(\code{any})\cr
 See description.}
 
-\item{.dicts_suggest}{(named \code{\link{list}})
+\item{.dicts_suggest}{(named \code{list()})
 Named list of \link[=Dictionary]{dictionaries} used to look up suggestions for \code{.key} if \code{.key} does not exist in \code{dict}.}
 
 \item{.keys}{(\code{character()})\cr
