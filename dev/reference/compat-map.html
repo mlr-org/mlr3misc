@@ -10,6 +10,7 @@ map_if() applies .f to each element of .x where the predicate .p evaluates to TR
 map_at() applies .f to each element of .x referenced by .at. All other elements remain unchanged.
 keep() keeps those elements of .x where predicate .p evaluates to TRUE.
 discard() discards those elements of .x where predicate .p evaluates to TRUE.
+compact() discards elements of .x that are NULL.
 every() is TRUE if predicate .p evaluates to TRUE for each .x.
 some() is TRUE if predicate .p evaluates to TRUE for at least one .x.
 detect() returns the first element where predicate .p evaluates to TRUE.
@@ -40,6 +41,7 @@ map_if() applies .f to each element of .x where the predicate .p evaluates to TR
 map_at() applies .f to each element of .x referenced by .at. All other elements remain unchanged.
 keep() keeps those elements of .x where predicate .p evaluates to TRUE.
 discard() discards those elements of .x where predicate .p evaluates to TRUE.
+compact() discards elements of .x that are NULL.
 every() is TRUE if predicate .p evaluates to TRUE for each .x.
 some() is TRUE if predicate .p evaluates to TRUE for at least one .x.
 detect() returns the first element where predicate .p evaluates to TRUE.
@@ -113,6 +115,7 @@ each vector of <code>.x</code>, then the second element of <code>.x</code>, and 
 <li><p><code>map_at()</code> applies <code>.f</code> to each element of <code>.x</code> referenced by <code>.at</code>. All other elements remain unchanged.</p></li>
 <li><p><code>keep()</code> keeps those elements of <code>.x</code> where predicate <code>.p</code> evaluates to <code>TRUE</code>.</p></li>
 <li><p><code>discard()</code> discards those elements of <code>.x</code> where predicate <code>.p</code> evaluates to <code>TRUE</code>.</p></li>
+<li><p><code>compact()</code> discards elements of <code>.x</code> that are <code>NULL</code>.</p></li>
 <li><p><code>every()</code> is <code>TRUE</code> if predicate <code>.p</code> evaluates to <code>TRUE</code> for each <code>.x</code>.</p></li>
 <li><p><code>some()</code> is <code>TRUE</code> if predicate <code>.p</code> evaluates to <code>TRUE</code> for at least one <code>.x</code>.</p></li>
 <li><p><code>detect()</code> returns the first element where predicate <code>.p</code> evaluates to <code>TRUE</code>.</p></li>
@@ -181,6 +184,8 @@ together in an <code><a href="https://rdrr.io/r/base/cbind.html" class="external
 <span><span class="fu">keep</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">discard</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">compact</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">map_if</span><span class="op">(</span><span class="va">.x</span>, <span class="va">.p</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
