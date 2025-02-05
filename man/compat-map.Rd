@@ -27,6 +27,7 @@
 \alias{imap_dtc}
 \alias{keep}
 \alias{discard}
+\alias{compact}
 \alias{map_if}
 \alias{map_if.default}
 \alias{map_at}
@@ -88,6 +89,8 @@ keep(.x, .f, ...)
 
 discard(.x, .p, ...)
 
+compact(.x)
+
 map_if(.x, .p, .f, ...)
 
 \method{map_if}{default}(.x, .p, .f, ...)
@@ -140,6 +143,7 @@ each vector of \code{.x}, then the second element of \code{.x}, and so on.
 \item \code{map_at()} applies \code{.f} to each element of \code{.x} referenced by \code{.at}. All other elements remain unchanged.
 \item \code{keep()} keeps those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}.
 \item \code{discard()} discards those elements of \code{.x} where predicate \code{.p} evaluates to \code{TRUE}.
+\item \code{compact()} discards elements of \code{.x} that are \code{NULL}.
 \item \code{every()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for each \code{.x}.
 \item \code{some()} is \code{TRUE} if predicate \code{.p} evaluates to \code{TRUE} for at least one \code{.x}.
 \item \code{detect()} returns the first element where predicate \code{.p} evaluates to \code{TRUE}.
