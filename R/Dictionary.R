@@ -177,13 +177,13 @@ Dictionary = R6::R6Class("Dictionary",
   )
 )
 
-dictionary_get = function(self, key, ..., .dicts_suggest) {
+dictionary_get = function(self, key, ..., .dicts_suggest = NULL) {
   obj = dictionary_retrieve_item(self, key, .dicts_suggest)
   dots = assert_list(list(...), names = "unique", .var.name = "arguments passed to Dictionary")
   dictionary_initialize_item(key, obj, dots)
 }
 
-dictionary_retrieve_item = function(self, key, dicts_suggest) {
+dictionary_retrieve_item = function(self, key, dicts_suggest = NULL) {
   obj = get0(key, envir = self$items, inherits = FALSE, ifnotfound = NULL)
   if (is.null(obj)) {
     stopf("Element with key '%s' not found in %s!%s%s", key, class(self)[1L],
