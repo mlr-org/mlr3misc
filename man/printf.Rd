@@ -10,11 +10,11 @@
 \usage{
 catf(msg, ..., file = "", wrap = FALSE)
 
-messagef(msg, ..., wrap = FALSE)
+messagef(msg, ..., wrap = FALSE, class = NULL)
 
-warningf(msg, ..., wrap = FALSE)
+warningf(msg, ..., wrap = FALSE, class = NULL)
 
-stopf(msg, ..., wrap = FALSE)
+stopf(msg, ..., wrap = FALSE, class = NULL)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -32,6 +32,9 @@ If set to \code{TRUE}, the width defaults to \code{0.9 * getOption("width")}.
 If set to \code{FALSE}, wrapping is disabled (default).
 If wrapping is enabled, all whitespace characters (\verb{[[:space:]]}) are converted to spaces,
 and consecutive spaces are converted to a single space.}
+
+\item{class}{(\code{character()})\cr
+Class of the condition.}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},

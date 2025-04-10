@@ -17,6 +17,8 @@
 #'   If set to `FALSE`, wrapping is disabled (default).
 #'   If wrapping is enabled, all whitespace characters (`[[:space:]]`) are converted to spaces,
 #'   and consecutive spaces are converted to a single space.
+#' @param class (`character()`)\cr
+#'   Class of the condition.
 #'
 #' @name printf
 #' @examples
@@ -41,6 +43,7 @@ str_wrap = function(str, width = FALSE) {
   paste0(strwrap(gsub("[[:space:]]+", " ", str), width = width), collapse = "\n")
 }
 
+
 #' @export
 #' @rdname printf
 catf = function(msg, ..., file = "", wrap = FALSE) {
@@ -49,18 +52,24 @@ catf = function(msg, ..., file = "", wrap = FALSE) {
 
 #' @export
 #' @rdname printf
-messagef = function(msg, ..., wrap = FALSE) {
-  message(str_wrap(sprintf(msg, ...), width = wrap))
+messagef = function(msg, ..., wrap = FALSE, class = NULL) {
+  class <- c(class, c("mlr3message", "simpleMessage", "message", "condition"))
+  message = str_wrap(sprintf(msg, ...), width = wrap)
+  message(structure(list(message = as.character(message), call = call), class = class))
 }
 
 #' @export
 #' @rdname printf
-warningf = function(msg, ..., wrap = FALSE) {
-  warning(simpleWarning(str_wrap(sprintf(msg, ...), width = wrap), call = NULL))
+warningf = function(msg, ..., wrap = FALSE, class = NULL) {
+  class <- c(class, c("mlr3warning", "simpleWarning", "warning", "condition"))
+  message = str_wrap(sprintf(msg, ...), width = wrap)
+  warning(structure(list(message = as.character(message), call = call), class = class))
 }
 
 #' @export
 #' @rdname printf
-stopf = function(msg, ..., wrap = FALSE) {
-  stop(simpleError(str_wrap(sprintf(msg, ...), width = wrap), call = NULL))
+stopf = function(msg, ..., wrap = FALSE, class = NULL) {
+  class <- c(class, c("mlr3error", "simpleError", "error", "condition"))
+  message = str_wrap(sprintf(msg, ...), width = wrap)
+  stop(structure(list(message = as.character(message), call = call), class = class))
 }
