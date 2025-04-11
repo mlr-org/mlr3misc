@@ -49,7 +49,7 @@ and not the call into the leanified method.
 Errors and warnings get the classes \verb{mlr3\{error, warning\}} and also inherit from
 \verb{simple\{Error, Warning\}}.
 It is possible to give errors and warnings their own class via the \code{class} argument.
-Doing this, allows to suppress selective conditions via caling handlers, see e.g.
+Doing this, allows to suppress selective conditions via calling handlers, see e.g.
 \code{\link{globalCallingHandlers}}.
 
 When a function throws such a condition that the user might want to disable,
