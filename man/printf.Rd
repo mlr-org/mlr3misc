@@ -39,7 +39,6 @@ Class of the condition.}
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},
 \code{\link[base:message]{base::message()}}, \code{\link[base:warning]{base::warning()}} and \code{\link[base:stop]{base::stop()}}, respectively.
-The call is not included for warnings and errors.
 }
 \examples{
 messagef("
