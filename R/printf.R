@@ -4,6 +4,21 @@
 #' `catf()`, `messagef()`, `warningf()` and `stopf()` are wrappers around [base::cat()],
 #' [base::message()], [base::warning()] and [base::stop()], respectively.
 #'
+#' @section Errors and Warnings:
+#' Errors and warnings get the classes `mlr3{error, warning}` and also inherit from
+#' `simple{Error, Warning}`.
+#' It is possible to give errors and warnings their own class via the `class` argument.
+#' Doing this, allows to suppress selective conditions via caling handlers, see e.g.
+#' [`globalCallingHandlers`].
+#'
+#' When a function throws such a condition that the user might want to disable,
+#' a section *Errors and Warnings* should be included in the function documention,
+#' describing the condition and its class.
+#'
+#' @details
+#' For leanified R6 classes, the call included in the condition is the method call
+#' and not the call into the leanified method.
+#'
 #' @param msg (`character(1)`)\cr
 #'   Format string passed to [base::sprintf()].
 #' @param file (`character(1)`)\cr
@@ -17,7 +32,7 @@
 #'   If wrapping is enabled, all whitespace characters (`[[:space:]]`) are converted to spaces,
 #'   and consecutive spaces are converted to a single space.
 #' @param class (`character()`)\cr
-#'   Class of the condition.
+#'   Class of the condition (for errors and warnings).
 #'
 #' @name printf
 #' @examples
@@ -52,16 +67,13 @@ catf = function(msg, ..., file = "", wrap = FALSE) {
 #' @export
 #' @rdname printf
 messagef = function(msg, ..., wrap = FALSE, class = NULL) {
-  class <- c(class, c("mlr3message", "message", "condition"))
-  message = str_wrap(sprintf(msg, ...), width = wrap)
-  call = sys_call_unleanified()
-  message(structure(list(message = as.character(message), call = call), class = class))
+  message(str_wrap(sprintf(msg, ...), width = wrap))
 }
 
 #' @export
 #' @rdname printf
 warningf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class <- c(class, c("mlr3warning", "warning", "condition"))
+  class <- c(class, c("mlr3warning", "simpleWarning", "warning", "condition"))
   message = str_wrap(sprintf(msg, ...), width = wrap)
   call = sys_call_unleanified()
   warning(structure(list(message = as.character(message), call = call), class = class))
@@ -70,7 +82,7 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 stopf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class <- c(class, c("mlr3error", "error", "condition"))
+  class <- c(class, c("mlr3error", "simpleError", "error", "condition"))
   message = str_wrap(sprintf(msg, ...), width = wrap)
   call = sys_call_unleanified()
   stop(structure(list(message = as.character(message), call = call), class = class))
@@ -80,7 +92,7 @@ sys_call_unleanified = function(which = -2) {
   # when we throw an error in learner$predict(task), we want don't want to see the call
   # .__Learner__predict(self = self, ...), but learner$predict(task)
   call = sys.call(which)
-  if (grepl("^\\.__(.*)__", as.character(call[1]))) {
+  if (!is.null(call) && grepl("^\\.__(.*)__", as.character(call[1]))) {
     return(sys.call(which - 1))
   }
   return(call)

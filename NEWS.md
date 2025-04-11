@@ -5,8 +5,9 @@
 * Added helper `cat_cli()`.
 * fix: default `dicts_suggest = NULL` for `dictionary_get_item()` and `dictionary_retrieve_item()` for backward compatibility.
 * fix a bug in `dictionary_sugar_inc_get`
-* Functions `messagef()`, `warningf()` and `stopf()` now have a `class` argument and also add
-  the additional class `mlr3message`, `mlr3warning` and `mlr3error`, respectively.
+* Functions `warningf()` and `stopf()` now have a `class` argument and also add
+  the additional class `mlr3warning` and `mlr3error`, respectively.
+  The condition object now also includes the call.
 
 # mlr3misc 0.16.0
 

@@ -34,12 +34,29 @@ If wrapping is enabled, all whitespace characters (\verb{[[:space:]]}) are conve
 and consecutive spaces are converted to a single space.}
 
 \item{class}{(\code{character()})\cr
-Class of the condition.}
+Class of the condition (for errors and warnings).}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},
 \code{\link[base:message]{base::message()}}, \code{\link[base:warning]{base::warning()}} and \code{\link[base:stop]{base::stop()}}, respectively.
 }
+\details{
+For leanified R6 classes, the call included in the condition is the method call
+and not the call into the leanified method.
+}
+\section{Errors and Warnings}{
+
+Errors and warnings get the classes \verb{mlr3\{error, warning\}} and also inherit from
+\verb{simple\{Error, Warning\}}.
+It is possible to give errors and warnings their own class via the \code{class} argument.
+Doing this, allows to suppress selective conditions via caling handlers, see e.g.
+\code{\link{globalCallingHandlers}}.
+
+When a function throws such a condition that the user might want to disable,
+a section \emph{Errors and Warnings} should be included in the function documention,
+describing the condition and its class.
+}
+
 \examples{
 messagef("
   This is a rather long \%s
