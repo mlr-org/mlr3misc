@@ -120,7 +120,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 
       # copy new RNG state back to parent R session
       list(result = result, rng_state = .GlobalEnv$.Random.seed)
-    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout * 1000))
+    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout * 1000, .compute = .compute))
     elapsed = proc.time()[3L] - now
 
     # read error messages and store them in log

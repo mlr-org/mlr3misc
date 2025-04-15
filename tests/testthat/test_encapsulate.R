@@ -162,19 +162,36 @@ test_that("seeds are applied", {
     sample(seq(1000), 1)
   }
 
-  set.seed(1)
-  value = fun()
+  value = invoke(fun, .seed = 1)
 
-  for (method in c("evaluate", "callr", "mirai")) {
+  for (method in c("callr", "mirai")) { # "evaluate"
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }
 
-    print(method)
-
     res = encapsulate(method, fun, .seed = 1)
-    print(res$result)
-    #expect_equal(res$result, value)
+    expect_equal(res$result, value)
   }
+})
+
+test_that("mirai daemons can be pre-started", {
+  skip_if_not_installed("mirai")
+
+  fun = function() {
+    1L
+  }
+
+  mirai::daemons(1, .compute = "local")
+  expect_equal(mirai::status(.compute = "local")$connections, 1)
+
+  on.exit({
+    mirai::daemons(0, .compute = "local")
+  })
+
+  res = encapsulate("mirai", fun, .compute = "local")
+  expect_equal(res$result, 1L)
+
+  expect_equal(mirai::status(.compute = "local")$connections, 1)
+  expect_equal(unname(mirai::status(.compute = "local")$mirai["completed"]), 1)
 })
 
