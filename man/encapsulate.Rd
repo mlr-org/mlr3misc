@@ -17,7 +17,7 @@ encapsulate(
 }
 \arguments{
 \item{method}{(\code{character(1)})\cr
-One of \code{"none"}, \code{"evaluate"} or \code{"callr"}.}
+One of \code{"none"}, \code{"try"}, \code{"evaluate"}, \code{"callr"}, or \code{"mirai"}.}
 
 \item{.f}{(\verb{function()})\cr
 Function to call.}
@@ -37,7 +37,8 @@ Gets reset to the previous seed on exit.}
 
 \item{.timeout}{(\code{numeric(1)})\cr
 Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"} encapsulation.
-For \code{"callr"} encapsulation, the timeout is passed to \code{\link[callr:r]{callr::r()}}.}
+For \code{"callr"} encapsulation, the timeout is passed to \code{callr::r()}.
+For \code{"mirai"} encapsulation, the timeout is passed to \code{mirai::mirai()}.}
 
 \item{.compute}{(\code{character(1)})\cr
 If \code{method} is \code{"mirai"}, a daemon with the specified compute profile is used or started.}
@@ -64,7 +65,7 @@ not logged.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 \item \code{"mirai"}: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
-This encapsulation calls the function in a \code{mirai} of \CRANpkg{mirai}.
+This encapsulation calls the function in a \code{mirai} on a \code{daemon}.
 The \code{daemon} can be pre-started via \code{daemons(1)}.
 All encapsulated function calls are executed in this \code{daemon}.
 Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.

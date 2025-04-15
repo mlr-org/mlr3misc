@@ -14,13 +14,13 @@
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 #' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
-#'   This encapsulation calls the function in a `mirai` of \CRANpkg{mirai}.
+#'   This encapsulation calls the function in a `mirai` on a `daemon`.
 #'   The `daemon` can be pre-started via `daemons(1)`.
 #'   All encapsulated function calls are executed in this `daemon`.
 #'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 #'
 #' @param method (`character(1)`)\cr
-#'   One of `"none"`, `"evaluate"` or `"callr"`.
+#'   One of `"none"`, `"try"`, `"evaluate"`, `"callr"`, or `"mirai"`.
 #' @param .f (`function()`)\cr
 #'   Function to call.
 #' @param .args (`list()`)\cr
@@ -34,7 +34,8 @@
 #'   Gets reset to the previous seed on exit.
 #' @param .timeout (`numeric(1)`)\cr
 #'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"` encapsulation.
-#'   For `"callr"` encapsulation, the timeout is passed to [callr::r()].
+#'   For `"callr"` encapsulation, the timeout is passed to `callr::r()`.
+#'   For `"mirai"` encapsulation, the timeout is passed to `mirai::mirai()`.
 #' @param .compute (`character(1)`)\cr
 #'   If `method` is `"mirai"`, a daemon with the specified compute profile is used or started.
 #' @return (named `list()`) with three fields:
