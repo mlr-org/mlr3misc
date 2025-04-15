@@ -10,6 +10,9 @@
 #' * `"try"`: Similar to `"none"`, but catches error. Output is printed to the console and
 #'   not logged.
 #' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
+#' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
+#'   This encapsulation spawns a separate R session in which the function is called.
+#'
 #' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
@@ -53,10 +56,9 @@
 #' if (requireNamespace("callr", quietly = TRUE)) {
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
-encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
-  .seed = NA_integer_, .timeout = Inf) {
+encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(), .seed = NA_integer_, .timeout = Inf, .compute = "default") {
 
-  assert_choice(method, c("none", "try", "evaluate", "callr"))
+  assert_choice(method, c("none", "try", "evaluate", "mirai", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
   assert_character(.pkgs, any.missing = FALSE)
@@ -90,6 +92,55 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     )
     elapsed = proc.time()[[3L]] - now
     log = parse_evaluate(log)
+  } else if (method == "mirai") {
+    require_namespaces("mirai")
+
+    # mirai does not copy the RNG state, so we need to do it manually
+    .rng_state = .GlobalEnv$.Random.seed
+
+    # start local mirai daemon if not already running
+    if (!mirai::status(.compute = .compute)$connections) {
+      mirai::daemons(1L, .compute = .compute)
+
+      on.exit({
+        mirai::daemons(0L, .compute = .compute)
+      }, add = TRUE)
+    }
+
+    now = proc.time()[3L]
+    result = mirai::collect_mirai(mirai::mirai({
+      suppressPackageStartupMessages({
+        lapply(.pkgs, requireNamespace)
+      })
+
+      # restore RNG state from parent R session
+      if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+
+      result = mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed)
+
+      # copy new RNG state back to parent R session
+      list(result = result, rng_state = .GlobalEnv$.Random.seed)
+    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout * 1000))
+    elapsed = proc.time()[3L] - now
+
+    # read error messages and store them in log
+    log = NULL
+    if (mirai::is_error_value(result)) {
+      if (unclass(result) == 5) result = "reached elapsed time limit"
+      log = data.table(class = "error", msg = as.character(result))
+      result = NULL
+    } else {
+      # restore RNG state from mirai session
+      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      result = result$result
+    }
+
+    if (is.null(log)) {
+      log = data.table(class = character(), msg = character())
+    }
+
+    log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
+    list(result = result, log = log, elapsed = elapsed)
   } else { # method == "callr"
     require_namespaces("callr")
 
@@ -178,7 +229,7 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   }
 
   # restore RNG state from parent R session
-  if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+  if (!is.null(.rng_state) && is.na(.seed)) assign(".Random.seed", .rng_state, envir = globalenv())
 
   result = withCallingHandlers(
     tryCatch(do.call(.f, .args),
@@ -196,3 +247,5 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   # copy new RNG state back to parent R session
   list(result = result, rng_state = .GlobalEnv$.Random.seed)
 }
+
+

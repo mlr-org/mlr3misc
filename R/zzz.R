@@ -12,4 +12,16 @@
 .onLoad = function(libname, pkgname) {
   # nocov start
   backports::import(pkgname)
+
+  # setup logger
+  # lg = lgr::get_logger("mlr3_ecosystem")
+  # assign("lg", lg, envir = parent.env(environment()))
+  # f = function(event) {
+  #   event$msg = paste0("[mlr3_ecosystem] ", event$msg)
+  #   TRUE
+  # }
+  # lg$set_filters(list(f))
+  # if (Sys.getenv("IN_PKGDOWN") == "true") {
+  #   lg$set_threshold("warn")
+  # }
 } # nocov end
