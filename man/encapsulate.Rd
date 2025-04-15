@@ -11,7 +11,8 @@ encapsulate(
   .opts = list(),
   .pkgs = character(),
   .seed = NA_integer_,
-  .timeout = Inf
+  .timeout = Inf,
+  .compute = "default"
 )
 }
 \arguments{
@@ -37,6 +38,9 @@ Gets reset to the previous seed on exit.}
 \item{.timeout}{(\code{numeric(1)})\cr
 Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"} encapsulation.
 For \code{"callr"} encapsulation, the timeout is passed to \code{\link[callr:r]{callr::r()}}.}
+
+\item{.compute}{(\code{character(1)})\cr
+If \code{method} is \code{"mirai"}, a daemon with the specified compute profile is used or started.}
 }
 \value{
 (named \code{list()}) with three fields:
@@ -59,6 +63,11 @@ not logged.
 \item \code{"callr"}: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+\item \code{"mirai"}: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
+This encapsulation calls the function in a \code{mirai} of \CRANpkg{mirai}.
+The \code{daemon} can be pre-started via \code{daemons(1)}.
+All encapsulated function calls are executed in this \code{daemon}.
+Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 }
 }
 \examples{

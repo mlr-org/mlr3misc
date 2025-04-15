@@ -5,7 +5,7 @@
 \alias{mlr_callbacks}
 \title{Dictionary of Callbacks}
 \format{
-An object of class \code{DictionaryCallbacks} (inherits from \code{Dictionary}, \code{R6}) of length 13.
+An object of class \code{DictionaryCallbacks} (inherits from \code{Dictionary}, \code{R6}) of length 12.
 }
 \usage{
 mlr_callbacks

@@ -10,12 +10,14 @@
 #' * `"try"`: Similar to `"none"`, but catches error. Output is printed to the console and
 #'   not logged.
 #' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
-#' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
-#'   This encapsulation spawns a separate R session in which the function is called.
-#'
 #' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+#' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
+#'   This encapsulation calls the function in a `mirai` of \CRANpkg{mirai}.
+#'   The `daemon` can be pre-started via `daemons(1)`.
+#'   All encapsulated function calls are executed in this `daemon`.
+#'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 #'
 #' @param method (`character(1)`)\cr
 #'   One of `"none"`, `"evaluate"` or `"callr"`.
@@ -33,6 +35,8 @@
 #' @param .timeout (`numeric(1)`)\cr
 #'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"` encapsulation.
 #'   For `"callr"` encapsulation, the timeout is passed to [callr::r()].
+#' @param .compute (`character(1)`)\cr
+#'   If `method` is `"mirai"`, a daemon with the specified compute profile is used or started.
 #' @return (named `list()`) with three fields:
 #'   * `"result"`: the return value of `.f`
 #'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
