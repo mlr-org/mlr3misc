@@ -252,5 +252,3 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   # copy new RNG state back to parent R session
   list(result = result, rng_state = .GlobalEnv$.Random.seed)
 }
-
-
