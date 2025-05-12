@@ -1,4 +1,4 @@
-# mlr3misc (development version)
+# mlr3misc 0.17.0
 
 * feat: `as_callbacks()` returns a list named by the callback ids now.
 * feat: Added logical operators `%check&&%` and `%check||%` for `check_*`-functions from `checkmate` (moved here from `mlr3pipelines`).
