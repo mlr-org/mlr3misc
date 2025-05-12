@@ -195,3 +195,17 @@ test_that("mirai daemons can be pre-started", {
   expect_equal(unname(mirai::status(.compute = "local")$mirai["completed"]), 1)
 })
 
+test_that("mirai daemon is started if not running", {
+  skip_if_not_installed("mirai")
+
+  fun = function() {
+    1L
+  }
+
+  expect_equal(mirai::status()$connections, 0)
+
+  res = encapsulate("mirai", fun)
+  expect_equal(res$result, 1L)
+  expect_equal(mirai::status()$connections, 0)
+})
+

@@ -104,13 +104,13 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     .rng_state = .GlobalEnv$.Random.seed
 
     # start local mirai daemon if not already running
-    if (!mirai::status(.compute = .compute)$connections) {
-      mirai::daemons(1L, .compute = .compute)
+    # if (!mirai::status(.compute = .compute)$connections) {
+    #   mirai::daemons(1L, .compute = .compute)
 
-      on.exit({
-        mirai::daemons(0L, .compute = .compute)
-      }, add = TRUE)
-    }
+    #   on.exit({
+    #     mirai::daemons(0L, .compute = .compute)
+    #   }, add = TRUE)
+    # }
 
     now = proc.time()[3L]
     result = mirai::collect_mirai(mirai::mirai({
