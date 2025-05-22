@@ -15,7 +15,7 @@
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
 #' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
 #'   This encapsulation calls the function in a `mirai` on a `daemon`.
-#'   The `daemon` can be pre-started via `daemons(1)`.
+#'   The `daemon` can be pre-started via `daemons(1)`, otherwise a new R session will be created for each encapsulated call.
 #'   All encapsulated function calls are executed in this `daemon`.
 #'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 #'
