@@ -102,6 +102,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 
     # mirai does not copy the RNG state, so we need to do it manually
     .rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed
+    .timeout = if (is.finite(.timeout)) .timeout * 1000
 
     now = proc.time()[3L]
     result = mirai::collect_mirai(mirai::mirai({
@@ -116,7 +117,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 
       # copy new RNG state back to parent R session
       list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed)
-    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout * 1000, .compute = .compute))
+    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout, .compute = .compute))
     elapsed = proc.time()[3L] - now
 
     # read error messages and store them in log
