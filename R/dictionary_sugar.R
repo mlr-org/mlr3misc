@@ -175,7 +175,6 @@ dictionary_sugar_inc_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   if (attr(m, "match.length") == -1L)  {
     return(dictionary_sugar_get(dict = dict, .key = .key, ..., .dicts_suggest = .dicts_suggest))
   }
-  assert_true(!methods::hasArg("id"))
   split = regmatches(.key, m, invert = NA)[[1L]]
   newkey = split[[1L]]
   suffix = split[[2L]]

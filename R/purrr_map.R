@@ -13,6 +13,7 @@
 #' * `map_at()` applies `.f` to each element of `.x` referenced by `.at`. All other elements remain unchanged.
 #' * `keep()` keeps those elements of `.x` where predicate `.p` evaluates to `TRUE`.
 #' * `discard()` discards those elements of `.x` where predicate `.p` evaluates to `TRUE`.
+#' * `compact()` discards elements of `.x` that are `NULL`.
 #' * `every()` is `TRUE` if predicate `.p` evaluates to `TRUE` for each `.x`.
 #' * `some()` is `TRUE` if predicate `.p` evaluates to `TRUE` for at least one `.x`.
 #' * `detect()` returns the first element where predicate `.p` evaluates to `TRUE`.
@@ -270,6 +271,12 @@ discard.data.frame = function(.x, .p, ...) { # nolint
 discard.data.table = function(.x, .p, ...) { # nolint
   .sel = probe(.x, .p, ...)
   .x[, is.na(.sel) | !.sel, with = FALSE]
+}
+
+#' @export
+#' @rdname compat-map
+compact = function(.x) { # nolint
+  .x[as.logical(lengths(.x))]
 }
 
 #' @export

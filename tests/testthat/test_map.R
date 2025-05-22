@@ -201,6 +201,15 @@ test_that("detect", {
   expect_null(out)
 })
 
+test_that("compact", {
+  x = list(a = 1:3, b = c("a", "b"), c = NULL, d = NULL)
+  out = compact(x)
+  expect_identical(out, x[1:2])
+  x = list(a = 1:3, b = c("a", "b"), c = runif(3))
+  out = compact(x)
+  expect_identical(out, x)
+})
+
 test_that("pmap does not segfault (#56)", {
   expect_error(pmap(1:4, function(x) x), "list")
 })
