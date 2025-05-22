@@ -101,16 +101,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     require_namespaces("mirai")
 
     # mirai does not copy the RNG state, so we need to do it manually
-    .rng_state = .GlobalEnv$.Random.seed
-
-    # start local mirai daemon if not already running
-    # if (!mirai::status(.compute = .compute)$connections) {
-    #   mirai::daemons(1L, .compute = .compute)
-
-    #   on.exit({
-    #     mirai::daemons(0L, .compute = .compute)
-    #   }, add = TRUE)
-    # }
+    .rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed
 
     now = proc.time()[3L]
     result = mirai::collect_mirai(mirai::mirai({
