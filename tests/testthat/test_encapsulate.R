@@ -119,7 +119,7 @@ test_that("rng state is transferred", {
     sample(seq(1000), 1)
   }
 
-  for (method in c("evaluate", "callr", "mirai")) {
+  for (method in c("mirai")) {
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }

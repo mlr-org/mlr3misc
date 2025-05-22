@@ -115,7 +115,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       result = mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed)
 
       # copy new RNG state back to parent R session
-      list(result = result, rng_state = .GlobalEnv$.Random.seed)
+      list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed)
     }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout * 1000, .compute = .compute))
     elapsed = proc.time()[3L] - now
 
