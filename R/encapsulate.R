@@ -16,7 +16,7 @@
 #' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
 #'   This encapsulation calls the function in a `mirai` on a `daemon`.
 #'   The `daemon` can be pre-started via `daemons(1)`, otherwise a new R session will be created for each encapsulated call.
-#'   If a `deamon` is already running, it will be used to executed all calls.
+#'   If a `daemon` is already running, it will be used to execute all calls.
 #'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 #'
 #' @param method (`character(1)`)\cr
