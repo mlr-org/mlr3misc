@@ -10,6 +10,6 @@
 #' @usage x \%nin\% y
 #' @rdname nin
 #' @export
-"%nin%" = function(x, y) {
-  !match(x, y, nomatch = 0L)
+`%nin%` = function(x, y) {
+  match(x, y, nomatch = 0L) == 0L
 }
