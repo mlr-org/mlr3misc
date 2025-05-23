@@ -81,8 +81,7 @@ Callback = R6Class("Callback",
     print = function(...) {
       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
       # get methods that start with "on_" and discard null
-      catn(str_indent("* Active Stages:", names(discard(as.list(self)[grep("^on_.*", names(self), value = TRUE)], is.null))))
-
+      catn(str_indent("* Active Stages:", names(compact(as.list(self)[grep("^on_.*", names(self), value = TRUE)]))))
     },
 
     #' @description
