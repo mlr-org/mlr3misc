@@ -13,9 +13,14 @@
 #' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 #'   This encapsulation spawns a separate R session in which the function is called.
 #'   While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+#' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
+#'   This encapsulation calls the function in a `mirai` on a `daemon`.
+#'   The `daemon` can be pre-started via `daemons(1)`, otherwise a new R session will be created for each encapsulated call.
+#'   If a `daemon` is already running, it will be used to execute all calls.
+#'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 #'
 #' @param method (`character(1)`)\cr
-#'   One of `"none"`, `"evaluate"` or `"callr"`.
+#'   One of `"none"`, `"try"`, `"evaluate"`, `"callr"`, or `"mirai"`.
 #' @param .f (`function()`)\cr
 #'   Function to call.
 #' @param .args (`list()`)\cr
@@ -29,7 +34,10 @@
 #'   Gets reset to the previous seed on exit.
 #' @param .timeout (`numeric(1)`)\cr
 #'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"` encapsulation.
-#'   For `"callr"` encapsulation, the timeout is passed to [callr::r()].
+#'   For `"callr"` encapsulation, the timeout is passed to `callr::r()`.
+#'   For `"mirai"` encapsulation, the timeout is passed to `mirai::mirai()`.
+#' @param .compute (`character(1)`)\cr
+#'   If `method` is `"mirai"`, a daemon with the specified compute profile is used or started.
 #' @return (named `list()`) with three fields:
 #'   * `"result"`: the return value of `.f`
 #'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
@@ -53,10 +61,9 @@
 #' if (requireNamespace("callr", quietly = TRUE)) {
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
-encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(),
-  .seed = NA_integer_, .timeout = Inf) {
+encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(), .seed = NA_integer_, .timeout = Inf, .compute = "default") {
 
-  assert_choice(method, c("none", "try", "evaluate", "callr"))
+  assert_choice(method, c("none", "try", "evaluate", "mirai", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
   assert_character(.pkgs, any.missing = FALSE)
@@ -90,6 +97,47 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     )
     elapsed = proc.time()[[3L]] - now
     log = parse_evaluate(log)
+  } else if (method == "mirai") {
+    require_namespaces("mirai")
+
+    # mirai does not copy the RNG state, so we need to do it manually
+    .rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed
+    .timeout = if (is.finite(.timeout)) .timeout * 1000
+
+    now = proc.time()[3L]
+    result = mirai::collect_mirai(mirai::mirai({
+      suppressPackageStartupMessages({
+        lapply(.pkgs, requireNamespace)
+      })
+
+      # restore RNG state from parent R session
+      if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+
+      result = mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed)
+
+      # copy new RNG state back to parent R session
+      list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed)
+    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout, .compute = .compute))
+    elapsed = proc.time()[3L] - now
+
+    # read error messages and store them in log
+    log = NULL
+    if (mirai::is_error_value(result)) {
+      if (unclass(result) == 5) result = "reached elapsed time limit"
+      log = data.table(class = "error", msg = as.character(result))
+      result = NULL
+    } else {
+      # restore RNG state from mirai session
+      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      result = result$result
+    }
+
+    if (is.null(log)) {
+      log = data.table(class = character(), msg = character())
+    }
+
+    log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
+    list(result = result, log = log, elapsed = elapsed)
   } else { # method == "callr"
     require_namespaces("callr")
 
@@ -178,7 +226,7 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   }
 
   # restore RNG state from parent R session
-  if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+  if (!is.null(.rng_state) && is.na(.seed)) assign(".Random.seed", .rng_state, envir = globalenv())
 
   result = withCallingHandlers(
     tryCatch(do.call(.f, .args),
