@@ -16,6 +16,11 @@ not logged.
 "callr": Uses the package callr to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+"mirai": Uses the package mirai to call the function, measure time and do the logging.
+This encapsulation calls the function in a mirai on a daemon.
+The daemon can be pre-started via daemons(1).
+All encapsulated function calls are executed in this daemon.
+Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 
 '><meta property="og:description" content='Evaluates a function while both recording an output log and measuring the elapsed time.
 There are currently three different modes implemented to encapsulate a function call:
@@ -28,6 +33,11 @@ not logged.
 "callr": Uses the package callr to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+"mirai": Uses the package mirai to call the function, measure time and do the logging.
+This encapsulation calls the function in a mirai on a daemon.
+The daemon can be pre-started via daemons(1).
+All encapsulated function calls are executed in this daemon.
+Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
 
 '><meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -37,7 +47,7 @@ While this comes with a considerable overhead, it also guards your session from 
 
     <a class="navbar-brand me-2" href="../index.html">mlr3misc</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.17.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.18.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,6 +93,11 @@ not logged.</p></li>
 <li><p><code>"callr"</code>: Uses the package <a href="https://CRAN.R-project.org/package=callr" class="external-link"><span class="pkg">callr</span></a> to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
 While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.</p></li>
+<li><p><code>"mirai"</code>: Uses the package <a href="https://CRAN.R-project.org/package=mirai" class="external-link"><span class="pkg">mirai</span></a> to call the function, measure time and do the logging.
+This encapsulation calls the function in a <code>mirai</code> on a <code>daemon</code>.
+The <code>daemon</code> can be pre-started via <code>daemons(1)</code>.
+All encapsulated function calls are executed in this <code>daemon</code>.
+Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.</p></li>
 </ul></div>
 
     <div class="section level2">
@@ -94,7 +109,8 @@ While this comes with a considerable overhead, it also guards your session from 
 <span>  .opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  .pkgs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  .seed <span class="op">=</span> <span class="cn">NA_integer_</span>,</span>
-<span>  .timeout <span class="op">=</span> <span class="cn">Inf</span></span>
+<span>  .timeout <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  .compute <span class="op">=</span> <span class="st">"default"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -104,7 +120,7 @@ While this comes with a considerable overhead, it also guards your session from 
 
 <dl><dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
 <dd><p>(<code>character(1)</code>)<br>
-One of <code>"none"</code>, <code>"evaluate"</code> or <code>"callr"</code>.</p></dd>
+One of <code>"none"</code>, <code>"try"</code>, <code>"evaluate"</code>, <code>"callr"</code>, or <code>"mirai"</code>.</p></dd>
 
 
 <dt id="arg--f">.f<a class="anchor" aria-label="anchor" href="#arg--f"></a></dt>
@@ -136,7 +152,13 @@ Gets reset to the previous seed on exit.</p></dd>
 <dt id="arg--timeout">.timeout<a class="anchor" aria-label="anchor" href="#arg--timeout"></a></dt>
 <dd><p>(<code>numeric(1)</code>)<br>
 Timeout in seconds. Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code> encapsulation.
-For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code>.</p></dd>
+For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code>.
+For <code>"mirai"</code> encapsulation, the timeout is passed to <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code>.</p></dd>
+
+
+<dt id="arg--compute">.compute<a class="anchor" aria-label="anchor" href="#arg--compute"></a></dt>
+<dd><p>(<code>character(1)</code>)<br>
+If <code>method</code> is <code>"mirai"</code>, a daemon with the specified compute profile is used or started.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -165,7 +187,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 <span class="r-out co"><span class="r-pr">#&gt;</span> Empty data.table (0 rows and 2 cols): class,msg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"evaluate"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -180,14 +202,14 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.002</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"callr"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">encapsulate</span><span class="op">(</span><span class="st">"callr"</span>, <span class="va">f</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, .seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $result</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6006375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2655087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $log</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     class       msg</span>
@@ -196,7 +218,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.575 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.565 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
@@ -209,7 +231,7 @@ For <code>"callr"</code> encapsulation, the timeout is passed to <code><a href="
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
