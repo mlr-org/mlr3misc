@@ -1,4 +1,6 @@
-# mlr3misc (development version)
+# mlr3misc 0.18.0
+
+* feat: Added `"mirai"` as encapsulation method to `encapsulate()`.
 
 # mlr3misc 0.17.0
 
