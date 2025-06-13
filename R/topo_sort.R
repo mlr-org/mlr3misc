@@ -29,33 +29,33 @@ topo_sort = function(nodes) {
   assert_data_table(nodes, ncols = 2L, types = c("character", "list"))
   assert_names(names(nodes), identical.to = c("id", "parents"))
   assert_list(nodes$parents, types = "character")
-  assert_subset(unlist(nodes$parents), nodes$id)
+  assert_subset(unlist(nodes$parents, use.names = FALSE), nodes$id)
   nodes = copy(nodes) # copy ref to be sure
   n = nrow(nodes)
   # sort nodes with few parent to start
-  o = order(lengths(nodes$parents), decreasing = FALSE)
-  nodes = nodes[o]
+  nodes = nodes[order(lengths(parents), decreasing = FALSE)]
 
-  nodes$topo = nodes$depth = NA_integer_ # cols for topo-index and depth layer in sort
+  nodes[, `:=`(topo = NA_integer_, depth = NA_integer_)] # cols for topo-index and depth layer in sort
   j = 1L
   topo_count = 1L
   depth_count = 0L
+  topo = depth = parents = id = NULL
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
-      nodes$topo[j] = topo_count
+      nodes[j, topo := topo_count]
       topo_count = topo_count + 1L
-      nodes$depth[j] = depth_count
+      nodes[j, depth := depth_count]
     }
     j = (j %% n) + 1L # inc j, but wrap around end
-    if (j == 1) { # we wrapped, lets remove nodes of current layer from deps
-      layer = nodes[nodes$depth == depth_count]$id
+    if (j == 1L) { # we wrapped, lets remove nodes of current layer from deps
+      layer = nodes[.(depth_count), id, on = "depth", nomatch = NULL]
       if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")
       }
-      nodes$parents = list(map(nodes$parents, function(x) setdiff(x, layer)))
+      nodes[, parents := map(parents, function(x) setdiff(x, layer))]
       depth_count = depth_count + 1L
     }
   }
-  nodes[order(nodes$topo), c("id", "depth")] # sort by topo, and then remove topo-col
+  nodes[order(topo), c("id", "depth")] # sort by topo, and then remove topo-col
 }
