@@ -73,7 +73,7 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 warningf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class <- c(class, c("mlr3warning", "simpleWarning", "warning", "condition"))
+  class = c(class, c("mlr3Warning", "warning", "condition"))
   message = str_wrap(sprintf(msg, ...), width = wrap)
   call = sys_call_unleanified()
   warning(structure(list(message = as.character(message), call = call), class = class))
@@ -82,7 +82,7 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 stopf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class <- c(class, c("mlr3error", "simpleError", "error", "condition"))
+  class = c(class, "mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
   call = sys_call_unleanified()
   stop(structure(list(message = as.character(message), call = call), class = class))
