@@ -64,6 +64,7 @@ Collate:
     'distinct_values.R'
     'encapsulate.R'
     'enframe.R'
+    'error.R'
     'extract_vars.R'
     'format_bib.R'
     'formulate.R'
