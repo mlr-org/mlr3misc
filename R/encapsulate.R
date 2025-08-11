@@ -135,12 +135,12 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
         warning = function(w) {
           conditions <<- c(conditions, list(w))
           NULL
-          #invokeRestart("muffleWarning")
+          invokeRestart("muffleWarning")
         },
         message = function(m) {
           conditions <<- c(conditions, list(m))
           NULL
-          #invokeRestart("muffleMessage")
+          invokeRestart("muffleMessage")
         }
       )
 
