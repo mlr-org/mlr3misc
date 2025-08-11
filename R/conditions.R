@@ -30,7 +30,7 @@ error_timeout = function() {
 #' @rdname mlr_conditions
 #' @export
 condition_timeout = function() {
-  error_mlr3("reached elapsed time limit", class = "mlr3ErrorTimeout")
+  condition_mlr3("reached elapsed time limit", class = "mlr3ErrorTimeout")
 }
 
 #' @rdname mlr_conditions
