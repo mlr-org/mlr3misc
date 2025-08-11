@@ -2,7 +2,7 @@
 
 ## New features:
 
-* Added functions `error_<cls>` and `condition_<cls>` for some standard error classes.
+* Added various new functions for improved error handling.
 * `encapsulate()` now returns the specific condition objects along the logs, allowing for
   improved error handling on the caller site.
 
