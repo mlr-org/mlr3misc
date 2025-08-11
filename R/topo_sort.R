@@ -40,6 +40,7 @@ topo_sort = function(nodes) {
   topo_count = 1L
   depth_count = 0L
   topo = depth = parents = id = NULL
+  . = NULL # nolint
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
@@ -49,7 +50,6 @@ topo_sort = function(nodes) {
     }
     j = (j %% n) + 1L # inc j, but wrap around end
     if (j == 1L) { # we wrapped, lets remove nodes of current layer from deps
-      . = NULL
       layer = nodes[.(depth_count), id, on = "depth", nomatch = NULL]
       if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")
