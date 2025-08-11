@@ -63,7 +63,7 @@ warning_config = function(msg, ..., class = NULL, silent = FALSE) {
 stop_with_class = function(cond) {
   cli::cli_abort(c(
     "x" = cond$message,
-    "i" = paste0("Error class: ", class(cond)[1L])
+    "i" = paste0("Class: ", class(cond)[1L])
   ), call = NULL)
 }
 
@@ -76,6 +76,6 @@ stop_with_class = function(cond) {
 warn_with_class = function(cond) {
   cli::cli_warn(c(
     "x" = cond$message,
-    "i" = paste0("Error class: ", class(cond)[1L])
+    "i" = paste0("Class: ", class(cond)[1L])
   ), call = NULL)
 }

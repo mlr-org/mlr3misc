@@ -1,15 +1,15 @@
 # errors
 
     x abc
-    i Error class: mlr3ErrorConfig
+    i Class: mlr3ErrorConfig
 
 ---
 
     x reached elapsed time limit
-    i Error class: mlr3ErrorTimeout
+    i Class: mlr3ErrorTimeout
 
 # warnings
 
     x a & b
-    i Error class: mlr3WarningConfig
+    i Class: mlr3WarningConfig
 

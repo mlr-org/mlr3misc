@@ -81,7 +81,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     } else {
       result = try(invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout))
       if (inherits(result, "try-error")) {
-        condition = if (grepl("reached elapsed time limit", result)) {
+        condition = if (grepl("reached elapsed time limit", result, fixed = TRUE)) {
           error_timeout(silent = TRUE)
         } else {
           x = attr(result, "condition")
@@ -210,7 +210,7 @@ parse_evaluate = function(log) {
       return(list(class = "warning", msg = trimws(x$message), condition = list(x)))
     }
     if (inherits(x, "error")) {
-      if (grepl("reached elapsed time limit", x$message)) {
+      if (grepl("reached elapsed time limit", x$message, fixed = TRUE)) {
         x = error_timeout(silent = TRUE)
       }
       return(list(class = "error", msg = trimws(x$message), condition = list(x)))
