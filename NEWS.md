@@ -1,5 +1,11 @@
 # mlr3misc (development version)
 
+## New features:
+
+* Added functions `error_<cls>` and `condition_<cls>` for some standard error classes.
+* `encapsulate()` now returns the specific condition objects along the logs, allowing for
+  improved error handling on the caller site.
+
 # mlr3misc 0.18.0
 
 * feat: Added `"mirai"` as encapsulation method to `encapsulate()`.

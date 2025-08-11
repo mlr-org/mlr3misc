@@ -49,6 +49,7 @@ topo_sort = function(nodes) {
     }
     j = (j %% n) + 1L # inc j, but wrap around end
     if (j == 1L) { # we wrapped, lets remove nodes of current layer from deps
+      . = NULL
       layer = nodes[.(depth_count), id, on = "depth", nomatch = NULL]
       if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")

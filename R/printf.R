@@ -75,8 +75,7 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 warningf = function(msg, ..., wrap = FALSE, class = NULL) {
   class = c(class, c("mlr3Warning", "warning", "condition"))
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  call = sys_call_unleanified()
-  warning(structure(list(message = as.character(message), call = call), class = class))
+  warning(structure(list(message = as.character(message)), class = class))
 }
 
 #' @export
@@ -84,16 +83,5 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL) {
 stopf = function(msg, ..., wrap = FALSE, class = NULL) {
   class = c(class, "mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  call = sys_call_unleanified()
-  stop(structure(list(message = as.character(message), call = call), class = class))
-}
-
-sys_call_unleanified = function(which = -2) {
-  # when we throw an error in learner$predict(task), we want don't want to see the call
-  # .__Learner__predict(self = self, ...), but learner$predict(task)
-  call = sys.call(which)
-  if (!is.null(call) && grepl("^\\.__(.*)__", as.character(call[1]))) {
-    return(sys.call(which - 1))
-  }
-  return(call)
+  stop(structure(list(message = as.character(message)), class = class))
 }

@@ -3,7 +3,8 @@ test_that("encapsulation works", {
     1L
   }
 
-  for (method in c("none", "evaluate", "callr", "mirai")) {
+  for (method in c("none", "evaluate", "callr", "mirai", "try")) {
+    print(method)
     if (method != "none" && !requireNamespace(method, quietly = TRUE)) {
       next
     }
@@ -11,7 +12,7 @@ test_that("encapsulation works", {
     log = res$log
     expect_identical(res$result, 1L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(res$log, ncols = 2)
+    expect_data_table(res$log, ncols = 3)
   }
 })
 
@@ -31,7 +32,7 @@ test_that("messages and warnings are logged", {
     log = res$log
     expect_identical(res$result, 99L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(log, ncols = 2)
+    expect_data_table(log, ncols = 3)
     expect_set_equal(as.character(log$class), c("output", "warning"))
     expect_true(log[class == "warning", grepl("\n", msg, fixed = TRUE)])
   }
@@ -39,7 +40,7 @@ test_that("messages and warnings are logged", {
 
 test_that("errors are logged", {
   fun = function() {
-    stop("foo")
+    stop(simpleError("foo"))
   }
 
   for (method in c("evaluate", "callr", "mirai")) {
@@ -61,6 +62,7 @@ test_that("segfaults are logged", {
   }
 
   for (method in c("callr", "mirai")) {
+    print(method)
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }

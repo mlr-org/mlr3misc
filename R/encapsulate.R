@@ -38,10 +38,11 @@
 #'   For `"mirai"` encapsulation, the timeout is passed to `mirai::mirai()`.
 #' @param .compute (`character(1)`)\cr
 #'   If `method` is `"mirai"`, a daemon with the specified compute profile is used or started.
-#' @return (named `list()`) with three fields:
+#' @return (named `list()`) with four fields:
 #'   * `"result"`: the return value of `.f`
 #'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
 #'   * `"log"`: `data.table()` with columns `"class"` (ordered factor with levels `"output"`, `"warning"` and `"error"`) and `"message"` (`character()`).
+#'   * `"condition"`: the condition object if an error occurred, otherwise `NULL`.
 #' @export
 #' @examples
 #' f = function(n) {
@@ -80,6 +81,15 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     } else {
       result = try(invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout))
       if (inherits(result, "try-error")) {
+        condition = if (grepl("reached elapsed time limit", result)) {
+          condition_timeout()
+        } else {
+          x = attr(result, "condition")
+          attr(x, "call") = NULL
+          x
+        }
+        # try only catches error, warnings and messages are output
+        log = data.table(class = "error", msg = condition_to_msg(condition), condition = condition)
         result = NULL
       }
     }
@@ -113,68 +123,79 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       # restore RNG state from parent R session
       if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
 
-      result = mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed)
+
+      conditions = NULL
+      result = withCallingHandlers(
+        tryCatch(mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed),
+          error = function(e) {
+            conditions <<- c(conditions, list(e))
+            NULL
+          }
+        ),
+        warning = function(w) {
+          conditions <<- c(conditions, list(w))
+          NULL
+          #invokeRestart("muffleWarning")
+        },
+        message = function(m) {
+          conditions <<- c(conditions, list(m))
+          NULL
+          #invokeRestart("muffleMessage")
+        }
+      )
 
       # copy new RNG state back to parent R session
-      list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed)
+      list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed, conditions = conditions)
     }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout, .compute = .compute))
     elapsed = proc.time()[3L] - now
 
     # read error messages and store them in log
     log = NULL
     if (mirai::is_error_value(result)) {
-      if (unclass(result) == 5) result = "reached elapsed time limit"
-      log = data.table(class = "error", msg = as.character(result))
+      conditions = if (unclass(result) == 5) {
+        list(condition_timeout())
+      } else {
+        # This is not really a condition object: https://github.com/r-lib/mirai/issues/400
+        list(result)
+      }
       result = NULL
     } else {
       # restore RNG state from mirai session
       if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      conditions = result$conditions
       result = result$result
     }
+    log = conditions_to_log(conditions)
 
-    if (is.null(log)) {
-      log = data.table(class = character(), msg = character())
-    }
-
-    log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
-    list(result = result, log = log, elapsed = elapsed)
   } else { # method == "callr"
     require_namespaces("callr")
 
     # callr does not copy the RNG state, so we need to do it manually
     .rng_state = .GlobalEnv$.Random.seed
-    logfile = tempfile()
     now = proc.time()[3L]
     result = try(callr::r(callr_wrapper,
       list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
-      stdout = logfile, stderr = logfile, timeout = .timeout), silent = TRUE)
+      timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
-    if (file.exists(logfile)) {
-      log = readLines(logfile, warn = FALSE)
-      file.remove(logfile)
-    } else {
-      log = character(0L)
-    }
+    log = NULL
 
     if (inherits(result, "try-error")) {
       condition = attr(result, "condition")
       if (inherits(condition, "callr_timeout_error")) {
-        log = c(log, "[ERR] reached elapsed time limit")
-      } else {
-        status = attr(result, "condition")$status
-        log = c(log, sprintf("[ERR] callr process exited with status %i", status))
+        condition = condition_timeout()
       }
+      log = rbind(log, data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition)))
       result = NULL
     } else {
       if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      log = conditions_to_log(result$conditions)
       result = result$result
     }
-    log = parse_callr(log)
   }
 
   if (is.null(log)) {
-    log = data.table(class = character(), msg = character())
+    log = data.table(class = character(), msg = character(), condition = list())
   }
 
   log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
@@ -185,18 +206,21 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 parse_evaluate = function(log) {
   extract = function(x) {
     if (inherits(x, "message")) {
-      return(list(class = "output", msg = trimws(x$message)))
+      return(list(class = "output", msg = trimws(x$message), condition = list(x)))
     }
     if (inherits(x, "warning")) {
-      return(list(class = "warning", msg = trimws(x$message)))
+      return(list(class = "warning", msg = trimws(x$message), condition = list(x)))
     }
     if (inherits(x, "error")) {
-      return(list(class = "error", msg = trimws(x$message)))
+      if (grepl("reached elapsed time limit", x$message)) {
+        x = condition_timeout()
+      }
+      return(list(class = "error", msg = trimws(x$message), condition = list(x)))
     }
     if (inherits(x, "recordedplot")) {
       return(NULL)
     }
-    return(list(class = "output", msg = trimws(x)))
+    return(list(class = "output", msg = trimws(x), condition = NULL))
   }
 
   log = map_dtr(log[-1L], extract)
@@ -208,11 +232,46 @@ parse_callr = function(log) {
     return(NULL)
   }
 
-  log = data.table(class = "output", msg = log)
+  log = data.table(class = "output", msg = log, condition = list(NULL))
   parse_line = function(x) trimws(gsub("<br>", "\n", substr(x, 7L, nchar(x)), fixed = TRUE))
   log[startsWith(get("msg"), "[WRN] "), c("class", "msg") := list("warning", parse_line(get("msg")))]
   log[startsWith(get("msg"), "[ERR] "), c("class", "msg") := list("error", parse_line(get("msg")))]
   log[]
+}
+
+conditions_to_log = function(conditions) {
+  if (is.null(conditions)) {
+    return(data.table(class = character(), msg = character(), condition = list()))
+  }
+  cls <- function(x) {
+    if (inherits(x, "error")) {
+      "error"
+    } else if (inherits(x, "warning")) {
+      "warning"
+    } else if (inherits(x, "errorValue")) {
+      "error"
+    } else {
+      "output"
+    }
+  }
+  log = map_dtr(conditions, function(x) {
+    list(class = cls(x), msg = condition_to_msg(x), condition = list(x))
+  })
+  log
+}
+
+condition_to_msg <- function(x) {
+  if (inherits(x, "errorValue")) {
+    return(paste0("[ERR] ", capture.output(x)))
+  }
+  msg = trimws(conditionMessage(x))
+  if (inherits(x, "conditionError")) {
+    return(paste0("[ERR] ", msg))
+  }
+  if (inherits(x, "conditionWarning")) {
+    return(paste0("[WRN] ", msg))
+  }
+  return(msg)
 }
 
 callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
@@ -228,19 +287,27 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   # restore RNG state from parent R session
   if (!is.null(.rng_state) && is.na(.seed)) assign(".Random.seed", .rng_state, envir = globalenv())
 
+  # we use cat() to log conditions because this will even be captured in case of a
+  # segfault
+  # This means that we have to reconstruct the condition objects from the log for the warnings
+  # For the errors we don't have to do this, because errors are only possible if there is no segfault
+  conditions = NULL
   result = withCallingHandlers(
     tryCatch(do.call(.f, .args),
       error = function(e) {
-        cat("[ERR]", gsub("\r?\n|\r", "<br>", conditionMessage(e)), "\n")
+        conditions <<- c(conditions, list(e))
         NULL
       }
     ),
     warning = function(w) {
-      cat("[WRN]", gsub("\r?\n|\r", "<br>", conditionMessage(w)), "\n")
+      conditions <<- c(conditions, list(w))
       invokeRestart("muffleWarning")
+    },
+    message = function(m) {
+      conditions <<- c(conditions, list(m))
+      invokeRestart("muffleMessage")
     }
   )
-
   # copy new RNG state back to parent R session
-  list(result = result, rng_state = .GlobalEnv$.Random.seed)
+  list(result = result, rng_state = .GlobalEnv$.Random.seed, conditions = conditions)
 }
