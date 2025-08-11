@@ -82,14 +82,14 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       result = try(invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout))
       if (inherits(result, "try-error")) {
         condition = if (grepl("reached elapsed time limit", result)) {
-          condition_timeout()
+          error_timeout(silent = TRUE)
         } else {
           x = attr(result, "condition")
           attr(x, "call") = NULL
           x
         }
         # try only catches error, warnings and messages are output
-        log = data.table(class = "error", msg = condition_to_msg(condition), condition = condition)
+        log = data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition))
         result = NULL
       }
     }
@@ -153,7 +153,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     log = NULL
     if (mirai::is_error_value(result)) {
       conditions = if (unclass(result) == 5) {
-        list(condition_timeout())
+        list(error_timeout(silent = TRUE))
       } else {
         # This is not really a condition object: https://github.com/r-lib/mirai/issues/400
         list(result)
@@ -183,7 +183,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     if (inherits(result, "try-error")) {
       condition = attr(result, "condition")
       if (inherits(condition, "callr_timeout_error")) {
-        condition = condition_timeout()
+        condition = error_timeout(silent = TRUE)
       }
       log = rbind(log, data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition)))
       result = NULL
@@ -213,7 +213,7 @@ parse_evaluate = function(log) {
     }
     if (inherits(x, "error")) {
       if (grepl("reached elapsed time limit", x$message)) {
-        x = condition_timeout()
+        x = error_timeout(silent = TRUE)
       }
       return(list(class = "error", msg = trimws(x$message), condition = list(x)))
     }

@@ -3,24 +3,18 @@
 \name{mlr_conditions}
 \alias{mlr_conditions}
 \alias{error_config}
-\alias{condition_config}
 \alias{error_timeout}
-\alias{condition_timeout}
-\alias{error_mlr3}
-\alias{condition_mlr3}
+\alias{mlr3_error}
+\alias{mlr3_warning}
 \title{Error Classes}
 \usage{
-error_config(msg, ..., class = NULL)
+error_config(msg, ..., class = NULL, silent = FALSE)
 
-condition_config(msg, ..., class = NULL)
+error_timeout(silent = FALSE)
 
-error_timeout()
+mlr3_error(msg, ..., class = NULL)
 
-condition_timeout()
-
-error_mlr3(msg, ..., class = NULL)
-
-condition_mlr3(msg, ..., class = NULL)
+mlr3_warning(msg, ..., class = NULL)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -31,6 +25,9 @@ Passed to \code{\link[=sprintf]{sprintf()}}.}
 
 \item{class}{(\code{character})\cr
 Additional class(es).}
+
+\item{silent}{(\code{logical(1)})\cr
+If \code{TRUE}, the condition object is returned.}
 }
 \description{
 Error classes for mlr3.

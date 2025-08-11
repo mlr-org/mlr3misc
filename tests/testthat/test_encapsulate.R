@@ -211,3 +211,9 @@ test_that("mirai daemon is started if not running", {
   expect_equal(mirai::status()$connections, 0)
 })
 
+
+test_that("evaluate", {
+  encapsulate("evaluate", function() Sys.sleep(1), .timeout = 0.01)
+
+
+})
