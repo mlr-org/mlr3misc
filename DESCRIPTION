@@ -44,6 +44,7 @@ Collate:
     'named_list.R'
     'Callback.R'
     'Context.R'
+    'Mlr3Component.R'
     'as_factor.R'
     'as_short_string.R'
     'assert_ro_binding.R'
