@@ -83,5 +83,6 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL) {
 stopf = function(msg, ..., wrap = FALSE, class = NULL) {
   class = c(class, "mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
+  message = paste0(message, "(", class[1L], ")")
   stop(structure(list(message = as.character(message)), class = class))
 }

@@ -6,6 +6,7 @@
 \alias{error_timeout}
 \alias{mlr3_error}
 \alias{mlr3_warning}
+\alias{warning_config}
 \title{Error Classes}
 \usage{
 error_config(msg, ..., class = NULL, silent = FALSE)
@@ -15,6 +16,8 @@ error_timeout(silent = FALSE)
 mlr3_error(msg, ..., class = NULL)
 
 mlr3_warning(msg, ..., class = NULL)
+
+warning_config(msg, ..., class = NULL, silent = FALSE)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr

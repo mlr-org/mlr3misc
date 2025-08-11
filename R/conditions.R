@@ -18,7 +18,7 @@ error_config = function(msg, ..., class = NULL, silent = FALSE) {
   if (silent) {
     return(condition)
   }
-  stop(condition)
+  stop_with_class(condition)
 }
 
 #' @rdname mlr_conditions
@@ -28,7 +28,7 @@ error_timeout = function(silent = FALSE) {
   if (silent) {
     return(condition)
   }
-  stop(condition)
+  stop_with_class(condition)
 }
 
 #' @rdname mlr_conditions
@@ -40,5 +40,42 @@ mlr3_error = function(msg, ..., class = NULL) {
 #' @rdname mlr_conditions
 #' @export
 mlr3_warning = function(msg, ..., class = NULL) {
-  warningCondition(sprintf(msg, ...), class = c(class, "mlr3Warning"))
+  msg = sprintf(msg, ...)
+  warningCondition(msg, class = c(class, "mlr3Warning"))
+}
+
+#' @rdname mlr_conditions
+#' @export
+warning_config = function(msg, ..., class = NULL, silent = FALSE) {
+  condition <- mlr3_warning(msg, ..., class = "mlr3WarningConfig")
+  if (silent) {
+    return(condition)
+  }
+  warn_with_class(condition)
+}
+
+#' @title Throw Error
+#' @description
+#' Throws an error using [`cli::cli_abort`] with the error class included in the message.
+#' @param cond (`error`)\cr
+#'   The error object.
+#' @export
+stop_with_class = function(cond) {
+  cli::cli_abort(c(
+    "x" = cond$message,
+    "i" = paste0("Error class: ", class(cond)[1L])
+  ), call = NULL)
+}
+
+#' @title Throw Warning
+#' @description
+#' Throws a warning using [`cli::cli_warn`] with the warning class included in the message.
+#' @param cond (`error`)\cr
+#'   The warning object.
+#' @export
+warn_with_class = function(cond) {
+  cli::cli_warn(c(
+    "x" = cond$message,
+    "i" = paste0("Error class: ", class(cond)[1L])
+  ), call = NULL)
 }
