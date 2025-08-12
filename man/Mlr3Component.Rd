@@ -100,10 +100,13 @@ Stable hash excluding parameter values (for tuning / partial identity), but incl
 Construct a new \code{Mlr3Component}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$new(
-  id,
+  dict_entry,
+  dict_shortaccess,
+  id = dict_entry,
   param_set = ps(),
   packages = character(0),
-  properties = character(0)
+  properties = character(0),
+  representable = TRUE
 )}\if{html}{\out{</div>}}
 }
 

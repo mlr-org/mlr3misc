@@ -46,18 +46,33 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @param id (`character(1)`)
     #' @param param_set ([paradox::ParamSet] | `NULL`)
     #' @param packages (`character()`)
-    initialize = function(id, param_set = ps(), packages = character(0), properties = character(0)) {
-      self$id = id
+    initialize = function(dict_entry, dict_shortaccess, id = dict_entry,
+      param_set = ps(), packages = character(0), properties = character(0),
+      representable = TRUE
+    ) {
+      private$.has_id = !is.null(id)
+      if (private$.has_id) {
+        self$id = id
+      } else {
+        # if ID is not provided, it is read-only set to the dictionary entry
+        private$.id = dict_entry
+      }
 
       if (is.null(packages)) {
         rm("packages", envir = self)
+      } else {
+        assert_character(packages, any.missing = FALSE, min.chars = 1L)
+        check_packages_installed(packages,
+          msg = sprintf("Package '%%s' required but not installed for %s '%s'",
+            class(self)[1L], self$id)
+        )
       }
-      private$.packages = assert_character(packages, any.missing = FALSE, null.ok = TRUE)
+      private$.packages = packages
 
       if (is.null(properties)) {
         rm("properties", envir = self)
       }
-      private$.properties = assert_character(properties, any.missing = FALSE, null.ok = TRUE)
+      private$.properties = unique(assert_character(properties, any.missing = FALSE, min.chars = 1L, null.ok = TRUE))
 
       # ParamSet is optional to keep this base class generic across components
       if (is.null(param_set)) {
@@ -86,7 +101,11 @@ Mlr3Component = R6Class("Mlr3Component",
     #' Helper for print outputs.
     #' @param ... (ignored).
     format = function(...) {
-      sprintf("<%s:%s>", class(self)[1L], self$id)
+      if (private$.has_id) {
+        sprintf("<%s:%s>", class(self)[1L], self$id)
+      } else {
+        sprintf("<%s>", class(self)[1L])
+      }
     },
 
     #' @description
@@ -162,6 +181,9 @@ Mlr3Component = R6Class("Mlr3Component",
     #' Used in tables, plot and text output.
     id = function(rhs) {
       if (!missing(rhs)) {
+        if (!private$.has_id) {
+          stop("id is read-only")
+        }
         private$.id = assert_string(rhs, min.chars = 1L)
       }
       private$.id
@@ -235,7 +257,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' Stable hash that includes id, parameter values (if present) and `private$.extra_hash` fields.
     hash = function(rhs) {
       if (!missing(rhs)) stop("hash is read-only")
-      calculate_hash(class(self), self$id, .list = c(self$param_set$values, private$.additional_phash_input()))
+      calculate_hash(class(self), self$id, .list = list(self$param_set$values, private$.additional_phash_input()))
     },
 
     #' @field phash (`character(1)`)
@@ -244,12 +266,13 @@ Mlr3Component = R6Class("Mlr3Component",
       if (!missing(rhs)) stop("phash is read-only")
       calculate_hash(
         class(self), self$id,
-        mget(private$.extra_hash, envir = self)
+        list(private$.additional_phash_input())
       )
     }
   ),
 
   private = list(
+    .has_id = NULL,
     .id = NULL,
     .param_set = NULL,
     .packages = NULL,
@@ -259,6 +282,9 @@ Mlr3Component = R6Class("Mlr3Component",
 
     .additional_phash_input = function() {
       if (is.null(self$initialize)) return(NULL)
+      sc = sys.calls()
+      # if we are called through `super$.additional_phash_input()` we are not complaining
+      if (length(sc) > 1 && identical(sc[[length(sc) - 1]][[1]], quote(super$.additional_phash_input))) return(NULL)
       initformals <- names(formals(args(self$initialize)))
       if (!test_subset(initformals, c("id", "param_vals"))) {
         stopf("Class %s has construction arguments besides 'id' and 'param_vals' but does not overload the private '.additional_phash_input()' function.
@@ -290,10 +316,35 @@ The hash and phash of a class must differ when it represents a different operati
 # TODO
 # - dict_entry: own id in the dictionary
 # - dict_shortaccess: dictionary short access name
-# - autotest: construction ars are also active bindings
+# - autotest: construction vars are also active bindings
 # - autotest: manual name congruent with dictionary
 # - own param set thing
 # - autotests from miesmuschel
 # - what to do with composite objects?
 # - cloning
 # - conversion objects
+# - dict_entry NULL -> not in dictionary, constructed via as_learner etc.
+# - auto packages
+# - warning if dict_entry is wrong
+#   - but only if constructed via a package; maybe check 'mlr3'-packages first.
+# - label & man deprecation
+
+#' @title Deprecation Message related to the `Mlr3Component` Class
+#'
+#' @description
+#' Will give different messages depending on deprecation progression and will be more agressive in tests than
+#' interactively.
+#'
+#' @keywords internal
+#' @param msg (`character(1)`)
+#'   Message to print.
+#' @export
+deprecated_component = function(msg) {
+  if (!identical(getOption("mlr3.on_deprecated", "ignore"), "ignore")) {
+    if (identical(getOption("mlr3.on_deprecated"), "warn")) {
+      warning(msg)
+    } else {
+      stop(msg)
+    }
+  }
+}
