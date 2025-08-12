@@ -4,7 +4,6 @@ test_that("encapsulation works", {
   }
 
   for (method in c("none", "evaluate", "callr", "mirai", "try")) {
-    print(method)
     if (method != "none" && !requireNamespace(method, quietly = TRUE)) {
       next
     }
@@ -62,7 +61,6 @@ test_that("segfaults are logged", {
   }
 
   for (method in c("callr", "mirai")) {
-    print(method)
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }
@@ -212,8 +210,21 @@ test_that("mirai daemon is started if not running", {
 })
 
 
-test_that("evaluate", {
-  encapsulate("evaluate", function() Sys.sleep(1), .timeout = 0.01)
+test_that("condition objects are stored", {
+  fun = function() {
+    message("a")
+    warning(simpleWarning("b"))
+    stop(simpleError("c"))
+  }
 
-
+  for (method in c("evaluate", "callr", "mirai", "try")) {
+    if (!requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, fun)
+    expect_equal(as.character(res$log$class), c("output", "warning", "error"))
+    expect_equal(res$log$condition[[1]], "a")
+    expect_equal(res$log$condition[[2]], simpleWarning("b"))
+    expect_equal(res$log$condition[[3]], simpleError("c"))
+  }
 })

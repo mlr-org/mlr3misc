@@ -82,7 +82,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       result = try(invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout))
       if (inherits(result, "try-error")) {
         condition = if (grepl("reached elapsed time limit", result, fixed = TRUE)) {
-          error_timeout(silent = TRUE)
+          error_timeout(signal = FALSE)
         } else {
           x = attr(result, "condition")
           attr(x, "call") = NULL
@@ -151,7 +151,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     log = NULL
     if (mirai::is_error_value(result)) {
       conditions = if (unclass(result) == 5) {
-        list(error_timeout(silent = TRUE))
+        list(error_timeout(signal = FALSE))
       } else {
         # This is not really a condition object: https://github.com/r-lib/mirai/issues/400
         list(result)
@@ -181,7 +181,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     if (inherits(result, "try-error")) {
       condition = attr(result, "condition")
       if (inherits(condition, "callr_timeout_error")) {
-        condition = error_timeout(silent = TRUE)
+        condition = error_timeout(signal = FALSE)
       }
       log = rbind(log, data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition)))
       result = NULL
@@ -195,11 +195,19 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   if (is.null(log)) {
     log = data.table(class = character(), msg = character(), condition = list())
   }
+  if (nrow(log)) {
+    # classes for messages are not really useful, so we save some memory
+    log[, condition := map(condition, function(x) {
+      if (inherits(x, "message")) {
+        return(trimws(conditionMessage(x)))
+      }
+      x
+    })]
+  }
 
   log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
   list(result = result, log = log, elapsed = elapsed)
 }
-
 
 parse_evaluate = function(log) {
   extract = function(x) {
@@ -211,7 +219,7 @@ parse_evaluate = function(log) {
     }
     if (inherits(x, "error")) {
       if (grepl("reached elapsed time limit", x$message, fixed = TRUE)) {
-        x = error_timeout(silent = TRUE)
+        x = error_timeout(signal = FALSE)
       }
       return(list(class = "error", msg = trimws(x$message), condition = list(x)))
     }

@@ -29,3 +29,9 @@ test_that("stopf", {
   expect_error(f(), "123")
   expect_error(stopf("abc"), "abc")
 })
+
+test_that("formatting", {
+  expect_snapshot(stopf("abc"), error = TRUE)
+  expect_snapshot(stopf("s: %s", "b"), error = TRUE)
+  expect_snapshot(warningf("abc"))
+})

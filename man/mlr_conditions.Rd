@@ -3,21 +3,27 @@
 \name{mlr_conditions}
 \alias{mlr_conditions}
 \alias{error_config}
+\alias{error_input}
 \alias{error_timeout}
-\alias{mlr3_error}
-\alias{mlr3_warning}
+\alias{error_mlr3}
+\alias{warning_mlr3}
 \alias{warning_config}
+\alias{warning_input}
 \title{Error Classes}
 \usage{
-error_config(msg, ..., class = NULL, silent = FALSE)
+error_config(msg, ..., class = NULL, signal = TRUE)
 
-error_timeout(silent = FALSE)
+error_input(msg, ..., class = NULL, signal = TRUE)
 
-mlr3_error(msg, ..., class = NULL)
+error_timeout(signal = TRUE)
 
-mlr3_warning(msg, ..., class = NULL)
+error_mlr3(msg, ..., class = NULL, signal = TRUE)
 
-warning_config(msg, ..., class = NULL, silent = FALSE)
+warning_mlr3(msg, ..., class = NULL, signal = TRUE)
+
+warning_config(msg, ..., class = NULL, signal = TRUE)
+
+warning_input(msg, ..., class = NULL, signal = TRUE)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -29,10 +35,39 @@ Passed to \code{\link[=sprintf]{sprintf()}}.}
 \item{class}{(\code{character})\cr
 Additional class(es).}
 
-\item{silent}{(\code{logical(1)})\cr
+\item{signal}{(\code{logical(1)})\cr
 If \code{TRUE}, the condition object is returned.}
 }
 \description{
-Error classes for mlr3.
-Currently supported classes:
+Error and warning classes for mlr3.
+Having these error classes allows us to react differently to different types of errors.
+For example, we might not want to train a fallback learner if there is a user configuration error,
+but we do want to train a fallback learner if there is a timeout.
 }
+\section{Formatting}{
+
+It is also possible to use formatting options as defined in \code{\link[cli:cli_bullets]{cli::cli_bullets}}.
+}
+
+\section{Errors}{
+
+\itemize{
+\item \code{error_mlr3()} for the base \code{Mlr3Error} class.
+\item \code{error_config()} for the \code{Mlr3ErrorConfig} class, which signals that a user has misconfigured
+something (e.g. invalid learner configuration).
+\item \code{error_input()} for the \code{Mlr3ErrorInput} if an invalid input was provided.
+method.
+\item \code{error_timeout()} for the \code{Mlr3ErrorTimeout}, signalling a timeout (encapsulation).
+}
+}
+
+\section{Warnings}{
+
+\itemize{
+\item \code{warning_mlr3()} for the base \code{Mlr3Warning} class.
+\item \code{warning_config()} for the \code{Mlr3WarningConfig} class, which signals that a user might have
+misconfigured something.
+\item \code{warning_input()} for the \code{Mlr3WarningInput} if an invalid input might have been provided.
+}
+}
+
