@@ -90,6 +90,7 @@ Stable hash excluding parameter values (for tuning / partial identity), but incl
 \item \href{#method-Mlr3Component-help}{\code{Mlr3Component$help()}}
 \item \href{#method-Mlr3Component-configure}{\code{Mlr3Component$configure()}}
 \item \href{#method-Mlr3Component-require_namespaces}{\code{Mlr3Component$require_namespaces()}}
+\item \href{#method-Mlr3Component-override_info}{\code{Mlr3Component$override_info()}}
 \item \href{#method-Mlr3Component-clone}{\code{Mlr3Component$clone()}}
 }
 }
@@ -190,6 +191,27 @@ Raises a \code{packageNotFoundError} if loading fails.
 \if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$require_namespaces()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Mlr3Component-override_info"></a>}}
+\if{latex}{\out{\hypertarget{method-Mlr3Component-override_info}{}}}
+\subsection{Method \code{override_info()}}{
+Override the \code{man} and \code{hash} fields.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$override_info(man = NULL, hash = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{man}}{(\code{character(1)} | \code{NULL})
+The manual page of the component.}
+
+\item{\code{hash}}{(\code{character(1)} | \code{NULL})
+The hash of the component.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Mlr3Component-clone"></a>}}

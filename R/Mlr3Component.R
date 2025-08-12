@@ -39,7 +39,6 @@
 #'
 #' @export
 Mlr3Component = R6Class("Mlr3Component",
-  lock_objects = FALSE,
   public = list(
     #' @description
     #' Construct a new `Mlr3Component`.
@@ -58,20 +57,19 @@ Mlr3Component = R6Class("Mlr3Component",
         private$.id = dict_entry
       }
 
-      if (is.null(packages)) {
-        rm("packages", envir = self)
-      } else {
+      if (!is.null(packages)) {
         assert_character(packages, any.missing = FALSE, min.chars = 1L)
         check_packages_installed(packages,
           msg = sprintf("Package '%%s' required but not installed for %s '%s'",
-            class(self)[1L], self$id)
-        )
+            class(self)[1L], self$id))
+        env = self$.__enclos_env__
+        while (!is.null(env)) {
+          packages[[length(packages) + 1]] = topenv(env)$.__NAMESPACE__.$spec[["name"]]
+          env = env$super$.__enclos_env__
+        }
+        private$.packages = unique(packages[packages != "mlr3misc"])
       }
-      private$.packages = packages
 
-      if (is.null(properties)) {
-        rm("properties", envir = self)
-      }
       private$.properties = unique(assert_character(properties, any.missing = FALSE, min.chars = 1L, null.ok = TRUE))
 
       # ParamSet is optional to keep this base class generic across components
@@ -93,8 +91,6 @@ Mlr3Component = R6Class("Mlr3Component",
           msg = sprintf("Package '%%s' required but not installed for %s '%s'",
             class(self)[1L], self$id))
       }
-      lockEnvironment(self)
-      lockEnvironment(private)
     },
 
     #' @description
@@ -172,6 +168,25 @@ Mlr3Component = R6Class("Mlr3Component",
     require_namespaces = function() {
       if (length(self$packages)) require_namespaces(self$packages)
       invisible(self)
+    },
+
+    #' @description
+    #' Override the `man` and `hash` fields.
+    #' @param man (`character(1)` | `NULL`)
+    #'   The manual page of the component.
+    #' @param hash (`character(1)` | `NULL`)
+    #'   The hash of the component.
+    override_info = function(man = NULL, hash = NULL) {
+      if (!is.null(man)) {
+        private$.man = man
+        private$.label = NULL
+      }
+      if (!is.null(hash)) {
+        private$.hashmap = NULL
+        orig_phash = self$phash
+        orig_hash = self$hash
+        private$.hashmap = structure(c(hash, hash), names = c(orig_hash, orig_phash))
+      }
     }
   ),
 
@@ -250,24 +265,51 @@ Mlr3Component = R6Class("Mlr3Component",
     #' String in the format `[pkg]::[class name]` pointing to a manual page for this object.
     man = function(rhs) {
       if (!missing(rhs)) stop("man is read-only")
-      paste0(topenv(self$.__enclos_env__)$.__NAMESPACE__.$spec[["name"]], "::", class(self)[[1]])
+      if (is.null(private$.man)) {
+        iter = 1
+        env = self
+        repeat {
+          man = paste0(topenv(env$.__enclos_env__)$.__NAMESPACE__.$spec[["name"]], "::", class(self)[[iter]])
+          help_works = tryCatch({
+            open_help(man)
+            TRUE
+          }, error = function(e) FALSE)
+          if (help_works) {
+            private$.man = man
+            break
+          }
+          iter = iter + 1
+          env = env$.__enclos_env__$super
+        }
+      }
+      private$.man
     },
 
     #' @field hash (`character(1)`)
     #' Stable hash that includes id, parameter values (if present) and `private$.extra_hash` fields.
     hash = function(rhs) {
       if (!missing(rhs)) stop("hash is read-only")
-      calculate_hash(class(self), self$id, .list = list(self$param_set$values, private$.additional_phash_input()))
+      hash = calculate_hash(class(self), self$id, .list = list(self$param_set$values, private$.additional_phash_input()))
+      if (hash %in% names(private$.hashmap)) {
+        private$.hashmap[[hash]]
+      } else {
+        hash
+      }
     },
 
     #' @field phash (`character(1)`)
     #' Stable hash excluding parameter values (for tuning / partial identity), but including `private$.extra_hash`.
     phash = function(rhs) {
       if (!missing(rhs)) stop("phash is read-only")
-      calculate_hash(
+      hash = calculate_hash(
         class(self), self$id,
         list(private$.additional_phash_input())
       )
+      if (hash %in% names(private$.hashmap)) {
+        private$.hashmap[[hash]]
+      } else {
+        hash
+      }
     }
   ),
 
@@ -279,6 +321,8 @@ Mlr3Component = R6Class("Mlr3Component",
     .properties = NULL,
     .param_set_source = NULL,
     .label = NULL,
+    .man = NULL,
+    .hashmap = NULL,
 
     .additional_phash_input = function() {
       if (is.null(self$initialize)) return(NULL)
@@ -303,7 +347,7 @@ The hash and phash of a class must differ when it represents a different operati
           })
         }
       }
-      if (is.environment(value) && !is.null(value[[".__enclos_env__"]])) {
+      if (is.environment(value) && ".__enclos_env__" %in% names(value) && "clone" %in% names(value)) {
         return(value$clone(deep = TRUE))
       }
       value
@@ -321,6 +365,7 @@ The hash and phash of a class must differ when it represents a different operati
 # - own param set thing
 # - autotests from miesmuschel
 # - what to do with composite objects?
+
 # - cloning
 # - conversion objects
 # - dict_entry NULL -> not in dictionary, constructed via as_learner etc.
@@ -328,6 +373,7 @@ The hash and phash of a class must differ when it represents a different operati
 # - warning if dict_entry is wrong
 #   - but only if constructed via a package; maybe check 'mlr3'-packages first.
 # - label & man deprecation
+# - what to do with non-algorithm classes (objective, resamplingresult, databackend, etc)?
 
 #' @title Deprecation Message related to the `Mlr3Component` Class
 #'
