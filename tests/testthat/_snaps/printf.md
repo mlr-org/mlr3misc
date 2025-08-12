@@ -4,9 +4,7 @@
       stopf("abc")
     Condition
       Error:
-      ! 
-      x abc
-      > Class: Mlr3Error
+      ! abc
 
 ---
 
@@ -14,9 +12,7 @@
       stopf("s: %s", "b")
     Condition
       Error:
-      ! 
-      x s: b
-      > Class: Mlr3Error
+      ! s: b
 
 ---
 
@@ -24,7 +20,5 @@
       warningf("abc")
     Condition
       Warning:
-      
-      x abc
-      > Class: Mlr3Warning
+      abc
 
