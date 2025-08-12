@@ -73,7 +73,7 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 warningf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class = c(class, c("simpleWarning", "warning", "condition"))
+  class = c(class, "Mlr3Warning", "warning", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
   warning(structure(list(message = as.character(message)), class = class))
 }
@@ -81,7 +81,7 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 stopf = function(msg, ..., wrap = FALSE, class = NULL) {
-  class = c(class, "mlr3Error", "error", "condition")
+  class = c(class, "Mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
   message = paste0(message, "(", class[1L], ")")
   stop(structure(list(message = as.character(message)), class = class))
