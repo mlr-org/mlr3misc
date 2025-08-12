@@ -33,3 +33,13 @@ test_that("class is as expected", {
 test_that("bullets", {
   expect_snapshot(error_mlr3(c(i = "abc", i = "def")), error = TRUE)
 })
+
+test_that("condition object is identical with signal = TRUE/FALSE", {
+  err1 = error_mlr3("a", signal = FALSE)
+  err2 = attr(try(error_mlr3("a", signal = TRUE), silent = TRUE), "condition")
+  expect_equal(err1, err2)
+
+  warn1 = warning_mlr3("a", signal = FALSE)
+  warn2 = tryCatch(warning_mlr3("a", signal = TRUE), warning = identity)
+  expect_equal(warn1, warn2)
+})

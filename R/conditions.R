@@ -52,8 +52,9 @@ error_timeout = function(signal = TRUE) {
 #' @export
 error_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
   cond = errorCondition(sprintf(msg, ...), class = c(class, "Mlr3Error"))
+  cond$message = format(cond)
   if (signal) {
-    return(stop_with_class(cond))
+    return(stop(cond))
   }
   cond
 }
@@ -62,8 +63,9 @@ error_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
 #' @export
 warning_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
   cond = warningCondition(sprintf(msg, ...), class = c(class, "Mlr3Warning"))
+  cond$message = format(cond)
   if (signal) {
-    return(warn_with_class(cond))
+    return(warning(cond))
   }
   cond
 }
@@ -81,47 +83,21 @@ warning_input = function(msg, ..., class = NULL, signal = TRUE) {
 }
 
 
-#' @rdname mlr_condition
-#' @title Throw Error
-#' @description
-#' Throws an error using [`cli::cli_abort`] with the error class included in the message.
-#' @param cond (`error`)\cr
-#'   The error object.
 #' @export
-stop_with_class = function(cond) {
-  message = if (!is.null(names(cond$message))) {
+format.Mlr3Error = function(x, ...) {
+  message = if (!is.null(names(x$message))) {
     # error message is already a cli list
-    message = c(cond$message, paste0("Class: ", class(cond)[1L]))
-    names(message) = c(names(cond$message), ">")
+    message = c(x$message, paste0("Class: ", class(x)[1L]))
+    names(message) = c(names(x$message), ">")
     cli::format_bullets_raw(message)
   } else {
     cli::format_bullets_raw(c(
-      "x" = cond$message,
-      ">" = paste0("Class: ", class(cond)[1L])
+      "x" = x$message,
+      ">" = paste0("Class: ", class(x)[1L])
     ))
   }
-  cond$message = paste0("\n", paste0(message, collapse = "\n"), "\n")
-  stop(cond)
+  paste0("\n", paste0(message, collapse = "\n"), "\n")
 }
 
-#' @title Throw Warning
-#' @description
-#' Throws a warning using [`cli::cli_warn`] with the warning class included in the message.
-#' @param cond (`error`)\cr
-#'   The warning object.
 #' @export
-warn_with_class = function(cond) {
-  message = if (!is.null(names(cond$message))) {
-    # error message is already a cli list
-    message = c(cond$message, paste0("Class: ", class(cond)[1L]))
-    names(message) = c(names(cond$message), ">")
-    message
-  } else {
-    message = cli::format_bullets_raw(c(
-      "x" = cond$message,
-      ">" = paste0("Class: ", class(cond)[1L])
-    ))
-  }
-  cond$message = paste0("\n", paste0(message, collapse = "\n"), "\n")
-  warning(cond)
-}
+format.Mlr3Warning = format.Mlr3Error
