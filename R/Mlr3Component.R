@@ -236,9 +236,7 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @field properties (`character()`)\cr
-    #' Stores a set of properties/capabilities the learner has.
-    #' A complete list of candidate properties, grouped by task type, is stored in
-    #' [`mlr_reflections$learner_properties`][mlr_reflections].
+    #' Stores a set of properties/capabilities the object has.
     properties = function(rhs) {
       if (!missing(rhs)) {
         deprecated_component("writing to properties is deprecated. Write to private$.properties if this is necessary for tests.")  # nolint

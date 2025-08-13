@@ -63,9 +63,7 @@ Set of required packages.
 These packages are loaded, but not attached.}
 
 \item{\code{properties}}{(\code{character()})\cr
-Stores a set of properties/capabilities the learner has.
-A complete list of candidate properties, grouped by task type, is stored in
-\code{\link[=mlr_reflections]{mlr_reflections$learner_properties}}.}
+Stores a set of properties/capabilities the object has.}
 
 \item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{NULL})
 Set of hyperparameters.}
