@@ -64,7 +64,10 @@ Mlr3Component = R6Class("Mlr3Component",
             class(self)[1L], self$id))
         env = self$.__enclos_env__
         while (!is.null(env)) {
-          packages[[length(packages) + 1]] = topenv(env)$.__NAMESPACE__.$spec[["name"]]
+          newpkg = topenv(env)$.__NAMESPACE__.$spec[["name"]]
+          if (length(newpkg) == 1L) {
+            packages[[length(packages) + 1]] = newpkg
+          }
           env = env$super$.__enclos_env__
         }
         private$.packages = unique(packages[packages != "mlr3misc"])
