@@ -240,7 +240,11 @@ Mlr3Component = R6Class("Mlr3Component",
     #' A complete list of candidate properties, grouped by task type, is stored in
     #' [`mlr_reflections$learner_properties`][mlr_reflections].
     properties = function(rhs) {
-      if (!missing(rhs)) stop("properties is read-only")
+      if (!missing(rhs)) {
+        deprecated_component("writing to properties is deprecated. Write to private$.properties if this is necessary for tests.")  # nolint
+        # stop("properties is read-only")
+        private$.properties = rhs
+      }
       private$.properties
     },
 
@@ -264,7 +268,11 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field man (`character(1)`)
     #' String in the format `[pkg]::[class name]` pointing to a manual page for this object.
     man = function(rhs) {
-      if (!missing(rhs)) stop("man is read-only")
+      if (!missing(rhs)) {
+        deprecated_component("writing to man is deprecated")
+        private$.man = rhs
+        # stop("man is read-only")
+      }
       if (is.null(private$.man)) {
         iter = 1
         env = self
