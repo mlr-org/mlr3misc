@@ -78,10 +78,10 @@ Mlr3Component = R6Class("Mlr3Component",
         private$.param_set_source = NULL
         rm("param_set", envir = self)
       } else if (inherits(param_set, "ParamSet")) {
-        private$.param_set = assert_param_set(param_set)
+        private$.param_set = paradox::assert_param_set(param_set)
         private$.param_set_source = NULL
       } else {
-        lapply(param_set, function(x) assert_param_set(eval(x)))
+        lapply(param_set, function(x) paradox::assert_param_set(eval(x)))
         private$.param_set_source = param_set
       }
 
