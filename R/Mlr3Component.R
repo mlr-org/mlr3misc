@@ -256,7 +256,7 @@ Mlr3Component = R6Class("Mlr3Component",
       if (is.null(private$.param_set)) {
         sourcelist = lapply(private$.param_set_source, function(x) eval(x))
         if (length(sourcelist) > 1) {
-          private$.param_set = ParamSetCollection$new(sourcelist)
+          private$.param_set = paradox::ParamSetCollection$new(sourcelist)
         } else {
           private$.param_set = sourcelist[[1]]
         }
