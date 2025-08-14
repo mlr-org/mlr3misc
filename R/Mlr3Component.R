@@ -49,6 +49,7 @@ Mlr3Component = R6Class("Mlr3Component",
       param_set = ps(), packages = character(0), properties = character(0),
       representable = TRUE
     ) {
+      assert_string(dict_entry)
       private$.has_id = !is.null(id)
       if (private$.has_id) {
         self$id = id
