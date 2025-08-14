@@ -281,8 +281,7 @@ Mlr3Component = R6Class("Mlr3Component",
         repeat {
           man = paste0(topenv(env$.__enclos_env__)$.__NAMESPACE__.$spec[["name"]], "::", class(self)[[iter]])
           help_works = tryCatch({
-            open_help(man)
-            TRUE
+            length(as.character(open_help(man))) > 0L
           }, error = function(e) FALSE)
           if (help_works) {
             private$.man = man
