@@ -43,3 +43,5 @@ revdep
 docs/
 cran-comments.md
 CRAN-SUBMISSION
+
+.vscode/

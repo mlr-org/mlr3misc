@@ -40,6 +40,7 @@ topo_sort = function(nodes) {
   topo_count = 1L
   depth_count = 0L
   topo = depth = parents = id = NULL
+  . = NULL # nolint
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {

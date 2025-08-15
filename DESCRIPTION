@@ -56,6 +56,7 @@ Collate:
     'chunk.R'
     'compose.R'
     'compute_mode.R'
+    'conditions.R'
     'count_missing.R'
     'crate.R'
     'cross_join.R'
