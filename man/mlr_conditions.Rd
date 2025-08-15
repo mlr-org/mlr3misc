@@ -9,6 +9,9 @@
 \alias{warning_mlr3}
 \alias{warning_config}
 \alias{warning_input}
+\alias{error_learner}
+\alias{error_learner_train}
+\alias{error_learner_predict}
 \title{Error Classes}
 \usage{
 error_config(msg, ..., class = NULL, signal = TRUE)
@@ -24,6 +27,12 @@ warning_mlr3(msg, ..., class = NULL, signal = TRUE)
 warning_config(msg, ..., class = NULL, signal = TRUE)
 
 warning_input(msg, ..., class = NULL, signal = TRUE)
+
+error_learner(msg, ..., class = NULL, signal = TRUE)
+
+error_learner_train(msg, ..., class = NULL, signal = TRUE)
+
+error_learner_predict(msg, ..., class = NULL, signal = TRUE)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -39,10 +48,7 @@ Additional class(es).}
 If \code{TRUE}, the condition object is returned.}
 }
 \description{
-Error and warning classes for mlr3.
-Having these error classes allows us to react differently to different types of errors.
-For example, we might not want to train a fallback learner if there is a user configuration error,
-but we do want to train a fallback learner if there is a timeout.
+Condition classes for mlr3.
 }
 \section{Formatting}{
 
@@ -58,6 +64,9 @@ something (e.g. invalid learner configuration).
 \item \code{error_input()} for the \code{Mlr3ErrorInput} if an invalid input was provided.
 method.
 \item \code{error_timeout()} for the \code{Mlr3ErrorTimeout}, signalling a timeout (encapsulation).
+\item \code{error_learner()} for the \code{Mlr3ErrorLearner}, signalling a learner error.
+\item \code{error_learner_train()} for the \code{Mlr3ErrorLearner}, signalling a learner training error.
+\item \code{error_learner_predict()} for the \code{Mlr3ErrorLearner}, signalling a learner prediction error.
 }
 }
 

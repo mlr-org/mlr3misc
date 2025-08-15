@@ -153,7 +153,6 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       conditions = if (unclass(result) == 5) {
         list(error_timeout(signal = FALSE))
       } else {
-        # This is not really a condition object: https://github.com/r-lib/mirai/issues/400
         list(result)
       }
       result = NULL
@@ -293,10 +292,6 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   # restore RNG state from parent R session
   if (!is.null(.rng_state) && is.na(.seed)) assign(".Random.seed", .rng_state, envir = globalenv())
 
-  # we use cat() to log conditions because this will even be captured in case of a
-  # segfault
-  # This means that we have to reconstruct the condition objects from the log for the warnings
-  # For the errors we don't have to do this, because errors are only possible if there is no segfault
   conditions = NULL
   result = withCallingHandlers(
     tryCatch(do.call(.f, .args),

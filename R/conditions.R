@@ -1,10 +1,7 @@
 #' @title Error Classes
 #' @name mlr_conditions
 #' @description
-#' Error and warning classes for mlr3.
-#' Having these error classes allows us to react differently to different types of errors.
-#' For example, we might not want to train a fallback learner if there is a user configuration error,
-#' but we do want to train a fallback learner if there is a timeout.
+#' Condition classes for mlr3.
 #'
 #' @section Formatting:
 #' It is also possible to use formatting options as defined in [`cli::cli_bullets`].
@@ -16,6 +13,9 @@
 #' * `error_input()` for the `Mlr3ErrorInput` if an invalid input was provided.
 #'   method.
 #' * `error_timeout()` for the `Mlr3ErrorTimeout`, signalling a timeout (encapsulation).
+#' * `error_learner()` for the `Mlr3ErrorLearner`, signalling a learner error.
+#' * `error_learner_train()` for the `Mlr3ErrorLearner`, signalling a learner training error.
+#' * `error_learner_predict()` for the `Mlr3ErrorLearner`, signalling a learner prediction error.
 #'
 #' @section Warnings:
 #' * `warning_mlr3()` for the base `Mlr3Warning` class.
@@ -101,3 +101,21 @@ format.Mlr3Error = function(x, ...) {
 
 #' @export
 format.Mlr3Warning = format.Mlr3Error
+
+#' @rdname mlr_conditions
+#' @export
+error_learner = function(msg, ..., class = NULL, signal = TRUE) {
+  error_mlr3(msg, ..., class = c(class, "Mlr3ErrorLearner"), signal = signal)
+}
+
+#' @rdname mlr_conditions
+#' @export
+error_learner_train = function(msg, ..., class = NULL, signal = TRUE) {
+  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerTrain"), signal = signal)
+}
+
+#' @rdname mlr_conditions
+#' @export
+error_learner_predict = function(msg, ..., class = NULL, signal = TRUE) {
+  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerPredict"), signal = signal)
+}

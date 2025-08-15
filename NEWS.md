@@ -4,7 +4,7 @@
 
 * Added various new functions for improved error handling.
 * `encapsulate()` now returns the specific condition objects along the logs, allowing for
-  improved error handling on the caller site.
+  improved error handling on the caller side.
 
 # mlr3misc 0.18.0
 
@@ -17,7 +17,7 @@
 * feta: Added helper `cat_cli()`.
 * fix: Default `dicts_suggest = NULL` for `dictionary_get_item()` and `dictionary_retrieve_item()` for backward compatibility.
 * fix: Wrong assert in `dictionary_sugar_inc_get`.
-* feat: Functions `warningf()` and `stopf()` now have a `class` argument and also add the additional class `Mlr3Warning` and `Mlr3Error`, respectively.
+* feat: Functions `warningf()` and `stopf()` now have a `class` argument and also add the additional class `mlr3warning` and `mlr3error`, respectively.
   The condition object now also includes the call.
 
 # mlr3misc 0.16.0
