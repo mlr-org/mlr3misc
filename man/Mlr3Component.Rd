@@ -4,37 +4,20 @@
 \alias{Mlr3Component}
 \title{Common Base Class for mlr3 Components}
 \description{
-A pragmatic, lightweight base class that captures common patterns across
-the mlr3 ecosystem.
-It standardizes fields like \code{id}, \code{label}, \code{param_set}, \code{packages}, and \code{man},
-and provides shared methods for printing, help lookup, configuration of
-parameter values and fields, and stable hashing.
-
-Subclasses can specialize behavior by:
-\itemize{
-\item Adding additional public/active fields and methods.
-\item Overriding \code{print()} for richer output.
-\item Extending the hash inputs via \code{private$.extra_hash} or by overriding
-the \code{hash}/\code{phash} active bindings if necessary.
+A pragmatic, lightweight base class that captures common patterns across the mlr3 ecosystem.
+It standardizes various fields and provides shared methods for printing, help lookup, setting parameter values and fields, and hashing.
 }
-}
-\section{Construction}{
-
-Mlr3Component$new(id, param_set = NULL, packages = character(),
-label = NA_character_, man = NA_character_)
-\itemize{
-\item \code{id} (\code{character(1)}): Identifier of the component.
-\item \code{param_set} (\link[paradox:ParamSet]{paradox::ParamSet} | \code{NULL}): Optional hyperparameter set.
-If given, its \verb{$values} are used by \verb{$configure()} and are included in the hash.
-\item \code{packages} (\code{character()}): Required packages (namespaces). Not attached.
-}
-}
-
 \section{Inheriting}{
 
-To create your own \code{Mlr3Component}, you need to overload the \verb{$initialize()} function to do additional
-initialization. The \verb{$initialize()} method should have at least the arguments \code{id} and \code{param_set}, which should be
-passed on to \code{super$initialize()} unchanged.
+To create your own \code{Mlr3Component}, you need to overload the \verb{$initialize()} function.
+A concrete class should ideally provide all arguments of the \verb{$initialize()} directly, i.e. the user should not need to provide \code{id} or \code{param_set}.
+
+The information contained in a concrete mlr3 component should usually be completely determined by three things:
+\enumerate{
+\item The arguments given during construction.
+These
+}
+
 To create a class without a \code{param_set}, you can pass \code{NULL} as the \code{param_set} argument.
 \code{packages} should have the default value \code{character(0)}, meaning no packages are required.
 \code{properties} should have the default value \code{character(0)}, meaning no properties are set.
@@ -87,7 +70,6 @@ Stable hash excluding parameter values (for tuning / partial identity), but incl
 \item \href{#method-Mlr3Component-print}{\code{Mlr3Component$print()}}
 \item \href{#method-Mlr3Component-help}{\code{Mlr3Component$help()}}
 \item \href{#method-Mlr3Component-configure}{\code{Mlr3Component$configure()}}
-\item \href{#method-Mlr3Component-require_namespaces}{\code{Mlr3Component$require_namespaces()}}
 \item \href{#method-Mlr3Component-override_info}{\code{Mlr3Component$override_info()}}
 \item \href{#method-Mlr3Component-clone}{\code{Mlr3Component$clone()}}
 }
@@ -178,17 +160,6 @@ remaining arguments are assumed to be regular fields of the object.
 }
 \if{html}{\out{</div>}}
 }
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Mlr3Component-require_namespaces"></a>}}
-\if{latex}{\out{\hypertarget{method-Mlr3Component-require_namespaces}{}}}
-\subsection{Method \code{require_namespaces()}}{
-Convenience: load (not attach) required namespaces.
-Raises a \code{packageNotFoundError} if loading fails.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$require_namespaces()}\if{html}{\out{</div>}}
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Mlr3Component-override_info"></a>}}

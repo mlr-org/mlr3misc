@@ -1,31 +1,23 @@
 #' @title Common Base Class for mlr3 Components
 #'
 #' @description
-#' A pragmatic, lightweight base class that captures common patterns across
-#' the mlr3 ecosystem.
-#' It standardizes fields like `id`, `label`, `param_set`, `packages`, and `man`,
-#' and provides shared methods for printing, help lookup, configuration of
-#' parameter values and fields, and stable hashing.
-#'
-#' Subclasses can specialize behavior by:
-#' - Adding additional public/active fields and methods.
-#' - Overriding `print()` for richer output.
-#' - Extending the hash inputs via `private$.extra_hash` or by overriding
-#'   the `hash`/`phash` active bindings if necessary.
-#'
-#' @section Construction:
-#' Mlr3Component$new(id, param_set = NULL, packages = character(),
-#'   label = NA_character_, man = NA_character_)
-#'
-#' - `id` (`character(1)`): Identifier of the component.
-#' - `param_set` ([paradox::ParamSet] | `NULL`): Optional hyperparameter set.
-#'   If given, its `$values` are used by `$configure()` and are included in the hash.
-#' - `packages` (`character()`): Required packages (namespaces). Not attached.
+#' A pragmatic, lightweight base class that captures common patterns across the mlr3 ecosystem.
+#' It standardizes various fields and provides shared methods for printing, help lookup, setting parameter values and fields, and hashing.
 #'
 #' @section Inheriting:
-#' To create your own `Mlr3Component`, you need to overload the `$initialize()` function to do additional
-#' initialization. The `$initialize()` method should have at least the arguments `id` and `param_set`, which should be
-#' passed on to `super$initialize()` unchanged.
+#' To create your own `Mlr3Component`, you need to overload the `$initialize()` function.
+#' A concrete class should ideally provide all arguments of the `$initialize()` directly, i.e. the user should not need to provide `id` or `param_set`.
+#'
+#' The information contained in a concrete mlr3 component should usually be completely determined by three things:
+#' 1. The arguments given during construction.
+#'    These
+#'
+#'
+#'
+#'
+#'
+#'
+#'
 #' To create a class without a `param_set`, you can pass `NULL` as the `param_set` argument.
 #' `packages` should have the default value `character(0)`, meaning no packages are required.
 #' `properties` should have the default value `character(0)`, meaning no properties are set.
@@ -80,7 +72,6 @@ Mlr3Component = R6Class("Mlr3Component",
       if (is.null(param_set)) {
         private$.param_set = NULL
         private$.param_set_source = NULL
-        rm("param_set", envir = self)
       } else if (inherits(param_set, "ParamSet")) {
         private$.param_set = paradox::assert_param_set(param_set)
         private$.param_set_source = NULL
@@ -160,14 +151,6 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @description
-    #' Convenience: load (not attach) required namespaces.
-    #' Raises a `packageNotFoundError` if loading fails.
-    require_namespaces = function() {
-      if (length(self$packages)) require_namespaces(self$packages)
-      invisible(self)
-    },
-
-    #' @description
     #' Override the `man` and `hash` fields.
     #' @param man (`character(1)` | `NULL`)
     #'   The manual page of the component.
@@ -236,7 +219,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' Stores a set of properties/capabilities the object has.
     properties = function(rhs) {
       if (!missing(rhs)) {
-        deprecated_component("writing to properties is deprecated. Write to private$.properties if this is necessary for tests.")  # nolint
+        mlr3component_deprecation_msg("writing to properties is deprecated. Write to private$.properties if this is necessary for tests.")  # nolint
         # stop("properties is read-only")
         private$.properties = rhs
       }
@@ -246,7 +229,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field param_set ([paradox::ParamSet] | `NULL`)
     #' Set of hyperparameters.
     param_set = function(val) {
-      if (is.null(private$.param_set)) {
+      if (is.null(private$.param_set) && !is.null(private$.param_set_source)) {
         sourcelist = lapply(private$.param_set_source, function(x) eval(x))
         if (length(sourcelist) > 1) {
           private$.param_set = paradox::ParamSetCollection$new(sourcelist)
@@ -264,7 +247,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' String in the format `[pkg]::[class name]` pointing to a manual page for this object.
     man = function(rhs) {
       if (!missing(rhs)) {
-        deprecated_component("writing to man is deprecated")
+        mlr3component_deprecation_msg("writing to man is deprecated")
         private$.man = rhs
         # stop("man is read-only")
       }
@@ -387,9 +370,9 @@ The hash and phash of a class must differ when it represents a different operati
 #' @param msg (`character(1)`)
 #'   Message to print.
 #' @export
-deprecated_component = function(msg) {
-  if (!identical(getOption("mlr3.on_deprecated", "ignore"), "ignore")) {
-    if (identical(getOption("mlr3.on_deprecated"), "warn")) {
+mlr3component_deprecation_msg = function(msg) {
+  if (!identical(getOption("mlr3.on_deprecated_mlr3component", "ignore"), "ignore")) {
+    if (identical(getOption("mlr3.on_deprecated_mlr3component"), "warn")) {
       warning(msg)
     } else {
       stop(msg)
