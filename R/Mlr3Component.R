@@ -88,13 +88,6 @@ Mlr3Component = R6Class("Mlr3Component",
         lapply(param_set, function(x) paradox::assert_param_set(eval(x)))
         private$.param_set_source = param_set
       }
-
-      # upfront check; does not attach
-      if (length(self$packages)) {
-        check_packages_installed(self$packages,
-          msg = sprintf("Package '%%s' required but not installed for %s '%s'",
-            class(self)[1L], self$id))
-      }
     },
 
     #' @description
