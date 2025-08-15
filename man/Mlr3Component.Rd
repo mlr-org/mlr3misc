@@ -46,16 +46,13 @@ It is best if this second overload only collects the additional information not 
 The information from 1., 2., and 3. together is contained in the \verb{$phash} value.
 It is also collected automatically from the \code{private$.additional_phash_input()} function, as well as the \verb{$param_set$values} field.
 
-To create a class without a \code{param_set}, you can pass \code{NULL} as the \code{param_set} argument.
-\code{packages} should have the default value \code{character(0)}, meaning no packages are required.
-\code{properties} should have the default value \code{character(0)}, meaning no properties are set.
+The information from 3. should be made available through the \code{additional_configuration} construction argument of \code{\link{Mlr3Component}}.
+}
 
-If the \verb{$initialize()} method has more arguments, then it is necessary to also overload the
-\code{private$.additional_phash_input()} function. This function should return either all objects, or a hash of all
-objects, that can change the function or behavior of the \code{Mlr3Component} and are independent
-of the class, the id, the \verb{$state}, and the \verb{$param_set$values}. The last point is particularly important:
-changing the \verb{$param_set$values} should
-\emph{not} change the return value of \code{private$.additional_phash_input()}.
+\section{Cloning}{
+
+\code{\link{Mlr3Component}} implements a \code{private$deep_clone()} method that automatically clones R6 objects stored directly in the object, as well as in \verb{$param_set$values}.
+Because of the way the \verb{$param_set} field is handled, subclasses that need to do additional cloning should overload this function, but always call \code{super$deep_clone(name, value)} for values they do not handle.
 }
 
 \section{Active bindings}{
@@ -67,26 +64,36 @@ Used in tables, plot and text output.}
 
 \item{\code{label}}{(\code{character(1)})
 Human-friendly label.
-Can be used in tables, plot and text output instead of the ID.}
+Can be used in tables, plot and text output instead of the ID.
+Auto-generated from the title of the help page.}
 
 \item{\code{packages}}{(\code{character()})
 Set of required packages.
-These packages are loaded, but not attached.}
+These packages are loaded, but not attached.
+Absence of these packages will generate a warning during construction.}
 
 \item{\code{properties}}{(\code{character()})\cr
-Stores a set of properties/capabilities the object has.}
+Stores a set of properties/capabilities the object has.
+These are set during construction and should not be changed afterwards.
+They may be "optimistic" in the sense that the true capabilities could depend on specific configuration parameter settings;
+\verb{$properties} then indicate the capabilities under favorable configuration settings.}
 
 \item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{NULL})
 Set of hyperparameters.}
 
 \item{\code{man}}{(\code{character(1)})
-String in the format \verb{[pkg]::[class name]} pointing to a manual page for this object.}
+String in the format \verb{[pkg]::[class name]} pointing to a manual page for this object.
+Inferred automatically from the class name and package in which the class is defined.
+If a concrete class is not defined in a package, the help page of its first parent class with a help page is used.
+Can be overridden with the \verb{$override_info()} method.}
 
 \item{\code{hash}}{(\code{character(1)})
-Stable hash that includes id, parameter values (if present) and \code{private$.extra_hash} fields.}
+Stable hash that includes id, parameter values (if present) and additional configuration settings (from construction or class fields) but not state.
+Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must therefore be implemented by subclasses.}
 
 \item{\code{phash}}{(\code{character(1)})
-Stable hash excluding parameter values (for tuning / partial identity), but including \code{private$.extra_hash}.}
+Hash that includes id and additional configuration settings (from construction or class fields) but not parameter values and no state.
+Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must therefore be implemented by subclasses.}
 }
 \if{html}{\out{</div>}}
 }
@@ -115,6 +122,7 @@ Construct a new \code{Mlr3Component}.
   param_set = ps(),
   packages = character(0),
   properties = character(0),
+  additional_configuration = character(0),
   representable = TRUE
 )}\if{html}{\out{</div>}}
 }
@@ -122,11 +130,46 @@ Construct a new \code{Mlr3Component}.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{(\code{character(1)})}
+\item{\code{dict_entry}}{(\code{character(1)})
+The entry in the dictionary by which this component can be constructed.}
 
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{NULL})}
+\item{\code{dict_shortaccess}}{(\code{character(1)})
+Name of the short access function for the dictionary that this component can be found under.
+\code{get(dict_shortaccess, mode = "function")(dict_entry)} should create an object of the concrete class.}
 
-\item{\code{packages}}{(\code{character()})}
+\item{\code{id}}{(\code{character(1)})
+The ID of the constructed object.
+ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in combined \link[paradox:ParamSet]{paradox::ParamSet}s.
+If instances of a given abstract subclass should all not have IDs, this should be set to \code{NULL}.
+Should default to the value of \code{dict_entry} in most cases, with few exceptions for wrapper objects (e.g. a \link[mlr3pipelines:PipeOp]{mlr3pipelines::PipeOp} wrapping a \link[mlr3:Learner]{mlr3::Learner}).}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{list} | \code{NULL})
+Parameter space description. This should be created by the subclass and given to \code{super$initialize()}.
+If this is a \code{\link[paradox:ParamSet]{ParamSet}}, it is used for \verb{$param_set} directly.
+Otherwise it must be a \code{list} of expressions e.g. created by \code{alist()} that evaluate to \code{\link[paradox:ParamSet]{ParamSet}}s.
+These \code{\link[paradox:ParamSet]{ParamSet}} are combined using a \code{\link[paradox:ParamSetCollection]{ParamSetCollection}}.\cr
+If instances of a given abstract subclass should all not have a \link[paradox:ParamSet]{paradox::ParamSet}, this should be set to \code{NULL}.
+Otherwise, if a concrete subclass just happens to have an empty search space, the default \code{\link[paradox:ps]{paradox::ps()}} should be used.}
+
+\item{\code{packages}}{(\code{character()})
+The packages required by the constructed object.
+The constructor will check whether these packages can be loaded and give a warning otherwise.
+The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be provided here.
+Elements of \code{packages} are deduplicated and made accessible as the \verb{$packages} field.}
+
+\item{\code{properties}}{(\code{character()})
+A set of properties/capabilities the object has.
+These often need to be a subset of an entry in \link[mlr3:mlr_reflections]{mlr3::mlr_reflections}.
+However, the \code{\link{Mlr3Component}} constructor does not check this, it needs to be asserted by an abstract inheriting class.
+Elements are deduplicated and made accessible as the \verb{$properties} field.}
+
+\item{\code{additional_configuration}}{(\code{character()})
+Names of class fields that constitute additional configuration settings that influence the behavior of the component, but are neither construction argument, nor part of the \link[paradox:ParamSet]{paradox::ParamSet}.
+An example is the \verb{$predict_type} field of a \link[mlr3:Learner]{mlr3::Learner}.}
+
+\item{\code{representable}}{(\code{logical(1)})
+Whether the object can be represented as a simple string.
+Should generally be \code{TRUE} except for objects that are constructed with a large amount of data, such as \link[mlr3:Task]{mlr3::Task}s.}
 }
 \if{html}{\out{</div>}}
 }
@@ -152,11 +195,18 @@ Helper for print outputs.
 \if{html}{\out{<a id="method-Mlr3Component-print"></a>}}
 \if{latex}{\out{\hypertarget{method-Mlr3Component-print}{}}}
 \subsection{Method \code{print()}}{
-Printer with concise, unified output.
+Printer.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$print(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Mlr3Component-help"></a>}}
@@ -173,7 +223,7 @@ Opens the corresponding help page referenced by field \verb{$man}.
 \if{latex}{\out{\hypertarget{method-Mlr3Component-configure}{}}}
 \subsection{Method \code{configure()}}{
 Set parameter values and fields in one step.
-Named arguments overlapping with the \code{ParamSet} are set as parameters;
+Named arguments overlapping with the \code{\link[paradox:ParamSet]{ParamSet}} are set as parameters;
 remaining arguments are assumed to be regular fields of the object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Mlr3Component$configure(..., .values = list())}\if{html}{\out{</div>}}

@@ -41,34 +41,54 @@
 #' The information from 1., 2., and 3. together is contained in the `$phash` value.
 #' It is also collected automatically from the `private$.additional_phash_input()` function, as well as the `$param_set$values` field.
 #'
+#' The information from 3. should be made available through the `additional_configuration` construction argument of [`Mlr3Component`].
 #'
+#' @section Cloning:
+#' [`Mlr3Component`] implements a `private$deep_clone()` method that automatically clones R6 objects stored directly in the object, as well as in `$param_set$values`.
+#' Because of the way the `$param_set` field is handled, subclasses that need to do additional cloning should overload this function, but always call `super$deep_clone(name, value)` for values they do not handle.
 #'
-#'
-#'
-#'
-#'
-#'
-#' To create a class without a `param_set`, you can pass `NULL` as the `param_set` argument.
-#' `packages` should have the default value `character(0)`, meaning no packages are required.
-#' `properties` should have the default value `character(0)`, meaning no properties are set.
-#'
-#' If the `$initialize()` method has more arguments, then it is necessary to also overload the
-#' `private$.additional_phash_input()` function. This function should return either all objects, or a hash of all
-#' objects, that can change the function or behavior of the `Mlr3Component` and are independent
-#' of the class, the id, the `$state`, and the `$param_set$values`. The last point is particularly important:
-#' changing the `$param_set$values` should
-#' *not* change the return value of `private$.additional_phash_input()`.
 #'
 #' @export
 Mlr3Component = R6Class("Mlr3Component",
   public = list(
     #' @description
     #' Construct a new `Mlr3Component`.
+    #' @param dict_entry (`character(1)`)
+    #'   The entry in the dictionary by which this component can be constructed.
+    #' @param dict_shortaccess (`character(1)`)
+    #'   Name of the short access function for the dictionary that this component can be found under.
+    #'   `get(dict_shortaccess, mode = "function")(dict_entry)` should create an object of the concrete class.
     #' @param id (`character(1)`)
-    #' @param param_set ([paradox::ParamSet] | `NULL`)
+    #'   The ID of the constructed object.
+    #'   ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in combined [paradox::ParamSet]s.
+    #'   If instances of a given abstract subclass should all not have IDs, this should be set to `NULL`.
+    #'   Should default to the value of `dict_entry` in most cases, with few exceptions for wrapper objects (e.g. a [mlr3pipelines::PipeOp] wrapping a [mlr3::Learner]).
+    #' @param param_set ([paradox::ParamSet] | `list` | `NULL`)
+    #'   Parameter space description. This should be created by the subclass and given to `super$initialize()`.
+    #'   If this is a [`ParamSet`][paradox::ParamSet], it is used for `$param_set` directly.
+    #'   Otherwise it must be a `list` of expressions e.g. created by `alist()` that evaluate to [`ParamSet`][paradox::ParamSet]s.
+    #'   These [`ParamSet`][paradox::ParamSet] are combined using a [`ParamSetCollection`][paradox::ParamSetCollection].\cr
+    #'   If instances of a given abstract subclass should all not have a [paradox::ParamSet], this should be set to `NULL`.
+    #'   Otherwise, if a concrete subclass just happens to have an empty search space, the default [paradox::ps()] should be used.
     #' @param packages (`character()`)
+    #'   The packages required by the constructed object.
+    #'   The constructor will check whether these packages can be loaded and give a warning otherwise.
+    #'   The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be provided here.
+    #'   Elements of `packages` are deduplicated and made accessible as the `$packages` field.
+    #' @param properties (`character()`)
+    #'   A set of properties/capabilities the object has.
+    #'   These often need to be a subset of an entry in [mlr3::mlr_reflections].
+    #'   However, the [`Mlr3Component`] constructor does not check this, it needs to be asserted by an abstract inheriting class.
+    #'   Elements are deduplicated and made accessible as the `$properties` field.
+    #' @param additional_configuration (`character()`)
+    #'   Names of class fields that constitute additional configuration settings that influence the behavior of the component, but are neither construction argument, nor part of the [paradox::ParamSet].
+    #'   An example is the `$predict_type` field of a [mlr3::Learner].
+    #' @param representable (`logical(1)`)
+    #'   Whether the object can be represented as a simple string.
+    #'   Should generally be `TRUE` except for objects that are constructed with a large amount of data, such as [mlr3::Task]s.
     initialize = function(dict_entry, dict_shortaccess, id = dict_entry,
       param_set = ps(), packages = character(0), properties = character(0),
+      additional_configuration = character(0),
       representable = TRUE
     ) {
       assert_string(dict_entry)
@@ -109,6 +129,17 @@ Mlr3Component = R6Class("Mlr3Component",
         lapply(param_set, function(x) paradox::assert_param_set(eval(x)))
         private$.param_set_source = param_set
       }
+
+      assert_character(additional_configuration, any.missing = FALSE, min.chars = 1L, unique = TRUE)
+      assert_subset(additional_configuration, names(self))
+      assert_disjunct(additional_configuration, c(
+        # additional configuration can not be:
+        # (1) a parameter, (2) a construction argument (these are captured automatically), (3) a standard field
+        if (!is.null(self$param_set)) self$param_set$ids(),
+        names(formals(self$initialize)),
+        "id", "label", "param_set", "packages", "properties", "format", "print", "help", "configure", "override_info", "man", "hash", "phash"
+      ))
+      private$.additional_configuration = additional_configuration
     },
 
     #' @description
@@ -123,7 +154,8 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @description
-    #' Printer with concise, unified output.
+    #' Printer.
+    #' @param ... (ignored).
     print = function(...) {
       msg_h = if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label)
       cat_cli({
@@ -141,7 +173,7 @@ Mlr3Component = R6Class("Mlr3Component",
 
     #' @description
     #' Set parameter values and fields in one step.
-    #' Named arguments overlapping with the `ParamSet` are set as parameters;
+    #' Named arguments overlapping with the [`ParamSet`][paradox::ParamSet] are set as parameters;
     #' remaining arguments are assumed to be regular fields of the object.
     #' @param ... (named `any`)
     #' @param .values (named `list()`)
@@ -217,6 +249,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field label (`character(1)`)
     #' Human-friendly label.
     #' Can be used in tables, plot and text output instead of the ID.
+    #' Auto-generated from the title of the help page.
     label = function(rhs) {
       if (!missing(rhs)) stop("label is read-only")
       if (is.null(private$.label)) {
@@ -240,6 +273,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field packages (`character()`)
     #' Set of required packages.
     #' These packages are loaded, but not attached.
+    #' Absence of these packages will generate a warning during construction.
     packages = function(rhs) {
       if (!missing(rhs)) stop("packages is read-only")
       private$.packages
@@ -247,6 +281,9 @@ Mlr3Component = R6Class("Mlr3Component",
 
     #' @field properties (`character()`)\cr
     #' Stores a set of properties/capabilities the object has.
+    #' These are set during construction and should not be changed afterwards.
+    #' They may be "optimistic" in the sense that the true capabilities could depend on specific configuration parameter settings;
+    #' `$properties` then indicate the capabilities under favorable configuration settings.
     properties = function(rhs) {
       if (!missing(rhs)) {
         mlr3component_deprecation_msg("writing to properties is deprecated. Write to private$.properties if this is necessary for tests.")  # nolint
@@ -275,6 +312,9 @@ Mlr3Component = R6Class("Mlr3Component",
 
     #' @field man (`character(1)`)
     #' String in the format `[pkg]::[class name]` pointing to a manual page for this object.
+    #' Inferred automatically from the class name and package in which the class is defined.
+    #' If a concrete class is not defined in a package, the help page of its first parent class with a help page is used.
+    #' Can be overridden with the `$override_info()` method.
     man = function(rhs) {
       if (!missing(rhs)) {
         mlr3component_deprecation_msg("writing to man is deprecated")
@@ -301,7 +341,8 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @field hash (`character(1)`)
-    #' Stable hash that includes id, parameter values (if present) and `private$.extra_hash` fields.
+    #' Stable hash that includes id, parameter values (if present) and additional configuration settings (from construction or class fields) but not state.
+    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must therefore be implemented by subclasses.
     hash = function(rhs) {
       if (!missing(rhs)) stop("hash is read-only")
       hash = calculate_hash(class(self), self$id, .list = c(self$param_set$values, private$.additional_phash_input()))
@@ -313,7 +354,8 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @field phash (`character(1)`)
-    #' Stable hash excluding parameter values (for tuning / partial identity), but including `private$.extra_hash`.
+    #' Hash that includes id and additional configuration settings (from construction or class fields) but not parameter values and no state.
+    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must therefore be implemented by subclasses.
     phash = function(rhs) {
       if (!missing(rhs)) stop("phash is read-only")
       hash = calculate_hash(
@@ -338,6 +380,7 @@ Mlr3Component = R6Class("Mlr3Component",
     .label = NULL,
     .man = NULL,
     .hashmap = NULL,
+    .additional_configuration = NULL,
 
     .additional_phash_input = function() {
       if (is.null(self$initialize)) return(NULL)
