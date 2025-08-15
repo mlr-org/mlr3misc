@@ -4,13 +4,43 @@
 #' A pragmatic, lightweight base class that captures common patterns across the mlr3 ecosystem.
 #' It standardizes various fields and provides shared methods for printing, help lookup, setting parameter values and fields, and hashing.
 #'
+#' Semantically, an mlr3 component is usually an object representing an algorithm or a method, such as a [mlr3::Learner] or a [mlr3::Measure].
+#' This algorithm can be configured though its parameters, accessible as the [paradox::ParamSet] in the `$param_set` field, as well as
+#' through various other custom algorithm-specific fields.
+#' All of these together can be changed via the `$configure()` method.
+#' Some components, such as prominently the [mlr3::Learner], also have "state", such as the learned model.
+#'
+#' The identity of an object represented by an [`Mlr3Component`] is sometimes important, for example when aggregating benchmark results accross various settings of different algorithms used in tha benchmark, such as different [mlr3::Learner]s or different [mlr3::Measure].
+#' For this,the component provides a `$hash` field, which should identify the algorithm and its configuration, without including the state.
+#' There is also the `$phash` field, which identifies the algorithm without its `$param_set` configuration -- this is used when aggregating benchmark results for individual algorithms when these algorithms were evaluated for different configuration parameter settings.
+#'
+#' [`Mlr3Component`]s should usually be constructed from a [Dictionary], which should be accessible via a short-form, such as [mlr3::lrn] or [mlr3pipelines::po].
+#'
 #' @section Inheriting:
 #' To create your own `Mlr3Component`, you need to overload the `$initialize()` function.
 #' A concrete class should ideally provide all arguments of the `$initialize()` directly, i.e. the user should not need to provide `id` or `param_set`.
 #'
-#' The information contained in a concrete mlr3 component should usually be completely determined by three things:
-#' 1. The arguments given during construction.
-#'    These
+#' The information contained in a concrete mlr3 component should usually be completely determined by four things:
+#'
+#' 1. The *construction arguments* given to the `$initialize()` method of the concrete class.
+#'    These can be [`Mlr3Component`]s themselves, or configuration options that do not naturally fit into the [paradox::ParamSet].
+#'    These arguments should *not* overlap with the [paradox::ParamSet] parameters, and should not be the construction arguments of the
+#'    abstract [Mlr3Component] base class such as `id` or `packages`.
+#' 2. The *configuration arguments* inside `$param_set$values`.
+#' 3. Additional *configuration settings* that influence the behavior of the component, but are not part of the [paradox::ParamSet] because they do not naturally constitute a dimension that could be optimized.
+#' 4. Some additional *state information*, storing the result of the algorithm, such as the learned model, often contained in a field called `$state`.
+#'
+#' Information from 1. should also be made accessible as active bindings, with the same name as the construction arguments.
+#'
+#' The information from 1., and 3. is contained in the `$phash` value.
+#' For this, the `private$.additional_phash_input()` function needs to be overloaded by subclasses.
+#' It is often sufficient for an abstract subclass to implement this, and concrete classes to inherit from this. E.g. the [mlr3::Learner] class implements `$private$.additional_phash_input()` to return the necessary iformation to be included in the `$phash` for almost all possible [mlr3::Learner]s.
+#' Only concrete [mlr3::Learner]s that contain additional information not contained in one of the standard fields needs to overload the function again, such as e.g. [mlr3tuning::AutoTuner].
+#' It is best if this second overload only collects the additional information not contained in the abstract base class, and also calls `super$.additional_phash_input()`.
+#'
+#' The information from 1., 2., and 3. together is contained in the `$phash` value.
+#' It is also collected automatically from the `private$.additional_phash_input()` function, as well as the `$param_set$values` field.
+#'
 #'
 #'
 #'
@@ -274,7 +304,7 @@ Mlr3Component = R6Class("Mlr3Component",
     #' Stable hash that includes id, parameter values (if present) and `private$.extra_hash` fields.
     hash = function(rhs) {
       if (!missing(rhs)) stop("hash is read-only")
-      hash = calculate_hash(class(self), self$id, .list = list(self$param_set$values, private$.additional_phash_input()))
+      hash = calculate_hash(class(self), self$id, .list = c(self$param_set$values, private$.additional_phash_input()))
       if (hash %in% names(private$.hashmap)) {
         private$.hashmap[[hash]]
       } else {

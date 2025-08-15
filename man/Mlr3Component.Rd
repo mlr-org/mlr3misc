@@ -6,17 +6,45 @@
 \description{
 A pragmatic, lightweight base class that captures common patterns across the mlr3 ecosystem.
 It standardizes various fields and provides shared methods for printing, help lookup, setting parameter values and fields, and hashing.
+
+Semantically, an mlr3 component is usually an object representing an algorithm or a method, such as a \link[mlr3:Learner]{mlr3::Learner} or a \link[mlr3:Measure]{mlr3::Measure}.
+This algorithm can be configured though its parameters, accessible as the \link[paradox:ParamSet]{paradox::ParamSet} in the \verb{$param_set} field, as well as
+through various other custom algorithm-specific fields.
+All of these together can be changed via the \verb{$configure()} method.
+Some components, such as prominently the \link[mlr3:Learner]{mlr3::Learner}, also have "state", such as the learned model.
+
+The identity of an object represented by an \code{\link{Mlr3Component}} is sometimes important, for example when aggregating benchmark results accross various settings of different algorithms used in tha benchmark, such as different \link[mlr3:Learner]{mlr3::Learner}s or different \link[mlr3:Measure]{mlr3::Measure}.
+For this,the component provides a \verb{$hash} field, which should identify the algorithm and its configuration, without including the state.
+There is also the \verb{$phash} field, which identifies the algorithm without its \verb{$param_set} configuration -- this is used when aggregating benchmark results for individual algorithms when these algorithms were evaluated for different configuration parameter settings.
+
+\code{\link{Mlr3Component}}s should usually be constructed from a \link{Dictionary}, which should be accessible via a short-form, such as \link[mlr3:mlr_sugar]{mlr3::lrn} or \link[mlr3pipelines:po]{mlr3pipelines::po}.
 }
 \section{Inheriting}{
 
 To create your own \code{Mlr3Component}, you need to overload the \verb{$initialize()} function.
 A concrete class should ideally provide all arguments of the \verb{$initialize()} directly, i.e. the user should not need to provide \code{id} or \code{param_set}.
 
-The information contained in a concrete mlr3 component should usually be completely determined by three things:
+The information contained in a concrete mlr3 component should usually be completely determined by four things:
 \enumerate{
-\item The arguments given during construction.
-These
+\item The \emph{construction arguments} given to the \verb{$initialize()} method of the concrete class.
+These can be \code{\link{Mlr3Component}}s themselves, or configuration options that do not naturally fit into the \link[paradox:ParamSet]{paradox::ParamSet}.
+These arguments should \emph{not} overlap with the \link[paradox:ParamSet]{paradox::ParamSet} parameters, and should not be the construction arguments of the
+abstract \link{Mlr3Component} base class such as \code{id} or \code{packages}.
+\item The \emph{configuration arguments} inside \verb{$param_set$values}.
+\item Additional \emph{configuration settings} that influence the behavior of the component, but are not part of the \link[paradox:ParamSet]{paradox::ParamSet} because they do not naturally constitute a dimension that could be optimized.
+\item Some additional \emph{state information}, storing the result of the algorithm, such as the learned model, often contained in a field called \verb{$state}.
 }
+
+Information from 1. should also be made accessible as active bindings, with the same name as the construction arguments.
+
+The information from 1., and 3. is contained in the \verb{$phash} value.
+For this, the \code{private$.additional_phash_input()} function needs to be overloaded by subclasses.
+It is often sufficient for an abstract subclass to implement this, and concrete classes to inherit from this. E.g. the \link[mlr3:Learner]{mlr3::Learner} class implements \verb{$private$.additional_phash_input()} to return the necessary iformation to be included in the \verb{$phash} for almost all possible \link[mlr3:Learner]{mlr3::Learner}s.
+Only concrete \link[mlr3:Learner]{mlr3::Learner}s that contain additional information not contained in one of the standard fields needs to overload the function again, such as e.g. \link[mlr3tuning:AutoTuner]{mlr3tuning::AutoTuner}.
+It is best if this second overload only collects the additional information not contained in the abstract base class, and also calls \code{super$.additional_phash_input()}.
+
+The information from 1., 2., and 3. together is contained in the \verb{$phash} value.
+It is also collected automatically from the \code{private$.additional_phash_input()} function, as well as the \verb{$param_set$values} field.
 
 To create a class without a \code{param_set}, you can pass \code{NULL} as the \code{param_set} argument.
 \code{packages} should have the default value \code{character(0)}, meaning no packages are required.
