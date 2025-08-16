@@ -228,11 +228,11 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   dict_object = do.call(function(...) dict_constructor(dict_entry, ...), constargs)
   testthat::expect_equal(dict_object, object, info = "object from dictionary is congruent with object")
   if (length(eligibleparams)) {
-    dict_object2 = do.call(dict_constructor, c(list(dict_entry), insert_named(constargs, parvals)))
+    dict_object2 = do.call(dict_constructor, c(list(dict_entry), mlr3misc::insert_named(constargs, parvals)))
     testthat::expect_equal(dict_object2, object_changed_params,
       info = "object from dictionary constructed with changed parameters")
 
-    dict_object3 = do.call(dict_constructor, c(list(dict_entry), insert_named(constargs, parvals_orig)))
+    dict_object3 = do.call(dict_constructor, c(list(dict_entry), mlr3misc::insert_named(constargs, parvals_orig)))
     testthat::expect_equal(dict_object3, object, info = "object from dictionary constructed with original parameter")
   }
 
