@@ -391,7 +391,7 @@ expect_deep_clone = function(one, two) {
       if (identical(a, baseenv()) || identical(a, globalenv()) || identical(a, emptyenv())) {
         return(invisible(NULL))
       }
-      if (length(path) > 1 && R6::is.R6(a) && "clone" %nin% names(a)) {
+      if (length(path) > 1 && R6::is.R6(a) && !"clone" %in% names(a)) {
         return(invisible(NULL))  # don't check if smth is not cloneable
       }
       label = sprintf("Object addresses differ at path %s", paste0(path, collapse = "->"))
