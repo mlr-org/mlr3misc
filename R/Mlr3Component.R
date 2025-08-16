@@ -91,7 +91,8 @@ Mlr3Component = R6Class("Mlr3Component",
       additional_configuration = character(0),
       representable = TRUE
     ) {
-      assert_string(dict_entry)
+      private$.dict_entry = assert_string(dict_entry)
+      private$.dict_shortaccess = assert_string(dict_shortaccess)
       private$.has_id = !is.null(id)
       if (private$.has_id) {
         self$id = id
@@ -371,6 +372,8 @@ Mlr3Component = R6Class("Mlr3Component",
   ),
 
   private = list(
+    .dict_entry = NULL,
+    .dict_shortaccess = NULL,
     .has_id = NULL,
     .id = NULL,
     .param_set = NULL,
@@ -412,26 +415,6 @@ The hash and phash of a class must differ when it represents a different operati
     }
   )
 )
-
-
-
-# TODO
-# - dict_entry: own id in the dictionary
-# - dict_shortaccess: dictionary short access name
-# - autotest: construction vars are also active bindings
-# - autotest: manual name congruent with dictionary
-# - own param set thing
-# - autotests from miesmuschel
-# - what to do with composite objects?
-
-# - cloning
-# - conversion objects
-# - dict_entry NULL -> not in dictionary, constructed via as_learner etc.
-# - auto packages
-# - warning if dict_entry is wrong
-#   - but only if constructed via a package; maybe check 'mlr3'-packages first.
-# - label & man deprecation
-# - what to do with non-algorithm classes (objective, resamplingresult, databackend, etc)?
 
 #' @title Deprecation Message related to the `Mlr3Component` Class
 #'
