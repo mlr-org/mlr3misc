@@ -141,7 +141,7 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
           (!is.na(tops$lower) & tops$lower != tops$upper) |
             (is.finite(tops$nlevels) & tops$nlevels > 1)
         ) &
-        !map_lgl(tops$values[tops$ids()], is.null)
+        !mlr3misc::map_lgl(tops$values[tops$ids()], is.null)
     )
   }
   if (length(eligibleparams)) {
