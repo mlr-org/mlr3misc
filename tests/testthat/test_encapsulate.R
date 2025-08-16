@@ -3,7 +3,7 @@ test_that("encapsulation works", {
     1L
   }
 
-  for (method in c("none", "evaluate", "callr", "mirai")) {
+  for (method in c("none", "evaluate", "callr", "mirai", "try")) {
     if (method != "none" && !requireNamespace(method, quietly = TRUE)) {
       next
     }
@@ -11,7 +11,7 @@ test_that("encapsulation works", {
     log = res$log
     expect_identical(res$result, 1L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(res$log, ncols = 2)
+    expect_data_table(res$log, ncols = 3)
   }
 })
 
@@ -31,7 +31,7 @@ test_that("messages and warnings are logged", {
     log = res$log
     expect_identical(res$result, 99L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(log, ncols = 2)
+    expect_data_table(log, ncols = 3)
     expect_set_equal(as.character(log$class), c("output", "warning"))
     expect_true(log[class == "warning", grepl("\n", msg, fixed = TRUE)])
   }
@@ -39,7 +39,7 @@ test_that("messages and warnings are logged", {
 
 test_that("errors are logged", {
   fun = function() {
-    stop("foo")
+    stop(simpleError("foo"))
   }
 
   for (method in c("evaluate", "callr", "mirai")) {
@@ -209,3 +209,36 @@ test_that("mirai daemon is started if not running", {
   expect_equal(mirai::status()$connections, 0)
 })
 
+
+test_that("condition objects are stored", {
+  fun = function() {
+    message("a")
+    warning(simpleWarning("b"))
+    stop(simpleError("c"))
+  }
+
+  for (method in c("evaluate", "callr", "mirai", "try")) {
+    if (!requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, fun)
+    expect_equal(as.character(res$log$class), c("output", "warning", "error"))
+    expect_equal(res$log$condition[[1]], "a")
+    expect_equal(res$log$condition[[2]], simpleWarning("b"))
+    expect_equal(res$log$condition[[3]], simpleError("c"))
+  }
+
+  # data.table with 1 row
+  fun = function() {
+    mlr3misc::stopf("c")
+  }
+
+  for (method in c("evaluate", "callr", "mirai", "try")) {
+    if (!requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, fun)
+    expect_equal(as.character(res$log$class), "error")
+    expect_equal(res$log$condition[[1]], tryCatch(stopf("c"), error = identity))
+  }
+})
