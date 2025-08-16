@@ -60,32 +60,42 @@ Mlr3Component = R6Class("Mlr3Component",
     #'   `get(dict_shortaccess, mode = "function")(dict_entry)` should create an object of the concrete class.
     #' @param id (`character(1)`)
     #'   The ID of the constructed object.
-    #'   ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in combined [paradox::ParamSet]s.
+    #'   ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in
+    #'   combined [paradox::ParamSet]s.
     #'   If instances of a given abstract subclass should all not have IDs, this should be set to `NULL`.
-    #'   Should default to the value of `dict_entry` in most cases, with few exceptions for wrapper objects (e.g. a [mlr3pipelines::PipeOp] wrapping a [mlr3::Learner]).
+    #'   Should default to the value of `dict_entry` in most cases, with few exceptions for wrapper objects (e.g. a
+    #'   [mlr3pipelines::PipeOp] wrapping a [mlr3::Learner]).
     #' @param param_set ([paradox::ParamSet] | `list` | `NULL`)
     #'   Parameter space description. This should be created by the subclass and given to `super$initialize()`.
     #'   If this is a [`ParamSet`][paradox::ParamSet], it is used for `$param_set` directly.
-    #'   Otherwise it must be a `list` of expressions e.g. created by `alist()` that evaluate to [`ParamSet`][paradox::ParamSet]s.
-    #'   These [`ParamSet`][paradox::ParamSet] are combined using a [`ParamSetCollection`][paradox::ParamSetCollection].\cr
-    #'   If instances of a given abstract subclass should all not have a [paradox::ParamSet], this should be set to `NULL`.
-    #'   Otherwise, if a concrete subclass just happens to have an empty search space, the default [paradox::ps()] should be used.
+    #'   Otherwise it must be a `list` of expressions e.g. created by `alist()` that evaluate to
+    #'   [`ParamSet`][paradox::ParamSet]s.
+    #'   These [`ParamSet`][paradox::ParamSet] are combined using a
+    #'   [`ParamSetCollection`][paradox::ParamSetCollection].\cr
+    #'   If instances of a given abstract subclass should all not have a [paradox::ParamSet], this should be set to
+    #'   `NULL`.
+    #'   Otherwise, if a concrete subclass just happens to have an empty search space, the default [paradox::ps()]
+    #'   should be used.
     #' @param packages (`character()`)
     #'   The packages required by the constructed object.
     #'   The constructor will check whether these packages can be loaded and give a warning otherwise.
-    #'   The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be provided here.
+    #'   The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be
+    #'   provided here.
     #'   Elements of `packages` are deduplicated and made accessible as the `$packages` field.
     #' @param properties (`character()`)
     #'   A set of properties/capabilities the object has.
     #'   These often need to be a subset of an entry in [mlr3::mlr_reflections].
-    #'   However, the [`Mlr3Component`] constructor does not check this, it needs to be asserted by an abstract inheriting class.
+    #'   However, the [`Mlr3Component`] constructor does not check this, it needs to be asserted by an abstract
+    #'   inheriting class.
     #'   Elements are deduplicated and made accessible as the `$properties` field.
     #' @param additional_configuration (`character()`)
-    #'   Names of class fields that constitute additional configuration settings that influence the behavior of the component, but are neither construction argument, nor part of the [paradox::ParamSet].
+    #'   Names of class fields that constitute additional configuration settings that influence the behavior of the
+    #'   component, but are neither construction argument, nor part of the [paradox::ParamSet].
     #'   An example is the `$predict_type` field of a [mlr3::Learner].
     #' @param representable (`logical(1)`)
     #'   Whether the object can be represented as a simple string.
-    #'   Should generally be `TRUE` except for objects that are constructed with a large amount of data, such as [mlr3::Task]s.
+    #'   Should generally be `TRUE` except for objects that are constructed with a large amount of data, such as
+    #'   [mlr3::Task]s.
     initialize = function(dict_entry, dict_shortaccess, id = dict_entry,
       param_set = ps(), packages = character(0), properties = character(0),
       additional_configuration = character(0),
@@ -93,6 +103,7 @@ Mlr3Component = R6Class("Mlr3Component",
     ) {
       private$.dict_entry = assert_string(dict_entry)
       private$.dict_shortaccess = assert_string(dict_shortaccess)
+      private$.representable = assert_flag(representable)
       private$.has_id = !is.null(id)
       if (private$.has_id) {
         self$id = id
@@ -138,7 +149,8 @@ Mlr3Component = R6Class("Mlr3Component",
         # (1) a parameter, (2) a construction argument (these are captured automatically), (3) a standard field
         if (!is.null(self$param_set)) self$param_set$ids(),
         names(formals(self$initialize)),
-        "id", "label", "param_set", "packages", "properties", "format", "print", "help", "configure", "override_info", "man", "hash", "phash"
+        "id", "label", "param_set", "packages", "properties", "format", "print", "help", "configure", "override_info",
+        "man", "hash", "phash"
       ))
       private$.additional_configuration = additional_configuration
     },
@@ -161,7 +173,7 @@ Mlr3Component = R6Class("Mlr3Component",
       msg_h = if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label)
       cat_cli({
         cli::cli_h1("{.cls {class(self)[1L]}} ({self$id}){msg_h}")
-        cli::cli_li("Parameters: {as_short_string(if (is.null(private$.param_set)) list() else private$.param_set$values, 1000L)}")
+        cli::cli_li("Parameters: {as_short_string(if (is.null(private$.param_set)) list() else private$.param_set$values, 1000L)}")  # nolint
         cli::cli_li("Packages: {.pkg {if (length(self$packages)) self$packages else '-'}}")
       })
     },
@@ -230,6 +242,7 @@ Mlr3Component = R6Class("Mlr3Component",
         orig_hash = self$hash
         private$.hashmap = structure(c(hash, hash), names = c(orig_hash, orig_phash))
       }
+      invisible(self)
     }
   ),
 
@@ -283,7 +296,8 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field properties (`character()`)\cr
     #' Stores a set of properties/capabilities the object has.
     #' These are set during construction and should not be changed afterwards.
-    #' They may be "optimistic" in the sense that the true capabilities could depend on specific configuration parameter settings;
+    #' They may be "optimistic" in the sense that the true capabilities could depend on specific configuration
+    #' parameter settings;
     #' `$properties` then indicate the capabilities under favorable configuration settings.
     properties = function(rhs) {
       if (!missing(rhs)) {
@@ -314,7 +328,8 @@ Mlr3Component = R6Class("Mlr3Component",
     #' @field man (`character(1)`)
     #' String in the format `[pkg]::[class name]` pointing to a manual page for this object.
     #' Inferred automatically from the class name and package in which the class is defined.
-    #' If a concrete class is not defined in a package, the help page of its first parent class with a help page is used.
+    #' If a concrete class is not defined in a package, the help page of its first parent class with a help page is
+    #' used.
     #' Can be overridden with the `$override_info()` method.
     man = function(rhs) {
       if (!missing(rhs)) {
@@ -325,10 +340,14 @@ Mlr3Component = R6Class("Mlr3Component",
       if (is.null(private$.man)) {
         iter = 1
         env = self
-        repeat {
-          man = paste0(topenv(env$.__enclos_env__)$.__NAMESPACE__.$spec[["name"]], "::", class(self)[[iter]])
+        while (!is.null(env)) {
+          pkgstring = topenv(env$.__enclos_env__)$.__NAMESPACE__.$spec[["name"]]
+          classstring = class(self)[[iter]]
+          man = paste0(pkgstring, "::", classstring)
           help_works = tryCatch({
-            length(as.character(open_help(man))) > 0L
+            length(as.character(open_help(man))) > 0L ||
+              NROW(utils::help.search(sprintf("^%s$", classstring), package = pkgstring,
+                ignore.case = FALSE, agrep = FALSE, fields = "alias")$matches) > 0L
           }, error = function(e) FALSE)
           if (help_works) {
             private$.man = man
@@ -337,13 +356,18 @@ Mlr3Component = R6Class("Mlr3Component",
           iter = iter + 1
           env = env$.__enclos_env__$super
         }
+        if (is.null(private$.man)) {
+          private$.man = "mlr3misc::Mlr3Component"
+        }
       }
       private$.man
     },
 
     #' @field hash (`character(1)`)
-    #' Stable hash that includes id, parameter values (if present) and additional configuration settings (from construction or class fields) but not state.
-    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must therefore be implemented by subclasses.
+    #' Stable hash that includes id, parameter values (if present) and additional configuration settings (from
+    #' construction or class fields) but not state.
+    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must
+    #' therefore be implemented by subclasses.
     hash = function(rhs) {
       if (!missing(rhs)) stop("hash is read-only")
       hash = calculate_hash(class(self), self$id, .list = c(self$param_set$values, private$.additional_phash_input()))
@@ -355,8 +379,10 @@ Mlr3Component = R6Class("Mlr3Component",
     },
 
     #' @field phash (`character(1)`)
-    #' Hash that includes id and additional configuration settings (from construction or class fields) but not parameter values and no state.
-    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must therefore be implemented by subclasses.
+    #' Hash that includes id and additional configuration settings (from construction or class fields) but not
+    #' parameter values and no state.
+    #' Makes use of the `private$.additional_phash_input()` function to collect additional information, which must
+    #' therefore be implemented by subclasses.
     phash = function(rhs) {
       if (!missing(rhs)) stop("phash is read-only")
       hash = calculate_hash(
@@ -374,6 +400,7 @@ Mlr3Component = R6Class("Mlr3Component",
   private = list(
     .dict_entry = NULL,
     .dict_shortaccess = NULL,
+    .representable = NULL,
     .has_id = NULL,
     .id = NULL,
     .param_set = NULL,
@@ -392,9 +419,11 @@ Mlr3Component = R6Class("Mlr3Component",
       if (length(sc) > 1 && identical(sc[[length(sc) - 1]][[1]], quote(super$.additional_phash_input))) return(NULL)
       initformals <- names(formals(args(self$initialize)))
       if (!test_subset(initformals, c("id", "param_vals"))) {
+        # nolint start
         stopf("Class %s has construction arguments besides 'id' and 'param_vals' but does not overload the private '.additional_phash_input()' function.
 
-The hash and phash of a class must differ when it represents a different operation; since %s has construction arguments that could change the operation that is performed by it, it is necessary for the $hash and $phash to reflect this. `.additional_phash_input()` should return all the information (e.g. hashes of encapsulated items) that should additionally be hashed; read the help of ?Mlr3Component for more information.",  # nolint
+The hash and phash of a class must differ when it represents a different operation; since %s has construction arguments that could change the operation that is performed by it, it is necessary for the $hash and $phash to reflect this. `.additional_phash_input()` should return all the information (e.g. hashes of encapsulated items) that should additionally be hashed; read the help of ?Mlr3Component for more information.",
+        # nolint end
         class(self)[[1]], class(self)[[1]])
       }
     },

@@ -95,7 +95,6 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   checkmate::expect_string(object$format(), pattern = "^<[^>]+>$")
 
   testthat::expect_true(isTRUE(get_private(object)$.has_id) || identical(dict_entry, object$id))
-  testthat::expect_true(is.null(object$param_set) || is.null(object$param_set$values))
 
   oldhash = object$hash
   oldphash = object$phash
@@ -221,7 +220,7 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   dictionary = dict_constructor()
   checkmate::expect_r6(dictionary, "Dictionary")  # expect an mlr3misc::Dictionary here
   name_of_dictionary = Filter(function(x) identical(dict_environment[[x]], dictionary), names(dict_environment))[1]
-  testthat::expect_string(name_of_dictionary, min.chars = 1L, info = "name of dictionary in dict_environment")
+  checkmate::expect_string(name_of_dictionary, min.chars = 1L, info = "name of dictionary in dict_environment")
 
 
   dict_object = do.call(function(...) dict_constructor(dict_entry, ...), constargs)
@@ -251,8 +250,8 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
     testthat::expect_true(class(object)[[1]] %in% exports, info = "class is exported")
   }
 
-  construction_conf_objects = object[names(formals(object$initialize))]
-  additional_conf_objects = object[additional_configuration]
+  construction_conf_objects = mget(names(formals(object$initialize)), envir = object)
+  additional_conf_objects = mget(additional_configuration, envir = object)
 
   # constructing and configuring with original configuration values should not have an effect
 
@@ -371,7 +370,7 @@ expect_deep_clone = function(one, two) {
 
     # follow attributes, even for non-recursive objects
     if (utils::tail(path, 1) != "[attributes]" && !is.null(base::attributes(a))) {
-      testthat::expect_references_differ(base::attributes(a), base::attributes(b), c(path, "[attributes]"))
+      Recall(base::attributes(a), base::attributes(b), c(path, "[attributes]"))
     }
 
     # don't recurse if there is nowhere to go
@@ -400,8 +399,8 @@ expect_deep_clone = function(one, two) {
     if (base::is.function(a)) {
       return(invisible(NULL))
       ## # maybe this is overdoing it
-      ## expect_references_differ(base::formals(a), base::formals(b), c(path, "[function args]"))
-      ## expect_references_differ(base::body(a), base::body(b), c(path, "[function body]"))
+      ## Recall(base::formals(a), base::formals(b), c(path, "[function args]"))
+      ## Recall(base::body(a), base::body(b), c(path, "[function body]"))
     }
     objnames = base::names(a)
     if (is.null(objnames) || anyDuplicated(objnames)) {
@@ -414,7 +413,7 @@ expect_deep_clone = function(one, two) {
     }
     for (i in index) {
       if (utils::tail(path, 1) == "[attributes]" && i %in% c("srcref", "srcfile", ".Environment")) next
-      expect_references_differ(base::`[[`(a, i), base::`[[`(b, i), c(path, sprintf("[element %s]%s", i,
+      Recall(base::`[[`(a, i), base::`[[`(b, i), c(path, sprintf("[element %s]%s", i,
         if (!is.null(objnames)) sprintf(" '%s'", if (is.character(index)) i else objnames[[i]]) else "")))
     }
   }

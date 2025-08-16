@@ -75,7 +75,8 @@ Absence of these packages will generate a warning during construction.}
 \item{\code{properties}}{(\code{character()})\cr
 Stores a set of properties/capabilities the object has.
 These are set during construction and should not be changed afterwards.
-They may be "optimistic" in the sense that the true capabilities could depend on specific configuration parameter settings;
+They may be "optimistic" in the sense that the true capabilities could depend on specific configuration
+parameter settings;
 \verb{$properties} then indicate the capabilities under favorable configuration settings.}
 
 \item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{NULL})
@@ -84,16 +85,21 @@ Set of hyperparameters.}
 \item{\code{man}}{(\code{character(1)})
 String in the format \verb{[pkg]::[class name]} pointing to a manual page for this object.
 Inferred automatically from the class name and package in which the class is defined.
-If a concrete class is not defined in a package, the help page of its first parent class with a help page is used.
+If a concrete class is not defined in a package, the help page of its first parent class with a help page is
+used.
 Can be overridden with the \verb{$override_info()} method.}
 
 \item{\code{hash}}{(\code{character(1)})
-Stable hash that includes id, parameter values (if present) and additional configuration settings (from construction or class fields) but not state.
-Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must therefore be implemented by subclasses.}
+Stable hash that includes id, parameter values (if present) and additional configuration settings (from
+construction or class fields) but not state.
+Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must
+therefore be implemented by subclasses.}
 
 \item{\code{phash}}{(\code{character(1)})
-Hash that includes id and additional configuration settings (from construction or class fields) but not parameter values and no state.
-Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must therefore be implemented by subclasses.}
+Hash that includes id and additional configuration settings (from construction or class fields) but not
+parameter values and no state.
+Makes use of the \code{private$.additional_phash_input()} function to collect additional information, which must
+therefore be implemented by subclasses.}
 }
 \if{html}{\out{</div>}}
 }
@@ -139,37 +145,47 @@ Name of the short access function for the dictionary that this component can be 
 
 \item{\code{id}}{(\code{character(1)})
 The ID of the constructed object.
-ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in combined \link[paradox:ParamSet]{paradox::ParamSet}s.
+ID field can be used to identify objects in tables or plots, and sometimes to prefix parameter names in
+combined \link[paradox:ParamSet]{paradox::ParamSet}s.
 If instances of a given abstract subclass should all not have IDs, this should be set to \code{NULL}.
-Should default to the value of \code{dict_entry} in most cases, with few exceptions for wrapper objects (e.g. a \link[mlr3pipelines:PipeOp]{mlr3pipelines::PipeOp} wrapping a \link[mlr3:Learner]{mlr3::Learner}).}
+Should default to the value of \code{dict_entry} in most cases, with few exceptions for wrapper objects (e.g. a
+\link[mlr3pipelines:PipeOp]{mlr3pipelines::PipeOp} wrapping a \link[mlr3:Learner]{mlr3::Learner}).}
 
 \item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet} | \code{list} | \code{NULL})
 Parameter space description. This should be created by the subclass and given to \code{super$initialize()}.
 If this is a \code{\link[paradox:ParamSet]{ParamSet}}, it is used for \verb{$param_set} directly.
-Otherwise it must be a \code{list} of expressions e.g. created by \code{alist()} that evaluate to \code{\link[paradox:ParamSet]{ParamSet}}s.
-These \code{\link[paradox:ParamSet]{ParamSet}} are combined using a \code{\link[paradox:ParamSetCollection]{ParamSetCollection}}.\cr
-If instances of a given abstract subclass should all not have a \link[paradox:ParamSet]{paradox::ParamSet}, this should be set to \code{NULL}.
-Otherwise, if a concrete subclass just happens to have an empty search space, the default \code{\link[paradox:ps]{paradox::ps()}} should be used.}
+Otherwise it must be a \code{list} of expressions e.g. created by \code{alist()} that evaluate to
+\code{\link[paradox:ParamSet]{ParamSet}}s.
+These \code{\link[paradox:ParamSet]{ParamSet}} are combined using a
+\code{\link[paradox:ParamSetCollection]{ParamSetCollection}}.\cr
+If instances of a given abstract subclass should all not have a \link[paradox:ParamSet]{paradox::ParamSet}, this should be set to
+\code{NULL}.
+Otherwise, if a concrete subclass just happens to have an empty search space, the default \code{\link[paradox:ps]{paradox::ps()}}
+should be used.}
 
 \item{\code{packages}}{(\code{character()})
 The packages required by the constructed object.
 The constructor will check whether these packages can be loaded and give a warning otherwise.
-The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be provided here.
+The packages of the R6 objects in the inheritance hierarchy are automatically added and do not need to be
+provided here.
 Elements of \code{packages} are deduplicated and made accessible as the \verb{$packages} field.}
 
 \item{\code{properties}}{(\code{character()})
 A set of properties/capabilities the object has.
 These often need to be a subset of an entry in \link[mlr3:mlr_reflections]{mlr3::mlr_reflections}.
-However, the \code{\link{Mlr3Component}} constructor does not check this, it needs to be asserted by an abstract inheriting class.
+However, the \code{\link{Mlr3Component}} constructor does not check this, it needs to be asserted by an abstract
+inheriting class.
 Elements are deduplicated and made accessible as the \verb{$properties} field.}
 
 \item{\code{additional_configuration}}{(\code{character()})
-Names of class fields that constitute additional configuration settings that influence the behavior of the component, but are neither construction argument, nor part of the \link[paradox:ParamSet]{paradox::ParamSet}.
+Names of class fields that constitute additional configuration settings that influence the behavior of the
+component, but are neither construction argument, nor part of the \link[paradox:ParamSet]{paradox::ParamSet}.
 An example is the \verb{$predict_type} field of a \link[mlr3:Learner]{mlr3::Learner}.}
 
 \item{\code{representable}}{(\code{logical(1)})
 Whether the object can be represented as a simple string.
-Should generally be \code{TRUE} except for objects that are constructed with a large amount of data, such as \link[mlr3:Task]{mlr3::Task}s.}
+Should generally be \code{TRUE} except for objects that are constructed with a large amount of data, such as
+\link[mlr3:Task]{mlr3::Task}s.}
 }
 \if{html}{\out{</div>}}
 }
