@@ -9,3 +9,7 @@ expect_man_exists = function(man) {
     checkmate::expect_data_frame(matches$matches, min.rows = 1L, info = "man page lookup")
   }
 }
+
+lapply(list.files(system.file("testthat", package = "mlr3misc"), pattern = "^helper.*\\.[rR]", full.names = TRUE),
+  source
+)

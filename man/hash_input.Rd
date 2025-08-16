@@ -5,6 +5,7 @@
 \alias{hash_input.function}
 \alias{hash_input.data.table}
 \alias{hash_input.default}
+\alias{hash_input.R6}
 \title{Hash Input}
 \usage{
 hash_input(x)
@@ -14,6 +15,8 @@ hash_input(x)
 \method{hash_input}{data.table}(x)
 
 \method{hash_input}{default}(x)
+
+\method{hash_input}{R6}(x)
 }
 \arguments{
 \item{x}{(\code{any})\cr
@@ -32,5 +35,8 @@ in the hash.
 The conversion to a list ensures that keys and indices are not included in the hash.
 
 \item \code{hash_input(default)}: Returns the object as is.
+
+\item \code{hash_input(R6)}: If the R6 object has a \verb{$hash} slot, it is returned.
+Otherwise, the object is returned as is.
 
 }}

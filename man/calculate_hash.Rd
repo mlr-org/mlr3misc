@@ -4,11 +4,14 @@
 \alias{calculate_hash}
 \title{Calculate a Hash for Multiple Objects}
 \usage{
-calculate_hash(...)
+calculate_hash(..., .list = list())
 }
 \arguments{
 \item{...}{(\code{any})\cr
 Objects to hash.}
+
+\item{.list}{(\code{list()})\cr
+Additional objects to hash.}
 }
 \value{
 (\code{character(1)}).

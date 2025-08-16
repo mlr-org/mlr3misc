@@ -32,7 +32,8 @@ Suggests:
     evaluate,
     mirai,
     paradox,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    utils
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
@@ -44,6 +45,7 @@ Collate:
     'named_list.R'
     'Callback.R'
     'Context.R'
+    'Mlr3Component.R'
     'as_factor.R'
     'as_short_string.R'
     'assert_ro_binding.R'
