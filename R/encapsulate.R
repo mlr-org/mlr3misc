@@ -196,12 +196,14 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   }
   if (nrow(log)) {
     # classes for messages are not really useful, so we save some memory
-    log[, condition := map(condition, function(x) {
+    # data.table list columns with 1 row are no fun :(
+    conds = map(log$condition, function(x) {
       if (inherits(x, "message")) {
         return(trimws(conditionMessage(x)))
       }
       x
-    })]
+    })
+    log$condition = if (length(conds) == 1L) list(conds) else conds
   }
 
   log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
