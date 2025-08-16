@@ -57,16 +57,16 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   checkmate::expect_string(object$phash, min.chars = 1L)
   checkmate::expect_string(object$man, pattern = "^[^:]+::[^:]+$")
 
-  checkmate::expect_flag(get_private(object)$.has_id)
-  checkmate::expect_string(get_private(object)$.dict_entry, min.chars = 1L)
-  checkmate::expect_string(get_private(object)$.dict_shortaccess, min.chars = 1L)
-  checkmate::expect_character(get_private(object)$.additional_configuration,
+  checkmate::expect_flag(mlr3misc::get_private(object)$.has_id)
+  checkmate::expect_string(mlr3misc::get_private(object)$.dict_entry, min.chars = 1L)
+  checkmate::expect_string(mlr3misc::get_private(object)$.dict_shortaccess, min.chars = 1L)
+  checkmate::expect_character(mlr3misc::get_private(object)$.additional_configuration,
     any.missing = FALSE, min.chars = 1L, unique = TRUE)
-  checkmate::expect_flag(get_private(object)$.representable)
+  checkmate::expect_flag(mlr3misc::get_private(object)$.representable)
 
-  dict_entry = get_private(object)$.dict_entry
-  dict_shortaccess = get_private(object)$.dict_shortaccess
-  additional_configuration = get_private(object)$.additional_configuration
+  dict_entry = mlr3misc::get_private(object)$.dict_entry
+  dict_shortaccess = mlr3misc::get_private(object)$.dict_shortaccess
+  additional_configuration = mlr3misc::get_private(object)$.additional_configuration
   construction_arguments = as.character(names(formals(object$initialize)))
 
   all_fields_list = list()
@@ -95,12 +95,12 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
 
   checkmate::expect_string(object$format(), pattern = "^<[^>]+>$")
 
-  testthat::expect_true(isTRUE(get_private(object)$.has_id) || identical(dict_entry, object$id))
+  testthat::expect_true(isTRUE(mlr3misc::get_private(object)$.has_id) || identical(dict_entry, object$id))
 
   oldhash = object$hash
   oldphash = object$phash
 
-  if (isTRUE(get_private(object)$.has_id)) {
+  if (isTRUE(mlr3misc::get_private(object)$.has_id)) {
     oldid = object$id
     object$id = "newid"
     testthat::expect_equal(object$id, "newid", info = "id can be set")
