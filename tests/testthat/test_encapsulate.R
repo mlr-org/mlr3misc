@@ -227,4 +227,18 @@ test_that("condition objects are stored", {
     expect_equal(res$log$condition[[2]], simpleWarning("b"))
     expect_equal(res$log$condition[[3]], simpleError("c"))
   }
+
+  # data.table with 1 row
+  fun = function() {
+    mlr3misc::stopf("c")
+  }
+
+  for (method in c("evaluate", "callr", "mirai", "try")) {
+    if (!requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, fun)
+    expect_equal(as.character(res$log$class), "error")
+    expect_equal(res$log$condition[[1]], tryCatch(stopf("c"), error = identity))
+  }
 })
