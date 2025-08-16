@@ -67,6 +67,7 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   dict_entry = get_private(object)$.dict_entry
   dict_shortaccess = get_private(object)$.dict_shortaccess
   additional_configuration = get_private(object)$.additional_configuration
+  construction_arguments = as.character(names(formals(object$initialize)))
 
   all_fields_list = list()
   recurse_class = compclass
@@ -79,12 +80,12 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   all_fields = setdiff(all_fields, c("man", "properties", "packages", "hash", "phash", "id", "label", "param_set"))
   checkmate::expect_subset(additional_configuration, all_fields,
     info = "additional_configuration is a subset of all valid fields")
-  checkmate::expect_subset(names(formals(object$initialize)), all_fields,
+  checkmate::expect_subset(construction_arguments, all_fields,
     info = "construction arguments are accessible as fields")
-  checkmate::expect_disjunct(names(formals(object$initialize)), additional_configuration,
+  checkmate::expect_disjunct(construction_arguments, additional_configuration,
     info = "construction arguments and additional_configuration should be disjoint")
   if (!is.null(object$param_set)) {
-    checkmate::expect_disjunct(names(formals(object$initialize)), object$param_set$ids(),
+    checkmate::expect_disjunct(construction_arguments, object$param_set$ids(),
       info = "construction arguments and param_set IDs should be disjoint")
     checkmate::expect_disjunct(additional_configuration, object$param_set$ids(),
       info = "additional_configuration and param_set IDs should be disjoint")
@@ -139,7 +140,8 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
         (
           (!is.na(tops$lower) & tops$lower != tops$upper) |
             (is.finite(tops$nlevels) & tops$nlevels > 1)
-        )
+        ) &
+        !map_lgl(tops$values[tops$ids()], is.null)
     )
   }
   if (length(eligibleparams)) {
@@ -239,9 +241,14 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
   }
 
   if (check_congruent_man) {
-    testthat::expect_equal(object$man,
-      sprintf("%s::%s_%s", expected_package, name_of_dictionary, dict_entry),
-      info = "man is congruent with dict_name and dict_entry")
+    checkmate::expect_string(object$man, pattern = sprintf("^%s::[^:]+$", expected_package))
+    help_info = strsplit(object$man, "::")[[1]]
+    help_topic = utils::help.search(sprintf("^%s$", help_info[[2]]), package = help_info[[1]], ignore.case = FALSE,
+      agrep = FALSE, fields = "alias")$matches$Topic
+    testthat::expect_true(length(help_topic) > 0L, info = "help page exists")
+    testthat::expect_equal(help_topic,
+      sprintf("%s_%s", name_of_dictionary, dict_entry),
+      info = "help page name is congruent with dict_name and dict_entry")
   }
 
   if (check_package_export) {
@@ -250,7 +257,7 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
     testthat::expect_true(class(object)[[1]] %in% exports, info = "class is exported")
   }
 
-  construction_conf_objects = mget(names(formals(object$initialize)), envir = object)
+  construction_conf_objects = mget(construction_arguments, envir = object)
   additional_conf_objects = mget(additional_configuration, envir = object)
 
   # constructing and configuring with original configuration values should not have an effect
@@ -305,7 +312,7 @@ expect_mlr3component_subclass = function(compclass, constargs, check_congruent_m
 #' abstracts = c("PipeOp", "PipeOpEnsemble")
 #' nspath = dirname(system.file("NAMESPACE", package = "mlr3pipelines"))
 #' exports = parseNamespaceFile(basename(nspath), dirname(nspath))$exports
-#' compclass_names = grep(exports, pattern = "^PipeOp", value = TRUE)
+#' compclass_names = setdiff(grep(exports, pattern = "^PipeOp", value = TRUE), abstract_classes)
 #' compclasses = lapply(compclass_names, get, envir = asNamespace("mlr3pipelines"))
 #' dict_constargs = list(
 #'   PipeOpImputeLearner = list(learner = mlr_learners$get("classif.rpart")),
@@ -326,7 +333,7 @@ test_that_mlr3component_dict = function(compclasses, dict_constargs, check_congr
     testthat::test_that(sprintf("Mlr3Component subclass %s", clname), {
       expect_mlr3component_subclass(
         compclass = compclass,
-        constargs = dict_constargs[[clname]],
+        constargs = c(list(), dict_constargs[[clname]]),
         check_congruent_man = check_congruent_man,
         check_package_export = check_package_export,
         dict_package = dict_package
