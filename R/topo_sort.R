@@ -33,30 +33,28 @@ topo_sort = function(nodes) {
   nodes = copy(nodes) # copy ref to be sure
   n = nrow(nodes)
   # sort nodes with few parent to start
-  nodes = nodes[order(lengths(parents), decreasing = FALSE)]
+  nodes = nodes[order(lengths(get("parents")), decreasing = FALSE)]
 
   nodes[, `:=`(topo = NA_integer_, depth = NA_integer_)] # cols for topo-index and depth layer in sort
   j = 1L
   topo_count = 1L
   depth_count = 0L
-  topo = depth = parents = id = NULL
-  . = NULL # nolint
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
-      nodes[j, topo := topo_count]
+      nodes[j, "topo" := topo_count]
       topo_count = topo_count + 1L
-      nodes[j, depth := depth_count]
+      nodes[j, "depth" := depth_count]
     }
     j = (j %% n) + 1L # inc j, but wrap around end
     if (j == 1L) { # we wrapped, lets remove nodes of current layer from deps
-      layer = nodes[.(depth_count), id, on = "depth", nomatch = NULL]
+      layer = nodes[list(depth_count), "id", on = "depth", nomatch = NULL][[1L]]
       if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")
       }
-      nodes[, parents := map(parents, function(x) setdiff(x, layer))]
+      nodes[, "parents" := map(get("parents"), function(x) setdiff(x, layer))]
       depth_count = depth_count + 1L
     }
   }
-  nodes[order(topo), c("id", "depth")] # sort by topo, and then remove topo-col
+  nodes[order(get("topo")), c("id", "depth")] # sort by topo, and then remove topo-col
 }
