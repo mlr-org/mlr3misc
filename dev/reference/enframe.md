@@ -1,7 +1,7 @@
 # Convert a Named Vector into a data.table and Vice Versa
 
 `enframe()` returns a
-[`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+[`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
 with two columns: The names of `x` (or `seq_along(x)` if unnamed) and
 the values of `x`.
 
@@ -24,7 +24,7 @@ deframe(x)
   [`data.frame()`](https://rdrr.io/r/base/data.frame.html)
   (`deframe()`))  
   Vector to convert to a
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html).
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html).
 
 - name:
 
@@ -38,7 +38,7 @@ deframe(x)
 
 ## Value
 
-[`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+[`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
 or named `vector`.
 
 ## Examples

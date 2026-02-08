@@ -293,7 +293,7 @@ CRAN release: 2020-01-28
   and
   [`pmap_dtr()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
   now pass `.idcol` down to argument `idcol` of
-  [`data.table::rbindlist()`](https://rdatatable.gitlab.io/data.table/reference/rbindlist.html).
+  [`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html).
 - [`cite_bib()`](https://mlr3misc.mlr-org.com/dev/reference/format_bib.md)
   can now handle packages with multiple citation entries.
 - Added argument `wrap` to

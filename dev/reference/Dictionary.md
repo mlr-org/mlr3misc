@@ -18,9 +18,9 @@ constructors by passing them to `$add()`.
 
 - `as.data.table(d)`  
   Dictionary -\>
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)  
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)  
   Converts the dictionary to a
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html).
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html).
 
 ## Public fields
 

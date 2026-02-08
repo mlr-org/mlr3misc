@@ -19,7 +19,7 @@ topo_sort(nodes)
 
 - nodes:
 
-  ([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))  
+  ([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))  
   Has 2 columns:
 
   - `id` of type `character`, contains all node labels.
@@ -29,7 +29,7 @@ topo_sort(nodes)
 
 ## Value
 
-([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))
+([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))
 with columns `id`, `depth`, sorted topologically for IDs.
 
 ## Examples

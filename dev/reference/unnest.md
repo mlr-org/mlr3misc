@@ -14,8 +14,8 @@ unnest(x, cols, prefix = NULL)
 
 - x:
 
-  ([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))  
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  ([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))  
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   with columns to unnest.
 
 - cols:
@@ -31,7 +31,7 @@ unnest(x, cols, prefix = NULL)
 
 ## Value
 
-([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)).
+([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)).
 
 ## Examples
 

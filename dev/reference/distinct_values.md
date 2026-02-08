@@ -20,7 +20,7 @@ distinct_values(x, drop = TRUE, na_rm = TRUE)
   :: `logical(1)`  
   If `TRUE`, only returns values which are present in `x`. If `FALSE`,
   returns all levels for
-  [`factor()`](https://rdrr.io/r/base/factor.html) and
+  [`factor()`](https://rdrr.io/pkg/data.table/man/fctr.html) and
   [`ordered()`](https://rdrr.io/r/base/factor.html), as well as `TRUE`
   and `FALSE` for [`logical()`](https://rdrr.io/r/base/logical.html)s.
 

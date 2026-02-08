@@ -2,8 +2,8 @@
 
 Transposes a list of list, and turns it inside out, similar to the
 function
-[`transpose()`](https://rdatatable.gitlab.io/data.table/reference/transpose.html)
-in package [purrr](https://CRAN.R-project.org/package=purrr).
+[`transpose()`](https://rdrr.io/pkg/data.table/man/transpose.html) in
+package [purrr](https://CRAN.R-project.org/package=purrr).
 
 ## Usage
 

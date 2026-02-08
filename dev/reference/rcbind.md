@@ -1,7 +1,7 @@
 # Bind Columns by Reference
 
 Performs [`base::cbind()`](https://rdrr.io/r/base/cbind.html) on
-[data.tables](https://rdatatable.gitlab.io/data.table/reference/data.table.html),
+[data.tables](https://rdrr.io/pkg/data.table/man/data.table.html),
 possibly by reference.
 
 ## Usage
@@ -14,19 +14,19 @@ rcbind(x, y)
 
 - x:
 
-  ([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))  
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  ([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))  
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   to add columns to.
 
 - y:
 
-  ([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))  
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  ([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))  
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   to take columns from.
 
 ## Value
 
-([`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)):
+([`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)):
 Updated `x` .
 
 ## Examples

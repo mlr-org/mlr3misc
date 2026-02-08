@@ -4,7 +4,7 @@ Insert elements from `y` into `x` by name, or remove elements from `x`
 by name. Works for vectors, lists, environments and data frames and data
 tables. Objects with reference semantic
 ([`environment()`](https://rdrr.io/r/base/environment.html) and
-[`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))
+[`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))
 might be modified in-place.
 
 ## Usage
@@ -46,7 +46,7 @@ remove_named(x, nn)
   ([`vector()`](https://rdrr.io/r/base/vector.html) \|
   [`list()`](https://rdrr.io/r/base/list.html) \|
   [`environment()`](https://rdrr.io/r/base/environment.html) \|
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html))  
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))  
   Object to insert elements into, or remove elements from. Changes are
   by-reference for environments and data tables.
 

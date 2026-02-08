@@ -1,8 +1,8 @@
 # Cross-Join for data.table
 
 A safe version of
-[`data.table::CJ()`](https://rdatatable.gitlab.io/data.table/reference/J.html)
-in case a column is called `sorted` or `unique`.
+[`data.table::CJ()`](https://rdrr.io/pkg/data.table/man/J.html) in case
+a column is called `sorted` or `unique`.
 
 ## Usage
 
@@ -20,18 +20,16 @@ cross_join(dots, sorted = TRUE, unique = FALSE)
 - sorted:
 
   (`logical(1)`)  
-  See
-  [`data.table::CJ()`](https://rdatatable.gitlab.io/data.table/reference/J.html).
+  See [`data.table::CJ()`](https://rdrr.io/pkg/data.table/man/J.html).
 
 - unique:
 
   (`logical(1)`)  
-  See
-  [`data.table::CJ()`](https://rdatatable.gitlab.io/data.table/reference/J.html).
+  See [`data.table::CJ()`](https://rdrr.io/pkg/data.table/man/J.html).
 
 ## Value
 
-[`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html).
+[`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html).
 
 ## Examples
 

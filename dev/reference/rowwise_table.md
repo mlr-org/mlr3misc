@@ -25,12 +25,12 @@ rowwise_table(..., .key = NULL)
 
   (`character(1)`)  
   If not `NULL`, set the key via
-  [`data.table::setkeyv()`](https://rdatatable.gitlab.io/data.table/reference/setkey.html)
+  [`data.table::setkeyv()`](https://rdrr.io/pkg/data.table/man/setkey.html)
   after constructing the table.
 
 ## Value
 
-[`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html).
+[`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html).
 
 ## Examples
 

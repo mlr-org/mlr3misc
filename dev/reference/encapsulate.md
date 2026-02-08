@@ -109,7 +109,7 @@ encapsulate(
   before/after the function call.
 
 - `"log"`:
-  [`data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  [`data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   with columns `"class"` (ordered factor with levels `"output"`,
   `"warning"` and `"error"`) and `"message"`
   ([`character()`](https://rdrr.io/r/base/character.html)).
@@ -168,6 +168,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.697 
+#>   0.636 
 #> 
 ```

@@ -1,7 +1,8 @@
 # Convert to Factor
 
-Converts a vector to a [`factor()`](https://rdrr.io/r/base/factor.html)
-and ensures that levels are in the order of the provided levels.
+Converts a vector to a
+[`factor()`](https://rdrr.io/pkg/data.table/man/fctr.html) and ensures
+that levels are in the order of the provided levels.
 
 ## Usage
 

@@ -60,12 +60,12 @@ type-safe variants with the following suffixes:
   with [`base::cbind()`](https://rdrr.io/r/base/cbind.html).
 
 - `*_dtr()` returns a
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   where the results of `.f` are put together in an
   [`base::rbind()`](https://rdrr.io/r/base/cbind.html) fashion.
 
 - `*_dtc()` returns a
-  [`data.table::data.table()`](https://rdatatable.gitlab.io/data.table/reference/data.table.html)
+  [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   where the results of `.f` are put together in an
   [`base::cbind()`](https://rdrr.io/r/base/cbind.html) fashion.
 
@@ -169,13 +169,13 @@ pwalk(.x, .f, ...)
 
   (`logical(1)`)  
   Passed down to
-  [`data.table::rbindlist()`](https://rdatatable.gitlab.io/data.table/reference/rbindlist.html).
+  [`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html).
 
 - .idcol:
 
   (`logical(1)`)  
   Passed down to
-  [`data.table::rbindlist()`](https://rdatatable.gitlab.io/data.table/reference/rbindlist.html).
+  [`data.table::rbindlist()`](https://rdrr.io/pkg/data.table/man/rbindlist.html).
 
 - .p:
 
