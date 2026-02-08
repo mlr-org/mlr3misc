@@ -170,6 +170,13 @@ test_that("discard", {
   expect_list(out, len = 1L)
   expect_named(out, "b")
 
+  # list-level attributes are preserved (issue #148)
+  x = list(a = 1, b = "tree")
+  attr(x, "my_attr") = "some_value"
+  out = discard(x, is.numeric)
+  expect_identical(attr(out, "my_attr"), "some_value")
+  expect_identical(names(out), "b")
+
   x = iris
   out = discard(x, is.numeric)
   expect_data_frame(out, types = "factor")
