@@ -58,8 +58,8 @@ rd_format_packages = function(packages) {
   )
   link = packages %nin% base_pkgs
   str_collapse(sprintf("%s%s%s",
-    ifelse(link, "\\CRANpkg{", "'"),
+    fifelse(link, "\\CRANpkg{", "'"),
     packages,
-    ifelse(link, "}", "'")
+    fifelse(link, "}", "'")
   ))
 }
