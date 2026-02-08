@@ -152,7 +152,7 @@ if (requireNamespace("evaluate", quietly = TRUE)) {
 #> 1: output hi from f hi from f
 #> 
 #> $elapsed
-#> [1] 0.003
+#> [1] 0.002
 #> 
 
 if (requireNamespace("callr", quietly = TRUE)) {
@@ -168,6 +168,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>    0.62 
+#>   0.644 
 #> 
 ```
