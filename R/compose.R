@@ -22,8 +22,6 @@ compose = function(...) {
 
   function(...) {
     out = funs[[1L]](...)
-
-    out = funs[[1]](...)
     for (f in tail(funs, length(funs) - 1L)) {
       out = f(out)
     }
