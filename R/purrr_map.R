@@ -258,7 +258,12 @@ discard = function(.x, .p, ...) {
 #' @export
 discard.default = function(.x, .p, ...) { # nolint
   .sel = probe(.x, .p, ...)
-  .x[is.na(.sel) | !.sel]
+  out = .x[is.na(.sel) | !.sel]
+  # Preserve list-level attributes (subsetting with [ drops them)
+  attrs = attributes(.x)
+  attrs[["names"]] = names(out)
+  attributes(out) = attrs
+  out
 }
 
 #' @export
