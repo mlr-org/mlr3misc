@@ -165,7 +165,7 @@ If <code>method</code> is <code>"mirai"</code>, a daemon with the specified comp
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>(named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>) with four fields:</p><ul><li><p><code>"result"</code>: the return value of <code>.f</code></p></li>
 <li><p><code>"elapsed"</code>: elapsed time in seconds. Measured as <code><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time()</a></code> difference before/after the function call.</p></li>
-<li><p><code>"log"</code>: <code><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table()</a></code> with columns <code>"class"</code> (ordered factor with levels <code>"output"</code>, <code>"warning"</code> and <code>"error"</code>) and <code>"message"</code> (<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>).</p></li>
+<li><p><code>"log"</code>: <code><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table()</a></code> with columns <code>"class"</code> (ordered factor with levels <code>"output"</code>, <code>"warning"</code> and <code>"error"</code>) and <code>"condition"</code> (list of condition objects or <code>NULL</code>).</p></li>
 <li><p><code>"condition"</code>: the condition object if an error occurred, otherwise <code>NULL</code>.</p></li>
 </ul></div>
 
@@ -185,7 +185,7 @@ If <code>method</code> is <code>"mirai"</code>, a daemon with the specified comp
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2655087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $log</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Empty data.table (0 rows and 3 cols): class,msg,condition</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Empty data.table (0 rows and 2 cols): class,condition</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
@@ -198,9 +198,9 @@ If <code>method</code> is <code>"mirai"</code>, a daemon with the specified comp
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5668943</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $log</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     class       msg condition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;ord&gt;    &lt;char&gt;    &lt;list&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f hi from f</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     class condition</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;ord&gt;    &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.002</span>
@@ -213,13 +213,13 @@ If <code>method</code> is <code>"mirai"</code>, a daemon with the specified comp
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2655087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $log</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     class       msg condition</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;ord&gt;    &lt;char&gt;    &lt;list&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f hi from f</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     class condition</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;ord&gt;    &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1: output hi from f</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.644 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.632 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

@@ -111,8 +111,8 @@ encapsulate(
 - `"log"`:
   [`data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   with columns `"class"` (ordered factor with levels `"output"`,
-  `"warning"` and `"error"`) and `"message"`
-  ([`character()`](https://rdrr.io/r/base/character.html)).
+  `"warning"` and `"error"`) and `"condition"` (list of condition
+  objects or `NULL`).
 
 - `"condition"`: the condition object if an error occurred, otherwise
   `NULL`.
@@ -134,7 +134,7 @@ encapsulate("none", f, list(n = 1), .seed = 1)
 #> [1] 0.2655087
 #> 
 #> $log
-#> Empty data.table (0 rows and 3 cols): class,msg,condition
+#> Empty data.table (0 rows and 2 cols): class,condition
 #> 
 #> $elapsed
 #> [1] 0
@@ -147,9 +147,9 @@ if (requireNamespace("evaluate", quietly = TRUE)) {
 #> [1] 0.5668943
 #> 
 #> $log
-#>     class       msg condition
-#>     <ord>    <char>    <list>
-#> 1: output hi from f hi from f
+#>     class condition
+#>     <ord>    <list>
+#> 1: output hi from f
 #> 
 #> $elapsed
 #> [1] 0.002
@@ -162,12 +162,12 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> [1] 0.2655087
 #> 
 #> $log
-#>     class       msg condition
-#>     <ord>    <char>    <list>
-#> 1: output hi from f hi from f
+#>     class condition
+#>     <ord>    <list>
+#> 1: output hi from f
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.644 
+#>   0.632 
 #> 
 ```
