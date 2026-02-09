@@ -41,7 +41,7 @@
 #' @return (named `list()`) with four fields:
 #'   * `"result"`: the return value of `.f`
 #'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
-#'   * `"log"`: `data.table()` with columns `"class"` (ordered factor with levels `"output"`, `"warning"` and `"error"`) and `"message"` (`character()`).
+#'   * `"log"`: `data.table()` with columns `"class"` (ordered factor with levels `"output"`, `"warning"` and `"error"`) and `"condition"` (list of condition objects or `NULL`).
 #'   * `"condition"`: the condition object if an error occurred, otherwise `NULL`.
 #' @export
 #' @examples
@@ -89,7 +89,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
           x
         }
         # try only catches error, warnings and messages are output
-        log = data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition))
+        log = data.table(class = "error", condition = list(condition))
         result = NULL
       }
     }
@@ -182,7 +182,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       if (inherits(condition, "callr_timeout_error")) {
         condition = error_timeout(signal = FALSE)
       }
-      log = rbind(log, data.table(class = "error", msg = condition_to_msg(condition), condition = list(condition)))
+      log = rbind(log, data.table(class = "error", condition = list(condition)))
       result = NULL
     } else {
       if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
@@ -192,7 +192,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   }
 
   if (is.null(log)) {
-    log = data.table(class = character(), msg = character(), condition = list())
+    log = data.table(class = character(), condition = list())
   }
   if (nrow(log)) {
     # classes for messages are not really useful, so we save some memory
@@ -213,42 +213,31 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 parse_evaluate = function(log) {
   extract = function(x) {
     if (inherits(x, "message")) {
-      return(list(class = "output", msg = trimws(x$message), condition = list(x)))
+      return(list(class = "output", condition = list(x)))
     }
     if (inherits(x, "warning")) {
-      return(list(class = "warning", msg = trimws(x$message), condition = list(x)))
+      return(list(class = "warning", condition = list(x)))
     }
     if (inherits(x, "error")) {
       if (grepl("reached elapsed time limit", x$message, fixed = TRUE)) {
         x = error_timeout(signal = FALSE)
       }
-      return(list(class = "error", msg = trimws(x$message), condition = list(x)))
+      return(list(class = "error", condition = list(x)))
     }
     if (inherits(x, "recordedplot")) {
       return(NULL)
     }
-    return(list(class = "output", msg = trimws(x), condition = NULL))
+    return(list(class = "output", condition = NULL))
   }
 
   log = map_dtr(log[-1L], extract)
   if (ncol(log) == 0L) NULL else log
 }
 
-parse_callr = function(log) {
-  if (length(log) == 0L) {
-    return(NULL)
-  }
-
-  log = data.table(class = "output", msg = log, condition = list(NULL))
-  parse_line = function(x) trimws(gsub("<br>", "\n", substr(x, 7L, nchar(x)), fixed = TRUE))
-  log[startsWith(get("msg"), "[WRN] "), c("class", "msg") := list("warning", parse_line(get("msg")))]
-  log[startsWith(get("msg"), "[ERR] "), c("class", "msg") := list("error", parse_line(get("msg")))]
-  log[]
-}
 
 conditions_to_log = function(conditions) {
   if (is.null(conditions)) {
-    return(data.table(class = character(), msg = character(), condition = list()))
+    return(data.table(class = character(), condition = list()))
   }
   cls <- function(x) {
     if (inherits(x, "error")) {
@@ -262,23 +251,9 @@ conditions_to_log = function(conditions) {
     }
   }
   log = map_dtr(conditions, function(x) {
-    list(class = cls(x), msg = condition_to_msg(x), condition = list(x))
+    list(class = cls(x), condition = list(x))
   })
   log
-}
-
-condition_to_msg <- function(x) {
-  if (inherits(x, "errorValue")) {
-    return(paste0("[ERR] ", capture.output(x)))
-  }
-  msg = trimws(conditionMessage(x))
-  if (inherits(x, "conditionError")) {
-    return(paste0("[ERR] ", msg))
-  }
-  if (inherits(x, "conditionWarning")) {
-    return(paste0("[WRN] ", msg))
-  }
-  return(msg)
 }
 
 callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {

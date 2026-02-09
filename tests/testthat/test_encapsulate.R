@@ -11,14 +11,15 @@ test_that("encapsulation works", {
     log = res$log
     expect_identical(res$result, 1L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(res$log, ncols = 3)
+    expect_data_table(res$log, ncols = 2)
+    expect_names(names(log), permutation.of = c("class", "condition"))
   }
 })
 
 test_that("messages and warnings are logged", {
   fun = function() {
     message("foo")
-    warning("bar\nfoobar")
+    warning(warningCondition("test", class = "WarningTest"))
     return(99L)
   }
 
@@ -31,18 +32,18 @@ test_that("messages and warnings are logged", {
     log = res$log
     expect_identical(res$result, 99L)
     expect_number(res$elapsed, lower = 0)
-    expect_data_table(log, ncols = 3)
+    expect_data_table(log, ncols = 2)
     expect_set_equal(as.character(log$class), c("output", "warning"))
-    expect_true(log[class == "warning", grepl("\n", msg, fixed = TRUE)])
+    expect_class(log$condition[log$class == "warning"][[1]], "WarningTest")
   }
 })
 
 test_that("errors are logged", {
   fun = function() {
-    stop(simpleError("foo"))
+    stop(errorCondition("foo", class = "ErrorTest"))
   }
 
-  for (method in c("evaluate", "callr", "mirai")) {
+  for (method in c("evaluate", "callr", "mirai", "try")) {
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }
@@ -50,14 +51,14 @@ test_that("errors are logged", {
     res = encapsulate(method, fun)
     expect_null(res$result)
     expect_equal(as.character(res$log$class), "error")
-    expect_match(res$log$msg, "foo")
+    expect_class(res$log$condition[[1]], "ErrorTest")
   }
 })
 
 test_that("segfaults are logged", {
   fun = function() {
-   tools::pskill(Sys.getpid())
-   1L
+    tools::pskill(Sys.getpid())
+    1L
   }
 
   for (method in c("callr", "mirai")) {
@@ -84,17 +85,17 @@ test_that("timeout", {
   res = encapsulate("evaluate", .f = f, .args = list(x = 1), .timeout = 1)
   expect_null(res$result)
   expect_true("error" %in% res$log$class)
-  expect_match(res$log$msg, "time limit", fixed = TRUE)
+  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
 
   res = encapsulate("callr", .f = f, .args = list(x = 1), .timeout = 1)
   expect_null(res$result)
   expect_true("error" %in% res$log$class)
-  expect_match(res$log$msg, "time limit", fixed = TRUE)
+  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
 
   res = encapsulate("mirai", .f = f, .args = list(x = 1), .timeout = 1)
   expect_null(res$result)
   expect_true("error" %in% res$log$class)
-  expect_match(res$log$msg, "time limit", fixed = TRUE)
+  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
 })
 
 test_that("try", {
