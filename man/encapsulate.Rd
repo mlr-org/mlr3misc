@@ -48,7 +48,7 @@ If \code{method} is \code{"mirai"}, a daemon with the specified compute profile 
 \itemize{
 \item \code{"result"}: the return value of \code{.f}
 \item \code{"elapsed"}: elapsed time in seconds. Measured as \code{\link[=proc.time]{proc.time()}} difference before/after the function call.
-\item \code{"log"}: \code{data.table()} with columns \code{"class"} (ordered factor with levels \code{"output"}, \code{"warning"} and \code{"error"}) and \code{"message"} (\code{character()}).
+\item \code{"log"}: \code{data.table()} with columns \code{"class"} (ordered factor with levels \code{"output"}, \code{"warning"} and \code{"error"}) and \code{"condition"} (list of condition objects or \code{NULL}).
 \item \code{"condition"}: the condition object if an error occurred, otherwise \code{NULL}.
 }
 }
