@@ -18,9 +18,7 @@ test_that("warn_deprecated respects option", {
   rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db)
   on.exit(rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db))
 
-  withr::with_options(list(mlr3.warn_deprecated = FALSE), {
-    expect_silent(warn_deprecated("TestClass$baz()"))
-  })
+  expect_silent(invoke(warn_deprecated, "TestClass$baz()", .opts = list(mlr3.warn_deprecated = FALSE)))
 })
 
 test_that("deprecated_binding works in R6 class", {
