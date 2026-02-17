@@ -27,6 +27,7 @@
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/count_missing.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/crate.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/cross_join.html</loc></url>
+<url><loc>https://mlr3misc.mlr-org.com/dev/reference/deprecated_binding.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/dictionary_sugar_get.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/dictionary_sugar_inc_get.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/did_you_mean.html</loc></url>
@@ -80,6 +81,7 @@
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/topo_sort.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/transpose_list.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/unnest.html</loc></url>
+<url><loc>https://mlr3misc.mlr-org.com/dev/reference/warn_deprecated.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/which_min.html</loc></url>
 <url><loc>https://mlr3misc.mlr-org.com/dev/reference/with_package.html</loc></url>
 </urlset>

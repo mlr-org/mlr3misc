@@ -55,5 +55,5 @@ distinct_values(TRUE, drop = FALSE)
 
 # for numerics:
 distinct_values(sample(1:3, 10, replace = TRUE))
-#> [1] 1 3 2
+#> [1] 3 1 2
 ```
