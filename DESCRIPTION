@@ -108,6 +108,7 @@ Collate:
     'topo_sort.R'
     'transpose.R'
     'unnest.R'
+    'warn_deprecated.R'
     'which_max.R'
     'with_package.R'
     'zzz.R'
