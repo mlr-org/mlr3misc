@@ -54,6 +54,7 @@ rbindlist2 = function(values) {
     }
 
     # wrap non-atomics or multi-element atomics into an extra list
+    browser()
     ii = which(!map_lgl(row, is.atomic) | lengths(row) > 1L)
     if (length(ii)) {
       row[ii] = lapply(row[ii], list)
