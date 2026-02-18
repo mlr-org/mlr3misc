@@ -53,8 +53,8 @@ rbindlist2 = function(values) {
       return(list("__rbindlist2_dummy__" = NA))
     }
 
-    # wrap non-atomics into an extra list
-    ii = which(!map_lgl(row, is.atomic))
+    # wrap non-atomics or multi-element atomics into an extra list
+    ii = which(!map_lgl(row, is.atomic) | lengths(row) > 1L)
     if (length(ii)) {
       row[ii] = lapply(row[ii], list)
     }
