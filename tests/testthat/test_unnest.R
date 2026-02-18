@@ -49,6 +49,17 @@ test_that("unnest with nested lists", {
   expect_list(tab$aggr, "function", any.missing = FALSE)
 })
 
+test_that("unnest with vector-valued elements", {
+  x = data.table(id = 1:2, x = list(list(a = 1, b = c(2, 1)), list(a = 3, b = c(4, 5))))
+  x = unnest(x, "x")
+  expect_data_table(x, ncols = 3, nrows = 2)
+  expect_null(x$x)
+  expect_equal(x$a, c(1, 3))
+  expect_list(x$b)
+  expect_equal(x$b[[1L]], c(2, 1))
+  expect_equal(x$b[[2L]], c(4, 5))
+})
+
 test_that("prefix with placeholder", {
   x = data.table(
     id = 1:2,
