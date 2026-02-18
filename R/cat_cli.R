@@ -14,5 +14,6 @@
 #'   cli::cli_li(c("x", "y"))
 #' })
 cat_cli = function(expr) {
+  stop("Error in cat_cli")
   cat(cli::cli_format_method(expr), sep = "\n")
 }
