@@ -21,7 +21,7 @@ Whether to insert the values (old values are being kept, if not overwritten), or
 old values. Is TRUE by default.}
 }
 \description{
-Convenience function to modfiy (or overwrite) the values of a \link[paradox:ParamSet]{paradox::ParamSet}.
+Convenience function to modify (or overwrite) the values of a \link[paradox:ParamSet]{paradox::ParamSet}.
 }
 \examples{
 if (requireNamespace("paradox")) {

@@ -10,8 +10,7 @@
 #' * `error_mlr3()` for the base `Mlr3Error` class.
 #' * `error_config()` for the `Mlr3ErrorConfig` class, which signals that a user has misconfigured
 #'   something (e.g. invalid learner configuration).
-#' * `error_input()` for the `Mlr3ErrorInput` if an invalid input was provided.
-#'   method.
+#' * `error_input()` for the `Mlr3ErrorInput` class, which signals that an invalid input was provided.
 #' * `error_timeout()` for the `Mlr3ErrorTimeout`, signalling a timeout (encapsulation).
 #' * `error_learner()` for the `Mlr3ErrorLearner`, signalling a learner error.
 #' * `error_learner_train()` for the `Mlr3ErrorLearner`, signalling a learner training error.
@@ -30,7 +29,7 @@
 #' @param class (`character`)\cr
 #'   Additional class(es).
 #' @param signal (`logical(1)`)\cr
-#'   If `TRUE`, the condition object is returned.
+#'   If `FALSE`, the condition object is returned instead of being signaled.
 #' @export
 error_config = function(msg, ..., class = NULL, signal = TRUE) {
   error_mlr3(msg, ..., class = "Mlr3ErrorConfig", signal = signal)

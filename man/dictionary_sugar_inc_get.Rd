@@ -29,7 +29,7 @@ Keys of the objects to construct - possibly with suffixes of the form \verb{_<n>
 An element from the dictionary.
 }
 \description{
-Covenience wrapper around \link{dictionary_sugar_get} and \link{dictionary_sugar_mget} to allow easier avoidance of ID
+Convenience wrapper around \link{dictionary_sugar_get} and \link{dictionary_sugar_mget} to allow easier avoidance of ID
 clashes which is useful when the same object is used multiple times and the ids have to be unique.
 Let \verb{<key>} be the key of the object to retrieve. When passing the \verb{<key>_<n>} to this
 function, where \verb{<n>} is any natural number, the object with key \verb{<key>} is retrieved and the

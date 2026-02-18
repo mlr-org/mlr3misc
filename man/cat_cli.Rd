@@ -8,7 +8,7 @@ cat_cli(expr)
 }
 \arguments{
 \item{expr}{(\code{any})\cr
-Expression that calls \verb{cli_*} methods, \code{\link[base:cat]{base::cat()}} or\code{\link[base:print]{base::print()}} to format an object's printout.}
+Expression that calls \verb{cli_*} methods, \code{\link[base:cat]{base::cat()}} or \code{\link[base:print]{base::print()}} to format an object's printout.}
 }
 \description{
 Wrapper around \code{\link[cli:cli_format_method]{cli::cli_format_method()}}.

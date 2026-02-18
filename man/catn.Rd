@@ -15,7 +15,7 @@ Passed to \code{\link[base:cat]{base::cat()}}.}
 }
 \description{
 Wrapper around \code{\link[base:cat]{base::cat()}} with a line break.
-Elements are converted to character and concatenate with \code{\link[base:paste]{base::paste0()}}.
+Elements are converted to character and concatenated with \code{\link[base:paste]{base::paste0()}}.
 If a vector is passed, elements are collapsed with line breaks.
 }
 \examples{

@@ -10,7 +10,7 @@
 #' @param quote (`character()`)\cr
 #'   Quotes to use around each element of `x`.
 #'
-#'   Will be replicated to lenght 2.
+#'   Will be replicated to length 2.
 #' @param n (`integer(1)`)\cr
 #'   Number of elements to keep from `x`. See [utils::head()].
 #' @param ellipsis (`character(1)`)\cr

@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Packages are loaded (not attached) via [base::requireNamespace()].
-#' If at least on package can not be loaded, an exception of class "packageNotFoundError" is raised.
+#' If at least one package can not be loaded, an exception of class "packageNotFoundError" is raised.
 #' The character vector of missing packages is stored in the condition as `packages`.
 #'
 #' @param pkgs (`character()`)\cr

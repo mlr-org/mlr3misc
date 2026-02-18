@@ -10,8 +10,6 @@
 #'   Right-hand side of formula. Multiple elements will be collapsed with `" + "`.
 #' @param env (`environment()`)\cr
 #'   Environment for the new formula. Defaults to `NULL`.
-#' @param env (`environment()`)\cr
-#'   Environment for the new formula. Defaults to `NULL`.
 #' @param quote (`character(1)`)\cr
 #'   Which side of the formula to quote?
 #'   Subset of `("left", "right")`, defaulting to `"right"`.

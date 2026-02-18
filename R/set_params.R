@@ -1,6 +1,6 @@
 #' @title Modify Values of a Parameter Set
 #'
-#' @description Convenience function to modfiy (or overwrite) the values of a [paradox::ParamSet].
+#' @description Convenience function to modify (or overwrite) the values of a [paradox::ParamSet].
 #'
 #' @param .ps ([paradox::ParamSet])\cr
 #'   The parameter set whose values are changed.

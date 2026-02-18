@@ -3,7 +3,7 @@
 #' @description
 #' Composes two or more functions into a single function.
 #' The returned function calls all provided functions in reverse order:
-#' The return value of the last function servers as input
+#' The return value of the last function serves as input
 #' for the next to last function, and so on.
 #'
 #' @param ... (`functions`)\cr

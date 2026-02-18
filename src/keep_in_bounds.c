@@ -13,7 +13,7 @@ SEXP c_keep_in_bounds(SEXP s_in, SEXP s_lower, SEXP s_upper) {
     for (i = 0; i < n; i++)
         if (x[i] != NA_INTEGER && x[i] >= ll && x[i] <= lu) count++;
 
-    // if all ok, immediatly return without alloc and copy
+    // if all ok, immediately return without alloc and copy
     if (count == n) return(s_in);
 
     // create a new vector to store the filtered elements

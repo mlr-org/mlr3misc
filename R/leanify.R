@@ -12,7 +12,7 @@
 #' 1) it is incorrect and
 #' 2) srcrefs can lead to exploding object sizes.
 #'
-#' However, because `roxgyen2` needs the srcrefs to create the documentation for R6 classes, leanification
+#' However, because `roxygen2` needs the srcrefs to create the documentation for R6 classes, leanification
 #' is skipped during `roxygenize()`, i.e. when the `ROXYGEN_PKG` environment variable is set.
 #'
 #' @param cls (`R6ClassGenerator`)\cr

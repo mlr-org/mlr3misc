@@ -12,7 +12,7 @@
 #' [`globalCallingHandlers`].
 #'
 #' When a function throws such a condition that the user might want to disable,
-#' a section *Errors and Warnings* should be included in the function documention,
+#' a section *Errors and Warnings* should be included in the function documentation,
 #' describing the condition and its class.
 #'
 #' @details

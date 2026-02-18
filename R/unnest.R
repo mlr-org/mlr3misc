@@ -3,7 +3,7 @@
 #' @description
 #' Transforms list columns to separate columns, possibly by reference.
 #' The original columns are removed from the returned table.
-#' All non-atomic objects in the list columns are expand to new list column.
+#' All non-atomic objects in the list columns are expanded to new list columns.
 #'
 #' @param x ([data.table::data.table()])\cr
 #'   [data.table::data.table()] with columns to unnest.

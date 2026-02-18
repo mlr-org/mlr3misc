@@ -19,7 +19,7 @@
 #' library(data.table)
 #' library(R6)
 #'
-#' # data table with column x an y
+#' # data table with column x and y
 #' data = data.table(x = runif(10), y = sample(c("A", "B"), 10, replace = TRUE))
 #'
 #' # context only allows to access column y

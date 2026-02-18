@@ -54,7 +54,7 @@ If \code{method} is \code{"mirai"}, a daemon with the specified compute profile 
 }
 \description{
 Evaluates a function while both recording an output log and measuring the elapsed time.
-There are currently three different modes implemented to encapsulate a function call:
+There are currently five different modes implemented to encapsulate a function call:
 \itemize{
 \item \code{"none"}: Just runs the call in the current session and measures the elapsed time.
 Does not keep a log, output is printed directly to the console.
@@ -64,7 +64,7 @@ not logged.
 \item \code{"evaluate"}: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
 \item \code{"callr"}: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
 This encapsulation spawns a separate R session in which the function is called.
-While this comes with a considerable overhead, it also guards your session from being teared down by segfaults.
+While this comes with a considerable overhead, it also guards your session from being torn down by segfaults.
 \item \code{"mirai"}: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
 This encapsulation calls the function in a \code{mirai} on a \code{daemon}.
 The \code{daemon} can be pre-started via \code{daemons(1)}, otherwise a new R session will be created for each encapsulated call.

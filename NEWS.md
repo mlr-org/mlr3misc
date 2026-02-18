@@ -13,7 +13,7 @@
 
 * feat: `as_callbacks()` returns a list named by the callback ids now.
 * feat: Added logical operators `%check&&%` and `%check||%` for `check_*`-functions from `checkmate` (moved here from `mlr3pipelines`).
-* feta: Added helper `cat_cli()`.
+* feat: Added helper `cat_cli()`.
 * fix: Default `dicts_suggest = NULL` for `dictionary_get_item()` and `dictionary_retrieve_item()` for backward compatibility.
 * fix: Wrong assert in `dictionary_sugar_inc_get`.
 * feat: Functions `warningf()` and `stopf()` now have a `class` argument and also add the additional class `mlr3warning` and `mlr3error`, respectively.
@@ -31,7 +31,7 @@
 
 # mlr3misc 0.15.0
 
-* Feat: Added `strip_screfs` S3 generic, which removes source references from objects
+* Feat: Added `strip_srcrefs` S3 generic, which removes source references from objects
 * The RNG state is now copied to the callr session when using `encapsulate()`.
 
 # mlr3misc 0.14.0
@@ -110,7 +110,7 @@ compilation of functions when changing their enclosing environment
 
 * Make more map functions work nicely with data frames and data tables.
 * `formulate()` now supports multiple LHS terms.
-* Added `format_bib()` and `cite_bib()` helpers for working with bibentires and
+* Added `format_bib()` and `cite_bib()` helpers for working with bibentries and
   roxygen2.
 
 # mlr3misc 0.6.0

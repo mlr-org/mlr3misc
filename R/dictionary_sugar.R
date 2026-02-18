@@ -137,7 +137,7 @@ fields = function(x) {
 #' @title A Quick Way to Initialize Objects from Dictionaries with Incremented ID
 #'
 #' @description
-#' Covenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of ID
+#' Convenience wrapper around [dictionary_sugar_get] and [dictionary_sugar_mget] to allow easier avoidance of ID
 #' clashes which is useful when the same object is used multiple times and the ids have to be unique.
 #' Let `<key>` be the key of the object to retrieve. When passing the `<key>_<n>` to this
 #' function, where `<n>` is any natural number, the object with key `<key>` is retrieved and the
