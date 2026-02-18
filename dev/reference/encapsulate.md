@@ -1,7 +1,7 @@
 # Encapsulate Function Calls for Logging
 
 Evaluates a function while both recording an output log and measuring
-the elapsed time. There are currently three different modes implemented
+the elapsed time. There are currently five different modes implemented
 to encapsulate a function call:
 
 - `"none"`: Just runs the call in the current session and measures the
@@ -21,7 +21,7 @@ to encapsulate a function call:
   function, measure time and do the logging. This encapsulation spawns a
   separate R session in which the function is called. While this comes
   with a considerable overhead, it also guards your session from being
-  teared down by segfaults.
+  torn down by segfaults.
 
 - `"mirai"`: Uses the package
   [mirai](https://CRAN.R-project.org/package=mirai) to call the
@@ -137,7 +137,7 @@ encapsulate("none", f, list(n = 1), .seed = 1)
 #> Empty data.table (0 rows and 2 cols): class,condition
 #> 
 #> $elapsed
-#> [1] 0.001
+#> [1] 0
 #> 
 
 if (requireNamespace("evaluate", quietly = TRUE)) {
@@ -152,7 +152,7 @@ if (requireNamespace("evaluate", quietly = TRUE)) {
 #> 1: output hi from f
 #> 
 #> $elapsed
-#> [1] 0.002
+#> [1] 0.003
 #> 
 
 if (requireNamespace("callr", quietly = TRUE)) {
@@ -168,6 +168,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.657 
+#>   0.637 
 #> 
 ```

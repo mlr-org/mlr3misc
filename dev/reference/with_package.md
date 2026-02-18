@@ -1,4 +1,4 @@
-# Execture code with a modified search path
+# Execute code with a modified search path
 
 Attaches a package to the search path (if not already attached),
 executes code and eventually removes the package from the search path

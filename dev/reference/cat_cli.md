@@ -17,8 +17,8 @@ cat_cli(expr)
 
   (`any`)  
   Expression that calls `cli_*` methods,
-  [`base::cat()`](https://rdrr.io/r/base/cat.html)
-  or[`base::print()`](https://rdrr.io/r/base/print.html) to format an
+  [`base::cat()`](https://rdrr.io/r/base/cat.html) or
+  [`base::print()`](https://rdrr.io/r/base/print.html) to format an
   object's printout.
 
 ## Examples

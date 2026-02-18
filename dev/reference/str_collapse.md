@@ -25,7 +25,7 @@ str_collapse(str, sep = ", ", quote = character(), n = Inf, ellipsis = "[...]")
   ([`character()`](https://rdrr.io/r/base/character.html))  
   Quotes to use around each element of `x`.
 
-  Will be replicated to lenght 2.
+  Will be replicated to length 2.
 
 - n:
 

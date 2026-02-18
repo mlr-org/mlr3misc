@@ -48,7 +48,7 @@ rd_format_packages(packages)
   ([`character()`](https://rdrr.io/r/base/character.html))  
   Quotes to use around each element of `x`.
 
-  Will be replicated to lenght 2.
+  Will be replicated to length 2.
 
 - packages:
 

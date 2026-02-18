@@ -1,6 +1,6 @@
 # A Quick Way to Initialize Objects from Dictionaries with Incremented ID
 
-Covenience wrapper around
+Convenience wrapper around
 [dictionary_sugar_get](https://mlr3misc.mlr-org.com/dev/reference/dictionary_sugar_get.md)
 and
 [dictionary_sugar_mget](https://mlr3misc.mlr-org.com/dev/reference/dictionary_sugar_get.md)

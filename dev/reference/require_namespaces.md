@@ -2,7 +2,7 @@
 
 Packages are loaded (not attached) via
 [`base::requireNamespace()`](https://rdrr.io/r/base/ns-load.html). If at
-least on package can not be loaded, an exception of class
+least one package can not be loaded, an exception of class
 "packageNotFoundError" is raised. The character vector of missing
 packages is stored in the condition as `packages`.
 

@@ -235,7 +235,7 @@ construction.
 
 ### Method [`remove()`](https://rdrr.io/r/base/rm.html)
 
-Removes objects with from the dictionary.
+Removes objects from the dictionary.
 
 #### Usage
 

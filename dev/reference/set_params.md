@@ -1,6 +1,6 @@
 # Modify Values of a Parameter Set
 
-Convenience function to modfiy (or overwrite) the values of a
+Convenience function to modify (or overwrite) the values of a
 [paradox::ParamSet](https://paradox.mlr-org.com/reference/ParamSet.html).
 
 ## Usage

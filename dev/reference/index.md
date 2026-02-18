@@ -219,4 +219,4 @@
   [`which_max()`](https://mlr3misc.mlr-org.com/dev/reference/which_min.md)
   : Index of the Minimum/Maximum Value, with Correction for Ties
 - [`with_package()`](https://mlr3misc.mlr-org.com/dev/reference/with_package.md)
-  : Execture code with a modified search path
+  : Execute code with a modified search path

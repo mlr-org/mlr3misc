@@ -68,7 +68,7 @@ suppress selective conditions via calling handlers, see e.g.
 
 When a function throws such a condition that the user might want to
 disable, a section *Errors and Warnings* should be included in the
-function documention, describing the condition and its class.
+function documentation, describing the condition and its class.
 
 ## Examples
 

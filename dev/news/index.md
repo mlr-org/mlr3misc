@@ -29,7 +29,7 @@ CRAN release: 2025-05-12
 - feat: Added logical operators `%check&&%` and `%check||%` for
   `check_*`-functions from `checkmate` (moved here from
   `mlr3pipelines`).
-- feta: Added helper
+- feat: Added helper
   [`cat_cli()`](https://mlr3misc.mlr-org.com/dev/reference/cat_cli.md).
 - fix: Default `dicts_suggest = NULL` for `dictionary_get_item()` and
   `dictionary_retrieve_item()` for backward compatibility.
@@ -67,8 +67,8 @@ CRAN release: 2024-06-24
 
 CRAN release: 2024-04-10
 
-- Feat: Added `strip_screfs` S3 generic, which removes source references
-  from objects
+- Feat: Added `strip_srcrefs` S3 generic, which removes source
+  references from objects
 - The RNG state is now copied to the callr session when using
   [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md).
 
@@ -216,7 +216,7 @@ CRAN release: 2021-01-05
   [`format_bib()`](https://mlr3misc.mlr-org.com/dev/reference/format_bib.md)
   and
   [`cite_bib()`](https://mlr3misc.mlr-org.com/dev/reference/format_bib.md)
-  helpers for working with bibentires and roxygen2.
+  helpers for working with bibentries and roxygen2.
 
 ## mlr3misc 0.6.0
 

@@ -46,7 +46,8 @@ error_learner_predict(msg, ..., class = NULL, signal = TRUE)
 - signal:
 
   (`logical(1)`)  
-  If `TRUE`, the condition object is returned.
+  If `FALSE`, the condition object is returned instead of being
+  signaled.
 
 ## Formatting
 
@@ -60,8 +61,8 @@ It is also possible to use formatting options as defined in
 - `error_config()` for the `Mlr3ErrorConfig` class, which signals that a
   user has misconfigured something (e.g. invalid learner configuration).
 
-- `error_input()` for the `Mlr3ErrorInput` if an invalid input was
-  provided. method.
+- `error_input()` for the `Mlr3ErrorInput` class, which signals that an
+  invalid input was provided.
 
 - `error_timeout()` for the `Mlr3ErrorTimeout`, signalling a timeout
   (encapsulation).

@@ -1,8 +1,8 @@
 # Convert R Object to a Descriptive String
 
-This function is intended to be convert any R object to a short
-descriptive string, e.g. in
-[`base::print()`](https://rdrr.io/r/base/print.html) functions.
+This function is intended to convert any R object to a short descriptive
+string, e.g. in [`base::print()`](https://rdrr.io/r/base/print.html)
+functions.
 
 The following rules apply:
 

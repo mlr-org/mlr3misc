@@ -96,7 +96,7 @@ Additional class(es).</p></dd>
 
 <dt id="arg-signal">signal<a class="anchor" aria-label="anchor" href="#arg-signal"></a></dt>
 <dd><p>(<code>logical(1)</code>)<br>
-If <code>TRUE</code>, the condition object is returned.</p></dd>
+If <code>FALSE</code>, the condition object is returned instead of being signaled.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -112,8 +112,7 @@ If <code>TRUE</code>, the condition object is returned.</p></dd>
 <ul><li><p><code>error_mlr3()</code> for the base <code>Mlr3Error</code> class.</p></li>
 <li><p><code>error_config()</code> for the <code>Mlr3ErrorConfig</code> class, which signals that a user has misconfigured
 something (e.g. invalid learner configuration).</p></li>
-<li><p><code>error_input()</code> for the <code>Mlr3ErrorInput</code> if an invalid input was provided.
-method.</p></li>
+<li><p><code>error_input()</code> for the <code>Mlr3ErrorInput</code> class, which signals that an invalid input was provided.</p></li>
 <li><p><code>error_timeout()</code> for the <code>Mlr3ErrorTimeout</code>, signalling a timeout (encapsulation).</p></li>
 <li><p><code>error_learner()</code> for the <code>Mlr3ErrorLearner</code>, signalling a learner error.</p></li>
 <li><p><code>error_learner_train()</code> for the <code>Mlr3ErrorLearner</code>, signalling a learner training error.</p></li>
