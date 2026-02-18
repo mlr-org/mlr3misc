@@ -45,7 +45,7 @@ Passed to \code{\link[=sprintf]{sprintf()}}.}
 Additional class(es).}
 
 \item{signal}{(\code{logical(1)})\cr
-If \code{TRUE}, the condition object is returned.}
+If \code{FALSE}, the condition object is returned instead of being signaled.}
 }
 \description{
 Condition classes for mlr3.
@@ -61,8 +61,7 @@ It is also possible to use formatting options as defined in \code{\link[cli:cli_
 \item \code{error_mlr3()} for the base \code{Mlr3Error} class.
 \item \code{error_config()} for the \code{Mlr3ErrorConfig} class, which signals that a user has misconfigured
 something (e.g. invalid learner configuration).
-\item \code{error_input()} for the \code{Mlr3ErrorInput} if an invalid input was provided.
-method.
+\item \code{error_input()} for the \code{Mlr3ErrorInput} class, which signals that an invalid input was provided.
 \item \code{error_timeout()} for the \code{Mlr3ErrorTimeout}, signalling a timeout (encapsulation).
 \item \code{error_learner()} for the \code{Mlr3ErrorLearner}, signalling a learner error.
 \item \code{error_learner_train()} for the \code{Mlr3ErrorLearner}, signalling a learner training error.

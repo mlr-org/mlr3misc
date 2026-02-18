@@ -2,7 +2,7 @@
 % Please edit documentation in R/with_package.R
 \name{with_package}
 \alias{with_package}
-\title{Execture code with a modified search path}
+\title{Execute code with a modified search path}
 \usage{
 with_package(package, code, ...)
 }

@@ -1,4 +1,4 @@
-#' @title Execture code with a modified search path
+#' @title Execute code with a modified search path
 #'
 #' @description
 #' Attaches a package to the search path (if not already attached), executes code and

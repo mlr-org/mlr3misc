@@ -148,7 +148,7 @@ Dictionary = R6::R6Class("Dictionary",
     },
 
     #' @description
-    #' Removes objects with from the dictionary.
+    #' Removes objects from the dictionary.
     #'
     #' @param keys (`character()`)\cr
     #' Keys of objects to remove.

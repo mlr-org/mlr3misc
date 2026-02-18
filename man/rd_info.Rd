@@ -34,7 +34,7 @@ Vector of strings.}
 \item{quote}{(\code{character()})\cr
 Quotes to use around each element of \code{x}.
 
-Will be replicated to lenght 2.}
+Will be replicated to length 2.}
 
 \item{packages}{(\code{character()})\cr
 Vector of package names.}

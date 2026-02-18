@@ -16,7 +16,7 @@ String used to collapse the elements of \code{x}.}
 \item{quote}{(\code{character()})\cr
 Quotes to use around each element of \code{x}.
 
-Will be replicated to lenght 2.}
+Will be replicated to length 2.}
 
 \item{n}{(\code{integer(1)})\cr
 Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}

@@ -223,7 +223,7 @@ Can be used when objects have construction arguments without defaults.}
 \if{html}{\out{<a id="method-Dictionary-remove"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-remove}{}}}
 \subsection{Method \code{remove()}}{
-Removes objects with from the dictionary.
+Removes objects from the dictionary.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Dictionary$remove(keys)}\if{html}{\out{</div>}}
 }

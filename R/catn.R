@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Wrapper around [base::cat()] with a line break.
-#' Elements are converted to character and concatenate with [base::paste0()].
+#' Elements are converted to character and concatenated with [base::paste0()].
 #' If a vector is passed, elements are collapsed with line breaks.
 #'
 #' @param ... (`any`)\cr

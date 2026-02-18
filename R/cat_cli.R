@@ -5,7 +5,7 @@
 #' Uses [base::cat()] to transform the printout from a message to an output with a line break.
 #'
 #' @param expr (`any`)\cr
-#'   Expression that calls `cli_*` methods, [base::cat()] or[base::print()] to format an object's printout.
+#'   Expression that calls `cli_*` methods, [base::cat()] or [base::print()] to format an object's printout.
 #'
 #' @export
 #' @examples

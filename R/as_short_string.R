@@ -1,7 +1,7 @@
 #' @title Convert R Object to a Descriptive String
 #'
 #' @description
-#' This function is intended to be convert any R object to a short descriptive string,
+#' This function is intended to convert any R object to a short descriptive string,
 #' e.g. in [base::print()] functions.
 #'
 #' The following rules apply:
