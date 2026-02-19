@@ -1,5 +1,11 @@
 # mlr3misc (development version)
 
+* fix: `unnest()` now works with vector-valued elements.
+* feat: Add `warn_deprecated()`.
+* BREAKING CHANGE: Remove `"msg"` column from encapsulate logs.
+* fix: `discard()` no longer removes attributes.
+* perf: Use `data.table::fifelse()` instead of `ifelse()`.
+
 # mlr3misc 0.19.0
 
 * feat: Added various new functions for improved error handling.
