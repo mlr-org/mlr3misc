@@ -49,7 +49,12 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3misc-development-version">mlr3misc (development version)<a class="anchor" aria-label="anchor" href="#mlr3misc-development-version"></a></h2>
-</div>
+<ul><li>fix: <code><a href="../reference/unnest.html">unnest()</a></code> now works with vector-valued elements.</li>
+<li>feat: Add <code><a href="../reference/warn_deprecated.html">warn_deprecated()</a></code>.</li>
+<li>BREAKING CHANGE: Remove <code>"msg"</code> column from encapsulate logs.</li>
+<li>fix: <code><a href="../reference/compat-map.html">discard()</a></code> no longer removes attributes.</li>
+<li>perf: Use <code><a href="https://rdrr.io/pkg/data.table/man/fifelse.html" class="external-link">data.table::fifelse()</a></code> instead of <code><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse()</a></code>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.19.0" id="mlr3misc-0190">mlr3misc 0.19.0<a class="anchor" aria-label="anchor" href="#mlr3misc-0190"></a></h2><p class="text-muted">CRAN release: 2025-09-12</p>
 <ul><li>feat: Added various new functions for improved error handling.</li>

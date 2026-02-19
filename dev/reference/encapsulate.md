@@ -137,7 +137,7 @@ encapsulate("none", f, list(n = 1), .seed = 1)
 #> Empty data.table (0 rows and 2 cols): class,condition
 #> 
 #> $elapsed
-#> [1] 0
+#> [1] 0.001
 #> 
 
 if (requireNamespace("evaluate", quietly = TRUE)) {
@@ -152,7 +152,7 @@ if (requireNamespace("evaluate", quietly = TRUE)) {
 #> 1: output hi from f
 #> 
 #> $elapsed
-#> [1] 0.003
+#> [1] 0.002
 #> 
 
 if (requireNamespace("callr", quietly = TRUE)) {
@@ -168,6 +168,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.693 
+#>   0.617 
 #> 
 ```

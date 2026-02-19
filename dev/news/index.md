@@ -2,6 +2,19 @@
 
 ## mlr3misc (development version)
 
+- fix:
+  [`unnest()`](https://mlr3misc.mlr-org.com/dev/reference/unnest.md) now
+  works with vector-valued elements.
+- feat: Add
+  [`warn_deprecated()`](https://mlr3misc.mlr-org.com/dev/reference/warn_deprecated.md).
+- BREAKING CHANGE: Remove `"msg"` column from encapsulate logs.
+- fix:
+  [`discard()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
+  no longer removes attributes.
+- perf: Use
+  [`data.table::fifelse()`](https://rdrr.io/pkg/data.table/man/fifelse.html)
+  instead of [`ifelse()`](https://rdrr.io/r/base/ifelse.html).
+
 ## mlr3misc 0.19.0
 
 CRAN release: 2025-09-12
