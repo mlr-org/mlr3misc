@@ -1,4 +1,4 @@
-# mlr3misc (development version)
+# mlr3misc 0.20.0
 
 * fix: `unnest()` now works with vector-valued elements.
 * feat: Add `warn_deprecated()`.
