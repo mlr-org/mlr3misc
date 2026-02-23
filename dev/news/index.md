@@ -2,6 +2,10 @@
 
 ## mlr3misc (development version)
 
+## mlr3misc 0.20.0
+
+CRAN release: 2026-02-20
+
 - fix:
   [`unnest()`](https://mlr3misc.mlr-org.com/dev/reference/unnest.md) now
   works with vector-valued elements.
