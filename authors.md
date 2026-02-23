@@ -12,7 +12,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/mlr-org/mlr3misc/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/mlr-org/mlr3misc/blob/v0.20.0/DESCRIPTION)
 
 Becker M, Lang M, Schratz P (2026). *mlr3misc: Helper Functions for
 'mlr3'*. R package version 0.20.0, <https://mlr3misc.mlr-org.com>.
