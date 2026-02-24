@@ -227,7 +227,7 @@ parse_evaluate = function(log) {
     if (inherits(x, "recordedplot")) {
       return(NULL)
     }
-    return(list(class = "output", condition = NULL))
+    list(class = "output", condition = list(x))
   }
 
   log = map_dtr(log[-1L], extract)
