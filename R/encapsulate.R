@@ -1,48 +1,51 @@
-#' @title Encapsulate Function Calls for Logging
+#' @title Encapsulate Function Calls
 #'
 #' @description
-#' Evaluates a function while both recording an output log and measuring the elapsed time.
-#' There are currently five different modes implemented to encapsulate a function call:
+#' Evaluates a function, capturing conditions and measuring elapsed time.
+#' There are currently five modes:
 #'
-#' * `"none"`: Just runs the call in the current session and measures the elapsed time.
-#'   Does not keep a log, output is printed directly to the console.
+#' * `"none"`: Runs the call in the current session.
+#'   Conditions are signaled normally; no log is kept.
 #'   Works well together with [traceback()].
-#' * `"try"`: Similar to `"none"`, but catches error. Output is printed to the console and
-#'   not logged.
-#' * `"evaluate"`: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
-#' * `"callr"`: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
-#'   This encapsulation spawns a separate R session in which the function is called.
-#'   While this comes with a considerable overhead, it also guards your session from being torn down by segfaults.
-#' * `"mirai"`: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
-#'   This encapsulation calls the function in a `mirai` on a `daemon`.
-#'   The `daemon` can be pre-started via `daemons(1)`, otherwise a new R session will be created for each encapsulated call.
-#'   If a `daemon` is already running, it will be used to execute all calls.
-#'   Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
+#' * `"try"`: Like `"none"`, but catches errors and writes them to the log.
+#'   Warnings and messages are still signaled.
+#' * `"evaluate"`: Uses \CRANpkg{evaluate} to capture errors, warnings, and messages into the log.
+#'   Printed output is lost.
+#' * `"callr"`: Uses \CRANpkg{callr} to run the function in a fresh R session.
+#'   Errors, warnings, and messages are captured into the log; printed output is lost.
+#'   Protects the calling session from segfaults at the cost of session startup overhead.
+#'   The RNG state is propagated back to the calling session after evaluation.
+#' * `"mirai"`: Uses \CRANpkg{mirai} to run the function on a daemon.
+#'   Errors, warnings, and messages are captured into the log; printed output is lost.
+#'   The daemon can be pre-started via `daemons(1)`; if none is running, a new session is started per call.
+#'   Offers similar safety to `"callr"` with lower overhead when a daemon is reused across calls.
+#'   The RNG state is propagated back to the calling session after evaluation.
 #'
 #' @param method (`character(1)`)\cr
 #'   One of `"none"`, `"try"`, `"evaluate"`, `"callr"`, or `"mirai"`.
 #' @param .f (`function()`)\cr
 #'   Function to call.
 #' @param .args (`list()`)\cr
-#'   Arguments passed to `.f`.
+#'   Named list of arguments passed to `.f`.
 #' @param .opts (named `list()`)\cr
-#'   Options to set for the function call. Options get reset on exit.
+#'   Options to set via [options()] before calling `.f`. Restored on exit.
 #' @param .pkgs (`character()`)\cr
-#'   Packages to load (not attach).
+#'   Packages to load via [requireNamespace()] before calling `.f`.
 #' @param .seed (`integer(1)`)\cr
-#'   Random seed to set before invoking the function call.
-#'   Gets reset to the previous seed on exit.
+#'   Random seed set via [set.seed()] before calling `.f`.
+#'   If `NA` (default), the seed is not changed; for `"callr"` and `"mirai"` modes the current RNG state is forwarded instead.
 #' @param .timeout (`numeric(1)`)\cr
-#'   Timeout in seconds. Uses [setTimeLimit()] for `"none"` and `"evaluate"` encapsulation.
-#'   For `"callr"` encapsulation, the timeout is passed to `callr::r()`.
-#'   For `"mirai"` encapsulation, the timeout is passed to `mirai::mirai()`.
+#'   Timeout in seconds (`Inf` for no limit).
+#'   Uses [setTimeLimit()] for `"none"` and `"evaluate"`; passed natively to `callr::r()` and `mirai::mirai()` for the other modes.
 #' @param .compute (`character(1)`)\cr
-#'   If `method` is `"mirai"`, a daemon with the specified compute profile is used or started.
-#' @return (named `list()`) with four fields:
-#'   * `"result"`: the return value of `.f`
-#'   * `"elapsed"`: elapsed time in seconds. Measured as [proc.time()] difference before/after the function call.
-#'   * `"log"`: `data.table()` with columns `"class"` (ordered factor with levels `"output"`, `"warning"` and `"error"`) and `"condition"` (list of condition objects or `NULL`).
-#'   * `"condition"`: the condition object if an error occurred, otherwise `NULL`.
+#'   Compute profile for `"mirai"` mode. Passed to `mirai::mirai()` as `.compute`.
+#' @return Named `list()` with three elements:
+#'   * `"result"`: return value of `.f`, or `NULL` if an error was caught.
+#'   * `"elapsed"`: elapsed time in seconds, measured via [proc.time()].
+#'   * `"log"`: `data.table()` with columns `"class"` (ordered factor with levels
+#'     `"output"`, `"warning"`, `"error"`) and `"condition"` (list of condition objects).
+#'     Messages are classified as `"output"` for historical reasons.
+#'     Empty when no conditions were captured.
 #' @export
 #' @examples
 #' f = function(n) {
@@ -75,7 +78,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
   if (method %in% c("none", "try")) {
     require_namespaces(.pkgs)
 
-    now = proc.time()[[3L]]
+    now = proc.time()[3L]
     if (method == "none") {
       result = invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout)
     } else {
@@ -88,24 +91,24 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
           attr(x, "call") = NULL
           x
         }
-        # try only catches error, warnings and messages are output
+        # try only catches errors; warnings and messages are signaled
         log = data.table(class = "error", condition = list(condition))
         result = NULL
       }
     }
-    elapsed = proc.time()[[3L]] - now
+    elapsed = proc.time()[3L] - now
   } else if (method == "evaluate") {
     require_namespaces(c("evaluate", .pkgs))
 
-    now = proc.time()[[3L]]
+    now = proc.time()[3L]
     result = NULL
     log = evaluate::evaluate(
-      "result <- invoke(.f, .args = .args, .timeout = .timeout)",
+      "result <- invoke(.f, .args = .args, .opts = .opts, .seed = .seed, .timeout = .timeout)",
       stop_on_error = 1L,
       new_device = FALSE,
       include_timing = FALSE
     )
-    elapsed = proc.time()[[3L]] - now
+    elapsed = proc.time()[3L] - now
     log = parse_evaluate(log)
   } else if (method == "mirai") {
     require_namespaces("mirai")
@@ -122,7 +125,6 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
 
       # restore RNG state from parent R session
       if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
-
 
       conditions = NULL
       result = withCallingHandlers(
@@ -147,7 +149,6 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout, .compute = .compute))
     elapsed = proc.time()[3L] - now
 
-    # read error messages and store them in log
     log = NULL
     if (mirai::is_error_value(result)) {
       conditions = if (unclass(result) == 5) {
@@ -170,19 +171,19 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     # callr does not copy the RNG state, so we need to do it manually
     .rng_state = .GlobalEnv$.Random.seed
     now = proc.time()[3L]
-    result = try(callr::r(callr_wrapper,
-      list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
+    result = try(callr::r(
+      callr_wrapper,
+      args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
       timeout = .timeout), silent = TRUE)
     elapsed = proc.time()[3L] - now
 
     log = NULL
-
     if (inherits(result, "try-error")) {
       condition = attr(result, "condition")
       if (inherits(condition, "callr_timeout_error")) {
         condition = error_timeout(signal = FALSE)
       }
-      log = rbind(log, data.table(class = "error", condition = list(condition)))
+      log = data.table(class = "error", condition = list(condition))
       result = NULL
     } else {
       if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
@@ -195,15 +196,7 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     log = data.table(class = character(), condition = list())
   }
   if (nrow(log)) {
-    # classes for messages are not really useful, so we save some memory
-    # data.table list columns with 1 row are no fun :(
-    conds = map(log$condition, function(x) {
-      if (inherits(x, "message")) {
-        return(trimws(conditionMessage(x)))
-      }
-      x
-    })
-    log$condition = if (length(conds) == 1L) list(conds) else conds
+    log$condition = if (length(log$condition) == 1L) list(log$condition) else log$condition
   }
 
   log$class = factor(log$class, levels = c("output", "warning", "error"), ordered = TRUE)
@@ -224,10 +217,7 @@ parse_evaluate = function(log) {
       }
       return(list(class = "error", condition = list(x)))
     }
-    if (inherits(x, "recordedplot")) {
-      return(NULL)
-    }
-    list(class = "output", condition = list(x))
+    NULL
   }
 
   log = map_dtr(log[-1L], extract)
@@ -239,7 +229,7 @@ conditions_to_log = function(conditions) {
   if (is.null(conditions)) {
     return(data.table(class = character(), condition = list()))
   }
-  cls <- function(x) {
+  cls = function(x) {
     if (inherits(x, "error")) {
       "error"
     } else if (inherits(x, "warning")) {
@@ -260,7 +250,6 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   suppressPackageStartupMessages({
     lapply(.pkgs, requireNamespace)
   })
-  options(warn = 1L)
   options(.opts)
   if (!is.na(.seed)) {
     set.seed(.seed)

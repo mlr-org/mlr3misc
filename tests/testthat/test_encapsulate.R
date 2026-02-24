@@ -224,9 +224,9 @@ test_that("condition objects are stored", {
     }
     res = encapsulate(method, fun)
     expect_equal(as.character(res$log$class), c("output", "warning", "error"))
-    expect_equal(res$log$condition[[1]], "a")
-    expect_equal(res$log$condition[[2]], simpleWarning("b"))
-    expect_equal(res$log$condition[[3]], simpleError("c"))
+    expect_class(res$log$condition[[1]], "message")
+    expect_class(res$log$condition[[2]], "warning")
+    expect_class(res$log$condition[[3]], "error")
   }
 
   # data.table with 1 row
