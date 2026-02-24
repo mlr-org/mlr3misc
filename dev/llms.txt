@@ -118,7 +118,7 @@ pak::pak("mlr-org/mlr3misc")
 - [`distinct_values()`](https://mlr3misc.mlr-org.com/dev/reference/distinct_values.md)
   : Get Distinct Values
 - [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
-  : Encapsulate Function Calls for Logging
+  : Encapsulate Function Calls
 - [`enframe()`](https://mlr3misc.mlr-org.com/dev/reference/enframe.md)
   [`deframe()`](https://mlr3misc.mlr-org.com/dev/reference/enframe.md) :
   Convert a Named Vector into a data.table and Vice Versa
