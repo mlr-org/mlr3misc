@@ -2,7 +2,7 @@
 % Please edit documentation in R/encapsulate.R
 \name{encapsulate}
 \alias{encapsulate}
-\title{Encapsulate Function Calls for Logging}
+\title{Encapsulate Function Calls}
 \usage{
 encapsulate(
   method,
@@ -23,53 +23,56 @@ One of \code{"none"}, \code{"try"}, \code{"evaluate"}, \code{"callr"}, or \code{
 Function to call.}
 
 \item{.args}{(\code{list()})\cr
-Arguments passed to \code{.f}.}
+Named list of arguments passed to \code{.f}.}
 
 \item{.opts}{(named \code{list()})\cr
-Options to set for the function call. Options get reset on exit.}
+Options to set via \code{\link[=options]{options()}} before calling \code{.f}. Restored on exit.}
 
 \item{.pkgs}{(\code{character()})\cr
-Packages to load (not attach).}
+Packages to load via \code{\link[=requireNamespace]{requireNamespace()}} before calling \code{.f}.}
 
 \item{.seed}{(\code{integer(1)})\cr
-Random seed to set before invoking the function call.
-Gets reset to the previous seed on exit.}
+Random seed set via \code{\link[=set.seed]{set.seed()}} before calling \code{.f}.
+If \code{NA} (default), the seed is not changed; for \code{"callr"} and \code{"mirai"} modes the current RNG state is forwarded instead.}
 
 \item{.timeout}{(\code{numeric(1)})\cr
-Timeout in seconds. Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"} encapsulation.
-For \code{"callr"} encapsulation, the timeout is passed to \code{callr::r()}.
-For \code{"mirai"} encapsulation, the timeout is passed to \code{mirai::mirai()}.}
+Timeout in seconds (\code{Inf} for no limit).
+Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"}; passed natively to \code{callr::r()} and \code{mirai::mirai()} for the other modes.}
 
 \item{.compute}{(\code{character(1)})\cr
-If \code{method} is \code{"mirai"}, a daemon with the specified compute profile is used or started.}
+Compute profile for \code{"mirai"} mode. Passed to \code{mirai::mirai()} as \code{.compute}.}
 }
 \value{
-(named \code{list()}) with four fields:
+Named \code{list()} with three elements:
 \itemize{
-\item \code{"result"}: the return value of \code{.f}
-\item \code{"elapsed"}: elapsed time in seconds. Measured as \code{\link[=proc.time]{proc.time()}} difference before/after the function call.
-\item \code{"log"}: \code{data.table()} with columns \code{"class"} (ordered factor with levels \code{"output"}, \code{"warning"} and \code{"error"}) and \code{"condition"} (list of condition objects or \code{NULL}).
-\item \code{"condition"}: the condition object if an error occurred, otherwise \code{NULL}.
+\item \code{"result"}: return value of \code{.f}, or \code{NULL} if an error was caught.
+\item \code{"elapsed"}: elapsed time in seconds, measured via \code{\link[=proc.time]{proc.time()}}.
+\item \code{"log"}: \code{data.table()} with columns \code{"class"} (ordered factor with levels
+\code{"output"}, \code{"warning"}, \code{"error"}) and \code{"condition"} (list of condition objects).
+Messages are classified as \code{"output"} for historical reasons.
+Empty when no conditions were captured.
 }
 }
 \description{
-Evaluates a function while both recording an output log and measuring the elapsed time.
-There are currently five different modes implemented to encapsulate a function call:
+Evaluates a function, capturing conditions and measuring elapsed time.
+There are currently five modes:
 \itemize{
-\item \code{"none"}: Just runs the call in the current session and measures the elapsed time.
-Does not keep a log, output is printed directly to the console.
+\item \code{"none"}: Runs the call in the current session.
+Conditions are signaled normally; no log is kept.
 Works well together with \code{\link[=traceback]{traceback()}}.
-\item \code{"try"}: Similar to \code{"none"}, but catches error. Output is printed to the console and
-not logged.
-\item \code{"evaluate"}: Uses the package \CRANpkg{evaluate} to call the function, measure time and do the logging.
-\item \code{"callr"}: Uses the package \CRANpkg{callr} to call the function, measure time and do the logging.
-This encapsulation spawns a separate R session in which the function is called.
-While this comes with a considerable overhead, it also guards your session from being torn down by segfaults.
-\item \code{"mirai"}: Uses the package \CRANpkg{mirai} to call the function, measure time and do the logging.
-This encapsulation calls the function in a \code{mirai} on a \code{daemon}.
-The \code{daemon} can be pre-started via \code{daemons(1)}, otherwise a new R session will be created for each encapsulated call.
-If a \code{daemon} is already running, it will be used to execute all calls.
-Using mirai is similarly safe as callr but much faster if several function calls are encapsulated one after the other on the same daemon.
+\item \code{"try"}: Like \code{"none"}, but catches errors and writes them to the log.
+Warnings and messages are still signaled.
+\item \code{"evaluate"}: Uses \CRANpkg{evaluate} to capture errors, warnings, and messages into the log.
+Printed output is lost.
+\item \code{"callr"}: Uses \CRANpkg{callr} to run the function in a fresh R session.
+Errors, warnings, and messages are captured into the log; printed output is lost.
+Protects the calling session from segfaults at the cost of session startup overhead.
+The RNG state is propagated back to the calling session after evaluation.
+\item \code{"mirai"}: Uses \CRANpkg{mirai} to run the function on a daemon.
+Errors, warnings, and messages are captured into the log; printed output is lost.
+The daemon can be pre-started via \code{daemons(1)}; if none is running, a new session is started per call.
+Offers similar safety to \code{"callr"} with lower overhead when a daemon is reused across calls.
+The RNG state is propagated back to the calling session after evaluation.
 }
 }
 \examples{

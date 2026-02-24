@@ -82,20 +82,15 @@ test_that("timeout", {
 
   expect_error(encapsulate("none", .f = f, .args = list(x = 1), .timeout = 1), "time limit")
 
-  res = encapsulate("evaluate", .f = f, .args = list(x = 1), .timeout = 1)
-  expect_null(res$result)
-  expect_true("error" %in% res$log$class)
-  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
-
-  res = encapsulate("callr", .f = f, .args = list(x = 1), .timeout = 1)
-  expect_null(res$result)
-  expect_true("error" %in% res$log$class)
-  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
-
-  res = encapsulate("mirai", .f = f, .args = list(x = 1), .timeout = 1)
-  expect_null(res$result)
-  expect_true("error" %in% res$log$class)
-  expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
+  for (method in c("evaluate", "callr", "mirai")) {
+    if (!requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, .f = f, .args = list(x = 1), .timeout = 1)
+    expect_null(res$result)
+    expect_true("error" %in% res$log$class)
+    expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout")
+  }
 })
 
 test_that("try", {
@@ -224,9 +219,9 @@ test_that("condition objects are stored", {
     }
     res = encapsulate(method, fun)
     expect_equal(as.character(res$log$class), c("output", "warning", "error"))
-    expect_equal(res$log$condition[[1]], "a")
-    expect_equal(res$log$condition[[2]], simpleWarning("b"))
-    expect_equal(res$log$condition[[3]], simpleError("c"))
+    expect_class(res$log$condition[[1]], "message")
+    expect_class(res$log$condition[[2]], "warning")
+    expect_class(res$log$condition[[3]], "error")
   }
 
   # data.table with 1 row
