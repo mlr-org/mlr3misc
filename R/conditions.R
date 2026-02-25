@@ -28,17 +28,20 @@
 #'   Passed to [`sprintf()`].
 #' @param class (`character`)\cr
 #'   Additional class(es).
+#' @param parent (`condition` or `NULL`)\cr
+#'   Parent condition for error chaining. When provided, the parent error is displayed
+#'   below the current error message.
 #' @param signal (`logical(1)`)\cr
 #'   If `FALSE`, the condition object is returned instead of being signaled.
 #' @export
-error_config = function(msg, ..., class = NULL, signal = TRUE) {
-  error_mlr3(msg, ..., class = "Mlr3ErrorConfig", signal = signal)
+error_config = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  error_mlr3(msg, ..., class = "Mlr3ErrorConfig", parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
 #' @export
-error_input = function(msg, ..., class = NULL, signal = TRUE) {
-  error_mlr3(msg, ..., class = "Mlr3ErrorInput", signal = signal)
+error_input = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  error_mlr3(msg, ..., class = "Mlr3ErrorInput", parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
@@ -49,8 +52,10 @@ error_timeout = function(signal = TRUE) {
 
 #' @rdname mlr_conditions
 #' @export
-error_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
+error_mlr3 = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
   cond = errorCondition(sprintf(msg, ...), class = c(class, "Mlr3Error"))
+  cond$raw_message = cond$message
+  cond$parent = parent
   cond$message = format(cond)
   if (signal) {
     return(stop(cond))
@@ -62,6 +67,7 @@ error_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
 #' @export
 warning_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
   cond = warningCondition(sprintf(msg, ...), class = c(class, "Mlr3Warning"))
+  cond$raw_message = cond$message
   cond$message = format(cond)
   if (signal) {
     return(warning(cond))
@@ -84,17 +90,29 @@ warning_input = function(msg, ..., class = NULL, signal = TRUE) {
 
 #' @export
 format.Mlr3Error = function(x, ...) {
-  message = if (!is.null(names(x$message))) {
+  raw = x$raw_message %||% x$message
+  message = if (!is.null(names(raw))) {
     # error message is already a cli list
-    message = c(x$message, paste0("Class: ", class(x)[1L]))
-    names(message) = c(names(x$message), ">")
-    cli::format_bullets_raw(message)
+    msg = c(raw, paste0("Class: ", class(x)[1L]))
+    names(msg) = c(names(raw), ">")
+    cli::format_bullets_raw(msg)
   } else {
     cli::format_bullets_raw(c(
-      "x" = x$message,
+      "x" = raw,
       ">" = paste0("Class: ", class(x)[1L])
     ))
   }
+
+  if (!is.null(x$parent)) {
+    parent_msg = if (inherits(x$parent, "Mlr3Error")) {
+      trimws(format(x$parent), which = "both")
+    } else {
+      conditionMessage(x$parent)
+    }
+    parent_lines = paste0("  ", strsplit(parent_msg, "\n")[[1L]])
+    message = c(message, "Caused by:", parent_lines)
+  }
+
   paste0("\n", paste0(message, collapse = "\n"), "\n")
 }
 
@@ -103,18 +121,18 @@ format.Mlr3Warning = format.Mlr3Error
 
 #' @rdname mlr_conditions
 #' @export
-error_learner = function(msg, ..., class = NULL, signal = TRUE) {
-  error_mlr3(msg, ..., class = c(class, "Mlr3ErrorLearner"), signal = signal)
+error_learner = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  error_mlr3(msg, ..., class = c(class, "Mlr3ErrorLearner"), parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
 #' @export
-error_learner_train = function(msg, ..., class = NULL, signal = TRUE) {
-  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerTrain"), signal = signal)
+error_learner_train = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerTrain"), parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
 #' @export
-error_learner_predict = function(msg, ..., class = NULL, signal = TRUE) {
-  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerPredict"), signal = signal)
+error_learner_predict = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  error_learner(msg, ..., class = c(class, "Mlr3ErrorLearnerPredict"), parent = parent, signal = signal)
 }

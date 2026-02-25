@@ -14,13 +14,13 @@
 \alias{error_learner_predict}
 \title{Error Classes}
 \usage{
-error_config(msg, ..., class = NULL, signal = TRUE)
+error_config(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_input(msg, ..., class = NULL, signal = TRUE)
+error_input(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
 error_timeout(signal = TRUE)
 
-error_mlr3(msg, ..., class = NULL, signal = TRUE)
+error_mlr3(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
 warning_mlr3(msg, ..., class = NULL, signal = TRUE)
 
@@ -28,11 +28,11 @@ warning_config(msg, ..., class = NULL, signal = TRUE)
 
 warning_input(msg, ..., class = NULL, signal = TRUE)
 
-error_learner(msg, ..., class = NULL, signal = TRUE)
+error_learner(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_learner_train(msg, ..., class = NULL, signal = TRUE)
+error_learner_train(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_learner_predict(msg, ..., class = NULL, signal = TRUE)
+error_learner_predict(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -43,6 +43,10 @@ Passed to \code{\link[=sprintf]{sprintf()}}.}
 
 \item{class}{(\code{character})\cr
 Additional class(es).}
+
+\item{parent}{(\code{condition} or \code{NULL})\cr
+Parent condition for error chaining. When provided, the parent error is displayed
+below the current error message.}
 
 \item{signal}{(\code{logical(1)})\cr
 If \code{FALSE}, the condition object is returned instead of being signaled.}
