@@ -69,3 +69,44 @@
       def
       > Class: Mlr3Error
 
+# parent error chaining
+
+    Code
+      error_mlr3("wrapper context", parent = parent)
+    Condition
+      Error:
+      ! 
+      x wrapper context
+      > Class: Mlr3Error
+      Caused by:
+        x original problem
+        > Class: Mlr3Error
+
+---
+
+    Code
+      error_mlr3("wrapper", parent = plain_error)
+    Condition
+      Error:
+      ! 
+      x wrapper
+      > Class: Mlr3Error
+      Caused by:
+        plain error
+
+---
+
+    Code
+      error_mlr3("outer", parent = middle)
+    Condition
+      Error:
+      ! 
+      x outer
+      > Class: Mlr3Error
+      Caused by:
+        x middle
+        > Class: Mlr3Error
+        Caused by:
+          x inner
+          > Class: Mlr3Error
+

@@ -34,6 +34,24 @@ test_that("bullets", {
   expect_snapshot(error_mlr3(c(i = "abc", i = "def")), error = TRUE)
 })
 
+test_that("parent error chaining", {
+  parent = error_mlr3("original problem", signal = FALSE)
+  expect_snapshot(error_mlr3("wrapper context", parent = parent), error = TRUE)
+
+  # parent is stored on the condition
+  wrapper = error_mlr3("wrapper", parent = parent, signal = FALSE)
+  expect_class(wrapper$parent, "Mlr3Error")
+
+  # works with non-mlr3 parent
+  plain_error = simpleError("plain error")
+  expect_snapshot(error_mlr3("wrapper", parent = plain_error), error = TRUE)
+
+  # nested chaining
+  inner = error_mlr3("inner", signal = FALSE)
+  middle = error_mlr3("middle", parent = inner, signal = FALSE)
+  expect_snapshot(error_mlr3("outer", parent = middle), error = TRUE)
+})
+
 test_that("condition object is identical with signal = TRUE/FALSE", {
   err1 = error_mlr3("a", signal = FALSE)
   err2 = attr(try(error_mlr3("a", signal = TRUE), silent = TRUE), "condition")
