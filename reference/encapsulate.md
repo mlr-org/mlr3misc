@@ -1,37 +1,33 @@
-# Encapsulate Function Calls for Logging
+# Encapsulate Function Calls
 
-Evaluates a function while both recording an output log and measuring
-the elapsed time. There are currently five different modes implemented
-to encapsulate a function call:
+Evaluates a function, capturing conditions and measuring elapsed time.
+There are currently five modes:
 
-- `"none"`: Just runs the call in the current session and measures the
-  elapsed time. Does not keep a log, output is printed directly to the
-  console. Works well together with
+- `"none"`: Runs the call in the current session. Conditions are
+  signaled normally; no log is kept. Works well together with
   [`traceback()`](https://rdrr.io/r/base/traceback.html).
 
-- `"try"`: Similar to `"none"`, but catches error. Output is printed to
-  the console and not logged.
+- `"try"`: Like `"none"`, but catches errors and writes them to the log.
+  Warnings and messages are still signaled.
 
-- `"evaluate"`: Uses the package
-  [evaluate](https://CRAN.R-project.org/package=evaluate) to call the
-  function, measure time and do the logging.
+- `"evaluate"`: Uses
+  [evaluate](https://CRAN.R-project.org/package=evaluate) to capture
+  errors, warnings, and messages into the log. Printed output is lost.
 
-- `"callr"`: Uses the package
-  [callr](https://CRAN.R-project.org/package=callr) to call the
-  function, measure time and do the logging. This encapsulation spawns a
-  separate R session in which the function is called. While this comes
-  with a considerable overhead, it also guards your session from being
-  torn down by segfaults.
+- `"callr"`: Uses [callr](https://CRAN.R-project.org/package=callr) to
+  run the function in a fresh R session. Errors, warnings, and messages
+  are captured into the log; printed output is lost. Protects the
+  calling session from segfaults at the cost of session startup
+  overhead. The RNG state is propagated back to the calling session
+  after evaluation.
 
-- `"mirai"`: Uses the package
-  [mirai](https://CRAN.R-project.org/package=mirai) to call the
-  function, measure time and do the logging. This encapsulation calls
-  the function in a `mirai` on a `daemon`. The `daemon` can be
-  pre-started via `daemons(1)`, otherwise a new R session will be
-  created for each encapsulated call. If a `daemon` is already running,
-  it will be used to execute all calls. Using mirai is similarly safe as
-  callr but much faster if several function calls are encapsulated one
-  after the other on the same daemon.
+- `"mirai"`: Uses [mirai](https://CRAN.R-project.org/package=mirai) to
+  run the function on a daemon. Errors, warnings, and messages are
+  captured into the log; printed output is lost. The daemon can be
+  pre-started via `daemons(1)`; if none is running, a new session is
+  started per call. Offers similar safety to `"callr"` with lower
+  overhead when a daemon is reused across calls. The RNG state is
+  propagated back to the calling session after evaluation.
 
 ## Usage
 
@@ -63,59 +59,61 @@ encapsulate(
 - .args:
 
   ([`list()`](https://rdrr.io/r/base/list.html))  
-  Arguments passed to `.f`.
+  Named list of arguments passed to `.f`.
 
 - .opts:
 
   (named [`list()`](https://rdrr.io/r/base/list.html))  
-  Options to set for the function call. Options get reset on exit.
+  Options to set via [`options()`](https://rdrr.io/r/base/options.html)
+  before calling `.f`. Restored on exit.
 
 - .pkgs:
 
   ([`character()`](https://rdrr.io/r/base/character.html))  
-  Packages to load (not attach).
+  Packages to load via
+  [`requireNamespace()`](https://rdrr.io/r/base/ns-load.html) before
+  calling `.f`.
 
 - .seed:
 
   (`integer(1)`)  
-  Random seed to set before invoking the function call. Gets reset to
-  the previous seed on exit.
+  Random seed set via [`set.seed()`](https://rdrr.io/r/base/Random.html)
+  before calling `.f`. If `NA` (default), the seed is not changed; for
+  `"callr"` and `"mirai"` modes the current RNG state is forwarded
+  instead.
 
 - .timeout:
 
   (`numeric(1)`)  
-  Timeout in seconds. Uses
+  Timeout in seconds (`Inf` for no limit). Uses
   [`setTimeLimit()`](https://rdrr.io/r/base/setTimeLimit.html) for
-  `"none"` and `"evaluate"` encapsulation. For `"callr"` encapsulation,
-  the timeout is passed to
-  [`callr::r()`](https://callr.r-lib.org/reference/r.html). For
-  `"mirai"` encapsulation, the timeout is passed to
-  [`mirai::mirai()`](https://mirai.r-lib.org/reference/mirai.html).
+  `"none"` and `"evaluate"`; passed natively to
+  [`callr::r()`](https://callr.r-lib.org/reference/r.html) and
+  [`mirai::mirai()`](https://mirai.r-lib.org/reference/mirai.html) for
+  the other modes.
 
 - .compute:
 
   (`character(1)`)  
-  If `method` is `"mirai"`, a daemon with the specified compute profile
-  is used or started.
+  Compute profile for `"mirai"` mode. Passed to
+  [`mirai::mirai()`](https://mirai.r-lib.org/reference/mirai.html) as
+  `.compute`.
 
 ## Value
 
-(named [`list()`](https://rdrr.io/r/base/list.html)) with four fields:
+Named [`list()`](https://rdrr.io/r/base/list.html) with three elements:
 
-- `"result"`: the return value of `.f`
+- `"result"`: return value of `.f`, or `NULL` if an error was caught.
 
-- `"elapsed"`: elapsed time in seconds. Measured as
-  [`proc.time()`](https://rdrr.io/r/base/proc.time.html) difference
-  before/after the function call.
+- `"elapsed"`: elapsed time in seconds, measured via
+  [`proc.time()`](https://rdrr.io/r/base/proc.time.html).
 
 - `"log"`:
   [`data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html)
   with columns `"class"` (ordered factor with levels `"output"`,
-  `"warning"` and `"error"`) and `"condition"` (list of condition
-  objects or `NULL`).
-
-- `"condition"`: the condition object if an error occurred, otherwise
-  `NULL`.
+  `"warning"`, `"error"`) and `"condition"` (list of condition objects).
+  Messages are classified as `"output"` for historical reasons. Empty
+  when no conditions were captured.
 
 ## Examples
 
@@ -137,22 +135,24 @@ encapsulate("none", f, list(n = 1), .seed = 1)
 #> Empty data.table (0 rows and 2 cols): class,condition
 #> 
 #> $elapsed
-#> [1] 0.001
+#> elapsed 
+#>       0 
 #> 
 
 if (requireNamespace("evaluate", quietly = TRUE)) {
   encapsulate("evaluate", f, list(n = 1), .seed = 1)
 }
 #> $result
-#> [1] 0.9188032
+#> [1] 0.2655087
 #> 
 #> $log
-#>     class condition
-#>     <ord>    <list>
-#> 1: output hi from f
+#>     class          condition
+#>     <ord>             <list>
+#> 1: output <simpleMessage[2]>
 #> 
 #> $elapsed
-#> [1] 0.002
+#> elapsed 
+#>   0.002 
 #> 
 
 if (requireNamespace("callr", quietly = TRUE)) {
@@ -162,12 +162,12 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> [1] 0.2655087
 #> 
 #> $log
-#>     class condition
-#>     <ord>    <list>
-#> 1: output hi from f
+#>     class          condition
+#>     <ord>             <list>
+#> 1: output <simpleMessage[2]>
 #> 
 #> $elapsed
 #> elapsed 
-#>    0.62 
+#>   0.646 
 #> 
 ```
