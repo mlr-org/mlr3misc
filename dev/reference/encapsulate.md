@@ -152,7 +152,7 @@ if (requireNamespace("evaluate", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.003 
+#>   0.008 
 #> 
 
 if (requireNamespace("callr", quietly = TRUE)) {
@@ -168,6 +168,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.599 
+#>   0.654 
 #> 
 ```

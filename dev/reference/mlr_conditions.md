@@ -5,13 +5,13 @@ Condition classes for mlr3.
 ## Usage
 
 ``` r
-error_config(msg, ..., class = NULL, signal = TRUE)
+error_config(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_input(msg, ..., class = NULL, signal = TRUE)
+error_input(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
 error_timeout(signal = TRUE)
 
-error_mlr3(msg, ..., class = NULL, signal = TRUE)
+error_mlr3(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
 warning_mlr3(msg, ..., class = NULL, signal = TRUE)
 
@@ -19,11 +19,11 @@ warning_config(msg, ..., class = NULL, signal = TRUE)
 
 warning_input(msg, ..., class = NULL, signal = TRUE)
 
-error_learner(msg, ..., class = NULL, signal = TRUE)
+error_learner(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_learner_train(msg, ..., class = NULL, signal = TRUE)
+error_learner_train(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 
-error_learner_predict(msg, ..., class = NULL, signal = TRUE)
+error_learner_predict(msg, ..., class = NULL, parent = NULL, signal = TRUE)
 ```
 
 ## Arguments
@@ -42,6 +42,12 @@ error_learner_predict(msg, ..., class = NULL, signal = TRUE)
 
   (`character`)  
   Additional class(es).
+
+- parent:
+
+  (`condition` or `NULL`)  
+  Parent condition for error chaining. When provided, the parent error
+  is displayed below the current error message.
 
 - signal:
 
