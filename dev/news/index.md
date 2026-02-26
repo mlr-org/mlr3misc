@@ -2,6 +2,23 @@
 
 ## mlr3misc (development version)
 
+## mlr3misc 0.21.0
+
+- docs: Clarify the behavior of
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  regarding stored conditions and output.
+- fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  with `"evaluate"` now respects `.seed` and `.opts`.
+- refactor:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  with `"evaluate"` no longer stores output, consistent with other
+  encapsulation methods.
+- refactor: Messages in
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  logs are now stored as `condition` objects instead of `character`.
+- feat: `Mlr3Error` objects now support storing parent conditions.
+
 ## mlr3misc 0.20.0
 
 CRAN release: 2026-02-20
