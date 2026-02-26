@@ -53,6 +53,7 @@ error_timeout = function(signal = TRUE) {
 #' @rdname mlr_conditions
 #' @export
 error_mlr3 = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
+  assert_class(parent, "condition", null.ok = TRUE)
   cond = errorCondition(sprintf(msg, ...), class = c(class, "Mlr3Error"))
   cond$raw_message = cond$message
   cond$parent = parent
@@ -67,7 +68,6 @@ error_mlr3 = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
 #' @export
 warning_mlr3 = function(msg, ..., class = NULL, signal = TRUE) {
   cond = warningCondition(sprintf(msg, ...), class = c(class, "Mlr3Warning"))
-  cond$raw_message = cond$message
   cond$message = format(cond)
   if (signal) {
     return(warning(cond))
@@ -117,7 +117,19 @@ format.Mlr3Error = function(x, ...) {
 }
 
 #' @export
-format.Mlr3Warning = format.Mlr3Error
+format.Mlr3Warning = function(x, ...) {
+  message = if (!is.null(names(x$message))) {
+    msg = c(x$message, paste0("Class: ", class(x)[1L]))
+    names(msg) = c(names(x$message), ">")
+    cli::format_bullets_raw(msg)
+  } else {
+    cli::format_bullets_raw(c(
+      "x" = x$message,
+      ">" = paste0("Class: ", class(x)[1L])
+    ))
+  }
+  paste0("\n", paste0(message, collapse = "\n"), "\n")
+}
 
 #' @rdname mlr_conditions
 #' @export
