@@ -11,6 +11,11 @@
 \alias{map_bc}
 \alias{map_dtr}
 \alias{map_dtc}
+\alias{map2}
+\alias{map2_lgl}
+\alias{map2_int}
+\alias{map2_dbl}
+\alias{map2_chr}
 \alias{pmap}
 \alias{pmap_lgl}
 \alias{pmap_int}
@@ -56,6 +61,16 @@ map_bc(.x, .f, ...)
 map_dtr(.x, .f, ..., .fill = FALSE, .idcol = NULL)
 
 map_dtc(.x, .f, ...)
+
+map2(.x, .y, .f, ...)
+
+map2_lgl(.x, .y, .f, ...)
+
+map2_int(.x, .y, .f, ...)
+
+map2_dbl(.x, .y, .f, ...)
+
+map2_chr(.x, .y, .f, ...)
 
 pmap(.x, .f, ...)
 
@@ -124,6 +139,8 @@ Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 \item{.idcol}{(\code{logical(1)})\cr
 Passed down to \code{\link[data.table:rbindlist]{data.table::rbindlist()}}.}
 
+\item{.y}{(\code{list()} | atomic \code{vector()}).}
+
 \item{.p}{(\verb{function()} | \code{logical()})\cr
 Predicate function.}
 
@@ -137,6 +154,7 @@ Index vector.}
 If \code{.f} is not a function, \code{map} will call \code{[[} on all elements of \code{.x} using the value of \code{.f} as index.
 \item \code{imap()} applies \code{.f} to each value of \code{.x} (passed as first argument) and its name (passed as second argument).
 If \code{.x} does not have names, a sequence along \code{.x} is passed as second argument instead.
+\item \code{map2()} applies \code{.f} to each pair of elements from \code{.x} and \code{.y}.
 \item \code{pmap()} expects \code{.x} to be a list of vectors of equal length, and then applies \code{.f} to the first element of
 each vector of \code{.x}, then the second element of \code{.x}, and so on.
 \item \code{map_if()} applies \code{.f} to each element of \code{.x} where the predicate \code{.p} evaluates to \code{TRUE}.

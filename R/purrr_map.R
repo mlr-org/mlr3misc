@@ -7,6 +7,7 @@
 #'   If `.f` is not a function, `map` will call `[[` on all elements of `.x` using the value of `.f` as index.
 #' * `imap()` applies `.f` to each value of `.x` (passed as first argument) and its name (passed as second argument).
 #'   If `.x` does not have names, a sequence along `.x` is passed as second argument instead.
+#' * `map2()` applies `.f` to each pair of elements from `.x` and `.y`.
 #' * `pmap()` expects `.x` to be a list of vectors of equal length, and then applies `.f` to the first element of
 #'   each vector of `.x`, then the second element of `.x`, and so on.
 #' * `map_if()` applies `.f` to each element of `.x` where the predicate `.p` evaluates to `TRUE`.
@@ -35,6 +36,7 @@
 #'   together in an [base::cbind()] fashion.
 #'
 #' @param .x (`list()` | atomic `vector()`).
+#' @param .y (`list()` | atomic `vector()`).
 #' @param .f (`function()` | `character()` | `integer()`)\cr
 #'   Function to apply, or element to extract by name (if `.f` is `character()`) or position (if `.f` is `integer()`).
 #' @param .p (`function()` | `logical()`)\cr
@@ -130,6 +132,39 @@ map_dtc = function(.x, .f, ...) {
   do.call(data.table, c(cols, list(check.names = TRUE)))
 }
 
+#' @export
+#' @rdname compat-map
+map2 = function(.x, .y, .f, ...) {
+  mapply_list(.f, list(.x, .y), list(...))
+}
+
+#' @export
+#' @rdname compat-map
+map2_lgl = function(.x, .y, .f, ...) {
+  out = mapply_list(.f, list(.x, .y), list(...))
+  tryCatch(as.vector(out, "logical"), warning = function(w) stop("Cannot convert to logical"))
+}
+
+#' @export
+#' @rdname compat-map
+map2_int = function(.x, .y, .f, ...) {
+  out = mapply_list(.f, list(.x, .y), list(...))
+  tryCatch(as.vector(out, "integer"), warning = function(w) stop("Cannot convert to integer"))
+}
+
+#' @export
+#' @rdname compat-map
+map2_dbl = function(.x, .y, .f, ...) {
+  out = mapply_list(.f, list(.x, .y), list(...))
+  tryCatch(as.vector(out, "double"), warning = function(w) stop("Cannot convert to double"))
+}
+
+#' @export
+#' @rdname compat-map
+map2_chr = function(.x, .y, .f, ...) {
+  out = mapply_list(.f, list(.x, .y), list(...))
+  tryCatch(as.vector(out, "character"), warning = function(w) stop("Cannot convert to character"))
+}
 
 #' @export
 #' @rdname compat-map
