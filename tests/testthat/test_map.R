@@ -56,6 +56,20 @@ test_that("imap", {
   expect_identical(res, c(2L, 4L))
 })
 
+test_that("map2", {
+  x = 1:3
+  y = 3:1
+  fun = function(a, b) a + b
+
+  res = map2(x, y, fun)
+  expect_identical(res, list(4L, 4L, 4L))
+
+  expect_identical(map2_int(x, y, fun), c(4L, 4L, 4L))
+  expect_identical(map2_dbl(x, y, function(a, b) a / b), c(1 / 3, 1, 3))
+  expect_identical(map2_chr(x, y, function(a, b) paste0(a, b)), c("13", "22", "31"))
+  expect_identical(map2_lgl(x, y, function(a, b) a < b), c(TRUE, FALSE, FALSE))
+})
+
 test_that("pmap", {
   x = list(a = 1:2, b = 2:1)
   fun = function(a, b) c(a, b)
