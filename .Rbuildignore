@@ -26,6 +26,7 @@
 ^docs$
 ^inst/extdata/.+\.R$
 ^LICENSE$
+^LICENSE\.md$
 ^local_attic$
 ^man-roxygen$
 ^paper$
