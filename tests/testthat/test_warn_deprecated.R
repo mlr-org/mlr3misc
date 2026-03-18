@@ -25,7 +25,9 @@ test_that("deprecated_binding works in R6 class", {
   rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db)
   on.exit(rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db))
 
-  MyClass = R6::R6Class("MyClass", public = list(),
+  MyClass = R6::R6Class(
+    "MyClass",
+    public = list(),
     active = list(
       foo = deprecated_binding("MyClass$foo", "bar")
     )

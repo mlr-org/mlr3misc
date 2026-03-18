@@ -15,7 +15,8 @@ test_that("has_element", {
 })
 
 test_that("has_element with R6", {
-  Foo = R6Class("Foo",
+  Foo = R6Class(
+    "Foo",
     public = list(
       bar = 123,
       initialize = function(b) {

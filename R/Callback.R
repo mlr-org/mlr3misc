@@ -32,7 +32,8 @@
 #'   )
 #' )
 #' @export
-Callback = R6Class("Callback",
+Callback = R6Class(
+  "Callback",
   public = list(
     #' @field id (`character(1)`)\cr
     #'   Identifier of the callback.
@@ -117,7 +118,8 @@ Callback = R6Class("Callback",
 #'
 #' @return [Callback].
 #' @export
-as_callback = function(x, ...) { # nolint
+as_callback = function(x, ...) {
+  # nolint
   UseMethod("as_callback")
 }
 
@@ -125,32 +127,37 @@ as_callback = function(x, ...) { # nolint
 #' @param clone (`logical(1)`)\cr
 #'   If `TRUE`, ensures that the returned object is not the same as the input `x`.
 #' @export
-as_callback.Callback = function(x, clone = FALSE, ...) { # nolint
+as_callback.Callback = function(x, clone = FALSE, ...) {
+  # nolint
   if (clone) x$clone(deep = TRUE) else x
 }
 
 #' @rdname as_callback
 #' @export
-as_callbacks = function(x, clone = FALSE, ...) { # nolint
+as_callbacks = function(x, clone = FALSE, ...) {
+  # nolint
   UseMethod("as_callbacks")
 }
 
 #' @rdname as_callback
 #' @export
-as_callbacks.NULL = function(x, ...) { # nolint
+as_callbacks.NULL = function(x, ...) {
+  # nolint
   list()
 }
 
 #' @rdname as_callback
 #' @export
-as_callbacks.list = function(x, clone = FALSE, ...) { # nolint
+as_callbacks.list = function(x, clone = FALSE, ...) {
+  # nolint
   callbacks = lapply(x, as_callback, clone = clone, ...)
   set_names(callbacks, map(callbacks, "id"))
 }
 
 #' @rdname as_callback
 #' @export
-as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
+as_callbacks.Callback = function(x, clone = FALSE, ...) {
+  # nolint
   set_names(list(if (clone) x$clone(deep = TRUE) else x), x$id)
 }
 
@@ -162,10 +169,12 @@ as_callbacks.Callback = function(x, clone = FALSE, ...) { # nolint
 #' @keywords internal
 #' @export
 call_back = function(stage, callbacks, context) {
-  if (!length(callbacks)) return(invisible(NULL))
+  if (!length(callbacks)) {
+    return(invisible(NULL))
+  }
   assert_class(context, "Context")
   walk(callbacks, function(callback) callback$call(stage, context))
-  return(invisible(NULL))
+  invisible(NULL)
 }
 
 #' @title Dictionary of Callbacks
@@ -182,10 +191,7 @@ call_back = function(stage, callbacks, context) {
 #' For a more convenient way to retrieve and construct learners, see [clbk()]/[clbks()].
 #'
 #' @export
-mlr_callbacks = R6Class("DictionaryCallbacks",
-  inherit = Dictionary,
-  cloneable = FALSE
-)$new()
+mlr_callbacks = R6Class("DictionaryCallbacks", inherit = Dictionary, cloneable = FALSE)$new()
 
 #' @title Syntactic Sugar for Callback Construction
 #'
@@ -230,7 +236,9 @@ clbks = function(.keys) {
 #' @return [Callback] | List of [Callback]s.
 #' @export
 assert_callback = function(callback, null_ok = FALSE) {
-  if (null_ok && is.null(callback)) return(invisible(NULL))
+  if (null_ok && is.null(callback)) {
+    return(invisible(NULL))
+  }
   assert_class(callback, "Callback")
   invisible(callback)
 }

@@ -2,9 +2,13 @@ test_that("crate", {
   meta_f = function(z) {
     x = 1
     y = 2
-    crate(function() {
-      c(x, y, z)
-    }, x, .parent = parent.frame())
+    crate(
+      function() {
+        c(x, y, z)
+      },
+      x,
+      .parent = parent.frame()
+    )
   }
   x = 100
   y = 200

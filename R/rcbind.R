@@ -27,8 +27,7 @@ rcbind = function(x, y) {
   }
 
   if (nrow(x) != nrow(y)) {
-    stopf("Tables have different number of rows (x: %i, y: %i)",
-      nrow(x), nrow(y))
+    stopf("Tables have different number of rows (x: %i, y: %i)", nrow(x), nrow(y))
   }
 
   dup = intersect(names(x), names(y))
@@ -36,6 +35,7 @@ rcbind = function(x, y) {
     stopf("Duplicated names: %s", str_collapse(dup))
   }
 
+  #nolint next
   ..y = NULL
   x[, (names(y)) := ..y][]
 }

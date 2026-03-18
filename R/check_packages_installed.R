@@ -17,7 +17,11 @@
 #' # catch warning
 #' tryCatch(check_packages_installed(c("mlr3misc", "foobaaar")),
 #'   packageNotFoundWarning = function(w) as.character(w))
-check_packages_installed = function(pkgs, warn = TRUE, msg = "The following packages are required but not installed: %s") {
+check_packages_installed = function(
+  pkgs,
+  warn = TRUE,
+  msg = "The following packages are required but not installed: %s"
+) {
   pkgs = unique(assert_character(pkgs, any.missing = FALSE))
   assert_flag(warn)
   found = setNames(map_lgl(pkgs, function(pkg) length(find.package(pkg, quiet = TRUE)) > 0L), pkgs)
@@ -25,7 +29,11 @@ check_packages_installed = function(pkgs, warn = TRUE, msg = "The following pack
   if (warn && !all(found)) {
     assert_string(msg)
     miss = pkgs[!found]
-    warning(warningCondition(sprintf(msg, paste0(miss, collapse = ",")), packages = miss, class = "packageNotFoundWarning"))
+    warning(warningCondition(
+      sprintf(msg, paste0(miss, collapse = ",")),
+      packages = miss,
+      class = "packageNotFoundWarning"
+    ))
   }
 
   found

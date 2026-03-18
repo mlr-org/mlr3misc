@@ -1,8 +1,8 @@
 test_that("Context", {
-  ContextTest = R6::R6Class("ContextTest",
+  ContextTest = R6::R6Class(
+    "ContextTest",
     inherit = Context,
     public = list(
-
       table = NULL,
 
       initialize = function(table) {

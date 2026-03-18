@@ -1,19 +1,26 @@
 make_classes = function(pe = parent.frame()) {
-  cls_top = R6::R6Class("test", parent_env = pe,
+  cls_top = R6::R6Class(
+    "test",
+    parent_env = pe,
     public = list(a = function() 1),
     private = list(b = function() 2),
-    active = list(c = function() 3))
-  cls_bottom = R6::R6Class("test_sub", parent_env = pe, inherit = cls_top,
+    active = list(c = function() 3)
+  )
+  cls_bottom = R6::R6Class(
+    "test_sub",
+    parent_env = pe,
+    inherit = cls_top,
+    #nolint next
     public = list(a = function() super$a() + 1),
     private = list(b = function() super$b() + 1),
-    active = list(c = function() super$c + 1))
+    active = list(c = function() super$c + 1)
+  )
   pe$cls_top = cls_top
   pe$cls_bottom = cls_bottom
   list(cls_top = cls_top, cls_bottom = cls_bottom)
 }
 
 test_that("leanificate method", {
-
   en = new.env(parent = emptyenv())
   clx = make_classes(en)
 
@@ -46,11 +53,9 @@ test_that("leanificate method", {
   expect_equal(as.character(body(clx$cls_bottom$new()$.__enclos_env__$.__active__$c)[[1]]), ".__test_sub__c")
   expect_subset(".__test_sub__c", names(en))
   expect_equal(clx$cls_bottom$new()$c, 4)
-
 })
 
 test_that("leanify r6 method", {
-
   en = new.env(parent = emptyenv())
   clx = make_classes(en)
 
@@ -70,7 +75,6 @@ test_that("leanify r6 method", {
 })
 
 test_that("leanify_package", {
-
   en = new.env(parent = emptyenv())
   clx = make_classes(en)
 
@@ -87,5 +91,4 @@ test_that("leanify_package", {
   expect_equal(as.character(body(clx$cls_top$new()$.__enclos_env__$.__active__$c)[[1]]), ".__test__c")
   expect_subset(".__test__c", names(en))
   expect_equal(clx$cls_top$new()$c, 3)
-
 })

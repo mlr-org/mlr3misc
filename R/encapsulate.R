@@ -33,10 +33,12 @@
 #'   Packages to load via [requireNamespace()] before calling `.f`.
 #' @param .seed (`integer(1)`)\cr
 #'   Random seed set via [set.seed()] before calling `.f`.
-#'   If `NA` (default), the seed is not changed; for `"callr"` and `"mirai"` modes the current RNG state is forwarded instead.
+#'   If `NA` (default), the seed is not changed;
+#'   for `"callr"` and `"mirai"` modes the current RNG state is forwarded instead.
 #' @param .timeout (`numeric(1)`)\cr
 #'   Timeout in seconds (`Inf` for no limit).
-#'   Uses [setTimeLimit()] for `"none"` and `"evaluate"`; passed natively to `callr::r()` and `mirai::mirai()` for the other modes.
+#'   Uses [setTimeLimit()] for `"none"` and `"evaluate"`;
+#'   passed natively to `callr::r()` and `mirai::mirai()` for the other modes.
 #' @param .compute (`character(1)`)\cr
 #'   Compute profile for `"mirai"` mode. Passed to `mirai::mirai()` as `.compute`.
 #' @return Named `list()` with three elements:
@@ -65,8 +67,16 @@
 #' if (requireNamespace("callr", quietly = TRUE)) {
 #'   encapsulate("callr", f, list(n = 1), .seed = 1)
 #' }
-encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = character(), .seed = NA_integer_, .timeout = Inf, .compute = "default") {
-
+encapsulate = function(
+  method,
+  .f,
+  .args = list(),
+  .opts = list(),
+  .pkgs = character(),
+  .seed = NA_integer_,
+  .timeout = Inf,
+  .compute = "default"
+) {
   assert_choice(method, c("none", "try", "evaluate", "mirai", "callr"))
   assert_list(.args, names = "unique")
   assert_list(.opts, names = "unique")
@@ -118,35 +128,40 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
     .timeout = if (is.finite(.timeout)) .timeout * 1000
 
     now = proc.time()[3L]
-    result = mirai::collect_mirai(mirai::mirai({
-      suppressPackageStartupMessages({
-        lapply(.pkgs, requireNamespace)
-      })
+    result = mirai::collect_mirai(mirai::mirai(
+      {
+        suppressPackageStartupMessages({
+          lapply(.pkgs, requireNamespace)
+        })
 
-      # restore RNG state from parent R session
-      if (!is.null(.rng_state)) assign(".Random.seed", .rng_state, envir = globalenv())
+        # restore RNG state from parent R session
+        if (!is.null(.rng_state)) {
+          assign(".Random.seed", .rng_state, envir = globalenv())
+        }
 
-      conditions = NULL
-      result = withCallingHandlers(
-        tryCatch(mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed),
-          error = function(e) {
+        conditions = NULL
+        result = withCallingHandlers(
+          tryCatch(mlr3misc::invoke(.f, .args = .args, .opts = .opts, .seed = .seed), error = function(e) {
             conditions <<- c(conditions, list(e))
             NULL
+          }),
+          warning = function(w) {
+            conditions <<- c(conditions, list(w))
+            invokeRestart("muffleWarning")
+          },
+          message = function(m) {
+            conditions <<- c(conditions, list(m))
+            invokeRestart("muffleMessage")
           }
-        ),
-        warning = function(w) {
-          conditions <<- c(conditions, list(w))
-          invokeRestart("muffleWarning")
-        },
-        message = function(m) {
-          conditions <<- c(conditions, list(m))
-          invokeRestart("muffleMessage")
-        }
-      )
+        )
 
-      # copy new RNG state back to parent R session
-      list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed, conditions = conditions)
-    }, .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state), .timeout = .timeout, .compute = .compute))
+        # copy new RNG state back to parent R session
+        list(result = result, rng_state = if (is.na(.seed)) .GlobalEnv$.Random.seed, conditions = conditions)
+      },
+      .args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
+      .timeout = .timeout,
+      .compute = .compute
+    ))
     elapsed = proc.time()[3L] - now
 
     log = NULL
@@ -159,22 +174,28 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       result = NULL
     } else {
       # restore RNG state from mirai session
-      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      if (!is.null(result$rng_state)) {
+        assign(".Random.seed", result$rng_state, envir = globalenv())
+      }
       conditions = result$conditions
       result = result$result
     }
     log = conditions_to_log(conditions)
-
-  } else { # method == "callr"
+  } else {
+    # method == "callr"
     require_namespaces("callr")
 
     # callr does not copy the RNG state, so we need to do it manually
     .rng_state = .GlobalEnv$.Random.seed
     now = proc.time()[3L]
-    result = try(callr::r(
-      callr_wrapper,
-      args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
-      timeout = .timeout), silent = TRUE)
+    result = try(
+      callr::r(
+        callr_wrapper,
+        args = list(.f = .f, .args = .args, .opts = .opts, .pkgs = .pkgs, .seed = .seed, .rng_state = .rng_state),
+        timeout = .timeout
+      ),
+      silent = TRUE
+    )
     elapsed = proc.time()[3L] - now
 
     log = NULL
@@ -186,7 +207,9 @@ encapsulate = function(method, .f, .args = list(), .opts = list(), .pkgs = chara
       log = data.table(class = "error", condition = list(condition))
       result = NULL
     } else {
-      if (!is.null(result$rng_state)) assign(".Random.seed", result$rng_state, envir = globalenv())
+      if (!is.null(result$rng_state)) {
+        assign(".Random.seed", result$rng_state, envir = globalenv())
+      }
       log = conditions_to_log(result$conditions)
       result = result$result
     }
@@ -256,16 +279,16 @@ callr_wrapper = function(.f, .args, .opts, .pkgs, .seed, .rng_state) {
   }
 
   # restore RNG state from parent R session
-  if (!is.null(.rng_state) && is.na(.seed)) assign(".Random.seed", .rng_state, envir = globalenv())
+  if (!is.null(.rng_state) && is.na(.seed)) {
+    assign(".Random.seed", .rng_state, envir = globalenv())
+  }
 
   conditions = NULL
   result = withCallingHandlers(
-    tryCatch(do.call(.f, .args),
-      error = function(e) {
-        conditions <<- c(conditions, list(e))
-        NULL
-      }
-    ),
+    tryCatch(do.call(.f, .args), error = function(e) {
+      conditions <<- c(conditions, list(e))
+      NULL
+    }),
     warning = function(w) {
       conditions <<- c(conditions, list(w))
       invokeRestart("muffleWarning")

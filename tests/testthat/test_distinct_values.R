@@ -11,7 +11,6 @@ test_that("distinct_values", {
   expect_logical(distinct_values(x, drop = FALSE, na_rm = TRUE), len = 2, any.missing = FALSE)
   expect_logical(distinct_values(x, drop = FALSE, na_rm = FALSE), len = 3)
 
-
   x = c(1:3, NA)
   expect_integer(distinct_values(x, na_rm = TRUE, drop = TRUE), len = 3, any.missing = FALSE)
   expect_integer(distinct_values(x, na_rm = FALSE, drop = TRUE), len = 4, any.missing = TRUE)

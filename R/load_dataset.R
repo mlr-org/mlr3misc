@@ -16,7 +16,6 @@
 #' @examples
 #' head(load_dataset("iris", "datasets"))
 load_dataset = function(id, package, keep_rownames = FALSE) {
-
   assert_string(id)
   assert_string(package)
   assert_flag(keep_rownames)

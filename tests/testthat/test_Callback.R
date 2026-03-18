@@ -1,5 +1,6 @@
 test_that("Callback works", {
-  CallbackTest  = R6Class("CallbackTest",
+  CallbackTest = R6Class(
+    "CallbackTest",
     inherit = Callback,
     public = list(
       on_stage = function(callback, context) {
@@ -27,8 +28,8 @@ test_that("Callback works", {
 })
 
 test_that("call_back() function works", {
-
-  CallbackTest1 = R6Class("CallbackTest1",
+  CallbackTest1 = R6Class(
+    "CallbackTest1",
     inherit = Callback,
     public = list(
       on_stage_1 = function(callback, context) {
@@ -42,7 +43,8 @@ test_that("call_back() function works", {
 
   test_callback_1 = CallbackTest1$new(id = "mlr3misc.test", label = "Test Callback")
 
-  CallbackTest2 = R6Class("CallbackTest1",
+  CallbackTest2 = R6Class(
+    "CallbackTest1",
     inherit = Callback,
     public = list(
       on_stage_1 = function(callback, context) {
@@ -53,7 +55,8 @@ test_that("call_back() function works", {
 
   test_callback_2 = CallbackTest2$new(id = "mlr3misc.test", label = "Test Callback")
 
-  CallbackTest3 = R6Class("CallbackTest1",
+  CallbackTest3 = R6Class(
+    "CallbackTest1",
     inherit = Callback,
     public = list(
       on_stage_3 = function(callback, context) {
@@ -90,7 +93,8 @@ test_that("call_back() function works", {
 })
 
 test_that("as_callbacks.Callback works", {
-  CallbackTest  = R6Class("CallbackTest",
+  CallbackTest = R6Class(
+    "CallbackTest",
     inherit = Callback,
     public = list(
       on_stage = function(callback, context) {
@@ -107,5 +111,8 @@ test_that("as_callbacks.Callback works", {
   test_callback_2 = CallbackTest$new(id = "mlr3misc.test_2", label = "Test Callback", man = "mlr3misc::Callback")
 
   expect_list(as_callbacks(list(test_callback, test_callback_2)))
-  expect_names(names(as_callbacks(list(test_callback, test_callback_2))), identical.to = c("mlr3misc.test", "mlr3misc.test_2"))
+  expect_names(
+    names(as_callbacks(list(test_callback, test_callback_2))),
+    identical.to = c("mlr3misc.test", "mlr3misc.test_2")
+  )
 })

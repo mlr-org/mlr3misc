@@ -18,7 +18,10 @@ test_that("as_short_string", {
   # expect_equal(as_short_string(list(a=1:20)), "a=1,2,3,4,5,6,...")
   expect_equal(as_short_string(list(a = 1, 2, b = 3)), "a=1, <unnamed>=2, b=3")
   expect_equal(as_short_string(list(a = 1, 2, b = data.frame())), "a=1, <unnamed>=2, b=<data.frame>")
-  expect_equal(as_short_string(list(a = identity, b = new.env(), c = NULL, d = expression(a + b + 3))), "a=<function>, b=<environment>, c=<NULL>, d=a + b + 3")
+  expect_equal(
+    as_short_string(list(a = identity, b = new.env(), c = NULL, d = expression(a + b + 3))),
+    "a=<function>, b=<environment>, c=<NULL>, d=a + b + 3"
+  )
 
   expect_equal(as_short_string(list(a = 1, b = 3.2)), "a=1, b=3.2")
   expect_equal(as_short_string(list(a = 1, b = 3.223), num_format = "%.2f"), "a=1.00, b=3.22")

@@ -45,11 +45,19 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
   formals(fn) = c(pairlist(self = substitute(), private = substitute(), super = substitute()), formals(fn))
   attributes(fn) = origattributes
   assign(exportfname, fn, env)
-  replacingfn = eval(call("function", origformals,
-    as.call(c(list(as.symbol(exportfname)), sapply(names(formals(fn)), as.symbol, simplify = FALSE)))))
+  replacingfn = eval(call(
+    "function",
+    origformals,
+    as.call(c(list(as.symbol(exportfname)), sapply(names(formals(fn)), as.symbol, simplify = FALSE)))
+  ))
   environment(replacingfn) = environment(fn)
 
-  function_kind = switch(function_kind_container, public_methods = "public", private_methods = "private", active = "active")
+  function_kind = switch(
+    function_kind_container,
+    public_methods = "public",
+    private_methods = "private",
+    active = "active"
+  )
   # We remove the srcref (which exists when installing with option --with-keep.source) because:
   # (1) incorrect rendering of leanified functions
   # (2) use up memory unnecessarily

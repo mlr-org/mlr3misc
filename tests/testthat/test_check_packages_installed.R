@@ -4,6 +4,8 @@ test_that("check_packages_installed", {
   expect_warning(check_packages_installed("this_is_not_a_package999", msg = "foobar %s"), "foobar")
   expect_logical(check_packages_installed("this_is_not_a_package999", warn = FALSE))
 
-  expect_true(tryCatch(check_packages_installed("this_is_not_a_package999"),
-    packageNotFoundWarning = function(e) TRUE))
+  expect_true(tryCatch(
+    check_packages_installed("this_is_not_a_package999"),
+    packageNotFoundWarning = function(e) TRUE
+  ))
 })

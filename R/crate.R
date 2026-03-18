@@ -40,8 +40,11 @@ crate = function(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE) {
 }
 
 is_compiled = function(x) {
-  tryCatch({
-    capture.output(compiler::disassemble(x))
-    TRUE
-  }, error = function(e) FALSE)
+  tryCatch(
+    {
+      capture.output(compiler::disassemble(x))
+      TRUE
+    },
+    error = function(e) FALSE
+  )
 }
