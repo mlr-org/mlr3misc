@@ -9,7 +9,6 @@ test_that("reorder_vector", {
   res = x[reorder_vector(x, y)]
   expect_character(res, sorted = TRUE, unique = TRUE, any.missing = FALSE)
 
-
   x = c("b", "a", "c", "d")
   y = letters[1:3]
   expect_character(x[reorder_vector(x, y)], sorted = TRUE, unique = TRUE, any.missing = FALSE)

@@ -1,5 +1,6 @@
 test_that("get_private<- works", {
-  a = R6Class("A",
+  a = R6Class(
+    "A",
     private = list(
       y = 123
     )
@@ -10,7 +11,8 @@ test_that("get_private<- works", {
 })
 
 test_that("get_private<- checks for correct input", {
-  a = R6Class("A",
+  a = R6Class(
+    "A",
     private = list(
       y = 123
     )

@@ -58,7 +58,9 @@ did_you_mean_dicts = function(key, dicts, max_candidates_dicts = 3L) {
 
     # Create a suggestion message for the current dictionary
     suggestions[[length(suggestions) + 1]] = sprintf(
-      "%s: %s", names(dicts)[[i]], str_collapse(entries, quote = "'", sep = " / ")
+      "%s: %s",
+      names(dicts)[[i]],
+      str_collapse(entries, quote = "'", sep = " / ")
     )
   }
 

@@ -42,10 +42,14 @@ test_that("Dictionary throws exception on unnamed args", {
 })
 
 test_that("dictionary_sugar_get", {
-  Foo = R6::R6Class("Foo", public = list(x = 0, y = 0, key = 0, initialize = function(y, key = -1) {
-    self$y = y
-    self$key = key
-  }), cloneable = TRUE)
+  Foo = R6::R6Class(
+    "Foo",
+    public = list(x = 0, y = 0, key = 0, initialize = function(y, key = -1) {
+      self$y = y
+      self$key = key
+    }),
+    cloneable = TRUE
+  )
   d = Dictionary$new()
   d$add("f1", Foo)
   x = dictionary_sugar_get(d, "f1", y = 99, x = 1)
@@ -66,10 +70,14 @@ test_that("dictionary_sugar_get", {
 })
 
 test_that("mget", {
-  Foo = R6::R6Class("Foo", public = list(id = "foo", x = 0, y = 0, key = 0, initialize = function(y, key = -1) {
-    self$y = y
-    self$key = key
-  }), cloneable = TRUE)
+  Foo = R6::R6Class(
+    "Foo",
+    public = list(id = "foo", x = 0, y = 0, key = 0, initialize = function(y, key = -1) {
+      self$y = y
+      self$key = key
+    }),
+    cloneable = TRUE
+  )
   d = Dictionary$new()
   d$add("f1", Foo)
   d$add("f2", Foo)
@@ -136,13 +144,23 @@ test_that("similar entries in other dictionaries", {
   d_lookup1$add("cde", obj)
 
   # Makes suggestions
-  expect_error(dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1)), "Similar entries in other dictionaries")
-  # Makes no suggestsions
-  expect_error(dictionary_sugar_get(d, "xyz", .dicts_suggest = list("lookup1" = d_lookup1)), "(?!(Similar entries in other dictionaries))", perl = TRUE)
+  expect_error(
+    dictionary_sugar_get(d, "cde", .dicts_suggest = list("lookup1" = d_lookup1)),
+    "Similar entries in other dictionaries"
+  )
+  # Makes no suggestions
+  expect_error(
+    dictionary_sugar_get(d, "xyz", .dicts_suggest = list("lookup1" = d_lookup1)),
+    "(?!(Similar entries in other dictionaries))",
+    perl = TRUE
+  )
 
   d_lookup2 = Dictionary$new()
   d_lookup2$add("bcd", obj)
 
   # Dictionaries ordered by closest match per dictionary
-  expect_error(dictionary_sugar_get(d, "bcd", .dicts_suggest = list("lookup1" = d_lookup1, "lookup2" = d_lookup2)), "Similar entries in other dictionaries.*lookup2.*lookup1")
+  expect_error(
+    dictionary_sugar_get(d, "bcd", .dicts_suggest = list("lookup1" = d_lookup1, "lookup2" = d_lookup2)),
+    "Similar entries in other dictionaries.*lookup2.*lookup1"
+  )
 })

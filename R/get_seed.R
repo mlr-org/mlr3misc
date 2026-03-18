@@ -14,5 +14,5 @@ get_seed = function() {
     runif(1L)
     seed = get0(".Random.seed", globalenv(), mode = "integer", inherits = FALSE)
   }
-  return(seed)
+  seed
 }

@@ -22,14 +22,20 @@ NULL
 
 #' @export
 #' @rdname check_operators
+#nolint next
 `%check&&%` = function(lhs, rhs) {
-  if (!isTRUE(lhs) && !isTRUE(rhs)) return(paste0(lhs, ", and ", rhs))
+  if (!isTRUE(lhs) && !isTRUE(rhs)) {
+    return(paste0(lhs, ", and ", rhs))
+  }
   if (isTRUE(lhs)) rhs else lhs
 }
 
 #' @export
 #' @rdname check_operators
+#nolint next
 `%check||%` = function(lhs, rhs) {
-  if (!isTRUE(lhs) && !isTRUE(rhs)) return(paste0(lhs, ", or ", rhs))
+  if (!isTRUE(lhs) && !isTRUE(rhs)) {
+    return(paste0(lhs, ", or ", rhs))
+  }
   TRUE
 }

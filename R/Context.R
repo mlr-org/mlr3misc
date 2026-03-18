@@ -48,9 +48,9 @@
 #'
 #' # change content of column y to "C"
 #' context$y = "C"
-Context = R6::R6Class("Context",
+Context = R6::R6Class(
+  "Context",
   public = list(
-
     #' @field id (`character(1)`)\cr
     #' Identifier of the object.
     #' Used in tables, plot and text output.
@@ -83,8 +83,11 @@ Context = R6::R6Class("Context",
     #' @description
     #' Print object.
     print = function() {
-       catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
-       catn(str_indent("* Modifiable objects:", setdiff(names(self), c(".__enclos_env__", "label", "id", "clone", "initialize", "print", "format"))))
+      catn(format(self), if (is.null(self$label) || is.na(self$label)) "" else paste0(": ", self$label))
+      catn(str_indent(
+        "* Modifiable objects:",
+        setdiff(names(self), c(".__enclos_env__", "label", "id", "clone", "initialize", "print", "format"))
+      ))
     }
   )
 )

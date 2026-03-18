@@ -47,20 +47,24 @@ unnest = function(x, cols, prefix = NULL) {
 }
 
 rbindlist2 = function(values) {
-  new_cols = rbindlist(lapply(values, function(row) {
-    # to preserve the row, we need at least one value
-    if (all(lengths(row) == 0L)) {
-      return(list("__rbindlist2_dummy__" = NA))
-    }
+  new_cols = rbindlist(
+    lapply(values, function(row) {
+      # to preserve the row, we need at least one value
+      if (all(lengths(row) == 0L)) {
+        return(list("__rbindlist2_dummy__" = NA))
+      }
 
-    # wrap non-atomics or multi-element atomics into an extra list
-    ii = which(!map_lgl(row, is.atomic) | lengths(row) > 1L)
-    if (length(ii)) {
-      row[ii] = lapply(row[ii], list)
-    }
+      # wrap non-atomics or multi-element atomics into an extra list
+      ii = which(!map_lgl(row, is.atomic) | lengths(row) > 1L)
+      if (length(ii)) {
+        row[ii] = lapply(row[ii], list)
+      }
 
-    row
-  }), fill = TRUE, use.names = TRUE)
+      row
+    }),
+    fill = TRUE,
+    use.names = TRUE
+  )
 
   remove_named(new_cols, "__rbindlist2_dummy__")
 }

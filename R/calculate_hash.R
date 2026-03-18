@@ -53,4 +53,3 @@ hash_input.data.table = function(x) {
 hash_input.default = function(x) {
   x
 }
-

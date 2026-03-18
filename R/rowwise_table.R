@@ -23,7 +23,6 @@
 #'   2, "b"
 #' )
 rowwise_table = function(..., .key = NULL) {
-
   dots = list(...)
 
   for (i in seq_along(dots)) {

@@ -28,7 +28,8 @@
 #' d$keys()
 #' d$get("a")
 #' d$mget(c("a", "b"))
-Dictionary = R6::R6Class("Dictionary",
+Dictionary = R6::R6Class(
+  "Dictionary",
   public = list(
     #' @field items (`environment()`)\cr
     #' Stores the items of the dictionary
@@ -186,16 +187,19 @@ dictionary_get = function(self, key, ..., .dicts_suggest = NULL) {
 dictionary_retrieve_item = function(self, key, dicts_suggest = NULL) {
   obj = get0(key, envir = self$items, inherits = FALSE, ifnotfound = NULL)
   if (is.null(obj)) {
-    stopf("Element with key '%s' not found in %s!%s%s", key, class(self)[1L],
-          did_you_mean(key, self$keys()),
-          did_you_mean_dicts(key, dicts_suggest))
+    stopf(
+      "Element with key '%s' not found in %s!%s%s",
+      key,
+      class(self)[1L],
+      did_you_mean(key, self$keys()),
+      did_you_mean_dicts(key, dicts_suggest)
+    )
   }
   obj
 }
 
 dictionary_initialize_item = function(key, obj, cargs = list()) {
-  cargs = c(cargs[is.na(names2(cargs))],
-    insert_named(obj$pars, cargs[!is.na(names2(cargs))]))
+  cargs = c(cargs[is.na(names2(cargs))], insert_named(obj$pars, cargs[!is.na(names2(cargs))]))
 
   constructor = obj$value
   if (inherits(constructor, "R6ClassGenerator")) {

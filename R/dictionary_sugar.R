@@ -43,7 +43,15 @@ dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
     return(dict)
   }
   assert_string(.key)
-  assert_list(.dicts_suggest, "Dictionary", any.missing = FALSE, min.len = 1, unique = TRUE, names = "named", null.ok = TRUE)
+  assert_list(
+    .dicts_suggest,
+    "Dictionary",
+    any.missing = FALSE,
+    min.len = 1,
+    unique = TRUE,
+    names = "named",
+    null.ok = TRUE
+  )
   if (...length() == 0L) {
     return(dictionary_get(dict, .key, .dicts_suggest = .dicts_suggest))
   }
@@ -79,8 +87,12 @@ dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
     for (i in seq_along(dots)) {
       nn = ndots[[i]]
       if (!exists(nn, envir = instance, inherits = FALSE)) {
-        stopf("Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field).%s",
-          nn, class(instance)[1L], did_you_mean(nn, c(constructor_args, param_ids, setdiff(names(instance), ".__enclos_env__")))) # nolint
+        stopf(
+          "Cannot set argument '%s' for '%s' (not a constructor argument, not a parameter, not a field).%s",
+          nn,
+          class(instance)[1L],
+          did_you_mean(nn, c(constructor_args, param_ids, setdiff(names(instance), ".__enclos_env__")))
+        ) # nolint
       }
       instance[[nn]] = dots[[i]]
     }
@@ -127,7 +139,7 @@ get_constructor_formals = function(x) {
     return(names2(formals(x)))
   }
 
-  return(character())
+  character()
 }
 
 fields = function(x) {
@@ -172,7 +184,7 @@ fields = function(x) {
 #' @export
 dictionary_sugar_inc_get = function(dict, .key, ..., .dicts_suggest = NULL) {
   m = regexpr("_\\d+$", .key)
-  if (attr(m, "match.length") == -1L)  {
+  if (attr(m, "match.length") == -1L) {
     return(dictionary_sugar_get(dict = dict, .key = .key, ..., .dicts_suggest = .dicts_suggest))
   }
   split = regmatches(.key, m, invert = NA)[[1L]]

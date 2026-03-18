@@ -19,5 +19,5 @@ has_element = function(.x, .y) {
       return(TRUE)
     }
   }
-  return(FALSE)
+  FALSE
 }

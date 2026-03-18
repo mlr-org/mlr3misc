@@ -31,7 +31,8 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
     if (is.atomic(x) && !is.null(x) && length(x) == 0L) {
       string = sprintf("%s(0)", cl)
     } else {
-      string = switch(cl,
+      string = switch(
+        cl,
         numeric = paste0(sprintf(num_format, x), collapse = ","),
         integer = paste0(as.character(x), collapse = ","),
         logical = paste0(as.character(x), collapse = ","),

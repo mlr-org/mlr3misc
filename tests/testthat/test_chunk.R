@@ -1,19 +1,49 @@
 test_that("chunk", {
   x = 1:10
   n_chunks = 2
-  expect_integer(chunk(length(x), n_chunks = n_chunks), len = length(x), lower = 1, upper = n_chunks, any.missing = FALSE)
+  expect_integer(
+    chunk(length(x), n_chunks = n_chunks),
+    len = length(x),
+    lower = 1,
+    upper = n_chunks,
+    any.missing = FALSE
+  )
   x = 1:10
   n_chunks = 1
-  expect_integer(chunk(length(x), n_chunks = n_chunks), len = length(x), lower = 1, upper = n_chunks, any.missing = FALSE)
+  expect_integer(
+    chunk(length(x), n_chunks = n_chunks),
+    len = length(x),
+    lower = 1,
+    upper = n_chunks,
+    any.missing = FALSE
+  )
   x = 1:10
   n_chunks = 10
-  expect_integer(chunk(length(x), n_chunks = n_chunks), len = length(x), lower = 1, upper = n_chunks, any.missing = FALSE)
+  expect_integer(
+    chunk(length(x), n_chunks = n_chunks),
+    len = length(x),
+    lower = 1,
+    upper = n_chunks,
+    any.missing = FALSE
+  )
   x = 1:10
   n_chunks = 20
-  expect_integer(chunk(length(x), n_chunks = n_chunks), len = length(x), lower = 1, upper = n_chunks, any.missing = FALSE)
+  expect_integer(
+    chunk(length(x), n_chunks = n_chunks),
+    len = length(x),
+    lower = 1,
+    upper = n_chunks,
+    any.missing = FALSE
+  )
   x = integer(0)
   n_chunks = 20
-  expect_integer(chunk(length(x), n_chunks = n_chunks), len = length(x), lower = 1, upper = n_chunks, any.missing = FALSE)
+  expect_integer(
+    chunk(length(x), n_chunks = n_chunks),
+    len = length(x),
+    lower = 1,
+    upper = n_chunks,
+    any.missing = FALSE
+  )
 
   x = 1:10
   chunk_size = 3

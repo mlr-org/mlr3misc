@@ -20,7 +20,7 @@ test_that("messages and warnings are logged", {
   fun = function() {
     message("foo")
     warning(warningCondition("test", class = "WarningTest"))
-    return(99L)
+    99L
   }
 
   for (method in c("evaluate", "callr")) {
@@ -77,7 +77,7 @@ test_that("timeout", {
     for (i in 1:10) {
       Sys.sleep(x)
     }
-    return(1)
+    1
   }
 
   expect_error(encapsulate("none", .f = f, .args = list(x = 1), .timeout = 1), "time limit")
@@ -107,9 +107,10 @@ test_that("try", {
 })
 
 test_that("rng state is transferred", {
-
   rng_state = .GlobalEnv$.Random.seed
-  on.exit({.GlobalEnv$.Random.seed = rng_state})
+  on.exit({
+    .GlobalEnv$.Random.seed = rng_state
+  })
 
   fun = function() {
     sample(seq(1000), 1)
@@ -160,7 +161,8 @@ test_that("seeds are applied", {
 
   value = invoke(fun, .seed = 1)
 
-  for (method in c("callr", "mirai")) { # "evaluate"
+  for (method in c("callr", "mirai")) {
+    # "evaluate"
     if (!requireNamespace(method, quietly = TRUE)) {
       next
     }
