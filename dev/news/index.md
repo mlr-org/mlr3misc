@@ -4,6 +4,8 @@
 
 ## mlr3misc 0.21.0
 
+CRAN release: 2026-02-26
+
 - docs: Clarify the behavior of
   [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
   regarding stored conditions and output.

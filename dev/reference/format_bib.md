@@ -48,9 +48,9 @@ bibentries = list(checkmate = citation("checkmate"), R = citation())
 format_bib("checkmate")
 #> [1] "Lang M (2017).\n\\dQuote{checkmate: Fast Argument Checks for Defensive R Programming.}\n\\emph{The R Journal}, \\bold{9}(1), 437--445.\n\\doi{10.32614/RJ-2017-028}."
 format_bib("R")
-#> [1] "R Core Team (2025).\n\\emph{R: A Language and Environment for Statistical Computing}.\nR Foundation for Statistical Computing, Vienna, Austria.\n\\url{https://www.R-project.org/}."
+#> [1] "R Core Team (2026).\n\\emph{R: A Language and Environment for Statistical Computing}.\nR Foundation for Statistical Computing, Vienna, Austria.\n\\url{https://www.R-project.org/}."
 cite_bib("checkmate")
 #> [1] "Lang (2017)"
 cite_bib("checkmate", "R")
-#> [1] "Lang (2017) and R Core Team (2025)"
+#> [1] "Lang (2017) and R Core Team (2026)"
 ```

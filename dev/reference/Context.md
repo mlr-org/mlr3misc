@@ -141,7 +141,7 @@ context = ContextExample$new(data)
 
 # retrieve content of column y
 context$y
-#>  [1] "A" "B" "A" "A" "B" "B" "A" "A" "B" "A"
+#>  [1] "B" "A" "A" "A" "A" "B" "A" "A" "B" "B"
 
 # change content of column y to "C"
 context$y = "C"
