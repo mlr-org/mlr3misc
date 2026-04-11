@@ -17,8 +17,8 @@ SEXP c_keep_in_bounds(SEXP s_in, SEXP s_lower, SEXP s_upper) {
     if (count == n) return(s_in);
 
     // create a new vector to store the filtered elements
-    SEXP s_out = PROTECT(allocVector(REALSXP, count));
-    double *out = REAL(s_out);
+    SEXP s_out = PROTECT(allocVector(INTSXP, count));
+    int *out = INTEGER(s_out);
 
     // Copy the elements within bounds to the new vector
     j = 0;
