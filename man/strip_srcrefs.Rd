@@ -15,8 +15,8 @@ Additional arguments to the method.}
 }
 \description{
 Source references can make objects unexpectedly large and are undesirable in many situations.
-As \CRANpkg{renv} installs packages with the \code{--with-keep.source} option, we sometimes need to remove source references
-from objects.
+As \CRANpkg{renv} installs packages with the \code{--with-keep.source} option,
+we sometimes need to remove source references from objects.
 Methods should remove source references from the input, but should otherwise leave the input unchanged.
 }
 \keyword{internal}

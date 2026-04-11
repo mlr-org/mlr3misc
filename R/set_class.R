@@ -4,7 +4,7 @@
 #' Simple wrapper for `class(x) = classes`.
 #'
 #' @param x (`any`).
-#' @param classes (`character(1)`)\cr
+#' @param classes (`character()`)\cr
 #'   Vector of new class names.
 #'
 #' @return Object `x`, with updated class attribute.

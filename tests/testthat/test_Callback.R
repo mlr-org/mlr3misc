@@ -44,7 +44,7 @@ test_that("call_back() function works", {
   test_callback_1 = CallbackTest1$new(id = "mlr3misc.test", label = "Test Callback")
 
   CallbackTest2 = R6Class(
-    "CallbackTest1",
+    "CallbackTest2",
     inherit = Callback,
     public = list(
       on_stage_1 = function(callback, context) {
@@ -56,7 +56,7 @@ test_that("call_back() function works", {
   test_callback_2 = CallbackTest2$new(id = "mlr3misc.test", label = "Test Callback")
 
   CallbackTest3 = R6Class(
-    "CallbackTest1",
+    "CallbackTest3",
     inherit = Callback,
     public = list(
       on_stage_3 = function(callback, context) {

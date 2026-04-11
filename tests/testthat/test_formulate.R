@@ -9,12 +9,12 @@ test_that("formulate", {
 })
 
 test_that("formulate_multioutput", {
-  f = formulate(c("Pepal.Width", "Petal.Length"), c("Sepal.Width", "Sepal.Length"))
+  f = formulate(c("Petal.Width", "Petal.Length"), c("Sepal.Width", "Sepal.Length"))
   expect_formula(f)
   expect_null(environment(f))
 
   x = extract_vars(f)
-  expect_set_equal(x$lhs, c("Pepal.Width", "Petal.Length"))
+  expect_set_equal(x$lhs, c("Petal.Width", "Petal.Length"))
   expect_set_equal(x$rhs, c("Sepal.Width", "Sepal.Length"))
 })
 

@@ -158,7 +158,7 @@ Dictionary = R6::R6Class(
     remove = function(keys) {
       i = wf(!self$has(keys))
       if (length(i)) {
-        stopf("Element with key '%s' not found!%s", keys[i], did_you_mean(key, self$keys()))
+        stopf("Element with key '%s' not found!%s", keys[i], did_you_mean(keys[i], self$keys()))
       }
       rm(list = keys, envir = self$items)
       invisible(self)
