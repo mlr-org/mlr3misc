@@ -32,7 +32,7 @@ require_namespaces = function(pkgs, msg = "The following packages could not be l
     msg = sprintf(msg, toString(pkgs[ii]))
     stop(errorCondition(msg, packages = pkgs[ii], class = "packageNotFoundError"))
   } else if (quietly) {
-    return(TRUE)
+    TRUE
   } else {
     invisible(pkgs)
   }

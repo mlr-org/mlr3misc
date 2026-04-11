@@ -92,13 +92,13 @@ dictionary_sugar_get = function(dict, .key, ..., .dicts_suggest = NULL) {
           nn,
           class(instance)[1L],
           did_you_mean(nn, c(constructor_args, param_ids, setdiff(names(instance), ".__enclos_env__")))
-        ) # nolint
+        )
       }
       instance[[nn]] = dots[[i]]
     }
   }
 
-  return(instance)
+  instance
 }
 
 #' @rdname dictionary_sugar_get

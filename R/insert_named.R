@@ -30,7 +30,6 @@ insert_named = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.NULL = function(x, y) {
-  # nolint
   if (!test_named(y)) {
     stopf("insert_named(NULL, y) failed: 'y' is unnamed")
   }
@@ -40,7 +39,6 @@ insert_named.NULL = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.default = function(x, y) {
-  # nolint
   assert_vector(x, names = "unique")
   x[names(y)] = y
   x
@@ -49,7 +47,6 @@ insert_named.default = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.environment = function(x, y) {
-  # nolint
   for (nn in names(y)) {
     assign(nn, y[[nn]], envir = x)
   }
@@ -59,7 +56,6 @@ insert_named.environment = function(x, y) {
 #' @export
 #' @rdname insert_named
 insert_named.data.frame = function(x, y) {
-  # nolint
   if (ncol(x) > 0L) {
     x[names(y)] = as.list(y)
     as.data.frame(x)
@@ -72,7 +68,7 @@ insert_named.data.frame = function(x, y) {
 #' @rdname insert_named
 insert_named.data.table = function(x, y) {
   if (ncol(x) > 0L) {
-    #nolint next
+    # nolint next
     ..y = y
     x[, names(..y) := ..y][]
   } else {

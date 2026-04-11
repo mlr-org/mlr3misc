@@ -236,19 +236,16 @@ keep = function(.x, .f, ...) {
 
 #' @export
 keep.default = function(.x, .f, ...) {
-  # nolint
   .x[probe(.x, .f, ...)]
 }
 
 #' @export
 keep.data.frame = function(.x, .f, ...) {
-  # nolint
   .x[, probe(.x, .f, ...), drop = FALSE]
 }
 
 #' @export
 keep.data.table = function(.x, .f, ...) {
-  # nolint
   .x[, probe(.x, .f, ...), with = FALSE]
 }
 
@@ -260,7 +257,6 @@ discard = function(.x, .p, ...) {
 
 #' @export
 discard.default = function(.x, .p, ...) {
-  # nolint
   .sel = probe(.x, .p, ...)
   out = .x[is.na(.sel) | !.sel]
   # Preserve list-level attributes (subsetting with [ drops them)
@@ -272,14 +268,12 @@ discard.default = function(.x, .p, ...) {
 
 #' @export
 discard.data.frame = function(.x, .p, ...) {
-  # nolint
   .sel = probe(.x, .p, ...)
   .x[, is.na(.sel) | !.sel, drop = FALSE]
 }
 
 #' @export
 discard.data.table = function(.x, .p, ...) {
-  # nolint
   .sel = probe(.x, .p, ...)
   .x[, is.na(.sel) | !.sel, with = FALSE]
 }
@@ -287,7 +281,6 @@ discard.data.table = function(.x, .p, ...) {
 #' @export
 #' @rdname compat-map
 compact = function(.x) {
-  # nolint
   .x[as.logical(lengths(.x))]
 }
 
@@ -300,7 +293,6 @@ map_if = function(.x, .p, .f, ...) {
 #' @export
 #' @rdname compat-map
 map_if.default = function(.x, .p, .f, ...) {
-  # nolint
   .matches = probe(.x, .p)
   .x[.matches] = map(.x[.matches], .f, ...)
   .x
@@ -308,7 +300,6 @@ map_if.default = function(.x, .p, .f, ...) {
 
 #' @export
 map_if.data.frame = function(.x, .p, .f, ...) {
-  # nolint
   .matches = probe(.x, .p)
   .x[, .matches] = map(.x[, .matches, drop = FALSE], .f, ...)
   .x
@@ -316,7 +307,6 @@ map_if.data.frame = function(.x, .p, .f, ...) {
 
 #' @export
 map_if.data.table = function(.x, .p, .f, ...) {
-  # nolint
   .matches = which(probe(.x, .p))
   if (length(.matches)) {
     .x = copy(.x)
@@ -335,14 +325,12 @@ map_at = function(.x, .at, .f, ...) {
 
 #' @export
 map_at.default = function(.x, .at, .f, ...) {
-  # nolint
   .x[.at] = map(.x[.at], .f, ...)
   .x
 }
 
 #' @export
 map_at.data.table = function(.x, .at, .f, ...) {
-  # nolint
   if (length(.at)) {
     .x = copy(.x)
     for (j in .at) {
