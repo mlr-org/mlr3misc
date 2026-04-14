@@ -152,13 +152,15 @@ Packages to load via <code><a href="https://rdrr.io/r/base/ns-load.html" class="
 <dt id="arg--seed">.seed<a class="anchor" aria-label="anchor" href="#arg--seed"></a></dt>
 <dd><p>(<code>integer(1)</code>)<br>
 Random seed set via <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> before calling <code>.f</code>.
-If <code>NA</code> (default), the seed is not changed; for <code>"callr"</code> and <code>"mirai"</code> modes the current RNG state is forwarded instead.</p></dd>
+If <code>NA</code> (default), the seed is not changed;
+for <code>"callr"</code> and <code>"mirai"</code> modes the current RNG state is forwarded instead.</p></dd>
 
 
 <dt id="arg--timeout">.timeout<a class="anchor" aria-label="anchor" href="#arg--timeout"></a></dt>
 <dd><p>(<code>numeric(1)</code>)<br>
 Timeout in seconds (<code>Inf</code> for no limit).
-Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>; passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.</p></dd>
+Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>;
+passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.</p></dd>
 
 
 <dt id="arg--compute">.compute<a class="anchor" aria-label="anchor" href="#arg--compute"></a></dt>
@@ -228,7 +230,7 @@ Empty when no conditions were captured.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.642 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.618 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

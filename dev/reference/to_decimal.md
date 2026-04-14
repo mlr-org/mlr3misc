@@ -16,8 +16,8 @@ to_decimal(bits)
 - bits:
 
   ([`logical()`](https://rdrr.io/r/base/logical.html))  
-  Logical vector of input values. Missing values are treated as being
-  `FALSE`. If `bits` is longer than 30 elements, an exception is raised.
+  Logical vector of input values. Missing values are not allowed. If
+  `bits` is longer than 30 elements, an exception is raised.
 
 ## Value
 
