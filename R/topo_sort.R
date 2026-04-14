@@ -42,9 +42,9 @@ topo_sort = function(nodes) {
   while (topo_count <= n) {
     # if element is not sorted and has no deps (anymore), we sort it in
     if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
-      nodes[j, "topo" := topo_count]
+      set(nodes, i = j, j = "topo", value = topo_count)
       topo_count = topo_count + 1L
-      nodes[j, "depth" := depth_count]
+      set(nodes, i = j, j = "depth", value = depth_count)
     }
     j = (j %% n) + 1L # inc j, but wrap around end
     if (j == 1L) {
@@ -53,7 +53,7 @@ topo_sort = function(nodes) {
       if (length(layer) == 0L) {
         stop("Cycle detected, this is not a DAG!")
       }
-      nodes[, "parents" := map(get("parents"), function(x) setdiff(x, layer))]
+      set(nodes, i = NULL, j = "parents", value = map(nodes$parents, function(x) setdiff(x, layer)))
       depth_count = depth_count + 1L
     }
   }
