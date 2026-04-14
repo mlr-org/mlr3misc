@@ -28,4 +28,9 @@ test_that("as_short_string", {
   expect_equal(as_short_string(list(a = 1L, b = 3.223), num_format = "%.2f"), "a=1, b=3.22")
 
   expect_equal(as_short_string(character(0)), "character(0)")
+
+  expect_equal(as_short_string(factor("setosa")), "setosa")
+  expect_equal(as_short_string(factor(c("setosa", "versicolor"))), "setosa,versicolor")
+  expect_equal(as_short_string(ordered("low", levels = c("low", "high"))), "low")
+  expect_equal(as_short_string(list(a = 1, b = factor("setosa"))), "a=1, b=setosa")
 })

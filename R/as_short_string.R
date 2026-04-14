@@ -37,6 +37,8 @@ as_short_string = function(x, width = 30L, num_format = "%.4g") {
         integer = paste0(as.character(x), collapse = ","),
         logical = paste0(as.character(x), collapse = ","),
         character = paste0(x, collapse = ","),
+        factor = paste0(as.character(x), collapse = ","),
+        ordered = paste0(as.character(x), collapse = ","),
         expression = as.character(x),
         sprintf("<%s>", cl)
       )
