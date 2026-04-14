@@ -33,11 +33,13 @@ Packages to load via \code{\link[=requireNamespace]{requireNamespace()}} before 
 
 \item{.seed}{(\code{integer(1)})\cr
 Random seed set via \code{\link[=set.seed]{set.seed()}} before calling \code{.f}.
-If \code{NA} (default), the seed is not changed; for \code{"callr"} and \code{"mirai"} modes the current RNG state is forwarded instead.}
+If \code{NA} (default), the seed is not changed;
+for \code{"callr"} and \code{"mirai"} modes the current RNG state is forwarded instead.}
 
 \item{.timeout}{(\code{numeric(1)})\cr
 Timeout in seconds (\code{Inf} for no limit).
-Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"}; passed natively to \code{callr::r()} and \code{mirai::mirai()} for the other modes.}
+Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"};
+passed natively to \code{callr::r()} and \code{mirai::mirai()} for the other modes.}
 
 \item{.compute}{(\code{character(1)})\cr
 Compute profile for \code{"mirai"} mode. Passed to \code{mirai::mirai()} as \code{.compute}.}

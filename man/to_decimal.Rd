@@ -8,7 +8,7 @@ to_decimal(bits)
 }
 \arguments{
 \item{bits}{(\code{logical()})\cr
-Logical vector of input values. Missing values are treated as being \code{FALSE}.
+Logical vector of input values. Missing values are not allowed.
 If \code{bits} is longer than 30 elements, an exception is raised.}
 }
 \value{

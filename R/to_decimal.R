@@ -7,7 +7,7 @@
 #' length of the bit vector.
 #'
 #' @param bits (`logical()`)\cr
-#'   Logical vector of input values. Missing values are treated as being `FALSE`.
+#'   Logical vector of input values. Missing values are not allowed.
 #'   If `bits` is longer than 30 elements, an exception is raised.
 #'
 #' @return (`integer(1)`).
