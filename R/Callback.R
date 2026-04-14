@@ -119,7 +119,6 @@ Callback = R6Class(
 #' @return [Callback].
 #' @export
 as_callback = function(x, ...) {
-  # nolint
   UseMethod("as_callback")
 }
 
@@ -128,28 +127,24 @@ as_callback = function(x, ...) {
 #'   If `TRUE`, ensures that the returned object is not the same as the input `x`.
 #' @export
 as_callback.Callback = function(x, clone = FALSE, ...) {
-  # nolint
   if (clone) x$clone(deep = TRUE) else x
 }
 
 #' @rdname as_callback
 #' @export
 as_callbacks = function(x, clone = FALSE, ...) {
-  # nolint
   UseMethod("as_callbacks")
 }
 
 #' @rdname as_callback
 #' @export
 as_callbacks.NULL = function(x, ...) {
-  # nolint
   list()
 }
 
 #' @rdname as_callback
 #' @export
 as_callbacks.list = function(x, clone = FALSE, ...) {
-  # nolint
   callbacks = lapply(x, as_callback, clone = clone, ...)
   set_names(callbacks, map(callbacks, "id"))
 }
@@ -157,7 +152,6 @@ as_callbacks.list = function(x, clone = FALSE, ...) {
 #' @rdname as_callback
 #' @export
 as_callbacks.Callback = function(x, clone = FALSE, ...) {
-  # nolint
   set_names(list(if (clone) x$clone(deep = TRUE) else x), x$id)
 }
 

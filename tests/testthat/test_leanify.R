@@ -10,7 +10,7 @@ make_classes = function(pe = parent.frame()) {
     "test_sub",
     parent_env = pe,
     inherit = cls_top,
-    #nolint next
+    # nolint next
     public = list(a = function() super$a() + 1),
     private = list(b = function() super$b() + 1),
     active = list(c = function() super$c + 1)

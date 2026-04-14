@@ -16,5 +16,5 @@ named_list = function(nn = character(0L), init = NULL) {
     x[] = list(init)
   }
   names(x) = nn
-  return(x)
+  x
 }

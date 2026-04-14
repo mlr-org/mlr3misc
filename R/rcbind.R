@@ -35,7 +35,7 @@ rcbind = function(x, y) {
     stopf("Duplicated names: %s", str_collapse(dup))
   }
 
-  #nolint next
+  # nolint next
   ..y = NULL
   x[, (names(y)) := ..y][]
 }

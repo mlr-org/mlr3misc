@@ -32,5 +32,5 @@ set_params = function(.ps, ..., .values = list(), .insert = TRUE) {
   } else {
     .ps$values = new_values
   }
-  return(.ps)
+  .ps
 }

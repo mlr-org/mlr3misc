@@ -36,7 +36,7 @@ crate = function(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE) {
   if (.compile) {
     .fn = compiler::cmpfun(.fn)
   }
-  return(.fn)
+  .fn
 }
 
 is_compiled = function(x) {
