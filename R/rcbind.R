@@ -30,12 +30,13 @@ rcbind = function(x, y) {
     stopf("Tables have different number of rows (x: %i, y: %i)", nrow(x), nrow(y))
   }
 
-  dup = intersect(names(x), names(y))
+  nn = names(y)
+  dup = nn[nn %in% names(x)]
   if (length(dup)) {
     stopf("Duplicated names: %s", str_collapse(dup))
   }
 
   # nolint next
   ..y = NULL
-  x[, (names(y)) := ..y][]
+  x[, (nn) := ..y][]
 }
