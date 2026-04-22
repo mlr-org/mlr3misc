@@ -124,10 +124,15 @@ map_dtr = function(.x, .f, ..., .fill = FALSE, .idcol = NULL) {
 #' @export
 #' @rdname compat-map
 map_dtc = function(.x, .f, ...) {
-  cols = map(.x, .f, ...)
-  j = map_lgl(cols, function(x) !is.null(dim(x)) && !is.null(colnames(x)))
-  names(cols)[j] = ""
-  do.call(data.table, c(cols, list(check.names = TRUE)))
+  cols = compact(map(.x, .f, ...))
+  j = map_lgl(cols, function(x) !is.null(dim(x)))
+  if (any(j)) {
+    names(cols)[j] = ""
+    cols[j] = lapply(cols[j], function(x) if (is.data.frame(x)) x else as.data.frame(x))
+    cols[!j] = lapply(cols[!j], list)
+    cols = unlist(cols, recursive = FALSE)
+  }
+  setDT(cols, check.names = TRUE)[]
 }
 
 
