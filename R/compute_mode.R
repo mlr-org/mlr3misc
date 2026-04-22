@@ -20,5 +20,6 @@ compute_mode = function(x, ties_method = "random", na_rm = TRUE) {
   if (na_rm) {
     x = x[!is.na(x)]
   }
-  as.data.table(x)[, .N, by = list(x)][which_max(get("N"), ties_method = ties_method)]$x
+  u = unique(x)
+  u[which_max(tabulate(match(x, u)), ties_method = ties_method)]
 }
