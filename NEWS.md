@@ -1,6 +1,7 @@
 # mlr3misc (development version)
 
 * fix: `encapsulate()` now short-circuits when `.timeout = 0` and returns an immediate `Mlr3ErrorTimeout` log entry instead of silently disabling timeout enforcement.
+* fix: `register_namespace_callback()` now wraps the user callback so it can be invoked by hook callers that pass `package` and `lib_path` arguments (e.g. `pkgload::load_all()`), which previously caused "unused arguments" errors (#180).
 
 # mlr3misc 0.21.0
 

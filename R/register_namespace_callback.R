@@ -11,6 +11,8 @@
 #'   Namespace to react on.
 #' @param callback (`function()`)\cr
 #'   Function to call on namespace load.
+#'   The callback is invoked without arguments, so it can be defined as `function()` or `function(...)`.
+#'   Any arguments passed by the hook caller (e.g. `package` and `lib_path` from `pkgload`) are discarded.
 #'
 #' @return `NULL`.
 #' @export
@@ -18,6 +20,8 @@ register_namespace_callback = function(pkgname, namespace, callback) {
   assert_string(pkgname)
   assert_string(namespace)
   assert_function(callback)
+
+  load_hook = function(...) callback()
 
   remove_hook = function(event) {
     hooks = getHook(event)
@@ -41,6 +45,6 @@ register_namespace_callback = function(pkgname, namespace, callback) {
     callback()
   }
 
-  setHook(packageEvent(namespace, "onLoad"), callback, action = "append")
+  setHook(packageEvent(namespace, "onLoad"), load_hook, action = "append")
   setHook(packageEvent(pkgname, "onUnload"), remove_hooks, action = "append")
 }
