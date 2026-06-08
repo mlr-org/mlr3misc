@@ -113,6 +113,11 @@ The objects of this class are cloneable with this method.
 
 ``` r
 library(data.table)
+#> 
+#> Attaching package: ‘data.table’
+#> The following object is masked from ‘package:base’:
+#> 
+#>     %notin%
 library(R6)
 
 # data table with column x and y

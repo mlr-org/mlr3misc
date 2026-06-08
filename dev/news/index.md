@@ -2,6 +2,14 @@
 
 ## mlr3misc (development version)
 
+- fix:
+  [`register_namespace_callback()`](https://mlr3misc.mlr-org.com/dev/reference/register_namespace_callback.md)
+  now wraps the user callback so it can be invoked by hook callers that
+  pass `package` and `lib_path` arguments
+  (e.g. [`pkgload::load_all()`](https://pkgload.r-lib.org/reference/load_all.html)),
+  which previously caused “unused arguments” errors
+  ([\#180](https://github.com/mlr-org/mlr3misc/issues/180)).
+
 ## mlr3misc 0.21.0
 
 CRAN release: 2026-02-26
