@@ -3,6 +3,11 @@
 ## mlr3misc (development version)
 
 - fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  now short-circuits when `.timeout = 0` and returns an immediate
+  `Mlr3ErrorTimeout` log entry instead of silently disabling timeout
+  enforcement.
+- fix:
   [`register_namespace_callback()`](https://mlr3misc.mlr-org.com/dev/reference/register_namespace_callback.md)
   now wraps the user callback so it can be invoked by hook callers that
   pass `package` and `lib_path` arguments

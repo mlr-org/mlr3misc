@@ -160,7 +160,9 @@ for <code>"callr"</code> and <code>"mirai"</code> modes the current RNG state is
 <dd><p>(<code>numeric(1)</code>)<br>
 Timeout in seconds (<code>Inf</code> for no limit).
 Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>;
-passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.</p></dd>
+passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.
+A value of <code>0</code> is treated as an already-elapsed deadline:
+<code>.f</code> is not evaluated and the result contains an immediate <code>Mlr3ErrorTimeout</code> in <code>log</code>.</p></dd>
 
 
 <dt id="arg--compute">.compute<a class="anchor" aria-label="anchor" href="#arg--compute"></a></dt>
@@ -230,7 +232,7 @@ Empty when no conditions were captured.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.641 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.66 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

@@ -90,7 +90,9 @@ encapsulate(
   `"none"` and `"evaluate"`; passed natively to
   [`callr::r()`](https://callr.r-lib.org/reference/r.html) and
   [`mirai::mirai()`](https://mirai.r-lib.org/reference/mirai.html) for
-  the other modes.
+  the other modes. A value of `0` is treated as an already-elapsed
+  deadline: `.f` is not evaluated and the result contains an immediate
+  `Mlr3ErrorTimeout` in `log`.
 
 - .compute:
 
@@ -168,6 +170,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.641 
+#>    0.66 
 #> 
 ```
