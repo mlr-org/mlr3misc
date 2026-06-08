@@ -14,7 +14,9 @@ Name of the package which registers the callback.}
 Namespace to react on.}
 
 \item{callback}{(\verb{function()})\cr
-Function to call on namespace load.}
+Function to call on namespace load.
+The callback is invoked without arguments, so it can be defined as \verb{function()} or \verb{function(...)}.
+Any arguments passed by the hook caller (e.g. \code{package} and \code{lib_path} from \code{pkgload}) are discarded.}
 }
 \value{
 \code{NULL}.
