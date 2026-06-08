@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* fix: `encapsulate()` now short-circuits when `.timeout = 0` and returns an immediate `Mlr3ErrorTimeout` log entry instead of silently disabling timeout enforcement.
+
 # mlr3misc 0.21.0
 
 * docs: Clarify the behavior of `encapsulate()` regarding stored conditions and output.

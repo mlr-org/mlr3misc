@@ -38,7 +38,6 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Collate:
     'Dictionary.R'
     'named_list.R'
@@ -112,3 +111,4 @@ Collate:
     'which_max.R'
     'with_package.R'
     'zzz.R'
+Config/roxygen2/version: 8.0.0

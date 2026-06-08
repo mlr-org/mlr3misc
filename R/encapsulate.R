@@ -39,6 +39,8 @@
 #'   Timeout in seconds (`Inf` for no limit).
 #'   Uses [setTimeLimit()] for `"none"` and `"evaluate"`;
 #'   passed natively to `callr::r()` and `mirai::mirai()` for the other modes.
+#'   A value of `0` is treated as an already-elapsed deadline:
+#'   `.f` is not evaluated and the result contains an immediate `Mlr3ErrorTimeout` in `log`.
 #' @param .compute (`character(1)`)\cr
 #'   Compute profile for `"mirai"` mode. Passed to `mirai::mirai()` as `.compute`.
 #' @return Named `list()` with three elements:
@@ -84,6 +86,15 @@ encapsulate = function(
   assert_count(.seed, na.ok = TRUE)
   assert_number(.timeout, lower = 0)
   log = NULL
+
+  if (.timeout == 0) {
+    # a zero timeout means the deadline has already elapsed
+    log = data.table(
+      class = factor("error", levels = c("output", "warning", "error"), ordered = TRUE),
+      condition = list(error_timeout(signal = FALSE))
+    )
+    return(list(result = NULL, log = log, elapsed = 0))
+  }
 
   if (method %in% c("none", "try")) {
     require_namespaces(.pkgs)
