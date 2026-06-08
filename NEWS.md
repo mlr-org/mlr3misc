@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* fix: `register_namespace_callback()` now wraps the user callback so it can be invoked by hook callers that pass `package` and `lib_path` arguments (e.g. `pkgload::load_all()`), which previously caused "unused arguments" errors (#180).
+
 # mlr3misc 0.21.0
 
 * docs: Clarify the behavior of `encapsulate()` regarding stored conditions and output.
