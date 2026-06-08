@@ -93,8 +93,7 @@ Stores the items of the dictionary</p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-Dictionary-new"><code>Dictionary$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-Dictionary-initialize"><code>Dictionary$new()</code></a></p></li>
 <li><p><a href="#method-Dictionary-format"><code>Dictionary$format()</code></a></p></li>
 <li><p><a href="#method-Dictionary-print"><code>Dictionary$print()</code></a></p></li>
 <li><p><a href="#method-Dictionary-keys"><code>Dictionary$keys()</code></a></p></li>
@@ -105,22 +104,21 @@ Stores the items of the dictionary</p></dd>
 <li><p><a href="#method-Dictionary-remove"><code>Dictionary$remove()</code></a></p></li>
 <li><p><a href="#method-Dictionary-prototype_args"><code>Dictionary$prototype_args()</code></a></p></li>
 <li><p><a href="#method-Dictionary-clone"><code>Dictionary$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-Dictionary-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+</ul></div><p></p><hr><a id="method-Dictionary-initialize"></a><div class="section">
+<h3 id="dictionary-new-"><code>Dictionary$new()</code><a class="anchor" aria-label="anchor" href="#dictionary-new-"></a></h3>
 <p>Construct a new Dictionary.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/Dictionary.html">Dictionary</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-Dictionary-format"></a><div class="section">
-<h3 id="method-format-">Method <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code><a class="anchor" aria-label="anchor" href="#method-format-"></a></h3>
+<p></p><hr><a id="method-Dictionary-format"></a><div class="section">
+<h3 id="dictionary-format-"><code>Dictionary$format()</code><a class="anchor" aria-label="anchor" href="#dictionary-format-"></a></h3>
 <p>Format object as simple string.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">format</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(ignored).</p></dd>
@@ -129,156 +127,146 @@ Stores the items of the dictionary</p></dd>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-print"></a><div class="section">
-<h3 id="method-print-">Method <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code><a class="anchor" aria-label="anchor" href="#method-print-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-print"></a><div class="section">
+<h3 id="dictionary-print-"><code>Dictionary$print()</code><a class="anchor" aria-label="anchor" href="#dictionary-print-"></a></h3>
 <p>Print object.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-Dictionary-keys"></a><div class="section">
-<h3 id="method-keys-">Method <code>keys()</code><a class="anchor" aria-label="anchor" href="#method-keys-"></a></h3>
+<p></p><hr><a id="method-Dictionary-keys"></a><div class="section">
+<h3 id="dictionary-keys-"><code>Dictionary$keys()</code><a class="anchor" aria-label="anchor" href="#dictionary-keys-"></a></h3>
 <p>Returns all keys which comply to the regular expression <code>pattern</code>.
 If <code>pattern</code> is <code>NULL</code> (default), all keys are returned.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">keys</span><span class="op">(</span>pattern <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>pattern</code></dt>
 <dd><p>(<code>character(1)</code>).</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code> of keys.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-has"></a><div class="section">
-<h3 id="method-has-">Method <code>has()</code><a class="anchor" aria-label="anchor" href="#method-has-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-has"></a><div class="section">
+<h3 id="dictionary-has-"><code>Dictionary$has()</code><a class="anchor" aria-label="anchor" href="#dictionary-has-"></a></h3>
 <p>Returns a logical vector with <code>TRUE</code> at its i-th position if the i-th key exists.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">has</span><span class="op">(</span><span class="va">keys</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>keys</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>).</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
 <p><code><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-get"></a><div class="section">
-<h3 id="method-get-">Method <code><a href="https://rdrr.io/r/base/get.html" class="external-link">get()</a></code><a class="anchor" aria-label="anchor" href="#method-get-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-get"></a><div class="section">
+<h3 id="dictionary-get-"><code>Dictionary$get()</code><a class="anchor" aria-label="anchor" href="#dictionary-get-"></a></h3>
 <p>Retrieves object with key <code>key</code> from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="va">key</span>, <span class="va">...</span>, .prototype <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>key</code></dt>
 <dd><p>(<code>character(1)</code>).</p></dd>
 
-
-<dt><code>...</code></dt>
+      <dt><code>...</code></dt>
 <dd><p>(<code>any</code>)<br>
 Passed down to constructor.</p></dd>
 
-
-<dt><code>.prototype</code></dt>
+      <dt><code>.prototype</code></dt>
 <dd><p>(<code>logical(1)</code>)<br>
 Whether to construct a prototype object.</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
 <p>Object with corresponding key.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-mget"></a><div class="section">
-<h3 id="method-mget-">Method <code><a href="https://rdrr.io/r/base/get.html" class="external-link">mget()</a></code><a class="anchor" aria-label="anchor" href="#method-mget-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-mget"></a><div class="section">
+<h3 id="dictionary-mget-"><code>Dictionary$mget()</code><a class="anchor" aria-label="anchor" href="#dictionary-mget-"></a></h3>
 <p>Returns objects with keys <code>keys</code> in a list named with <code>keys</code>.
 Additional arguments must be named and are passed to the constructors of the stored objects.</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">mget</span><span class="op">(</span><span class="va">keys</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>keys</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>).</p></dd>
 
-
-<dt><code>...</code></dt>
+      <dt><code>...</code></dt>
 <dd><p>(<code>any</code>)<br>
 Passed down to constructor.</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
 <p>Named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of objects with corresponding keys.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-add"></a><div class="section">
-<h3 id="method-add-">Method <code>add()</code><a class="anchor" aria-label="anchor" href="#method-add-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-add"></a><div class="section">
+<h3 id="dictionary-add-"><code>Dictionary$add()</code><a class="anchor" aria-label="anchor" href="#dictionary-add-"></a></h3>
 <p>Adds object <code>value</code> to the dictionary with key <code>key</code>, potentially overwriting a previously stored item.
 Additional arguments in <code>...</code> must be named and are passed as default arguments to <code>value</code> during construction.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">add</span><span class="op">(</span><span class="va">key</span>, <span class="va">value</span>, <span class="va">...</span>, .prototype_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>key</code></dt>
 <dd><p>(<code>character(1)</code>).</p></dd>
 
-
-<dt><code>value</code></dt>
+      <dt><code>value</code></dt>
 <dd><p>(<code>any</code>).</p></dd>
 
-
-<dt><code>...</code></dt>
+      <dt><code>...</code></dt>
 <dd><p>(<code>any</code>)<br>
 Passed down to constructor.</p></dd>
 
-
-<dt><code>.prototype_args</code></dt>
+      <dt><code>.prototype_args</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>)<br>
 List of arguments to construct a prototype object.
 Can be used when objects have construction arguments without defaults.</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p><code>Dictionary</code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-remove"></a><div class="section">
-<h3 id="method-remove-">Method <code><a href="https://rdrr.io/r/base/rm.html" class="external-link">remove()</a></code><a class="anchor" aria-label="anchor" href="#method-remove-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-remove"></a><div class="section">
+<h3 id="dictionary-remove-"><code>Dictionary$remove()</code><a class="anchor" aria-label="anchor" href="#dictionary-remove-"></a></h3>
 <p>Removes objects from the dictionary.</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">remove</span><span class="op">(</span><span class="va">keys</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>keys</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
@@ -286,20 +274,19 @@ Keys of objects to remove.</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
 <p><code>Dictionary</code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-prototype_args"></a><div class="section">
-<h3 id="method-prototype-args-">Method <code>prototype_args()</code><a class="anchor" aria-label="anchor" href="#method-prototype-args-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-prototype_args"></a><div class="section">
+<h3 id="dictionary-prototype-args-"><code>Dictionary$prototype_args()</code><a class="anchor" aria-label="anchor" href="#dictionary-prototype-args-"></a></h3>
 <p>Returns the arguments required to construct a simple prototype of the object.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">prototype_args</span><span class="op">(</span><span class="va">key</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>key</code></dt>
 <dd><p>(<code>character(1)</code>)<br>
@@ -307,20 +294,19 @@ Key of object to query for required arguments.</p></dd>
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
 <p><code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> of prototype arguments</p>
 </div>
 
-</div><p></p><hr><a id="method-Dictionary-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-Dictionary-clone"></a><div class="section">
+<h3 id="dictionary-clone-"><code>Dictionary$clone()</code><a class="anchor" aria-label="anchor" href="#dictionary-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Dictionary</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -330,6 +316,7 @@ Key of object to query for required arguments.</p></dd>
 </div>
 
 </div>
+
 
     </div>
 
