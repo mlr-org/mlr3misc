@@ -93,6 +93,21 @@ test_that("timeout", {
   }
 })
 
+test_that(".timeout = 0 short-circuits with an immediate Mlr3ErrorTimeout", {
+  f = function() 1L
+
+  for (method in c("none", "try", "evaluate", "callr", "mirai")) {
+    if (method != "none" && !requireNamespace(method, quietly = TRUE)) {
+      next
+    }
+    res = encapsulate(method, .f = f, .timeout = 0)
+
+    expect_null(res$result, info = method)
+    expect_equal(as.character(res$log$class), "error", info = method)
+    expect_class(res$log$condition[[1]], "Mlr3ErrorTimeout", info = method)
+  }
+})
+
 test_that("try", {
   fun1 = function(...) {
     message("foo")

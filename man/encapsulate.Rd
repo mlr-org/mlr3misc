@@ -39,7 +39,9 @@ for \code{"callr"} and \code{"mirai"} modes the current RNG state is forwarded i
 \item{.timeout}{(\code{numeric(1)})\cr
 Timeout in seconds (\code{Inf} for no limit).
 Uses \code{\link[=setTimeLimit]{setTimeLimit()}} for \code{"none"} and \code{"evaluate"};
-passed natively to \code{callr::r()} and \code{mirai::mirai()} for the other modes.}
+passed natively to \code{callr::r()} and \code{mirai::mirai()} for the other modes.
+A value of \code{0} is treated as an already-elapsed deadline:
+\code{.f} is not evaluated and the result contains an immediate \code{Mlr3ErrorTimeout} in \code{log}.}
 
 \item{.compute}{(\code{character(1)})\cr
 Compute profile for \code{"mirai"} mode. Passed to \code{mirai::mirai()} as \code{.compute}.}
