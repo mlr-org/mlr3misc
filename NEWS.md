@@ -1,4 +1,4 @@
-# mlr3misc (development version)
+# mlr3misc 0.22.0
 
 * feat: `as_short_string()` now prints factor values (#173).
 * fix: `Dictionary`'s `remove()` now shows the correct key in the "did you mean" suggestion of its error message (#171).
