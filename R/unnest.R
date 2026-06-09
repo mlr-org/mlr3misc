@@ -49,13 +49,14 @@ unnest = function(x, cols, prefix = NULL) {
 rbindlist2 = function(values) {
   new_cols = rbindlist(
     lapply(values, function(row) {
+      n = lengths(row)
       # to preserve the row, we need at least one value
-      if (all(lengths(row) == 0L)) {
+      if (all(n == 0L)) {
         return(list("__rbindlist2_dummy__" = NA))
       }
 
       # wrap non-atomics or multi-element atomics into an extra list
-      ii = which(!map_lgl(row, is.atomic) | lengths(row) > 1L)
+      ii = which(!map_lgl(row, is.atomic) | n > 1L)
       if (length(ii)) {
         row[ii] = lapply(row[ii], list)
       }
