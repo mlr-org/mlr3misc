@@ -138,7 +138,7 @@ encapsulate("none", f, list(n = 1), .seed = 1)
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.001 
+#>       0 
 #> 
 
 if (requireNamespace("evaluate", quietly = TRUE)) {
@@ -170,6 +170,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.655 
+#>   0.722 
 #> 
 ```
