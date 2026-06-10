@@ -77,7 +77,12 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 warningf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
   class = c(class, "Mlr3Warning", "warning", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  warning(structure(list(message = as.character(message)), class = class), call. = call)
+  condition_call = if (call) sys.call(-1L) else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  warning(condition)
 }
 
 #' @export
@@ -85,5 +90,10 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
 stopf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
   class = c(class, "Mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  stop(structure(list(message = as.character(message)), class = class), call. = call)
+  condition_call = if (call) sys.call(-1L) else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  stop(condition)
 }
