@@ -75,6 +75,7 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 #' @export
 #' @rdname printf
 warningf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
+  assert_flag(call)
   class = c(class, "Mlr3Warning", "warning", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
   condition_call = if (call) sys.call(-1L) else NULL
@@ -88,6 +89,7 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
 #' @export
 #' @rdname printf
 stopf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
+  assert_flag(call)
   class = c(class, "Mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
   condition_call = if (call) sys.call(-1L) else NULL
