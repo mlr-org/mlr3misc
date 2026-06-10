@@ -1,7 +1,13 @@
-# mlr3misc (development version)
+# mlr3misc 0.22.0
 
+* feat: `as_short_string()` now prints factor values (#173).
+* fix: `Dictionary`'s `remove()` now shows the correct key in the "did you mean" suggestion of its error message (#171).
 * fix: `encapsulate()` now short-circuits when `.timeout = 0` and returns an immediate `Mlr3ErrorTimeout` log entry instead of silently disabling timeout enforcement.
+* fix: `keep_in_bounds()` now has a consistent integer return type in its C call (#172).
+* perf: `rcbind()` uses `%in%` instead of `intersect()` for its name check (#175).
 * fix: `register_namespace_callback()` now wraps the user callback so it can be invoked by hook callers that pass `package` and `lib_path` arguments (e.g. `pkgload::load_all()`), which previously caused "unused arguments" errors (#180).
+* perf: `topo_sort()` uses `set()` for faster updates (#174).
+* perf: `unnest()` caches the `lengths()` call (#178).
 
 # mlr3misc 0.21.0
 
