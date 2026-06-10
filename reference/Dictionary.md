@@ -33,7 +33,7 @@ constructors by passing them to `$add()`.
 
 ### Public methods
 
-- [`Dictionary$new()`](#method-Dictionary-new)
+- [`Dictionary$new()`](#method-Dictionary-initialize)
 
 - [`Dictionary$format()`](#method-Dictionary-format)
 
@@ -57,7 +57,7 @@ constructors by passing them to `$add()`.
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `Dictionary$new()`
 
 Construct a new Dictionary.
 
@@ -67,7 +67,7 @@ Construct a new Dictionary.
 
 ------------------------------------------------------------------------
 
-### Method [`format()`](https://rdrr.io/r/base/format.html)
+### `Dictionary$format()`
 
 Format object as simple string.
 
@@ -83,7 +83,7 @@ Format object as simple string.
 
 ------------------------------------------------------------------------
 
-### Method [`print()`](https://rdrr.io/r/base/print.html)
+### `Dictionary$print()`
 
 Print object.
 
@@ -93,7 +93,7 @@ Print object.
 
 ------------------------------------------------------------------------
 
-### Method `keys()`
+### `Dictionary$keys()`
 
 Returns all keys which comply to the regular expression `pattern`. If
 `pattern` is `NULL` (default), all keys are returned.
@@ -114,7 +114,7 @@ Returns all keys which comply to the regular expression `pattern`. If
 
 ------------------------------------------------------------------------
 
-### Method `has()`
+### `Dictionary$has()`
 
 Returns a logical vector with `TRUE` at its i-th position if the i-th
 key exists.
@@ -135,7 +135,7 @@ key exists.
 
 ------------------------------------------------------------------------
 
-### Method [`get()`](https://rdrr.io/r/base/get.html)
+### `Dictionary$get()`
 
 Retrieves object with key `key` from the dictionary. Additional
 arguments must be named and are passed to the constructor of the stored
@@ -167,7 +167,7 @@ Object with corresponding key.
 
 ------------------------------------------------------------------------
 
-### Method [`mget()`](https://rdrr.io/r/base/get.html)
+### `Dictionary$mget()`
 
 Returns objects with keys `keys` in a list named with `keys`. Additional
 arguments must be named and are passed to the constructors of the stored
@@ -195,7 +195,7 @@ corresponding keys.
 
 ------------------------------------------------------------------------
 
-### Method `add()`
+### `Dictionary$add()`
 
 Adds object `value` to the dictionary with key `key`, potentially
 overwriting a previously stored item. Additional arguments in `...` must
@@ -233,7 +233,7 @@ construction.
 
 ------------------------------------------------------------------------
 
-### Method [`remove()`](https://rdrr.io/r/base/rm.html)
+### `Dictionary$remove()`
 
 Removes objects from the dictionary.
 
@@ -254,7 +254,7 @@ Removes objects from the dictionary.
 
 ------------------------------------------------------------------------
 
-### Method `prototype_args()`
+### `Dictionary$prototype_args()`
 
 Returns the arguments required to construct a simple prototype of the
 object.
@@ -276,7 +276,7 @@ object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `Dictionary$clone()`
 
 The objects of this class are cloneable with this method.
 

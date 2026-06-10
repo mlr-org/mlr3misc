@@ -36,7 +36,7 @@ with active bindings (see example).
 
 ### Public methods
 
-- [`Context$new()`](#method-Context-new)
+- [`Context$new()`](#method-Context-initialize)
 
 - [`Context$format()`](#method-Context-format)
 
@@ -46,7 +46,7 @@ with active bindings (see example).
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `Context$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -69,7 +69,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method [`format()`](https://rdrr.io/r/base/format.html)
+### `Context$format()`
 
 Format object as simple string.
 
@@ -85,7 +85,7 @@ Format object as simple string.
 
 ------------------------------------------------------------------------
 
-### Method [`print()`](https://rdrr.io/r/base/print.html)
+### `Context$print()`
 
 Print object.
 
@@ -95,7 +95,7 @@ Print object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `Context$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -113,6 +113,11 @@ The objects of this class are cloneable with this method.
 
 ``` r
 library(data.table)
+#> 
+#> Attaching package: ‘data.table’
+#> The following object is masked from ‘package:base’:
+#> 
+#>     %notin%
 library(R6)
 
 # data table with column x and y
@@ -141,7 +146,7 @@ context = ContextExample$new(data)
 
 # retrieve content of column y
 context$y
-#>  [1] "A" "B" "A" "A" "B" "B" "A" "A" "B" "A"
+#>  [1] "B" "A" "A" "A" "A" "B" "A" "A" "B" "B"
 
 # change content of column y to "C"
 context$y = "C"

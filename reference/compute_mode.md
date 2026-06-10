@@ -38,5 +38,5 @@ compute_mode(c(1, 1, 1, 2, 2, 2, 3))
 compute_mode(c(1, 1, 1, 2, 2, 2, 3), ties_method = "last")
 #> [1] 2
 compute_mode(c(1, 1, 1, 2, 2, 2, 3), ties_method = "random")
-#> [1] 1
+#> [1] 2
 ```

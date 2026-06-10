@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Encapsulate Function Calls — encapsulate"><meta name="description" content='Evaluates a function, capturing conditions and measuring elapsed time.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Encapsulate Function Calls — encapsulate"><meta name="description" content='Evaluates a function, capturing conditions and measuring elapsed time.
 There are currently five modes:
 "none": Runs the call in the current session.
 Conditions are signaled normally; no log is kept.
@@ -51,7 +51,7 @@ The RNG state is propagated back to the calling session after evaluation.
 
     <a class="navbar-brand me-2" href="../index.html">mlr3misc</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.21.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.22.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,13 +152,17 @@ Packages to load via <code><a href="https://rdrr.io/r/base/ns-load.html" class="
 <dt id="arg--seed">.seed<a class="anchor" aria-label="anchor" href="#arg--seed"></a></dt>
 <dd><p>(<code>integer(1)</code>)<br>
 Random seed set via <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> before calling <code>.f</code>.
-If <code>NA</code> (default), the seed is not changed; for <code>"callr"</code> and <code>"mirai"</code> modes the current RNG state is forwarded instead.</p></dd>
+If <code>NA</code> (default), the seed is not changed;
+for <code>"callr"</code> and <code>"mirai"</code> modes the current RNG state is forwarded instead.</p></dd>
 
 
 <dt id="arg--timeout">.timeout<a class="anchor" aria-label="anchor" href="#arg--timeout"></a></dt>
 <dd><p>(<code>numeric(1)</code>)<br>
 Timeout in seconds (<code>Inf</code> for no limit).
-Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>; passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.</p></dd>
+Uses <code><a href="https://rdrr.io/r/base/setTimeLimit.html" class="external-link">setTimeLimit()</a></code> for <code>"none"</code> and <code>"evaluate"</code>;
+passed natively to <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r()</a></code> and <code><a href="https://mirai.r-lib.org/reference/mirai.html" class="external-link">mirai::mirai()</a></code> for the other modes.
+A value of <code>0</code> is treated as an already-elapsed deadline:
+<code>.f</code> is not evaluated and the result contains an immediate <code>Mlr3ErrorTimeout</code> in <code>log</code>.</p></dd>
 
 
 <dt id="arg--compute">.compute<a class="anchor" aria-label="anchor" href="#arg--compute"></a></dt>
@@ -212,7 +216,7 @@ Empty when no conditions were captured.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.002 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.007 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"callr"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -228,7 +232,7 @@ Empty when no conditions were captured.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $elapsed</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> elapsed </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.646 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.674 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

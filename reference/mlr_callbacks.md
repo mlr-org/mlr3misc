@@ -18,8 +18,3 @@ For a more convenient way to retrieve and construct learners, see
 ``` r
 mlr_callbacks
 ```
-
-## Format
-
-An object of class `DictionaryCallbacks` (inherits from `Dictionary`,
-`R6`) of length 12.

@@ -16,7 +16,7 @@ set_class(x, classes)
 
 - classes:
 
-  (`character(1)`)  
+  ([`character()`](https://rdrr.io/r/base/character.html))  
   Vector of new class names.
 
 ## Value

@@ -25,7 +25,10 @@ register_namespace_callback(pkgname, namespace, callback)
 - callback:
 
   (`function()`)  
-  Function to call on namespace load.
+  Function to call on namespace load. The callback is invoked without
+  arguments, so it can be defined as `function()` or `function(...)`.
+  Any arguments passed by the hook caller (e.g. `package` and `lib_path`
+  from `pkgload`) are discarded.
 
 ## Value
 

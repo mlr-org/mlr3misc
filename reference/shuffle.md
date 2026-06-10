@@ -32,13 +32,13 @@ shuffle(x, n = length(x), ...)
 ``` r
 x = 2:3
 sample(x)
-#> [1] 2 3
+#> [1] 3 2
 shuffle(x)
 #> [1] 2 3
 
 x = 3
 sample(x)
-#> [1] 1 3 2
+#> [1] 2 3 1
 shuffle(x)
 #> [1] 3
 ```
