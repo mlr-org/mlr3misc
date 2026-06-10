@@ -14,7 +14,7 @@ Vector with values to replace.}
 
 \item{new}{(\code{vector()})\cr
 Values to replace with.
-Will be forced to the same length as \code{old} with \code{\link[base:rep_len]{base::rep_len()}}.}
+Will be forced to the same length as \code{old} with \code{\link[base:rep]{base::rep_len()}}.}
 }
 \value{
 (\code{vector()}) of the same length as \code{x}.

@@ -12,9 +12,9 @@ catf(msg, ..., file = "", wrap = FALSE)
 
 messagef(msg, ..., wrap = FALSE, class = NULL)
 
-warningf(msg, ..., wrap = FALSE, class = NULL)
+warningf(msg, ..., wrap = FALSE, class = NULL, call = TRUE)
 
-stopf(msg, ..., wrap = FALSE, class = NULL)
+stopf(msg, ..., wrap = FALSE, class = NULL, call = TRUE)
 }
 \arguments{
 \item{msg}{(\code{character(1)})\cr
@@ -35,6 +35,9 @@ and consecutive spaces are converted to a single space.}
 
 \item{class}{(\code{character()})\cr
 Class of the condition (for errors and warnings).}
+
+\item{call}{(\code{logical()})\cr
+Whether the call should become part of the message (for errors and warnings).}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},
