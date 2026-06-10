@@ -33,6 +33,8 @@
 #'   and consecutive spaces are converted to a single space.
 #' @param class (`character()`)\cr
 #'   Class of the condition (for errors and warnings).
+#' @param call (`logical()`)\cr
+#'   Whether the call should become part of the message (for errors and warnings).
 #'
 #' @name printf
 #' @examples
@@ -72,16 +74,28 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
 
 #' @export
 #' @rdname printf
-warningf = function(msg, ..., wrap = FALSE, class = NULL) {
+warningf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
+  assert_flag(call)
   class = c(class, "Mlr3Warning", "warning", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  warning(structure(list(message = as.character(message)), class = class))
+  condition_call = if (call) sys.call(-1L) else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  warning(condition)
 }
 
 #' @export
 #' @rdname printf
-stopf = function(msg, ..., wrap = FALSE, class = NULL) {
+stopf = function(msg, ..., wrap = FALSE, class = NULL, call = TRUE) {
+  assert_flag(call)
   class = c(class, "Mlr3Error", "error", "condition")
   message = str_wrap(sprintf(msg, ...), width = wrap)
-  stop(structure(list(message = as.character(message)), class = class))
+  condition_call = if (call) sys.call(-1L) else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  stop(condition)
 }

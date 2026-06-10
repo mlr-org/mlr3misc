@@ -4,11 +4,11 @@
 \alias{Dictionary}
 \title{Key-Value Storage}
 \description{
-A key-value store for \link[R6:R6]{R6::R6} objects.
+A key-value store for \link[R6:R6Class]{R6::R6} objects.
 On retrieval of an object, the following applies:
 \itemize{
 \item If the object is a \code{R6ClassGenerator}, it is initialized with \code{new()}.
-\item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
+\item If the object is a function, it is called and must return an instance of a \link[R6:R6Class]{R6::R6} object.
 \item If the object is an instance of a R6 class, it is returned as-is.
 }
 
@@ -37,261 +37,245 @@ d$mget(c("a", "b"))
 }
 \concept{Dictionary}
 \section{Public fields}{
-  \if{html}{\out{<div class="r6-fields">}}
-  \describe{
-    \item{\code{items}}{(\code{environment()})\cr
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{items}}{(\code{environment()})\cr
 Stores the items of the dictionary}
-  }
-  \if{html}{\out{</div>}}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-  \itemize{
-    \item \href{#method-Dictionary-initialize}{\code{Dictionary$new()}}
-    \item \href{#method-Dictionary-format}{\code{Dictionary$format()}}
-    \item \href{#method-Dictionary-print}{\code{Dictionary$print()}}
-    \item \href{#method-Dictionary-keys}{\code{Dictionary$keys()}}
-    \item \href{#method-Dictionary-has}{\code{Dictionary$has()}}
-    \item \href{#method-Dictionary-get}{\code{Dictionary$get()}}
-    \item \href{#method-Dictionary-mget}{\code{Dictionary$mget()}}
-    \item \href{#method-Dictionary-add}{\code{Dictionary$add()}}
-    \item \href{#method-Dictionary-remove}{\code{Dictionary$remove()}}
-    \item \href{#method-Dictionary-prototype_args}{\code{Dictionary$prototype_args()}}
-    \item \href{#method-Dictionary-clone}{\code{Dictionary$clone()}}
-  }
+\itemize{
+\item \href{#method-Dictionary-new}{\code{Dictionary$new()}}
+\item \href{#method-Dictionary-format}{\code{Dictionary$format()}}
+\item \href{#method-Dictionary-print}{\code{Dictionary$print()}}
+\item \href{#method-Dictionary-keys}{\code{Dictionary$keys()}}
+\item \href{#method-Dictionary-has}{\code{Dictionary$has()}}
+\item \href{#method-Dictionary-get}{\code{Dictionary$get()}}
+\item \href{#method-Dictionary-mget}{\code{Dictionary$mget()}}
+\item \href{#method-Dictionary-add}{\code{Dictionary$add()}}
+\item \href{#method-Dictionary-remove}{\code{Dictionary$remove()}}
+\item \href{#method-Dictionary-prototype_args}{\code{Dictionary$prototype_args()}}
+\item \href{#method-Dictionary-clone}{\code{Dictionary$clone()}}
+}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Dictionary-initialize"></a>}}
-\if{latex}{\out{\hypertarget{method-Dictionary-initialize}{}}}
-\subsection{\code{Dictionary$new()}}{
-  Construct a new Dictionary.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$new()}
-    \if{html}{\out{</div>}}
-  }
+\if{html}{\out{<a id="method-Dictionary-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Dictionary-new}{}}}
+\subsection{Method \code{new()}}{
+Construct a new Dictionary.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$new()}\if{html}{\out{</div>}}
 }
 
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-format"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-format}{}}}
-\subsection{\code{Dictionary$format()}}{
-  Format object as simple string.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$format(...)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{...}}{(ignored).}
-    }
-    \if{html}{\out{</div>}}
-  }
+\subsection{Method \code{format()}}{
+Format object as simple string.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$format(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(ignored).}
+}
+\if{html}{\out{</div>}}
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-print"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-print}{}}}
-\subsection{\code{Dictionary$print()}}{
-  Print object.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$print()}
-    \if{html}{\out{</div>}}
-  }
+\subsection{Method \code{print()}}{
+Print object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$print()}\if{html}{\out{</div>}}
 }
 
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-keys"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-keys}{}}}
-\subsection{\code{Dictionary$keys()}}{
-  Returns all keys which comply to the regular expression \code{pattern}.
+\subsection{Method \code{keys()}}{
+Returns all keys which comply to the regular expression \code{pattern}.
 If \code{pattern} is \code{NULL} (default), all keys are returned.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$keys(pattern = NULL)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{pattern}}{(\code{character(1)}).}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    \code{character()} of keys.
-  }
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$keys(pattern = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pattern}}{(\code{character(1)}).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{character()} of keys.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-has"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-has}{}}}
-\subsection{\code{Dictionary$has()}}{
-  Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$has(keys)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{keys}}{(\code{character()}).}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    \code{logical()}.
-  }
+\subsection{Method \code{has()}}{
+Returns a logical vector with \code{TRUE} at its i-th position if the i-th key exists.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$has(keys)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{keys}}{(\code{character()}).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{logical()}.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-get"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-get}{}}}
-\subsection{\code{Dictionary$get()}}{
-  Retrieves object with key \code{key} from the dictionary.
+\subsection{Method \code{get()}}{
+Retrieves object with key \code{key} from the dictionary.
 Additional arguments must be named and are passed to the constructor of the stored object.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$get(key, ..., .prototype = FALSE)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{key}}{(\code{character(1)}).}
-      \item{\code{...}}{(\code{any})\cr
-Passed down to constructor.}
-      \item{\code{.prototype}}{(\code{logical(1)})\cr
-Whether to construct a prototype object.}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    Object with corresponding key.
-  }
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$get(key, ..., .prototype = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{(\code{character(1)}).}
+
+\item{\code{...}}{(\code{any})\cr
+Passed down to constructor.}
+
+\item{\code{.prototype}}{(\code{logical(1)})\cr
+Whether to construct a prototype object.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Object with corresponding key.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-mget"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-mget}{}}}
-\subsection{\code{Dictionary$mget()}}{
-  Returns objects with keys \code{keys} in a list named with \code{keys}.
+\subsection{Method \code{mget()}}{
+Returns objects with keys \code{keys} in a list named with \code{keys}.
 Additional arguments must be named and are passed to the constructors of the stored objects.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$mget(keys, ...)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{keys}}{(\code{character()}).}
-      \item{\code{...}}{(\code{any})\cr
-Passed down to constructor.}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    Named \code{list()} of objects with corresponding keys.
-  }
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$mget(keys, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{keys}}{(\code{character()}).}
+
+\item{\code{...}}{(\code{any})\cr
+Passed down to constructor.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Named \code{list()} of objects with corresponding keys.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-add"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-add}{}}}
-\subsection{\code{Dictionary$add()}}{
-  Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
+\subsection{Method \code{add()}}{
+Adds object \code{value} to the dictionary with key \code{key}, potentially overwriting a previously stored item.
 Additional arguments in \code{...} must be named and are passed as default arguments to \code{value} during construction.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$add(key, value, ..., .prototype_args = list())}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{key}}{(\code{character(1)}).}
-      \item{\code{value}}{(\code{any}).}
-      \item{\code{...}}{(\code{any})\cr
-Passed down to constructor.}
-      \item{\code{.prototype_args}}{(\code{list()})\cr
-List of arguments to construct a prototype object.
-Can be used when objects have construction arguments without defaults.}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    \code{Dictionary}.
-  }
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$add(key, value, ..., .prototype_args = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{(\code{character(1)}).}
+
+\item{\code{value}}{(\code{any}).}
+
+\item{\code{...}}{(\code{any})\cr
+Passed down to constructor.}
+
+\item{\code{.prototype_args}}{(\code{list()})\cr
+List of arguments to construct a prototype object.
+Can be used when objects have construction arguments without defaults.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{Dictionary}.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-remove"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-remove}{}}}
-\subsection{\code{Dictionary$remove()}}{
-  Removes objects from the dictionary.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$remove(keys)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{keys}}{(\code{character()})\cr
-Keys of objects to remove.}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    \code{Dictionary}.
-  }
+\subsection{Method \code{remove()}}{
+Removes objects from the dictionary.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$remove(keys)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{keys}}{(\code{character()})\cr
+Keys of objects to remove.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{Dictionary}.
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-prototype_args"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-prototype_args}{}}}
-\subsection{\code{Dictionary$prototype_args()}}{
-  Returns the arguments required to construct a simple prototype of the object.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$prototype_args(key)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{key}}{(\code{character(1)})\cr
-Key of object to query for required arguments.}
-    }
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Returns}{
-    \code{list()} of prototype arguments
-  }
+\subsection{Method \code{prototype_args()}}{
+Returns the arguments required to construct a simple prototype of the object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$prototype_args(key)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{key}}{(\code{character(1)})\cr
+Key of object to query for required arguments.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{list()} of prototype arguments
+}
+}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Dictionary-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-clone}{}}}
-\subsection{\code{Dictionary$clone()}}{
-  The objects of this class are cloneable with this method.
-  \subsection{Usage}{
-    \if{html}{\out{<div class="r">}}
-    \preformatted{Dictionary$clone(deep = FALSE)}
-    \if{html}{\out{</div>}}
-  }
-  \subsection{Arguments}{
-    \if{html}{\out{<div class="arguments">}}
-    \describe{
-      \item{\code{deep}}{Whether to make a deep clone.}
-    }
-    \if{html}{\out{</div>}}
-  }
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Dictionary$clone(deep = FALSE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
 }
