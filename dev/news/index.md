@@ -4,6 +4,8 @@
 
 ## mlr3misc 0.22.0
 
+CRAN release: 2026-06-10
+
 - feat:
   [`as_short_string()`](https://mlr3misc.mlr-org.com/dev/reference/as_short_string.md)
   now prints factor values

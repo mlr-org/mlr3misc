@@ -146,4 +146,5 @@
 
 ## Further agents files
 
-- Read and respect all files in the `extra-rules` folder
+@extra-rules/commit-messages.md @extra-rules/mlr3.md
+@extra-rules/rush.md @extra-rules/yolobox.md
