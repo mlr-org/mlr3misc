@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3misc</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.21.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.22.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,8 +49,17 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3misc-development-version">mlr3misc (development version)<a class="anchor" aria-label="anchor" href="#mlr3misc-development-version"></a></h2>
-<ul><li>fix: <code><a href="../reference/encapsulate.html">encapsulate()</a></code> now short-circuits when <code>.timeout = 0</code> and returns an immediate <code>Mlr3ErrorTimeout</code> log entry instead of silently disabling timeout enforcement.</li>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.22.0" id="mlr3misc-0220">mlr3misc 0.22.0<a class="anchor" aria-label="anchor" href="#mlr3misc-0220"></a></h2>
+<ul><li>feat: <code><a href="../reference/as_short_string.html">as_short_string()</a></code> now prints factor values (<a href="https://github.com/mlr-org/mlr3misc/issues/173" class="external-link">#173</a>).</li>
+<li>fix: <code>Dictionary</code>’s <code><a href="https://rdrr.io/r/base/rm.html" class="external-link">remove()</a></code> now shows the correct key in the “did you mean” suggestion of its error message (<a href="https://github.com/mlr-org/mlr3misc/issues/171" class="external-link">#171</a>).</li>
+<li>fix: <code><a href="../reference/encapsulate.html">encapsulate()</a></code> now short-circuits when <code>.timeout = 0</code> and returns an immediate <code>Mlr3ErrorTimeout</code> log entry instead of silently disabling timeout enforcement.</li>
+<li>fix: <code><a href="../reference/keep_in_bounds.html">keep_in_bounds()</a></code> now has a consistent integer return type in its C call (<a href="https://github.com/mlr-org/mlr3misc/issues/172" class="external-link">#172</a>).</li>
+<li>perf: <code><a href="../reference/rcbind.html">rcbind()</a></code> uses <code>%in%</code> instead of <code><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect()</a></code> for its name check (<a href="https://github.com/mlr-org/mlr3misc/issues/175" class="external-link">#175</a>).</li>
 <li>fix: <code><a href="../reference/register_namespace_callback.html">register_namespace_callback()</a></code> now wraps the user callback so it can be invoked by hook callers that pass <code>package</code> and <code>lib_path</code> arguments (e.g. <code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code>), which previously caused “unused arguments” errors (<a href="https://github.com/mlr-org/mlr3misc/issues/180" class="external-link">#180</a>).</li>
+<li>perf: <code><a href="../reference/topo_sort.html">topo_sort()</a></code> uses <code><a href="https://rdrr.io/pkg/data.table/man/assign.html" class="external-link">set()</a></code> for faster updates (<a href="https://github.com/mlr-org/mlr3misc/issues/174" class="external-link">#174</a>).</li>
+<li>perf: <code><a href="../reference/unnest.html">unnest()</a></code> caches the <code><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths()</a></code> call (<a href="https://github.com/mlr-org/mlr3misc/issues/178" class="external-link">#178</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.21.0" id="mlr3misc-0210">mlr3misc 0.21.0<a class="anchor" aria-label="anchor" href="#mlr3misc-0210"></a></h2><p class="text-muted">CRAN release: 2026-02-26</p>

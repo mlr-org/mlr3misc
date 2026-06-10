@@ -2,11 +2,29 @@
 
 ## mlr3misc (development version)
 
+## mlr3misc 0.22.0
+
+- feat:
+  [`as_short_string()`](https://mlr3misc.mlr-org.com/dev/reference/as_short_string.md)
+  now prints factor values
+  ([\#173](https://github.com/mlr-org/mlr3misc/issues/173)).
+- fix: `Dictionary`’s [`remove()`](https://rdrr.io/r/base/rm.html) now
+  shows the correct key in the “did you mean” suggestion of its error
+  message ([\#171](https://github.com/mlr-org/mlr3misc/issues/171)).
 - fix:
   [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
   now short-circuits when `.timeout = 0` and returns an immediate
   `Mlr3ErrorTimeout` log entry instead of silently disabling timeout
   enforcement.
+- fix:
+  [`keep_in_bounds()`](https://mlr3misc.mlr-org.com/dev/reference/keep_in_bounds.md)
+  now has a consistent integer return type in its C call
+  ([\#172](https://github.com/mlr-org/mlr3misc/issues/172)).
+- perf:
+  [`rcbind()`](https://mlr3misc.mlr-org.com/dev/reference/rcbind.md)
+  uses `%in%` instead of
+  [`intersect()`](https://rdrr.io/r/base/sets.html) for its name check
+  ([\#175](https://github.com/mlr-org/mlr3misc/issues/175)).
 - fix:
   [`register_namespace_callback()`](https://mlr3misc.mlr-org.com/dev/reference/register_namespace_callback.md)
   now wraps the user callback so it can be invoked by hook callers that
@@ -14,6 +32,15 @@
   (e.g. [`pkgload::load_all()`](https://pkgload.r-lib.org/reference/load_all.html)),
   which previously caused “unused arguments” errors
   ([\#180](https://github.com/mlr-org/mlr3misc/issues/180)).
+- perf:
+  [`topo_sort()`](https://mlr3misc.mlr-org.com/dev/reference/topo_sort.md)
+  uses [`set()`](https://rdrr.io/pkg/data.table/man/assign.html) for
+  faster updates
+  ([\#174](https://github.com/mlr-org/mlr3misc/issues/174)).
+- perf:
+  [`unnest()`](https://mlr3misc.mlr-org.com/dev/reference/unnest.md)
+  caches the [`lengths()`](https://rdrr.io/r/base/lengths.html) call
+  ([\#178](https://github.com/mlr-org/mlr3misc/issues/178)).
 
 ## mlr3misc 0.21.0
 
