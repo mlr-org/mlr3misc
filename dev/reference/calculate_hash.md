@@ -4,7 +4,7 @@ Calls
 [`digest::digest()`](https://eddelbuettel.github.io/digest/man/digest.html)
 using the 'xxhash64' algorithm after applying
 [`hash_input`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
-to each object. To customize the hashing behaviour, you can overwrite
+to each object. To customize the hashing behavior, you can overwrite
 [`hash_input`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
 for specific classes. For `data.table` objects,
 [`hash_input`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
