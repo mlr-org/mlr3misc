@@ -104,7 +104,7 @@ leanify_r6 = function(cls, env = cls$parent_env) {
 #'
 #' @param pkg_env :: `environment`\cr
 #'   The namespace from which to leanify all R6 classes. Does not have to be a
-#'   package namespace, but this is the intended usecase.
+#'   package namespace, but this is the intended use case.
 #' @param skip_if :: `function`\cr
 #'   Function with one argument: Is called for each individual [`R6::R6Class`].
 #'   If it returns `TRUE`, the class is skipped. Default function evaluating to `FALSE`

@@ -21,7 +21,7 @@ parent environments, otherwise the stump function will not find the moved
 
 \item{pkg_env}{:: \code{environment}\cr
 The namespace from which to leanify all R6 classes. Does not have to be a
-package namespace, but this is the intended usecase.}
+package namespace, but this is the intended use case.}
 
 \item{skip_if}{:: \code{function}\cr
 Function with one argument: Is called for each individual \code{\link[R6:R6Class]{R6::R6Class}}.
