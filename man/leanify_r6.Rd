@@ -40,7 +40,7 @@ The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except calling the original function that now resides
 somewhere else.
 
-It is possible to call this function after the definition of an \link[R6:R6Class]{R6::R6}
+It is possible to call this function after the definition of an \link[R6:R6]{R6::R6}
 class inside a package, but it is preferred to use \code{\link[=leanify_package]{leanify_package()}}
-to just leanify all \link[R6:R6Class]{R6::R6} classes inside a package.
+to just leanify all \link[R6:R6]{R6::R6} classes inside a package.
 }
