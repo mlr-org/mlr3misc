@@ -170,6 +170,6 @@ if (requireNamespace("callr", quietly = TRUE)) {
 #> 
 #> $elapsed
 #> elapsed 
-#>   0.638 
+#>   0.621 
 #> 
 ```
