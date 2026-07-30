@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* perf: `topo_sort()` now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.
+
 # mlr3misc 0.22.0
 
 * feat: `as_short_string()` now prints factor values (#173).

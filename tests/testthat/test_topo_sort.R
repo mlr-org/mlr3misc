@@ -77,3 +77,28 @@ test_that("topo_sort", {
   )
   expect_error(topo_sort(nodes), "Cycle")
 })
+
+test_that("topo_sort preserves ordering within depth layers", {
+  nodes = data.table(
+    id = c("e", "d", "b", "a"),
+    parents = list(c("a", "b"), "a", character(), character())
+  )
+
+  expect_equal(
+    topo_sort(nodes),
+    data.table(id = c("b", "a", "d", "e"), depth = c(0L, 0L, 1L, 1L))
+  )
+})
+
+test_that("topo_sort handles empty graphs and repeated parent labels", {
+  expect_equal(
+    topo_sort(data.table(id = character(), parents = list())),
+    data.table(id = character(), depth = integer())
+  )
+
+  nodes = data.table(
+    id = c("a", "b"),
+    parents = list(character(), c("a", "a"))
+  )
+  expect_equal(topo_sort(nodes), data.table(id = c("a", "b"), depth = 0:1))
+})

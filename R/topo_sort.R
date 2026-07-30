@@ -30,32 +30,48 @@ topo_sort = function(nodes) {
   assert_names(names(nodes), identical.to = c("id", "parents"))
   assert_list(nodes$parents, types = "character")
   assert_subset(unlist(nodes$parents, use.names = FALSE), nodes$id)
-  nodes = copy(nodes) # copy ref to be sure
-  n = nrow(nodes)
-  # sort nodes with few parent to start
-  nodes = nodes[order(lengths(get("parents")), decreasing = FALSE)]
 
-  nodes[, `:=`(topo = NA_integer_, depth = NA_integer_)] # cols for topo-index and depth layer in sort
-  j = 1L
-  topo_count = 1L
+  # sort nodes with few parents first and preserve this order within each depth layer
+  nodes = nodes[order(lengths(get("parents")), decreasing = FALSE)]
+  n = nrow(nodes)
+  parents = nodes$parents
+  indegree = lengths(parents)
+  ii = which(indegree > 1L)
+  parents[ii] = map(parents[ii], unique)
+  indegree[ii] = lengths(parents[ii])
+
+  parent_idx = match(unlist(parents, use.names = FALSE), nodes$id)
+  child_idx = rep.int(seq_len(n), indegree)
+  children = split(child_idx, factor(parent_idx, levels = seq_len(n)))
+
+  topo = integer(n)
+  depth = rep.int(NA_integer_, n)
+  available = which(indegree == 0L)
+  topo_count = 0L
   depth_count = 0L
-  while (topo_count <= n) {
-    # if element is not sorted and has no deps (anymore), we sort it in
-    if (is.na(nodes$topo[j]) && length(nodes$parents[[j]]) == 0L) {
-      set(nodes, i = j, j = "topo", value = topo_count)
-      topo_count = topo_count + 1L
-      set(nodes, i = j, j = "depth", value = depth_count)
-    }
-    j = (j %% n) + 1L # inc j, but wrap around end
-    if (j == 1L) {
-      # we wrapped, lets remove nodes of current layer from deps
-      layer = nodes[list(depth_count), "id", on = "depth", nomatch = NULL][[1L]]
-      if (length(layer) == 0L) {
-        stop("Cycle detected, this is not a DAG!")
+
+  while (length(available)) {
+    k = length(available)
+    topo[topo_count + seq_len(k)] = available
+    topo_count = topo_count + k
+    depth[available] = depth_count
+
+    next_available = vector("list", k)
+    for (i in seq_along(available)) {
+      parent = available[[i]]
+      kids = children[[parent]]
+      if (length(kids)) {
+        indegree[kids] = indegree[kids] - 1L
+        next_available[[i]] = kids[indegree[kids] == 0L]
       }
-      set(nodes, i = NULL, j = "parents", value = map(nodes$parents, function(x) setdiff(x, layer)))
-      depth_count = depth_count + 1L
     }
+    available = sort(unlist(next_available, use.names = FALSE))
+    depth_count = depth_count + 1L
   }
-  nodes[order(get("topo")), c("id", "depth")] # sort by topo, and then remove topo-col
+
+  if (topo_count != n) {
+    stop("Cycle detected, this is not a DAG!")
+  }
+
+  data.table(id = nodes$id[topo], depth = depth[topo])
 }
