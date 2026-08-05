@@ -2,6 +2,12 @@
 
 ## mlr3misc (development version)
 
+- feat: Added a
+  [`hash_input()`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
+  method for `list`s that applies
+  [`hash_input()`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
+  to all elements.
+
 ## mlr3misc 0.22.0
 
 CRAN release: 2026-06-10
