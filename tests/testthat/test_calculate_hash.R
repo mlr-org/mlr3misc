@@ -16,3 +16,16 @@ test_that("hash_input works recursively", {
     list(list(f = hash_input(function(x) x)))
   )
 })
+
+test_that("hash_input recurses into list columns of a data.table", {
+  dt = data.table(a = 1:2, b = list(function(x) x + 1, function(x) x + 1))
+  dt2 = data.table(a = 1:2, b = list(function(x) x + 1, function(x) x + 2))
+
+  expect_equal(hash_input(dt)$b, list(hash_input(function(x) x + 1), hash_input(function(x) x + 1)))
+  expect_true(calculate_hash(dt) != calculate_hash(dt2))
+})
+
+test_that("hash_input.list leaves atomic elements as is", {
+  x = list(a = 1L, b = "a", c = TRUE)
+  expect_equal(hash_input(x), x)
+})
