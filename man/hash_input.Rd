@@ -4,6 +4,7 @@
 \alias{hash_input}
 \alias{hash_input.function}
 \alias{hash_input.data.table}
+\alias{hash_input.list}
 \alias{hash_input.default}
 \title{Hash Input}
 \usage{
@@ -12,6 +13,8 @@ hash_input(x)
 \method{hash_input}{`function`}(x)
 
 \method{hash_input}{data.table}(x)
+
+\method{hash_input}{list}(x)
 
 \method{hash_input}{default}(x)
 }
@@ -30,6 +33,8 @@ in the hash.
 
 \item \code{hash_input(data.table)}: The data.table is converted to a regular list and \code{hash_input()} is applied to all elements.
 The conversion to a list ensures that keys and indices are not included in the hash.
+
+\item \code{hash_input(list)}: \code{hash_input()} is applied to all elements of the list.
 
 \item \code{hash_input(default)}: Returns the object as is.
 

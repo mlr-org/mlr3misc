@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* feat: Added a `hash_input()` method for `list`s that applies `hash_input()` to all elements.
+
 # mlr3misc 0.22.0
 
 * feat: `as_short_string()` now prints factor values (#173).
