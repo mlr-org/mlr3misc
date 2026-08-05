@@ -14,7 +14,7 @@ hash_input(x)
 
 \method{hash_input}{data.table}(x)
 
-\method{hash_input}{list}(x, ...)
+\method{hash_input}{list}(x)
 
 \method{hash_input}{default}(x)
 }
