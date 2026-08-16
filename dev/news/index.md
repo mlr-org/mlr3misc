@@ -2,6 +2,10 @@
 
 ## mlr3misc (development version)
 
+- fix:
+  [`hash_input()`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
+  for functions no longer loses the argument names of a body that is a
+  single call.
 - feat: Added a
   [`hash_input()`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
   method for `list`s that applies

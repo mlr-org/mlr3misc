@@ -30,8 +30,12 @@ hash_input(x)
 ## Methods (by class)
 
 - `` hash_input(`function`) ``: The formals and the body are returned in
-  a [`list()`](https://rdrr.io/r/base/list.html). This ensures that the
-  bytecode or parent environment are not included. in the hash.
+  a [`list()`](https://rdrr.io/r/base/list.html). This ensures that
+  neither the bytecode nor the parent environment are included in the
+  hash. Source references are removed from the body, so that the hash
+  does not depend on the formatting of the definition or on its position
+  in a source file. Primitives have neither formals nor a body and are
+  returned as is.
 
 - `hash_input(data.table)`: The data.table is converted to a regular
   list and `hash_input()` is applied to all elements. The conversion to

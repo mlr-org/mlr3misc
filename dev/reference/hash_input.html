@@ -82,8 +82,10 @@ Object for which to retrieve the hash input.</p></dd>
     <h2 id="methods-by-class-">Methods (by class)<a class="anchor" aria-label="anchor" href="#methods-by-class-"></a></h2>
 
 <ul><li><p><code>hash_input(`function`)</code>: The formals and the body are returned in a <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>.
-This ensures that the bytecode or parent environment are not included.
-in the hash.</p></li>
+This ensures that neither the bytecode nor the parent environment are included in the hash.
+Source references are removed from the body, so that the hash does not depend on the formatting
+of the definition or on its position in a source file.
+Primitives have neither formals nor a body and are returned as is.</p></li>
 <li><p><code>hash_input(data.table)</code>: The data.table is converted to a regular list and <code>hash_input()</code> is applied to all elements.
 The conversion to a list ensures that keys and indices are not included in the hash.</p></li>
 <li><p><code>hash_input(list)</code>: <code>hash_input()</code> is applied to all elements of the list.</p></li>
