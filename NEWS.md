@@ -1,6 +1,7 @@
 # mlr3misc (development version)
 
 * fix: `hash_input()` for functions no longer loses the argument names of a body that is a single call.
+* feat: Added a `hash_input()` method for `list`s that applies `hash_input()` to all elements.
 
 # mlr3misc 0.22.0
 

@@ -57,6 +57,13 @@ hash_input.data.table = function(x) {
 }
 
 #' @describeIn hash_input
+#' `hash_input()` is applied to all elements of the list.
+#' @export
+hash_input.list = function(x) {
+  map(x, hash_input)
+}
+
+#' @describeIn hash_input
 #' Returns the object as is.
 #' @export
 hash_input.default = function(x) {
