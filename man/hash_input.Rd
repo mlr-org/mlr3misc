@@ -28,8 +28,10 @@ Returns the part of an object to be used to calculate its hash.
 \section{Methods (by class)}{
 \itemize{
 \item \code{hash_input(`function`)}: The formals and the body are returned in a \code{list()}.
-This ensures that the bytecode or parent environment are not included.
-in the hash.
+This ensures that neither the bytecode nor the parent environment are included in the hash.
+Source references are removed from the body, so that the hash does not depend on the formatting
+of the definition or on its position in a source file.
+Primitives have neither formals nor a body and are returned as is.
 
 \item \code{hash_input(data.table)}: The data.table is converted to a regular list and \code{hash_input()} is applied to all elements.
 The conversion to a list ensures that keys and indices are not included in the hash.

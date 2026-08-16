@@ -31,11 +31,20 @@ hash_input = function(x) {
 
 #' @describeIn hash_input
 #' The formals and the body are returned in a `list()`.
-#' This ensures that the bytecode or parent environment are not included.
-#' in the hash.
+#' This ensures that neither the bytecode nor the parent environment are included in the hash.
+#' Source references are removed from the body, so that the hash does not depend on the formatting
+#' of the definition or on its position in a source file.
+#' Primitives have neither formals nor a body and are returned as is.
 #' @export
 hash_input.function = function(x) {
-  list(formals(x), as.character(body(x)))
+  if (is.primitive(x)) {
+    return(x)
+  }
+  # `removeSource()` instead of hashing `as.character(body(x))`: the latter returns the top-level
+  # elements of the body, which loses the argument names of a body that is a single call, i.e.
+  # `function(x) f(x, a = 1, b = 2)` and `function(x) f(x, b = 1, a = 2)` hash equal
+  x = removeSource(x)
+  list(formals(x), body(x))
 }
 
 #' @describeIn hash_input
