@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* fix: `hash_input()` for functions no longer loses the argument names of a body that is a single call.
+
 # mlr3misc 0.22.0
 
 * feat: `as_short_string()` now prints factor values (#173).
