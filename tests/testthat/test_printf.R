@@ -21,6 +21,8 @@ test_that("warningf", {
   # "Warning: " not caught by gives_warning
   expect_warning(f(), "123")
   expect_warning(warningf("abc"), "abc")
+  condition = tryCatch(warningf("abc", call. = FALSE), warning = identity)
+  expect_null(conditionCall(condition))
 })
 
 test_that("stopf", {
@@ -28,6 +30,8 @@ test_that("stopf", {
   f = function() stopf("123")
   expect_error(f(), "123")
   expect_error(stopf("abc"), "abc")
+  condition = tryCatch(stopf("abc", call. = FALSE), error = identity)
+  expect_null(conditionCall(condition))
 })
 
 test_that("formatting", {
