@@ -186,20 +186,28 @@ export(which_min)
 export(with_package)
 import(checkmate)
 import(data.table)
-importFrom(R6,R6Class)
-importFrom(R6,is.R6)
+importFrom(R6,
+  R6Class,
+  is.R6
+)
 importFrom(digest,digest)
-importFrom(methods,formalArgs)
-importFrom(methods,hasArg)
-importFrom(stats,as.formula)
-importFrom(stats,runif)
-importFrom(stats,setNames)
-importFrom(stats,terms)
-importFrom(utils,adist)
-importFrom(utils,capture.output)
-importFrom(utils,head)
-importFrom(utils,removeSource)
-importFrom(utils,tail)
+importFrom(methods,
+  formalArgs,
+  hasArg
+)
+importFrom(stats,
+  as.formula,
+  runif,
+  setNames,
+  terms
+)
+importFrom(utils,
+  adist,
+  capture.output,
+  head,
+  removeSource,
+  tail
+)
 useDynLib(mlr3misc,c_count_missing)
 useDynLib(mlr3misc,c_keep_in_bounds)
 useDynLib(mlr3misc,c_to_decimal)
