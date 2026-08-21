@@ -2,6 +2,10 @@
 
 ## mlr3misc (development version)
 
+## mlr3misc 0.23.0
+
+CRAN release: 2026-08-21
+
 - fix:
   [`hash_input()`](https://mlr3misc.mlr-org.com/dev/reference/hash_input.md)
   for functions no longer loses the argument names of a body that is a
