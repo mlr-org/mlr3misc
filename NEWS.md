@@ -1,3 +1,5 @@
+# mlr3misc (development version)
+
 # mlr3misc 0.23.0
 
 * fix: `hash_input()` for functions no longer loses the argument names of a body that is a single call.
