@@ -1,6 +1,22 @@
 # Changelog
 
+## mlr3misc 0.23.0
+
+CRAN release: 2026-08-21
+
+- fix:
+  [`hash_input()`](https://mlr3misc.mlr-org.com/reference/hash_input.md)
+  for functions no longer loses the argument names of a body that is a
+  single call.
+- feat: Added a
+  [`hash_input()`](https://mlr3misc.mlr-org.com/reference/hash_input.md)
+  method for `list`s that applies
+  [`hash_input()`](https://mlr3misc.mlr-org.com/reference/hash_input.md)
+  to all elements.
+
 ## mlr3misc 0.22.0
+
+CRAN release: 2026-06-10
 
 - feat:
   [`as_short_string()`](https://mlr3misc.mlr-org.com/reference/as_short_string.md)

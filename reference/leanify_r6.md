@@ -43,7 +43,7 @@ leanify_package(pkg_env = parent.frame(), skip_if = function(x) FALSE)
 
   :: `environment`  
   The namespace from which to leanify all R6 classes. Does not have to
-  be a package namespace, but this is the intended usecase.
+  be a package namespace, but this is the intended use case.
 
 - skip_if:
 
