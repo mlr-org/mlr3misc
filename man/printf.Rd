@@ -37,7 +37,8 @@ and consecutive spaces are converted to a single space.}
 Class of the condition (for errors and warnings).}
 
 \item{call.}{(\code{logical()})\cr
-Whether the call should become part of the message (for errors and warnings).}
+Whether to include the calling expression in the condition (for errors and warnings).
+Defaults to \code{TRUE}.}
 }
 \description{
 \code{catf()}, \code{messagef()}, \code{warningf()} and \code{stopf()} are wrappers around \code{\link[base:cat]{base::cat()}},

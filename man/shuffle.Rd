@@ -14,7 +14,7 @@ Vector to sample elements from.}
 Number of elements to sample.}
 
 \item{...}{(\code{any})\cr
-Arguments passed down to \code{\link[base:sample.int]{base::sample.int()}}.}
+Arguments passed down to \code{\link[base:sample]{base::sample.int()}}.}
 }
 \description{
 A version of \code{sample()} which does not treat positive scalar integer \code{x} differently.

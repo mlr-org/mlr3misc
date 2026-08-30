@@ -34,7 +34,8 @@
 #' @param class (`character()`)\cr
 #'   Class of the condition (for errors and warnings).
 #' @param call. (`logical()`)\cr
-#'   Whether the call should become part of the message (for errors and warnings).
+#'   Whether to include the calling expression in the condition (for errors and warnings).
+#'   Defaults to `TRUE`.
 #'
 #' @name printf
 #' @examples
@@ -78,7 +79,7 @@ warningf = function(msg, ..., wrap = FALSE, class = NULL, call. = TRUE) {
   assert_flag(call.)
   class = c(class, "Mlr3Warning", "warning", "condition")
   message = str_wrap(sprintf(fmt = msg, ...), width = wrap)
-  condition_call = if (call.) sys.call(-1L) else NULL
+  condition_call = if (call.) sys_call_unleanified() else NULL
   condition = structure(
     list(message = as.character(message), call = condition_call),
     class = class
@@ -92,10 +93,18 @@ stopf = function(msg, ..., wrap = FALSE, class = NULL, call. = TRUE) {
   assert_flag(call.)
   class = c(class, "Mlr3Error", "error", "condition")
   message = str_wrap(sprintf(fmt = msg, ...), width = wrap)
-  condition_call = if (call.) sys.call(-1L) else NULL
+  condition_call = if (call.) sys_call_unleanified() else NULL
   condition = structure(
     list(message = as.character(message), call = condition_call),
     class = class
   )
   stop(condition)
+}
+
+sys_call_unleanified = function(which = -2L) {
+  call = sys.call(which)
+  if (!is.null(call) && is.symbol(call[[1L]]) && grepl("^\\.__(.*)__", as.character(call[[1L]]))) {
+    call = sys.call(which - 1L)
+  }
+  call
 }

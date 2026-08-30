@@ -7,7 +7,7 @@
 get_seed()
 }
 \value{
-\code{integer()}. Depends on the \code{\link[base:RNGkind]{base::RNGkind()}}.
+\code{integer()}. Depends on the \code{\link[base:Random]{base::RNGkind()}}.
 }
 \description{
 Retrieves the current random seed (\code{.Random.seed} in the global environment),

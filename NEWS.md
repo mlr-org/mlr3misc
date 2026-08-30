@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
+
 # mlr3misc 0.22.0
 
 * feat: `as_short_string()` now prints factor values (#173).
