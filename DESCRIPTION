@@ -112,3 +112,4 @@ Collate:
     'with_package.R'
     'zzz.R'
 Config/roxygen2/version: 8.1.0
+RoxygenNote: 7.3.2
