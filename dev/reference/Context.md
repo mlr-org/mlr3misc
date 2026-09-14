@@ -36,7 +36,7 @@ with active bindings (see example).
 
 ### Public methods
 
-- [`Context$new()`](#method-Context-initialize)
+- [`Context$new()`](#method-Context-new)
 
 - [`Context$format()`](#method-Context-format)
 
@@ -46,7 +46,7 @@ with active bindings (see example).
 
 ------------------------------------------------------------------------
 
-### `Context$new()`
+### Method `new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -69,7 +69,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### `Context$format()`
+### Method [`format()`](https://rdrr.io/r/base/format.html)
 
 Format object as simple string.
 
@@ -85,7 +85,7 @@ Format object as simple string.
 
 ------------------------------------------------------------------------
 
-### `Context$print()`
+### Method [`print()`](https://rdrr.io/r/base/print.html)
 
 Print object.
 
@@ -95,7 +95,7 @@ Print object.
 
 ------------------------------------------------------------------------
 
-### `Context$clone()`
+### Method `clone()`
 
 The objects of this class are cloneable with this method.
 

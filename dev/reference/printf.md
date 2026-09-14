@@ -13,9 +13,9 @@ catf(msg, ..., file = "", wrap = FALSE)
 
 messagef(msg, ..., wrap = FALSE, class = NULL)
 
-warningf(msg, ..., wrap = FALSE, class = NULL)
+warningf(msg, ..., wrap = FALSE, class = NULL, call. = TRUE)
 
-stopf(msg, ..., wrap = FALSE, class = NULL)
+stopf(msg, ..., wrap = FALSE, class = NULL, call. = TRUE)
 ```
 
 ## Arguments
@@ -52,6 +52,12 @@ stopf(msg, ..., wrap = FALSE, class = NULL)
 
   ([`character()`](https://rdrr.io/r/base/character.html))  
   Class of the condition (for errors and warnings).
+
+- call.:
+
+  ([`logical()`](https://rdrr.io/r/base/logical.html))  
+  Whether to include the calling expression in the condition (for errors
+  and warnings). Defaults to `TRUE`.
 
 ## Details
 

@@ -52,7 +52,7 @@ defines which information can be accessed from the callback.
 
 ### Public methods
 
-- [`Callback$new()`](#method-Callback-initialize)
+- [`Callback$new()`](#method-Callback-new)
 
 - [`Callback$format()`](#method-Callback-format)
 
@@ -66,7 +66,7 @@ defines which information can be accessed from the callback.
 
 ------------------------------------------------------------------------
 
-### `Callback$new()`
+### Method `new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -96,7 +96,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### `Callback$format()`
+### Method [`format()`](https://rdrr.io/r/base/format.html)
 
 Helper for print outputs.
 
@@ -112,7 +112,7 @@ Helper for print outputs.
 
 ------------------------------------------------------------------------
 
-### `Callback$print()`
+### Method [`print()`](https://rdrr.io/r/base/print.html)
 
 Printer.
 
@@ -128,7 +128,7 @@ Printer.
 
 ------------------------------------------------------------------------
 
-### `Callback$help()`
+### Method [`help()`](https://rdrr.io/r/utils/help.html)
 
 Opens the corresponding help page referenced by field `$man`.
 
@@ -138,7 +138,7 @@ Opens the corresponding help page referenced by field `$man`.
 
 ------------------------------------------------------------------------
 
-### `Callback$call()`
+### Method [`call()`](https://rdrr.io/r/base/call.html)
 
 Call the specific stage for a given context.
 
@@ -160,7 +160,7 @@ Call the specific stage for a given context.
 
 ------------------------------------------------------------------------
 
-### `Callback$clone()`
+### Method `clone()`
 
 The objects of this class are cloneable with this method.
 

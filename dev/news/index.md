@@ -2,6 +2,12 @@
 
 ## mlr3misc (development version)
 
+- feat:
+  [`stopf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md) and
+  [`warningf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md)
+  now accept a `call.` argument to control whether conditions include
+  the call ([\#186](https://github.com/mlr-org/mlr3misc/issues/186)).
+
 ## mlr3misc 0.23.0
 
 CRAN release: 2026-08-21

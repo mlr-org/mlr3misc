@@ -61,9 +61,9 @@ base::message(), base::warning() and base::stop(), respectively."><meta property
 <span></span>
 <span><span class="fu">messagef</span><span class="op">(</span><span class="va">msg</span>, <span class="va">...</span>, wrap <span class="op">=</span> <span class="cn">FALSE</span>, class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">warningf</span><span class="op">(</span><span class="va">msg</span>, <span class="va">...</span>, wrap <span class="op">=</span> <span class="cn">FALSE</span>, class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">warningf</span><span class="op">(</span><span class="va">msg</span>, <span class="va">...</span>, wrap <span class="op">=</span> <span class="cn">FALSE</span>, class <span class="op">=</span> <span class="cn">NULL</span>, call. <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">stopf</span><span class="op">(</span><span class="va">msg</span>, <span class="va">...</span>, wrap <span class="op">=</span> <span class="cn">FALSE</span>, class <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">stopf</span><span class="op">(</span><span class="va">msg</span>, <span class="va">...</span>, wrap <span class="op">=</span> <span class="cn">FALSE</span>, class <span class="op">=</span> <span class="cn">NULL</span>, call. <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -97,6 +97,12 @@ and consecutive spaces are converted to a single space.</p></dd>
 <dt id="arg-class">class<a class="anchor" aria-label="anchor" href="#arg-class"></a></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
 Class of the condition (for errors and warnings).</p></dd>
+
+
+<dt id="arg-call-">call.<a class="anchor" aria-label="anchor" href="#arg-call-"></a></dt>
+<dd><p>(<code><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical()</a></code>)<br>
+Whether to include the calling expression in the condition (for errors and warnings).
+Defaults to <code>TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
