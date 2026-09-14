@@ -252,6 +252,7 @@ test_that("condition objects are stored", {
     }
     res = encapsulate(method, fun)
     expect_equal(as.character(res$log$class), "error")
-    expect_equal(res$log$condition[[1]], tryCatch(stopf("c"), error = identity))
+    expect_class(res$log$condition[[1]], "Mlr3Error")
+    expect_equal(conditionMessage(res$log$condition[[1]]), "c")
   }
 })

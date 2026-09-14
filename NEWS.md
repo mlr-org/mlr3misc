@@ -1,5 +1,7 @@
 # mlr3misc (development version)
 
+* feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
+
 # mlr3misc 0.23.0
 
 * fix: `hash_input()` for functions no longer loses the argument names of a body that is a single call.

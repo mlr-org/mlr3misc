@@ -12,7 +12,7 @@ Arguments: Column names in first rows as formulas (with empty left hand side),
 then the tabular data in the following rows.}
 
 \item{.key}{(\code{character(1)})\cr
-If not \code{NULL}, set the key via \code{\link[data.table:setkeyv]{data.table::setkeyv()}} after constructing the
+If not \code{NULL}, set the key via \code{\link[data.table:setkey]{data.table::setkeyv()}} after constructing the
 table.}
 }
 \value{

@@ -33,6 +33,9 @@
 #'   and consecutive spaces are converted to a single space.
 #' @param class (`character()`)\cr
 #'   Class of the condition (for errors and warnings).
+#' @param call. (`logical()`)\cr
+#'   Whether to include the calling expression in the condition (for errors and warnings).
+#'   Defaults to `TRUE`.
 #'
 #' @name printf
 #' @examples
@@ -61,27 +64,47 @@ str_wrap = function(str, width = FALSE) {
 #' @export
 #' @rdname printf
 catf = function(msg, ..., file = "", wrap = FALSE) {
-  cat(paste0(str_wrap(sprintf(msg, ...), width = wrap), collapse = "\n"), "\n", sep = "", file = file)
+  cat(paste0(str_wrap(sprintf(fmt = msg, ...), width = wrap), collapse = "\n"), "\n", sep = "", file = file)
 }
 
 #' @export
 #' @rdname printf
 messagef = function(msg, ..., wrap = FALSE, class = NULL) {
-  message(str_wrap(sprintf(msg, ...), width = wrap))
+  message(str_wrap(sprintf(fmt = msg, ...), width = wrap))
 }
 
 #' @export
 #' @rdname printf
-warningf = function(msg, ..., wrap = FALSE, class = NULL) {
+warningf = function(msg, ..., wrap = FALSE, class = NULL, call. = TRUE) {
+  assert_flag(call.)
   class = c(class, "Mlr3Warning", "warning", "condition")
-  message = str_wrap(sprintf(msg, ...), width = wrap)
-  warning(structure(list(message = as.character(message)), class = class))
+  message = str_wrap(sprintf(fmt = msg, ...), width = wrap)
+  condition_call = if (call.) sys_call_unleanified() else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  warning(condition)
 }
 
 #' @export
 #' @rdname printf
-stopf = function(msg, ..., wrap = FALSE, class = NULL) {
+stopf = function(msg, ..., wrap = FALSE, class = NULL, call. = TRUE) {
+  assert_flag(call.)
   class = c(class, "Mlr3Error", "error", "condition")
-  message = str_wrap(sprintf(msg, ...), width = wrap)
-  stop(structure(list(message = as.character(message)), class = class))
+  message = str_wrap(sprintf(fmt = msg, ...), width = wrap)
+  condition_call = if (call.) sys_call_unleanified() else NULL
+  condition = structure(
+    list(message = as.character(message), call = condition_call),
+    class = class
+  )
+  stop(condition)
+}
+
+sys_call_unleanified = function(which = -2L) {
+  call = sys.call(which)
+  if (!is.null(call) && is.symbol(call[[1L]]) && grepl("^\\.__(.*)__", as.character(call[[1L]]))) {
+    call = sys.call(which - 1L)
+  }
+  call
 }

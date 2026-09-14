@@ -18,7 +18,7 @@ lhs \%check||\% rhs
 Either \code{TRUE} or a \code{character(1)}.
 }
 \description{
-Logical AND and OR operators for \verb{check_*}-functions from \code{\link[checkmate:checkmate]{checkmate}}.
+Logical AND and OR operators for \verb{check_*}-functions from \code{\link[checkmate:checkmate-package]{checkmate}}.
 }
 \examples{
 library(checkmate)

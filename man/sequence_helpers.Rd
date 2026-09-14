@@ -26,8 +26,8 @@ Length of the sequence.}
 \description{
 \code{seq_row()} creates a sequence along the number of rows of \code{x},
 \code{seq_col()} a sequence along the number of columns of \code{x}.
-\code{seq_len0()} and \code{seq_along0()} are the 0-based counterparts to \code{\link[base:seq_len]{base::seq_len()}} and
-\code{\link[base:seq_along]{base::seq_along()}}.
+\code{seq_len0()} and \code{seq_along0()} are the 0-based counterparts to \code{\link[base:seq]{base::seq_len()}} and
+\code{\link[base:seq]{base::seq_along()}}.
 }
 \examples{
 seq_len0(3)
