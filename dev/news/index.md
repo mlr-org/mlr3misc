@@ -2,6 +2,12 @@
 
 ## mlr3misc (development version)
 
+- fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  with method `"mirai"` now logs a crashed or killed daemon (e.g., by
+  the OOM killer) as an `Mlr3Error` condition instead of a raw mirai
+  error value, which made downstream calls to
+  [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
 - feat:
   [`stopf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md) and
   [`warningf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md)
