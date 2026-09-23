@@ -177,11 +177,17 @@ encapsulate = function(
 
     log = NULL
     if (mirai::is_error_value(result)) {
-      conditions = if (unclass(result) == 5) {
-        list(error_timeout(signal = FALSE))
+      # convert the error value into a condition object so that it can be handled like any other logged error
+      cond = if (inherits(result, "miraiError")) {
+        error_mlr3("%s", paste(result, collapse = " "), signal = FALSE)
+      } else if (unclass(result) == 5L) {
+        error_timeout(signal = FALSE)
+      } else if (unclass(result) == 19L) {
+        error_mlr3("mirai daemon has crashed or was killed", signal = FALSE)
       } else {
-        list(result)
+        error_mlr3("mirai failed with error value %i", unclass(result), signal = FALSE)
       }
+      conditions = list(cond)
       result = NULL
     } else {
       # restore RNG state from mirai session
@@ -268,8 +274,6 @@ conditions_to_log = function(conditions) {
       "error"
     } else if (inherits(x, "warning")) {
       "warning"
-    } else if (inherits(x, "errorValue")) {
-      "error"
     } else {
       "output"
     }

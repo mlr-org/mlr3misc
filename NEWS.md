@@ -1,5 +1,6 @@
 # mlr3misc (development version)
 
+* fix: `encapsulate()` with method `"mirai"` now logs a crashed or killed daemon (e.g., by the OOM killer) as an `Mlr3Error` condition instead of a raw mirai error value, which made downstream calls to `conditionMessage()` fail.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
 
 # mlr3misc 0.23.0

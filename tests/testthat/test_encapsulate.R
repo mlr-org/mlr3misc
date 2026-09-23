@@ -208,6 +208,19 @@ test_that("mirai daemons can be pre-started", {
   expect_equal(unname(mirai::status(.compute = "local")$mirai["completed"]), 1)
 })
 
+test_that("mirai logs a killed daemon as error condition", {
+  skip_if_not_installed("mirai")
+
+  mirai::daemons(1, .compute = "local")
+  on.exit(mirai::daemons(0, .compute = "local"))
+
+  res = encapsulate("mirai", function() tools::pskill(Sys.getpid(), tools::SIGKILL), .compute = "local")
+  expect_null(res$result)
+  expect_equal(as.character(res$log$class), "error")
+  expect_class(res$log$condition[[1L]], "Mlr3Error")
+  expect_match(conditionMessage(res$log$condition[[1L]]), "crashed or was killed")
+})
+
 test_that("mirai daemon is started if not running", {
   skip_if_not_installed("mirai")
 
