@@ -13,6 +13,10 @@
   [`warningf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md)
   now accept a `call.` argument to control whether conditions include
   the call ([\#186](https://github.com/mlr-org/mlr3misc/issues/186)).
+- perf:
+  [`topo_sort()`](https://mlr3misc.mlr-org.com/dev/reference/topo_sort.md)
+  now uses an adjacency-list traversal to avoid repeatedly scanning and
+  rewriting all parent lists.
 
 ## mlr3misc 0.23.0
 
