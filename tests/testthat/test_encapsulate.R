@@ -122,10 +122,8 @@ test_that("try", {
 })
 
 test_that("rng state is transferred", {
-  rng_state = .GlobalEnv$.Random.seed
-  on.exit({
-    .GlobalEnv$.Random.seed = rng_state
-  })
+  rng_state = get_seed()
+  on.exit(assign(".Random.seed", rng_state, envir = globalenv()))
 
   fun = function() {
     sample(seq(1000), 1)
