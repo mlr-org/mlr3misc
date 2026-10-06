@@ -368,8 +368,8 @@ detect = function(.x, .p, ...) {
 #' @export
 #' @rdname compat-map
 walk = function(.x, .f, ...) {
-  for (.xi in .x) {
-    .f(.xi, ...)
+  for (.i in seq_along(.x)) {
+    .f(.x[[.i]], ...)
   }
 
   invisible(.x)
