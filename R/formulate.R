@@ -20,8 +20,8 @@
 #' formulate(rhs = c("Sepal.Length", "Sepal.Width"))
 formulate = function(lhs = character(), rhs = character(), env = NULL, quote = "right") {
   assert_subset(quote, choices = c("left", "right"))
-  lhs = as.character(lhs, any.missing = FALSE)
-  rhs = as.character(rhs, any.missing = FALSE)
+  assert_character(lhs, any.missing = FALSE, null.ok = TRUE)
+  assert_character(rhs, any.missing = FALSE, null.ok = TRUE)
 
   if (length(lhs) == 0L) {
     lhs = ""

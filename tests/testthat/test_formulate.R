@@ -24,3 +24,10 @@ test_that("formulate quotes", {
   expect_character(str, len = 3)
   expect_equal(str[3], "`a-b`")
 })
+
+test_that("formulate checks inputs", {
+  expect_error(formulate("y", NA_character_), "missing")
+  expect_error(formulate(NA_character_, "x"), "missing")
+  expect_error(formulate("y", 1:2), "character")
+  expect_equal(formulate("y", NULL), formulate("y"))
+})
