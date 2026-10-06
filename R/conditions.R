@@ -35,13 +35,13 @@
 #'   If `FALSE`, the condition object is returned instead of being signaled.
 #' @export
 error_config = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
-  error_mlr3(msg, ..., class = "Mlr3ErrorConfig", parent = parent, signal = signal)
+  error_mlr3(msg, ..., class = c(class, "Mlr3ErrorConfig"), parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
 #' @export
 error_input = function(msg, ..., class = NULL, parent = NULL, signal = TRUE) {
-  error_mlr3(msg, ..., class = "Mlr3ErrorInput", parent = parent, signal = signal)
+  error_mlr3(msg, ..., class = c(class, "Mlr3ErrorInput"), parent = parent, signal = signal)
 }
 
 #' @rdname mlr_conditions
