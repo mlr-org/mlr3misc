@@ -4,6 +4,7 @@
 * fix: `map_at()` and `map_if()` now pass `...` on to `.f` for `data.table`s. Previously, the additional arguments were silently dropped.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
 * perf: `topo_sort()` now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.
+* fix: `which_max()` and `which_min()` no longer return an empty vector if all values are `-Inf` or `Inf`.
 
 # mlr3misc 0.23.0
 
