@@ -8,6 +8,12 @@
   the OOM killer) as an `Mlr3Error` condition instead of a raw mirai
   error value, which made downstream calls to
   [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
+- fix:
+  [`map_at()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
+  and
+  [`map_if()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
+  now pass `...` on to `.f` for `data.table`s. Previously, the
+  additional arguments were silently dropped.
 - feat:
   [`stopf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md) and
   [`warningf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md)
