@@ -24,6 +24,5 @@ strip_srcrefs.default = function(x, ...) {
 
 #' @export
 strip_srcrefs.function = function(x, ...) {
-  attr(x, "srcref") = NULL
-  x
+  removeSource(x)
 }
