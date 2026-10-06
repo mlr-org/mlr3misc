@@ -311,7 +311,7 @@ map_if.data.table = function(.x, .p, .f, ...) {
   if (length(.matches)) {
     .x = copy(.x)
     for (j in .matches) {
-      set(.x, j = j, value = .f(.x[[j]]))
+      set(.x, j = j, value = .f(.x[[j]], ...))
     }
   }
   .x
@@ -334,7 +334,7 @@ map_at.data.table = function(.x, .at, .f, ...) {
   if (length(.at)) {
     .x = copy(.x)
     for (j in .at) {
-      set(.x, j = j, value = .f(.x[[j]]))
+      set(.x, j = j, value = .f(.x[[j]], ...))
     }
   }
   .x

@@ -135,6 +135,8 @@ test_that("map_if", {
   x = as.data.table(iris)
   out = map_if(x, is.numeric, sqrt)
   expect_equal(out$Sepal.Length, sqrt(x$Sepal.Length))
+  out = map_if(x, is.numeric, signif, digits = 1L)
+  expect_equal(out$Sepal.Length, signif(x$Sepal.Length, digits = 1L))
 })
 
 test_that("map_at", {
@@ -147,6 +149,9 @@ test_that("map_at", {
   x = map_at(x, c("Sepal.Length", "Sepal.Width"), as.integer)
   expect_data_table(x, nrows = 150, ncols = 5)
   expect_equal(unname(map_chr(x, class)), c("integer", "integer", "numeric", "numeric", "factor"))
+
+  x = map_at(as.data.table(iris), "Sepal.Length", signif, digits = 1L)
+  expect_equal(x$Sepal.Length, signif(iris$Sepal.Length, digits = 1L))
 })
 
 test_that("keep", {
