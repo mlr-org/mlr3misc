@@ -175,6 +175,18 @@ Dictionary = R6::R6Class(
       assert_string(key, min.chars = 1L)
       self$items[[key]][["prototype_args"]]
     }
+  ),
+
+  private = list(
+    deep_clone = function(name, value) {
+      if (name == "items") {
+        list2env(as.list(value, all.names = TRUE), parent = emptyenv())
+      } else if (is.R6(value)) {
+        value$clone(deep = TRUE)
+      } else {
+        value
+      }
+    }
   )
 )
 

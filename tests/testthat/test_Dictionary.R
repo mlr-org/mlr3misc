@@ -31,6 +31,16 @@ test_that("Dictionary clones R6", {
   expect_false(data.table::address(foo) == data.table::address(d$get("f")))
 })
 
+test_that("deep clone of Dictionary does not share items", {
+  d = Dictionary$new()
+  d$add("a", R6Class("A"))
+  d2 = d$clone(deep = TRUE)
+  d2$add("b", R6Class("B"))
+  d2$remove("a")
+  expect_identical(d$keys(), "a")
+  expect_identical(d2$keys(), "b")
+})
+
 test_that("Dictionary throws exception on unnamed args", {
   foo = R6Class("Foo", public = list(x = 0))
   x = Dictionary$new()

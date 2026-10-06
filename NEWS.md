@@ -1,5 +1,6 @@
 # mlr3misc (development version)
 
+* fix: `Dictionary$clone(deep = TRUE)` no longer shares the stored items with the original.
 * fix: `encapsulate()` with method `"mirai"` now logs a crashed or killed daemon (e.g., by the OOM killer) as an `Mlr3Error` condition instead of a raw mirai error value, which made downstream calls to `conditionMessage()` fail.
 * fix: `map_at()` and `map_if()` now pass `...` on to `.f` for `data.table`s. Previously, the additional arguments were silently dropped.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
