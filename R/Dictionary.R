@@ -52,8 +52,8 @@ Dictionary = R6::R6Class(
     #' Print object.
     print = function() {
       keys = self$keys()
-      catf(sprintf("%s with %i stored values", format(self), length(keys)))
-      catf(str_indent("Keys:", keys))
+      catf("%s with %i stored values", format(self), length(keys))
+      catf("%s", str_indent("Keys:", keys))
     },
 
     #' @description

@@ -43,3 +43,14 @@ test_that("deprecated_binding works in R6 class", {
   # write access should error
   expect_error(mco$foo <- "baz", "MyClass\\$foo read-only")
 })
+
+test_that("percent signs in what", {
+  rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db)
+  on.exit(rm(list = ls(deprecated_warning_given_db), envir = deprecated_warning_given_db))
+
+  expect_warning(warn_deprecated("Operator %in%"), "Operator %in% is deprecated", fixed = TRUE)
+
+  MyClass = R6::R6Class("MyClass", active = list(foo = deprecated_binding("MyClass$foo (100%)", "bar")))
+  mco = MyClass$new()
+  expect_error(suppressWarnings(mco$foo <- "baz"), "MyClass$foo (100%) read-only", fixed = TRUE)
+})
