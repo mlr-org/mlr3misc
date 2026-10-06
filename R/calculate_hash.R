@@ -60,7 +60,9 @@ hash_input.data.table = function(x) {
 #' `hash_input()` is applied to all elements of the list.
 #' @export
 hash_input.list = function(x) {
-  map(x, hash_input)
+  res = map(x, hash_input)
+  attributes(res) = attributes(x)
+  res
 }
 
 #' @describeIn hash_input
