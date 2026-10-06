@@ -192,28 +192,28 @@ imap = function(.x, .f, ...) {
 #' @rdname compat-map
 imap_lgl = function(.x, .f, ...) {
   .nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_lgl(c(list(.x, .nn)), .f), names(.x))
+  setNames(pmap_lgl(list(.x, .nn), .f, ...), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_int = function(.x, .f, ...) {
   .nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_int(c(list(.x, .nn)), .f), names(.x))
+  setNames(pmap_int(list(.x, .nn), .f, ...), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_dbl = function(.x, .f, ...) {
   .nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_dbl(c(list(.x, .nn)), .f), names(.x))
+  setNames(pmap_dbl(list(.x, .nn), .f, ...), names(.x))
 }
 
 #' @export
 #' @rdname compat-map
 imap_chr = function(.x, .f, ...) {
   .nn = names(.x) %??% seq_along(.x)
-  setNames(pmap_chr(c(list(.x, .nn)), .f), names(.x))
+  setNames(pmap_chr(list(.x, .nn), .f, ...), names(.x))
 }
 
 #' @export

@@ -56,6 +56,14 @@ test_that("imap", {
   expect_identical(res, c(2L, 4L))
 })
 
+test_that("typed imap variants pass ... to .f", {
+  x = list(a = 1L, b = 2L)
+  expect_identical(imap_lgl(x, function(x, y, z) x > z, z = 1L), c(a = FALSE, b = TRUE))
+  expect_identical(imap_int(x, function(x, y, z) x + z, z = 1L), c(a = 2L, b = 3L))
+  expect_identical(imap_dbl(x, function(x, y, z) x * z, z = 0.5), c(a = 0.5, b = 1))
+  expect_identical(imap_chr(x, function(x, y, sep = "_") paste(y, x, sep = sep), sep = "-"), c(a = "a-1", b = "b-2"))
+})
+
 test_that("pmap", {
   x = list(a = 1:2, b = 2:1)
   fun = function(a, b) c(a, b)
