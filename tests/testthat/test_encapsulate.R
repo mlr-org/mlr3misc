@@ -184,6 +184,11 @@ test_that("seeds are applied", {
 
     res = encapsulate(method, fun, .seed = 1)
     expect_equal(res$result, value)
+
+    # the rng state of the caller is not changed
+    set.seed(2)
+    encapsulate(method, fun, .seed = 1)
+    expect_equal(fun(), invoke(fun, .seed = 2))
   }
 })
 
