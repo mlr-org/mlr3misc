@@ -232,6 +232,11 @@ test_that("walk", {
   expect_equal(walk(.x, sq), .x)
 })
 
+test_that("walk keeps element classes", {
+  walk(as.Date("2020-01-01"), function(x) expect_class(x, "Date"))
+  walk(factor("a"), function(x) expect_class(x, "factor"))
+})
+
 test_that("iwalk", {
   .x = list(a = 1, b = 2)
   sq = function(x, name) x^2
