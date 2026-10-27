@@ -57,6 +57,7 @@
 <li>fix: <code><a href="../reference/compat-map.html">map_at()</a></code> and <code><a href="../reference/compat-map.html">map_if()</a></code> now pass <code>...</code> on to <code>.f</code> for <code>data.table</code>s. Previously, the additional arguments were silently dropped.</li>
 <li>feat: <code><a href="../reference/printf.html">stopf()</a></code> and <code><a href="../reference/printf.html">warningf()</a></code> now accept a <code>call.</code> argument to control whether conditions include the call (<a href="https://github.com/mlr-org/mlr3misc/issues/186" class="external-link">#186</a>).</li>
 <li>perf: <code><a href="../reference/topo_sort.html">topo_sort()</a></code> now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.</li>
+<li>fix: <code><a href="../reference/which_min.html">which_max()</a></code> and <code><a href="../reference/which_min.html">which_min()</a></code> no longer return an empty vector if all values are <code>-Inf</code> or <code>Inf</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.23.0" id="mlr3misc-0230">mlr3misc 0.23.0<a class="anchor" aria-label="anchor" href="#mlr3misc-0230"></a></h2><p class="text-muted">CRAN release: 2026-08-21</p>

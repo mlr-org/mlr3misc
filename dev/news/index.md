@@ -43,6 +43,11 @@
   [`topo_sort()`](https://mlr3misc.mlr-org.com/dev/reference/topo_sort.md)
   now uses an adjacency-list traversal to avoid repeatedly scanning and
   rewriting all parent lists.
+- fix:
+  [`which_max()`](https://mlr3misc.mlr-org.com/dev/reference/which_min.md)
+  and
+  [`which_min()`](https://mlr3misc.mlr-org.com/dev/reference/which_min.md)
+  no longer return an empty vector if all values are `-Inf` or `Inf`.
 
 ## mlr3misc 0.23.0
 
