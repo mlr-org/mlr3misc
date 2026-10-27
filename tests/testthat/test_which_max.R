@@ -30,6 +30,15 @@ test_that("which_max", {
   expect_identical(which_max(NA_real_), NA_integer_)
 })
 
+test_that("infinite values", {
+  expect_identical(which_max(c(-Inf, -Inf), ties_method = "first"), 1L)
+  expect_identical(which_max(c(-Inf, -Inf), ties_method = "last"), 2L)
+  expect_identical(which_max(c(NA, -Inf), na_rm = TRUE), 2L)
+  expect_identical(which_min(c(Inf, Inf), ties_method = "first"), 1L)
+  expect_identical(which_max(rep(-.Machine$double.xmax, 2), ties_method = "first"), 1L)
+  expect_true(which_max(c(-Inf, -Inf, -Inf), ties_method = "random") %in% 1:3)
+})
+
 test_that("na_rm", {
   expect_equal(which_max(NA_integer_, na_rm = TRUE), integer())
   expect_equal(which_max(NA_integer_, na_rm = FALSE), NA_integer_)
