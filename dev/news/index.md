@@ -44,6 +44,9 @@
   now uses an adjacency-list traversal to avoid repeatedly scanning and
   rewriting all parent lists.
 - fix:
+  [`walk()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
+  no longer strips classes such as factor or Date from elements.
+- fix:
   [`which_max()`](https://mlr3misc.mlr-org.com/dev/reference/which_min.md)
   and
   [`which_min()`](https://mlr3misc.mlr-org.com/dev/reference/which_min.md)
