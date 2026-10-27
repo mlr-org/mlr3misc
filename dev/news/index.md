@@ -9,6 +9,13 @@
   error value, which made downstream calls to
   [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
 - fix:
+  [`imap_lgl()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
+  [`imap_int()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
+  [`imap_dbl()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
+  and
+  [`imap_chr()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
+  now pass `...` to `.f`.
+- fix:
   [`map_at()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
   and
   [`map_if()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
