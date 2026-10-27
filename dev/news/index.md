@@ -39,6 +39,11 @@
   [`map_if()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md)
   now pass `...` on to `.f` for `data.table`s. Previously, the
   additional arguments were silently dropped.
+- fix:
+  [`set_names()`](https://mlr3misc.mlr-org.com/dev/reference/set_names.md)
+  and
+  [`set_col_names()`](https://mlr3misc.mlr-org.com/dev/reference/set_names.md)
+  now pass `...` to `nm`.
 - feat:
   [`stopf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md) and
   [`warningf()`](https://mlr3misc.mlr-org.com/dev/reference/printf.md)
