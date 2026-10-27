@@ -40,6 +40,12 @@
   now pass `...` on to `.f` for `data.table`s. Previously, the
   additional arguments were silently dropped.
 - fix:
+  [`register_namespace_callback()`](https://mlr3misc.mlr-org.com/dev/reference/register_namespace_callback.md)
+  now removes its hooks by identity on unload, so hooks registered by
+  others no longer cause an error during cleanup and stale hooks no
+  longer accumulate across reloads
+  ([\#207](https://github.com/mlr-org/mlr3misc/issues/207)).
+- fix:
   [`set_names()`](https://mlr3misc.mlr-org.com/dev/reference/set_names.md)
   and
   [`set_col_names()`](https://mlr3misc.mlr-org.com/dev/reference/set_names.md)
