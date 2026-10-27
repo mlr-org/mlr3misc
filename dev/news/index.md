@@ -14,6 +14,11 @@
   error value, which made downstream calls to
   [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
 - fix:
+  [`error_config()`](https://mlr3misc.mlr-org.com/dev/reference/mlr_conditions.md)
+  and
+  [`error_input()`](https://mlr3misc.mlr-org.com/dev/reference/mlr_conditions.md)
+  no longer ignore the `class` argument.
+- fix:
   [`formulate()`](https://mlr3misc.mlr-org.com/dev/reference/formulate.md)
   now errors on missing values and non-character input instead of
   silently coercing them.
