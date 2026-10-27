@@ -8,6 +8,9 @@ test_that("errors", {
   expect_class(error_config("a", signal = FALSE), "Mlr3ErrorConfig")
   expect_class(error_timeout(signal = FALSE), "Mlr3ErrorTimeout")
   expect_class(error_mlr3("a", signal = FALSE), "Mlr3Error")
+
+  expect_equal(class(error_input("a", class = "MyClass", signal = FALSE))[1:2], c("MyClass", "Mlr3ErrorInput"))
+  expect_equal(class(error_config("a", class = "MyClass", signal = FALSE))[1:2], c("MyClass", "Mlr3ErrorConfig"))
 })
 
 test_that("warnings", {
