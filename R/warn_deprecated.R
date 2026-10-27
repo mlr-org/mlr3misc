@@ -21,7 +21,7 @@
 warn_deprecated = function(what) {
   assert_string(what)
   if (getOption("mlr3.warn_deprecated", TRUE) && !exists(what, envir = deprecated_warning_given_db)) {
-    warning_mlr3(paste0(what, " is deprecated and will be removed in the future."), class = "Mlr3WarningDeprecated")
+    warning_mlr3("%s is deprecated and will be removed in the future.", what, class = "Mlr3WarningDeprecated")
     assign(what, TRUE, envir = deprecated_warning_given_db)
   }
 }
@@ -63,7 +63,7 @@ deprecated_binding = function(what, value) {
       ## 'value' could be an expression that gets substituted here, which we only want to evaluate once
       x = value
       if (!missing(rhs) && !identical(rhs, x)) {
-        error_mlr3(sprintf("%s read-only.", what))
+        error_mlr3("%s read-only.", what)
       }
       x
     },

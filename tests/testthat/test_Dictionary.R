@@ -24,6 +24,12 @@ test_that("Dictionary", {
   expect_data_table(as.data.table(d), nrows = 1L)
 })
 
+test_that("Dictionary prints keys with percent signs", {
+  d = Dictionary$new()
+  d$add("a%s", R6Class("A"))
+  expect_output(print(d), "a%s", fixed = TRUE)
+})
+
 test_that("Dictionary clones R6", {
   foo = R6Class("Foo")$new()
   d = Dictionary$new()
