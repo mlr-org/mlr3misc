@@ -1,10 +1,16 @@
 # mlr3misc (development version)
 
+* fix: `deprecated_binding()`, `Dictionary` printing, and `warn_deprecated()` no longer fail on `%` in descriptions or keys.
 * fix: `encapsulate()` with method `"mirai"` now logs a crashed or killed daemon (e.g., by the OOM killer) as an `Mlr3Error` condition instead of a raw mirai error value, which made downstream calls to `conditionMessage()` fail.
 * fix: `error_config()` and `error_input()` no longer ignore the `class` argument.
+* fix: `formulate()` now errors on missing values and non-character input instead of silently coercing them.
+* fix: `encapsulate()` with method `"callr"` and a `.seed` no longer overwrites the RNG state of the calling session.
+* fix: `imap_lgl()`, `imap_int()`, `imap_dbl()`, and `imap_chr()` now pass `...` to `.f`.
 * fix: `map_at()` and `map_if()` now pass `...` on to `.f` for `data.table`s. Previously, the additional arguments were silently dropped.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
 * perf: `topo_sort()` now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.
+* fix: `walk()` no longer strips classes such as factor or Date from elements.
+* fix: `which_max()` and `which_min()` no longer return an empty vector if all values are `-Inf` or `Inf`.
 
 # mlr3misc 0.23.0
 

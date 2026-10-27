@@ -54,7 +54,7 @@ static int which_max_int(const int * x, const R_len_t nx, ties_method_t ties_met
 
 static int which_max_dbl(const double * x, const R_len_t nx, ties_method_t ties_method, Rboolean na_rm) {
     int max_index = -2;
-    double max_value = -DBL_MAX;
+    double max_value = R_NegInf;
     R_len_t ties = 1;
 
     for (R_len_t i = 0; i < nx; i++) {
@@ -64,7 +64,7 @@ static int which_max_dbl(const double * x, const R_len_t nx, ties_method_t ties_
             if (!na_rm) {
                 return NA_INTEGER;
             }
-        } else if (xi > max_value) {
+        } else if (max_index < 0 || xi > max_value) {
             max_index = i;
             max_value = xi;
             ties = 1;
