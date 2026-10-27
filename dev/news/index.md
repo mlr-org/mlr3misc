@@ -3,6 +3,11 @@
 ## mlr3misc (development version)
 
 - fix:
+  [`deprecated_binding()`](https://mlr3misc.mlr-org.com/dev/reference/deprecated_binding.md),
+  `Dictionary` printing, and
+  [`warn_deprecated()`](https://mlr3misc.mlr-org.com/dev/reference/warn_deprecated.md)
+  no longer fail on `%` in descriptions or keys.
+- fix:
   [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
   with method `"mirai"` now logs a crashed or killed daemon (e.g., by
   the OOM killer) as an `Mlr3Error` condition instead of a raw mirai
