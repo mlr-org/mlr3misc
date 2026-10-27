@@ -14,6 +14,10 @@
   error value, which made downstream calls to
   [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
 - fix:
+  [`formulate()`](https://mlr3misc.mlr-org.com/dev/reference/formulate.md)
+  now errors on missing values and non-character input instead of
+  silently coercing them.
+- fix:
   [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
   with method `"callr"` and a `.seed` no longer overwrites the RNG state
   of the calling session.
