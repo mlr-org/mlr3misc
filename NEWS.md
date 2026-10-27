@@ -7,6 +7,7 @@
 * fix: `encapsulate()` with method `"callr"` and a `.seed` no longer overwrites the RNG state of the calling session.
 * fix: `imap_lgl()`, `imap_int()`, `imap_dbl()`, and `imap_chr()` now pass `...` to `.f`.
 * fix: `map_at()` and `map_if()` now pass `...` on to `.f` for `data.table`s. Previously, the additional arguments were silently dropped.
+* fix: `register_namespace_callback()` now removes its hooks by identity on unload, so hooks registered by others no longer cause an error during cleanup and stale hooks no longer accumulate across reloads (#207).
 * fix: `set_names()` and `set_col_names()` now pass `...` to `nm`.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
 * fix: `strip_srcrefs()` now also removes source references from the body, formals, and nested functions.

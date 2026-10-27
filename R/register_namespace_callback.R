@@ -23,22 +23,15 @@ register_namespace_callback = function(pkgname, namespace, callback) {
 
   load_hook = function(...) callback()
 
-  remove_hook = function(event) {
-    hooks = getHook(event)
-    pkgnames = vapply(
-      hooks,
-      function(x) {
-        ee = environment(x)
-        if (isNamespace(ee)) environmentName(ee) else environment(x)$pkgname
-      },
-      NA_character_
-    )
-    setHook(event, hooks[pkgnames != pkgname], action = "replace")
+  # remove hooks by identity so that hooks registered by others are never inspected
+  remove_hook = function(event, hook) {
+    hooks = discard(getHook(event), function(x) identical(x, hook))
+    setHook(event, hooks, action = "replace")
   }
 
   remove_hooks = function(...) {
-    remove_hook(packageEvent(namespace, "onLoad"))
-    remove_hook(packageEvent(pkgname, "onUnload"))
+    remove_hook(packageEvent(namespace, "onLoad"), load_hook)
+    remove_hook(packageEvent(pkgname, "onUnload"), remove_hooks)
   }
 
   if (isNamespaceLoaded(namespace)) {
