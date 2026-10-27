@@ -26,7 +26,7 @@
 #' print(x)
 set_names = function(x, nm = x, ...) {
   if (is.function(nm)) {
-    nm = map_chr(names2(x), nm)
+    nm = map_chr(names2(x), nm, ...)
   }
   names(x) = nm
   x
@@ -37,7 +37,7 @@ set_names = function(x, nm = x, ...) {
 #' @export
 set_col_names = function(x, nm, ...) {
   if (is.function(nm)) {
-    nm = map_chr(names2(x), nm)
+    nm = map_chr(names2(x), nm, ...)
   }
   colnames(x) = nm
   x

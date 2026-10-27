@@ -1,10 +1,19 @@
 # mlr3misc (development version)
 
+* fix: `deprecated_binding()`, `Dictionary` printing, and `warn_deprecated()` no longer fail on `%` in descriptions or keys.
 * fix: `encapsulate()` with method `"mirai"` now logs a crashed or killed daemon (e.g., by the OOM killer) as an `Mlr3Error` condition instead of a raw mirai error value, which made downstream calls to `conditionMessage()` fail.
+* fix: `error_config()` and `error_input()` no longer ignore the `class` argument.
+* fix: `formulate()` now errors on missing values and non-character input instead of silently coercing them.
+* fix: `encapsulate()` with method `"callr"` and a `.seed` no longer overwrites the RNG state of the calling session.
+* fix: `imap_lgl()`, `imap_int()`, `imap_dbl()`, and `imap_chr()` now pass `...` to `.f`.
 * fix: `map_at()` and `map_if()` now pass `...` on to `.f` for `data.table`s. Previously, the additional arguments were silently dropped.
 * fix: `register_namespace_callback()` now removes its hooks by identity on unload, so hooks registered by others no longer cause an error during cleanup and stale hooks no longer accumulate across reloads (#207).
+* fix: `set_names()` and `set_col_names()` now pass `...` to `nm`.
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
+* fix: `strip_srcrefs()` now also removes source references from the body, formals, and nested functions.
 * perf: `topo_sort()` now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.
+* fix: `walk()` no longer strips classes such as factor or Date from elements.
+* fix: `which_max()` and `which_min()` no longer return an empty vector if all values are `-Inf` or `Inf`.
 
 # mlr3misc 0.23.0
 
