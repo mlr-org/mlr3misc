@@ -122,10 +122,8 @@ test_that("try", {
 })
 
 test_that("rng state is transferred", {
-  rng_state = .GlobalEnv$.Random.seed
-  on.exit({
-    .GlobalEnv$.Random.seed = rng_state
-  })
+  rng_state = get_seed()
+  on.exit(assign(".Random.seed", rng_state, envir = globalenv()))
 
   fun = function() {
     sample(seq(1000), 1)
@@ -184,6 +182,11 @@ test_that("seeds are applied", {
 
     res = encapsulate(method, fun, .seed = 1)
     expect_equal(res$result, value)
+
+    # the rng state of the caller is not changed
+    set.seed(2)
+    encapsulate(method, fun, .seed = 1)
+    expect_equal(fun(), invoke(fun, .seed = 2))
   }
 })
 
