@@ -39,5 +39,5 @@ keep_in_bounds(x, lower, upper)
 
 ``` r
 keep_in_bounds(sample(20), 5, 10)
-#> [1]  7  5  9  6 10  8
+#> [1]  6 10  7  9  8  5
 ```

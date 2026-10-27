@@ -9,6 +9,10 @@
   error value, which made downstream calls to
   [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
 - fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/dev/reference/encapsulate.md)
+  with method `"callr"` and a `.seed` no longer overwrites the RNG state
+  of the calling session.
+- fix:
   [`imap_lgl()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
   [`imap_int()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
   [`imap_dbl()`](https://mlr3misc.mlr-org.com/dev/reference/compat-map.md),
