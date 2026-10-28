@@ -35,140 +35,149 @@ CallbackExample = R6Class("CallbackExample",
 )
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{id}}{(\code{character(1)})\cr
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{id}}{(\code{character(1)})\cr
 Identifier of the callback.}
 
-\item{\code{label}}{(\code{character(1)})\cr
+    \item{\code{label}}{(\code{character(1)})\cr
 Label for this object.
 Can be used in tables, plot and text output instead of the ID.}
 
-\item{\code{man}}{(\code{character(1)})\cr
+    \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
 Defaults to \code{NA}, but can be set by child classes.}
 
-\item{\code{state}}{(named \code{list()})\cr
+    \item{\code{state}}{(named \code{list()})\cr
 A callback can write data into the state.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-Callback-new}{\code{Callback$new()}}
-\item \href{#method-Callback-format}{\code{Callback$format()}}
-\item \href{#method-Callback-print}{\code{Callback$print()}}
-\item \href{#method-Callback-help}{\code{Callback$help()}}
-\item \href{#method-Callback-call}{\code{Callback$call()}}
-\item \href{#method-Callback-clone}{\code{Callback$clone()}}
-}
+  \itemize{
+    \item \href{#method-Callback-initialize}{\code{Callback$new()}}
+    \item \href{#method-Callback-format}{\code{Callback$format()}}
+    \item \href{#method-Callback-print}{\code{Callback$print()}}
+    \item \href{#method-Callback-help}{\code{Callback$help()}}
+    \item \href{#method-Callback-call}{\code{Callback$call()}}
+    \item \href{#method-Callback-clone}{\code{Callback$clone()}}
+  }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Callback-new"></a>}}
-\if{latex}{\out{\hypertarget{method-Callback-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$new(id, label = NA_character_, man = NA_character_)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{id}}{(\code{character(1)})\cr
+\if{html}{\out{<a id="method-Callback-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-Callback-initialize}{}}}
+\subsection{\code{Callback$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$new(id, label = NA_character_, man = NA_character_)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{id}}{(\code{character(1)})\cr
 Identifier for the new instance.}
-
-\item{\code{label}}{(\code{character(1)})\cr
+      \item{\code{label}}{(\code{character(1)})\cr
 Label for the new instance.}
-
-\item{\code{man}}{(\code{character(1)})\cr
+      \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
 The referenced help package can be opened via method \verb{$help()}.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-format"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-format}{}}}
-\subsection{Method \code{format()}}{
-Helper for print outputs.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$format(...)}\if{html}{\out{</div>}}
+\subsection{\code{Callback$format()}}{
+  Helper for print outputs.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$format(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(ignored).}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(ignored).}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-print"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-print}{}}}
-\subsection{Method \code{print()}}{
-Printer.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$print(...)}\if{html}{\out{</div>}}
+\subsection{\code{Callback$print()}}{
+  Printer.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$print(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(ignored).}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(ignored).}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-help"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-help}{}}}
-\subsection{Method \code{help()}}{
-Opens the corresponding help page referenced by field \verb{$man}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$help()}\if{html}{\out{</div>}}
+\subsection{\code{Callback$help()}}{
+  Opens the corresponding help page referenced by field \verb{$man}.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$help()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-call"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-call}{}}}
-\subsection{Method \code{call()}}{
-Call the specific stage for a given context.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$call(stage, context)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{stage}}{(\code{character(1)})\cr
+\subsection{\code{Callback$call()}}{
+  Call the specific stage for a given context.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$call(stage, context)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{stage}}{(\code{character(1)})\cr
 stage.}
-
-\item{\code{context}}{(\code{Context})\cr
+      \item{\code{context}}{(\code{Context})\cr
 Context.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Callback-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-Callback-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Callback$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{Callback$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{Callback$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
