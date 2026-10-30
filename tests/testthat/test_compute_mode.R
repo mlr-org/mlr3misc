@@ -1,0 +1,10 @@
+test_that("compute_mode", {
+  x = c(1, 1, 1, 2, 2, 2, 3)
+  expect_identical(compute_mode(x, ties_method = "first"), 1)
+  expect_identical(compute_mode(x, ties_method = "last"), 2)
+  expect_subset(compute_mode(x, ties_method = "random"), c(1, 2))
+  expect_identical(compute_mode(c("a", "b", "b")), "b")
+  expect_identical(compute_mode(c(NA, NA, 1)), 1)
+  expect_identical(compute_mode(c(NA, NA, 1), na_rm = FALSE), NA_real_)
+  expect_error(compute_mode(list(1, 2)), "atomic")
+})
