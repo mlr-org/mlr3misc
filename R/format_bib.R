@@ -15,7 +15,7 @@
 #' @param bibentries (named `list()`)\cr
 #'   Named list of bibentries.
 #' @param envir (`environment`)\cr
-#'   Environment to lookup `bibentries` if not provided.
+#'   Environment to look up `bibentries` if not provided.
 #'
 #' @return (`character(1)`).
 #'

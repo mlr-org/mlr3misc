@@ -16,7 +16,7 @@
 #' @param shuffle (`logical(1)`)\cr
 #'   If `TRUE`, permutes the order of `x` before chunking.
 #'
-#' @return `chunk()` returns a `integer()` of chunk indices,
+#' @return `chunk()` returns an `integer()` of chunk indices,
 #'   `chunk_vector()` a `list()` of `integer` vectors.
 #' @export
 #' @examples

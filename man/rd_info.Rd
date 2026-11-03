@@ -19,7 +19,7 @@ rd_format_packages(packages)
 \item{obj}{(\code{any})\cr
 Object of the respective class.}
 
-\item{...}{(\verb{any)})\cr
+\item{...}{(\code{any})\cr
 Additional arguments.}
 
 \item{lower}{(\code{numeric(1)})\cr
@@ -32,7 +32,7 @@ Upper bound.}
 Vector of strings.}
 
 \item{quote}{(\code{character()})\cr
-Quotes to use around each element of \code{x}.
+Quotes to use around each element of \code{str}.
 
 Will be replicated to length 2.}
 

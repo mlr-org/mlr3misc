@@ -7,12 +7,12 @@
 A key-value store for \link[R6:R6]{R6::R6} objects.
 On retrieval of an object, the following applies:
 \itemize{
-\item If the object is a \code{R6ClassGenerator}, it is initialized with \code{new()}.
+\item If the object is an \code{R6ClassGenerator}, it is initialized with \code{new()}.
 \item If the object is a function, it is called and must return an instance of a \link[R6:R6]{R6::R6} object.
-\item If the object is an instance of a R6 class, it is returned as-is.
+\item If the object is an instance of an R6 class, it is returned as-is.
 }
 
-Default argument required for construction can be stored alongside their constructors by passing them to \verb{$add()}.
+Default arguments required for construction can be stored alongside their constructors by passing them to \verb{$add()}.
 }
 \section{S3 methods}{
 
@@ -107,7 +107,7 @@ Stores the items of the dictionary}
 \if{html}{\out{<a id="method-Dictionary-keys"></a>}}
 \if{latex}{\out{\hypertarget{method-Dictionary-keys}{}}}
 \subsection{\code{Dictionary$keys()}}{
-  Returns all keys which comply to the regular expression \code{pattern}.
+  Returns all keys which comply with the regular expression \code{pattern}.
 If \code{pattern} is \code{NULL} (default), all keys are returned.
   \subsection{Usage}{
     \if{html}{\out{<div class="r">}}

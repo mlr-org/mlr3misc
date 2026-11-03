@@ -19,7 +19,7 @@ Keep possible row names (default: \code{FALSE}).}
 \description{
 Loads a data set with name \code{id} from package \code{package} and returns it.
 If the package is not installed, an error with condition "packageNotFoundError" is raised.
-The name of the missing packages is stored in the condition as \code{packages}.
+The name of the missing package is stored in the condition as \code{packages}.
 }
 \examples{
 head(load_dataset("iris", "datasets"))

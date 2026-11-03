@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Moves a single method of an R6Class Generator to its package namespace.
-#' The R6Class's method is reduced to a call to  the moved function.
+#' The R6Class's method is reduced to a call to the moved function.
 #'
 #' This creates a function named `.__<CLASSNAME>__<FUNCTIONNAME>` inside `env`.
 #'
@@ -71,7 +71,7 @@ leanificate_method = function(cls, fname, env = cls$parent_env) {
 #' @description
 #' `leanify_r6` moves the content of an [`R6::R6Class`]'s functions to an environment,
 #' usually the package's namespace, to save space during serialization of R6 objects.
-#' `leanify_package` move all methods of *all* R6 Classes to an environment.
+#' `leanify_package` moves all methods of *all* R6 Classes to an environment.
 #'
 #' The function in the class (i.e. the object generator) is replaced by a stump
 #' function that does nothing except calling the original function that now resides

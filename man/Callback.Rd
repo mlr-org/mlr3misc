@@ -4,7 +4,7 @@
 \alias{Callback}
 \title{Callback}
 \description{
-Callbacks allow to customize the behavior of processes in mlr3 packages.
+Callbacks allow customizing the behavior of processes in mlr3 packages.
 The following packages implement callbacks:
 \itemize{
 \item \code{CallbackOptimization} in \CRANpkg{bbotk}.
@@ -83,7 +83,7 @@ Identifier for the new instance.}
 Label for the new instance.}
       \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
-The referenced help package can be opened via method \verb{$help()}.}
+The referenced help page can be opened via method \verb{$help()}.}
     }
     \if{html}{\out{</div>}}
   }

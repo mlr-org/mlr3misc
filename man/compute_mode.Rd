@@ -2,7 +2,7 @@
 % Please edit documentation in R/compute_mode.R
 \name{compute_mode}
 \alias{compute_mode}
-\title{Compute The Mode}
+\title{Compute the Mode}
 \usage{
 compute_mode(x, ties_method = "random", na_rm = TRUE)
 }

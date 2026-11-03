@@ -28,7 +28,7 @@ If \code{TRUE}, permutes the order of \code{x} before chunking.}
 Length of vector to split.}
 }
 \value{
-\code{chunk()} returns a \code{integer()} of chunk indices,
+\code{chunk()} returns an \code{integer()} of chunk indices,
 \code{chunk_vector()} a \code{list()} of \code{integer} vectors.
 }
 \description{

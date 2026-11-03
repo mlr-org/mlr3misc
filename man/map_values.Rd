@@ -7,7 +7,7 @@
 map_values(x, old, new)
 }
 \arguments{
-\item{x}{(\verb{vector())}.}
+\item{x}{(\code{vector()}).}
 
 \item{old}{(\code{vector()})\cr
 Vector with values to replace.}

@@ -13,8 +13,8 @@
 #' * `error_input()` for the `Mlr3ErrorInput` class, which signals that an invalid input was provided.
 #' * `error_timeout()` for the `Mlr3ErrorTimeout`, signalling a timeout (encapsulation).
 #' * `error_learner()` for the `Mlr3ErrorLearner`, signalling a learner error.
-#' * `error_learner_train()` for the `Mlr3ErrorLearner`, signalling a learner training error.
-#' * `error_learner_predict()` for the `Mlr3ErrorLearner`, signalling a learner prediction error.
+#' * `error_learner_train()` for the `Mlr3ErrorLearnerTrain`, signalling a learner training error.
+#' * `error_learner_predict()` for the `Mlr3ErrorLearnerPredict`, signalling a learner prediction error.
 #'
 #' @section Warnings:
 #' * `warning_mlr3()` for the base `Mlr3Warning` class.

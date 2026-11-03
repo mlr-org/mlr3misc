@@ -3,7 +3,7 @@
 #' @description
 #' Loads a data set with name `id` from package `package` and returns it.
 #' If the package is not installed, an error with condition "packageNotFoundError" is raised.
-#' The name of the missing packages is stored in the condition as `packages`.
+#' The name of the missing package is stored in the condition as `packages`.
 #'
 #' @param id (`character(1)`)\cr
 #'   Name of the data set.

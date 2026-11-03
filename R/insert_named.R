@@ -2,8 +2,8 @@
 #'
 #' @description
 #' Insert elements from `y` into `x` by name, or remove elements from `x` by name.
-#' Works for vectors, lists, environments and data frames and data tables.
-#' Objects with reference semantic (`environment()` and [data.table::data.table()]) might be modified in-place.
+#' Works for vectors, lists, environments, data frames, and data tables.
+#' Objects with reference semantics (`environment()` and [data.table::data.table()]) might be modified in-place.
 #'
 #' @param x (`vector()` | `list()` | `environment()` | [data.table::data.table()])\cr
 #'   Object to insert elements into, or remove elements from.

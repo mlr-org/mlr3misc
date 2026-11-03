@@ -4,7 +4,7 @@
 #' Sets the names (or colnames) of `x` to `nm`.
 #' If `nm` is a function, it is used to transform the already existing names of `x`.
 #'
-#' @param x (`any`.)\cr
+#' @param x (`any`)\cr
 #'   Object to set names for.
 #' @param nm (`character()` | `function()`)\cr
 #'   New names, or a function which transforms already existing names.

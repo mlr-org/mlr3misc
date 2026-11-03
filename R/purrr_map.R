@@ -24,7 +24,7 @@
 #' Additionally, the functions `map()`, `imap()` and `pmap()` have type-safe variants with the following suffixes:
 #'
 #' * `*_lgl()` returns a `logical(length(.x))`.
-#' * `*_int()` returns a `integer(length(.x))`.
+#' * `*_int()` returns an `integer(length(.x))`.
 #' * `*_dbl()` returns a `double(length(.x))`.
 #' * `*_chr()` returns a `character(length(.x))`.
 #' * `*_br()` returns an object where the results of `.f` are put together with [base::rbind()].

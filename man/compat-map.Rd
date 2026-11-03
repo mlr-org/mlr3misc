@@ -154,7 +154,7 @@ just visit (or change by reference) the elements of \code{.x}. They return input
 Additionally, the functions \code{map()}, \code{imap()} and \code{pmap()} have type-safe variants with the following suffixes:
 \itemize{
 \item \verb{*_lgl()} returns a \code{logical(length(.x))}.
-\item \verb{*_int()} returns a \code{integer(length(.x))}.
+\item \verb{*_int()} returns an \code{integer(length(.x))}.
 \item \verb{*_dbl()} returns a \code{double(length(.x))}.
 \item \verb{*_chr()} returns a \code{character(length(.x))}.
 \item \verb{*_br()} returns an object where the results of \code{.f} are put together with \code{\link[base:rbind]{base::rbind()}}.

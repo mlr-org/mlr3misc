@@ -27,7 +27,7 @@ The following rules apply:
 \itemize{
 \item if \code{x} is \code{atomic()} with length 0 or 1: printed as-is.
 \item if \code{x} is \code{atomic()} with length greater than 1, \code{x} is collapsed with \code{","},
-and the resulting string is truncated to \code{trunc_width} characters.
+and the resulting string is truncated to \code{width} characters.
 \item if \code{x} is an expression: converted to character.
 \item Otherwise: the class is printed.
 }

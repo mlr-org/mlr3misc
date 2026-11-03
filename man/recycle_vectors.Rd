@@ -16,7 +16,7 @@ recycle_vectors(.x)
 Repeats all vectors of a list \code{.x} to the length of the longest vector
 using \code{\link[=rep]{rep()}} with argument \code{length.out}.
 This operation will only work
-if the length of the longest vectors is an integer multiple of all shorter
+if the length of the longest vector is an integer multiple of all shorter
 vectors, and will throw an exception otherwise.
 }
 \examples{

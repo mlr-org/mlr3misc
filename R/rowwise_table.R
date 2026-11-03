@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Similar to the \CRANpkg{tibble} function `tribble()`, this function
-#' allows to construct tabular data in a row-wise fashion.
+#' allows constructing tabular data in a row-wise fashion.
 #'
 #' The first arguments passed as formula will be interpreted as column names.
 #' The remaining arguments will be put into the resulting table.

@@ -13,7 +13,7 @@ transpose_list(.l)
 \code{list()}.
 }
 \description{
-Transposes a list of list, and turns it inside out, similar to the
+Transposes a list of lists, and turns it inside out, similar to the
 function \code{transpose()} in package \CRANpkg{purrr}.
 }
 \examples{
