@@ -68,8 +68,8 @@ something (e.g. invalid learner configuration).
 \item \code{error_input()} for the \code{Mlr3ErrorInput} class, which signals that an invalid input was provided.
 \item \code{error_timeout()} for the \code{Mlr3ErrorTimeout}, signalling a timeout (encapsulation).
 \item \code{error_learner()} for the \code{Mlr3ErrorLearner}, signalling a learner error.
-\item \code{error_learner_train()} for the \code{Mlr3ErrorLearner}, signalling a learner training error.
-\item \code{error_learner_predict()} for the \code{Mlr3ErrorLearner}, signalling a learner prediction error.
+\item \code{error_learner_train()} for the \code{Mlr3ErrorLearnerTrain}, signalling a learner training error.
+\item \code{error_learner_predict()} for the \code{Mlr3ErrorLearnerPredict}, signalling a learner prediction error.
 }
 }
 

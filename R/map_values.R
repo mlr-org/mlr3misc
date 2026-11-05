@@ -4,7 +4,7 @@
 #' Replaces all values in `x` which match `old` with values in `new`.
 #' Values are matched with [base::match()].
 #'
-#' @param x (`vector())`.
+#' @param x (`vector()`).
 #' @param old (`vector()`)\cr
 #'   Vector with values to replace.
 #' @param new (`vector()`)\cr

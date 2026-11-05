@@ -17,7 +17,7 @@ One or more names of bibentries.}
 Named list of bibentries.}
 
 \item{envir}{(\code{environment})\cr
-Environment to lookup \code{bibentries} if not provided.}
+Environment to look up \code{bibentries} if not provided.}
 }
 \value{
 (\code{character(1)}).

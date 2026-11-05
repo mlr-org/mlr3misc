@@ -11,18 +11,18 @@ str_collapse(str, sep = ", ", quote = character(), n = Inf, ellipsis = "[...]")
 Vector of strings.}
 
 \item{sep}{(\code{character(1)})\cr
-String used to collapse the elements of \code{x}.}
+String used to collapse the elements of \code{str}.}
 
 \item{quote}{(\code{character()})\cr
-Quotes to use around each element of \code{x}.
+Quotes to use around each element of \code{str}.
 
 Will be replicated to length 2.}
 
 \item{n}{(\code{integer(1)})\cr
-Number of elements to keep from \code{x}. See \code{\link[utils:head]{utils::head()}}.}
+Number of elements to keep from \code{str}. See \code{\link[utils:head]{utils::head()}}.}
 
 \item{ellipsis}{(\code{character(1)})\cr
-If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{" [...]"}.}
+If the string has to be shortened, this is signaled by appending \code{ellipsis} to \code{str}. Default is \code{"[...]"}.}
 }
 \value{
 (\code{character(1)}).

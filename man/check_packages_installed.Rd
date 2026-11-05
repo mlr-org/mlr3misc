@@ -24,7 +24,7 @@ Format of the warning message. Use \code{"\%s"} as placeholder for the list of p
 (\code{logical()}) named with package names. \code{TRUE} if the respective package is installed, \code{FALSE} otherwise.
 }
 \description{
-Calls \code{\link[=find.package]{find.package()}} to check if the all packages are installed.
+Calls \code{\link[=find.package]{find.package()}} to check if all packages are installed.
 }
 \examples{
 check_packages_installed(c("mlr3misc", "foobar"), warn = FALSE)

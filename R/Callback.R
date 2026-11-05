@@ -3,7 +3,7 @@
 #' @include named_list.R
 #'
 #' @description
-#' Callbacks allow to customize the behavior of processes in mlr3 packages.
+#' Callbacks allow customizing the behavior of processes in mlr3 packages.
 #' The following packages implement callbacks:
 #'
 #'   * `CallbackOptimization` in \CRANpkg{bbotk}.
@@ -62,7 +62,7 @@ Callback = R6Class(
     #'   Label for the new instance.
     #' @param man (`character(1)`)\cr
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-    #'   The referenced help package can be opened via method `$help()`.
+    #'   The referenced help page can be opened via method `$help()`.
     initialize = function(id, label = NA_character_, man = NA_character_) {
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
@@ -182,7 +182,7 @@ call_back = function(stage, callbacks, context) {
 #' This dictionary can get populated with additional callbacks by add-on packages.
 #' As a convention, the key should start with the name of the package, i.e. `package.callback`.
 #'
-#' For a more convenient way to retrieve and construct learners, see [clbk()]/[clbks()].
+#' For a more convenient way to retrieve and construct callbacks, see [clbk()]/[clbks()].
 #'
 #' @export
 mlr_callbacks = R6Class("DictionaryCallbacks", inherit = Dictionary, cloneable = FALSE)$new()

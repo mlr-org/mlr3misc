@@ -7,7 +7,7 @@
 reorder_vector(x, y, na_last = NA)
 }
 \arguments{
-\item{x}{(\verb{vector())}.}
+\item{x}{(\code{vector()}).}
 
 \item{y}{(\code{vector()}).}
 

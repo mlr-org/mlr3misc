@@ -11,7 +11,7 @@ topo_sort(nodes)
 Has 2 columns:
 \itemize{
 \item \code{id} of type \code{character}, contains all node labels.
-\item \code{parents} of type \code{list} of \code{character}, contains all direct parents label of \code{id}.
+\item \code{parents} of type \code{list} of \code{character}, contains the labels of all direct parents of \code{id}.
 }}
 }
 \value{
@@ -25,7 +25,7 @@ and hence occur at previous indices in the resulting sorting.
 Returns a table, in topological row order for IDs, and an entry \code{depth},
 which encodes the topological layer, starting at 0.
 So nodes with \code{depth == 0} are the ones with no dependencies,
-and the one with maximal \code{depth} are the ones on which nothing else depends on.
+and the ones with maximal \code{depth} are the ones on which nothing else depends.
 }
 \examples{
 nodes = rowwise_table(

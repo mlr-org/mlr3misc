@@ -8,12 +8,12 @@
 #' Returns a table, in topological row order for IDs, and an entry `depth`,
 #' which encodes the topological layer, starting at 0.
 #' So nodes with `depth == 0` are the ones with no dependencies,
-#' and the one with maximal `depth` are the ones on which nothing else depends on.
+#' and the ones with maximal `depth` are the ones on which nothing else depends.
 #'
 #' @param nodes ([data.table::data.table()])\cr
 #'   Has 2 columns:
 #'   * `id` of type `character`, contains all node labels.
-#'   * `parents` of type `list` of `character`, contains all direct parents label of `id`.
+#'   * `parents` of type `list` of `character`, contains the labels of all direct parents of `id`.
 #'
 #' @return ([data.table::data.table()]) with columns `id`, `depth`, sorted topologically for IDs.
 #' @export

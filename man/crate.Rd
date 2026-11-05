@@ -14,11 +14,10 @@ function to crate}
 The objects, which should be visible inside \code{.fn}.}
 
 \item{.parent}{(\code{environment})\cr
-Parent environment to look up names. Default to \code{\link[=topenv]{topenv()}}.}
+Parent environment to look up names. Defaults to \code{\link[=topenv]{topenv()}}.}
 
 \item{.compile}{(\code{logical(1)})\cr
 Whether to jit-compile the function.
-In case the function is already compiled.
 If the input function \code{.fn} is compiled, this has no effect, and the output function will always be compiled.}
 }
 \description{

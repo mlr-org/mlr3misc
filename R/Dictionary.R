@@ -4,11 +4,11 @@
 #' A key-value store for [R6::R6] objects.
 #' On retrieval of an object, the following applies:
 #'
-#' * If the object is a `R6ClassGenerator`, it is initialized with `new()`.
+#' * If the object is an `R6ClassGenerator`, it is initialized with `new()`.
 #' * If the object is a function, it is called and must return an instance of a [R6::R6] object.
-#' * If the object is an instance of a R6 class, it is returned as-is.
+#' * If the object is an instance of an R6 class, it is returned as-is.
 #'
-#' Default argument required for construction can be stored alongside their constructors by passing them to `$add()`.
+#' Default arguments required for construction can be stored alongside their constructors by passing them to `$add()`.
 #'
 #' @section S3 methods:
 #' * `as.data.table(d)`\cr
@@ -57,7 +57,7 @@ Dictionary = R6::R6Class(
     },
 
     #' @description
-    #' Returns all keys which comply to the regular expression `pattern`.
+    #' Returns all keys which comply with the regular expression `pattern`.
     #' If `pattern` is `NULL` (default), all keys are returned.
     #'
     #' @param pattern (`character(1)`).

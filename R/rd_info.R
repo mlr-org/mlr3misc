@@ -7,7 +7,7 @@
 #'
 #' @param obj (`any`)\cr
 #'   Object of the respective class.
-#' @param ... (`any)`)\cr
+#' @param ... (`any`)\cr
 #'   Additional arguments.
 #'
 #' @return `character()`, possibly with markdown code.

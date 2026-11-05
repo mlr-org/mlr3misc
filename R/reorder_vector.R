@@ -3,7 +3,7 @@
 #' @description
 #' Returns an integer vector to order vector `x` according to vector `y`.
 #'
-#' @param x (`vector())`.
+#' @param x (`vector()`).
 #' @param y (`vector()`).
 #' @param na_last (`logical(1)`)\cr
 #'   What to do with values in `x` which are not in `y`?

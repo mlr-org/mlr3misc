@@ -16,7 +16,7 @@
 #'   Additional function arguments passed to `.f`, as (named) `list()`.
 #'   These arguments will be concatenated to the arguments provided via `...`.
 #' @param .opts (named `list()`)\cr
-#'   List of options which are set before the `.f` is called.
+#'   List of options which are set before `.f` is called.
 #'   Options are reset to their previous state afterwards.
 #' @param .seed (`integer(1)`)\cr
 #'   Random seed to set before invoking the function call.

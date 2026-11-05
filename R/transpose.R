@@ -1,7 +1,7 @@
 #' @title Transpose lists of lists
 #'
 #' @description
-#' Transposes a list of list, and turns it inside out, similar to the
+#' Transposes a list of lists, and turns it inside out, similar to the
 #' function `transpose()` in package \CRANpkg{purrr}.
 #'
 #' @param .l (`list()` of `list()`).

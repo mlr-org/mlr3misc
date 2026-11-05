@@ -1,7 +1,7 @@
 #' @title Check that packages are installed, without loading them
 #'
 #' @description
-#' Calls [find.package()] to check if the all packages are installed.
+#' Calls [find.package()] to check if all packages are installed.
 #'
 #' @param pkgs (`character()`)\cr
 #'   Packages to check.
