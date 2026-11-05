@@ -9,8 +9,7 @@ The following rules apply:
 - if `x` is `atomic()` with length 0 or 1: printed as-is.
 
 - if `x` is `atomic()` with length greater than 1, `x` is collapsed with
-  `","`, and the resulting string is truncated to `trunc_width`
-  characters.
+  `","`, and the resulting string is truncated to `width` characters.
 
 - if `x` is an expression: converted to character.
 

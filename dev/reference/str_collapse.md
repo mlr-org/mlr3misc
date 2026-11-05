@@ -18,26 +18,26 @@ str_collapse(str, sep = ", ", quote = character(), n = Inf, ellipsis = "[...]")
 - sep:
 
   (`character(1)`)  
-  String used to collapse the elements of `x`.
+  String used to collapse the elements of `str`.
 
 - quote:
 
   ([`character()`](https://rdrr.io/r/base/character.html))  
-  Quotes to use around each element of `x`.
+  Quotes to use around each element of `str`.
 
   Will be replicated to length 2.
 
 - n:
 
   (`integer(1)`)  
-  Number of elements to keep from `x`. See
+  Number of elements to keep from `str`. See
   [`utils::head()`](https://rdrr.io/r/utils/head.html).
 
 - ellipsis:
 
   (`character(1)`)  
   If the string has to be shortened, this is signaled by appending
-  `ellipsis` to `str`. Default is `" [...]"`.
+  `ellipsis` to `str`. Default is `"[...]"`.
 
 ## Value
 

@@ -10,7 +10,7 @@ This dictionary can get populated with additional callbacks by add-on
 packages. As a convention, the key should start with the name of the
 package, i.e. `package.callback`.
 
-For a more convenient way to retrieve and construct learners, see
+For a more convenient way to retrieve and construct callbacks, see
 [`clbk()`](https://mlr3misc.mlr-org.com/dev/reference/clbk.md)/[`clbks()`](https://mlr3misc.mlr-org.com/dev/reference/clbk.md).
 
 ## Usage

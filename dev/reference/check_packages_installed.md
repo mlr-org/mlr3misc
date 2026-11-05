@@ -1,7 +1,7 @@
 # Check that packages are installed, without loading them
 
 Calls [`find.package()`](https://rdrr.io/r/base/find.package.html) to
-check if the all packages are installed.
+check if all packages are installed.
 
 ## Usage
 

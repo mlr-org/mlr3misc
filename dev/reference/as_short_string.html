@@ -10,7 +10,7 @@ e.g. in base::print() functions.
 The following rules apply:
 if x is atomic() with length 0 or 1: printed as-is.
 if x is atomic() with length greater than 1, x is collapsed with &quot;,&quot;,
-and the resulting string is truncated to trunc_width characters.
+and the resulting string is truncated to width characters.
 if x is an expression: converted to character.
 Otherwise: the class is printed.
 
@@ -20,7 +20,7 @@ e.g. in base::print() functions.
 The following rules apply:
 if x is atomic() with length 0 or 1: printed as-is.
 if x is atomic() with length greater than 1, x is collapsed with &quot;,&quot;,
-and the resulting string is truncated to trunc_width characters.
+and the resulting string is truncated to width characters.
 if x is an expression: converted to character.
 Otherwise: the class is printed.
 
@@ -73,7 +73,7 @@ If x is a list, the above rules are applied (non-recursively) to its elements.">
 e.g. in <code><a href="https://rdrr.io/r/base/print.html" class="external-link">base::print()</a></code> functions.</p>
 <p>The following rules apply:</p><ul><li><p>if <code>x</code> is <code>atomic()</code> with length 0 or 1: printed as-is.</p></li>
 <li><p>if <code>x</code> is <code>atomic()</code> with length greater than 1, <code>x</code> is collapsed with <code>","</code>,
-and the resulting string is truncated to <code>trunc_width</code> characters.</p></li>
+and the resulting string is truncated to <code>width</code> characters.</p></li>
 <li><p>if <code>x</code> is an expression: converted to character.</p></li>
 <li><p>Otherwise: the class is printed.</p></li>
 </ul><p>If <code>x</code> is a list, the above rules are applied (non-recursively) to its elements.</p>

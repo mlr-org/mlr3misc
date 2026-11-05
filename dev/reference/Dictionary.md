@@ -4,15 +4,16 @@ A key-value store for
 [R6::R6](https://r6.r-lib.org/reference/R6Class.html) objects. On
 retrieval of an object, the following applies:
 
-- If the object is a `R6ClassGenerator`, it is initialized with `new()`.
+- If the object is an `R6ClassGenerator`, it is initialized with
+  `new()`.
 
 - If the object is a function, it is called and must return an instance
   of a [R6::R6](https://r6.r-lib.org/reference/R6Class.html) object.
 
-- If the object is an instance of a R6 class, it is returned as-is.
+- If the object is an instance of an R6 class, it is returned as-is.
 
-Default argument required for construction can be stored alongside their
-constructors by passing them to `$add()`.
+Default arguments required for construction can be stored alongside
+their constructors by passing them to `$add()`.
 
 ## S3 methods
 
@@ -95,7 +96,7 @@ Print object.
 
 ### `Dictionary$keys()`
 
-Returns all keys which comply to the regular expression `pattern`. If
+Returns all keys which comply with the regular expression `pattern`. If
 `pattern` is `NULL` (default), all keys are returned.
 
 #### Usage

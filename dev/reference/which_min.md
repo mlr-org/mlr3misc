@@ -1,9 +1,9 @@
 # Index of the Minimum/Maximum Value, with Correction for Ties
 
-Works similar to
+Works similarly to
 [`base::which.min()`](https://rdrr.io/r/base/which.min.html)/[`base::which.max()`](https://rdrr.io/r/base/which.min.html),
 but corrects for ties. Missing values are treated as `Inf` for
-`which_min` and as `-Inf` for `which_max()`.
+`which_min()` and as `-Inf` for `which_max()`.
 
 ## Usage
 

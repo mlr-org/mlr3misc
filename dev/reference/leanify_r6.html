@@ -7,7 +7,7 @@
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Move all methods of an R6 Class to an environment — leanify_r6"><meta name="description" content="leanify_r6 moves the content of an R6::R6Class's functions to an environment,
 usually the package's namespace, to save space during serialization of R6 objects.
-leanify_package move all methods of all R6 Classes to an environment.
+leanify_package moves all methods of all R6 Classes to an environment.
 The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except calling the original function that now resides
 somewhere else.
@@ -15,7 +15,7 @@ It is possible to call this function after the definition of an R6::R6
 class inside a package, but it is preferred to use leanify_package()
 to just leanify all R6::R6 classes inside a package."><meta property="og:description" content="leanify_r6 moves the content of an R6::R6Class's functions to an environment,
 usually the package's namespace, to save space during serialization of R6 objects.
-leanify_package move all methods of all R6 Classes to an environment.
+leanify_package moves all methods of all R6 Classes to an environment.
 The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except calling the original function that now resides
 somewhere else.
@@ -67,7 +67,7 @@ to just leanify all R6::R6 classes inside a package."><meta property="og:image" 
     <div class="ref-description section level2">
     <p><code>leanify_r6</code> moves the content of an <code><a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6::R6Class</a></code>'s functions to an environment,
 usually the package's namespace, to save space during serialization of R6 objects.
-<code>leanify_package</code> move all methods of <em>all</em> R6 Classes to an environment.</p>
+<code>leanify_package</code> moves all methods of <em>all</em> R6 Classes to an environment.</p>
 <p>The function in the class (i.e. the object generator) is replaced by a stump
 function that does nothing except calling the original function that now resides
 somewhere else.</p>

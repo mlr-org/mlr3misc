@@ -47,7 +47,7 @@ type-safe variants with the following suffixes:
 
 - `*_lgl()` returns a `logical(length(.x))`.
 
-- `*_int()` returns a `integer(length(.x))`.
+- `*_int()` returns an `integer(length(.x))`.
 
 - `*_dbl()` returns a `double(length(.x))`.
 

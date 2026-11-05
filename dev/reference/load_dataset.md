@@ -2,7 +2,7 @@
 
 Loads a data set with name `id` from package `package` and returns it.
 If the package is not installed, an error with condition
-"packageNotFoundError" is raised. The name of the missing packages is
+"packageNotFoundError" is raised. The name of the missing package is
 stored in the condition as `packages`.
 
 ## Usage

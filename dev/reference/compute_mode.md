@@ -1,4 +1,4 @@
-# Compute The Mode
+# Compute the Mode
 
 Computes the mode (most frequent value) of an atomic vector.
 

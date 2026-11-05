@@ -25,7 +25,7 @@ rd_format_packages(packages)
 
 - ...:
 
-  (`any)`)  
+  (`any`)  
   Additional arguments.
 
 - lower:
@@ -46,7 +46,7 @@ rd_format_packages(packages)
 - quote:
 
   ([`character()`](https://rdrr.io/r/base/character.html))  
-  Quotes to use around each element of `x`.
+  Quotes to use around each element of `str`.
 
   Will be replicated to length 2.
 

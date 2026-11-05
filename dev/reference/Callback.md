@@ -1,6 +1,6 @@
 # Callback
 
-Callbacks allow to customize the behavior of processes in mlr3 packages.
+Callbacks allow customizing the behavior of processes in mlr3 packages.
 The following packages implement callbacks:
 
 - `CallbackOptimization` in
@@ -91,7 +91,7 @@ Creates a new instance of this
 
   (`character(1)`)  
   String in the format `[pkg]::[topic]` pointing to a manual page for
-  this object. The referenced help package can be opened via method
+  this object. The referenced help page can be opened via method
   `$help()`.
 
 ------------------------------------------------------------------------

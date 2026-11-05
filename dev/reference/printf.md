@@ -68,8 +68,8 @@ method call and not the call into the leanified method.
 
 Errors and warnings get the classes `mlr3{error, warning}` and also
 inherit from `simple{Error, Warning}`. It is possible to give errors and
-warnings their own class via the `class` argument. Doing this, allows to
-suppress selective conditions via calling handlers, see e.g.
+warnings their own class via the `class` argument. Doing this allows
+suppressing selected conditions via calling handlers, see e.g.
 [`globalCallingHandlers`](https://rdrr.io/r/base/conditions.html).
 
 When a function throws such a condition that the user might want to

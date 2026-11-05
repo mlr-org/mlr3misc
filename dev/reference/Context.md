@@ -123,7 +123,7 @@ library(R6)
 # data table with column x and y
 data = data.table(x = runif(10), y = sample(c("A", "B"), 10, replace = TRUE))
 
-# context only allows to access column y
+# context only allows access to column y
 ContextExample = R6Class("ContextExample",
   inherit = Context,
   public = list(

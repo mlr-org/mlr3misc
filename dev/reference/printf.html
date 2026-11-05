@@ -117,7 +117,7 @@ and not the call into the leanified method.</p>
 <p>Errors and warnings get the classes <code>mlr3{error, warning}</code> and also inherit from
 <code>simple{Error, Warning}</code>.
 It is possible to give errors and warnings their own class via the <code>class</code> argument.
-Doing this, allows to suppress selective conditions via calling handlers, see e.g.
+Doing this allows suppressing selected conditions via calling handlers, see e.g.
 <code><a href="https://rdrr.io/r/base/conditions.html" class="external-link">globalCallingHandlers</a></code>.</p>
 <p>When a function throws such a condition that the user might want to disable,
 a section <em>Errors and Warnings</em> should be included in the function documentation,

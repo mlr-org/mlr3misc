@@ -12,7 +12,7 @@ reorder_vector(x, y, na_last = NA)
 
 - x:
 
-  (`vector())`.
+  ([`vector()`](https://rdrr.io/r/base/vector.html)).
 
 - y:
 

@@ -1,8 +1,8 @@
 # Insert or Remove Named Elements
 
 Insert elements from `y` into `x` by name, or remove elements from `x`
-by name. Works for vectors, lists, environments and data frames and data
-tables. Objects with reference semantic
+by name. Works for vectors, lists, environments, data frames, and data
+tables. Objects with reference semantics
 ([`environment()`](https://rdrr.io/r/base/environment.html) and
 [`data.table::data.table()`](https://rdrr.io/pkg/data.table/man/data.table.html))
 might be modified in-place.

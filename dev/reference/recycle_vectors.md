@@ -3,7 +3,7 @@
 Repeats all vectors of a list `.x` to the length of the longest vector
 using [`rep()`](https://rdrr.io/r/base/rep.html) with argument
 `length.out`. This operation will only work if the length of the longest
-vectors is an integer multiple of all shorter vectors, and will throw an
+vector is an integer multiple of all shorter vectors, and will throw an
 exception otherwise.
 
 ## Usage

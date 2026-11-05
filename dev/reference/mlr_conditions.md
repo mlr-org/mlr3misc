@@ -76,11 +76,11 @@ It is also possible to use formatting options as defined in
 - `error_learner()` for the `Mlr3ErrorLearner`, signalling a learner
   error.
 
-- `error_learner_train()` for the `Mlr3ErrorLearner`, signalling a
+- `error_learner_train()` for the `Mlr3ErrorLearnerTrain`, signalling a
   learner training error.
 
-- `error_learner_predict()` for the `Mlr3ErrorLearner`, signalling a
-  learner prediction error.
+- `error_learner_predict()` for the `Mlr3ErrorLearnerPredict`,
+  signalling a learner prediction error.
 
 ## Warnings
 

@@ -12,14 +12,14 @@ and hence occur at previous indices in the resulting sorting.
 Returns a table, in topological row order for IDs, and an entry depth,
 which encodes the topological layer, starting at 0.
 So nodes with depth == 0 are the ones with no dependencies,
-and the one with maximal depth are the ones on which nothing else depends on."><meta property="og:description" content="Topologically sort a graph, where we are passed node labels and a list of direct
+and the ones with maximal depth are the ones on which nothing else depends."><meta property="og:description" content="Topologically sort a graph, where we are passed node labels and a list of direct
 parents for each node, as labels, too.
 A node can be 'processed' if all its parents have been 'processed',
 and hence occur at previous indices in the resulting sorting.
 Returns a table, in topological row order for IDs, and an entry depth,
 which encodes the topological layer, starting at 0.
 So nodes with depth == 0 are the ones with no dependencies,
-and the one with maximal depth are the ones on which nothing else depends on."><meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png"><meta name="robots" content="noindex"></head><body>
+and the ones with maximal depth are the ones on which nothing else depends."><meta property="og:image" content="https://mlr3misc.mlr-org.com/logo.png"><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -70,7 +70,7 @@ and hence occur at previous indices in the resulting sorting.
 Returns a table, in topological row order for IDs, and an entry <code>depth</code>,
 which encodes the topological layer, starting at 0.
 So nodes with <code>depth == 0</code> are the ones with no dependencies,
-and the one with maximal <code>depth</code> are the ones on which nothing else depends on.</p>
+and the ones with maximal <code>depth</code> are the ones on which nothing else depends.</p>
     </div>
 
     <div class="section level2">
@@ -85,7 +85,7 @@ and the one with maximal <code>depth</code> are the ones on which nothing else d
 <dl><dt id="arg-nodes">nodes<a class="anchor" aria-label="anchor" href="#arg-nodes"></a></dt>
 <dd><p>(<code><a href="https://rdrr.io/pkg/data.table/man/data.table.html" class="external-link">data.table::data.table()</a></code>)<br>
 Has 2 columns:</p><ul><li><p><code>id</code> of type <code>character</code>, contains all node labels.</p></li>
-<li><p><code>parents</code> of type <code>list</code> of <code>character</code>, contains all direct parents label of <code>id</code>.</p></li>
+<li><p><code>parents</code> of type <code>list</code> of <code>character</code>, contains the labels of all direct parents of <code>id</code>.</p></li>
 </ul></dd>
 
 </dl></div>

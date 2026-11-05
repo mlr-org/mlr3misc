@@ -6,8 +6,8 @@ of direct parents for each node, as labels, too. A node can be
 previous indices in the resulting sorting. Returns a table, in
 topological row order for IDs, and an entry `depth`, which encodes the
 topological layer, starting at 0. So nodes with `depth == 0` are the
-ones with no dependencies, and the one with maximal `depth` are the ones
-on which nothing else depends on.
+ones with no dependencies, and the ones with maximal `depth` are the
+ones on which nothing else depends.
 
 ## Usage
 
@@ -24,8 +24,8 @@ topo_sort(nodes)
 
   - `id` of type `character`, contains all node labels.
 
-  - `parents` of type `list` of `character`, contains all direct parents
-    label of `id`.
+  - `parents` of type `list` of `character`, contains the labels of all
+    direct parents of `id`.
 
 ## Value
 
