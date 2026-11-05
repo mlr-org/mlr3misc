@@ -1,5 +1,6 @@
 # mlr3misc (development version)
 
+* chore: mlr3misc now requires R >= 3.5.0.
 * fix: `deprecated_binding()`, `Dictionary` printing, and `warn_deprecated()` no longer fail on `%` in descriptions or keys.
 * fix: `encapsulate()` with method `"mirai"` now logs a crashed or killed daemon (e.g., by the OOM killer) as an `Mlr3Error` condition instead of a raw mirai error value, which made downstream calls to `conditionMessage()` fail.
 * fix: `error_config()` and `error_input()` no longer ignore the `class` argument.
