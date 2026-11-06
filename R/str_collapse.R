@@ -29,7 +29,7 @@ str_collapse = function(str, sep = ", ", quote = character(), n = Inf, ellipsis 
     formatted = if (length(quote) == 1L) {
       paste0(quote, formatted, quote)
     } else {
-      formatted = paste0(quote[1L], formatted, quote[2L])
+      paste0(quote[1L], formatted, quote[2L])
     }
   }
 
