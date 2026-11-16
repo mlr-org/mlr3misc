@@ -32,7 +32,7 @@
 #'   If wrapping is enabled, all whitespace characters (`[[:space:]]`) are converted to spaces,
 #'   and consecutive spaces are converted to a single space.
 #' @param class (`character()`)\cr
-#'   Class of the condition (for errors and warnings).
+#'   Class of the condition (for messages, errors, and warnings).
 #' @param call. (`logical()`)\cr
 #'   Whether to include the calling expression in the condition (for errors and warnings).
 #'   Defaults to `TRUE`.
@@ -70,7 +70,13 @@ catf = function(msg, ..., file = "", wrap = FALSE) {
 #' @export
 #' @rdname printf
 messagef = function(msg, ..., wrap = FALSE, class = NULL) {
-  message(str_wrap(sprintf(fmt = msg, ...), width = wrap))
+  class = c(class, "simpleMessage", "message", "condition")
+  text = str_wrap(sprintf(fmt = msg, ...), width = wrap)
+  condition = structure(
+    list(message = paste0(as.character(text), "\n"), call = NULL),
+    class = class
+  )
+  message(condition)
 }
 
 #' @export

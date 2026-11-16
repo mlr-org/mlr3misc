@@ -1,5 +1,7 @@
 test_that("messagef", {
   expect_message(messagef("xxx%ixxx", 123), "xxx123xxx")
+  expect_message(messagef("xxx", class = "foo"), class = "foo")
+  expect_message(messagef("xxx"), class = "simpleMessage")
 })
 
 test_that("catf", {

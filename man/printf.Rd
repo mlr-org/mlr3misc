@@ -34,7 +34,7 @@ If wrapping is enabled, all whitespace characters (\verb{[[:space:]]}) are conve
 and consecutive spaces are converted to a single space.}
 
 \item{class}{(\code{character()})\cr
-Class of the condition (for errors and warnings).}
+Class of the condition (for messages, errors, and warnings).}
 
 \item{call.}{(\code{logical()})\cr
 Whether to include the calling expression in the condition (for errors and warnings).
