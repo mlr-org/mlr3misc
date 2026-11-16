@@ -20,5 +20,16 @@ compute_mode = function(x, ties_method = "random", na_rm = TRUE) {
   if (na_rm) {
     x = x[!is.na(x)]
   }
-  as.data.table(x)[, .N, by = list(x)][which_max(get("N"), ties_method = ties_method)]$x
+  # data.table grouping has a constant overhead but scales better, and does not support raw vectors
+  if (length(x) > 1e5L && !is.raw(x)) {
+    return(as.data.table(x)[, .N, by = list(x)][which_max(get("N"), ties_method = ties_method)]$x)
+  }
+  u = unique(x)
+  # match factors on their integer codes to avoid conversion to character
+  counts = if (is.factor(x)) {
+    tabulate(match(as.integer(x), as.integer(u)), nbins = length(u))
+  } else {
+    tabulate(match(x, u), nbins = length(u))
+  }
+  u[which_max(counts, ties_method = ties_method)]
 }
