@@ -2,6 +2,8 @@ test_that("messagef", {
   expect_message(messagef("xxx%ixxx", 123), "xxx123xxx")
   expect_message(messagef("xxx", class = "foo"), class = "foo")
   expect_message(messagef("xxx"), class = "simpleMessage")
+  expect_identical(conditionMessage(expect_message(messagef("%s", c("a", "b")))), "ab\n")
+  expect_message(messagef("xxx yyy", wrap = 3L, class = "foo"), "xxx\nyyy", class = "foo")
 })
 
 test_that("catf", {

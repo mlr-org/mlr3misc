@@ -73,7 +73,7 @@ messagef = function(msg, ..., wrap = FALSE, class = NULL) {
   class = c(class, "simpleMessage", "message", "condition")
   text = str_wrap(sprintf(fmt = msg, ...), width = wrap)
   condition = structure(
-    list(message = paste0(as.character(text), "\n"), call = NULL),
+    list(message = paste0(paste0(text, collapse = ""), "\n"), call = NULL),
     class = class
   )
   message(condition)
