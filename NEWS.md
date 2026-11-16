@@ -12,6 +12,7 @@
 * feat: `stopf()` and `warningf()` now accept a `call.` argument to control whether conditions include the call (#186).
 * fix: `strip_srcrefs()` now also removes source references from the body, formals, and nested functions.
 * perf: `topo_sort()` now uses an adjacency-list traversal to avoid repeatedly scanning and rewriting all parent lists.
+* perf: `unnest()` is about 5x faster for list columns whose values are mostly scalars, as only rows with empty, non-atomic, or multi-element values are processed individually.
 * fix: `walk()` no longer strips classes such as factor or Date from elements.
 * fix: `which_max()` and `which_min()` no longer return an empty vector if all values are `-Inf` or `Inf`.
 

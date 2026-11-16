@@ -69,3 +69,12 @@ test_that("prefix with placeholder", {
 
   expect_data_table(unnest(x, c("p1", "p2"), prefix = "{col}."))
 })
+
+test_that("unnest handles rows mixing scalar and non-scalar values", {
+  x = data.table(id = 1:4, x = list(list(a = 1, b = 2), list(), list(a = 3, f = mean), list(a = 4, b = c(5, 6))))
+  x = unnest(x, "x")
+  expect_equal(x$a, c(1, NA, 3, 4))
+  expect_equal(x$b, list(2, NULL, NULL, c(5, 6)))
+  expect_list(x$f)
+  expect_identical(x$f[[3L]], mean)
+})

@@ -47,25 +47,34 @@ unnest = function(x, cols, prefix = NULL) {
 }
 
 rbindlist2 = function(values) {
-  new_cols = rbindlist(
-    lapply(values, function(row) {
-      n = lengths(row)
-      # to preserve the row, we need at least one value
-      if (all(n == 0L)) {
-        return(list("__rbindlist2_dummy__" = NA))
-      }
+  # only rows with empty, non-atomic, or multi-element values need to be fixed up,
+  # rows consisting of length-1 atomics can be passed to rbindlist() as is
+  row_n = lengths(values)
+  flat = unlist(values, recursive = FALSE, use.names = FALSE)
+  dirty = if (length(flat) == sum(row_n)) {
+    el_dirty = lengths(flat) != 1L | !vapply(flat, is.atomic, NA, USE.NAMES = FALSE)
+    row_n == 0L | seq_along(values) %in% rep.int(seq_along(values), row_n)[el_dirty]
+  } else {
+    rep.int(TRUE, length(values))
+  }
+  values[dirty] = lapply(values[dirty], rbindlist2_fix_row)
 
-      # wrap non-atomics or multi-element atomics into an extra list
-      ii = which(!map_lgl(row, is.atomic) | n > 1L)
-      if (length(ii)) {
-        row[ii] = lapply(row[ii], list)
-      }
-
-      row
-    }),
-    fill = TRUE,
-    use.names = TRUE
-  )
-
+  new_cols = rbindlist(values, fill = TRUE, use.names = TRUE)
   remove_named(new_cols, "__rbindlist2_dummy__")
+}
+
+rbindlist2_fix_row = function(row) {
+  n = lengths(row)
+  # to preserve the row, we need at least one value
+  if (all(n == 0L)) {
+    return(list("__rbindlist2_dummy__" = NA))
+  }
+
+  # wrap non-atomics or multi-element atomics into an extra list
+  ii = which(!map_lgl(row, is.atomic) | n > 1L)
+  if (length(ii)) {
+    row[ii] = lapply(row[ii], list)
+  }
+
+  row
 }
