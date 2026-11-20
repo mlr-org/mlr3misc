@@ -4,7 +4,7 @@
 
 SEXP c_to_decimal(SEXP _bits) {
     const R_len_t n = Rf_length(_bits);
-    const int * bits = LOGICAL(_bits);
+    const int * bits = LOGICAL_RO(_bits);
 
     if (n > 30) {
         Rf_error("to_decimal() only works for vectors with <= 30 elements");

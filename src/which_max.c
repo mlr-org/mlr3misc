@@ -94,13 +94,13 @@ SEXP c_which_max(SEXP x_, SEXP ties_method_, SEXP na_rm_) {
 
     switch(TYPEOF(x_)) {
         case LGLSXP:
-            index = which_max_int(LOGICAL(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_int(LOGICAL_RO(x_), Rf_length(x_), ties_method, LOGICAL_RO(na_rm_)[0]);
             break;
         case INTSXP:
-            index = which_max_int(INTEGER(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_int(INTEGER_RO(x_), Rf_length(x_), ties_method, LOGICAL_RO(na_rm_)[0]);
             break;
         case REALSXP:
-            index = which_max_dbl(REAL(x_), Rf_length(x_), ties_method, LOGICAL(na_rm_)[0]);
+            index = which_max_dbl(REAL_RO(x_), Rf_length(x_), ties_method, LOGICAL_RO(na_rm_)[0]);
             break;
         default: Rf_error("Unsupported vector type in which_max(). Supported are logical and numerical vectors.");
     }

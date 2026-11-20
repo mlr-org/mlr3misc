@@ -3,7 +3,7 @@
 #include <Rinternals.h>
 
 SEXP c_keep_in_bounds(SEXP s_in, SEXP s_lower, SEXP s_upper) {
-    const int *x = INTEGER(s_in);
+    const int *x = INTEGER_RO(s_in);
     const int ll = Rf_asInteger(s_lower);
     const int lu = Rf_asInteger(s_upper);
     const R_len_t n = Rf_length(s_in);
