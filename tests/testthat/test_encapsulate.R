@@ -217,7 +217,9 @@ test_that("mirai logs a killed daemon as error condition", {
   mirai::daemons(1, .compute = "local")
   on.exit(mirai::daemons(0, .compute = "local"))
 
-  res = encapsulate("mirai", function() tools::pskill(Sys.getpid(), tools::SIGKILL), .compute = "local")
+  # SIGKILL is NA on Windows, where pskill() always uses TerminateProcess
+  fun = function() tools::pskill(Sys.getpid(), if (is.na(tools::SIGKILL)) tools::SIGTERM else tools::SIGKILL)
+  res = encapsulate("mirai", fun, .compute = "local")
   expect_null(res$result)
   expect_equal(as.character(res$log$class), "error")
   expect_class(res$log$condition[[1L]], "Mlr3Error")
