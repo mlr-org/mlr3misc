@@ -77,7 +77,7 @@
 - [`compose()`](https://mlr3misc.mlr-org.com/reference/compose.md) :
   Composition of Functions
 - [`compute_mode()`](https://mlr3misc.mlr-org.com/reference/compute_mode.md)
-  : Compute The Mode
+  : Compute the Mode
 - [`count_missing()`](https://mlr3misc.mlr-org.com/reference/count_missing.md)
   : Count Missing Values in a Vector
 - [`crate()`](https://mlr3misc.mlr-org.com/reference/crate.md) : Isolate

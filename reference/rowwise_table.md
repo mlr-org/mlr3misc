@@ -1,7 +1,7 @@
 # Row-Wise Constructor for 'data.table'
 
 Similar to the [tibble](https://CRAN.R-project.org/package=tibble)
-function `tribble()`, this function allows to construct tabular data in
+function `tribble()`, this function allows constructing tabular data in
 a row-wise fashion.
 
 The first arguments passed as formula will be interpreted as column

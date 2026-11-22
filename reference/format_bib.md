@@ -35,7 +35,7 @@ cite_bib(..., bibentries = NULL, envir = parent.frame())
 - envir:
 
   (`environment`)  
-  Environment to lookup `bibentries` if not provided.
+  Environment to look up `bibentries` if not provided.
 
 ## Value
 

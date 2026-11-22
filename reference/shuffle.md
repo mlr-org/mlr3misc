@@ -38,7 +38,7 @@ shuffle(x)
 
 x = 3
 sample(x)
-#> [1] 2 3 1
+#> [1] 3 2 1
 shuffle(x)
 #> [1] 3
 ```

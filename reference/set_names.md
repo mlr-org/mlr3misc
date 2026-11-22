@@ -15,7 +15,7 @@ set_col_names(x, nm, ...)
 
 - x:
 
-  (`any`.)  
+  (`any`)  
   Object to set names for.
 
 - nm:

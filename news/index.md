@@ -1,5 +1,77 @@
 # Changelog
 
+## mlr3misc 0.24.0
+
+CRAN release: 2026-11-21
+
+- chore: mlr3misc now requires R \>= 3.5.0.
+- fix:
+  [`deprecated_binding()`](https://mlr3misc.mlr-org.com/reference/deprecated_binding.md),
+  `Dictionary` printing, and
+  [`warn_deprecated()`](https://mlr3misc.mlr-org.com/reference/warn_deprecated.md)
+  no longer fail on `%` in descriptions or keys.
+- fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/reference/encapsulate.md)
+  with method `"mirai"` now logs a crashed or killed daemon (e.g., by
+  the OOM killer) as an `Mlr3Error` condition instead of a raw mirai
+  error value, which made downstream calls to
+  [`conditionMessage()`](https://rdrr.io/r/base/conditions.html) fail.
+- fix:
+  [`error_config()`](https://mlr3misc.mlr-org.com/reference/mlr_conditions.md)
+  and
+  [`error_input()`](https://mlr3misc.mlr-org.com/reference/mlr_conditions.md)
+  no longer ignore the `class` argument.
+- fix:
+  [`formulate()`](https://mlr3misc.mlr-org.com/reference/formulate.md)
+  now errors on missing values and non-character input instead of
+  silently coercing them.
+- fix:
+  [`encapsulate()`](https://mlr3misc.mlr-org.com/reference/encapsulate.md)
+  with method `"callr"` and a `.seed` no longer overwrites the RNG state
+  of the calling session.
+- fix:
+  [`imap_lgl()`](https://mlr3misc.mlr-org.com/reference/compat-map.md),
+  [`imap_int()`](https://mlr3misc.mlr-org.com/reference/compat-map.md),
+  [`imap_dbl()`](https://mlr3misc.mlr-org.com/reference/compat-map.md),
+  and
+  [`imap_chr()`](https://mlr3misc.mlr-org.com/reference/compat-map.md)
+  now pass `...` to `.f`.
+- fix:
+  [`map_at()`](https://mlr3misc.mlr-org.com/reference/compat-map.md) and
+  [`map_if()`](https://mlr3misc.mlr-org.com/reference/compat-map.md) now
+  pass `...` on to `.f` for `data.table`s. Previously, the additional
+  arguments were silently dropped.
+- fix:
+  [`register_namespace_callback()`](https://mlr3misc.mlr-org.com/reference/register_namespace_callback.md)
+  now removes its hooks by identity on unload, so hooks registered by
+  others no longer cause an error during cleanup and stale hooks no
+  longer accumulate across reloads
+  ([\#207](https://github.com/mlr-org/mlr3misc/issues/207)).
+- fix:
+  [`set_names()`](https://mlr3misc.mlr-org.com/reference/set_names.md)
+  and
+  [`set_col_names()`](https://mlr3misc.mlr-org.com/reference/set_names.md)
+  now pass `...` to `nm`.
+- feat: [`stopf()`](https://mlr3misc.mlr-org.com/reference/printf.md)
+  and [`warningf()`](https://mlr3misc.mlr-org.com/reference/printf.md)
+  now accept a `call.` argument to control whether conditions include
+  the call ([\#186](https://github.com/mlr-org/mlr3misc/issues/186)).
+- fix:
+  [`strip_srcrefs()`](https://mlr3misc.mlr-org.com/reference/strip_srcrefs.md)
+  now also removes source references from the body, formals, and nested
+  functions.
+- perf:
+  [`topo_sort()`](https://mlr3misc.mlr-org.com/reference/topo_sort.md)
+  now uses an adjacency-list traversal to avoid repeatedly scanning and
+  rewriting all parent lists.
+- fix: [`walk()`](https://mlr3misc.mlr-org.com/reference/compat-map.md)
+  no longer strips classes such as factor or Date from elements.
+- fix:
+  [`which_max()`](https://mlr3misc.mlr-org.com/reference/which_min.md)
+  and
+  [`which_min()`](https://mlr3misc.mlr-org.com/reference/which_min.md)
+  no longer return an empty vector if all values are `-Inf` or `Inf`.
+
 ## mlr3misc 0.23.0
 
 CRAN release: 2026-08-21

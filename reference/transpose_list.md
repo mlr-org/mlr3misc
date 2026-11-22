@@ -1,6 +1,6 @@
 # Transpose lists of lists
 
-Transposes a list of list, and turns it inside out, similar to the
+Transposes a list of lists, and turns it inside out, similar to the
 function
 [`transpose()`](https://rdrr.io/pkg/data.table/man/transpose.html) in
 package [purrr](https://CRAN.R-project.org/package=purrr).

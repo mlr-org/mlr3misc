@@ -45,7 +45,7 @@ chunk(n, n_chunks = NULL, chunk_size = NULL, shuffle = TRUE)
 
 ## Value
 
-`chunk()` returns a [`integer()`](https://rdrr.io/r/base/integer.html)
+`chunk()` returns an [`integer()`](https://rdrr.io/r/base/integer.html)
 of chunk indices, `chunk_vector()` a
 [`list()`](https://rdrr.io/r/base/list.html) of `integer` vectors.
 

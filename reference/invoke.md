@@ -44,8 +44,8 @@ invoke(
 - .opts:
 
   (named [`list()`](https://rdrr.io/r/base/list.html))  
-  List of options which are set before the `.f` is called. Options are
-  reset to their previous state afterwards.
+  List of options which are set before `.f` is called. Options are reset
+  to their previous state afterwards.
 
 - .seed:
 

@@ -24,15 +24,15 @@ crate(.fn, ..., .parent = topenv(parent.frame()), .compile = TRUE)
 - .parent:
 
   (`environment`)  
-  Parent environment to look up names. Default to
+  Parent environment to look up names. Defaults to
   [`topenv()`](https://rdrr.io/r/base/ns-topenv.html).
 
 - .compile:
 
   (`logical(1)`)  
-  Whether to jit-compile the function. In case the function is already
-  compiled. If the input function `.fn` is compiled, this has no effect,
-  and the output function will always be compiled.
+  Whether to jit-compile the function. If the input function `.fn` is
+  compiled, this has no effect, and the output function will always be
+  compiled.
 
 ## Examples
 

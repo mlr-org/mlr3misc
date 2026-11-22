@@ -14,7 +14,7 @@ map_values(x, old, new)
 
 - x:
 
-  (`vector())`.
+  ([`vector()`](https://rdrr.io/r/base/vector.html)).
 
 - old:
 

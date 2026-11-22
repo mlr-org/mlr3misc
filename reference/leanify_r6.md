@@ -3,8 +3,8 @@
 `leanify_r6` moves the content of an
 [`R6::R6Class`](https://r6.r-lib.org/reference/R6Class.html)'s functions
 to an environment, usually the package's namespace, to save space during
-serialization of R6 objects. `leanify_package` move all methods of *all*
-R6 Classes to an environment.
+serialization of R6 objects. `leanify_package` moves all methods of
+*all* R6 Classes to an environment.
 
 The function in the class (i.e. the object generator) is replaced by a
 stump function that does nothing except calling the original function
