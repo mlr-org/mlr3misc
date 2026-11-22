@@ -2,6 +2,10 @@
 
 ## mlr3misc (development version)
 
+## mlr3misc 0.24.0
+
+CRAN release: 2026-11-21
+
 - chore: mlr3misc now requires R \>= 3.5.0.
 - fix:
   [`deprecated_binding()`](https://mlr3misc.mlr-org.com/dev/reference/deprecated_binding.md),
